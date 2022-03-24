@@ -1,5 +1,5 @@
 # Command line interface
-Bij het opstarten merkt Linux op dat hij enkel een zwart scherm met wat witte tekst ziet. Zijn muis lijkt niet te werken. Hij kan met behulp van het toetsenbord wel inloggen. Na het inloggen krijgt hij volgend scherm te zien:
+Bij het opstarten merkt Linus op dat hij enkel een zwart scherm met wat witte tekst ziet. Zijn muis lijkt niet te werken. Hij kan met behulp van het toetsenbord wel inloggen. Na het inloggen krijgt hij volgend scherm te zien:
 
 ![server welcome](../images/03/cli.PNG)
 
@@ -24,6 +24,8 @@ Je zal merken dat alles wat je op je toetsenbord typt na het `$` teken verschijn
 sudo shutdown -h now
 ```
 Dit commando zal de Ubuntu server machine onmiddelijk afsluiten. het `sudo` commando staat voor *super user do*. Voor sommige commando's zijn er administrator rechten nodig. Door `sudo` voor een commando te plaatsen, voer je dit als administrator (in Linux noemt deze gebruiker `root`) uit. Vervolgens krijgen we het `shutdown` commando met als optie `-h`. Deze optie krijgt als waarde `now`mee.
+
+![sudo](../images/03/sandwich.png)
 
 <i class="fa-solid fa-earth-europe" style="color: #fff;"></i> 
 [Linux command structure](https://uofabioinformaticshub.github.io/BASH-Intro/notes/extra_command_syntax.html)

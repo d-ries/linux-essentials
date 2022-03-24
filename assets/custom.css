@@ -17,3 +17,8 @@ main {
     text-align: justify;
     font-family: roboto;
 }
+
+main img{
+    display: block;
+    margin: 0 auto;
+}
