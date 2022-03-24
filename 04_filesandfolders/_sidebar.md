@@ -5,4 +5,5 @@
 * [2 Installatie](./02_installatie/01_course.md)
 * [3 Command line interface](./03_commandline/01_course.md)
 * [4 Files and folders](./04_filesandfolders/01_course.md)
+** [quiz](./04_filesandfolders/80_quiz.md)
 ** [opdrachten](./04_filesandfolders/99_opdrachten.md)

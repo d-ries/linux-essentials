@@ -16,7 +16,7 @@ De prompt bestaat uit een aantal onderdelen en geeft ons eigenlijk gewoon meer i
 
 Het `~` symbool is een afkorting voor de map `/home/student`. Hier komen we later op terug, vergelijk het voorlopig met het Windows pad `c:\Gebruikers\student`. Tussen het `:` teken en het `$` teken staat dus een pad naar een map waar we ons op dat moment bevinden.
 
-<i class="fa-solid fa-earth-europe" style="color: #fff;"></i> [Linux prompt definition](http://www.linfo.org/prompt.html#:~:text=A%20command%20prompt%2C%20also%20referred,terminal%20window%20by%20a%20shell.)
+<i class="fa-solid fa-earth-europe"></i> [Linux prompt definition](http://www.linfo.org/prompt.html#:~:text=A%20command%20prompt%2C%20also%20referred,terminal%20window%20by%20a%20shell.)
 
 ## commando's en opties
 Je zal merken dat alles wat je op je toetsenbord typt na het `$` teken verschijnt. Het `$` geeft het einde van de prompt aan en tegelijkertijd het begin van een commando. Werken met het besturingssysteem doen we aan de hand van commando's. Het eerste commando dat we in deze cursus zit in het volgende:
@@ -27,7 +27,7 @@ Dit commando zal de Ubuntu server machine onmiddelijk afsluiten. het `sudo` comm
 
 ![sudo](../images/03/sandwich.png)
 
-<i class="fa-solid fa-earth-europe" style="color: #fff;"></i> 
+<i class="fa-solid fa-earth-europe"></i> 
 [Linux command structure](https://uofabioinformaticshub.github.io/BASH-Intro/notes/extra_command_syntax.html)
 
 ## manpages
@@ -112,4 +112,4 @@ wget https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a7
 
 De download van de minecraft server is geslaagd, hij krijgt namelijk de melding `server.jar saved`, maar Linus heeft geen idee waar dit bestand is opgeslagen of hoe hij dit nu moet uitvoeren. In het volgende hoofdstuk verkennen we file & folder structuren om onze weg te kunnen vinden in het bestandssysteem van Linux.
 
-<i class="fa-solid fa-earth-europe" style="color: #fff;"></i> [Linux man pages guide](https://itsfoss.com/linux-man-page-guide/)
+<i class="fa-solid fa-earth-europe"></i> [Linux man pages guide](https://itsfoss.com/linux-man-page-guide/)

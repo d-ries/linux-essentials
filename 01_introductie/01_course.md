@@ -42,12 +42,14 @@ Dit is later uitgegroeid tot de Linux kernel dat we vandaag de dag kennen.
 #### Linux distributies
 Linux distributies zijn verzamelingen van tools bovenop de Linux kernel. Elke distributie legt zijn eigen accenten. Enkele bekende distro's zijn bijvoorbeeld Ubuntu, RedHat, Fedora, CentOS, Debian, Arch, ...
 
+![distros](../images/01/distros.png)
+
 Volgende bronnen kunnen je eventueel meer verdieping geven in de leerstof:
 
-<i class="fa-solid fa-film" style="color: #fff;"></i>  [Wat is linux?](https://www.youtube.com/watch?v=zA3vmx0GaO8)
+<i class="fa-solid fa-film"></i>  [Wat is linux?](https://www.youtube.com/watch?v=zA3vmx0GaO8)
 
-<i class="fa-solid fa-earth-europe" style="color: #fff;"></i> [Algemene uitleg Linux](https://www.linux.com/what-is-linux/)
+<i class="fa-solid fa-earth-europe"></i> [Algemene uitleg Linux](https://www.linux.com/what-is-linux/)
 
-<i class="fa-solid fa-earth-europe" style="color: #fff;"></i> [Meest populaire linux distributies](https://distrowatch.com/dwres.php?resource=popularity)
+<i class="fa-solid fa-earth-europe"></i> [Meest populaire linux distributies](https://distrowatch.com/dwres.php?resource=popularity)
 
 

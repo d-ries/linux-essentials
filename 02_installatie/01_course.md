@@ -64,7 +64,7 @@ In het volgende 5 schermen doen we geen aanpassingen & klik je gewoon op done:
 ![ubuntu 5](../images/02/server5.PNG)
 
 ![ubuntu 6](../images/02/server6.PNG)
-e
+
 ![ubuntu 7](../images/02/server7.PNG)
 
 ![ubuntu 8](../images/02/server8.PNG)
@@ -94,5 +94,5 @@ Hierna sluit je de VM af. Vervolgens pas je in de settings de CD-ROM speler aan 
 
 Al deze stappen worden ook doorlopen in onderstaand filmpje:
 
-<i class="fa-solid fa-film" style="color: #fff;"></i> [Installatie demo Ubuntu in VMware](https://www.youtube.com/watch?v=u8WLsyMuSgw)
+<i class="fa-solid fa-film"></i> [Installatie demo Ubuntu in VMware](https://www.youtube.com/watch?v=u8WLsyMuSgw)
 
