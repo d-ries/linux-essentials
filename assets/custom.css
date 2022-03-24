@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.warning{
+    margin: 10px 0px;
+    padding: 12px;
+    color: #004085;
+    background-color: #cce5ff;
+    border: 1px solid #b8daff;
+}
+
+.warning code{
+    color: #004085!important;
+    background-color: #b1d5fc!important;
+}
+
+main {
+    text-align: justify;
+    font-family: roboto;
+}
