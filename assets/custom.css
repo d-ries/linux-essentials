@@ -22,3 +22,13 @@ main img{
     display: block;
     margin: 0 auto;
 }
+
+main img[alt*="right"] {
+    float: right;
+    margin-left: 8px;
+}
+
+ main img[alt*="left"] {
+    float: left;
+    margin-right: 8px;
+}
