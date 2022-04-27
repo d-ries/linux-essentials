@@ -5,8 +5,11 @@ Om de minecraft server op te zetten heb je een server nodig met een publiek IP a
 
 Virtualisatie is het concept waarbij we een computersysteem virtueel op een ander systeem draaien. Hierdoor is het mogelijk om verschillende besturingssystemen tegelijkertijd virtueel te draaien op één *host* systeem.
 
+#TODO: schema virtualisatie toevoegen
+
 Linus wil graag het besturingsysteem [Ubuntu server](https://ubuntu.com/download/server) virtualiseren. Uiteraard zou je gerust ook een andere Linux distributie kunnen gebruiken. Voor deze cursus maken we gebruik van een debian based distributie.
-µ :fa-solid fa-list-check: _Download alvast de `.iso` file voor Ubuntu server via bovenstaande link. Een `.iso` bestand is een exacte kopie van een CD of DVD. Deze heb je later in het hoofstuk nodig voor de installatie van het besturingssysteem._ µ
+
+?> :fa-solid fa-list-check: _Download alvast de `.iso` file voor Ubuntu server via bovenstaande link. Een `.iso` bestand is een exacte kopie van een CD of DVD. Deze heb je later in het hoofstuk nodig voor de installatie van het besturingssysteem._
 
 ## Virtualisatiesoftware
 Om virtualisatie toe te passen zijn er verschillende opties. Veel voorkomende software is:
@@ -15,8 +18,6 @@ Om virtualisatie toe te passen zijn er verschillende opties. Veel voorkomende so
 - Hyper-V
 
 Binnen deze cursus ondersteunen we het opzetten van een virtuele machine in VMWare maar de stappen in de andere pakketten zijn gelijkaardig. Als student van de Hogeschool PXL krijg je een licentie voor VMware Workstation pro.
-
-#TODO: schema virtualisatie toevoegen
 
 ## Aanmaken VM
 om een nieuwe virtuele machine (VM) aan te maken in vmware maak je gebruik van het menu item `file`>`New virtual machine`. Vervolgens doorlop je een wizard om de machine te configureren.
@@ -42,7 +43,7 @@ Hierna kan je de virtuele machine opstarten met de groene pijl. De CDrom zal ops
 ## Installatie Ubuntu server
 Zoals aangegeven gebruiken we binnen deze cursus de distributie Ubuntu. Na het aanmaken van de VM, krijg je enkele stappen die je moet doorlopen om Ubuntu te installeren. Je zal merken dat er geen muis beschikbaar is, navigeren doe je met de pijltjes & enter toetsen.
 
-µ <i class="fa-solid fa-circle-info"></i> krijg je bij het opstarten de error `This host supports Intel VT-x, but Intel VT-x is diabled`? Dan moet je in de BIOS van je laptop de VT-x optie nog activeren. Meer informatie hierover kan je terugvinden in [dit artikel](https://www.qtithow.com/2020/12/fix-error-this-host-supports-Intel-VT-x.html).µ
+?> <i class="fa-solid fa-circle-info"></i> krijg je bij het opstarten de error `This host supports Intel VT-x, but Intel VT-x is diabled`? Dan moet je in de BIOS van je laptop de VT-x optie nog activeren. Meer informatie hierover kan je terugvinden in [dit artikel](https://www.qtithow.com/2020/12/fix-error-this-host-supports-Intel-VT-x.html).
 
 
 We starten met het selecteren van de taal, hier kiezen we Engels:

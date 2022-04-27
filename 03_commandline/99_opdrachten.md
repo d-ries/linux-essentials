@@ -10,3 +10,6 @@ zoek via `man -k` naar een commando om:
 
 ## Opdracht 3
 Vertrekkend van opdracht 2, Welke optie heb je nodig om verborgen bestanden/mappen te tonen bij het tonen van de inhoud van een map?
+
+## Opdracht 4 
+Zoek de korte omschrijving voor het commando `ls`

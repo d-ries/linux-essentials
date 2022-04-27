@@ -1,6 +1,6 @@
 # Linux Essentials
 ## Informatie <!-- {docsify-ignore} -->
-Deze cursus kan gebruikt worden om een basiskennis van linuxsystemen op te bouwen. De tijd om deze cursus door te nemen bedraagt ongeveer 14 uur (exclusief de tijd die nodig is om de inhouden in te studeren). Dit getal is een schatting en hangt af van de evenutele voorkennis & aanpak. 
+Deze cursus kan gebruikt worden om een basiskennis van linuxsystemen op te bouwen. De tijd om deze cursus door te nemen bedraagt ongeveer 25 uur (exclusief de tijd die nodig is om de inhouden in te studeren & om alle opdrachten te maken). Dit getal is een schatting en hangt af van de evenutele voorkennis & aanpak. 
 
 ## Voorkennis <!-- {docsify-ignore} -->
 De cursus verwacht als voorkennis dat je een algemene basiskennis hebt van het gebruik van een Windows systeem. Deze kennis bestaat voornamelijk over basisgebruik als user, installeren van software en het werken met bestanden en mappen.

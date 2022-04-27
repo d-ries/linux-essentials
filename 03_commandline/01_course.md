@@ -5,7 +5,7 @@ Bij het opstarten merkt Linus op dat hij enkel een zwart scherm met wat witte te
 
 Wat we hier zien is een command line interface (CLI). In de Ubuntu server omgeving is er geen graphic user interface (GUI) aanwezig. Dit onder andere om systeemresources te besparen. Daarnaast zal blijken dat een CLI een zeer efficiënte & betrouwbare manier is om te werken met een besturingssysteem.
 
-CLI's geven ons later ook veel meer mogelijkheden naar automatisatie toe, iets wat met GUI's veel moeilijker is.
+CLI's geven ons later ook veel meer mogelijkheden naar automatisatie toe, iets wat met GUI's veel moeilijker is. We zien deze evolutie ook terugkomen binnen Windows systemen, waar er vandaag de dag heel veel features & ondersteuning is voor _Powershell_, de CLI omgeving binnen windows (servers).
 
 ## De prompt
 Na het inloggen krijg je volgende tekst te zien. Dit noemen we de prompt.
@@ -18,15 +18,18 @@ Het `~` symbool is een afkorting voor de map `/home/student`. Hier komen we late
 
 <i class="fa-solid fa-earth-europe"></i> [Linux prompt definition](http://www.linfo.org/prompt.html#:~:text=A%20command%20prompt%2C%20also%20referred,terminal%20window%20by%20a%20shell.)
 
+
+![sudo right](../images/03/sandwich.png)
+
 ## commando's en opties
 Je zal merken dat alles wat je op je toetsenbord typt na het `$` teken verschijnt. Het `$` geeft het einde van de prompt aan en tegelijkertijd het begin van een commando. Werken met het besturingssysteem doen we aan de hand van commando's. Het eerste commando dat we in deze cursus zit in het volgende:
 ```bash
 sudo shutdown -h now
 ```
+
 Dit commando zal de Ubuntu server machine onmiddelijk afsluiten. het `sudo` commando staat voor *super user do*. Voor sommige commando's zijn er administrator rechten nodig. Door `sudo` voor een commando te plaatsen, voer je dit als administrator (in Linux noemt deze gebruiker `root`) uit. Vervolgens krijgen we het `shutdown` commando met als optie `-h`. Deze optie krijgt als waarde `now`mee.
 
-![sudo](../images/03/sandwich.png)
-
+?> <i class="fa-solid fa-circle-info"></i> Let op: Alles binnen linux is hoofdlettergevoelig: commando's, opties, argumenten, bestands- en mapnamen, ...
 <i class="fa-solid fa-earth-europe"></i> 
 [Linux command structure](https://uofabioinformaticshub.github.io/BASH-Intro/notes/extra_command_syntax.html)
 
@@ -103,7 +106,7 @@ OPTIONS
 
 ```
 
-µ  <i class="fa-solid fa-circle-info"></i> manpages zijn vrij groot en bestaan uit meerdere pagina's. Doorgaan naar een volgende pagina doe je door op `spatie` te drukken. Gelukkig kan je hier ook vrij gemakkelijk in zoeken. Dit doe je door het `/` teken in te typen gevolgd door het kernwoord waar je naar wil zoeken. Als een woord meerdere keren voorkomt, kan je naar de volgende overeenkomst gaan door op de letter `n` (next) te duwen. Manpages afsluiten doe je door op de `q` (quit) toets te drukken. Meer weten over manpages? Voer dan het commando `man man` uit!µ
+?> <i class="fa-solid fa-circle-info"></i> manpages zijn vrij groot en bestaan uit meerdere pagina's. Doorgaan naar een volgende pagina doe je door op `spatie` te drukken. Gelukkig kan je hier ook vrij gemakkelijk in zoeken. Dit doe je door het `/` teken in te typen gevolgd door het kernwoord waar je naar wil zoeken. Als een woord meerdere keren voorkomt, kan je naar de volgende overeenkomst gaan door op de letter `n` (next) te duwen. Manpages afsluiten doe je door op de `q` (quit) toets te drukken. Meer weten over manpages? Voer dan het commando `man man` uit!
 
 Met bovenstaande info slaagt Linus erin om onderstaand commando op te bouwen:
 ```bash
