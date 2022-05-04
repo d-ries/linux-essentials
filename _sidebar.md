@@ -9,4 +9,5 @@
 * [6 Software & packages](#)
 * [7 Filters & file operations ](#)
 * [8 Users & permissions](#)
-* [9 Introduction scripting](#)
+* [9 Automation](#)
+* [10 What is next](#)

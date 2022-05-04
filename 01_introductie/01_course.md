@@ -1,21 +1,9 @@
 # Introductie
 
-## Casus
 
-Binnen de cursus volgen we Linus. Linus is een eerstejaars student toegepaste informatica aan de hogeschool PXL. Zijn hobbies bestaan uit muziek, uitgaan en gamen. 
-
-Sinds kort is hij volledig in de ban van Minecraft. Uren heeft hij al in zijn eigen wereld gestoken. Zijn vrienden spelen het spel ook, ze delen elke week verhalen over hun avonturen & tonen screenshots van hun indrukwekkende creaties in hun werelden.
-
-Linus heeft gehoord dat het mogelijk is om Mincraft in multiplayer te spelen. Hiervoor hebben ze een *minecraft server* nodig. Dit is een computer met als doel het hosten van de wereld. Verschillende mensen kunnen dan verbinding maken met die server om op die manier samen te spelen.
-
-Dit is **exact** waar Linus naar op zoek is. Na enkele Google opdrachten blijkt echter dat veel van de guides voor het opzetten van een minecraft server termen gebruiken zoals Linux, Unix, chmod, ...Termen waarvan Linus nog nooit van gehoord heeft. Ondanks is hij heel gemotiveerd om de server up en running te krijgen met als naam "Linuscraft"
-
-![linuscraft](../images/linuxcraft.png)
-
-Hier begint meteen het verhaal van deze cursus. We nemen je mee in het proces waarbij Linus een Minecraft server opzet & onderhoudt en waarbij we een aantal basisconcepten tegenkomen die we verder uit de doeken doen.
 
 ## Linux
-In zijn zoektocht ziet Linus dat er binnen het gebruik van systemen verschillende besturingssystemen zijn. Windows, gemaakt door Microsoft, is een vrij bekend besturingssysteem dat we vaak zien terugkomen in de Desktop wereld maar er zijn zeker ook wel alternatieven. Denk bv. aan MacOSX, ChromeOS maar ook Linux. Die laatste komt, als desktop variant, wel iets minder voor.
+Windows, gemaakt door Microsoft, is een vrij bekend besturingssysteem dat we vaak zien terugkomen in de Desktop wereld maar er zijn zeker ook wel alternatieven. Denk bv. aan MacOSX, ChromeOS maar ook Linux. Die laatste komt, als desktop variant, wel iets minder voor.
 
 In het server / IOT / mobile devices branche merken we daar wel een shift. Hier is Linux een stuk relevanter. Enkele interessante stellingen:
 * [de meeste supercomputers draaien Linux](https://itsfoss.com/linux-runs-top-supercomputers/)
@@ -55,4 +43,5 @@ Volgende bronnen kunnen je eventueel meer verdieping geven in de leerstof:
 
 <i class="fa-solid fa-earth-europe"></i> [Meest populaire linux distributies](https://distrowatch.com/dwres.php?resource=popularity)
 
+<i class="fa-solid fa-film"></i> [[Pluralsight] Linux introduction](https://app.pluralsight.com/course-player?clipId=f23dd1fa-7766-49d0-9b6d-6530142b38c6)
 

@@ -64,7 +64,7 @@ Linus wil een duidelijke mappenstructuur aanmaken voor _LinusCraft_. In zijn hom
 ```bash
 mkdir linuscraft
 ```
-Het argument van het commando is een pad. Je zou dus ook bijvoorbeeld `mkdir /home/student/minuscraft` kunnen uitvoeren. Zowel relatieve als absolute paden 'zie verder) kunnen gebruikt worden in het `mkdir` commando.
+Het argument van het commando is een pad. Je zou dus ook bijvoorbeeld `mkdir /home/student/minuscraft` kunnen uitvoeren. Zowel relatieve als absolute paden (zie verder) kunnen gebruikt worden in het `mkdir` commando.
 
 ?> <i class="fa-solid fa-circle-info"></i> Zoals eerder aangegeven is alles in Linux hoofdlettergevoelig. Ook hier is dit belangrijk in functie van de mapnamen. Voor een keer het commando `mkdir abc ABC` uit. Je zal zien dat er 2 mappen op je systeem aangemaakt zijn: één met de naam `abc` en één met de naam `ABC`.
 
@@ -133,3 +133,10 @@ touch, echo, nano
 mv, cp, rename
 
 ## Wissen 
+
+Extra lesmateriaal:
+
+
+<i class="fa-solid fa-film"></i> [[Pluralsight] Linux command syntax patterns](https://app.pluralsight.com/course-player?clipId=5c3b8432-e324-4b4b-adfd-2615298a7aba)
+
+<i class="fa-solid fa-film"></i> [[Pluralsight] Working with files & directories](https://app.pluralsight.com/course-player?clipId=f98f5110-6ee4-43c4-af00-4de294c17bc9)
