@@ -25,7 +25,7 @@ Na het volgen van deze cursus kan je:
 ## Cursus offline gebruiken <!-- {docsify-ignore} -->
 1. Download de repository via `git clone <repo-url>`.
 2. Installeer [nodejs](https://nodejs.org)
-3. Installeer de package _docsify_ via `npm install -g docsify`
+3. Installeer de package _docsify_ via `npm install -g docsify-cli`
 4. Voer volgend commando in de repository folder uit: `docsify serve`
 5. Navigeer naar `http://localhost:3000`
 
