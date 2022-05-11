@@ -8,7 +8,6 @@ To start this course you should have a basic knowledge of the Windows OS:
 * Installing software
 * Working with files & folders
 
-
 ## Structure <!-- {docsify-ignore} -->
 This course will teach you how to use a Linux CLI. To achieve this we will use practical labs & exercises as wel as a manual containing some of the most essential commands and use cases. The practical labs will follow an authentic case of a Computer Science student named Linus who wants to setup his own Minecraft server.
 
@@ -27,7 +26,7 @@ After following this course you can:
 ## Use this course offline <!-- {docsify-ignore} -->
 1. Download the repository using`git clone <repo-url>`.
 2. Install [nodejs](https://nodejs.org)
-3. Install the package _docsify_ using `npm install -g docsify`
+3. Install the package _docsify_ using `npm install -g docsify-cli`
 4. Run this command in the repository working directory: `docsify serve`
 5. Navigate to `http://localhost:3000`
 
