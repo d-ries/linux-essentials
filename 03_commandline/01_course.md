@@ -26,6 +26,42 @@ sudo shutdown -h now
 ```
 This command will shut down the Ubuntu server machine immediately. This is also the propper way to shutdown the virtual machine! The `sudo` command stands for _super user do_. Some commands require administrator rights. By adding the `sudo` command, you will run this command as the _super user_. This user, in Linux, is called _root_ (compase this to the administrator user in Windows). The example actually exists out of 2 commands. The `sudo` command followed by the `shutdown command`. The `shutdown` command will use the option `-h` with a value of `now`.
 
+Commands ofthen have all kinds of options (that can take values aswell) to extend the functionality of a command. The option `-h` for the `shutdown` command will take an (optional) value that defines when the server needs to actually shutdown. If no value is given, it will plan the shutdown task 1 minute after running the command. Lets look at some other options from running `man shutdown`:
+```bash
+SHUTDOWN(8)                                            shutdown                                           SHUTDOWN(8)
+
+NAME
+       shutdown - Halt, power-off or reboot the machine
+
+SYNOPSIS
+       shutdown [OPTIONS...] [TIME] [WALL...]
+
+DESCRIPTION
+       ...
+
+OPTIONS
+       The following options are understood:
+
+       --help
+           Print a short help text and exit.
+       -H, --halt
+           Halt the machine.
+       -P, --poweroff
+           Power-off the machine (the default).
+       -r, --reboot
+           Reboot the machine.
+       -h
+           Equivalent to --poweroff, unless --halt is specified.
+       -k
+           Do not halt, power-off, reboot, just write wall message.
+       --no-wall
+           Do not send wall message before halt, power-off, reboot.
+       -c
+           Cancel a pending shutdown. This may be used to cancel the effect of an invocation of shutdown with a time
+           argument that is not "+0" or "now".
+```
+
+As you can see the `shutdown` command has a bunch of options that we can use to extend the basic functionality of the command. Every command has his own set of unique options.
 
 ?> <i class="fa-solid fa-circle-info"></i> Everything in Linux is case sensitive: commands, options, arguments, file- and foldernames, ...
 
@@ -82,7 +118,7 @@ whois: /usr/share/man/man1/whois.1.gz
 The manpages are stored in archives with a `.gz` extention. This is comparable to a `zip` file containing text files. When typing the command `man whois` it will actually open the text file in the archive `/usr/share/man/man1/whois.1.gz`.
 
 
-
+## Extra course material <!-- {docsify-ignore} -->
 
 <i class="fa-solid fa-earth-europe"></i> [Linux man pages guide](https://itsfoss.com/linux-man-page-guide/)
 

@@ -1,47 +1,42 @@
-# Introductie
-
-
+# Introduction
 
 ## Linux
-Windows, gemaakt door Microsoft, is een vrij bekend besturingssysteem dat we vaak zien terugkomen in de Desktop wereld maar er zijn zeker ook wel alternatieven. Denk bv. aan MacOSX, ChromeOS maar ook Linux. Die laatste komt, als desktop variant, wel iets minder voor.
+Windows, made by Microsoft, is a well known operating system that we see alot in Desktop environments but there are other alternatives aswell. One of the more popular ones are MacOSX, ChromeOS but also Linux. Linux, as a desktop variant, is less prominent that the others.
 
-In het server / IOT / mobile devices branche merken we daar wel een shift. Hier is Linux een stuk relevanter. Enkele interessante stellingen:
-* [de meeste supercomputers draaien Linux](https://itsfoss.com/linux-runs-top-supercomputers/)
-* [Binnen de top 25 van de populairste websites in de wereld, draait meer dan 80% op een linux server](https://www.alexa.com/topsites)
-* [De grootste aanbieders van cloud infrastructuur draaien op Linux](https://www.linuxfoundation.org/blog/how-amazon-web-services-uses-linux-and-open-source/)
+In Server / IOT / mobile environments we see a certain shift in used operating systems. Linux is one of the most popular operating systems in these markets. Some interesting statements:
+* [Most supercomputers run on Linux](https://itsfoss.com/linux-runs-top-supercomputers/)
+* [More than 80% of the top 25 most popular websites in the world run on a Linux server](https://www.alexa.com/topsites)
+* [De most popular cloud infrastructure providers use Linux](https://www.linuxfoundation.org/blog/how-amazon-web-services-uses-linux-and-open-source/)
 
 ![tux right](../images/tux.png)
 
-Linux zie je terugkomen  in smartphones, (web) servers, tablets, IoT devices, slimme wasmachines, zelf rijdende auto's,  modems & routers, ... Kortom Linux wordt veel meer gebruikt dan je initieel zou denken. Linux heeft zelfs een mascotte, de pinguin tux!
-
-
+You will find Linux in smartphones, (web) servers, tablets, IoT devices, Smart washing machines, self driving cars, modems, routers, PlayStation, ... In short: Linux is used way more than you would initially think. Linux even has his own mascotte, the penguin Tux!
 
 ### Unix
-In 1969 ontwikkelde Dennis Ritchie en Ken Thompson het unix besturingssysteem. De broncode van Unix was op dat moment open source. Na verloop van tijd ging AT&T Bell labs Unix commerciëel verkopen. Dit werd niet door iedereen goed ontvangen en er onstonden 2 varianten:
-* Unix: De commerciële variant 
-* BSD Unix: De open source variant
+Dennis Ritchie and Ken Thompson created the Unix operating system in 1969. The source code from this OS was open source at that moment. After a while the company AT&T Bell Labs decided they wanted to sell Unix commercially. Not everyone followed this vision and this resulted in 2 versions:
+* Unix: The commercial version
+* BSD Unix: The open source version
 
-In de jaren '80 werden er verschillende versies van Unix ontwikkeld. Een daarvan was het *GNU* project ("GNU is not unix"). Het doel van GNu was het ontwikkelen van een open besturingssysteem waar iedereen samen aan kon werken. 
+In the '80 you would find different versions of Unix. One of them was the _GNU project ("GNU is not unix")_. The goal of GNU was the development of an open source operating system where everyone could work on together as a community.
 
 ### Linux
-In de jaren '90 kwam een student Linus Torvalds met een post in een nieuswgroep over zijn operating system:
+A student named Linus Torvalds created a post in a newsgroup about his own operating system in the '90:
 
 ![linux](../images/01/linus.PNG)
 
-Dit is later uitgegroeid tot de Linux kernel dat we vandaag de dag kennen.
+This has grown in the the Linux kernel that we know today.
 
-#### Linux distributies
-Linux distributies zijn verzamelingen van tools bovenop de Linux kernel. Elke distributie legt zijn eigen accenten. Enkele bekende distro's zijn bijvoorbeeld Ubuntu, RedHat, Fedora, CentOS, Debian, Arch, ...
+#### Linux distributions
+Linux distributions (distros in short) are collections of tools on top of the Linux kernel. Every distro can have his own focus points. Some well known distros are Ubuntu, RedHat, Fedora, CentOS, Debian, Archlinux, ...
 
 ![distros](../images/01/distros.png)
 
-Volgende bronnen kunnen je eventueel meer verdieping geven in de leerstof:
 
-<i class="fa-solid fa-film"></i>  [Wat is linux?](https://www.youtube.com/watch?v=zA3vmx0GaO8)
+<i class="fa-solid fa-film"></i>  [What is linux?](https://www.youtube.com/watch?v=zA3vmx0GaO8)
 
-<i class="fa-solid fa-earth-europe"></i> [Algemene uitleg Linux](https://www.linux.com/what-is-linux/)
+<i class="fa-solid fa-earth-europe"></i> [High level overview Linux](https://www.linux.com/what-is-linux/)
 
-<i class="fa-solid fa-earth-europe"></i> [Meest populaire linux distributies](https://distrowatch.com/dwres.php?resource=popularity)
+<i class="fa-solid fa-earth-europe"></i> [Most popular linux distros](https://distrowatch.com/dwres.php?resource=popularity)
 
 <i class="fa-solid fa-film"></i> [[Pluralsight] Linux introduction](https://app.pluralsight.com/course-player?clipId=f23dd1fa-7766-49d0-9b6d-6530142b38c6)
 

@@ -32,3 +32,13 @@ main img[alt*="right"] {
     float: left;
     margin-right: 8px;
 }
+
+@media print {
+    .sidebar{
+        display: none;
+    }
+
+    .content{
+        left: 5px;
+    }
+}

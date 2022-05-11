@@ -1,4 +1,4 @@
-## Lab <!-- {docsify-ignore} -->
+# Lab <!-- {docsify-ignore} -->
 On the minecraft server website we can find a download link for the server version of minecraft. Linus needs to download this file to his server in some way. He needs to find a command that allows him to download files.
 
 Linus uses the `man` command to find a list of commands that have the keyword _download_ in their description:

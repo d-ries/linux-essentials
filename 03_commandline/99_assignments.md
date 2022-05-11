@@ -1,4 +1,4 @@
-# Opdrachten H3
+# Assignments CH3
 ## Opdracht 1
 Gebruik het `man` commando om uit te zoeken wat de optie `-t` doet bij het `man`commando.
 

@@ -1,4 +1,4 @@
-# Opdrachten H2
+# Assignments CH2
 ## Opdracht 1
 Linux heeft ook desktop varianten. Download en installeer [Ubuntu Desktop](https://ubuntu.com/download/desktop) in een nieuwe virtuele machine en verken het besturingssysteem.
 

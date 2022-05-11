@@ -7,3 +7,4 @@
 ** [Assignments](./02_installation/99_assignments.md)
 * [3 Command line interface](./03_commandline/01_course.md)
 * [4 Files and folders](./04_filesandfolders/01_course.md)
+* [5 File contents](./05_filecontents/01_course.md)

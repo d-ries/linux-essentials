@@ -1,64 +1,64 @@
-# Installatie
+# Installation
 
-## Virtualisatie
-Om de minecraft server op te zetten heb je een server nodig met een publiek IP adres. In de praktijk ga je hiervoor snel op zoek naar een cloud provider waar je een server kan huren. Voor deze cursus simuleren we dit gebeuren door gebruik te maken van een virtuele machine.
+## Virtualisation
+To install servers that uses services (such as a minecraft server!) you will need a server with a public IP address. Usually you would go to a cloud provider where you can rent a server for a fixed fee / month. For this course we will simulate this process by using a virtual machine.
 
-Virtualisatie is het concept waarbij we een computersysteem virtueel op een ander systeem draaien. Hierdoor is het mogelijk om verschillende besturingssystemen tegelijkertijd virtueel te draaien op één *host* systeem.
+Virtualisation is a concept where you can run a computer system with an operating system virtually on another system. This makes it possible to have multiple _guest operating systems_ with their own virtual hardware on one _host system_.
 
-#TODO: schema virtualisatie toevoegen
+#TODO: add virtualisation schema
 
-Linus wil graag het besturingsysteem [Ubuntu server](https://ubuntu.com/download/server) virtualiseren. Uiteraard zou je gerust ook een andere Linux distributie kunnen gebruiken. Voor deze cursus maken we gebruik van een debian based distributie.
+For this course we want to use and install the operating system [Ubuntu server](https://ubuntu.com/download/server) in a virtual environment. You could use any Linux distribution you want. For this course we will use a debian based distro.
 
-?> :fa-solid fa-list-check: _Download alvast de `.iso` file voor Ubuntu server via bovenstaande link. Een `.iso` bestand is een exacte kopie van een CD of DVD. Deze heb je later in het hoofstuk nodig voor de installatie van het besturingssysteem._
+?> :fa-solid fa-list-check: _Download the `.iso` file for Ubuntu server using [this link](https://ubuntu.com/download/server). A `.iso` file is an exact copy of a CD/DVD. You will use this later to install the operating system in your virtual machine._
 
-## Virtualisatiesoftware
-Om virtualisatie toe te passen zijn er verschillende opties. Veel voorkomende software is:
+## Virtualisation software
+To use virtualisation there are several options. The most common virtualisation software is:
 - VMware workstation
 - Virtualbox
 - Hyper-V
 
-Binnen deze cursus ondersteunen we het opzetten van een virtuele machine in VMWare maar de stappen in de andere pakketten zijn gelijkaardig. Als student van de Hogeschool PXL krijg je een licentie voor VMware Workstation pro.
+In this course we will use and support VMware but the other software packages are similar. Students of PXL University College will get a free educational licence to use VMware Workstation pro through OnTheHub.
 
-## Aanmaken VM
-om een nieuwe virtuele machine (VM) aan te maken in vmware maak je gebruik van het menu item `file`>`New virtual machine`. Vervolgens doorlop je een wizard om de machine te configureren.
+## Create a new VM
+To create a new virtual machine (VM) in VMWare you go to the menu `file`>`New virtual machine`. The wizard to create a new VM will appear.
 
-In het eerste scherm kiezen we ervoor om het besturingssysteem later te installeren:
+In the first screen we select the option to `install the operating system later`:
 
 ![vmware 1](../images/02/vmware1.PNG)
 
-Hierna kiezen we als besturingsysteem `Linux`. Bij de dropdown 'versie' kies je voor `Ubuntu 64 bit`. Dit is de linux distributie die we tijdens deze cursus gaan gebruiken.
+Next we choose the operating system `Linux`. In the version dropdown we select `Ubuntu 64 bit`. This is the Linux distribution that we will use during this course.
 
 ![vmware 2](../images/02/vmware2.PNG)
 
-Hierna geef je de virtuele schijfgrootte in. Voor deze machine is een harde schijf van 20 GB voldoende. We kunnen dit later nog altijd uitbreiden:
+In the next screen we configure the virtual harddisk size for the VM. We will create a disk that has 20GB storage. We can expand this later if needed:
 
 ![vmware 3](../images/02/vmware3.PNG)
 
-Vervolgens loop je de wizard verder door en wordt de virtuele machine voor je aangemaakt. De laatste stap is het koppelen van de ubuntu-server iso die je eerder hebt gedownload aan de virtuele cd-rom speler van je machine. Dit doe je door met je rechtermuisknop op je virtuele machine te klikken. Vervolgens ga je naar `settings`. Hierin koppel je de `iso` file op volgende manier:
+Continue through the next steps and the virtual machine will be created. After the VM is created we need to link the ubuntu-server ISO file to the virtual CD-rom drive. We do this by right clicking the virtual machine and going to the `settings` page. Here we can link the `iso` file:
 
 ![vmware 4](../images/02/vmware4.PNG)
 
-Hierna kan je de virtuele machine opstarten met de groene pijl. De CDrom zal opstarten om de installatieprocedure van Ubuntu server booten.
+After linking the iso file you can boot the VM by clicking the green arrow icon. This will boot the virtual machine and run the installation media.
 
-## Installatie Ubuntu server
-Zoals aangegeven gebruiken we binnen deze cursus de distributie Ubuntu. Na het aanmaken van de VM, krijg je enkele stappen die je moet doorlopen om Ubuntu te installeren. Je zal merken dat er geen muis beschikbaar is, navigeren doe je met de pijltjes & enter toetsen.
+## Installation Ubuntu server
+As described earlier we will use the distro Ubuntu. After creating and booting the virtual machine there will be an installation process that we need to run through. You will notice that there is no mouse pointer available. We will use the keypoint arrow keys & enter key to navigate through the steps.
 
-?> <i class="fa-solid fa-circle-info"></i> krijg je bij het opstarten de error `This host supports Intel VT-x, but Intel VT-x is diabled`? Dan moet je in de BIOS van je laptop de VT-x optie nog activeren. Meer informatie hierover kan je terugvinden in [dit artikel](https://www.qtithow.com/2020/12/fix-error-this-host-supports-Intel-VT-x.html).
+?> <i class="fa-solid fa-circle-info"></i> Does booting the VM result in the error `This host supports Intel VT-x, but Intel VT-x is diabled`? You will have to activate the VT-X option in the BIOS of your laptop. More information can be found in [this article](https://www.qtithow.com/2020/12/fix-error-this-host-supports-Intel-VT-x.html).
 
 
-We starten met het selecteren van de taal, hier kiezen we Engels:
+We start by selecting the laguage. We choose English:
 
 ![ubuntu 1](../images/02/server1.PNG)
 
-De installer update slaan we over:
+We skip the installer update:
 
 ![ubuntu 2](../images/02/server2.PNG)
 
-Kies de correcte keyboard layout. Voor de `azerty` layout kies je voor `Belgian`:
+Choose the correct keyboard layout. For `azerty` select `Belgian`:
 
 ![ubuntu 3](../images/02/server3.PNG)
 
-In het volgende 5 schermen doen we geen aanpassingen & klik je gewoon op done:
+In the next 5 steps we dont make any changes and we just select `done`:
 
 ![ubuntu 4](../images/02/server4.PNG)
 
@@ -70,7 +70,7 @@ In het volgende 5 schermen doen we geen aanpassingen & klik je gewoon op done:
 
 ![ubuntu 8](../images/02/server8.PNG)
 
-Vervolgens maken we onze user account aan die gebruikt wordt binnen het besturingssysteem. We gebruiken hiervoor onderstaande instellingen:
+Next up we create a user account that we use to login to the operating system. We use following credentials:
 ```
 username: student
 server name: linux-essentials
@@ -79,21 +79,20 @@ password: pxl
 
 ![ubuntu 9](../images/02/server9.PNG)
 
-Ook in de volgende 2 schermen doen we geen aanpassingen en klik je gewoon op done:
+We make no changes in the next 2 steps. We just select `done`:
 
 ![ubuntu 10](../images/02/server10.PNG)
 
 ![ubuntu 11](../images/02/server11.PNG)
 
-Vervolgens zal het besturingsysteem geïnstalleerd en geconfigureerd worden. Na verloop van tijd verschijnt er de `Reboot Now` optie. Dit wil zeggen dat de installatie voltooid is:
-
+The operating system will be installed and configured. After a while the `Reboot now` option will appear. This indicates that the installation is complete:
 ![ubuntu 12](../images/02/server12.PNG)
 
-Hierna sluit je de VM af. Vervolgens pas je in de settings de CD-ROM speler aan zodat hij niet meer het `.iso` bestand gebruikt. Dit doe je als volgt:
+Shutdown the virtual machine and go to the settings screen. In the `CD/DVD (SATA) ` settings screen you select the option `use physical drive`. This makes sure that the virtual machine does no longer use the installation ISO.
 
 ![VMWare](../images/02/vmware5.PNG)
 
-Al deze stappen worden ook doorlopen in onderstaand filmpje:
+All of these steps can also be viewed in the video below:
 
 <i class="fa-solid fa-film"></i> [Installatie demo Ubuntu in VMware](https://www.youtube.com/watch?v=u8WLsyMuSgw)
 

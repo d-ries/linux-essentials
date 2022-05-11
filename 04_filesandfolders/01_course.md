@@ -1,44 +1,120 @@
 # Files and Directories
-In het vorige hoofdstuk had Linus een server bestand gedownload voor de minecraft server. Maar waar staat dit bestand nu? In dit hoofdstuk zoeken we uit hoe we kunnen navigeren in mappen & hoe we enkele basisbewerkingen met bestanden kunnen uitvoeren.
-
-## Directories
-
-### verkennen
-Als start wil Linus zoeken naar het `server.jar` bestand dat hij in het vorige hoofdstuk gedwonload heeft. Via het `man -k directory` commando ziet hij al snel dat er verschillende commando's zijn om met directories te werken.
-
-Het eerste commando dat we bekijken is het `pwd` commando. Uit de manpage van het commando zelf:
+## Working with directories
+### Print working directory (pwd)
+The first command we will look at is the `pwd` command. The manpages gives an accurate description of what the command does:
 ```
 pwd - print name of current/working directory
 ```
 
-Hiermee drukken we dus de directory af waarin we ons bevinden. na het uitvoeren van het commando krijgen we als output:
+This command prints the current working directory. The working directory refers to the directory where the prompt is active in. Any command we run that involves files or folders will be ran in this directory:
 
-```
+```bash
+student@linux-ess:~$ pwd
 /home/student
 ```
+In Windows, an _absolute path_ starts with `C:\...`. In Linux we do not use Drive letters. The highest folder (in Windows often `C:\`) in Linux is called the _root directory_. This directory is reffered to as a `/` at the beginning of a path. More about _absolute_ and _relative_ paths later in this chapter.
 
-In windows start een _absoluut_ pad met `c:\....`. In Linux kennen we geen schijf letters. De hoogst liggende map (in windows vaak `c:\`) noemen we de _root directory_. Deze wordt weergegeven als `/`.
-
-De map `student` waar we ons in bevinden is dus een submap van de map `home`. De map `home` bevindt zich op zijn beurt in de _root directory_ `/`.
+The folder `student` is our current working directory. This folder is a subfolder of the folder `home` which on his turn is a subfolder of the _root directory_ `/`.
 
 ![homefolder](../images/04/homefolder-struct.png)
 
-?> <i class="fa-solid fa-circle-info"></i> Herrinner je nog de prompt waarin het actieve pad stond? het `~` teken was een afkorting voor `/home/student`. Dit wordt ook wel de homefolder genoemd. Elke gebruiker heeft zijn eigen homefolder in de map `/home`. Net zoals in Windows elke gebruiker dit heeft onder `c:\Gebruikers\`. Hierin heeft een standaardgebruiker ook alle rechten (lezen, schrijven, uitvoeren). Daarbuiten heeft de gebruiker maar beperkte rechten!
+?> <i class="fa-solid fa-circle-info"></i> Remember the prompt which contained an active path? The `~` sign was an abbreviation for the folder `/home/student`. This is called the _homefolder_. Every user on the operating system will get their own _homefolder_ in the folder `/home` just like in Windows, where every user has his own folder under `c:\Users`. This user has all permissions (read, write, execute) in his own homefolder. Outside of that folder he often only has _read_ permissions.
 
-Linus heeft het `wget` commando uitgevoerd in zijn homefolder (`~`), dus hij denkt dat het server bestand ook in die map staat. Via de manpages komt hij bij het `ls`commando dat de inhoud van een map weergeeft. Hij heeft 2 opties:
-- `ls` zonder argument geeft de listing van de huidige map
-- `ls /home/student` of `ls ~` afgekort geeft de listing van het pad dat erachter staat, in dit geval `/home/student`
+### Change working directory (cd)
+You can change the current working directory with the `cd` command (change directory):
+```bash
+student@linux-ess:~$ cd /etc
+student@linux-ess:/etc$ pwd
+/etc
+student@linux-ess:/etc$ cd ~
+student@linux-ess:~$ pwd
+/home/student
+```
+The command takes a path as an arguement. In the example above we will navigate to the folder `etc` on the root directory `/`. We can see this in the output of the `pwd` command and in the prompt definition. As shown in the second part of the example above we can also use the `~` sign to quickly navigate to the user's homefolder.
 
-Beide geven in dit geval dezelfde output:
+We could also use the `cd` command without any argument. This will navigate back to the users homefolder aswell:
+```bash
+student@linux-ess:/etc$ pwd
+/etc
+student@linux-ess:/etc$ cd
+student@linux-ess:~$ pwd
+/home/student
+```
+### Absolute & relative paths
+When using commands we often have to use paths to certain folders/files. The `cd` command for example requires a path to navigate to.
+
+Paths are used to point towards files and folders on the filesystem. We can use two types of paths: _relative_ and _absolute_ paths. Both types work in both Linux and Windows.
+
+#### Absolute path
+Absolute paths must start with a `/` sign. This means that an absolute path will start from the _root_ (`/`) .directory (the highest level on the filesystem) and will work his way down. For example:
+```bash
+student@linux-ess:/opt/$ cd /home/student/linuscraft
+student@linux-ess:~/linuscraft$
+```
+?> <i class="fa-solid fa-circle-info"></i> In Windows an absolute path will start with `C:\` rather than `/`!
+
+
+?> <i class="fa-solid fa-circle-info"></i> Did you know the Linux CLI has command and pathc ompletion? Try pressing the `tab` key when typing part of a command or folder name. If any command, file or folder matches the first part of the text you typed it will automaticly complete the word for you!
+
+#### Relative path
+A relative path will always start from _the current working directory_ and will point to another file or folder from there. For example:
+```bash
+student@linux-ess:~$ pwd
+/home/student
+student@linux-ess:~$ cd Downloads/testfolder
+student@linux-ess:~/Downloads/testfolder$ pwd
+/home/student/Downloads/testfolder
+```
+When using relative paths, we can use some shortcuts:
+```
+.(one dot): Refers to the current directory
+..(two dots): Refers to the parent directory 
+~ (tilde): Refers to the current user's homefolder
+```
+This means that, when in the folder `/home/student/abc`, we could use `..` to navigate to the parent directory `/home/student`:
+```bash
+student@linux-ess:~/abc$ pwd
+/home/student/abc
+student@linux-ess:~/abc$ cd ..
+student@linux-ess:~$ pwd
+/home/student
+```
+We could integrate these shortcuts in relative paths aswell:
+```bash
+student@linux-ess:~$ cd /home/student/abc # Absolute path
+student@linux-ess:~/abc$ pwd
+/home/student/abc
+student@linux-ess:~/abc$ cd ../../bob # Relative path
+student@linux-ess:/home/bob$ pwd
+/home/bob
+```
+?> <i class="fa-solid fa-circle-info"></i> A number sign `#` tells the shell that everything behind it is considered a comment and will not be interpreted as a command or argument!
+
+### Listing directory contents (ls)
+
+To list the contents of the current working directory, we can use the `ls` command. Using the command without any options or arguements will list de contents of the current working directory:
+```bash
+student@linux-ess:~$ ls
+server.jar
+
+student@linux-ess:/$ ls # In this example we use the root directory as the working directory
+bin   dev  home  lib    lib64   lost+found  mnt  proc  run   snap  sys  usr
+boot  etc  init  lib32  libx32  media       opt  root  sbin  srv   tmp  var
+```
+
+
+The `ls` command can also take one argument. This argument is a path which can be absolute or relative. The `ls` command will then show the contents of this folder.
+
+Both these commands will give the same output:
 ```bash
 student@linux-essentials:~$ ls
 server.jar
 student@linux-essentials:~$ ls /home/student
 server.jar
 ```
-In deze output ziet Linus enkel de bestandsnaam, hij is ook geïntereseerd in order andere de grootte van de file. Hierbij voert hij volgend commando uit:
+The `ls` command has different options aswell. The options can be found in the manpage using `man ls`. For example:
 ```bash
-$ ls -alh .
+student@linux-ess:~$ ls -alh . # The dot sign refers to the current directory, which in this case would be optional
 total 45M
 drwxr-xr-x 5 student student 4.0K Mar 27 16:36 .
 drwxr-xr-x 3 root    root    4.0K Oct  5 13:40 ..
@@ -49,92 +125,129 @@ drwxr-xr-x 3 root    root    4.0K Oct  5 13:40 ..
 -rw-r--r-- 1 student student    0 Oct  6 08:20 .sudo_as_admin_successful
 -rw-r--r-- 1 student student  45M Feb 28 11:48 server.jar
 ```
-?> <i class="fa-solid fa-circle-info"></i> verschillende opties kan je combineren. In bovenstaande voorbeeld is `ls -a -l -h` hetzelfde als `ls -alh`! 
-De gebruikte opties kan je uiteraard opzoeken in de manpages, maar wel helpen je alvast even verder:
-* de optie `-a` toont ook verborgen bestanden en mappen. Deze starten in linux met een `.`.
-* de optie `-l` toont een _longlisting_. Dit zorg ervoor dat we al de extra informatie in bovenstaande output krijgen.
-* de optie `-h` staat voor _human readable sizes_ en zorgt ervoor dat bestandsgroottes mooier weergegeven worden.
+Notice how we combined 3 options in the command above. both `ls -a -l -h` and `ls -alh` will function exactly the same and will use all 3 options. These 3 option are often the most used ones when it comes to the `ls` command. You could look them up in the manpage but we will give an overview:
+* the `-a` option will show hidden files and folders. **In Linux, hidden files and folders start with a `.` sign. eg. the `.bashrc` file.**
+* the `-l` option will show a _longlisting_. This means that it will show all the extra output\* and not just the file and folder names.
+* the `-h` option refers to _human readable sizes_ and will make filesizes appear with the proper measuring unit rather than showing all sizes in bytes.
 
-Nu weet Linus dat het `server.jar`bestand 45MB groot is en dat het het laatst aangepast is op 28 februari om 11:48.
+\* The `-rw-r--r-- 1` column refers to permissions on that specific file/folder. We will explain this in the chapter `users & permissions`. The column containing `student  student` refer to the owner of that specific file/folder and are linked to the permission column. The `45M` on the last line refer to the file size and  `Feb 28 11:48` refers to the timestamp of the last modification of the file.
 
-De reeks `-rw-r--r-- 1` heeft te maken met rechten en permissies, hier komen we later op terug. de `student student` kolommen hebben te maken met wie eigenaar is van het bestand / de map & zijn ook gelinkt aan deze permissies.
+?> Everything in Linux is a file. Not just the files, but folders too! They are just defined as _special_ files. Your hard disk? A file. A USB drive? A File. Hardware such as your keyboard? You guessed it, a file!
 
-### navigeren & maken
-Linus wil een duidelijke mappenstructuur aanmaken voor _LinusCraft_. In zijn homefolder wil hij graag een map met de naam `linuscraft` aanmaken. Hiervoor heeft hij via de manpages het commando `mkdir` gevonden.
+### Create directories (mkdir)
+To create new directories we can use the `mkdir` (make directory) command. The command takes a path as an argument:
 ```bash
-mkdir linuscraft
+student@linux-ess:~$ mkdir backups
+student@linux-ess:~$ ls
+backups
 ```
-Het argument van het commando is een pad. Je zou dus ook bijvoorbeeld `mkdir /home/student/minuscraft` kunnen uitvoeren. Zowel relatieve als absolute paden (zie verder) kunnen gebruikt worden in het `mkdir` commando.
+In the example above the `mkdir` command will create a folder named `backups` in the current working directory (`~` or `/home/student`). The folder name here is a _relative path_. 
 
-?> <i class="fa-solid fa-circle-info"></i> Zoals eerder aangegeven is alles in Linux hoofdlettergevoelig. Ook hier is dit belangrijk in functie van de mapnamen. Voor een keer het commando `mkdir abc ABC` uit. Je zal zien dat er 2 mappen op je systeem aangemaakt zijn: één met de naam `abc` en één met de naam `ABC`.
-
-vervolgens wil hij in de map alvast een map met de naam `serverfiles` maken. Hiervoor gaat hij eerst navigeren naar de map `linuscraft` die we net aangemaakt hebben. Dit kan je doen met het `cd` (change directory) commando:
+#### paths with subdirectories
+When using _relative_ or _absolute_ paths we could do the following:
 ```bash
-cd linuscraft
+student@linux-ess:~$ mkdir mydir2/mysubdir2/threedirsdeep
+mkdir: cannot create directory ‘mydir2/mysubdir2/threedirsdeep’: No such fi\
+le or directory
 ```
-Daarna kan hij opnieuw het `mkdir serverfiles` commando uitvoeren om een map `serverfiles` aan te maken in de map `linuscraft`. Controleer dit door volgende commando's uit te voeren:
+The command tries to make a folder named `threedirsdeep` in the folder `mysubdir2` which is located in the folder `mydir2`. However we get an error because the folder `mydir2` or `mysubdir2` does not exist. We can tell to make any missing subfolders in the path by using the `-p` option:
+```
+student@linux-ess:~$ mkdir -p mydir2/mysbudir2/threedirsdeep
+```
+This will create the folders `mydir2` and `mysubdir2` if they don't exist.
+
+?> <i class="fa-solid fa-circle-info"></i> As mentioned earlier everything in Linux is case sensitive. This is also applicable when creating files and folders. Try running the command `mkdir abc ABC`. This will create 2 folders: one with tne name `abc` and one with the name `ABC`.
+
+## Working with files
+
+### Create an empty file (touch)
+One easy way to create an empty file is with touch. The example starts with an empty directory, creates two files with touch and the lists
+those files:
 ```bash
-student@linux-essentials:~/linuscraft$ cd serverfiles
-student@linux-essentials:~/linuscraft/serverfiles$ pwd
-/home/student/linuscraft/serverfiles
+student@linux-ess:~$ ls -l
+total 0
+student@linux-ess:~$ touch fileOne
+student@linux-ess:~$ touch fileTwo
+student@linux-ess:~$ ls -l
+total 0
+-rw-r--r-- 1 student student 0 Feb 12 09:50 fileOne
+-rw-r--r-- 1 student student 0 Feb 12 09:50 fileTwo
 ```
-## Relatieve & absolute paden
-Paden worden gebruikt om aan te duiden waar zowel directories als bestanden zich bevinden op het filesysteem. Hierin maken we onderscheid tussen _absolute_ en _relatieve_ paden. De werken van deze 2 is hetzelfde binnen zowel Linux als Windows systemen.
+Note that both of these files are empty as seen by the file size. In the next chapter we will look into ways to create files with contents.
 
-#### Absoluut pad
-Absolute paden starten *altijd* met een `/`. Een absoluut pad start dus vanaf de _root_ directory en werkt zijn weg naar beneden. Bijvoorbeeld:
-```bash
-student@linux-essentials:/opt/$ ls /home/student/linuscraft
-```
-?> <i class="fa-solid fa-circle-info"></i> Binnen Windows start een absoluut pad niet met `/` maar met `C:\`!
-
-#### Relatief pad
-Een relatief pad start vanuit *de huidige directory* en werkt vanuit daar naar een andere map. Bijvoorbeeld:
-```bash
-$ pwd
-/home/student
-$ cd Downloads/testfolder
-$ pwd
-/home/student/Downloads/testfolder
-```
-Binnen relatieve paden werken we ook vaak met volgende _shortcuts_:
-```
-.(één punt) - Hiermee refereren we naar de huidige directory
-..(2 punten) - Hiermee refereren we naar de parent(=bovenliggende) directory. 
-```
-Wat dit wil zeggen is dat als we in de directory `/home/student/abc` zitten, we `..` kunnen gebruiken om naar de parent directory `/home/student` te gaan:
-```bash
-$ pwd
-/home/student/abc
-$ cd ..
-$ pwd
-/home/student
-```
-De punt & dubbelpunt syntax kunnen we ook in paden zelf gebruiken:
-```bash
-$ ls /home # absoluut pad
-student bob arthur
-$ pwd
-/home/student/abc
-$ cd ../../bob # relatief pad
-$ pwd
-/home/bob
-```
-?> <i class="fa-solid fa-circle-info"></i> Een hekje `#` geef aan dat alles wat erna komt commentaar is en dus niet uitgevoerd zal worden als een commando
-
-## Files
-
-### Files aanmaken
-
-touch, echo, nano
-
-### Files verplaatsen
+### Move files (mv, cp, rename)
 
 mv, cp, rename
+#### Move files (mv)
 
-## Wissen 
+#### Copy files (cp)
+```bash
+student@linux-ess:~$ ls
+ventieldopje file12
+student@linux-ess:~$ cp ventieldopje ventieldopje.copy
+student@linux-ess:~$ ls
+ventieldopje ventieldopje.copy file12
+```
 
-Extra lesmateriaal:
+##### Copy to another directory
+```bash
+student@linux-ess:~$ mkdir dir42
+student@linux-ess:~$ cp file12 folder99
+student@linux-ess:~$ ls folder99/
+file12
+```
+
+##### Copy recursive
+```bash
+student@linux-ess:~$ ls
+folder99 ventieldopje ventieldopje.copy file12
+student@linux-ess:~$ cp -r folder99/ folder22
+student@linux-ess:~$ ls
+folder22 folder99 ventieldopje ventieldopje.copy file12
+student@linux-ess:~$ ls folder22/
+file12
+```
+
+##### Overwrite files
+We have to be aware that the `cp` command will overwrite existing files by default. We can use the `-i` (interactive) option to get a prompt where we have to confirm if we want to overwrite the file as seen in the example below:
+```bash
+student@linux-ess:~$ cp file12 file42
+student@linux-ess:~$ cp file12 file42 # No error, the file gets overwritten
+student@linux-ess:~$ cp -i file12 file42
+cp: overwrite `file42'? y
+```
+
+#### Rename files (rename)
+
+### identifying files (file)
+In Linux systems we done have to use file extentions. This means we don't always know the file type. We can use the `file` command to identify the type of a file:
+```bash
+student@linux-ess:~$ file pxl.png
+pic33.png: PNG image data, 1920 x 1080, 8-bit/color RGBA, non-interlaced
+student@linux-ess:~$ file /etc/passwd
+/etc/passwd: ASCII text
+```
+
+## Delete files & folders (rm)
+For deleting folders we could use the `rmdir` command but nobody ever does,... **ever**. This is because it wont delete folders containing other folders out of the box and it wont ever delete folders that have files in them.
+
+For deleting both files and folders we mostly use the `rm` command:
+```bash
+student@linux-ess:~$ ls
+sampleFile moreStuff
+student@linux-ess:~$ rm sampleFile
+student@linux-ess:~$ ls
+moreStuff
+```
+The `rm` command has different options aswell, the most used combination is `rm -rf`:
+* `-r` will mean it will remove files & folders recursive
+* `-f` will force the command to remove non-empty directories aswell. Something that wont happen out of the box.
+
+Be mindfull when using the `rm -rf` command as the root user!
+?> <i class="fa-solid fa-circle-info"></i> There is no garbage bin in linux. Removing a file means its gone forever!
+
+
+## Extra course material <!-- {docsify-ignore} -->
 
 
 <i class="fa-solid fa-film"></i> [[Pluralsight] Linux command syntax patterns](https://app.pluralsight.com/course-player?clipId=5c3b8432-e324-4b4b-adfd-2615298a7aba)
