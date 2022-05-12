@@ -69,7 +69,7 @@ OPTIONS
     ...
 
 ```
-Using the info in the manpage, Linus figures out how to use the direct url to the file to download the `server.jar` file to his Linux server:
+He can navigate the manpage using the arrow keys on the keyboard. After reading through the manpage he closes it by pressing the `q` key on his keyboard. Using the info in the manpage, Linus figures out how to use the direct url to the file to download the `server.jar` file to his Linux server:
 ```bash
 wget https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a77469/server.jar
 ```

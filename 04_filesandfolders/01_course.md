@@ -132,7 +132,7 @@ Notice how we combined 3 options in the command above. both `ls -a -l -h` and `l
 
 \* The `-rw-r--r-- 1` column refers to permissions on that specific file/folder. We will explain this in the chapter `users & permissions`. The column containing `student  student` refer to the owner of that specific file/folder and are linked to the permission column. The `45M` on the last line refer to the file size and  `Feb 28 11:48` refers to the timestamp of the last modification of the file.
 
-?> Everything in Linux is a file. Not just the files, but folders too! They are just defined as _special_ files. Your hard disk? A file. A USB drive? A File. Hardware such as your keyboard? You guessed it, a file!
+?> <i class="fa-solid fa-circle-info"></i> Everything in Linux is a file. Not just the files, but folders too! They are just defined as _special_ files. Your hard disk? A file. A USB drive? A File. Hardware such as your keyboard? You guessed it, a file!
 
 ### Create directories (mkdir)
 To create new directories we can use the `mkdir` (make directory) command. The command takes a path as an argument:
@@ -159,7 +159,6 @@ This will create the folders `mydir2` and `mysubdir2` if they don't exist.
 ?> <i class="fa-solid fa-circle-info"></i> As mentioned earlier everything in Linux is case sensitive. This is also applicable when creating files and folders. Try running the command `mkdir abc ABC`. This will create 2 folders: one with tne name `abc` and one with the name `ABC`.
 
 ## Working with files
-
 ### Create an empty file (touch)
 One easy way to create an empty file is with touch. The example starts with an empty directory, creates two files with touch and the lists
 those files:
@@ -175,12 +174,31 @@ total 0
 ```
 Note that both of these files are empty as seen by the file size. In the next chapter we will look into ways to create files with contents.
 
-### Move files (mv, cp, rename)
-
-mv, cp, rename
+### Move files
 #### Move files (mv)
+To move a file to another folder we can use the `mv` (move) command. This command takes in two arguments: the source file/folder and the destination file/folder:
+```bash
+student@linux-ess:~$ ls
+aFile  aFolder  linuscraft  server.jar
+student@linux-ess:~$ mv aFile aFolder/
+student@linux-ess:~$ ls aFolder
+aFile
+student@linux-ess:~$ ls
+aFolder  linuscraft  server.jar
+```
+
+Since the second argument is a destination file or folder, we could use this command to rename a file aswell. In the example below we use the `mv` command to move the file to the same directory but with another name:
+```bash
+student@linux-ess:~/aFolder$ ls
+aFile
+student@linux-ess:~/aFolder$ mv aFile newFileName
+student@linux-ess:~/aFolder$ ls
+newFileName
+```
+When renaming only one file or folder, `mv` is the prefered command to use. The examples both used files, but the same logic works for renaming and moving folders.
 
 #### Copy files (cp)
+To make a copy of a file we can use the `cp` (copy) command as follows:
 ```bash
 student@linux-ess:~$ ls
 ventieldopje file12
@@ -188,16 +206,21 @@ student@linux-ess:~$ cp ventieldopje ventieldopje.copy
 student@linux-ess:~$ ls
 ventieldopje ventieldopje.copy file12
 ```
+Both arguments are paths. The first path is the original file/folder. The second path is a path to the new location and (optional) filename/foldername. We can use the cp command to copy both files and folders.
 
 ##### Copy to another directory
+The example below shows us how we can use the arguments in the `cp` command to copy files or folders to another directory. In this example we copy the file named `file12` into the directory called `folder99` using a _relative_ path.
 ```bash
-student@linux-ess:~$ mkdir dir42
+student@linux-ess:~$ touch file12
+student@linux-ess:~$ mkdir folder99
 student@linux-ess:~$ cp file12 folder99
 student@linux-ess:~$ ls folder99/
 file12
 ```
+Note that we can use both _relative_ and _absolute_ paths in the copy command for both the original file/folder and the destination file/folder.
 
 ##### Copy recursive
+To copy complete directories (meaning all subfolders and files inside the directory) we will have to use the `-r` (recursive) option:
 ```bash
 student@linux-ess:~$ ls
 folder99 ventieldopje ventieldopje.copy file12
@@ -218,6 +241,30 @@ cp: overwrite `file42'? y
 ```
 
 #### Rename files (rename)
+We saw that we could use the `mv` command to rename files and folders. This works and is often very easy but when you have to rename files in bulk you might want to consider another approach. The `rename` command is designed specifically to rename multi files and folders with one command. To do this it uses a _regular expression_ (Regex). A Regex is a sequence of characters that defines a search pattern. We will learn more about regular expressions later in this course. It uses this search pattern to make certain changes to the filenames:
+```bash
+student@linux-ess:~/aFolder$ ls
+afile.txt  anotherfile.txt  backup.txt  profiles.backup  profiles.txt  yaay.txt
+student@linux-ess:~/aFolder$ rename 's/file/document/' *.txt
+student@linux-ess:~/aFolder$ ls
+adocument.txt  anotherdocument.txt  backup.txt  prodocuments.txt  profiles.backup  yaay.txt
+```
+Alot is going on in the example above, lets summarize what is present:
+* The folder that we are in contains some `txt` files and one `backup` file. Some of the files contain the word `file` that we want to replace with `document`
+* the `rename` command takes in a _string_ with the value `s/file/document/`. This is the _regex_ that is being used by the command to search (`s`)for names containing the word `file` and replace it with the word `document`.
+* the last argument is `.txt`. We use this to tell the `rename` command to only run the replacement regex on files ending in `.txt`
+
+?> <i class="fa-solid fa-circle-info"></i> a `*` (asterix) is considered a wildcard character in bash. It refers to _zero, one or more characters_. So in the example above this translates to: "run this replacement regex on all files containing zero,one or more characters of any kind, followed by the string `.txt`.
+
+We could also use the `rename` command to change the file extentions of all files and folders:
+```bash
+student@linux-ess:~/aFolder$ ls
+adocument.txt  anotherdocument.txt  backup.txt  prodocuments.txt  profiles.backup  yaay.txt
+student@linux-ess:~/aFolder$ rename 's/\.txt/\.odt/' *.txt
+student@linux-ess:~/aFolder$ ls
+adocument.odt  anotherdocument.odt  backup.odt  prodocuments.odt  profiles.backup  yaay.odt
+```
+?> <i class="fa-solid fa-circle-info"></i> Notice how we put a `\` (backslash) in front of the `.` sign? Some characters have special meanings is regular expressions (for example: `* . $ [ ] ( ) / { }`). To make sure our bash shell sees this character as a string we have to use _escaping_. This is the concept of using the `\` to indicate that the character that follows is interpreted as a string rather than a special character.
 
 ### identifying files (file)
 In Linux systems we done have to use file extentions. This means we don't always know the file type. We can use the `file` command to identify the type of a file:
@@ -242,13 +289,22 @@ moreStuff
 The `rm` command has different options aswell, the most used combination is `rm -rf`:
 * `-r` will mean it will remove files & folders recursive
 * `-f` will force the command to remove non-empty directories aswell. Something that wont happen out of the box.
+```bash
+student@linux-ess:~$ ls
+myFolder fileAbc
+student@linux-ess:~$ ls myFolder
+afolder afile another_file
+student@linux-ess:~$ rm -rf myFolder
+student@linux-ess:~$ ls
+fileAbc
+```
 
 Be mindfull when using the `rm -rf` command as the root user!
+
 ?> <i class="fa-solid fa-circle-info"></i> There is no garbage bin in linux. Removing a file means its gone forever!
 
 
 ## Extra course material <!-- {docsify-ignore} -->
-
 
 <i class="fa-solid fa-film"></i> [[Pluralsight] Linux command syntax patterns](https://app.pluralsight.com/course-player?clipId=5c3b8432-e324-4b4b-adfd-2615298a7aba)
 
