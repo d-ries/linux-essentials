@@ -1,3 +1,4 @@
+![pxl right](./images/pxl.png)
 # Linux Essentials
 ## Information <!-- {docsify-ignore} -->
 This course can be used to learn the fundamentals on how to work with a command line interface in Linux environments. This course will focus on basic operations such as working with files & folders, working with file contents, linux file structure, ...
