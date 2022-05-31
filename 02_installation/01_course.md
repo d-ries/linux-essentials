@@ -93,6 +93,4 @@ Shutdown the virtual machine and go to the settings screen. In the `CD/DVD (SATA
 ![VMWare](../images/02/vmware5.PNG)
 
 All of these steps can also be viewed in the video below:
-
-<i class="fa-solid fa-film"></i> [Installatie demo Ubuntu in VMware](https://www.youtube.com/watch?v=u8WLsyMuSgw)
-
+<iframe width="560" height="315" src="https://www.youtube.com/embed/u8WLsyMuSgw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
