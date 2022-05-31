@@ -10,10 +10,14 @@ example white space removal
 
 ## Variables
 
+### PS1
+
 ## Aliases
 
 ## I/O redirection
 
-## control operators
+## Control operators
+
+## Command history
 
 

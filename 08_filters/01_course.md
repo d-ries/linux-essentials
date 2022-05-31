@@ -14,6 +14,8 @@
 
 ### Using content filters (grep)
 
+#### Regular expressions
+
 ### Using content structure
 
 #### Using columns (cut)
