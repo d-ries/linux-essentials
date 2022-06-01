@@ -35,7 +35,7 @@ student@linux-ess:~$ cat count1.txt count2.txt
 ```
 All filenames in the `cat` command are actually paths. So in the example above we use _relative_ paths to the files that are in the current working directory (`/home/student`). This means that the command `cat /home/student/count1.txt /home/student/count2.txt` would give the exact same output.
 
-## Quick file contents (head & more)
+## Quick file contents (head & tail)
 Sometimes you don't want to view the entire file contents. Only the first or last couple of lines will suffice (in log files for example). To achieve this we can use the `head` or `tail` commands:
 ```bash
 student@linux-ess:~$ head /etc/passwd
@@ -82,8 +82,22 @@ student@linux-ess:~$ tail -5 /var/log/dpkg.log
 2021-08-19 22:20:53 status installed libc-bin:amd64 2.31-0ubuntu9.2
 ```
 
+?> <i class="fa-solid fa-circle-info"></i> We can even view log files realtime by using `tail -f` (`-f` stands for _follow_). This will start an active process that shows the last 10 lines of a file. When something gets added to this file, we can see it appear realtime in our command output. To terminate this active process use `ctrl+c`.
+
+## Scrolling (more)
+When viewing big files you will notice that the terminal will only show the last bit of the contents. We can use commands such as `more` and `less` to view (and scroll through) the entire content. Scrolling can be done by using the _spacebar_.
+```bash
+student@linux-ess:~$ more /var/log/dpkg.log
+2021-08-19 21:52:34 startup packages remove
+2021-08-19 21:52:34 status installed linux-virtual:amd64 5.4.0.81.85
+2021-08-19 21:52:34 status half-configured linux-headers-5.4.0-81:all 5.4.0-81.91
+2021-08-19 21:52:34 status half-installed linux-headers-5.4.0-81:all 5.4.0-81.91
+--More--(5%)
+```
+?> <i class="fa-solid fa-circle-info"></i> Using the `more` command you can use the same shortcuts as when using manpages. Use the `spacebar` to scroll and `q` or `ctrl+c` to quit.
+
 ## Create files with contents
-### using echo
+### Using echo
 There are several ways to create files and add content to them. One of these ways is by using the `echo` command. The default behaviour of this command is that it just prints out whatever you use as an argument:
 ```bash
 student@linux-ess:~$ echo hello world
@@ -105,7 +119,7 @@ ourfile
 student@linux-ess:~$ cat ourfile
 hello world
 ```
-The concept we use here is called _i/o redirection_ which we will talk about in a later chapter.
+The concept we use here is called _input/output redirection_ which we will talk about in a later chapter.
 
 ### Using cat
 We can also use the cat command in combination with the _output redirection (`>`)_ as shown in the example below. After typing the command we can type one or more lines. When you are done typing the file contents you can use the keyboard combination `ctrl` and `d` (ctrl+d) to tell the shell you are done (this will send an _end of file_ (EOF) signal to the running process):
@@ -119,7 +133,7 @@ sudo ku
 ```
 
 #### Copy files using cat
-Knowing what we learnt about using _input redirection_ (`>`) we can actually use this to copy file contents to another file as follows:
+Knowing what we learnt about using _output redirection_ (`>`) we can actually use this to copy file contents to another file as follows:
 ```
 student@linux-ess:~$ cat jokes.txt > jokes2.0.txt
 student@linux-ess:~$ cat jokes2.0.txt
@@ -154,3 +168,5 @@ In the bottom of the screen it shows some of the shortcuts you can use. Some of 
 * ctrl+u: paste any copied/cut content.
 * ctrl+w: find a certain text in the file (where is).
 * alt+u: undo the last change.
+
+?> Another very popular text editor in Linux systems is `vi`. This editor is really powerfull but also has a steep learning curve. Want a real challenge? Try editting a file using the `vi` command rather than `nano`. [This cheatsheet](http://www.atmos.albany.edu/daes/atmclasses/atm350/vi_cheat_sheet.pdf) might help you navigate using `vi`.

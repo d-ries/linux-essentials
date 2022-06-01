@@ -20,11 +20,17 @@ The `~` symbol is an abbreviation for the folder `/home/student`. We will learn 
 ![sudo right](../images/03/sandwich.png)
 
 ## commands and options
-Whenever you type something using the keyboard the input will apear after the `$` sign. The `$` sign indicates the end of the prompt and the start of the user's input (= a command). To use the operating system using a CLI, we will have to use commands. The first command we will learn to use is the `shutdown` command:
+Whenever you type something using the keyboard the input will apear after the `$` sign. The `$` sign indicates the end of the prompt and the start of the user's input (= a command). To use the operating system using a CLI, we will have to use commands. The first command we will use is the `echo` command:
+```bash
+echo hello world
+```
+The string `hello world` is considered an _argument_ of the `echo` command. This command just prints out whatever argument we provide.
+
+The second command we will learn to use is the `shutdown` command:
 ```bash
 sudo shutdown -h now
 ```
-This command will shut down the Ubuntu server machine immediately. This is also the propper way to shutdown the virtual machine! The `sudo` command stands for _super user do_. Some commands require administrator rights. By adding the `sudo` command, you will run this command as the _super user_. This user, in Linux, is called _root_ (compase this to the administrator user in Windows). The example actually exists out of 2 commands. The `sudo` command followed by the `shutdown command`. The `shutdown` command will use the option `-h` with a value of `now`.
+This command will shut down the Ubuntu server machine immediately. This is also the propper way to shutdown the virtual machine! The `sudo` command stands for _super user do_. Some commands require administrator rights. By adding the `sudo` command, you will run this command as the _super user_. This user, in Linux, is called _root_ (compase this to the administrator user in Windows). The example actually exists out of 2 commands. The `sudo` command followed by the `shutdown command`. The `shutdown` command will use _the option_ `-h` with a value of `now`.
 
 Commands ofthen have all kinds of options (that can take values aswell) to extend the functionality of a command. The option `-h` for the `shutdown` command will take an (optional) value that defines when the server needs to actually shutdown. If no value is given, it will plan the shutdown task 1 minute after running the command. Lets look at some other options from running `man shutdown`:
 ```bash
@@ -117,6 +123,26 @@ whois: /usr/share/man/man1/whois.1.gz
 ```
 The manpages are stored in archives with a `.gz` extention. This is comparable to a `zip` file containing text files. When typing the command `man whois` it will actually open the text file in the archive `/usr/share/man/man1/whois.1.gz`.
 
+## Shell history
+The command line interface in Linux environments is often called the _shell_. This shell keeps track of all the commands we have used in the past. This means we can use this to easily repeat / edit / lookup previously used commands.
+
+?> Try using the `arrow up` and `arrow down` keys after using some commands. You will notice that these commands will appear after the prompt.
+
+Repeating the last command is very easy aswell. We can just type `!!` (often referred to as _bang bang_)and this will run the command that we last used. To view the history of our last used commands we can use the `history` command:
+```bash
+student@linux-ess:~/linuscraft$ history 10
+  257  ls
+  258  pwd
+  259  cd
+  260  cd linuscraft
+  261  mkdir testfolder
+  262  rm -rf testfolder
+  263  pwd
+  264  ls /
+  265  ls -alh /
+  266  history 10
+```
+The number that we use as an argument is the amount of commands the output will show. We can run any of these commands by using the identifier listed before the command as follows: `!n`. So for example running `!261` will run the command `mkdir testfolder`.
 
 ## Extra course material <!-- {docsify-ignore} -->
 

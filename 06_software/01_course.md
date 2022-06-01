@@ -11,4 +11,6 @@
 
 ### Updating software (apt upgrade)
 
+## Gzip and tar
+
 ## dpkg

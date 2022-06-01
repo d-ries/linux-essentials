@@ -8,16 +8,10 @@ example white space removal
 
 ## File globbing
 
-## Variables
-
-### PS1
-
 ## Aliases
 
 ## I/O redirection
 
 ## Control operators
-
-## Command history
 
 
