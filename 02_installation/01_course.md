@@ -5,7 +5,7 @@ To install servers that offer services (such as a minecraft server!) you will ne
 
 Virtualisation is a concept where you can run a computer system with an operating system virtually on another system. This makes it possible to have multiple _guest operating systems_ with their own virtual hardware on one _host system_.
 
-#TODO: add virtualisation schema
+![Virtualization](../images/02/Virtualization.PNG)
 
 For this course we want to use and install the operating system [Ubuntu server](https://ubuntu.com/download/server) in a virtual environment. You could use any Linux distribution you want. For this course we will use a debian based distro.
 
