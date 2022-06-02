@@ -34,6 +34,8 @@ Linux distributions (distros in short) are collections of tools on top of the Li
 
 <i class="fa-solid fa-film"></i>  [What is linux?](https://www.youtube.com/watch?v=zA3vmx0GaO8)
 
+<i class="fa-solid fa-earth-europe"></i> [Unix vs Linux](https://www.youtube.com/watch?v=jowCUo_UGts)
+
 <i class="fa-solid fa-earth-europe"></i> [High level overview Linux](https://www.linux.com/what-is-linux/)
 
 <i class="fa-solid fa-earth-europe"></i> [Most popular linux distros](https://distrowatch.com/dwres.php?resource=popularity)
