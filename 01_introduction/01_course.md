@@ -10,7 +10,7 @@ In Server / IOT / mobile environments we see a certain shift in used operating s
 
 ![tux right](../images/tux.png)
 
-You will find Linux in smartphones, (web) servers, tablets, IoT devices, Smart washing machines, self driving cars, modems, routers, PlayStation, ... In short: Linux is used way more than you would initially think. Linux even has his own mascotte, the penguin Tux!
+You will find Linux in smartphones, (web) servers, tablets, IoT devices, Smart washing machines, self driving cars, modems, routers, PlayStation, ... In short: Linux is used way more than you would initially think. Linux even has his own mascotte, the penguin named Tux!
 
 ### Unix
 Dennis Ritchie and Ken Thompson created the Unix operating system in 1969. The source code from this OS was open source at that moment. After a while the company AT&T Bell Labs decided they wanted to sell Unix commercially. Not everyone followed this vision and this resulted in 2 versions:
@@ -27,7 +27,7 @@ A student named Linus Torvalds created a post in a newsgroup about his own opera
 This has grown in the the Linux kernel that we know today.
 
 #### Linux distributions
-Linux distributions (distros in short) are collections of tools on top of the Linux kernel. Every distro can have his own focus points. Some well known distros are Ubuntu, RedHat, Fedora, CentOS, Debian, Archlinux, ...
+Linux distributions (distros in short) are collections of tools on top of the Linux kernel. Every distro can have his own focus points. Some well known distros are Ubuntu, RedHat, Fedora, CentOS, Debian, Archlinux, Oracle Linux ...
 
 ![distros](../images/01/distros.png)
 
