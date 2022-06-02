@@ -5,7 +5,7 @@ Windows, made by Microsoft, is a well known operating system that we see a lot i
 
 In Server / IOT / mobile environments we see a certain shift in used operating systems. Linux is one of the most popular operating systems in these markets. Some interesting statements:
 * [Most supercomputers run on Linux](https://itsfoss.com/linux-runs-top-supercomputers/)
-* [More than 80% of the top 25 most popular websites in the world run on a Linux server](https://www.alexa.com/topsites)
+* [111+ Linux Statistics and Facts – Linux Rocks!](https://webtribunal.net/blog/linux-statistics/)
 * [The most popular cloud infrastructure providers use Linux](https://www.linuxfoundation.org/blog/how-amazon-web-services-uses-linux-and-open-source/)
 
 ![tux right](../images/tux.png)
