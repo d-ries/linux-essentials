@@ -2,6 +2,8 @@
 ## Opdracht 1
 Linux heeft ook desktop varianten. Download en installeer [Ubuntu Desktop](https://ubuntu.com/download/desktop) in een nieuwe virtuele machine en verken het besturingssysteem.
 
+![DownloadUbuntuDesktop](../images/02/GetUbuntuDesktop_Download_Ubuntu.png)
+
 ## Opdracht 2
 In de Ubuntu desktop machine, probeer volgende taken uit te voeren:
 - Voeg een gebruiker toe met als gebruikersnaam je naam.
