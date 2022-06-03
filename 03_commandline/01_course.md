@@ -2,7 +2,7 @@
 When booting the virtual machine, all that will show is a black screen with some white text:
 ![server welcome](../images/03/cli.PNG)
 
-You will notice that there is no mouse pointer available. We will only use our keyboard as input device. This environment is called a _command line interface (CLI)_. There is no _graphic user interface (GUI)_ present in Ubuntu server. One of the reasons why they chose this is because having no GUI present will save system resources. A CLI will also prove to be a very efficient & trustworthy way of working & interacting with an operating system and its services.
+You will notice that there is no mouse pointer available. We will only use our keyboard as input device. This environment is called a _command line interface (CLI)_. There is no _graphic user interface (GUI)_ present in Ubuntu server. One of the reasons why they chose this is because having no GUI present will save system resources. A CLI is also proven to be a very efficient & trustworthy way of working & interacting with an operating system and its services.
 
 CLIs will be alot more intersting towards automation, something that is harder when using a GUI. We can see this trend in Windows systems aswell. Where _Powershell_ is becomming more and more popular to interact with Windows servers & automation tasks.
 
