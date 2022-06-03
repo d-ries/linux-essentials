@@ -1,3 +1,7 @@
-# Assignments CH1
-## Opdracht 1
-Ga zelf op zoek naar 3 systemen in jouw omgeving waar dat linux gebruikt wordt. Denk hier aan smartphones, auto's, huishoudtoestellen, tv's, ... Inventariseer deze & leg uit hoe ze gelinkt zijn aan linux.
+# Homework Assignments CH1
+## Task 1
+Read all the documents linked in this chapter
+
+## Task 2
+Watch all videos linked in this chapter
+ ==Try to make a chronologic schema of the events that are described in the video of `Unix vs Linux`==
