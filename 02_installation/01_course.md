@@ -11,6 +11,8 @@ For this course we want to use and install the operating system [Ubuntu server](
 
 ?> :fa-solid fa-list-check: _Download the `.iso` file for Ubuntu server using [this link](https://ubuntu.com/download/server). A `.iso` file is an exact copy of a CD/DVD. You will use this later to install the operating system in your virtual machine._
 
+![DownloadUbuntuServer](../images/02/Get Ubuntu Server _ Download _ Ubuntu.png)
+
 ## Virtualisation software
 To use virtualisation there are several options. The most common virtualisation software is:
 - VMware workstation
