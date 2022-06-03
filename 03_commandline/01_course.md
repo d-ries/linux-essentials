@@ -4,15 +4,15 @@ When booting the virtual machine, all that will show is a black screen with some
 
 You will notice that there is no mouse pointer available. We will only use our keyboard as input device. This environment is called a _command line interface (CLI)_. There is no _graphic user interface (GUI)_ present in Ubuntu server. One of the reasons why they chose this is because having no GUI present will save system resources. A CLI is also proven to be a very efficient & trustworthy way of working & interacting with an operating system and its services.
 
-CLIs will be alot more intersting towards automation, something that is harder when using a GUI. We can see this trend in Windows systems aswell. Where _Powershell_ is becomming more and more popular to interact with Windows servers & automation tasks.
+CLIs will be a lot more intersting towards automation, something that is harder when using a GUI. We can see this trend in Windows systems as well. Where _Powershell_ is becomming more and more popular to interact with Windows servers and performing automation tasks.
 
 ## The prompt
 After logging in, you are shown the following line in the CLI. This is called the _prompt_:
 ![prompt](../images/03/prompt.png)
 
-The prompt exists out of multiple parts which gives us more information about the system that we are using. We can see information about our user and the hostname of the server that we logged into.
+The prompt exists of multiple parts which gives us more information about the system that we are using. We can see information about our user and the hostname of the server that we logged into.
 
-The `~` symbol is an abbreviation for the folder `/home/student`. We will learn about paths & folders in a later chapter. For now you can compare this to the path `C:\Users\student` in Windows. So what we actually see in between the `:` and the `$` sign is a path pointing to the folder we are currently in.
+The `~` symbol is an abbreviation of the homefolder of the logged in user (in our case the folder `/home/student`). We will learn about paths & folders in a later chapter. For now you can compare this to the path `C:\Users\student` in Windows. So what we actually see in between the `:` and the `$` sign is a path pointing to the folder we are currently in.
 
 <i class="fa-solid fa-earth-europe"></i> [Linux prompt definition](http://www.linfo.org/prompt.html#:~:text=A%20command%20prompt%2C%20also%20referred,terminal%20window%20by%20a%20shell.)
 
