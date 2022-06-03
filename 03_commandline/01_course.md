@@ -30,9 +30,9 @@ The second command we will learn to use is the `shutdown` command:
 ```bash
 sudo shutdown -h now
 ```
-This command will shut down the Ubuntu server machine immediately. This is also the propper way to shutdown the virtual machine! The `sudo` command stands for _super user do_. Some commands require administrator rights. By adding the `sudo` command, you will run this command as the _super user_. This user, in Linux, is called _root_ (compase this to the administrator user in Windows). The example actually exists out of 2 commands. The `sudo` command followed by the `shutdown command`. The `shutdown` command will use _the option_ `-h` with a value of `now`.
+This command will shut down the Ubuntu server machine immediately. This is also the propper way of shutting down the virtual machine! The `sudo` command stands for _super user do_. Some commands require administrator rights. By adding the `sudo` command in front, you will run this command as the _super user_. This user, in Linux, is called _root_ (compared to the administrator user in Windows). The example actually exists out of 2 commands. The `sudo` command followed by the `shutdown command`. The `shutdown` command will use _the option_ `-h` with _a value_ of `now`.
 
-Commands ofthen have all kinds of options (that can take values aswell) to extend the functionality of a command. The option `-h` for the `shutdown` command will take an (optional) value that defines when the server needs to actually shutdown. If no value is given, it will plan the shutdown task 1 minute after running the command. Lets look at some other options from running `man shutdown`:
+Commands often have all kinds of options (that might take values as well) to extend the functionality of a command. The option `-h` for the `shutdown` command will take an (optional) value that defines when the server needs to actually shutdown. If no value is given, it will plan the shutdown task 1 minute after running the command. Let's look at some other options with the command `man shutdown`:
 ```bash
 SHUTDOWN(8)                                            shutdown                                           SHUTDOWN(8)
 
@@ -67,7 +67,7 @@ OPTIONS
            argument that is not "+0" or "now".
 ```
 
-As you can see the `shutdown` command has a bunch of options that we can use to extend the basic functionality of the command. Every command has his own set of unique options.
+As you can see the `shutdown` command has a lot of options that we can use to extend the basic functionality of the command. Every command has his own set of unique options.
 
 ?> <i class="fa-solid fa-circle-info"></i> Everything in Linux is case sensitive: commands, options, arguments, file- and foldernames, ...
 
@@ -76,20 +76,20 @@ As you can see the `shutdown` command has a bunch of options that we can use to 
 
 ## manpages
 ### man
-In Linux we use a CLI. Therefor we will have to work with various commands. Our Ubuntu installation has all kinds of commands built in. To find commands that we can use we could use Google, but the operating system has information about all installed commands. This info is bundled in _manpages_ (short for manual pages). You can access these manpages through the `man` command.
+In Linux we use a CLI. Therefore we will have to work with various commands. Our Ubuntu installation has all kinds of commands built-in. To find commands that we can use we could use Google, but the operating system itself also has information about all installed commands. This info is bundled in _manpages_ (short for manual pages). You can access these manpages through the `man` command.
 
 Type man followed by a command (for which you want help) and start reading:
 ```bash
 man shutdown
 ```
-Not only commands have their own manpage, config/system files might have a manpage aswell. The command below shows the manpage of the `syslog.conf` file:
+Not only commands have their own manpage, config/system files might have a manpage as well. The command below shows the manpage of the `syslog.conf` file:
 ```bash
 man syslog.conf
 ``` 
 
-?> <i class="fa-solid fa-circle-info"></i> manpages are pretty big and exist out of multiple pages and/or sections. To view the next page in a manpage you can press the `spacebar` or you can use the `arrow keys`. Manpages are pretty easy to search. Just type `/` followed by a keyword. The manpage will highlight the first occurence of that keyword. You can use the keys `n` (_next_) to go to the next occurence of the keyword. Exiting a manpage can be done by pressing the `q` (_quit_) key. Want to know more about manpages? type `man man`!
+?> <i class="fa-solid fa-circle-info"></i> manpages are pretty big and exist out of multiple pages and/or sections. To view the next page in a manpage you can press the `spacebar` or you can use the `arrow keys`. Manpages are pretty easy to search. Just type `/` followed by a keyword. The manpage will highlight the first occurence of that keyword. You can use the key `n` (_next_) to go to the next occurence of the keyword. Exiting a manpage can be done by pressing the `q` (_quit_) key. Want to know more about manpages? type `man man`!
 
-You can search the description of all installed commands by using the `-k` option as follows:
+You can search the description of an installed command by using the `-k` option (or the command apropos) as follows:
 ```bash
 man -k shutdown
 ```
@@ -97,7 +97,7 @@ man -k shutdown
 ### manpage sections
 Sometimes certain keywords can be used as a command, but may also be used as a (config)file, daemon, ... This is an issue because `man <keyword>` needs to open the propper manpage for that keyword. What if the keyword exists as a command and as a configuration file? A perfect example for this is `passwd`:
 ```
-student@linux-ess:~$ man -k passwd
+student@linux-ess:~$ apropos passwd
 ...
 passwd (1)           - change user password
 passwd (1ssl)        - compute password hashes
