@@ -91,7 +91,7 @@ man syslog.conf
 
 You can search the description of an installed command by using the `-k` option (or the command apropos) as follows:
 ```bash
-man -k shutdown
+man -k shutdown                        or                  apropos shutdown
 ```
 
 ### manpage sections
