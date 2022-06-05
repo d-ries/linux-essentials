@@ -103,7 +103,7 @@ passwd (1)           - change user password
 passwd (1ssl)        - compute password hashes
 passwd (5)           - the password file
 ```
-Looking at the output above we see 3 ```passwd``` entries containing different numbers between the brackets. The numbers refer to the _section_ of the manpage. By default, the `man` command will open section 1, which contains information about the command `passwd`. We can see there is also a section 5 which contains information about the configuration file `/etc/passwd`. We can open this section as follows:
+Looking at the output above we see 3 ```passwd``` entries containing different numbers between the brackets. The numbers refer to the _section_ of the manpage. By default, the `man` command will open section 1, which contains information about the command `passwd`. We can see that there is also a section 5 which contains information about the configuration file `/etc/passwd`. We can open this section as follows:
 ```bash
 man 5 passwd
 ```
@@ -128,7 +128,7 @@ The command line interface in Linux environments is often called the _shell_. Th
 
 ?> Try using the `arrow up` and `arrow down` keys after using some commands. You will notice that these commands will appear after the prompt.
 
-Repeating the last command is very easy aswell. We can just type `!!` (often referred to as _bang bang_)and this will run the command that we last used. To view the history of our last used commands we can use the `history` command:
+Repeating the last command is very easy as well. We can type `!!` (often referred to as _bang bang_) and this will run the command that we last used. To view the history of our last used commands we can use the `history` command:
 ```bash
 student@linux-ess:~/linuscraft$ history 10
   257  ls
