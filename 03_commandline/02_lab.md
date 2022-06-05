@@ -3,7 +3,7 @@ On the minecraft server website we can find a download link for the server versi
 
 Linus uses the `man` command to find a list of commands that have the keyword _download_ in their description:
 ```bash
-man -k download
+man -k download                    or                    apropos download
 ```
 The command will give the following output:
 ```
