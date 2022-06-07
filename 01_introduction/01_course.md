@@ -1,16 +1,16 @@
 # Introduction
 
 ## Linux
-Windows, made by Microsoft, is a well known operating system that we see alot in Desktop environments but there are other alternatives aswell. One of the more popular ones are MacOSX, ChromeOS but also Linux. Linux, as a desktop variant, is less prominent that the others.
+Windows, made by Microsoft, is a well known operating system that we see a lot in Desktop environments, but there are other alternatives as well. One of the more popular ones are MacOSX, ChromeOS, but also Linux. Linux, as a desktop variant, is less prominent than the others.
 
 In Server / IOT / mobile environments we see a certain shift in used operating systems. Linux is one of the most popular operating systems in these markets. Some interesting statements:
 * [Most supercomputers run on Linux](https://itsfoss.com/linux-runs-top-supercomputers/)
-* [More than 80% of the top 25 most popular websites in the world run on a Linux server](https://www.alexa.com/topsites)
-* [De most popular cloud infrastructure providers use Linux](https://www.linuxfoundation.org/blog/how-amazon-web-services-uses-linux-and-open-source/)
+* [111+ Linux Statistics and Facts – Linux Rocks!](https://webtribunal.net/blog/linux-statistics/)
+* [The most popular cloud infrastructure providers use Linux](https://www.linuxfoundation.org/blog/how-amazon-web-services-uses-linux-and-open-source/)
 
 ![tux right](../images/tux.png)
 
-You will find Linux in smartphones, (web) servers, tablets, IoT devices, Smart washing machines, self driving cars, modems, routers, PlayStation, ... In short: Linux is used way more than you would initially think. Linux even has his own mascotte, the penguin Tux!
+You will find Linux in smartphones, (web) servers, tablets, IoT devices, Smart washing machines, self driving cars, modems, routers, PlayStation, ... In short: Linux is used way more than you would initially think. Linux even has his own mascotte, the penguin named Tux!
 
 ### Unix
 Dennis Ritchie and Ken Thompson created the Unix operating system in 1969. The source code from this OS was open source at that moment. After a while the company AT&T Bell Labs decided they wanted to sell Unix commercially. Not everyone followed this vision and this resulted in 2 versions:
@@ -27,12 +27,14 @@ A student named Linus Torvalds created a post in a newsgroup about his own opera
 This has grown in the the Linux kernel that we know today.
 
 #### Linux distributions
-Linux distributions (distros in short) are collections of tools on top of the Linux kernel. Every distro can have his own focus points. Some well known distros are Ubuntu, RedHat, Fedora, CentOS, Debian, Archlinux, ...
+Linux distributions (distros in short) are collections of tools on top of the Linux kernel. Every distro can have his own focus points. Some well known distros are Ubuntu, RedHat, Fedora, CentOS, Debian, Archlinux, Oracle Linux ...
 
 ![distros](../images/01/distros.png)
 
 
 <i class="fa-solid fa-film"></i>  [What is linux?](https://www.youtube.com/watch?v=zA3vmx0GaO8)
+
+<i class="fa-solid fa-film"></i> [Unix vs Linux](https://www.youtube.com/watch?v=jowCUo_UGts)
 
 <i class="fa-solid fa-earth-europe"></i> [High level overview Linux](https://www.linux.com/what-is-linux/)
 

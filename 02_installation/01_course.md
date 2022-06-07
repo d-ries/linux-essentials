@@ -1,15 +1,17 @@
 # Installation
 
 ## Virtualisation
-To install servers that uses services (such as a minecraft server!) you will need a server with a public IP address. Usually you would go to a cloud provider where you can rent a server for a fixed fee / month. For this course we will simulate this process by using a virtual machine.
+To install servers that offer services (such as a minecraft server!) you will need a server with a public IP address. Usually you would go to a cloud provider where you can rent a server for a fixed fee / month. For this course we will simulate this process by using a virtual machine.
 
 Virtualisation is a concept where you can run a computer system with an operating system virtually on another system. This makes it possible to have multiple _guest operating systems_ with their own virtual hardware on one _host system_.
 
-#TODO: add virtualisation schema
+![Virtualization](../images/02/Virtualization.png)
 
 For this course we want to use and install the operating system [Ubuntu server](https://ubuntu.com/download/server) in a virtual environment. You could use any Linux distribution you want. For this course we will use a debian based distro.
 
 ?> :fa-solid fa-list-check: _Download the `.iso` file for Ubuntu server using [this link](https://ubuntu.com/download/server). A `.iso` file is an exact copy of a CD/DVD. You will use this later to install the operating system in your virtual machine._
+
+![DownloadUbuntuServer](../images/02/GetUbuntuServer_Download_Ubuntu.png)
 
 ## Virtualisation software
 To use virtualisation there are several options. The most common virtualisation software is:
@@ -21,6 +23,8 @@ In this course we will use and support VMware but the other software packages ar
 
 ## Create a new VM
 To create a new virtual machine (VM) in VMWare you go to the menu `file`>`New virtual machine`. The wizard to create a new VM will appear.
+
+![vmware file new vm](../images/02/VMware_File_New_VM.png)
 
 In the first screen we select the option to `install the operating system later`:
 

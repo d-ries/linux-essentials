@@ -2,17 +2,17 @@
 When booting the virtual machine, all that will show is a black screen with some white text:
 ![server welcome](../images/03/cli.PNG)
 
-You will notice that there is no mouse pointer available. We will only use our keyboard as input device. This environment is called a _command line interface (CLI)_. There is no _graphic user interface (GUI)_ present is Ubuntu server. One of the reasons why they chose this is because having no GUI present will save system resources. A CLI will also prove to be a very efficient & trustworthy way of working & interacting with an operating system and its services.
+You will notice that there is no mouse pointer available. We will only use our keyboard as input device. This environment is called a _command line interface (CLI)_. There is no _graphic user interface (GUI)_ present in Ubuntu server. One of the reasons why they chose this is because having no GUI present will save system resources. A CLI is also proven to be a very efficient & trustworthy way of working & interacting with an operating system and its services.
 
-CLIs will be alot more intersting towards automation, something that is harder when using a GUI. We can see this trend in Windows systems aswell. Where _Powershell_ is becomming more and more popular to interact with Windows servers & automation tasks.
+CLIs will be a lot more intersting towards automation, something that is harder when using a GUI. We can see this trend in Windows systems as well. Where _Powershell_ is becomming more and more popular to interact with Windows servers and performing automation tasks.
 
 ## The prompt
 After logging in, you are shown the following line in the CLI. This is called the _prompt_:
 ![prompt](../images/03/prompt.png)
 
-The prompt exists out of multiple parts which gives us more information about the system that we are using. We can see information about our user and the hostname of the server that we logged into.
+The prompt exists of multiple parts which gives us more information about the system that we are using. We can see information about our user and the hostname of the server that we logged into.
 
-The `~` symbol is an abbreviation for the folder `/home/student`. We will learn about paths & folders in a later chapter. For now you can compare this to the path `C:\Users\student` in Windows. So what we actually see in between the `:` and the `$` sign is a path pointing to the folder we are currently in.
+The `~` symbol is an abbreviation of the homefolder of the logged in user (in our case the folder `/home/student`). We will learn about paths & folders in a later chapter. For now you can compare this to the path `C:\Users\student` in Windows. So what we actually see in between the `:` and the `$` sign is a path pointing to the folder we are currently in.
 
 <i class="fa-solid fa-earth-europe"></i> [Linux prompt definition](http://www.linfo.org/prompt.html#:~:text=A%20command%20prompt%2C%20also%20referred,terminal%20window%20by%20a%20shell.)
 
@@ -30,9 +30,9 @@ The second command we will learn to use is the `shutdown` command:
 ```bash
 sudo shutdown -h now
 ```
-This command will shut down the Ubuntu server machine immediately. This is also the propper way to shutdown the virtual machine! The `sudo` command stands for _super user do_. Some commands require administrator rights. By adding the `sudo` command, you will run this command as the _super user_. This user, in Linux, is called _root_ (compase this to the administrator user in Windows). The example actually exists out of 2 commands. The `sudo` command followed by the `shutdown command`. The `shutdown` command will use _the option_ `-h` with a value of `now`.
+This command will shut down the Ubuntu server machine immediately. This is also the propper way of shutting down the virtual machine! The `sudo` command stands for _super user do_. Some commands require administrator rights. By adding the `sudo` command in front, you will run this command as the _super user_. This user, in Linux, is called _root_ (compared to the administrator user in Windows). The example actually exists out of 2 commands. The `sudo` command followed by the `shutdown command`. The `shutdown` command will use _the option_ `-h` with _a value_ of `now`.
 
-Commands ofthen have all kinds of options (that can take values aswell) to extend the functionality of a command. The option `-h` for the `shutdown` command will take an (optional) value that defines when the server needs to actually shutdown. If no value is given, it will plan the shutdown task 1 minute after running the command. Lets look at some other options from running `man shutdown`:
+Commands often have all kinds of options (that might take values as well) to extend the functionality of a command. The option `-h` for the `shutdown` command will take an (optional) value that defines when the server needs to actually shutdown. If no value is given, it will plan the shutdown task 1 minute after running the command. Let's look at some other options with the command `man shutdown`:
 ```bash
 SHUTDOWN(8)                                            shutdown                                           SHUTDOWN(8)
 
@@ -67,7 +67,7 @@ OPTIONS
            argument that is not "+0" or "now".
 ```
 
-As you can see the `shutdown` command has a bunch of options that we can use to extend the basic functionality of the command. Every command has his own set of unique options.
+As you can see the `shutdown` command has a lot of options that we can use to extend the basic functionality of the command. Every command has his own set of unique options.
 
 ?> <i class="fa-solid fa-circle-info"></i> Everything in Linux is case sensitive: commands, options, arguments, file- and foldernames, ...
 
@@ -76,34 +76,34 @@ As you can see the `shutdown` command has a bunch of options that we can use to 
 
 ## manpages
 ### man
-In Linux we use a CLI. Therefor we will have to work with various commands. Our Ubuntu installation has all kinds of commands built in. To find commands that we can use we could use Google, but the operating system has information about all installed commands. This info is bundled in _manpages_ (short for manual pages). You can access these manpages through the `man` command.
+In Linux we use a CLI. Therefore we will have to work with various commands. Our Ubuntu installation has all kinds of commands built-in. To find commands that we can use we could use Google, but the operating system itself also has information about all installed commands. This info is bundled in _manpages_ (short for manual pages). You can access these manpages through the `man` command.
 
 Type man followed by a command (for which you want help) and start reading:
 ```bash
 man shutdown
 ```
-Not only commands have their own manpage, config/system files might have a manpage aswell. The command below shows the manpage of the `syslog.conf` file:
+Not only commands have their own manpage, config/system files might have a manpage as well. The command below shows the manpage of the `syslog.conf` file:
 ```bash
 man syslog.conf
 ``` 
 
-?> <i class="fa-solid fa-circle-info"></i> manpages are pretty big and exist out of multiple pages and/or sections. To view the next page in a manpage you can press the `spacebar` or you can use the `arrow keys`. Manpages are pretty easy to search. Just type `/` followed by a keyword. The manpage will highlight the first occurence of that keyword. You can use the keys `n` (_next_) to go to the next occurence of the keyword. Exiting a manpage can be done by pressing the `q` (_quit_) key. Want to know more about manpages? type `man man`!
+?> <i class="fa-solid fa-circle-info"></i> manpages are pretty big and exist out of multiple pages and/or sections. To view the next page in a manpage you can press the `spacebar` or you can use the `arrow keys`. Manpages are pretty easy to search. Just type `/` followed by a keyword. The manpage will highlight the first occurence of that keyword. You can use the key `n` (_next_) to go to the next occurence of the keyword. Exiting a manpage can be done by pressing the `q` (_quit_) key. Want to know more about manpages? type `man man`!
 
-You can search the description of all installed commands by using the `-k` option as follows:
+You can search the description of an installed command by using the `-k` option (or the command apropos) as follows:
 ```bash
-man -k shutdown
+man -k shutdown                        or                  apropos shutdown
 ```
 
 ### manpage sections
 Sometimes certain keywords can be used as a command, but may also be used as a (config)file, daemon, ... This is an issue because `man <keyword>` needs to open the propper manpage for that keyword. What if the keyword exists as a command and as a configuration file? A perfect example for this is `passwd`:
 ```
-student@linux-ess:~$ man -k passwd
+student@linux-ess:~$ apropos passwd
 ...
 passwd (1)           - change user password
 passwd (1ssl)        - compute password hashes
 passwd (5)           - the password file
 ```
-Looking at the output above we see 3 ```passwd``` entries containing different numbers between the brackets. The numbers refer to the _section_ of the manpage. By default, the `man` command will open section 1, which contains information about the command `passwd`. We can see there is also a section 5 which contains information about the configuration file `/etc/passwd`. We can open this section as follows:
+Looking at the output above we see 3 ```passwd``` entries containing different numbers between the brackets. The numbers refer to the _section_ of the manpage. By default, the `man` command will open section 1, which contains information about the command `passwd`. We can see that there is also a section 5 which contains information about the configuration file `/etc/passwd`. We can open this section as follows:
 ```bash
 man 5 passwd
 ```
@@ -128,7 +128,7 @@ The command line interface in Linux environments is often called the _shell_. Th
 
 ?> Try using the `arrow up` and `arrow down` keys after using some commands. You will notice that these commands will appear after the prompt.
 
-Repeating the last command is very easy aswell. We can just type `!!` (often referred to as _bang bang_)and this will run the command that we last used. To view the history of our last used commands we can use the `history` command:
+Repeating the last command is very easy as well. We can type `!!` (often referred to as _bang bang_) and this will run the command that we last used. To view the history of our last used commands we can use the `history` command:
 ```bash
 student@linux-ess:~/linuscraft$ history 10
   257  ls
