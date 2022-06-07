@@ -1,7 +1,7 @@
 # Lab <!-- {docsify-ignore} -->
-In the previous chapter Linus had just downloaded a `server.jar` file but he is confused as to where this file is located now! In this lab we will find out how we can view and navigate through folders and how we can use some basic commands to work with files.
+In the previous chapter Linus downloaded a `server.jar` file but he is confused as to where this file is located! In this lab we will find out how we can view and navigate through folders and how we can use some basic commands to work with files.
 
-## Finding the server.jar file <!-- {docsify-ignore} -->
+## Finding the server.jar file
 
 Before doing anything else, Linus really wants to find his `server.jar` file that he just downloaded in the previous chapter. Using the `man -k directory` command he finds out that there are all kinds of commands available to work with directories. The first command that Linus checks out is the `pwd` command:
 ```
@@ -24,7 +24,7 @@ student@linux-ess:~$ ls -lh
 ```
 To find out the file size of the file he combines the options `-l` and `-h`.  Now Linus knows the `server.jar` file is 45MB and was last changed on 28 feb at 11:48.
 
-## Create a folder structure <!-- {docsify-ignore} -->
+## Create a folder structure 
 Linus wants a clean folder structure for his _LinusCraft_ project. In his homefolder he would like to create a folder with the name `linuscraft`. To do this he found the `mkdir` command using the manpages.
 ```bash
 mkdir linuscraft
@@ -64,7 +64,7 @@ drwxr-xr-x 2 student student 4.0K May  4 21:48 backups
 drwxr-xr-x 2 student student 4.0K May  4 21:44 serverfiles
 ```
 
-## Create files <!-- {docsify-ignore} -->
+## Create files 
 Linus would like to create a file to list any outstanding tasks. He creates this file in the folder `linuscraft` using the `touch` command:
 ```bash
 student@linux-ess:~$ touch linuscraft/todo.txt
@@ -81,7 +81,7 @@ He wants to create a hidden file to store important information as well:
 student@linux-ess:~$ touch /home/dries/linuscraft/.important
 ```
 
-## Finetune the file and folder structure <!-- {docsify-ignore} -->
+## Finetune the file and folder structure 
 There are some problems with the files and folders that we just created. The `server.jar` file for instance is still located in the homefolder of the user `student`. We have to move this file to the `serverfiles` folder:
 ```bash
 student@linux-ess:~$ mv server.jar linuscraft/serverfiles/
