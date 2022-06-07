@@ -3,6 +3,7 @@
 ### Print working directory (pwd)
 The first command we will look at is the `pwd` command. The manpages gives an accurate description of what the command does:
 ```
+student@linux-ess:~$ whatis pwd
 pwd - print name of current/working directory
 ```
 
@@ -18,11 +19,13 @@ The folder `student` is our current working directory. This folder is a subfolde
 
 ![homefolder](../images/04/homefolder-struct.png)
 
-?> <i class="fa-solid fa-circle-info"></i> Remember the prompt which contained an active path? The `~` sign was an abbreviation for the folder `/home/student`. This is called the _homefolder_. Every user on the operating system will get their own _homefolder_ in the folder `/home` just like in Windows, where every user has his own folder under `c:\Users`. This user has all permissions (read, write, execute) in his own homefolder. Outside of that folder he often only has _read_ permissions.
+?> <i class="fa-solid fa-circle-info"></i> Remember the prompt which contained an active path? The `~` sign was an abbreviation for the folder `/home/student`. This is called the _homefolder_. Every user on the operating system will get their own _homefolder_ in the folder `/home` just like in Windows, where every user has his own folder under `C:\Users`. This user has all permissions (read, write, execute) in his own homefolder. Outside of that folder he often only has _read_ permissions.
 
 ### Change working directory (cd)
 You can change the current working directory with the `cd` command (change directory):
 ```bash
+student@linux-ess:~$ pwd
+/home/student
 student@linux-ess:~$ cd /etc
 student@linux-ess:/etc$ pwd
 /etc
@@ -30,9 +33,9 @@ student@linux-ess:/etc$ cd ~
 student@linux-ess:~$ pwd
 /home/student
 ```
-The command takes a path as an arguement. In the example above we will navigate to the folder `etc` on the root directory `/`. We can see this in the output of the `pwd` command and in the prompt definition. As shown in the second part of the example above we can also use the `~` sign to quickly navigate to the user's homefolder.
+The command takes a path as an argument. In the example above we will navigate to the folder `etc` on the root directory `/`. We can see this in the output of the `pwd` command and in the prompt definition. As shown in the second part of the example above we can also use the `~` sign to quickly navigate to the user's homefolder.
 
-We could also use the `cd` command without any argument. This will navigate back to the users homefolder aswell:
+We could also use the `cd` command without any argument. This will navigate back to the users homefolder as well:
 ```bash
 student@linux-ess:/etc$ pwd
 /etc
