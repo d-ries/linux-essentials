@@ -11,7 +11,7 @@ For this course we want to use and install the operating system [Ubuntu server](
 
 ?> :fa-solid fa-list-check: _Download the `.iso` file for Ubuntu server using [this link](https://ubuntu.com/download/server). A `.iso` file is an exact copy of a CD/DVD. You will use this later to install the operating system in your virtual machine._
 
-![DownloadUbuntuServer](../images/02/GetUbuntuServer_Download_Ubuntu.png)
+![Download Ubuntu Server](../images/02/GetUbuntuServer_Download_Ubuntu.png)
 
 ## Virtualisation software
 To use virtualisation there are several options. The most common virtualisation software is:
@@ -46,7 +46,7 @@ We have to click on `Customize Hardware` to configure the virtual machine a litt
 
 ![VMware Customize Hardware](../images/02/VMware_Customize_Hardware.png)
 
-We still need to link the ubuntu-server ISO file to the virtual CD-rom drive. We do this by selecting `New CD/DVD` and browsing to the downloaded `iso` file:
+We still need to link the Ubuntu-server ISO file to the virtual CD-rom drive. We do this by selecting `New CD/DVD` and browsing to the downloaded `iso` file:
 
 ![VMware Select ISO](../images/02/VMware_Select_ISO.png)
 
