@@ -300,13 +300,13 @@ cp: overwrite `aFile.backup'? y
 ```
 
 ### Rename files (rename)
-We saw that we could use the `mv` command to rename files and folders. This works and is often very easy but when you have to rename files in bulk you might want to consider another approach. The `rename` command is designed specifically to rename multi files and folders with one command. To do this it uses a _regular expression_ (Regex). A Regex is a sequence of characters that defines a search pattern. We will learn more about regular expressions later in this course. It uses this search pattern to make certain changes to the filenames:
+We saw that we could use the `mv` command to rename files and folders. This works and is often very easy but when you have to rename files in bulk you might want to consider another approach. The `rename` command is designed specifically to rename multiple files and folders with one command. To do this it uses a _regular expression_ (Regex). A Regex is a sequence of characters that define a search pattern. We will learn more about regular expressions later in this course. It uses this search pattern to make certain changes to the filenames:
 ```bash
 student@linux-ess:~/aFolder$ ls
-afile.txt  anotherfile.txt  backup.txt  profiles.backup  profiles.txt  yaay.txt
+aFile  afile.txt  aFile.backup  anotherfile.txt  backup.txt  profiles.backup  profiles.txt  yaay.txt
 student@linux-ess:~/aFolder$ rename 's/file/document/' *.txt
 student@linux-ess:~/aFolder$ ls
-adocument.txt  anotherdocument.txt  backup.txt  prodocuments.txt  profiles.backup  yaay.txt
+aFile  adocument.txt  aFile.backup  anotherdocument.txt  backup.txt  prodocuments.txt  profiles.backup  yaay.txt
 ```
 Alot is going on in the example above, lets summarize what is present:
 * The folder that we are in contains some `txt` files and one `backup` file. Some of the files contain the word `file` that we want to replace with `document`
