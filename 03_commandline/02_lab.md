@@ -105,11 +105,14 @@ wget <url>
 ```
 <br />
 <br />
+
 ![CLI_LAB_Copy_Link_Address](../images/03/CLI_LAB_Copy_Link_Address.png)
 <br />
 <br />
+
 ![CLI_LAB_Powershell_Wget](../images/03/CLI_LAB_Powershell_Wget.png)
 <br /> 
 <br /> 
 <br />
+
 ?>You can choose to stay working on your desktop or go back to your VM in the interface of VMware Workstation.
