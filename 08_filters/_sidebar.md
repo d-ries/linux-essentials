@@ -9,7 +9,7 @@
 * [7 Advanced command structures](./07_advancedcommands/01_course.md)
 * [8 Filters & file operations ](./08_filters/01_course.md)
 ** [Lab](./08_filters/02_lab.md)
-** [Assignments](./08_filters/99_assignments.md)
+** [Assignment](./08_filters/99_assignments.md)
 * [9 Users & permissions](./09_usersandpermissions/01_course.md)
 * [10 Automation](./10_automation/01_course.md)
 * [11 What's next](./11_next/01_course.md)
