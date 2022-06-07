@@ -1,11 +1,9 @@
 # Lab <!-- {docsify-ignore} -->
-On the [minecraft server website](https://www.minecraft.net/nl-nl) we see that there is a way to host minecraft on a Linux server.
+On the [minecraft server website](https://www.minecraft.net/en-us/download/server) we see a link that points to a java file to host a minecraft server on Linux :
 
-![CLI_LAB_Download_Minecraft_Button](../images/03/CLI_LAB_Download_Minecraft_Button.png)
+![CLI_LAB_Download_Minecraft_Java_Edition_Server](../images/03/CLI_LAB_Download_Minecraft_Java_Edition_Server.png)
 
-![CLI_LAB_Download_Minecraft_OS_Overview](../images/03/CLI_LAB_Download_Minecraft_OS_Overview.png)
-
-can find a download link for the server version of minecraft. Linus needs to download this file to his server in some way. He needs to find a command that allows him to download files.
+Linus needs to download this file to his server in some way. He needs to find a command that allows him to download files.
 
 Linus uses the `man` command to find a list of commands that have the keyword _download_ in their description:
 ```bash
