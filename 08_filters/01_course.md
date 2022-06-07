@@ -1,10 +1,5 @@
 # Filters and file operations
 
-## Show file contents
-
-### Cat and tac
-
-### Head and tail
 
 ## Using pipes
 
