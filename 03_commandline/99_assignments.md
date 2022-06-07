@@ -15,3 +15,6 @@ Use the manpage of `ls` to figure out how you could also see the hidden files
 
 ##  Task 4 
 Try to only show the short description of the commando `ls`
+
+##  Task 5 
+Try to figure out where the command `reboot` and its manpage are stored on the disk
