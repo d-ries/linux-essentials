@@ -51,6 +51,9 @@ We still need to link the ubuntu-server ISO file to the virtual CD-rom drive. We
 ![VMware Select ISO](../images/02/VMware_Select_ISO.png)
 
 Click on `Finish` and the virtual machine will be created.
+
+![VMware Select ISO](../images/02/VMware_Finish.png)
+
 You can now boot the VM by clicking the green arrow icon. This will boot the virtual machine and run the installation process.
 
 ## Installation Ubuntu server
