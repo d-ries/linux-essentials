@@ -249,18 +249,25 @@ student@linux-ess:~$ ls
 myFile  myFolder server.jar
 student@linux-ess:~$ cp server.jar serverbackup.jar
 student@linux-ess:~$ ls
-myFile  myFolder server.jar  serverbackup.jar
+myFile  myFolder  server.jar  serverbackup.jar
 ```
 Both arguments are paths. The first path is the original file/folder. The second path is a path to the new location and (optional) filename/foldername. We can use the cp command to copy both files and folders to the same directory or a different directory.
 
 #### Copy to another directory
 The example below shows us how we can use the arguments in the `cp` command to copy files or folders to another directory. In this example we copy the file named `file12` into the directory called `folder99` using a _relative_ path.
 ```bash
-student@linux-ess:~$ touch file12
-student@linux-ess:~$ mkdir folder99
-student@linux-ess:~$ cp file12 folder99
-student@linux-ess:~$ ls folder99/
-file12
+student@linux-ess:~$ ls
+aFile  aFolder  server.jar
+student@linux-ess:~$ cp aFile aFolder/
+student@linux-ess:~$ ls aFolder
+aFile
+student@linux-ess:~$ ls
+aFile  aFolder  server.jar
+student@linux-ess:~$ cp /home/student/aFile /home/student/aFolder/aFile.backup
+student@linux-ess:~$ ls aFolder
+aFile  aFile.backup
+student@linux-ess:~$ ls
+aFile  aFolder  server.jar
 ```
 Note that we can use both _relative_ and _absolute_ paths in the copy command for both the original file/folder and the destination file/folder.
 
@@ -268,21 +275,28 @@ Note that we can use both _relative_ and _absolute_ paths in the copy command fo
 To copy complete directories (meaning all subfolders and files inside the directory) we will have to use the `-r` (recursive) option:
 ```bash
 student@linux-ess:~$ ls
-folder99 ventieldopje ventieldopje.copy file12
-student@linux-ess:~$ cp -r folder99/ folder22
+aFile  aFolder  server.jar
+student@linux-ess:~$ ls aFolder
+aFile  aFile.backup
+student@linux-ess:~$ cp -r aFolder/ aFolderBackup
 student@linux-ess:~$ ls
-folder22 folder99 ventieldopje ventieldopje.copy file12
-student@linux-ess:~$ ls folder22/
-file12
+aFile  aFolder  aFolderBackup  server.jar
+student@linux-ess:~$ ls aFolderBackup
+aFile  aFile.backup
 ```
 
 #### Overwrite files
 We have to be aware that the `cp` command will overwrite existing files by default. We can use the `-i` (interactive) option to get a prompt where we have to confirm if we want to overwrite the file as seen in the example below:
 ```bash
-student@linux-ess:~$ cp file12 file42
-student@linux-ess:~$ cp file12 file42 # No error, the file gets overwritten
-student@linux-ess:~$ cp -i file12 file42
-cp: overwrite `file42'? y
+student@linux-ess:~$ ls aFolder
+aFile  aFile.backup
+student@linux-ess:~$ ls
+aFile  aFolder  server.jar
+student@linux-ess:~$ cp aFile aFolder/aFile.backup     # No error, the file gets overwritten
+student@linux-ess:~$ ls aFolder
+aFile  aFile.backup
+student@linux-ess:~$ cp -i aFile aFolder/aFile.backup     # you will be asked to overwrite or not
+cp: overwrite `aFile.backup'? y
 ```
 
 ### Rename files (rename)
