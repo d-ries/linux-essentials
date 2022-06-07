@@ -56,6 +56,8 @@ Click on `Finish` and the virtual machine will be created.
 
 You can now boot the VM by clicking the green arrow icon. This will boot the virtual machine and run the installation process.
 
+![VMware Finish](../images/02/VMware_Start_VM.png)
+
 ## Installation Ubuntu server
 As described earlier we will use the distro Ubuntu. After creating and booting the virtual machine there will be an installation process that we need to run through. You will notice that there is no mouse pointer available. We will use the keypoint arrow keys & enter key to navigate through the steps.
 
