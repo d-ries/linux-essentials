@@ -1,5 +1,5 @@
 # File contents
-## View full file (cat & tac)
+## View a file completely (cat & tac)
 To view the file contents we can use the `cat` command. This command takes in a path to a file as an argument:
 ```bash
 student@linux-ess:~$ cat /etc/resolv.conf
@@ -35,7 +35,7 @@ student@linux-ess:~$ cat count1.txt count2.txt
 ```
 All filenames in the `cat` command are actually paths. So in the example above we use _relative_ paths to the files that are in the current working directory (`/home/student`). This means that the command `cat /home/student/count1.txt /home/student/count2.txt` would give the exact same output.
 
-## Quick file contents (head & tail)
+## View certain regions of a file (head & tail)
 Sometimes you don't want to view the entire file contents. Only the first or last couple of lines will suffice (in log files for example). To achieve this we can use the `head` or `tail` commands:
 ```bash
 student@linux-ess:~$ head /etc/passwd
@@ -84,7 +84,7 @@ student@linux-ess:~$ tail -5 /var/log/dpkg.log
 
 ?> <i class="fa-solid fa-circle-info"></i> We can even view log files realtime by using `tail -f` (`-f` stands for _follow_). This will start an active process that shows the last 10 lines of a file. When something gets added to this file, we can see it appear realtime in our command output. To terminate this active process use `ctrl+c`.
 
-## Scrolling (more)
+## Scrolling through several screens of the contents of a file (more)
 When viewing big files you will notice that the terminal will only show the last bit of the contents. We can use commands such as `more` and `less` to view (and scroll through) the entire content. Scrolling can be done by using the _spacebar_.
 ```bash
 student@linux-ess:~$ more /var/log/dpkg.log
@@ -110,13 +110,13 @@ hello world
 ```
 Now this is where it gets interesting. We can use a `>` sign to tell the shell to take the output of the previous command and write it to a file:
 ```bash
-student@linux-ess:~$ echo hello world >ourfile
+student@linux-ess:~$ echo hello world >demofile
 ```
-So this actually makes it so that the output of the `echo` command is not shown in the shell, but rather is written (or _redirected_) to the file `ourfile`. We can confirm this as follows:
+So this actually makes it so that the output of the `echo` command is not shown in the shell, but rather is written (or _redirected_) to the file `demofile`. We can confirm this as follows:
 ```bash
 student@linux-ess:~$ ls
-ourfile
-student@linux-ess:~$ cat ourfile
+demofile
+student@linux-ess:~$ cat demofile
 hello world
 ```
 The concept we use here is called _input/output redirection_ which we will talk about in a later chapter.
@@ -124,7 +124,7 @@ The concept we use here is called _input/output redirection_ which we will talk 
 ### Using cat
 We can also use the cat command in combination with the _output redirection (`>`)_ as shown in the example below. After typing the command we can type one or more lines. When you are done typing the file contents you can use the keyboard combination `ctrl` and `d` (ctrl+d) to tell the shell you are done (this will send an _end of file_ (EOF) signal to the running process):
 ```
-student@linux-ess:~$ cat > jokes.txt # we pres ctrl+d after the line 'sudo ku'
+student@linux-ess:~$ cat > jokes.txt     # we press ctrl+d after the line 'sudo ku'
 What is a Linux user's favorite game?
 sudo ku
 student@linux-ess:~$ cat jokes.txt
@@ -161,7 +161,9 @@ Lastly we could use a text editor to edit/add file contents. There are many text
 student@linux-ess:~$ nano jokes2.0.txt
 ```
 A text editor window will open as shown in the figure below where you can navigate using the arrow keys. You can add/edit/delete content by using your keyboard.
+
 ![nano](../images/05/nano.PNG)
+
 In the bottom of the screen it shows some of the shortcuts you can use. Some of the most interesting ones are:
 * ctrl+o: this is used to save (write out) the file changes. This will prompt for a filename and will overwrite a file if the name already exists.
 * ctr+q: quit the text editor and go back to the prompt. When you made changes to the file you will be asked if you want to save the change and you will have to enter a filename and press enter.
@@ -169,4 +171,5 @@ In the bottom of the screen it shows some of the shortcuts you can use. Some of 
 * ctrl+w: find a certain text in the file (where is).
 * alt+u: undo the last change.
 
-?> Another very popular text editor in Linux systems is `vi`. This editor is really powerfull but also has a steep learning curve. Want a real challenge? Try editting a file using the `vi` command rather than `nano`. [This cheatsheet](http://www.atmos.albany.edu/daes/atmclasses/atm350/vi_cheat_sheet.pdf) might help you navigate using `vi`.
+?> Another very popular text editor in Linux systems is `vi`. This editor is really powerfull but also has a steep learning curve. Want a real challenge? Try editting a file using the `vi` command rather than `nano`. 
+[This cheatsheet](https://itsfoss.com/download-vi-cheat-sheet/) might help you navigate using `vi`.
