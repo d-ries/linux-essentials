@@ -105,9 +105,9 @@ password: pxl
 
 ![Ubuntu_Server_Storage_Username_student_Servername_linux-ess](../images/02/Ubuntu_Server_Storage_Username_student_Servername_linux-ess.png)
 
-We make no changes in the next 2 steps. We just select `done`:
+For Extra Packages we will only opt to install `SSH server`:
 
-![Ubuntu_Server_Storage_SSH](../images/02/Ubuntu_Server_Storage_SSH.png)
+![Ubuntu_Server_Storage_SSH](../images/02/Ubuntu_Server_Storage_SSH_WEL.png)
 
 ![Ubuntu_Server_Storage_Featured_Server_Snaps](../images/02/Ubuntu_Server_Storage_Featured_Server_Snaps.png)
 
