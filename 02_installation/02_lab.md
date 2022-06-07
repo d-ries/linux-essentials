@@ -1,17 +1,17 @@
-## Lab <!-- {docsify-ignore} -->
+## Lab 
 In the following chapters Linus will install a Minecraft Server. Before he can do that, he will need to have a Linux System up and running. In this lab he will have to install a Virtualization Package on his computer and virtualize a Linux Server. With this infrastructure set up he will be able to install, configure and maintain his Minecraft Server at a later time.
 
-## Installing VMware Workstation <!-- {docsify-ignore} -->
+## Installing VMware Workstation 
 
 Before doing anything else, Linus needs to have some kind of Virtualization Technic. 
 `Install VMware Workstation` as described in this chapter.
 
-## Installing Ubuntu Server <!-- {docsify-ignore} -->
+## Installing Ubuntu Server
 
 The Minecraft Server will run in a Linux Server Envrironment. 
 `Install a Ubuntu Server VM` as described in this chapter. 
 
-## Updating the OS <!-- {docsify-ignore} -->
+## Updating the OS
 
 It's allways best to update your Operating System. That's why it's best to update all installed packages to their latest version.
 `Update all packages to the latest version` 
@@ -24,7 +24,7 @@ student@linux-ess:~$ sudo apt update
 student@linux-ess:~$ sudo apt -y upgrade
 ```
 
-## Shutting down the virtual machine <!-- {docsify-ignore} -->
+## Shutting down the virtual machine
 
 Before taking the snapshot it might be best to shut down the virtual machine. 
 `Shutdown the VM` as described below:
@@ -34,7 +34,7 @@ student@linux-ess:~$ sudo shutdown now
 ```
 
 
-## Taking a snapshot of the VM in VMware Workstation <!-- {docsify-ignore} -->
+## Taking a snapshot of the VM in VMware Workstation
 
 Before doing anything else, Linus needs to have a savepoint in time. If, at a later time, he breaks his Linux System, he can allways return to this savepoint in time.
 Being able to roll back to this point will be a time saver, because otherwise he will need to install the Linux system again from scratch.
