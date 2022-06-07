@@ -1,15 +1,17 @@
 # Assignments CH3
-## Opdracht 1
-Gebruik het `man` commando om uit te zoeken wat de optie `-t` doet bij het `man`commando.
+## Task 1
+Make use of the command `man` to figure out what the commando `man -f` does and with what other command it can be replaced
 
-## Opdracht 2
-zoek via `man -k` naar een commando om:
-- je systeem opnieuw op te starten
-- je passwoord aan te passen
-- de inhoud van een map te tonen
+## Task 2
+Use the command `apropos` and/or the command `man -k` to find the right commando to:
+- reboot your vm
+- change your password
+- show the contents of a directory
+- clear the terminal screen
+- see who is logged in 
 
-## Opdracht 3
-Vertrekkend van opdracht 2, Welke optie heb je nodig om verborgen bestanden/mappen te tonen bij het tonen van de inhoud van een map?
+## Task 3
+Use the manpage of `ls` to figure out how you could also see the hidden files
 
-## Opdracht 4 
-Zoek de korte omschrijving voor het commando `ls`
+##  Task 4 
+Try to only show the short description of the commando `ls`
