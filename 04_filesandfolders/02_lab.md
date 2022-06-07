@@ -73,23 +73,25 @@ student@linux-ess:~/linuscraft/serverfiles$ pwd
 
 He would also like a folder `administration` inside the `linuscraft` folder. While using the folder `serverfiles` as the working directory, he creates this folder using a relative path:
 ```bash
-student@linux-ess:~/linuscraft/serverfiles$ mkdir ../administratie
+student@linux-ess:~/linuscraft/serverfiles$ mkdir ../administration
 ```
-To finish up he creates a folder named `backups` and `secrets` using an absolute path:
+To finish up he creates the folders named `backups` and `secrets`  inside the `linuscraft` folder using an absolute path:
 ```bash
-mkdir /home/student/backups
+student@linux-ess:~/linuscraft$ mkdir /home/student/linuscraft/backups /home/student/linuscraft/secrets
 ```
 Linus decides to navigate back to his homefolder by using the `cd` command without any arguments. Afterwards he checks the contents of his created folder `linuscraft`: 
 ```bash
+student@linux-ess:~/linuscraft$ cd
 student@linux-ess:~$ ls -lh linuscraft
 total 12K
 drwxr-xr-x 2 student student 4.0K May  4 21:45 administration
 drwxr-xr-x 2 student student 4.0K May  4 21:48 backups
+drwxr-xr-x 2 student student 4.0K May  4 21:48 secrets
 drwxr-xr-x 2 student student 4.0K May  4 21:44 serverfiles
 ```
 
 ## Create files 
-Linus would like to create a file to list any outstanding tasks. He creates this file in the folder `linuscraft` using the `touch` command:
+Linus would like to create a file, named `todo.txt` to list any outstanding tasks. He creates this file in the folder `linuscraft` using the `touch` command:
 ```bash
 student@linux-ess:~$ touch linuscraft/todo.txt
 ```
@@ -100,9 +102,9 @@ Next up he creates some additional files with the following command:
 student@linux-ess:~$  touch linuscraft/contact.txt linuscraft/backuplog.txt
 ```
 
-He wants to create a hidden file to store important information as well:
+He wants to create a hidden file in the secrets folder to store private information as well:
 ```bash
-student@linux-ess:~$ touch /home/dries/linuscraft/.important
+student@linux-ess:~$ touch /home/dries/linuscraft/secrets/.private
 ```
 
 ## Finetune the file and folder structure 
@@ -110,14 +112,14 @@ There are some problems with the files and folders that we just created. The `se
 ```bash
 student@linux-ess:~$ mv server.jar linuscraft/serverfiles/
 ```
-There are 3 `txt` files present in the `linuscraft` folder. Linus learnt that these do not need file extentions so he wants to remove them only using one command. To achieve this goal, he uses the `rename` command:
+There are 3 `txt` files present in the `linuscraft` folder. Linus learnt that in Linux files do do not need file extentions so he wants to remove them using only one command. To achieve this goal, he uses the `rename` command:
 ```bash
 student@linux-ess:~/linuscraft$ ls
-administratie  backuplog.txt  backups  contact.txt  serverfiles  todo.txt
+administration  backuplog.txt  backups  contact.txt  secrets  serverfiles  todo.txt
 student@linux-ess:~/linuscraft$ rename 's/.txt//' *.txt
 ```
 
-We do not longer need the `secrets` folder so Linus decides to delete it while having `~/linuscraft` as his working directory:
+The `secrets` folder and its contents are no longer needed so Linus decides to delete it while having `~/linuscraft` as his working directory:
 ```bash
 student@linux-ess:~/linuscraft$ rm -rf secrets
 ```
