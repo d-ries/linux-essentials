@@ -1,6 +1,6 @@
 # Command line interface
 When booting the virtual machine, all that will show is a black screen with some white text:
-![CLI_Login_And_Welcome](../images/03/CLI_Login_And_Welcome)
+![CLI_Login_And_Welcome](../images/03/CLI_Login_And_Welcome.png)
 
 You will notice that there is no mouse pointer available. We will only use our keyboard as input device. This environment is called a _command line interface (CLI)_. There is no _graphic user interface (GUI)_ present in Ubuntu server. One of the reasons why they chose this is because having no GUI present will save system resources. A CLI is also proven to be a very efficient & trustworthy way of working & interacting with an operating system and its services.
 
