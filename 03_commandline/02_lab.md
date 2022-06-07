@@ -79,7 +79,8 @@ wget https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a7
 ```
 The download is succesfull! Linus sees the message `server.jar saved`, but he has no clue where this file is located or how he can run this file. In the next chapter we will explore how files & folders in Linux work.
 
-
+<br />
+<br />
 
 ?>We see that Linus has a challenge to put the URL right in his command. It would be easier for him if he could just paste the link in the prompt. If he wants to do that, he is obliged to use SSH.
 
@@ -91,6 +92,7 @@ ip a
 ```
 
 ![CLI_LAB_ip_a](../images/03/CLI_LAB_ip_a.png)
+<br />
 
 *Second we need to open Powershell on the Desktop and make a ssh-connection to the server. We are now working on the server from our desktop. Cool, isn't it?
 ```bash
@@ -98,6 +100,7 @@ ssh student@<server-ip>
 ```
 
 ![CLI_LAB_Powershell_SSH](../images/03/CLI_LAB_Powershell_SSH.png)
+<br />
 
 *Third we can go to the website with the Minecraft Java Server url, rightclick on it and choose to copy the url. We can now paste the url with a rightclick after wehave type `wget`
 ```bash
