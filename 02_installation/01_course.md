@@ -24,25 +24,34 @@ In this course we will use and support VMware but the other software packages ar
 ## Create a new VM
 To create a new virtual machine (VM) in VMWare you go to the menu `file`>`New virtual machine`. The wizard to create a new VM will appear.
 
-![vmware file new vm](../images/02/VMware_File_New_VM.png)
+![VMware File New Vm](../images/02/VMware_File_New_VM.png)
 
 In the first screen we select the option to `install the operating system later`:
 
-![vmware 1](../images/02/vmware1.PNG)
+![VMware Install Operating System Later](../images/02VMware_Operating_System_Later.png)
 
 Next we choose the operating system `Linux`. In the version dropdown we select `Ubuntu 64 bit`. This is the Linux distribution that we will use during this course.
 
-![vmware 2](../images/02/vmware2.PNG)
+![VMware Ubuntu 64bit](../images/02/VMware_Ubuntu_64bit.png)
+
+In the next screen we give the virtual machine a name. You can also specify a different folder to store the virtual machine on your computer.
+
+![VMware Name The VM](../images/02/VMware_Name_The_VM.png)
 
 In the next screen we configure the virtual harddisk size for the VM. We will create a disk that has 20GB storage. We can expand this later if needed:
 
-![vmware 3](../images/02/vmware3.PNG)
+![VMware Disk Size](../images/02/VMware_Disk_Size.png)
 
-Continue through the next steps and the virtual machine will be created. After the VM is created we need to link the ubuntu-server ISO file to the virtual CD-rom drive. We do this by right clicking the virtual machine and going to the `settings` page. Here we can link the `iso` file:
+We have to click on `Customize Hardware` to configure the virtual machine a little more:
 
-![vmware 4](../images/02/vmware4.PNG)
+![VMware Customize Hardware](../images/02/VMware_Customize_Hardware.png)
 
-After linking the iso file you can boot the VM by clicking the green arrow icon. This will boot the virtual machine and run the installation media.
+We still need to link the ubuntu-server ISO file to the virtual CD-rom drive. We do this by selecting `New CD/DVD` and browsing to the downloaded `iso` file:
+
+![VMware Select ISO](../images/02/VMware_Select_ISO.png)
+
+Click on `Finish` and the virtual machine will be created.
+You can now boot the VM by clicking the green arrow icon. This will boot the virtual machine and run the installation process.
 
 ## Installation Ubuntu server
 As described earlier we will use the distro Ubuntu. After creating and booting the virtual machine there will be an installation process that we need to run through. You will notice that there is no mouse pointer available. We will use the keypoint arrow keys & enter key to navigate through the steps.
