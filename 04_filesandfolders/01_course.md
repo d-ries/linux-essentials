@@ -303,36 +303,36 @@ cp: overwrite `aFile.backup'? y
 We saw that we could use the `mv` command to rename files and folders. This works and is often very easy but when you have to rename files in bulk you might want to consider another approach. The `rename` command is designed specifically to rename multiple files and folders with one command. To do this it uses a _regular expression_ (Regex). A Regex is a sequence of characters that define a search pattern. We will learn more about regular expressions later in this course. It uses this search pattern to make certain changes to the filenames:
 ```bash
 student@linux-ess:~/aFolder$ ls
-aFile  afile.txt  aFile.backup  anotherfile.txt  backup.txt  profiles.backup  profiles.txt  yaay.txt
+aFile  aFile.backup  afile.txt  anotherfile.txt  backup.txt  profiles.backup  profiles.txt  yaay.txt
 student@linux-ess:~/aFolder$ rename 's/file/document/' *.txt
 student@linux-ess:~/aFolder$ ls
-aFile  adocument.txt  aFile.backup  anotherdocument.txt  backup.txt  prodocuments.txt  profiles.backup  yaay.txt
+adocument.txt  aFile  aFile.backup  anotherdocument.txt  backup.txt  prodocuments.txt  profiles.backup  yaay.txt
 ```
 
 ?> <i class="fa-solid fa-circle-info"></i> If rename is not yet installed you can do this with the command `sudo apt -y install rename`. The installation process will ask you for your password.
 
 A lot is going on in the example above, let's summarize what is present:
-* The folder we are in contains some `txt` files, some `backup` files and files with `no extension`. Some of the files contain the word `file` that we want to replace with `document`
-* the `rename` command takes in a _string_ with the value `s/file/document/`. This is the _regex_ that is being used by the command to search (`s`)for names containing the word `file` and replace it with the word `document`.
-* the last argument is `.txt`. We use this to tell the `rename` command to only run the replacement regex on files ending in `.txt`
+* The folder we are in contains some `txt` files, some `backup` files and files with `no extension`. Some of the files contain the word `file` that we want to replace with `document`. Remember that by default Linux is case-sensitive, so `file`is not the same as `File`.
+* the `rename` command takes a _string_ with the value `s/file/document/`. This is the _regex_ that is being used by the command to search (`s`)for names containing the word `file` and replace it with the word `document`.
+* the last argument is `*.txt`. We use this to tell the `rename` command to only run the replacement regex on files ending in `.txt`
 
-?> <i class="fa-solid fa-circle-info"></i> a `*` (asterix) is considered a wildcard character in bash. It refers to _zero, one or more characters_. So in the example above this translates to: "run this replacement regex on all files containing zero,one or more characters of any kind, followed by the string `.txt`.
+?> <i class="fa-solid fa-circle-info"></i> a `*` (asterisk) is considered a wildcard character in bash. It refers to _zero, one or more characters_. So in the example above this translates to: "run this replacement regex on all files containing zero,one or more characters of any kind, following and ending with the string `.txt`.
 
 We could also use the `rename` command to change the file extentions of all files and folders:
 ```bash
 student@linux-ess:~/aFolder$ ls
-adocument.txt  anotherdocument.txt  backup.txt  prodocuments.txt  profiles.backup  yaay.txt
-student@linux-ess:~/aFolder$ rename 's/\.txt/\.odt/' *.txt
+adocument.txt  aFile  aFile.backup  anotherdocument.txt  backup.txt  prodocuments.txt  profiles.backup  yaay.txt
+student@linux-ess:~/aFolder$ rename 's/\.txt/.odt/' *.txt
 student@linux-ess:~/aFolder$ ls
-adocument.odt  anotherdocument.odt  backup.odt  prodocuments.odt  profiles.backup  yaay.odt
+adocument.odt  aFile  aFile.backup  anotherdocument.odt  backup.odt  prodocuments.odt  profiles.backup  yaay.odt
 ```
-?> <i class="fa-solid fa-circle-info"></i> Notice how we put a `\` (backslash) in front of the `.` sign? Some characters have special meanings is regular expressions (for example: `* . $ [ ] ( ) / { }`). To make sure our bash shell sees this character as a string we have to use _escaping_. This is the concept of using the `\` to indicate that the character that follows is interpreted as a string rather than a special character.
+?> <i class="fa-solid fa-circle-info"></i> Notice how we put a `\` (backslash) in front of the `.` sign in the search-string? Some characters have special meanings in regular expressions (for example: `* . $ [ ] ( ) / { }`). If we want the bash shell to see this character as a string we have to use _escaping_. This is the concept of using the `\` to indicate that the character that follows is interpreted as a string rather than a special character.
 
-### identifying files (file)
-In Linux systems we done have to use file extentions. This means we don't always know the file type. We can use the `file` command to identify the type of a file:
+### Identifying files (file)
+In Linux we don't have to use file extentions. This means we don't always know the file type. We can use the `file` command to identify the type of a file:
 ```bash
 student@linux-ess:~$ file pxl.png
-pic33.png: PNG image data, 1920 x 1080, 8-bit/color RGBA, non-interlaced
+pxl.png: PNG image data, 1920 x 1080, 8-bit/color RGBA, non-interlaced
 student@linux-ess:~$ file /etc/passwd
 /etc/passwd: ASCII text
 ```
