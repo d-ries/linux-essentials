@@ -80,7 +80,7 @@ Choose the correct keyboard layout. For `azerty` select `Belgian`:
 
 ![Ubuntu_Server_Keyboard_Belgian](../images/02/Ubuntu_Server_Keyboard_Belgian.png)
 
-In the next 7 steps we dont make any changes :
+In the next 7 steps we dont make any changes. We just press `Done` or `Continue` :
 
 ![Ubuntu_Server_Base_For_The_Installation](../images/02/Ubuntu_Server_Base_For_The_Installation.png)
 
@@ -122,5 +122,7 @@ Once the server is rebooted, you will have to press the <enter> key again to see
 
 ![Ubuntu_Server_Press_Enter_To_See_Login](../images/02/Ubuntu_Server_Press_Enter_To_See_Login.png)
 
+  
+  
 All of these steps can also be viewed in the video below:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/u8WLsyMuSgw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
