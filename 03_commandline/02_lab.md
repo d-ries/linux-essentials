@@ -103,13 +103,13 @@ ssh student@<server-ip>
 ```bash
 wget <url>
 ```
-&nbsp;
-&nbsp;
+<br />
+<br />
 ![CLI_LAB_Copy_Link_Address](../images/03/CLI_LAB_Copy_Link_Address.png)
-&nbsp;
-&nbsp;
+<br />
+<br />
 ![CLI_LAB_Powershell_Wget](../images/03/CLI_LAB_Powershell_Wget.png)
-&nbsp;
-&nbsp;
-&nbsp;
+<br /> 
+<br /> 
+<br />
 ?>You can choose to stay working on your desktop or go back to your VM in the interface of VMware Workstation.
