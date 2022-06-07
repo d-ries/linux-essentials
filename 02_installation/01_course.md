@@ -24,6 +24,8 @@ In this course we will use and support VMware but the other software packages ar
 ## Create a new VM
 To create a new virtual machine (VM) in VMWare you go to the menu `file`>`New virtual machine`. The wizard to create a new VM will appear.
 
+![vmware file new vm](../images/02/VMware_File_New_VM.png)
+
 In the first screen we select the option to `install the operating system later`:
 
 ![vmware 1](../images/02/vmware1.PNG)
