@@ -10,6 +10,7 @@ Before doing anything else, Linus needs to have some kind of Virtualization Tech
 ### Installing Ubuntu Server
 
 The Minecraft Server will run in a Linux Server Envrironment. 
+
 `Install a Ubuntu Server VM` as described in this chapter. 
 
 ### Updating the OS
@@ -17,6 +18,7 @@ The Minecraft Server will run in a Linux Server Envrironment.
 It's allways best to update your Operating System. That's why it's best to update all installed packages to their latest version.
 `Update all packages to the latest version` 
 You can do this as follows:
+
 ```bash
 student@linux-ess:~$ sudo apt update
 ```
@@ -39,6 +41,7 @@ student@linux-ess:~$ sudo shutdown now
 
 Before doing anything else, Linus needs to have a savepoint in time. If, at a later time, he breaks his Linux System, he can allways return to this savepoint in time.
 Being able to roll back to this point will be a time saver, because otherwise he will need to install the Linux system again from scratch.
+
 `Take a snapshot of the Ubuntu Server VM, named "Clean Install"` as follows:
 
 **VM/Snapshot/Take Snapshot...
