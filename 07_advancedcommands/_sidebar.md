@@ -8,7 +8,7 @@
 * [6 Software & packages](./06_software/01_course.md)
 * [7 Advanced command structures](./07_advancedcommands/01_course.md)
 ** [Lab](./07_advancedcommands/02_lab.md)
-** [Assignments](./07_advancedcommands/99_assignments.md)
+** [Assignment](./07_advancedcommands/99_assignments.md)
 * [8 Filters & file operations ](./08_filters/01_course.md)
 * [9 Users & permissions](./09_usersandpermissions/01_course.md)
 * [10 Automation](./10_automation/01_course.md)
