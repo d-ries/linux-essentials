@@ -10,6 +10,6 @@
 * [8 Filters & file operations ](./08_filters/01_course.md)
 * [9 Users & permissions](./09_usersandpermissions/01_course.md)
 ** [Lab](./09_usersandpermissions/02_lab.md)
-** [Assignments](./09_usersandpermissions/99_assignments.md)
+** [Assignment](./09_usersandpermissions/99_assignments.md)
 * [10 Automation](./10_automation/01_course.md)
 * [11 What's next](./11_next/01_course.md)
