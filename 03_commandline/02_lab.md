@@ -79,6 +79,8 @@ wget https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a7
 ```
 The download is succesfull! Linus sees the message `server.jar saved`, but he has no clue where this file is located or how he can run this file. In the next chapter we will explore how files & folders in Linux work.
 
+
+
 ?>We see that Linus has a challenge to put the URL right in his command. It would be easier for him if he could just paste the link in the prompt. If he wants to do that, he is obliged to use SSH.
 
 The procedure would be als follows:
