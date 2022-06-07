@@ -309,7 +309,7 @@ student@linux-ess:~/aFolder$ ls
 aFile  adocument.txt  aFile.backup  anotherdocument.txt  backup.txt  prodocuments.txt  profiles.backup  yaay.txt
 ```
 
-?> <i class="fa-solid fa-circle-info"></i> If rename is not installed yet you can do this with the command `sudo apt install rename`. The installation process will ask you for your password.
+?> <i class="fa-solid fa-circle-info"></i> If rename is not yet installed you can do this with the command `sudo apt -y install rename`. The installation process will ask you for your password.
 
 A lot is going on in the example above, let's summarize what is present:
 * The folder we are in contains some `txt` files, some `backup` files and files with `no extension`. Some of the files contain the word `file` that we want to replace with `document`
