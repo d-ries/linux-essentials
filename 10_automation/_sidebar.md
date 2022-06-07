@@ -11,5 +11,5 @@
 * [9 Users & permissions](./09_usersandpermissions/01_course.md)
 * [10 Automation](./10_automation/01_course.md)
 ** [Lab](./10_automation/02_lab.md)
-** [Assignments](./10_automation/99_assignments.md)
+** [Assignment](./10_automation/99_assignments.md)
 * [11 What's next](./11_next/01_course.md)
