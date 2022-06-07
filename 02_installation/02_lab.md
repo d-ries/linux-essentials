@@ -1,4 +1,4 @@
-## Lab 
+## Lab <!-- {docsify-ignore} -->
 In the following chapters Linus will install a Minecraft Server. Before he can do that, he will need to have a Linux System up and running. In this lab he will have to install a Virtualization Package on his computer and virtualize a Linux Server. With this infrastructure set up he will be able to install, configure and maintain his Minecraft Server at a later time.
 
 ### Installing VMware Workstation 
