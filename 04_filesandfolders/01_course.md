@@ -188,7 +188,7 @@ total 0
 Note that both of these files are empty as seen by the file size. In the next chapter we will look into ways to create files with contents.
 
 
-### Create files with spaces in the name
+### Files with spaces in the name
 If we want to work with files with spaces in the name we can put the name between double quotes:
 ```bash
 student@linux-ess:~$ ls -l
@@ -211,41 +211,49 @@ Note that we could also use single quotes `touch 'File Two'` or a backslash to e
 
 
 
-### Move files
-#### Move files (mv)
-To move a file to another folder we can use the `mv` (move) command. This command takes in two arguments: the source file/folder and the destination file/folder:
+### Move files (mv)
+To move a file to another folder we can use the `mv` (move) command. This command takes two arguments: the source file/folder and the destination file/folder:
 ```bash
 student@linux-ess:~$ ls
-aFile  aFolder  linuscraft  server.jar
+aFile  aFolder  server.jar
 student@linux-ess:~$ mv aFile aFolder/
 student@linux-ess:~$ ls aFolder
 aFile
 student@linux-ess:~$ ls
-aFolder  linuscraft  server.jar
+aFolder  server.jar
 ```
 
-Since the second argument is a destination file or folder, we could use this command to rename a file aswell. In the example below we use the `mv` command to move the file to the same directory but with another name:
+Since the second argument is a destination file or folder, we could use this command to rename a file as well. In the example below we use the `mv` command to move the file back to the homefolder but also renaming it:
 ```bash
-student@linux-ess:~/aFolder$ ls
+student@linux-ess:~/aFolder$ ls 
 aFile
-student@linux-ess:~/aFolder$ mv aFile newFileName
-student@linux-ess:~/aFolder$ ls
+student@linux-ess:~/aFolder$ mv aFile ../newFileName
+student@linux-ess:~/aFolder$ ls ~
 newFileName
 ```
-When renaming only one file or folder, `mv` is the prefered command to use. The examples both used files, but the same logic works for renaming and moving folders.
 
-#### Copy files (cp)
+When renaming only one file or folder, `mv` is the prefered command to use. The examples both used files, but the same logic works for renaming and moving folders.
+```bash
+student@linux-ess:~$ ls 
+newFileName  aFolder  server.jar
+student@linux-ess:~$ mv newFileName myFile 
+student@linux-ess:~$ mv aFolder myFolder 
+student@linux-ess:~$ ls
+myFile  myFolder  server.jar
+```
+
+### Copy files (cp)
 To make a copy of a file we can use the `cp` (copy) command as follows:
 ```bash
 student@linux-ess:~$ ls
-ventieldopje file12
-student@linux-ess:~$ cp ventieldopje ventieldopje.copy
+myFile  myFolder server.jar
+student@linux-ess:~$ cp server.jar serverbackup.jar
 student@linux-ess:~$ ls
-ventieldopje ventieldopje.copy file12
+myFile  myFolder server.jar  serverbackup.jar
 ```
-Both arguments are paths. The first path is the original file/folder. The second path is a path to the new location and (optional) filename/foldername. We can use the cp command to copy both files and folders.
+Both arguments are paths. The first path is the original file/folder. The second path is a path to the new location and (optional) filename/foldername. We can use the cp command to copy both files and folders to the same directory or a different directory.
 
-##### Copy to another directory
+#### Copy to another directory
 The example below shows us how we can use the arguments in the `cp` command to copy files or folders to another directory. In this example we copy the file named `file12` into the directory called `folder99` using a _relative_ path.
 ```bash
 student@linux-ess:~$ touch file12
@@ -256,7 +264,7 @@ file12
 ```
 Note that we can use both _relative_ and _absolute_ paths in the copy command for both the original file/folder and the destination file/folder.
 
-##### Copy recursive
+#### Copy recursive
 To copy complete directories (meaning all subfolders and files inside the directory) we will have to use the `-r` (recursive) option:
 ```bash
 student@linux-ess:~$ ls
@@ -268,7 +276,7 @@ student@linux-ess:~$ ls folder22/
 file12
 ```
 
-##### Overwrite files
+#### Overwrite files
 We have to be aware that the `cp` command will overwrite existing files by default. We can use the `-i` (interactive) option to get a prompt where we have to confirm if we want to overwrite the file as seen in the example below:
 ```bash
 student@linux-ess:~$ cp file12 file42
@@ -277,7 +285,7 @@ student@linux-ess:~$ cp -i file12 file42
 cp: overwrite `file42'? y
 ```
 
-#### Rename files (rename)
+### Rename files (rename)
 We saw that we could use the `mv` command to rename files and folders. This works and is often very easy but when you have to rename files in bulk you might want to consider another approach. The `rename` command is designed specifically to rename multi files and folders with one command. To do this it uses a _regular expression_ (Regex). A Regex is a sequence of characters that defines a search pattern. We will learn more about regular expressions later in this course. It uses this search pattern to make certain changes to the filenames:
 ```bash
 student@linux-ess:~/aFolder$ ls
