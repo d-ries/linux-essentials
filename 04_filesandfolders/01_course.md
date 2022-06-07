@@ -138,9 +138,9 @@ drwxr-xr-x 3 root    root    4.0K Oct  5 13:40 ..
 -rw-r--r-- 1 student student    0 Oct  6 08:20 .sudo_as_admin_successful
 -rw-r--r-- 1 student student  45M Feb 28 11:48 server.jar
 ```
-Notice how we combined 3 options in the command above. both `ls -a -l -h` and `ls -alh` will function exactly the same and will use all 3 options. These 3 option are often the most used ones when it comes to the `ls` command. You could look them up in the manpage but we will give an overview:
-* the `-a` option will show hidden files and folders. **In Linux, hidden files and folders start with a `.` sign. eg. the `.bashrc` file.**
-* the `-l` option will show a _longlisting_. This means that it will show all the extra output\* and not just the file and folder names.
+Notice how we combined 3 options in the command above. Both `ls -a -l -h` and `ls -alh` will function exactly the same and will use all 3 options. The options can be put in any order, so `ls -hal` is also correct. These 3 option are often the most used ones when it comes to the `ls` command. You could look them up in the manpage but we will give an overview:
+* the `-a` option will show hidden files and folders. **In Linux, hidden files and folders start with a `.` dot. eg. the `.bashrc` file.**
+* the `-l` option will show a _long listing_. This means that it will show all the extra output\* and not just the file and folder names.
 * the `-h` option refers to _human readable sizes_ and will make filesizes appear with the proper measuring unit rather than showing all sizes in bytes.
 
 \* The `-rw-r--r-- 1` column refers to permissions on that specific file/folder. We will explain this in the chapter `users & permissions`. The column containing `student  student` refer to the owner of that specific file/folder and are linked to the permission column. The `45M` on the last line refer to the file size and  `Feb 28 11:48` refers to the timestamp of the last modification of the file.
@@ -153,27 +153,27 @@ To create new directories we can use the `mkdir` (make directory) command. The c
 student@linux-ess:~$ mkdir backups
 student@linux-ess:~$ ls
 backups
+server.jar
 ```
 In the example above the `mkdir` command will create a folder named `backups` in the current working directory (`~` or `/home/student`). The folder name here is a _relative path_. 
 
 #### paths with subdirectories
 When using _relative_ or _absolute_ paths we could do the following:
 ```bash
-student@linux-ess:~$ mkdir mydir2/mysubdir2/threedirsdeep
-mkdir: cannot create directory ‘mydir2/mysubdir2/threedirsdeep’: No such fi\
-le or directory
+student@linux-ess:~$ mkdir backups/Steam/games/PayDay2
+mkdir: cannot create directory ‘backups/Steam/games/PayDay2’: No such file or directory
 ```
-The command tries to make a folder named `threedirsdeep` in the folder `mysubdir2` which is located in the folder `mydir2`. However we get an error because the folder `mydir2` or `mysubdir2` does not exist. We can tell to make any missing subfolders in the path by using the `-p` option:
+The command tries to make a folder named `PayDay2` in the folder `games` which is located in the folder `Steam` which is located in the folder `Backups`. However we get an error because the folders `games` or `Steam` do not exist. We can tell to create any missing subfolders in the path by using the `-p` option:
 ```
-student@linux-ess:~$ mkdir -p mydir2/mysbudir2/threedirsdeep
+student@linux-ess:~$ mkdir -p backups/Steam/games/PayDay2
 ```
-This will create the folders `mydir2` and `mysubdir2` if they don't exist.
+This will create the folders `Steam` and `games` if they don't exist.
 
-?> <i class="fa-solid fa-circle-info"></i> As mentioned earlier everything in Linux is case sensitive. This is also applicable when creating files and folders. Try running the command `mkdir abc ABC`. This will create 2 folders: one with tne name `abc` and one with the name `ABC`.
+?> <i class="fa-solid fa-circle-info"></i> As mentioned earlier everything in Linux is case sensitive. This is also applicable when creating files and folders. Try running the command `mkdir walkthroughs Walkthroughs`. This will create 2 folders: one with the name `walkthroughs` and one with the name `Walkthroughs`.
 
 ## Working with files
 ### Create an empty file (touch)
-One easy way to create an empty file is with touch. The example starts with an empty directory, creates two files with touch and the lists
+One easy way to create an empty file is with touch. The example starts with an empty directory, creates two files with touch and then lists
 those files:
 ```bash
 student@linux-ess:~$ ls -l
@@ -186,6 +186,30 @@ total 0
 -rw-r--r-- 1 student student 0 Feb 12 09:50 fileTwo
 ```
 Note that both of these files are empty as seen by the file size. In the next chapter we will look into ways to create files with contents.
+
+
+### Create files with spaces in the name
+If we want to work with files with spaces in the name we can put the name between double quotes:
+```bash
+student@linux-ess:~$ ls -l
+total 0
+student@linux-ess:~$ touch File One
+student@linux-ess:~$ ls -l
+total 0
+-rw-r--r-- 1 student student 0 Feb 12 09:50 File
+-rw-r--r-- 1 student student 0 Feb 12 09:50 One
+student@linux-ess:~$ touch "File Two"
+student@linux-ess:~$ ls -l
+total 0
+-rw-r--r-- 1 student student 0 Feb 12 09:50 File
+-rw-r--r-- 1 student student 0 Feb 12 09:50 File Two
+-rw-r--r-- 1 student student 0 Feb 12 09:50 One
+
+```
+Note that we could also use single quotes `touch 'File Two'` or a backslash to escape the space `touch File\ Two".
+
+
+
 
 ### Move files
 #### Move files (mv)
