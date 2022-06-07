@@ -206,7 +206,7 @@ total 0
 -rw-r--r-- 1 student student 0 Feb 12 09:50 One
 
 ```
-Note that we could also use single quotes `touch 'File Two'` or a backslash to escape the space `touch File\ Two".
+Note that we could also use single quotes `touch 'File Two'` or a backslash to escape the space `touch File\ Two`.
 
 
 
