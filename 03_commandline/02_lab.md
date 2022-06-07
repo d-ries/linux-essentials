@@ -1,7 +1,12 @@
 # Lab <!-- {docsify-ignore} -->
+
+## Finding the Minecraft Java Server Download URL 
+
 On the [minecraft server website](https://www.minecraft.net/en-us/download/server) we see a link that points to a java file to host a minecraft server on Linux :
 
 ![CLI_LAB_Download_Minecraft_Java_Edition_Server](../images/03/CLI_LAB_Download_Minecraft_Java_Edition_Server.png)
+
+## Finding a download tool
 
 Linus needs to download this file to his server in some way. He needs to find a command that allows him to download files.
 
@@ -74,6 +79,9 @@ OPTIONS
 
 ```
 He can navigate the manpage using the arrow keys on the keyboard. After reading through the manpage he closes it by pressing the `q` key on his keyboard. Using the info in the manpage, Linus figures out how to use the direct url to the file to download the `server.jar` file to his Linux server:
+
+## Downloading the file from within the server console
+
 ```bash
 wget https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a77469/server.jar
 ```
@@ -84,7 +92,9 @@ The download is succesfull! Linus sees the message `server.jar saved`, but he ha
 
 ?>We see that Linus has a challenge to put the URL right in his command. It would be easier for him if he could just paste the link in the prompt. If he wants to do that, he is obliged to use SSH.
 
-The procedure would be als follows:
+## Downloading the file from a SSH connection
+
+The procedure via SSH would be als follows:
 
 *First we need to get the IP adres of the server. We type `ip a` and look for the IP address of our network interface (ens33)
 ```bash
