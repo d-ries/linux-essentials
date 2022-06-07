@@ -64,51 +64,63 @@ As described earlier we will use the distro Ubuntu. After creating and booting t
 ?> <i class="fa-solid fa-circle-info"></i> Does booting the VM result in the error `This host supports Intel VT-x, but Intel VT-x is diabled`? You will have to activate the VT-X option in the BIOS of your laptop. More information can be found in [this article](https://www.qtithow.com/2020/12/fix-error-this-host-supports-Intel-VT-x.html).
 
 
-We start by selecting the laguage. We choose English:
+We make the choice to Try or Install:
 
-![ubuntu 1](../images/02/server1.PNG)
+![Ubuntu_Server_Try_Or_Install](../images/02/Ubuntu_Server_Try_Or_Install.png)
+
+We start the installation process by selecting the laguage. We choose English:
+
+![Ubuntu_Server_Language](../images/02/Ubuntu_Server_Language.png)
 
 We skip the installer update:
 
-![ubuntu 2](../images/02/server2.PNG)
+![Ubuntu_Server_No_Installer_Update](../images/02/Ubuntu_Server_No_Installer_Update.png)
 
 Choose the correct keyboard layout. For `azerty` select `Belgian`:
 
-![ubuntu 3](../images/02/server3.PNG)
+![Ubuntu_Server_Keyboard_Belgian](../images/02/Ubuntu_Server_Keyboard_Belgian.png)
 
-In the next 5 steps we dont make any changes and we just select `done`:
+In the next 7 steps we dont make any changes :
 
-![ubuntu 4](../images/02/server4.PNG)
+![Ubuntu_Server_Base_For_The_Installation](../images/02/Ubuntu_Server_Base_For_The_Installation.png)
 
-![ubuntu 5](../images/02/server5.PNG)
+![Ubuntu_Server_Network_Connections](../images/02/Ubuntu_Server_Network_Connections.png)
 
-![ubuntu 6](../images/02/server6.PNG)
+![Ubuntu_Server_Proxy_Settings](../images/02/Ubuntu_Server_Proxy_Settings.png)
 
-![ubuntu 7](../images/02/server7.PNG)
+![Ubuntu_Server_Archive_Mirror](../images/02/Ubuntu_Server_Archive_Mirror.png)
 
-![ubuntu 8](../images/02/server8.PNG)
+![Ubuntu_Server_Storage_Config](../images/02/Ubuntu_Server_Storage_Config.png)
+
+![Ubuntu_Server_Storage_Config_Overview](../images/02/Ubuntu_Server_Storage_Config_Overview.png)
+
+![Ubuntu_Server_Storage_Config_Overview_Confirmation](../images/02/Ubuntu_Server_Storage_Config_Overview_Confirmation.png)
 
 Next up we create a user account that we use to login to the operating system. We use following credentials:
 ```
 username: student
-server name: linux-essentials
+server name: linux-ess
 password: pxl
 ```
 
-![ubuntu 9](../images/02/server9.PNG)
+![Ubuntu_Server_Storage_Username_student_Servername_linux-ess](../images/02/Ubuntu_Server_Storage_Username_student_Servername_linux-ess.PNG)
 
 We make no changes in the next 2 steps. We just select `done`:
 
-![ubuntu 10](../images/02/server10.PNG)
+![Ubuntu_Server_Storage_SSH](../images/02/Ubuntu_Server_Storage_SSH.png)
 
-![ubuntu 11](../images/02/server11.PNG)
+![Ubuntu_Server_Storage_Featured_Server_Snaps](../images/02/Ubuntu_Server_Storage_Featured_Server_Snaps.png)
 
 The operating system will be installed and configured. After a while the `Reboot now` option will appear. This indicates that the installation is complete:
-![ubuntu 12](../images/02/server12.PNG)
+![Ubuntu_Server_Reboot](../images/02/Ubuntu_Server_Reboot.png)
 
-Shutdown the virtual machine and go to the settings screen. In the `CD/DVD (SATA) ` settings screen you select the option `use physical drive`. This makes sure that the virtual machine does no longer use the installation ISO.
+During the Reboot process you will have to press the <enter> key on your keyboard :
 
-![VMWare](../images/02/vmware5.PNG)
+![Ubuntu_Server_Press_Enter_To_Reboot](../images/02/Ubuntu_Server_Press_Enter_To_Reboot.png)
+
+Once the server is rebooted, you will have to press the <enter> key again to see the login prompt.
+
+![Ubuntu_Server_Press_Enter_To_See_Login](../images/02/Ubuntu_Server_Press_Enter_To_See_Login.png)
 
 All of these steps can also be viewed in the video below:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/u8WLsyMuSgw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
