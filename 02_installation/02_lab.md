@@ -54,4 +54,4 @@ _VM/Snapshot/Take Snapshot..._
 
 ?> <i class="fa-solid fa-circle-info"></i> At a later time you can always go back to this savepoint in time with:
 
-__VM/Snapshot/Revert to Snapshot...__
+_VM/Snapshot/Revert to Snapshot..._
