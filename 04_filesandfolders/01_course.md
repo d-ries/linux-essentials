@@ -100,29 +100,34 @@ student@linux-ess:/home/teacher$ pwd
 
 ### Listing directory contents (ls)
 
-To list the contents of the current working directory, we can use the `ls` command. Using the command without any options or arguements will list de contents of the current working directory:
+To list the contents of a directory, we can use the `ls` command. Using the command without any options or arguments will list de contents of the current working directory:
 ```bash
 student@linux-ess:~$ ls
 server.jar
+```
 
-student@linux-ess:/$ ls # In this example we use the root directory as the working directory
+We can also go in a certain directory to list its contents:
+```bash
+student@linux-ess:~$ cd /
+student@linux-ess:/$ ls     
 bin   dev  home  lib    lib64   lost+found  mnt  proc  run   snap  sys  usr
 boot  etc  init  lib32  libx32  media       opt  root  sbin  srv   tmp  var
 ```
 
 
 The `ls` command can also take one argument. This argument is a path which can be absolute or relative. The `ls` command will then show the contents of this folder.
-
-Both these commands will give the same output:
 ```bash
 student@linux-essentials:~$ ls
 server.jar
-student@linux-essentials:~$ ls /home/student
-server.jar
+student@linux-essentials:~$ ls /
+bin   dev  home  lib    lib64   lost+found  mnt  proc  run   snap  sys  usr
+boot  etc  init  lib32  libx32  media       opt  root  sbin  srv   tmp  var
+student@linux-essentials:~$ 
 ```
-The `ls` command has different options aswell. The options can be found in the manpage using `man ls`. For example:
+
+The `ls` command has different options as well. The options can be found in the manpage using `man ls`. For example:
 ```bash
-student@linux-ess:~$ ls -alh . # The dot sign refers to the current directory, which in this case would be optional
+student@linux-ess:~$ ls -alh .       # The dot sign refers to the current directory, which in this case would be optional
 total 45M
 drwxr-xr-x 5 student student 4.0K Mar 27 16:36 .
 drwxr-xr-x 3 root    root    4.0K Oct  5 13:40 ..
