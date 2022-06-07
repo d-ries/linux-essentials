@@ -3,25 +3,42 @@ In the previous chapter Linus downloaded a `server.jar` file but he is confused 
 
 ## Finding the server.jar file
 
-Before doing anything else, Linus really wants to find his `server.jar` file that he just downloaded in the previous chapter. Using the `man -k directory` command he finds out that there are all kinds of commands available to work with directories. The first command that Linus checks out is the `pwd` command:
-```
+Before doing anything else, Linus really wants to find his `server.jar` file that he just downloaded in the previous chapter. Using the `apropos directory` command he finds out that there are all kinds of commands available to work with directories. The first command that Linus checks out is the `pwd` command:
+
+```bash
+student@linux-ess:~$ apropos directory
+...
+ls (1)               - list directory contents
+...
 pwd - print name of current/working directory
+...
 ```
+
 After running this command, Linus indeed sees the working directory that he is in:
+
 ```bash
 student@linux-ess:~$ pwd
 /home/student
 ```
-Linu sran the `wget` command his his homefolder (`~` or `/home/student`), so he is certain that this is where the `server.jar` file has to be. Using the manpages he learns about the `ls` command which should list a directories contents:
+
+Linus ran the `wget` command in his homefolder (`~` or `/home/student`), so he is certain that this is where the `server.jar` file has to be. Using the manpages he learns about the `ls` command which should list the contents of a directory:
+
 ```bash
 student@linux-ess:~$ ls
 server.jar
 ```
+
 His findings are confirmed as we can see in the output above that the `server.jar` file is indeed located in the current working directory `/home/student`. To check if the download was successful he decides that he wants to check the file size. Using the `man ls` command he tries to look for an _option_ that allows him to view file sizes:
+
+```bash
+student@linux-ess:~$ man ls
+```
+
 ```bash
 student@linux-ess:~$ ls -lh
 -rw-r--r-- 1 student student  45M Feb 28 11:48 server.jar
 ```
+
 To find out the file size of the file he combines the options `-l` and `-h`.  Now Linus knows the `server.jar` file is 45MB and was last changed on 28 feb at 11:48.
 
 ## Create a folder structure 
