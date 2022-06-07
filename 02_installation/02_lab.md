@@ -44,7 +44,7 @@ Being able to roll back to this point will be a time saver, because otherwise he
 
 `Take a snapshot of the Ubuntu Server VM, named "Clean Install"` as follows:
 
-**VM/Snapshot/Take Snapshot...
+_VM/Snapshot/Take Snapshot..._
  
 
 ![Installation_LAB_Take_Snapshot](../images/02/Installation_LAB_Take_Snapshot.png)
@@ -54,4 +54,4 @@ Being able to roll back to this point will be a time saver, because otherwise he
 
 ?> <i class="fa-solid fa-circle-info"></i> At a later time you can always go back to this savepoint in time with:
 
-**VM/Snapshot/Revert to Snapshot...
+__VM/Snapshot/Revert to Snapshot...__
