@@ -49,24 +49,27 @@ When using commands we often have to use paths to certain folders/files. The `cd
 Paths are used to point towards files and folders on the filesystem. We can use two types of paths: _relative_ and _absolute_ paths. Both types work in both Linux and Windows.
 
 #### Absolute path
-Absolute paths must start with a `/` sign. This means that an absolute path will start from the _root_ (`/`) .directory (the highest level on the filesystem) and will work his way down. For example:
+Absolute paths must start with a `/` sign. This means that an absolute path will start from the _root_ (`/`) directory (the highest level on the filesystem) and will work its way down. For example:
 ```bash
-student@linux-ess:/opt/$ cd /home/student/linuscraft
-student@linux-ess:~/linuscraft$
+student@linux-ess:/etc$ pwd
+/etc
+student@linux-ess:/etc$ cd /home/student/
+student@linux-ess:~/$pwd
+/home/student
 ```
 ?> <i class="fa-solid fa-circle-info"></i> In Windows an absolute path will start with `C:\` rather than `/`!
 
 
-?> <i class="fa-solid fa-circle-info"></i> Did you know the Linux CLI has command and pathc ompletion? Try pressing the `tab` key when typing part of a command or folder name. If any command, file or folder matches the first part of the text you typed it will automaticly complete the word for you!
+?> <i class="fa-solid fa-circle-info"></i> Did you know the Linux CLI has command and pathcompletion? Try pressing the `tab` key when typing part of a command or folder name. If any command, file or folder matches the first part of the text you typed it will automatically complete the word for you!
 
 #### Relative path
 A relative path will always start from _the current working directory_ and will point to another file or folder from there. For example:
 ```bash
 student@linux-ess:~$ pwd
 /home/student
-student@linux-ess:~$ cd Downloads/testfolder
-student@linux-ess:~/Downloads/testfolder$ pwd
-/home/student/Downloads/testfolder
+student@linux-ess:~$ cd Downloads/Steam/games
+student@linux-ess:~/Downloads/Steam/games$ pwd
+/home/student/Downloads/Steam/games
 ```
 When using relative paths, we can use some shortcuts:
 ```
@@ -74,22 +77,24 @@ When using relative paths, we can use some shortcuts:
 ..(two dots): Refers to the parent directory 
 ~ (tilde): Refers to the current user's homefolder
 ```
-This means that, when in the folder `/home/student/abc`, we could use `..` to navigate to the parent directory `/home/student`:
+This means that, when in the folder `/home/student/Downloads`, we could use `..` to navigate to the parent directory `/home/student`:
 ```bash
-student@linux-ess:~/abc$ pwd
-/home/student/abc
-student@linux-ess:~/abc$ cd ..
+student@linux-ess:~/Downloads$ pwd
+/home/student/Downloads
+student@linux-ess:~/Downloads$ cd ..
 student@linux-ess:~$ pwd
 /home/student
 ```
 We could integrate these shortcuts in relative paths aswell:
 ```bash
-student@linux-ess:~$ cd /home/student/abc # Absolute path
-student@linux-ess:~/abc$ pwd
-/home/student/abc
-student@linux-ess:~/abc$ cd ../../bob # Relative path
-student@linux-ess:/home/bob$ pwd
-/home/bob
+student@linux-ess:/etc$ pwd
+/etc
+student@linux-ess:/etc$ cd /home/student/Downloads # Absolute path
+student@linux-ess:~/Downloads$ pwd
+/home/student/Downloads
+student@linux-ess:~/abc$ cd ../../teacher # Relative path
+student@linux-ess:/home/teacher$ pwd
+/home/teacher
 ```
 ?> <i class="fa-solid fa-circle-info"></i> A number sign `#` tells the shell that everything behind it is considered a comment and will not be interpreted as a command or argument!
 
