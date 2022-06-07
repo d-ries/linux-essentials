@@ -85,14 +85,14 @@ student@linux-ess:~/Downloads$ cd ..
 student@linux-ess:~$ pwd
 /home/student
 ```
-We could integrate these shortcuts in relative paths aswell:
+We could integrate these shortcuts in relative paths as well:
 ```bash
 student@linux-ess:/etc$ pwd
 /etc
 student@linux-ess:/etc$ cd /home/student/Downloads # Absolute path
 student@linux-ess:~/Downloads$ pwd
 /home/student/Downloads
-student@linux-ess:~/abc$ cd ../../teacher # Relative path
+student@linux-ess:~/Downloads$ cd ../../teacher # Relative path
 student@linux-ess:/home/teacher$ pwd
 /home/teacher
 ```
