@@ -308,8 +308,11 @@ student@linux-ess:~/aFolder$ rename 's/file/document/' *.txt
 student@linux-ess:~/aFolder$ ls
 aFile  adocument.txt  aFile.backup  anotherdocument.txt  backup.txt  prodocuments.txt  profiles.backup  yaay.txt
 ```
-Alot is going on in the example above, lets summarize what is present:
-* The folder that we are in contains some `txt` files and one `backup` file. Some of the files contain the word `file` that we want to replace with `document`
+
+?> <i class="fa-solid fa-circle-info"></i> If rename is not installed yet you can do this with the command `sudo apt install rename`. The installation process will ask you for your password.
+
+A lot is going on in the example above, let's summarize what is present:
+* The folder we are in contains some `txt` files, some `backup` files and files with `no extension`. Some of the files contain the word `file` that we want to replace with `document`
 * the `rename` command takes in a _string_ with the value `s/file/document/`. This is the _regex_ that is being used by the command to search (`s`)for names containing the word `file` and replace it with the word `document`.
 * the last argument is `.txt`. We use this to tell the `rename` command to only run the replacement regex on files ending in `.txt`
 
