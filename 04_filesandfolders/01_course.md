@@ -348,9 +348,9 @@ student@linux-ess:~$ rm sampleFile
 student@linux-ess:~$ ls
 moreStuff
 ```
-The `rm` command has different options aswell, the most used combination is `rm -rf`:
+The `rm` command has different options as well, the most used combination is `rm -rf`:
 * `-r` will mean it will remove files & folders recursive
-* `-f` will force the command to remove non-empty directories aswell. Something that wont happen out of the box.
+* `-f` will force the command to remove non-empty directories as well. Something that wont happen out of the box.
 ```bash
 student@linux-ess:~$ ls
 myFolder fileAbc

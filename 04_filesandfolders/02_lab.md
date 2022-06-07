@@ -76,7 +76,7 @@ Next up he creates some additional files with the following command:
 student@linux-ess:~$  touch linuscraft/contact.txt linuscraft/backuplog.txt
 ```
 
-He wants to create a hidden file to store important information aswell:
+He wants to create a hidden file to store important information as well:
 ```bash
 student@linux-ess:~$ touch /home/dries/linuscraft/.important
 ```

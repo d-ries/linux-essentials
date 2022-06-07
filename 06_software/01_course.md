@@ -3,7 +3,7 @@ In Windows we have several options to install software. We usually use installer
 
 Remember that latest hyped video game that you preordered and turned out to be a total bust? When installing that game it might prompt you saying/asking that you need to install the lastest version of DirectX or Visual C++ Redistributable? These are other pieces of software that are needed to run the initial application or game. We call these pieces of software _dependencies_. Sometimes the original installer install this for us but sometimes we have to manually find and install these dependencies ourselves.
 
-Installing software on Linux systems hasn't always been easy . Back in the day we had to download source code and compile applications ourselves, put them in the right folders and make sure we have all the needed dependencies to run the application.  We might come across this process in the present day, but most of the time we are gonna install software using _package managers_. This is a tool that runs through a database to find the application that we want to install. If it finds an application matching our name it will install the application aswell as all the needed dependencies. Another benefit is that the package manager will also manage updates of all our applications and dependencies.
+Installing software on Linux systems hasn't always been easy . Back in the day we had to download source code and compile applications ourselves, put them in the right folders and make sure we have all the needed dependencies to run the application.  We might come across this process in the present day, but most of the time we are gonna install software using _package managers_. This is a tool that runs through a database to find the application that we want to install. If it finds an application matching our name it will install the application as well as all the needed dependencies. Another benefit is that the package manager will also manage updates of all our applications and dependencies.
 
 
 
@@ -147,7 +147,7 @@ Processing triggers for man-db (2.9.1-1) ...
  ```
  Notice how it doesn't automatically remove the dependencies we talked about earlier. This is because there might be other packages that require this dependency. We can use the `sudo apt autoremove` command to remove unused dependencies.
 
- We also have a somewhat more agressive command to remove packages: `sudo apt purge <packagename>`. The difference between `remove` and `purge` is that when using `purge` it will remove any config files linked to that application aswell. When using `remove` those config files will stay on the system.
+ We also have a somewhat more agressive command to remove packages: `sudo apt purge <packagename>`. The difference between `remove` and `purge` is that when using `purge` it will remove any config files linked to that application as well. When using `remove` those config files will stay on the system.
 
 ?> <i class="fa-solid fa-circle-info"></i> To get a list of installed software packages we can use `apt list`. Warning: this list can be very very long!
 
@@ -169,7 +169,7 @@ student@linux-ess:~/tarexample$ tar -xzf app.tar.gz -C ./app
 student@linux-ess:~/tarexample$ ls
 app  app.tar.gz  docs  docs.tar
 ```
-The options we use can be found in the manpage, but we'll give a slight overview here aswell
+The options we use can be found in the manpage, but we'll give a slight overview here as well
 * `-x`: Stands for extract, this will unpack all the contents of the file.
 * `-f`: Stands for file. This uses the argument after the options as the path of the archive we want to extract.
 * `-z`: This makes sure we run the file through `gzip`, another archive tool. The extention `tar.gz` hints that it is processed through `gzip`.

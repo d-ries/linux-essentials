@@ -124,7 +124,7 @@ lib32
 lib64
 libx32
 ```
-The `1>` means we redirect stream `1` to the file `listrootfolder`. Stream `1` refers to the `stdout` stream. Note that in this case the number `1` is optional, so the command below will work aswell:
+The `1>` means we redirect stream `1` to the file `listrootfolder`. Stream `1` refers to the `stdout` stream. Note that in this case the number `1` is optional, so the command below will work as well:
 ```bash
 student@linux-ess:~$ ls / >listrootfolder
 ```
@@ -196,7 +196,7 @@ Try: sudo apt install <deb name>
 second
 ```
 
-We can combine both operators aswell to simulate an _if-then-else_ like structure as follows:
+We can combine both operators as well to simulate an _if-then-else_ like structure as follows:
 ```bash
 student@linux-ess:~$ touch testfile
 student@linux-ess:~$ rm testfile && echo file deleted || echo failed to delete
