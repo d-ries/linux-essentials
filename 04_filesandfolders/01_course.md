@@ -17,7 +17,7 @@ In Windows, an _absolute path_ starts with `C:\...`. In Linux we do not use Driv
 
 The folder `student` is our current working directory. This folder is a subfolder of the folder `home` which on his turn is a subfolder of the _root directory_ `/`.
 
-![homefolder](../images/04/homefolder-struct.png)
+![DirectoryHierarchy](../images/04/DirectoryHierarchy.png)
 
 ?> <i class="fa-solid fa-circle-info"></i> Remember the prompt which contained an active path? The `~` sign was an abbreviation for the folder `/home/student`. This is called the _homefolder_. Every user on the operating system will get their own _homefolder_ in the folder `/home` just like in Windows, where every user has his own folder under `C:\Users`. This user has all permissions (read, write, execute) in his own homefolder. Outside of that folder he often only has _read_ permissions.
 
