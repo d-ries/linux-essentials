@@ -78,3 +78,33 @@ He can navigate the manpage using the arrow keys on the keyboard. After reading 
 wget https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a77469/server.jar
 ```
 The download is succesfull! Linus sees the message `server.jar saved`, but he has no clue where this file is located or how he can run this file. In the next chapter we will explore how files & folders in Linux work.
+
+?>We see that Linus has a challenge to put the URL right in his command. It would be easier for him if he could just paste the link in the prompt. If he wants to do that, he is obliged to use SSH.
+
+The procedure would be als follows:
+
+*First we need to get the IP adres of the server. We type `ip a` and look for the IP address of our network interface (ens33)
+```bash
+ip a
+```
+
+![CLI_LAB_ip_a](../images/03/CLI_LAB_ip_a.png)
+
+*Second we need to open Powershell on the Desktop and make a ssh-connection to the server. We are now working on the server from our desktop. Cool, isn't it?
+```bash
+ssh student@<server-ip>
+```
+
+![CLI_LAB_Powershell_SSH](../images/03/CLI_LAB_Powershell_SSH.png)
+
+*Third we can go to the website with the Minecraft Java Server url, rightclick on it and choose to copy the url. We can now paste the url with a rightclick after wehave type `wget`
+```bash
+wget <url>
+```
+
+![CLI_LAB_Copy_Link_Address](../images/03/CLI_LAB_Copy_Link_Address.png)
+
+![CLI_LAB_Powershell_Wget](../images/03/CLI_LAB_Powershell_Wget.png)
+
+
+?>You can choose to stay working on your desktop or go back to your VM in the interface of VMware Workstation.
