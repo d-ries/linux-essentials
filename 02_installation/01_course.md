@@ -103,7 +103,7 @@ server name: linux-ess
 password: pxl
 ```
 
-![Ubuntu_Server_Storage_Username_student_Servername_linux-ess](../images/02/Ubuntu_Server_Storage_Username_student_Servername_linux-ess.PNG)
+![Ubuntu_Server_Storage_Username_student_Servername_linux-ess](../images/02/Ubuntu_Server_Storage_Username_student_Servername_linux-ess.png)
 
 We make no changes in the next 2 steps. We just select `done`:
 
