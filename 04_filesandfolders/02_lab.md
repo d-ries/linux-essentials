@@ -10,7 +10,7 @@ student@linux-ess:~$ apropos directory
 ...
 ls (1)               - list directory contents
 ...
-pwd - print name of current/working directory
+pwd (1) - print name of current/working directory
 ...
 ```
 
@@ -43,26 +43,33 @@ To find out the file size of the file he combines the options `-l` and `-h`.  No
 
 ## Create a folder structure 
 Linus wants a clean folder structure for his _LinusCraft_ project. In his homefolder he would like to create a folder with the name `linuscraft`. To do this he found the `mkdir` command using the manpages.
+
 ```bash
-mkdir linuscraft
+student@linux-ess:~$ mkdir linuscraft
 ```
+
 After creating the `linuscraft` folder he wants to create a folder `serverfiles` inside that folder. To do this he can use one of the 2 options below:
+
 1. By using the `cd` command:
 ```bash
 student@linux-ess:~$ cd linuscraft
 student@linux-ess:~/linuscraft$ mkdir serverfiles
 ```
-2. By using the mkdir command directly using a relative path:
+
+2. By using the mkdir command directly from his homefolder using a relative path:
 ```bash
 student@linux-essentials:~$ mkdir linuscraft/serverfiles
 ```
+
 He checks if the folder is created correctly by navigating to that folder using an absolute path:
 ```bash
-student@linux-essentials:~/linuscraft$ cd /home/student/linuscraft/serverfiles
-student@linux-essentials:~/linuscraft/serverfiles$ pwd
+student@linux-ess:~/linuscraft$ cd /home/student/linuscraft/serverfiles
+student@linux-ess:~/linuscraft/serverfiles$ pwd
 /home/student/linuscraft/serverfiles
 ```
+
 ?> Exercise: Can you navigate to the serverfiles folder using a relative path starting from your homefolder?
+
 
 He would also like a folder `administration` inside the `linuscraft` folder. While using the folder `serverfiles` as the working directory, he creates this folder using a relative path:
 ```bash
