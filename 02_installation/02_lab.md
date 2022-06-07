@@ -40,6 +40,7 @@ Before doing anything else, Linus needs to have a savepoint in time. If, at a la
 Being able to roll back to this point will be a time saver, because otherwise he will need to install the Linux system again from scratch.
 `Take a snapshot of the Ubuntu Server VM, named "Clean Install"` as follows:
 **VM/Snapshot/Take Snapshot...
+ 
 
 ![Installation_LAB_Take_Snapshot](../images/02/Installation_LAB_Take_Snapshot.png)
 
