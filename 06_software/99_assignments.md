@@ -1,1 +1,1 @@
-# Assignments CH6
+# Assignment CH6
