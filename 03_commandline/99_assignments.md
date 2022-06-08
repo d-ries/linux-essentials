@@ -1,4 +1,4 @@
-# Assignments CH3
+# Assignment CH3
 ## Task 1
 Make use of the command `man` to figure out what the commando `man -f` does and with what other command it can be replaced
 
