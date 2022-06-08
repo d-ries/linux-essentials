@@ -1,4 +1,4 @@
-# Homework Assignments CH1
+# Homework Assignment CH1
 ## Task 1
 Read all the documents linked in this chapter
 
