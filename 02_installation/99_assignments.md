@@ -1,4 +1,4 @@
-# Assignments CH2
+# Assignment CH2
 ## Task 1
 Linux also has a desktop version. Download and install [Ubuntu Desktop](https://ubuntu.com/download/desktop) in a new virtual machine and explore the interface.
 
