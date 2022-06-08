@@ -9,7 +9,8 @@
 
 ## MineCraft Server in the Cloud
 
-&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;
+&nbsp;
 
 ## System processes & systemd
 
