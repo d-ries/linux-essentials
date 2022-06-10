@@ -5,12 +5,8 @@ Remember that latest hyped video game that you preordered and turned out to be a
 
 Installing software on Linux systems hasn't always been easy . Back in the day we had to download source code and compile applications ourselves, put them in the right folders and make sure we have all the needed dependencies to run the application.  We might come across this process in the present day, but most of the time we are gonna install software using _package managers_. This is a tool that runs through a database to find the application that we want to install. If it finds an application matching our name it will install the application as well as all the needed dependencies. Another benefit is that the package manager will also manage updates of all our applications and dependencies.
 
-
-
 ## installing, removing and updating software (apt)
-
-`apt` (advanced package system)
-
+When installing software packages in Ubuntu we often use the `apt` (advanced package system) command. The man page gives us all the info we need to use this command:
 ```bash
 student@linux-ess:~$ man apt
 APT(8)                                                   APT                                                   APT(8)
@@ -30,8 +26,6 @@ DESCRIPTION
 ```
 
 As described above `apt` (or `apt-get`) is a package manager. We can use this tool to install packages (read: software) on our Linux machine. Note that `apt` is the specific package manager for Ubuntu. There are several alternatives available such as `dpkg`, `pacman`, `rpm`, `yum`, ... which usually come pre-installed with your linux distribution.
-
-?> <i class="fa-solid fa-circle-info"></i> TODO: snap
 
 ### Repositories
 An important thing to note about `apt` is that it uses a database of available packages. We can update this list of packages by running the command below:
@@ -169,10 +163,19 @@ student@linux-ess:~/tarexample$ tar -xzf app.tar.gz -C ./app
 student@linux-ess:~/tarexample$ ls
 app  app.tar.gz  docs  docs.tar
 ```
-The options we use can be found in the manpage, but we'll give a slight overview here as well
+The options we use can be found in the manpage, but below you can find a small summary of the most important ones: 
 * `-x`: Stands for extract, this will unpack all the contents of the file.
 * `-f`: Stands for file. This uses the argument after the options as the path of the archive we want to extract.
 * `-z`: This makes sure we run the file through `gzip`, another archive tool. The extention `tar.gz` hints that it is processed through `gzip`.
 * `-C`: This changes the directory before extracting to the path supplied as an argument. This means the contents will be extracted in this folder.
 
 ## dpkg
+`dpkg` is package manager for Debian-based systems. Where Ubuntu uses `apt` as the default package manager, we can also use `dpkg`. We can use `dpkg` to install / remove / ... `.deb` files. The example below installs the package `yourpackage`:
+```bash
+student@linux-ess:~$ sudo dpkg -i yourpackage.deb
+```` 
+
+`dpkg` can also be used to (re)configure particular packages. We can use this for example to change the keyboard layout on our server by running:
+```bash
+student@linux-ess:~$ sudo dpkg-reconfigure keyboard-configuration
+```

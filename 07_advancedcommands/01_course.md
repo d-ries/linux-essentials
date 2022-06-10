@@ -2,7 +2,7 @@
 
 ## shell expansion
 
-example white space removal
+#TODO: example white space removal
 
 ### Single and double quotes
 
