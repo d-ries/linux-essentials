@@ -12,26 +12,26 @@ wget https://d-ries.github.io/linux-essentials/data/auth.log
 A pipe (`|`) is a specific symbol that we can use to link commands together. The pipe symbol will take the `stdout` from the first command and fowards it to the `stdin` from the next command:
  ```bash
 student@linux-ess:~$ head -3 auth.log | tail -2 auth.log
-Jun 19 22:43:23 linux-ess: Failed password for: johndoe from 85.245.107.42 port 22834 ssh2: RSA SHA256:eoKmezlE3iOp38Djwk0jK
-Jun 22 08:04:00 linux-ess: Accepted password for: johndoe from 192.168.0.99 port 38299 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
 ```
 The example above will run the `head -3` command which will take the first 3 lines of the file `auth.log`. The output containing the first 3 lines of the file will then be used as input for the `tail -2` command which results in taking the bottom 2 lines of the first 3 lines of the file `auth.log`.
 
 You can use as many pipes as you want in a command. They will just keep passing the output of the previous command to the next command and so on:
 ```bash
 student@linux-ess:~$ cat auth.log | head | tail -3 | tail -2 | head -1
-Jun 14 14:14:12 linux-ess: Accepted publickey for: student from 85.245.107.42 port 48298 ssh2: RSA SHA256:Keo89erjOEkmo9erjkDw
+Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
 ```
 
 ### Write to file (tee)
 Sometimes you want to temporary write te result to a seperate file while continuing to work with pipes to get a certain end result. This command will forward the `stdin` to the `stdout` and it will aslo forward `stdin` towards a file provided as an argument:
 ```bash
 student@linux-ess:~$ tail -3 auth.log | tee temp_log | tail -1
-Jun 22 08:04:00 linux-ess: Accepted password for: johndoe from 192.168.0.99 port 38299 ssh2
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
 student@linux-ess:~$ cat temp_log
-Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
-Jun 19 22:43:23 linux-ess: Failed password for: johndoe from 85.245.107.42 port 22834 ssh2: RSA SHA256:eoKmezlE3iOp38Djwk0jK
-Jun 22 08:04:00 linux-ess: Accepted password for: johndoe from 192.168.0.99 port 38299 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
 ```
 
 ## Filtering output
