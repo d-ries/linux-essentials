@@ -111,6 +111,17 @@ man 5 passwd
 ```
 This command will now show the manpage of the configuration file rather than the `passwd` command.
 
+
+### Handy man page shortcuts
+You can go to the first line by typing _g_. To go to the last line you will have to push capital _G_.
+To get help you can always push _h_.
+
+
+### Searching through a man page
+You can search through a man page by typing a slash (/) followed by a string (word, letter,...) and then pushing the enter key.
+To go to the next occurence you can push the letter _n_. To go to the previous occurence you need to push the capital _N_.
+?> <i class="fa-solid fa-circle-info"></i>It's allways a good idea to first type _g_ to go to the first line before starting your search!
+
 ### whereis & whatis
 We can quickly view the description of a command without opening the full manpage by using the `whatis` command as follows:
 ```bash
