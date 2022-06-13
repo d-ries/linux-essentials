@@ -120,6 +120,7 @@ To get help you can always push _h_.
 ### Searching through a man page
 You can search through a man page by typing a slash (/) followed by a string (word, letter,...) and then pushing the enter key.
 To go to the next occurence you can push the letter _n_. To go to the previous occurence you need to push the capital _N_.
+
 ?> <i class="fa-solid fa-circle-info"></i>It's allways a good idea to first type _g_ to go to the first line before starting your search!
 
 ### whereis & whatis
