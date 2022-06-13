@@ -107,6 +107,175 @@ this is line four
 #### Regular expressions
 In the examples above we only used simple keywords to find contents in a file. Sometimes we want to filter on dynamic content. Imagine finding all logins from an ip address containing '192' followed by other characters, or finding users that have "doe" as a lastname. To achieve this we have to use a dynamic syntax called a regular expression.
 
+Regular expressions can turn into a real rabbit hole. We will only focus on the most used cases and a couple of practical examples but know that there is a whole _regex_ world to be explored that is beyond the scope of this course!
+
+The `grep` command can use different kinds of _regex_ patterns. By default it uses _basic regular expressions (BRE)_ but for alot of cases we want to extend this to _extended regular expressions (ERE). To do this we have to use the `-E` option in the  `grep` command. This gives us alot more functionality when it comes to building dynamic search queries. **Alot of the commands explained below wont work without the `-E` option!**
+
+For the examples used in this (sub)chapter we will use a seperate file that you can download using the command below:
+```bash
+wget https://d-ries.github.io/linux-essentials/data/regexlist.txt
+```
+
+To start of we will use some special symbols that we've used before. We've seen the impact of an asterix (`*`) in the chapter about _file globbing_. An asterix has a similar functionality in a regex but there are some important key differences:
+- In file globbing a `*` sign means 0, one or more of any type of character
+- In a regex, a `*` sign means 0, one or more **of the previous character, if available**
+
+Take the example below. We expect only the `pxl` variants to show up, but as we can see in the output all of the file contents show. This is because every line matches the regex `zero, one or more of the letter p`:
+ ```
+ student@linux-ess:~$ cat regexlist.txt | grep -E "p*"
+Dries
+Gert
+Niek
+Lode
+Maarten
+Tom
+David
+Bert
+Tim
+Tommy
+pxl
+pxxl
+pxxxl
+pxxxxl
+pl
+This is a test
+This has been tested
+192
+172
+127
+192.168.0.1
+192.168.1.1
+192.168.1.2
+172.16.0.4
+127.0.0.1
+dries.swinnen@pxl.be
+http://pxl.be
+https://pxl.be
+``` 
+
+We can solve this by using the following syntax:
+```bash
+student@linux-ess:~$ cat regexlist.txt | grep -E "px*"
+pxl
+pxxl
+pxxxl
+pxxxxl
+pl
+```
+Now we tell the regex to find lines that contain a `p` followed by zero, one or more `x` characters. This is exactly why `pl` shows up (it contains zero of the character x). Imagine if we wanted to use a regex that contains one or more of a character rather than zero, one or more. We can do this using the `+` sign:
+```bash
+student@linux-ess:~$ cat regexlist.txt | grep -E "px+"
+pxl
+pxxl
+pxxxl
+pxxxxl
+```
+
+To take it even a step further, what about exactly 3 occurences? Easy, we can do this as follows:
+```bash
+student@linux-ess:~$ cat regexlist.txt | grep -E "px{3}"
+pxxxl
+pxxxxl
+```
+The `{3}` is linked to the character before that. Notice how the one with 4 `x`'s shows up aswell. This is because 4 times the letter `x` contains 3 times the letter `x`. We could solve this by adding the letter `l` afterwards.
+
+Imagine now we wanted to check for lines that start or end with a specific character or character set. We'll start of with lines starting with a specific character:
+```bash
+student@linux-ess:~$ cat regexlist.txt | grep -E "^[DGN]"
+Dries
+Gert
+Niek
+David
+```
+The example above uses a `^` sign that indicates the start of a line. Next up we use square brackets `[ ]` that we can use to add characters that can be used as the start of the line. In this case the letters `D`, `G`, and `N`. We could aslo use ranges:
+```bash
+student@linux-ess:~$ cat regexlist.txt | grep -E "^[0-9]"
+192
+172
+127
+192.168.0.1
+192.168.1.1
+192.168.1.2
+172.16.0.4
+127.0.0.1
+student@linux-ess:~$ cat regexlist.txt | grep -E "^[a-z]"
+pxl
+pxxl
+pxxxl
+pxxxxl
+pl
+dries.swinnen@pxl.be
+https://pxl.be
+http://pxl.be
+```
+?> The square brackets are not linked to the beginning and end of a line, so you can use them wherever in the regex. Be aware that these are case sensitive!
+
+To check for lines ending with a specific character we can use a `$` sign:
+```bash
+student@linux-ess:~$ cat regexlist.txt | grep -E "e$"
+Lode
+dries.swinnen@pxl.be
+https://pxl.be
+http://pxl.be
+student@linux-ess:~$ cat regexlist.txt | grep -E "[0-9]$"
+192
+172
+127
+192.168.0.1
+192.168.1.1
+192.168.1.2
+172.16.0.4
+127.0.0.1
+```
+
+So what about matching exactly 1 character? A `.` translates to exactly one character of any type:
+```bash
+student@linux-ess:~$ cat regexlist.txt | grep -E ".... "
+This is a test
+This has been tested
+```
+The example above translates to `4 characters of any type followed by a space`. We can combine this with starts & endings again aswell: 
+```bash
+student@linux-ess:~$ cat regexlist.txt | grep -E "^...\."
+192.168.0.1
+192.168.1.1
+192.168.1.2
+172.16.0.4
+127.0.0.1
+```
+This translates to `start with any type of character` (`^.`) followed by 2 more characters of any type (`..`), followed by a regular dot (`\.`). Notice how we escaped the last dot so it doesn't get interpreted as a special regex character!
+
+#### Pattern examples
+#TODO: uitwerking analyse/ontleding regex
+Creating a regex that checks for a IPv4 address:
+```bash
+student@linux-ess:~$ cat regexlist.txt | grep -E "^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$"
+192.168.0.1
+192.168.1.1
+192.168.1.2
+172.16.0.4
+127.0.0.1
+```
+Note that this does not validate a valid IPv4 address, whether or not it is public or private or if the number ranges are in the `1-255` range.
+
+?> The `{1,3}` syntax means that the previous characters needs to appear between 1 and 3 times!
+
+Creating a regex that checks for a valid e-mail address format:
+```bash
+student@linux-ess:~$ cat regexlist.txt | grep -E "^.+\@[a-z,A-Z,0-9]+\.[a-z]+"
+dries.swinnen@pxl.be
+```
+
+Creating a regex that checks for a valid url format:
+```bash
+student@linux-ess:~$ cat regexlist.txt | grep -E "https?://.+\."
+https://pxl.be
+http://pxl.be
+```
+Note that this example does not check for valid domain names.
+
+?> The questionmark (`?`) in a regex means the previous character is _optional_!
+
 ### Using content structure (cut,sort,uniq)
 #### Using columns (cut)
 Using the `cut` command we can split lines in a file into columns. To do this we have to define a delimiter (a set of one or more characters that defines the start of a new column) for example a `space` or `:` sign. Then we can select which columns the command should display:
@@ -137,8 +306,6 @@ student:/home/student
 ```
 
 #### Using sorting (sort & uniq)
-
-
 ```bash
 student@linux-ess:~$ cat auth.log | cut -d ':' -f5 | cut -d' ' -f2 | sort | uniq
 
@@ -147,6 +314,7 @@ janedoe
 johndoe
 student
 ```
+
 #### Using counts (wc)
 ```bash
 student@linux-ess:~$ wc auth.log
@@ -163,7 +331,6 @@ student@linux-ess:~$ wc -c auth.log # number of bytes
 ```
 
 ## Manipulating output
-
 ### Translate (tr)
 The `tr` command allows us to _translate_ certain characters to other characters. I takes in 2 arguments:
 * The character (or set of characters) that needs to be replaced

@@ -9,6 +9,8 @@ We won't see tests, if statements, loops, options, ... just basic sequence of co
 
 ### Variables
 
+#### System variables
+
 ### Using a parameter
 Just one, nothing else!
 
