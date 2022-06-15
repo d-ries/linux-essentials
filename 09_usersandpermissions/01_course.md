@@ -8,9 +8,7 @@
 /etc/skel
 
 #### Default profile files
-.bash_profile
 .bashrc
-.bash_logout
 .bash_history
 .profile
 
