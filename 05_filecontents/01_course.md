@@ -85,7 +85,7 @@ student@linux-ess:~$ tail -5 /var/log/dpkg.log
 ?> <i class="fa-solid fa-circle-info"></i> We can even view log files realtime by using `tail -f` (`-f` stands for _follow_). This will start an active process that at first will show the last 10 lines of a file. When something gets added to this file, it will be added realtime in the command output. To terminate this active process use `ctrl+c`.
 
 ## Scrolling through several screens of the contents of a file (less)
-When viewing big files with `cat` you might have noticed that the terminal will only show the last bit of the content. We can use commands such as `more` and `less` to view (and scroll through) the entire content. With `more` you can only scroll down and this one screen at a time by pressing the _spacebar_ or _page down_. With less you can also scroll up by pressing _page up_.  With less scrolling only one line can also be done by using the _up arrow_ or _down arrow_.
+When viewing big files with `cat` you might have noticed that the terminal will only show the last bit of the content. We can use commands such as `more` and `less` to view (and scroll through) the entire content. With `more` you can only scroll down and this one screen at a time by pressing the _spacebar_ or _page down_. With less you can also scroll up by pressing _page up_.  With less scrolling only one line can also be done by using the _up arrow_ or _down arrow_. To exit `more`or `less` you can simply press _q_ or _ctrl+c_.
 ```bash
 student@linux-ess:~$ less /var/log/dpkg.log
 2021-08-19 21:52:34 startup packages remove
@@ -94,7 +94,7 @@ student@linux-ess:~$ less /var/log/dpkg.log
 2021-08-19 21:52:34 status half-configured linux-headers-5.4.0-81:all 5.4.0-81.91
 2021-08-19 21:52:34 status half-installed linux-headers-5.4.0-81:all 5.4.0-81.91
 ```
-?> <i class="fa-solid fa-circle-info"></i> Using the `more` command you can use the same shortcuts as when using manpages. Use the `spacebar` to scroll and `q` or `ctrl+c` to quit.
+?> <i class="fa-solid fa-circle-info"></i> Did you know that by default manpages are also opened with `less`. So you can also search within files opened with `less` by using _/_ and _n_ for next and _p_ for previous. You can also go to the first line by pressing _g_ and to the last line by pressing _G_.
 
 ## Create files with contents
 ### Using echo
