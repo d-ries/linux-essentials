@@ -98,7 +98,7 @@ student@linux-ess:~$ less /var/log/dpkg.log
 
 ## Create files with contents
 ### Using echo
-There are several ways to create files and add content to them. One of these ways is by using the `echo` command. The default behaviour of this command is that it just prints out whatever you use as an argument:
+There are several ways to create files and add content to them. One of these ways is by using the `echo` command. The default behaviour of this command is that it  prints out to the screen whatever you use as an argument:
 ```bash
 student@linux-ess:~$ echo hello world
 hello world
@@ -108,9 +108,9 @@ You could use quotes to make it more obvious as to what the argument of the `ech
 student@linux-ess:~$ echo "hello world"
 hello world
 ```
-Now this is where it gets interesting. We can use a `>` sign to tell the shell to take the output of the previous command and write it to a file:
+Now this is where it gets interesting. We can use a `>` sign to tell the shell to take the output of the previous command and write it to a file instead of to the screen:
 ```bash
-student@linux-ess:~$ echo hello world >demofile
+student@linux-ess:~$ echo hello world > demofile
 ```
 So this actually makes it so that the output of the `echo` command is not shown in the shell, but rather is written (or _redirected_) to the file `demofile`. We can confirm this as follows:
 ```bash
@@ -119,19 +119,20 @@ demofile
 student@linux-ess:~$ cat demofile
 hello world
 ```
-The concept we use here is called _input/output redirection_ which we will talk about in a later chapter.
+The concept we use here is called _output redirection_ which we will talk about in a later chapter.
 
 ### Using cat
 We can also use the cat command in combination with the _output redirection (`>`)_ as shown in the example below. After typing the command we can type one or more lines. When you are done typing the file contents you can use the keyboard combination `ctrl` and `d` (ctrl+d) to tell the shell you are done (this will send an _end of file_ (EOF) signal to the running process):
 ```
-student@linux-ess:~$ cat > jokes.txt     # we press ctrl+d after the line 'sudo ku'
+student@linux-ess:~$ cat > jokes.txt    
 What is a Linux user's favorite game?
 sudo ku
 student@linux-ess:~$ cat jokes.txt
 What is a Linux user's favorite game?
 sudo ku
 ```
-
+ We pressed ctrl+d after the line 'sudo ku'
+ 
 #### Copy files using cat
 Knowing what we learnt about using _output redirection_ (`>`) we can actually use this to copy file contents to another file as follows:
 ```
@@ -142,7 +143,7 @@ sudo ku
 ```
 
 ### Using a custom end marker
-Another method of creating files with a certain content is to define a _custom end marker_ for the `cat > FILENAME` command as shown in the example below. By doing this you won't have to use the `crtl+d` keyboard combination to write the text to the file but you can just type the word (`end` in the example) given as the custom end marker:
+Another method of creating files with a certain content is to define a _custom end marker_ for the `cat > FILENAME` command as shown in the example below. By doing this you won't have to use the `crtl+d` keyboard combination to stop the input and write the text to the file but you can just type the word (`end` in the example) given as the custom end marker:
 ```bash
 student@linux-ess:~$ cat > schooltasks.txt <<end
 > create new vm
@@ -156,7 +157,7 @@ play minecraft
 ```
 
 ### Using nano
-Lastly we could use a text editor to edit/add file contents. There are many text-editors available. `nano` is one that is installed on our Ubuntu machine. You can use this editor by using the `nano` command followed by the path to a new or existing file:
+Lastly we could use a text editor to edit/add file contents. There are many text-editors available. `nano` is one that is installed by default on a Ubuntu machine. You can use this editor by using the `nano` command followed by the path to a new or existing file:
 ```bash
 student@linux-ess:~$ nano jokes2.0.txt
 ```
@@ -164,12 +165,15 @@ A text editor window will open as shown in the figure below where you can naviga
 
 ![nano](../images/05/nano.PNG)
 
-In the bottom of the screen it shows some of the shortcuts you can use. Some of the most interesting ones are:
+At the bottom of the screen it shows some of the shortcuts you can use. Some of the most interesting ones are:
 * ctrl+o: this is used to save (write out) the file changes. This will prompt for a filename and will overwrite a file if the name already exists.
-* ctr+q: quit the text editor and go back to the prompt. When you made changes to the file you will be asked if you want to save the change and you will have to enter a filename and press enter.
+* ctr+q: quit the text editor and go back to the prompt. When you made changes to the file you will be asked if you want to save the changes and ifso you will have to enter a filename and press enter.
+* ctrl+k: cut content.
 * ctrl+u: paste any copied/cut content.
 * ctrl+w: find a certain text in the file (where is).
 * alt+u: undo the last change.
 
-?> Another very popular text editor in Linux systems is `vi`. This editor is really powerfull but also has a steep learning curve. Want a real challenge? Try editting a file using the `vi` command rather than `nano`. 
-[This cheatsheet](https://itsfoss.com/download-vi-cheat-sheet/) might help you navigate using `vi`.
+?> <i class="fa-solid fa-circle-info"></i> If you want to cut a specific text you can select it first by pressing _shift+arrow keys_. Then use _ctrl+k_ and _ctrl+u_. 
+
+?> Another very popular text editor in Linux systems is `vi`. This editor is really powerfull but also has a steep learning curve. In this course we will not cover `vi` But feel free to experiment on your own. 
+
