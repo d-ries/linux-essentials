@@ -1,6 +1,6 @@
 # File contents
 ## View a file completely (cat & tac)
-To view the file contents we can use the `cat` command. This command takes in a path to a file as an argument:
+To view file contents we can use the `cat` command. This command takes in a path to a file as an argument:
 ```bash
 student@linux-ess:~$ cat /etc/resolv.conf
 # [network]
@@ -11,9 +11,9 @@ nameserver fec0:0:0:ffff::2
 ```
 This will print the entire file contents in the terminal.
 
-?> <i class="fa-solid fa-circle-info"></i> Note that you cannot scroll in a server CLI environment. If the file contents is to big for the terminal size it will only show the last bit! You could swap to commands such as `more` or `less` (see further) to solve this issue.
+?> <i class="fa-solid fa-circle-info"></i> Note that you cannot scroll in a server CLI environment. If the file content is to big for the terminal size it will scroll over the screen and you will only be able to see the last 30 to 40 lines! You could swap to commands such as `more` or `less` (see further) to solve this issue.
 
-The `tac` command is the `cat` command written from right to left. This is also exactly what this command does, it outputs the file contents from bottom to top:
+The `tac` command is the `cat` command written in reverse order. This is also exactly what this command does, it outputs the file contents in reverse order (from bottom to top):
 ```bash
 student@linux-ess:~$ tac /etc/resolv.conf
 nameserver fec0:0:0:ffff::2
@@ -23,7 +23,7 @@ nameserver 8.8.8.8
 # [network]
 ```
 
-The `cat` command can take multiple files as arguments and will concatenate the contents in the terminal as follows:
+The `cat` and `tac` commands can take multiple files as arguments and will concatenate the contents in the terminal as follows:
 ```bash
 student@linux-ess:~$ cat count1.txt
 1 2 3
@@ -35,7 +35,7 @@ student@linux-ess:~$ cat count1.txt count2.txt
 ```
 All filenames in the `cat` command are actually paths. So in the example above we use _relative_ paths to the files that are in the current working directory (`/home/student`). This means that the command `cat /home/student/count1.txt /home/student/count2.txt` would give the exact same output.
 
-## View certain regions of a file (head & tail)
+## View first or last region of a file (head & tail)
 Sometimes you don't want to view the entire file contents. Only the first or last couple of lines will suffice (in log files for example). To achieve this we can use the `head` or `tail` commands:
 ```bash
 student@linux-ess:~$ head /etc/passwd
