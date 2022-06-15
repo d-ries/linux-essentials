@@ -141,9 +141,9 @@ And we could even combine redirecting both streams to seperate files in one comm
 student@linux-ess:~$ find / >results.txt 2>errors.txt
 ```
 
-If we want to redirect both `stderr` and `stdout` to the same file we can use the `2>&1` operator as follows:
+If we want to redirect both `stderr` and `stdout` to the same file we can use the `&>` operator as follows:
 ```bash
-student@linux-ess$ find / >results_and_errors.txt 2>&1
+student@linux-ess$ find / &> results_and_errors.txt
 ```
 
 ## Control operators
@@ -154,16 +154,6 @@ student@linux-ess:~$ echo hello ; echo pxl ; pwd
 hello
 pxl
 /home/student
-```
-
-### Running commands in the background
-Using a `&` (ampersand) character at the end of a command will trigger the shell to run this command in the background. You will get a message when the command has finished executing:
-
-```bash
-student@linux-ess:~$ sleep 20 &
-[2] 101
-student@linux-ess:~$
-[2]+  Done                    sleep 20
 ```
 
 ### Logical operators
