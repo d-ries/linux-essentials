@@ -82,17 +82,17 @@ student@linux-ess:~$ tail -5 /var/log/dpkg.log
 2021-08-19 22:20:53 status installed libc-bin:amd64 2.31-0ubuntu9.2
 ```
 
-?> <i class="fa-solid fa-circle-info"></i> We can even view log files realtime by using `tail -f` (`-f` stands for _follow_). This will start an active process that shows the last 10 lines of a file. When something gets added to this file, we can see it appear realtime in our command output. To terminate this active process use `ctrl+c`.
+?> <i class="fa-solid fa-circle-info"></i> We can even view log files realtime by using `tail -f` (`-f` stands for _follow_). This will start an active process that at first will show the last 10 lines of a file. When something gets added to this file, it will be added realtime in the command output. To terminate this active process use `ctrl+c`.
 
-## Scrolling through several screens of the contents of a file (more)
-When viewing big files you will notice that the terminal will only show the last bit of the contents. We can use commands such as `more` and `less` to view (and scroll through) the entire content. Scrolling can be done by using the _spacebar_.
+## Scrolling through several screens of the contents of a file (less)
+When viewing big files with `cat` you might have noticed that the terminal will only show the last bit of the content. We can use commands such as `more` and `less` to view (and scroll through) the entire content. With `more` you can only scroll down and this one screen at a time by pressing the _spacebar_ or _page down_. With less you can also scroll up by pressing _page up_.  With less scrolling only one line can also be done by using the _up arrow_ or _down arrow_.
 ```bash
-student@linux-ess:~$ more /var/log/dpkg.log
+student@linux-ess:~$ less /var/log/dpkg.log
 2021-08-19 21:52:34 startup packages remove
 2021-08-19 21:52:34 status installed linux-virtual:amd64 5.4.0.81.85
+... output omitted
 2021-08-19 21:52:34 status half-configured linux-headers-5.4.0-81:all 5.4.0-81.91
 2021-08-19 21:52:34 status half-installed linux-headers-5.4.0-81:all 5.4.0-81.91
---More--(5%)
 ```
 ?> <i class="fa-solid fa-circle-info"></i> Using the `more` command you can use the same shortcuts as when using manpages. Use the `spacebar` to scroll and `q` or `ctrl+c` to quit.
 
