@@ -149,17 +149,17 @@ student@linux-ess:~$ unalias rm
 When working with the shell we actually work with something called streams. There are 3 basic streams available when using a shell:
 ![iostreams](./../images/07/ioredirect.png)
 
-The most basic example is called `stdinn`. This is the stream that we use to input data into the shell using our keyboard.
+The most basic example is called `stdin`. This is the stream that we use to input data into the shell using our keyboard.
 
 The output that gets generated from running commands is split up in two seperate streams:
 * `stdout` gives us all the regular command output. By default this output gets printed on our screen.
 * `stderr` gives us all the error messages a command generates. By default these error messages get printed on our screen.
-Because both `stdout` and `stderr` get printed in the shell, we don't notice the difference between the two.
+Because both `stdout` and `stderr` get printed on our screen, we don't notice the difference between the two.
 
-Every stream has his own identifier number as seen in the image above. These identifiers are important in the next paragraphs.
+Every stream has its own identifier (=number) as seen in the image above. These identifiers are important in the next paragraphs.
 
 ### Stream redirection
-We can redirect any of this streams to make the output go _somewhere else_. Often 'somewhere else' means to a file. This means we can both seperate regular output (stdout) and errors (stderr) to go to seperate files and save the output there. Below is an example on how you can save the output of a command to a file:
+We can redirect any of these streams to make the output go _somewhere else_. Often 'somewhere else' means to a file. This means we can both seperate regular output (stdout) and errors (stderr) to get saved into seperate files. Below is an example on how you can save the output of a command to a file:
 ```bash
 student@linux-ess:~$ ls / 1>listrootfolder
 student@linux-ess:~$ head listrootfolder
@@ -178,6 +178,7 @@ The `1>` means we redirect stream `1` to the file `listrootfolder`. Stream `1` r
 ```bash
 student@linux-ess:~$ ls / >listrootfolder
 ```
+If the command also generates errors than these will still be printed on our screen.
 
 ?> You might recognize this syntax as we've used it before in chapter 5. We used the command `echo hello world >ourfile` to write the string `hello world` to the file `ourfile`.
 
@@ -185,10 +186,11 @@ If we want to redirect `stderr` we can use the same concept as follows:
 ```bash
 student@linux-ess:~$ find / 2>/dev/null
 ```
+In this example every files that's found (with no error) will be printed on our screen. The errors that are generated (eg. not able to dive in a certain directory to look for files because of lack of privileges) will not be shown on the screen because they are redirected to the recycle bin.
 
 And we could even combine redirecting both streams to seperate files in one command:
 ```bash
-student@linux-ess:~$ find / >results.txt 2>errors.txt
+student@linux-ess:~$ find / > results.txt 2> errors.txt
 ```
 
 If we want to redirect both `stderr` and `stdout` to the same file we can use the `&>` operator as follows:
@@ -198,7 +200,7 @@ student@linux-ess$ find / &> results_and_errors.txt
 
 ## Control operators
 ### Seperating commands
-We can use a `;` (semicolon) character in our commands to seperate multiple commands in one line. Each command can have his own options and arguments and they will be ran sequentially. The shell will wait for the first command before executing the second one:
+We can use a `;` (semicolon) character to seperate multiple commands one line. Each command can have its own options and arguments and they will be ran sequentially. The shell will wait for a command to finish before starting the next one:
 ```bash
 student@linux-ess:~$ echo hello ; echo pxl ; pwd
 hello
@@ -221,6 +223,7 @@ Command 'zecho' not found, did you mean:
 
 Try: sudo apt install <deb name>
 ```
+
 * logical _OR_ operator (`||`): The second command is only executed when the first command fails
 ```bash
 student@linux-ess:~$ echo first || echo second
