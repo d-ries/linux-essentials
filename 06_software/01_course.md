@@ -25,7 +25,7 @@ DESCRIPTION
        specialized APT tools like apt-get(8) and apt-cache(8).
 ```
 
-As described above `apt` (or `apt-get`) is a package manager. We can use this tool to install packages (read: software) on our Linux machine. Note that `apt` is the specific package manager for Ubuntu. There are several alternatives available such as `dpkg`, `pacman`, `rpm`, `yum`, ... which usually come pre-installed with your linux distribution.
+As described above `apt` (or it's predecessor `apt-get`) is a package manager. We can use this tool to install packages (read: software) on our Linux machine. Note that `apt` is the specific package manager for Ubuntu. There are several alternatives available such as `dpkg`, `pacman`, `rpm`, `yum`, `dnf` ... which usually come pre-installed with your linux distribution.
 
 ### Repositories
 An important thing to note about `apt` is that it uses a database of available packages. We can update this list of packages by running the command below:
@@ -54,7 +54,7 @@ Get:33 http://archive.ubuntu.com/ubuntu focal-backports/universe Translation-en 
 Get:34 http://archive.ubuntu.com/ubuntu focal-backports/universe amd64 c-n-f Metadata [860 B]
 Fetched 8672 kB in 2s (3651 kB/s)
 ```
-?> <i class="fa-solid fa-circle-info"></i> Note that we used the `sudo` command. This is needed because `apt` is a system wide command that impacts the entire system (installing/removing/updating software). Therefor we cannot run it as a user with default permissions.
+?> <i class="fa-solid fa-circle-info"></i> Note that we used the `sudo` command. This is needed because `apt` is a system wide command that impacts the entire system (installing/removing/updating software). Therefore we cannot run it as a user with default permissions. `sudo` will always ask for your password!
 
 We can see that this command gets data from a bunch of servers. These servers are called _repositories_ (servers with a collection of packages and metadata of those packages). When we install software later, it will use the database based on the repoistories to check if the package that we want to install is available.
 
@@ -63,9 +63,9 @@ The list of repositories that `apt` uses can be found in the file `/etc/apt/sour
 ### Installing software (apt install)
 Imagine we would like to install the `zip` application. We could simply run the command below:
 ```bash
-student@linux-ess:~$ sudo apt-get install zip
+student@linux-ess:~$ sudo apt install zip
 Reading package lists... Done
-Building dependency tree
+Building dependency tree... Done
 Reading state information... Done
 The following additional packages will be installed:
   unzip
@@ -75,8 +75,8 @@ The following NEW packages will be installed:
 Need to get 336 kB of archives.
 After this operation, 1231 kB of additional disk space will be used.
 Do you want to continue? [Y/n] y
-Get:1 http://archive.ubuntu.com/ubuntu focal/main amd64 unzip amd64 6.0-25ubuntu1 [169 kB]
-Get:2 http://archive.ubuntu.com/ubuntu focal/main amd64 zip amd64 3.0-11build1 [167 kB]
+Get:1 http://archive.ubuntu.com/ubuntu jammy/main amd64 unzip amd64 6.0-25ubuntu1 [169 kB]
+Get:2 http://archive.ubuntu.com/ubuntu jammy/main amd64 zip amd64 3.0-11build1 [167 kB]
 Fetched 336 kB in 1s (444 kB/s)
 Selecting previously unselected package unzip.
 (Reading database ... 32259 files and directories currently installed.)
@@ -88,7 +88,6 @@ Unpacking zip (3.0-11build1) ...
 Setting up unzip (6.0-25ubuntu1) ...
 Setting up zip (3.0-11build1) ...
 Processing triggers for man-db (2.9.1-1) ...
-Processing triggers for mime-support (3.64ubuntu1) ...
 ```
 If we analyse the output of the command we can see a couple of this happening:
 * It reads the package list to find the `zip` package. After this is done it builds a dependency tree to see what dependencies the `zip` package needs.
@@ -96,7 +95,7 @@ If we analyse the output of the command we can see a couple of this happening:
 * It points out what new packages will be installed and if any packages will be updated.
 * It asks for a confirmation if we are sure we want to continue. After this confirmation it will install / update all the packages mentioned in the output above.
 
-?> <i class="fa-solid fa-circle-info"></i> You might notice that you can use both the `apt` and `apt-get` command.  Both commands are very similar (with minor differences, but we won't get into that now). `apt` is designed for end users while `apt-get` is somewhat more lower-level.
+?> <i class="fa-solid fa-circle-info"></i> You might notice that you can use both the `apt` and `apt-get` command.  Both commands are very similar (with minor differences, but we won't get into that now).
 
 After running the command above, we can succesfully use the `zip` command:
 ```bash
@@ -108,11 +107,11 @@ zip [-options] [-b path] [-t mmddyyyy] [-n suffixes] [zipfile list] [-xi list]
   can include the special name - to compress standard input.
   If zipfile and list are omitted, zip compresses stdin to stdout.
 ```
-?> <i class="fa-solid fa-circle-info"></i> You might wonder where the `zip` executable is located and how the shell knows how to run that exact executable. We can check this by running the `which zip` command. This will tell us that, when we run the `zip` command it will actually run the `zip` executable located in `/usr/bin/zip`. `/usr/bin` is one of the folders where executable files are stored. You could compare this to the folder `c:\program files` in Windows systems. Linux has multiple places where executable files are stored. These are often bundled in the `$PATH` variable which we will learn to use in a later chapter. 
+?> <i class="fa-solid fa-circle-info"></i> You might wonder where the `zip` executable is located and how the shell knows how to run that exact executable. We can check this by running the `which zip` command. This will tell us that, when we run the `zip` command it will actually run the `zip` binary (=executable) located at `/usr/bin/zip`. `/usr/bin` is one of the folders where binaries (=executable files) are stored. You could compare this to the folder `c:\program files` in Windows systems. Linux has multiple places where binaries are stored. These are often bundled in the `$PATH` variable which we will learn to use in a later chapter. 
 
 Imagine we made a typo in our command and try to install a package that doesn't exist:
 ```bash
-student@linux-ess:~$ sudo apt-get install zap
+student@linux-ess:~$ sudo apt install zap
 Reading package lists... Done
 Building dependency tree
 Reading state information... Done
@@ -125,7 +124,7 @@ To remove software we can simply use the command below:
  ```bash
 student@linux-ess:~$ sudo apt remove zip
 Reading package lists... Done
-Building dependency tree
+Building dependency tree... Done
 Reading state information... Done
 The following package was automatically installed and is no longer required:
   unzip
@@ -146,14 +145,14 @@ Processing triggers for man-db (2.9.1-1) ...
 ?> <i class="fa-solid fa-circle-info"></i> To get a list of installed software packages we can use `apt list`. Warning: this list can be very very long!
 
 ### Updating software (apt upgrade)
-For updaten software we have a couple of options. To start of we can individually update certain packages by simply using the `sudo apt get install <packagename>` command. When you use this command with a package that has already been installed, it will try to update it to the latest version.
+For updating our software we have a couple of options. To start of we can individually update certain packages by simply using the `sudo apt install <packagename>` command. When you use this command with a package that has already been installed, it will try to update it to the latest version.
 
 ?> Mind that before updating or even installing software you might want to update your database by running `sudo apt update` so you are certain we use the latest and correct repositories. *This might also be confusing at first because the `update` command doesn't actually update packages!*
 
-When you want to just update all the packages on your system we can use the `sudo apt upgrade` command. This will update all the installed packages on our system
+When we want to update all the packages on our system we can use the `sudo apt upgrade` command. This will update all the installed packages.
 
 ## Gzip and tar
-Sometimes you might encounter a `tar` or `tar.gz` file. These are compressed files containing all kinds of files & folders. You can compare these to `zip` or `rar` files. We need to extract the files/folders inside this file before we can use them. To do so we can use the `tar` command. The options we use will vary depending on if we need to extract a `tar` file or a `tar.gz`file:
+Sometimes you might encounter a `tar` or `tar.gz` file. A  `tar.gz` file is also known as a `tarball`. Both are compressed files containing all kinds of files & folders. You can compare these to `zip` or `rar` files. We need to extract the files/folders inside this file before we can use them. To do so we can use the `tar` command. The options we use will vary depending on the case. Do we want to extract a `tar` file or a `tar.gz`file:
 ```bash
 student@linux-ess:~/tarexample$ ls
 app.tar.gz  docs.tar
@@ -168,9 +167,10 @@ The options we use can be found in the manpage, but below you can find a small s
 * `-f`: Stands for file. This uses the argument after the options as the path of the archive we want to extract.
 * `-z`: This makes sure we run the file through `gzip`, another archive tool. The extention `tar.gz` hints that it is processed through `gzip`.
 * `-C`: This changes the directory before extracting to the path supplied as an argument. This means the contents will be extracted in this folder.
+* `-t`: Will only list the contents of the archive to the screen. It will not unpack anything.
 
 ## dpkg
-`dpkg` is package manager for Debian-based systems. Where Ubuntu uses `apt` as the default package manager, we can also use `dpkg`. We can use `dpkg` to install / remove / ... `.deb` files. The example below installs the package `yourpackage`:
+`dpkg` is package manager for Debian-based systems. Where Ubuntu uses `apt` as the default package manager, we can also use `dpkg`. `dpkg` was the predecessor of `apt-get` and `apt`. `dpkg` doesn't make use of repositories, so we have to have the installer file before using the command. It also doesn't download dependencies automatically. That's why they used to call it *the dependancy hell*  We can use `dpkg` to install / remove / ... `.deb` files. The example below installs the package `yourpackage`:
 ```bash
 student@linux-ess:~$ sudo dpkg -i yourpackage.deb
 ```` 
