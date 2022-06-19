@@ -4,6 +4,7 @@
 We won't see tests, if statements, loops, options, ... just basic sequence of commands!
 
 ### Hello world
+### date with shell embedding
 
 ### Comments
 
