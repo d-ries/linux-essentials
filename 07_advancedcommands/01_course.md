@@ -242,8 +242,12 @@ second
 We can combine both operators as well to simulate an _if-then-else_ like structure as follows:
 ```bash
 student@linux-ess:~$ touch testfile
+student@linux-ess:~$ ls test*
+testfile
 student@linux-ess:~$ rm testfile && echo file deleted || echo failed to delete
 file deleted
+student@linux-ess:~$ ls test*
+ls: cannot access 'test*': No such file or directory
 student@linux-ess:~$ rm testfile && echo file deleted || echo failed to delete
 rm: cannot remove 'testfile': No such file or directory
 failed to delete
