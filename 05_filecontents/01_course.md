@@ -121,9 +121,9 @@ hello world
 ```
 If you want to add to a file instead of overwriting it, you can do this with `>>`
 ```bash
+student@linux-ess:~$ cat demofile
+hello world
 student@linux-ess:~$ echo hello everyone >> demofile
-student@linux-ess:~$ ls
-demofile
 student@linux-ess:~$ cat demofile
 hello world
 hello everyone
