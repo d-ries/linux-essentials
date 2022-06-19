@@ -22,25 +22,25 @@ If we want to retain the spaces we have three options.
 The `first option` is to use `double quotes`. With this option the spaces will be retained and variables will still be interpreted.
 ```bash
 student@linux-ess:~$ action="play       games"
-student@linux-ess:~$ echo    I               like      to                  $action    # multiple spaces and tabs between the words
+student@linux-ess:~$ echo    I             like      to                  $action    # multiple spaces and tabs between the words
 I like to play games
-student@linux-ess:~$ echo "    I               like      to                  $action"    # multiple spaces and tabs between the words
-    I               like      to                     play       games
+student@linux-ess:~$ echo "    I             like      to                  $action"    # multiple spaces and tabs between the words
+    I             like      to                  play       games
 ```
 
 The `second option` is to use `single quotes`. With this option the spaces will be retained but the text will not be interpreted. So variables won't be changed to their value.
 ```bash
-student@linux-ess:~$ action="play       games"
-student@linux-ess:~$ echo    I               like      to                  $action    # multiple spaces and tabs between the words
+student@linux-ess:~$ action='play       games'
+student@linux-ess:~$ echo    I             like      to                  $action    # multiple spaces and tabs between the words
 I like to play games
-student@linux-ess:~$ echo '    I               like      to                  $action'    # multiple spaces and tabs between the words
-    I               like      to                     $action
+student@linux-ess:~$ echo '    I             like      to                  $action'    # multiple spaces and tabs between the words
+    I             like      to                  $action
 ```
 
 The `third option` is to escape every space. Don't use this mechanism in variables because it won't work.
 ```bash
 student@linux-ess:~$ echo \ \  I \ \ \ \ \ \ \ like \ \ to \ \ \ \ \ \ \ \ \ \ \ \ \ \ play\ \ \ \ games
-    I               like      to                     play       games
+    I       like   to              play    games
 ```
 
 ### Single and double quotes
