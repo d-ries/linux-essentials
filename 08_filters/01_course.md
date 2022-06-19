@@ -79,7 +79,7 @@ student@linux-ess:~$ cat /filteredlogfile
 Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
 ```
 
-?> If you want to add to the output file with tee you can specify the option `-a`
+?> If you want to add to the output file instead of overwriting it you can specify the option `-a`
 ```bash
 student@linux-ess:~$ head -1 auth.log | sudo tee -a /filteredlogfile
 Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
