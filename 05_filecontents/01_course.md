@@ -119,6 +119,15 @@ demofile
 student@linux-ess:~$ cat demofile
 hello world
 ```
+If you want to add to a file instead of overwriting it, you can do this with `>>`
+```bash
+student@linux-ess:~$ echo hello everyone >> demofile
+student@linux-ess:~$ ls
+demofile
+student@linux-ess:~$ cat demofile
+hello world
+hello everyone
+```
 The concept we use here is called _output redirection_ which we will talk about in a later chapter.
 
 ### Using cat
