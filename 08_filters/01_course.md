@@ -90,7 +90,7 @@ Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
 
 ## Filtering output
 ### Using content filters (grep)
-We often want to browse files and get certain lines containing certain strings or patterns. This is where the `grep` command comes in. `grep` is one of the most used filter commands in Linux systems. We can use it as a standalone command as follows:
+We often want to browse the contents of a file and retaining the lines containing a certain string or pattern. This is where the `grep` command comes in. `grep` is one of the most used filter commands in Linux systems. We can use it as a standalone command as follows:
 ```bash
 student@linux-ess:~$ grep jane auth.log
 Jun 15 17:42:18 linux-ess: Failed password for: janedoe from 192.168.0.10 port 48239 ssh2
@@ -102,31 +102,29 @@ student@linux-ess:~$ cat auth.log | grep jane
 Jun 15 17:42:18 linux-ess: Failed password for: janedoe from 192.168.0.10 port 48239 ssh2
 Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
 ```
-Both commands give the same result and work the same. What we can see is that the `grep` command will filter the file contents based on a keyword (in this case `jane`). 
+Both commands give the same result and work the same. What we can see is that the `grep` command will filter the file contents based on a string or pattern (in this case the string `jane`). 
 
 An important note to make is that, by default, `grep` is a case sensitive command. It will only show the lines in the file containing that specific keyword. Note that writing the keyword in caps will result in 0 lines being returned:
 ```bash
 student@linux-ess:~$ cat auth.log | grep JANE
 student@linux-ess:~$
 ```
-However there is an option (`-i`) to make grep work case insensitive: 
+However there is an option `-i` to make grep work case insensitive: 
 ```bash
 student@linux-ess:~$ cat auth.log | grep -i JANE
 Jun 15 17:42:18 linux-ess: Failed password for: janedoe from 192.168.0.10 port 48239 ssh2
 Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
 ```
 
-Another interesting option is `-v` which will return all lines _not_ containing the keyword:
+Another interesting option is `-v` which will return all lines _not_ containing the string/pattern:
 ```bash
 student@linux-ess:~$ cat auth.log | grep -v password
 Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
 Jun 09 11:11:11 linux-ess: Server listening on :: port 22.
 Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7gkeOeirKlzmgIogh
-
-Jun 14 14:14:12 linux-ess: Accepted publickey for: student from 85.245.107.42 port 48298 ssh2: RSA SHA256:Keo89erjOEkmo9erjkDw
 ```
 
-Knowing that we can use multiple pipes (`|`) in a command, we can combine multiple grep commands aswell. Imagine the scenario where we want to find only successful login attemps made by the user `janedoe`. We could do this as follows:
+Knowing that we can use multiple pipes (`|`) in a command, we can combine multiple grep commands as well. Imagine the scenario where we want to find only successful login attemps made by the user `janedoe`. We could do this as follows:
 ```bash
 student@linux-ess:~$ cat auth.log | grep janedoe | grep -vi failed
 Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
@@ -137,7 +135,7 @@ student@linux-ess:~$ cat auth.log | grep janedoe | grep Accepted
 Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
 ```
 
-Sometimes we might want to see more than just the line that contains the keyword. Imagine we want to see some more context as to where the file is located. We can customize the grep command to show lines before or/and after the result as follows:
+Sometimes we might want to see more than just the line that contains the string/pattern. Imagine we want to see some more context as to where the file is located. We can customize the grep command to show lines `before` and/or `after` the result as follows:
 ```bash
 student@linux-ess:~$ cat example.log
 this is line one
@@ -148,10 +146,10 @@ this is line five
 student@linux-ess:~$ cat example.log | grep -A1 three
 this is line three
 this is line four
-student@linux-ess:~$ cat example.log  | grep -B2 three
-this is line one
+student@linux-ess:~$ cat example.log  | grep -B2 four
 this is line two
 this is line three
+this is line four
 student@linux-ess:~$ cat example.log | grep -C1 three
 this is line two
 this is line three
@@ -159,18 +157,18 @@ this is line four
 ```
 
 #### Regular expressions
-In the examples above we only used simple keywords to find contents in a file. Sometimes we want to filter on dynamic content. Imagine finding all logins from an ip address containing '192' followed by other characters, or finding users that have "doe" as a lastname. To achieve this we have to use a dynamic syntax called a regular expression.
+In the examples above we only used simple strings to find certain lines in a file. Sometimes we want to filter on dynamic content. Imagine finding all logins from an ip address containing '192' followed by other characters, or finding users that have "doe" as a lastname. To achieve this we have to use a dynamic syntax called a regular expression.
 
 Regular expressions can turn into a real rabbit hole. We will only focus on the most used cases and a couple of practical examples but know that there is a whole _regex_ world to be explored that is beyond the scope of this course!
 
-The `grep` command can use different kinds of _regex_ patterns. By default it uses _basic regular expressions (BRE)_ but for alot of cases we want to extend this to _extended regular expressions (ERE). To do this we have to use the `-E` option in the  `grep` command. This gives us alot more functionality when it comes to building dynamic search queries. **Alot of the commands explained below wont work without the `-E` option!**
+The `grep` command can use different kinds of _regex_ patterns. By default it uses _basic regular expressions (BRE)_ but for a lot of cases we want to extend this to _extended regular expressions (ERE). To do this we have to use the `-E` option in the  `grep` command. This gives us a lot more functionality when it comes to building dynamic search queries. **A lot of the commands explained below won't work without the `-E` option!**
 
 For the examples used in this (sub)chapter we will use a seperate file that you can download using the command below:
 ```bash
 wget https://d-ries.github.io/linux-essentials/data/regexlist.txt
 ```
 
-To start of we will use some special symbols that we've used before. We've seen the impact of an asterix (`*`) in the chapter about _file globbing_. An asterix has a similar functionality in a regex but there are some important key differences:
+To start of we will use some special symbols that we've used before. We've seen the impact of an asterisk (`*`) in the chapter about _file globbing_. An asterisk has a similar functionality in a regex but there are some important key differences:
 - In file globbing a `*` sign means 0, one or more of any type of character
 - In a regex, a `*` sign means 0, one or more **of the previous character, if available**
 
