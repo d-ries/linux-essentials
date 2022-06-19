@@ -2,7 +2,21 @@
 
 ## shell expansion
 
-#TODO: example white space removal
+All the words you type after the prompt to form a command are interpreted by the shell. The command line interpretor or shell in ubuntu is `bash`, which stands for `Bourne Again SHell`.
+
+The command line will be cut in pieces everytime the interpreter sees one or more `consecutive spaces` or `tabs` and this forms arguments (the spaces and tabs will be removed). The first argument is the `command` and all the other arguments are given as values to this command. This mechanism is called `shell expansion`. This is the reason that consecutive spaces will be trimmed with the echo command: 
+```bash
+student@linux-ess:~$ echo I like to game                                                    # one space between the words
+I like to game
+student@linux-ess:~$ echo     I    like            to                       game            # multiple spaces between the words
+I like to game
+student@linux-ess:~$ echo I    like     to     game                                         # one tab between the words
+I like to game
+student@linux-ess:~$ echo        I               like        to                     game    # multiple tabs between the words
+I like to game
+student@linux-ess:~$ echo    I               like      to                     game    # multiple spaces and tabs between the words
+I like to game
+```
 
 ### Single and double quotes
 
