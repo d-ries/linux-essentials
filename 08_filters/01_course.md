@@ -52,7 +52,7 @@ Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port
 ```
 
 ### Write to file (tee)
-Sometimes you want to temporary write te result to a seperate file while continuing to work with pipes to get a certain end result. This command will forward the `stdin` to the `stdout` and it will aslo forward `stdin` towards a file provided as an argument:
+Sometimes you want to temporarily write the results to a seperate file while continuing to work with pipes to get a certain end result. This command will forward the `stdin` to the `stdout` but will also store the `stdin` in a file provided as an argument:
 ```bash
 student@linux-ess:~$ tail -3 auth.log | tee temp_log | tail -1
 Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
@@ -60,6 +60,32 @@ student@linux-ess:~$ cat temp_log
 Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
 Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
 Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
+```
+
+tee is also often used to put results in a file where you don't have the right privileges and need to use `sudo`:
+```bash
+student@linux-ess:~$ tail -3 auth.log | head -1 > /filteredlogfile
+-bash: /filteredlogfile: Permission denied
+student@linux-ess:~$ sudo tail -3 auth.log | head -1 > /filteredlogfile
+-bash: /filteredlogfile: Permission denied
+student@linux-ess:~$ tail -3 auth.log | head -1 | tee /filteredlogfile
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
+tee: /filteredlogfile: Permission denied
+student@linux-ess:~$ cat /filteredlogfile
+cat: qdfqdf: No such file or directory
+student@linux-ess:~$ tail -3 auth.log | head -1 | sudo tee /filteredlogfile
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
+student@linux-ess:~$ cat /filteredlogfile
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
+```
+
+?> If you want to add to the output file with tee you can specify the option `-a`
+```bash
+student@linux-ess:~$ head -1 auth.log | sudo tee -a /filteredlogfile
+Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
+student@linux-ess:~$ cat /filteredlogfile
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
+Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
 ```
 
 ## Filtering output
