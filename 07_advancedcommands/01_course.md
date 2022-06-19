@@ -107,11 +107,13 @@ student@linux-ess:~/globbing$ ls file*
 student@linux-ess:~/globbing$ ls file\*
 'file*'
 student@linux-ess:~/globbing$ echo **** TITLE ****
-
 File4   File5   FileABC   Filec   afilea  'file*'   file1   file2   file3   filea   fileb   filebc TITLE  File4   File5   FileABC   Filec   afilea  'file*'   file1   file2   file3   filea   fileb   filebc
-
+student@linux-ess:~/globbing$ echo \*\*\*\* TITLE \*\*\*\*
+**** TITLE ****
 ```
+
 ## Aliases
+Aliases are a way to give a simple name to a rather complex command as seen below:
 ```bash
 student@linux-ess:~$ alias show='ls -lah ~'
 student@linux-ess:~$ show
@@ -124,17 +126,20 @@ drwxr-xr-x 1 root  root       512 Mar  7 17:09 ..
 ...
 ```
 
+Aliases are often used for implementing an extra layer of security:
 ```bash
 student@linux-ess:~$ alias rm='rm -i'
 student@linux-ess:~$ rm jokes.txt
 rm: remove regular file 'jokes.txt'? y
 ```
 
+You already used aliases. For example the ls command we use prints colored text in its output. This is because we use the alias. If we put a `\` in front a command it will use the command instead of the alias.
 ```bash
 student@linux-ess:~$ alias ls
 alias ls='ls --color=auto'
 ```
 
+If we want to remove an alias we can use the unalias command:
 ```bash
 student@linux-ess:~$ unalias rm
 ```
