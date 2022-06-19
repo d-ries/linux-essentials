@@ -2,6 +2,7 @@
 ## User management
 ### /etc/passwd
 ### Adding users (useradd)
+### passwd
 
 #### Homefolders
 
@@ -40,3 +41,7 @@
 ## Switching users (su)
 
 ## Sudo
+
+## whoami, id
+
+## w, who 
