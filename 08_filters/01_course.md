@@ -173,7 +173,7 @@ HTTP request sent, awaiting response... 200 OK
 Length: 227 [text/plain]
 Saving to: ‘regexlist.txt.1’
 
-regexlist.txt.1                                    100%[================================================================================================================>]     227  --.-KB/s    in 0s
+regexlist.txt.1                                    100%[============================================================================>]     227  --.-KB/s    in 0s
 
 2022-06-20 06:12:54 (8.81 MB/s) - ‘regexlist.txt.1’ saved [227/227]
  student@linux-ess:~$ cat regexlist.txt
@@ -259,6 +259,7 @@ https://pxl.be
 Notice that the line doesn't have to start with the pattern.
 
 Because of the fact that we do not put any characters behind the x we could also not specify this character:
+```bash
 student@linux-ess:~$ cat regexlist.txt | grep "p"
 pxl
 pxxl
@@ -268,8 +269,10 @@ pl
 dries.swinnen@pxl.be
 http://pxl.be
 https://pxl.be
+```
 
 Now we tell the regex to find lines that contain a `p` followed by zero, one or more `x` characters. This is exactly why `pl` shows up (it contains zero of the character x):
+```bash
 student@linux-ess:~$ cat regexlist.txt | grep "px\*l"
 pxl
 pxxl
@@ -279,6 +282,7 @@ pl
 dries.swinnen@pxl.be
 http://pxl.be
 https://pxl.be
+```
 
 Imagine if we wanted to use a regex that contains one or more of a character rather than zero, one or more. We can do this using the `+` sign. If we use this we will see that the line with the text `pl` isn't in the results anymore:
 ```bash
@@ -291,6 +295,7 @@ dries.swinnen@pxl.be
 http://pxl.be
 https://pxl.be
 ```
+?> Note that if we don't use the -E option here we have to escape the plus sign (+).   ... | grep "px\+"
 
 To take it even a step further, what about exactly 3 occurences? Easy, we can do this as follows:
 ```bash
@@ -298,6 +303,8 @@ student@linux-ess:~$ cat regexlist.txt | grep -E "px{3}"
 pxxxl
 pxxxxl
 ```
+?> Note that if we don't use the -E option here we have to escape the curly braces ({}).   ... | grep "px\{3\}"
+
 The `{3}` is linked to the character before that. Notice how the one with 4 `x`'s shows up as well. This is because 4 times the letter `x` contains 3 times the letter `x`. We could solve this by adding the letter `l` afterwards:
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -E "px{3}l"
@@ -306,7 +313,7 @@ pxxxl
 
 Imagine now we wanted to check for lines that start or end with a specific character or character set. We'll start of with lines starting with a specific character:
 ```bash
-student@linux-ess:~$ cat regexlist.txt | grep -E "^[DGN]"
+student@linux-ess:~$ cat regexlist.txt | grep "^[DGN]"
 Dries
 Gert
 Niek
@@ -314,7 +321,7 @@ David
 ```
 The example above uses a `^` sign that indicates the start of a line. Next up we use square brackets `[ ]` that we can use to specify characters that can be used as the start of the line. In this case the letters `D`, `G`, and `N`. We could aslo use ranges:
 ```bash
-student@linux-ess:~$ cat regexlist.txt | grep -E "^[0-9]"
+student@linux-ess:~$ cat regexlist.txt | grep "^[0-9]"
 192
 172
 127
@@ -323,7 +330,7 @@ student@linux-ess:~$ cat regexlist.txt | grep -E "^[0-9]"
 192.168.1.2
 172.16.0.4
 127.0.0.1
-student@linux-ess:~$ cat regexlist.txt | grep -E "^[a-z]"
+student@linux-ess:~$ cat regexlist.txt | grep "^[a-z]"
 pxl
 pxxl
 pxxxl
@@ -337,12 +344,12 @@ http://pxl.be
 
 To check for lines ending with a specific character we can use a `$` sign:
 ```bash
-student@linux-ess:~$ cat regexlist.txt | grep -E "e$"
+student@linux-ess:~$ cat regexlist.txt | grep "e$"
 Lode
 dries.swinnen@pxl.be
 https://pxl.be
 http://pxl.be
-student@linux-ess:~$ cat regexlist.txt | grep -E "[0-9]$"
+student@linux-ess:~$ cat regexlist.txt | grep "[0-9]$"
 192
 172
 127
@@ -355,13 +362,13 @@ student@linux-ess:~$ cat regexlist.txt | grep -E "[0-9]$"
 
 So what about matching exactly 1 character? A `.` translates to exactly one character of any type:
 ```bash
-student@linux-ess:~$ cat regexlist.txt | grep -E ".... "
+student@linux-ess:~$ cat regexlist.txt | grep ".... "
 This is a test
 This has been tested
 ```
 The example above translates to `4 characters of any type followed by a space`. We can combine this with starts & endings as well: 
 ```bash
-student@linux-ess:~$ cat regexlist.txt | grep -E "^...\."
+student@linux-ess:~$ cat regexlist.txt | grep "^...\."
 192.168.0.1
 192.168.1.1
 192.168.1.2
@@ -453,13 +460,39 @@ student:/home/student
 ?> Note that the homefolder of the user root isn't in the folder /home, but within the root of the filesystem (/)
 
 #### Using sorting (sort & uniq)
+If we want to sort the lines of a file we can use the `sort` command. With the `uniq` command only the unique values will be shown.
 ```bash
-student@linux-ess:~$ cat auth.log | cut -d ':' -f5 | cut -d' ' -f2 | sort | uniq
-
+student@linux-ess:~$ cat auth.log | grep -E "Accepted|Failed"
+Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g>
+Jun 10 21:38:01 linux-ess: Failed password for: student from 192.168.0.1 port 37362 ssh2
+Jun 10 21:39:01 linux-ess: Failed password for: johndoe from 192.168.0.2 port 37849 ssh2
+Jun 10 21:42:01 linux-ess: Accepted password for: student from 84.298.138.41 port 48785 ssh2
+Jun 14 14:12:33 linux-ess: Accepted password for: johndoe from 192.168.0.3 port 38654 ssh2
+Jun 14 14:14:12 linux-ess: Accepted publickey for: student from 85.245.107.42 port 48298 ssh2: RSA SHA256:Keo89erjOEkmo>Jun 15 17:42:18 linux-ess: Failed password for: janedoe from 192.168.0.10 port 48239 ssh2
+Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
+Jun 19 22:43:23 linux-ess: Failed password for: johndoe from 85.245.107.42 port 22834 ssh2: RSA SHA256:eoKmezlE3iOp38Dj>Jun 22 08:04:00 linux-ess: Accepted password for: johndoe from 192.168.0.99 port 38299 ssh2
+Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 44293 ssh2
+Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 48987 ssh2
+Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 22658 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 34598 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
+student@linux-ess:~$ cat auth.log | egrep "Accepted|Failed" | cut -d ':' -f5 | cut -d' ' -f2 | sort | uniq
 doeg
 janedoe
 johndoe
 student
+```
+
+?> Note that to use `uniq` you must allways first `sort` the data!
+
+?> Note that the pipe sign (|) can be used as the `OR` operator. If we want to apply the `AND` operator we can pipe two greps after each other:
+
+```bash
+student@linux-ess:~$ cat auth.log | grep "johndoe" | grep -vi "rsa"
+Jun 10 21:39:01 linux-ess: Failed password for: johndoe from 192.168.0.2 port 37849 ssh2
+Jun 14 14:12:33 linux-ess: Accepted password for: johndoe from 192.168.0.3 port 38654 ssh2
 ```
 
 #### Using counts (wc)
