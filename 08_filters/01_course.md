@@ -172,6 +172,23 @@ student@linux-ess:~$ find /etc/ssl -name "*.c??" |& tr 'abcde' 'ABCDE'
 finD: ‘/EtC/ssl/privAtE’: PErmission DEniED
 ```
 
+Or another example where we only want to see the Permission denieds of the folders /etc, /sys and /tmp but with a search of the whole disk
+```bash
+student@linux-ess:~$ find / |& grep Perm | grep -E "\s./etc|\s./sys|\s./tmp"
+find: ‘/tmp/systemd-private-89c1ab052a974e86b212f7024be16cee-ModemManager.service-40sq8x’: Permission denied
+find: ‘/tmp/vmware-root_682-2697467275’: Permission denied
+find: ‘/tmp/systemd-private-89c1ab052a974e86b212f7024be16cee-systemd-timesyncd.service-3UeLrQ’: Permission denied
+find: ‘/tmp/systemd-private-89c1ab052a974e86b212f7024be16cee-systemd-resolved.service-uSO3ro’: Permission denied
+find: ‘/tmp/systemd-private-89c1ab052a974e86b212f7024be16cee-systemd-logind.service-SWwh5K’: Permission denied
+find: ‘/tmp/snap.lxd’: Permission denied
+find: ‘/etc/polkit-1/localauthority’: Permission denied
+find: ‘/etc/ssl/private’: Permission denied
+find: ‘/etc/multipath’: Permission denied
+find: ‘/sys/kernel/tracing’: Permission denied
+find: ‘/sys/kernel/debug’: Permission denied
+find: ‘/sys/fs/pstore’: Permission denied
+find: ‘/sys/fs/bpf’: Permission denied
+```
 
 #### Regular expressions
 In the examples above we only used simple strings to find certain lines in a file. Sometimes we want to filter on dynamic content. Imagine finding all logins from an ip address containing '192' followed by other characters, or finding users that have "doe" as a lastname. To achieve this we have to use a dynamic syntax called a regular expression.
