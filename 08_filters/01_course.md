@@ -104,7 +104,7 @@ Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port
 ```
 Both commands give the same result and work the same. What we can see is that the `grep` command will filter the file contents based on a string or pattern (in this case the string `jane`). 
 
-An important note to make is that, by default, `grep` is a case sensitive command. It will only show the lines in the file containing that specific keyword. Note that writing the keyword in caps will result in 0 lines being returned:
+?> An important note to make is that, by default, `grep` is a case sensitive command. It will only show the lines in the file containing that specific keyword. Note that writing the keyword in caps will result in 0 lines being returned:
 ```bash
 student@linux-ess:~$ cat auth.log | grep JANE
 student@linux-ess:~$
@@ -165,16 +165,55 @@ The `grep` command can use different kinds of _regex_ patterns. By default it us
 
 For the examples used in this (sub)chapter we will use a seperate file that you can download using the command below:
 ```bash
-wget https://d-ries.github.io/linux-essentials/data/regexlist.txt
+student@linux-ess:~$ wget https://d-ries.github.io/linux-essentials/data/regexlist.txt
+--2022-06-20 06:12:53--  https://d-ries.github.io/linux-essentials/data/regexlist.txt
+Resolving d-ries.github.io (d-ries.github.io)... 185.199.110.153, 185.199.109.153, 185.199.111.153, ...
+Connecting to d-ries.github.io (d-ries.github.io)|185.199.110.153|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 227 [text/plain]
+Saving to: ‘regexlist.txt.1’
+
+regexlist.txt.1                                    100%[================================================================================================================>]     227  --.-KB/s    in 0s
+
+2022-06-20 06:12:54 (8.81 MB/s) - ‘regexlist.txt.1’ saved [227/227]
+ student@linux-ess:~$ cat regexlist.txt
+Dries
+Gert
+Niek
+Lode
+Maarten
+Tom
+David
+Bert
+Tim
+Tommy
+pxl
+pxxl
+pxxxl
+pxxxxl
+pl
+This is a test
+This has been tested
+192
+172
+127
+192.168.0.1
+192.168.1.1
+192.168.1.2
+172.16.0.4
+127.0.0.1
+dries.swinnen@pxl.be
+http://pxl.be
+https://pxl.be
 ```
 
 To start of we will use some special symbols that we've used before. We've seen the impact of an asterisk (`*`) in the chapter about _file globbing_. An asterisk has a similar functionality in a regex but there are some important key differences:
 - In file globbing a `*` sign means 0, one or more of any type of character
-- In a regex, a `*` sign means 0, one or more **of the previous character, if available**
+- In a regex, a `*` sign means 0, one or more **of the previous character**
 
 Take the example below. We expect only the `pxl` variants to show up, but as we can see in the output all of the file contents show. This is because every line matches the regex `zero, one or more of the letter p`:
  ```
- student@linux-ess:~$ cat regexlist.txt | grep -E "p*"
+student@linux-ess:~$ cat regexlist.txt | grep "p*"
 Dries
 Gert
 Niek
@@ -205,22 +244,52 @@ http://pxl.be
 https://pxl.be
 ``` 
 
-We can solve this by using the following syntax:
+If we want to filter the lines with a `p` and the following character might be an `x` this is done by using the following syntax:
 ```bash
-student@linux-ess:~$ cat regexlist.txt | grep -E "px*"
+student@linux-ess:~$ cat regexlist.txt | grep "px*"
 pxl
 pxxl
 pxxxl
 pxxxxl
 pl
+dries.swinnen@pxl.be
+http://pxl.be
+https://pxl.be
 ```
-Now we tell the regex to find lines that contain a `p` followed by zero, one or more `x` characters. This is exactly why `pl` shows up (it contains zero of the character x). Imagine if we wanted to use a regex that contains one or more of a character rather than zero, one or more. We can do this using the `+` sign:
+Notice that the line doesn't have to start with the pattern.
+
+Because of the fact that we do not put any characters behind the x we could also not specify this character:
+student@linux-ess:~$ cat regexlist.txt | grep "p"
+pxl
+pxxl
+pxxxl
+pxxxxl
+pl
+dries.swinnen@pxl.be
+http://pxl.be
+https://pxl.be
+
+Now we tell the regex to find lines that contain a `p` followed by zero, one or more `x` characters. This is exactly why `pl` shows up (it contains zero of the character x):
+student@linux-ess:~$ cat regexlist.txt | grep "px\*l"
+pxl
+pxxl
+pxxxl
+pxxxxl
+pl
+dries.swinnen@pxl.be
+http://pxl.be
+https://pxl.be
+
+Imagine if we wanted to use a regex that contains one or more of a character rather than zero, one or more. We can do this using the `+` sign. If we use this we will see that the line with the text `pl` isn't in the results anymore:
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -E "px+"
 pxl
 pxxl
 pxxxl
 pxxxxl
+dries.swinnen@pxl.be
+http://pxl.be
+https://pxl.be
 ```
 
 To take it even a step further, what about exactly 3 occurences? Easy, we can do this as follows:
@@ -229,7 +298,11 @@ student@linux-ess:~$ cat regexlist.txt | grep -E "px{3}"
 pxxxl
 pxxxxl
 ```
-The `{3}` is linked to the character before that. Notice how the one with 4 `x`'s shows up aswell. This is because 4 times the letter `x` contains 3 times the letter `x`. We could solve this by adding the letter `l` afterwards.
+The `{3}` is linked to the character before that. Notice how the one with 4 `x`'s shows up as well. This is because 4 times the letter `x` contains 3 times the letter `x`. We could solve this by adding the letter `l` afterwards:
+```bash
+student@linux-ess:~$ cat regexlist.txt | grep -E "px{3}l"
+pxxxl
+```
 
 Imagine now we wanted to check for lines that start or end with a specific character or character set. We'll start of with lines starting with a specific character:
 ```bash
@@ -239,7 +312,7 @@ Gert
 Niek
 David
 ```
-The example above uses a `^` sign that indicates the start of a line. Next up we use square brackets `[ ]` that we can use to add characters that can be used as the start of the line. In this case the letters `D`, `G`, and `N`. We could aslo use ranges:
+The example above uses a `^` sign that indicates the start of a line. Next up we use square brackets `[ ]` that we can use to specify characters that can be used as the start of the line. In this case the letters `D`, `G`, and `N`. We could aslo use ranges:
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -E "^[0-9]"
 192
@@ -286,7 +359,7 @@ student@linux-ess:~$ cat regexlist.txt | grep -E ".... "
 This is a test
 This has been tested
 ```
-The example above translates to `4 characters of any type followed by a space`. We can combine this with starts & endings again aswell: 
+The example above translates to `4 characters of any type followed by a space`. We can combine this with starts & endings as well: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -E "^...\."
 192.168.0.1
@@ -310,11 +383,11 @@ student@linux-ess:~$ cat regexlist.txt | grep -E "^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]
 ```
 Note that this does not validate a valid IPv4 address, whether or not it is public or private or if the number ranges are in the `1-255` range.
 
-?> The `{1,3}` syntax means that the previous characters needs to appear between 1 and 3 times!
+?> The `{1,3}` syntax means that the previous characters need to appear between 1 and 3 times!
 
 Creating a regex that checks for a valid e-mail address format:
 ```bash
-student@linux-ess:~$ cat regexlist.txt | grep -E "^.+\@[a-z,A-Z,0-9]+\.[a-z]+"
+student@linux-ess:~$ cat regexlist.txt | grep -E "^.+\@[a-zA-Z0-9]+\.[a-zA-Z]+"
 dries.swinnen@pxl.be
 ```
 
@@ -330,18 +403,37 @@ Note that this example does not check for valid domain names.
 
 ### Using content structure (cut,sort,uniq)
 #### Using columns (cut)
-Using the `cut` command we can split lines in a file into columns. To do this we have to define a delimiter (a set of one or more characters that defines the start of a new column) for example a `space` or `:` sign. Then we can select which columns the command should display:
+Using the `cut` command we can split lines in a file into columns. To do this we have to define a delimiter (this is a character that defines the start of a new column) for example a `space` or `:` sign. Then we can select which columns the command should display:
 ```bash
+student@linux-ess:~$ cat auth.log
+Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
+Jun 09 11:11:11 linux-ess: Server listening on :: port 22.
+Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g>
+Jun 10 21:38:01 linux-ess: Failed password for: student from 192.168.0.1 port 37362 ssh2
+Jun 10 21:39:01 linux-ess: Failed password for: johndoe from 192.168.0.2 port 37849 ssh2
+Jun 10 21:42:01 linux-ess: Accepted password for: student from 84.298.138.41 port 48785 ssh2
+Jun 14 14:12:33 linux-ess: Accepted password for: johndoe from 192.168.0.3 port 38654 ssh2
+Jun 14 14:14:12 linux-ess: Accepted publickey for: student from 85.245.107.42 port 48298 ssh2: RSA SHA256:Keo89erjOEkmo>Jun 15 17:42:18 linux-ess: Failed password for: janedoe from 192.168.0.10 port 48239 ssh2
+Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
+Jun 19 22:43:23 linux-ess: Failed password for: johndoe from 85.245.107.42 port 22834 ssh2: RSA SHA256:eoKmezlE3iOp38Dj>Jun 22 08:04:00 linux-ess: Accepted password for: johndoe from 192.168.0.99 port 38299 ssh2
+Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 44293 ssh2
+Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 48987 ssh2
+Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 22658 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 34598 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
 student@linux-ess:~$ head -3 auth.log | cut -d":" -f1
 Jun 09 11
 Jun 09 11
 Jun 09 12
+...
 ```
-As you can see in the example above we used the `:` sign as the delimiter. We then used the `-f` optoin to only display the first column. A full line in this log file looks like this:
+As you can see in the example above we used the `:` sign as the delimiter. We then used the `-f` option to only display the first column. A full line in this log file looks like this:
 ```
 Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
 ```
-This means that the first column ends on the `:` sign in the time notation. The second column exists out of the minutes part of the time notation, the third column the seconds of the time notation and the hostname and so on. We can also tell the command to display multiple columns:
+This means that the first column ends on the `:` sign in the time notation (after the hour). The second column exists out of the minutes part of the time notation, the third column the seconds of the time notation and the hostname and so on. We can also tell the command to display multiple columns:
 ```bash
 student@linux-ess:~$ head -3 auth.log | cut -d":" -f1,2,3
 Jun 09 11:11:11 linux-ess
@@ -351,11 +443,14 @@ Jun 09 12:32:24 linux-ess
 
 Another nice example of where we can use this is the `/etc/passwd` file where we can easily filter all the usernames and there homefolder locations:
 ```bash
-student@linux-ess:~$ tail -3 /etc/passwd | cut -d":" -f1,6
-pollinate:/var/cache/pollinate
-dries:/home/dries
+student@linux-ess:~$ cat /etc/passwd | grep bash$
+root:x:0:0:root:/root:/bin/bash
+student:x:1000:1000:student:/home/student:/bin/bash
+student@linux-ess:~$ cat /etc/passwd | grep bash$  | cut -d":" -f1,6
+root:/root
 student:/home/student
 ```
+?> Note that the homefolder of the user root isn't in the folder /home, but within the root of the filesystem (/)
 
 #### Using sorting (sort & uniq)
 ```bash
