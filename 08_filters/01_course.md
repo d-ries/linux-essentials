@@ -156,6 +156,23 @@ this is line three
 this is line four
 ```
 
+?> Another important note to make is dat filters only work on the output stream and not on the error stream. So if we want to search through the errors as well we have to combine the two streams:
+```bash
+student@linux-ess:~$ find /etc/ssl -name "*.c??"
+/etc/ssl/openssl.cnf
+/etc/ssl/certs/ca-certificates.crt
+find: ‘/etc/ssl/private’: Permission denied
+student@linux-ess:~$ find /etc/ssl -name "*.c??" | tr 'abcde' 'ABCDE'
+/EtC/ssl/opEnssl.Cnf
+/EtC/ssl/CErts/CA-CErtifiCAtEs.Crt
+find: ‘/etc/ssl/private’: Permission denied
+student@linux-ess:~$ find /etc/ssl -name "*.c??" |& tr 'abcde' 'ABCDE'
+/EtC/ssl/opEnssl.Cnf
+/EtC/ssl/CErts/CA-CErtifiCAtEs.Crt
+finD: ‘/EtC/ssl/privAtE’: PErmission DEniED
+```
+
+
 #### Regular expressions
 In the examples above we only used simple strings to find certain lines in a file. Sometimes we want to filter on dynamic content. Imagine finding all logins from an ip address containing '192' followed by other characters, or finding users that have "doe" as a lastname. To achieve this we have to use a dynamic syntax called a regular expression.
 
