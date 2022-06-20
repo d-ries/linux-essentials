@@ -195,7 +195,7 @@ student@linux-ess:~$ history 4
   223  history 4
 ```
 
-?> It's a good habbit to use `CTRL-R` to do a reverse search (newest to oldest) through your history. Just press `CTRL-R` and type your search string. Use `CTRL-R` again to search for the next command.
+?> It's a good habbit to use `CTRL-R` to do a reverse search (newest to oldest) through your history. Just press `CTRL-R` and type your search string. Use `CTRL-R` again to search for the next command. Use arrows to go into the command line and alter words. Use `CTRL-C`to quit and go back to an empty command line.
 
 ## Extra course material <!-- {docsify-ignore} -->
 
