@@ -378,7 +378,6 @@ student@linux-ess:~$ cat regexlist.txt | grep "^...\."
 This translates to `start with any type of character` (`^.`) followed by 2 more characters of any type (`..`), followed by a regular dot (`\.`). Notice how we escaped the last dot so it doesn't get interpreted as a special regex character!
 
 #### Pattern examples
-#TODO: uitwerking analyse/ontleding regex
 Creating a regex that checks for a IPv4 address:
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -E "^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$"
@@ -434,7 +433,6 @@ student@linux-ess:~$ head -3 auth.log | cut -d":" -f1
 Jun 09 11
 Jun 09 11
 Jun 09 12
-...
 ```
 As you can see in the example above we used the `:` sign as the delimiter. We then used the `-f` option to only display the first column. A full line in this log file looks like this:
 ```
@@ -487,20 +485,27 @@ student
 
 ?> Note that to use `uniq` you must allways first `sort` the data!
 
-?> Note that the pipe sign (|) can be used as the `OR` operator. If we want to apply the `AND` operator we can pipe two greps after each other:
+?> Note that the pipe sign (|) can be used as the `OR` operator. If we want to apply the `AND` operator we can pipe two greps after each other or use a regex:
 
 ```bash
-student@linux-ess:~$ cat auth.log | grep "johndoe" | grep -vi "rsa"
-Jun 10 21:39:01 linux-ess: Failed password for: johndoe from 192.168.0.2 port 37849 ssh2
-Jun 14 14:12:33 linux-ess: Accepted password for: johndoe from 192.168.0.3 port 38654 ssh2
+cat auth.log | grep "port 44293"
+Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 44293 ssh2
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
+student@linux-ess:~$ cat auth.log | grep -i "accepted" | grep "port 44293"
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
+student@linux-ess:~$ cat auth.log | grep -i "accepted.*port 44293"
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
 ```
 
 #### Using counts (wc)
+If we want to count the lines, words or bytes of a document we can use the command `wc`:
 ```bash
 student@linux-ess:~$ wc auth.log
   17  245 1731 auth.log
 ```
+The first number is the number of lines, the second number the number of words and the third number the number of bytes of the file content.
 
+We can also output only one of those: 
 ```bash
 student@linux-ess:~$ wc -l auth.log # numer of lines
 17 auth.log
@@ -512,19 +517,23 @@ student@linux-ess:~$ wc -c auth.log # number of bytes
 
 ## Manipulating output
 ### Translate (tr)
-The `tr` command allows us to _translate_ certain characters to other characters. I takes in 2 arguments:
+The `tr` command allows us to _translate_ certain characters to other characters. It takes in 2 arguments:
 * The character (or set of characters) that needs to be replaced
-* The chracter (or set of characters) the previous set needs to be replaced by
+* The character (or set of characters) the previous set needs to be replaced by
 
-We can see a simple examle below:
+We can see a simple example below:
 ```bash
 student@linux-ess:~$ head -3 auth.log | tr 'e' 'E'
 Jun 09 11:11:11 linux-Ess: SErvEr listEning on 0.0.0.0 port 22.
 Jun 09 11:11:11 linux-Ess: SErvEr listEning on :: port 22.
 Jun 09 12:32:24 linux-Ess: AccEptEd publickEy for: johndoE from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g>
 ```
-all of the letters `e` in the output will be changed to the capital `E`. As said in the explanation above we can use ranges or sets of characters aswell:
+all of the letters `e` in the output will be translated to the capital `E`. As said in the explanation above we can use ranges or sets of characters as well:
 ```bash
+student@linux-ess:~$ head -3 auth.log | tr 'abcdklmn' 'ABCDKLMN'
+JuN 09 11:11:11 LiNux-ess: Server ListeNiNg oN 0.0.0.0 port 22.
+JuN 09 11:11:11 LiNux-ess: Server ListeNiNg oN :: port 22.
+JuN 09 12:32:24 LiNux-ess: ACCepteD puBLiCKey for: johNDoe froM 85.245.107.42 port 54259 ssh2: RSA SHA256:K18KPGZrTiz7g>
 student@linux-ess:~$ head -3 auth.log | tr 'a-z' 'A-Z'
 JUN 09 11:11:11 LINUX-ESS: SERVER LISTENING ON 0.0.0.0 PORT 22.
 JUN 09 11:11:11 LINUX-ESS: SERVER LISTENING ON :: PORT 22.
@@ -532,12 +541,30 @@ JUN 09 12:32:24 LINUX-ESS: ACCEPTED PUBLICKEY FOR: JOHNDOE FROM 85.245.107.42 PO
 ```
 It's not just regular characters we can replace. We can use special characters such as newlines or tabs as follows:
 ```bash
+student@linux-ess:~$ head -3 auth.log | od -c
+0000000   J   u   n       0   9       1   1   :   1   1   :   1   1
+0000020   l   i   n   u   x   -   e   s   s   :       S   e   r   v   e
+0000040   r       l   i   s   t   e   n   i   n   g       o   n       0
+0000060   .   0   .   0   .   0       p   o   r   t       2   2   .  \n
+0000100   J   u   n       0   9       1   1   :   1   1   :   1   1
+0000120   l   i   n   u   x   -   e   s   s   :       S   e   r   v   e
+0000140   r       l   i   s   t   e   n   i   n   g       o   n       :
+0000160   :       p   o   r   t       2   2   .  \n   J   u   n       0
+0000200   9       1   2   :   3   2   :   2   4       l   i   n   u   x
+0000220   -   e   s   s   :       A   c   c   e   p   t   e   d       p
+0000240   u   b   l   i   c   k   e   y       f   o   r   :       j   o
+0000260   h   n   d   o   e       f   r   o   m       8   5   .   2   4
+0000300   5   .   1   0   7   .   4   2       p   o   r   t       5   4
+0000320   2   5   9       s   s   h   2   :       R   S   A       S   H
+0000340   A   2   5   6   :   K   1   8   k   P   G   Z   r   T   i   z
+0000360   7   g   >  \n
+0000364
 student@linux-ess:~$ head -3 auth.log | tr '\n' ' '
 Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22. Jun 09 11:11:11 linux-ess: Server listening on :: port 22. Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz
 ```
 The example above changes all the _newlines_ to _spaces_.
 
-Imagine we have some data that has multiple occurances of a specific character and we only want it to display one. We can use the `-s` option to delete any recurring characters:
+Imagine we have some data that has multiple occurances of a specific character and we only want it to display one (=squeeze). We can use the `-s` option to delete any recurring characters:
 ```bash
 student@linux-ess:~$ head -3 auth.log | tr -s '1'
 Jun 09 1:1:1 linux-ess: Server listening on 0.0.0.0 port 22.
@@ -554,7 +581,7 @@ Jun 09 123224 linux-ess Accepted publickey for johndoe from 85.245.107.42 port 5
 ```
 
 ### Stream editor (sed)
-`sed` is an advanced stream editor that can perform editing function using regular expressions. Remember the `rename` command? We can use the same syntax of regular expressions here:
+`sed` is an advanced stream editor that can perform editing functions using regular expressions. Remember the `rename` command? We can use the same syntax of regular expressions here:
 ```bash
 student@linux-ess:~$ tail -4 auth.log | sed 's/Failed/Incorrect/'
 Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 34598 ssh2
@@ -562,26 +589,51 @@ Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 8
 Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 77898 ssh2
 Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
 ```
-The example above wil change the string `Failed` to `Incorrect` for every line. Mind that this will only change the string once per line. This is something we need to be aware of as we can see in the example below:
+The example above wil change the string `Failed` to `Incorrect` for every line.
 
+?> Note that only in the output the changes are applied. The file itself isn't altered. If you want to apply it on the file itself you can add the option `-i`:
 ```bash
-student@linux-ess:~$ echo example this is an example | sed 's/example/test/'
+student@linux-ess:~$ tail -4 auth.log > lastfourlines
+student@linux-ess:~$ cat lastfourlines
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 34598 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 
+student@linux-ess:~$ sed -i 's/Failed/Incorrect/' lastfourlines
+student@linux-ess:~$ cat lastfourlines
+Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 34598 ssh2
+Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 87568 ssh2
+Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 77898 ssh2
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
+```
+
+ Mind that by default sed will only change the string once per line. This is something we need to be aware of as we can see in the example below:
+ ```bash
+student@linux-ess:~$ echo "example this is an example" | sed 's/example/test/'
 test this is an example
 ```
 Only the first occurence of `example` is changed to `test`. If we want the `sed` command to change every occurence in a line, we have to use the `g` (global) flag as seen below:
 ```bash
-student@linux-ess:~$ echo example this is an example | sed 's/example/test/g'
+student@linux-ess:~$ echo "example this is an example" | sed 's/example/test/g'
 test this is an test
 ```
-?> There is also an `i` flag that will make the regex case insensitive!
 
-Lastly we will look at the `d` flag which will remove any occurence of the string in a line:
+?> There is also an `i` flag that will make the regex case insensitive:
 ```bash
-student@linux-ess:~$ tail -8 auth.log | sed '/doeg/d'
-Jun 19 22:43:23 linux-ess: Failed password for: johndoe from 85.245.107.42 port 22834 ssh2: RSA SHA256:eoKmezlE3iOp38Dj>Jun 22 08:04:00 linux-ess: Accepted password for: johndoe from 192.168.0.99 port 38299 ssh2
+student@linux-ess:~$ echo "example this is an Example" | sed 's/example/test/g'
+test this is an Example
+student@linux-ess:~$ echo "example this is an Example" | sed 's/example/test/gi'
+test this is an test
 ```
 
- ## Examples
- Below are some interesting examples that combine the commands described in this chapter that might help you further understand filters and their strength.
+Lastly we will look at the `d` flag which will remove any line containing the string:
+```bash
+student@linux-ess:~$ tail -4 auth.log
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 34598 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
+student@linux-ess:~$ tail -4 auth.log | sed '/Failed/d'
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
+```
 
-  #TODO
