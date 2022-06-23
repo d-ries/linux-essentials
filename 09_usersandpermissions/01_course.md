@@ -25,6 +25,7 @@ root:x:0:0:root:/root:/bin/bash
 You can find more information about this file, the columns and the contents by running the command `man 5 passwd`.
 
 ### Adding users (useradd)
+### passwd
 
 ```bash
 student@linux-ess:~$ sudo useradd -m -d /home/ventieldopje24 -c "Dries Swinnen" ventieldopje24
@@ -51,9 +52,7 @@ These settings are kept in the file `/etc/default/useradd` and can be changed at
 /etc/skel
 
 #### Default profile files
-.bash_profile
 .bashrc
-.bash_logout
 .bash_history
 .profile
 
@@ -163,4 +162,3 @@ student adm dialout cdrom floppy sudo audio dip video plugdev netdev pxl
 ### Changing ownership (chgrp, chown)
 
 ### Default permissions (umask)
-

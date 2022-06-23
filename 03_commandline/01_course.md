@@ -142,7 +142,25 @@ The command line interface in Linux environments is often called the _shell_. Th
 
 ?> Try using the `arrow up` and `arrow down` keys after using some commands. You will notice that these commands will appear after the prompt.
 
-Repeating the last command is very easy as well. We can type `!!` (often referred to as _bang bang_) and this will run the command that we last used. To view the history of our last used commands we can use the `history` command:
+Repeating the last command is very easy as well. We can type `!!` (often referred to as _bang bang_) and this will run the command that we last used. We often use it when we don't have enough privileges and we want to run the command again with sudo:
+```bash
+student@linux-ess:~$ cat /etc/shadow
+cat: /etc/shadow: Permission denied
+student@linux-ess:~$ sudo !!
+sudo cat /etc/shadow
+[sudo] password for student:
+root:*:19103:0:99999:7:::
+daemon:*:19103:0:99999:7:::
+bin:*:19103:0:99999:7:::
+...
+usbmux:*:19150:0:99999:7:::
+student:$6$2YcjTQ1OiAVeexi5$MgKJ3MAZBx5P2ZfGIkIjbYYLtcPjxKBVAJx.RnuzPn.EJk/rQgQqAXiiR3jMfq4sDn31e9k5HkuwwR5vKy/D.0:19150:0:99999:7:::
+lxd:!:19150::::::
+```
+
+?> Note that the shadow file holds the passwords of the users and is only viewable by root for security reasons!
+
+To view the history of our last used commands we can use the `history` command:
 ```bash
 student@linux-ess:~/linuscraft$ history 10
   257  ls
@@ -157,6 +175,27 @@ student@linux-ess:~/linuscraft$ history 10
   266  history 10
 ```
 The number that we use as an argument is the amount of commands the output will show. We can run any of these commands by using the identifier listed before the command as follows: `!n`. So for example running `!261` will run the command `mkdir testfolder`.
+
+?> Note that in some distros by default command lines that start with a space are not added to the history and if the command is identical to the previous command it is also witheld:
+```bash
+student@linux-ess:~$ echo Start
+Start
+student@linux-ess:~$ echo "echo command not beginning with a space"
+echo command not beginning with a space
+student@linux-ess:~$ echo "echo command not beginning with a space"
+echo command not beginning with a space
+student@linux-ess:~$  echo "echo command beginning with a space"
+echo command beginning with a space
+student@linux-ess:~$ echo End
+End
+student@linux-ess:~$ history 4
+  220  echo Start
+  221  echo "echo command not beginning with a space"
+  222  echo End
+  223  history 4
+```
+
+?> It's a good habbit to use `CTRL-R` to do a reverse search (newest to oldest) through your history. Just press `CTRL-R` and type your search string. Use `CTRL-R` again to search for the next command. Use arrows to go into the command line and alter words. Use `CTRL-C`to quit and go back to an empty command line.
 
 ## Extra course material <!-- {docsify-ignore} -->
 
