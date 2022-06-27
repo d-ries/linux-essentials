@@ -43,6 +43,60 @@ student@linux-ess:/etc$ cd
 student@linux-ess:~$ pwd
 /home/student
 ```
+
+
+### Display a tree view in the shell (tree)
+You can display a tree view of a directory with its subdirectories with the `tree` command:
+```bash
+student@linux-ess:~$ tree
+.
+└── server.jar
+
+0 directories, 1 file
+```
+
+We could also use the `-a` option to view the hidden files (files starting with a dot):
+```bash
+student@linux-ess:~$ tree -a
+.
+├── .bash_history
+├── .bash_logout
+├── .bashrc
+├── .cache
+│   └── motd.legal-displayed
+├── .lesshst
+├── .local
+│   └── share
+│       └── nano
+├── .profile
+├── server.jar
+├── .ssh
+│   └── authorized_keys
+├── .sudo_as_admin_successful
+└── .wget-hsts
+
+5 directories, 10 files
+```
+
+We can also specify a path as a parameter to get a view of a certain directory:
+
+```bash
+student@linux-ess:~$ tree /etc/dhcp
+/etc/dhcp
+├── debug
+├── dhclient.conf
+├── dhclient-enter-hooks.d
+│   └── debug -> ../debug
+└── dhclient-exit-hooks.d
+    ├── debug -> ../debug
+    ├── hook-dhclient
+    ├── resolved
+    ├── rfc3442-classless-routes
+    └── timesyncd
+
+2 directories, 8 files
+```
+
 ### Absolute & relative paths
 When using commands we often have to use paths to certain folders/files. The `cd` command for example requires a path to navigate to.
 
