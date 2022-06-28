@@ -424,7 +424,7 @@ Be mindfull when using the `rm -rf` command as the root user!
 ### Searching on the filesystem (find)
 The first command to search for files is `find`. It searches through the filesystem to locate files that we search for. We can specify in which directory the search starts (down the tree) and what the filename has to look like (with fileglobbing):
 
-If you do not specify a directory the search begins in the current working directory. By default the search always continues down the tree into the subdirectories.
+?> <i class="fa-solid fa-circle-info"></i> If you do not specify a directory the search begins in the current working directory. By default the search always continues down the tree into the subdirectories.
 
 ```bash
 student@linux-ess:~$ find -name "*sh*"
@@ -502,9 +502,11 @@ student@linux-ess:~$ sudo find / -iname "*networkmanager*"
 
 ### Searching through a filesystem database (locate)
 Another way to search for files is to use the `locate` command. It searches through a database that holds information about the files in the filesystem. 
-Before we use the command to search for the file(s) it is always good practice to update the database.
+
+?> <i class="fa-solid fa-circle-info"></i> Before we use the command to search for the file(s) it is always good practice to update the database.
+
 It's noticable that searching a database with `locate` is much faster than searching through the filesystem itself with `find.
-Make note that we do not specify a directory here. The search will be done through all the files of the filesystem:
+Make note that we do not specify a directory here. The search will always be done through all the files of the filesystem:
 ```bash
 student@linux-ess:~$ touch testfile
 student@linux-ess:~$ ls
