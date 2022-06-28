@@ -596,7 +596,7 @@ student@linux-ess:~$ head -3 auth.log | od -c
 student@linux-ess:~$ head -3 auth.log | tr '\n' ' '
 Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22. Jun 09 11:11:11 linux-ess: Server listening on :: port 22. Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz
 ```
-The example above changes all the _newlines_ to _spaces_.
+?> The example above changes all the _newlines_ to _spaces_.
 
 Imagine we have some data that has multiple occurances of a specific character and we only want it to display one (=squeeze). We can use the `-s` option to delete any recurring characters:
 ```bash
