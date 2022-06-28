@@ -66,6 +66,23 @@ CREATE_MAIL_SPOOL=no
 ```
 These settings are kept in the file `/etc/default/useradd` and can be changed at any time.
 
+#### /etc/skel
+The default files a new user gets copied to his homefolder are stored in `/etc/skel`:
+
+```bash
+student@linux-ess:~$ ls -a /etc/skel
+.  ..  .bash_logout  .bashrc  .profile
+student@linux-ess:~$ sudo ls -a /home/teacher/
+.  ..  .bash_logout  .bashrc  .profile
+```
+
+#### Default profile files
+__.bashrc__: executed everytime a new shell (bash) is started
+
+__.bash\_history__: holds the history (new commands get added to this file on closing of a shell)
+
+__.profile__: executed when user logs in
+
 ### Editing users (usermod & userdel)
 To edit a user's account info, we can use the `usermod` command. This command has several options that we can use to edit specific things. For example to edit the comment field op a user we can run the following command:
 ```bash
@@ -87,6 +104,7 @@ lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false
 teacher:x:1001:1001:Teacher Account:/home/teacher:/bin/bash
 ```
 
+?> All of the options that we can use can be found in the manpage by running `man usermod`.
 
 #### Setting user passwords
 If we want to change our password we can use the `passwd` command:
@@ -100,12 +118,16 @@ passwd: password updated successfully
 ```
 
 As seen in the previous commands we created a new user with the username `teacher` but we never gave it a password. To do this we can run the `passwd` command with `sudo` rights and with a username as argument. This forces setting a new password for that specific user:
+```bash
+student@linux-ess:~$ sudo passwd teacher
+New password:
+Retype new password:
+passwd: password updated successfully
+```
 
 ?> <i class="fa-solid fa-circle-info"></i> Note that if we use `sudo passwd` that we are changing the password of the user root and not our password!
 
 ?> <i class="fa-solid fa-circle-info"></i> Note that you password has to be long and difficult enough, otherwise the new password will not be accepted.
-
-?> Note that when you run the `passwd` command without a username and without `sudo` rights, we can change our current user's password!
 
 The password gets stored in the file `/etc/shadow` for security reasons. Regular users cannot view the contents of this file:
 ```bash
@@ -114,38 +136,8 @@ tail: cannot open '/etc/shadow' for reading: Permission denied
 student@linux-ess:~$ sudo tail -1 /etc/shadow
 teacher:$y$j9T$Vtf.U//c4/N/CB8LzHfnl0$5iCgijrpqXfaA3v18w/nAL2rl8BmiBYX5rn5rf.j6B7:19171:0:99999:7:::
 ```
-
 As seen in the example above the password isn't shown in plaintext. This is because Linux systems use hashing algoritms to encrypt the passwords. The algoritm used here is called _sha512_.
 
-#### Default values 
-The default values used for adding a new user are kept in the file `/etc/default/useradd` and can be changed at any time:
-```bash
-student@linux-ess:~$ useradd -D
-GROUP=100
-HOME=/home
-INACTIVE=-1
-EXPIRE=
-SHELL=/bin/sh
-SKEL=/etc/skel
-CREATE_MAIL_SPOOL=no
-```
-
-#### /etc/skel
-The default files a new user gets copied to his homefolder are stored in `/etc/skel`:
-
-```bash
-student@linux-ess:~$ ls -a /etc/skel
-.  ..  .bash_logout  .bashrc  .profile
-student@linux-ess:~$ sudo ls -a /home/teacher/
-.  ..  .bash_logout  .bashrc  .profile
-```
-
-#### Default profile files
-__.bashrc__: executed everytime a new shell (bash) is started
-
-__.bash\_history__: holds the history (new commands get added to this file on closing of a shell)
-
-__.profile__: executed when user logs in
 
 ## Switching users (su)
 To switch user accounts we could use the `exit` command to close the current shell and this will, eventually, end up in giving us the login prompt of the server. An alternative is to use the `su` (`switch user`) command:
