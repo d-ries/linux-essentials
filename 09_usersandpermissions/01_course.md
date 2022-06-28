@@ -119,7 +119,6 @@ As seen in the example above the password isn't shown in plaintext. This is beca
 
 #### Default values 
 The default values used for adding a new user are kept in the file `/etc/default/useradd` and can be changed at any time:
->>>>>>> a6dbac99f9e564f8cc5b653a76f267bdabef88be
 ```bash
 student@linux-ess:~$ useradd -D
 GROUP=100
@@ -130,8 +129,6 @@ SHELL=/bin/sh
 SKEL=/etc/skel
 CREATE_MAIL_SPOOL=no
 ```
-
-This will add an exclamation mark (`!`) in front of the password. This tells the system that the user account is not allowed to login to the system.
 
 #### /etc/skel
 The default files a new user gets copied to his homefolder are stored in `/etc/skel`:
