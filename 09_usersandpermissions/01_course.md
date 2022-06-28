@@ -3,7 +3,7 @@ As with any operating system we will be working with different users on the syst
 
 ## User management
 ### /etc/passwd
-As we've seen before alot in Linux is done using config files. The same can be said about user management. Users are kept in the file `/etc/passwd`. This contains a list with useraccounts and some metadata seperated by colons:
+As we've seen before a lot in Linux is done using config files. The same can be said about user management. User configuration is stored in the file `/etc/passwd`. It contains a list of user accounts and some metadata seperated by colons:
 ```bash
 student@linux-ess:~$ tail /etc/passwd
 syslog:x:104:110::/home/syslog:/usr/sbin/nologin
@@ -21,21 +21,35 @@ The first account in this file is the `root` account:
 student@linux-ess:~$ head -1 /etc/passwd
 root:x:0:0:root:/root:/bin/bash
 ```
-We can see more info that just usernames. These lines contain the user identifier (`1000` for `student`), home folder location, default shell, ... You can find more information about this file, the columns and the contents by running the command `man 5 passwd`.
+
+We can see more info that just usernames. These lines contain the user identifier (`1000` for `student`), home folder location, default shell, ... 
+
+?> <i class="fa-solid fa-circle-info"></i> You can find more information about this file, the columns and the contents by running the command `man 5 passwd`.
 
 ### Adding users (useradd)
-To add users we can simply use the `useradd` command. Its important to note that we have to run these commands with `sudo` rights. This is because it are system commands that affect the entire system. To add a new user with the username `ventieldopje24` we could run the following command:
-```
-student@linux-ess:~$ sudo useradd -m -d /home/ventieldopje24 -c "Dries Swinnen" ventieldopje24
+To add users we can simply use the `useradd` command. Its important to note that we have to run these commands with `sudo` rights. This is because it are system commands that affect the entire system. To add a new user with the username `teacher` we could run the following command:
+```bash
+student@linux-ess:~$ sudo useradd -m -d /home/teacher -c "Teacher Account" teacher
 [sudo] password for student:
-student@linux-ess:~$
+student@linux-ess:~$ tail -3 /etc/passwd
+student:x:1000:1000:student:/home/student:/bin/bash
+lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false
+teacher:x:1001:1001:Teacher Account:/home/teacher:/bin/sh
 ```
 The `-d` takes in an argument and uses this argument as a path to where the homefolder has to be created. The `m` option (`create home`) will make sure the home folder actually gets created with the correct permissions. Lastly the `-c` (`comment`) option sets extra metadata to the user. 
 
-?> We can delete users by running the command `userdel -r ventieldopje24`. The option `-r` will remove that user's homefolder. As seen in the folder `/home` or in the file `/etc/passwd` the new user has been created:
+?> <i class="fa-solid fa-circle-info"></i> We can delete users by running the command `userdel -r teacher`. The option `-r` will also remove that user's homefolder.
+
+As seen in the folder `/home` or in the file `/etc/passwd` the new user has been created:
 ```bash
 student@linux-ess:~$ tail -1 /etc/passwd
-ventieldopje24:x:1001:1001:hackerman:/home/ventieldopje24:/bin/sh
+teacher:x:1001:1001:Teacher Account:/home/teacher:/bin/sh
+```
+
+Every user has a userid (the third field in `/etc/passwd`). To view the userid of a user you can use the `id` command:
+```bash
+student@linux-ess:~$ id teacher
+uid=1001(teacher) gid=1001(teacher) groups=1001(teacher)
 ```
 
 #### Homefolders
@@ -52,116 +66,191 @@ CREATE_MAIL_SPOOL=no
 ```
 These settings are kept in the file `/etc/default/useradd` and can be changed at any time.
 
-#### Default profile files
-#todo
-.bashrc
-.bash_history
-.profile
-
 ### Editing users (usermod & userdel)
-To edit a user's account info, we can use the `usermod` command. This command has several options that we can use to edit specific things. For example to edit the commend field op a user we can run the following command:
+To edit a user's account info, we can use the `usermod` command. This command has several options that we can use to edit specific things. For example to edit the comment field op a user we can run the following command:
 ```bash
-ventieldopje24:x:1001:1001:Dries Swinnen:/home/ventieldopje24:/bin/sh
-student@linux-ess:~$ sudo usermod -c 'hackerman' ventieldopje24
+student@linux-ess:~$ sudo usermod -c "Gert VW" teacher
 student@linux-ess:~$ tail -1 /etc/passwd
-ventieldopje24:x:1001:1001:hackerman:/home/ventieldopje24:/bin/sh
+teacher:x:1002:1003:Gert VW:/home/teacher:/bin/sh
 ```
 
-#### Setting user passwords
-As seen in the previous commands we created a new user with the username `ventieldopje24` but we never gave it a password. To do this we can run the `passwd` command with `sudo` rights and with a username as argument. This forces setting a new password for that specific user:
+To edit the default shell for a specific user we could do the following:
 ```bash
-student@linux-ess:~$ sudo passwd ventieldopje24
+student@linux-ess:~$ tail -3 /etc/passwd
+student:x:1000:1000:student:/home/student:/bin/bash
+lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false
+teacher:x:1001:1001:Teacher Account:/home/teacher:/bin/sh
+student@linux-ess:~$ sudo usermod -s /bin/bash teacher
+student@linux-ess:~$ tail -3 /etc/passwd
+student:x:1000:1000:student:/home/student:/bin/bash
+lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false
+teacher:x:1001:1001:Teacher Account:/home/teacher:/bin/bash
+```
+
+
+#### Setting user passwords
+If we want to change our password we can use the `passwd` command:
+```bash
+student@linux-ess:~$ passwd
+Changing password for student.
+Current password:
 New password:
 Retype new password:
 passwd: password updated successfully
 ```
+
+As seen in the previous commands we created a new user with the username `teacher` but we never gave it a password. To do this we can run the `passwd` command with `sudo` rights and with a username as argument. This forces setting a new password for that specific user:
+
+?> <i class="fa-solid fa-circle-info"></i> Note that if we use `sudo passwd` that we are changing the password of the user root and not our password!
+
+?> <i class="fa-solid fa-circle-info"></i> Note that you password has to be long and difficult enough, otherwise the new password will not be accepted.
+
 ?> Note that when you run the `passwd` command without a username and without `sudo` rights, we can change our current user's password!
 
-Passwords are stored in another configuration file called `/etc/shadow`. To view this file we'll need `sudo` rights:
-```
+The password gets stored in the file `/etc/shadow` for security reasons. Regular users cannot view the contents of this file:
+```bash
+student@linux-ess:~$ tail -1 /etc/shadow
+tail: cannot open '/etc/shadow' for reading: Permission denied
 student@linux-ess:~$ sudo tail -1 /etc/shadow
-ventieldopje24:$6$4vg/x5qVib6l64Ag$jAru5Ov9l1jr6gfeoJO5LWDX5AiVADusToKSKT9H4u3Ih.KgZnWnZeM7N9.csfrqdABezJQbCSsD4j4YG/nFk1:19166:0:99999:7:::
+teacher:$y$j9T$Vtf.U//c4/N/CB8LzHfnl0$5iCgijrpqXfaA3v18w/nAL2rl8BmiBYX5rn5rf.j6B7:19171:0:99999:7:::
 ```
+
 As seen in the example above the password isn't shown in plaintext. This is because Linux systems use hashing algoritms to encrypt the passwords. The algoritm used here is called _sha512_.
 
-The user `ventieldopje24` is now ready to login on the system with its set password. We can always lock accounts using the `usermod` command:
+#### Default values 
+The default values used for adding a new user are kept in the file `/etc/default/useradd` and can be changed at any time:
+>>>>>>> a6dbac99f9e564f8cc5b653a76f267bdabef88be
 ```bash
-student@linux-ess:~$ sudo usermod -L ventieldopje24
+student@linux-ess:~$ useradd -D
+GROUP=100
+HOME=/home
+INACTIVE=-1
+EXPIRE=
+SHELL=/bin/sh
+SKEL=/etc/skel
+CREATE_MAIL_SPOOL=no
 ```
+
 This will add an exclamation mark (`!`) in front of the password. This tells the system that the user account is not allowed to login to the system.
+
+#### /etc/skel
+The default files a new user gets copied to his homefolder are stored in `/etc/skel`:
+
+```bash
+student@linux-ess:~$ ls -a /etc/skel
+.  ..  .bash_logout  .bashrc  .profile
+student@linux-ess:~$ sudo ls -a /home/teacher/
+.  ..  .bash_logout  .bashrc  .profile
+```
+
+#### Default profile files
+__.bashrc__: executed everytime a new shell (bash) is started
+
+__.bash\_history__: holds the history (new commands get added to this file on closing of a shell)
+
+__.profile__: executed when user logs in
 
 ## Switching users (su)
 To switch user accounts we could use the `exit` command to close the current shell and this will, eventually, end up in giving us the login prompt of the server. An alternative is to use the `su` (`switch user`) command:
 ```bash
-student@linux-ess:~$ su ventieldopje24
+student@linux-ess:~$ whoami; pwd
+student
+/home/student
+student@linux-ess:~$ su - teacher
 Password:
-$ whoami
-ventieldopje24
-$ cd
-$ pwd
-/home/ventieldopje24
-$ exit
-student@linux-ess:~$
-```
-This command will prompt the password of the user you want to login to. As seen in the example above we switched to the user `ventieldopje24` with the password we've set previously. After that we run the `cd` command to go to the users homefolder (and check this running the `pwd` command). After that we run the `exit` command which will close down the shell and return to the original shell where we ran the `su ventieldopje24` command.
-
-## Sudo
-Note that when you run the `su` command with `sudo` rights, you will not be prompted to enter that users password (if you still get a password prompt, its the password of the account running the `sudo` command). This will skip any login checks and switch straight to the user provided:
-```bash
-student@linux-ess:~$ sudo su ventieldopje24
-$ whoami
-ventieldopje24
+teacher@linux-ess:~$ whoami; pwd
+teacher
+/home/teacher
+teacher@linux-ess:~$ exit
+logout
+student@linux-ess:~$ whoami; pwd
+student
+/home/student
 ```
 
-By default the user `root` has no password set. So we cannot login as root using a password. What we can do is run `su` with `sudo` rights to skip any password checks and login straight as `root`:
+Note that root can become whoever he wants without the need to know that users password:
 ```bash
-student@linux-ess:~$ sudo su root
-root@linux-ess:/home/student# whoami
+student@linux-ess:~$ whoami; pwd
+student
+/home/student
+student@linux-ess:~$ sudo su - teacher
+teacher@linux-ess:~$ whoami; pwd
+teacher
+/home/teacher
+teacher@linux-ess:~$ exit
+logout
+```
+
+Note that to become root (without knowing his password) we can also use the `sudo` command:
+```bash
+student@linux-ess:~$ whoami; pwd
+student
+/home/student
+student@linux-ess:~$ sudo su - root
+root@linux-ess:~# whoami
 root
+root@linux-ess:~# pwd
+/root
+root@linux-ess:~# exit
+logout
 ```
-We want to be mindfull of commands that we run as the `root` user. This user has permissions on all the files, folders and services on our system. This means that running commands as `root` can have a huge impact when being exploited.
+
+We want to be mindful of commands that we run as the `root` user. This user has permissions on all the files, folders and services on our system. This means that running commands as `root` can have a huge impact when being exploited.
 
 ## Group management
-```
-student@linux-ess:~$ groups
-student adm dialout cdrom floppy sudo audio dip video plugdev netdev
+
+### View groupinfo of a user (id,groups)
+To view the groups a user is added to we can use the commands `id` and `groups`:
+```bash
+student@linux-ess:~$ id teacher
+uid=1001(teacher) gid=1001(teacher) groups=1001(teacher)
+student@linux-ess:~$ groups teacher
+teacher : teacher
 ```
 
 ### /etc/group
+The file where the group info of the users is stored is `/etc/group`. We could also make changes to this file instead of using commands.
 ```bash
-student@linux-ess:~$ tail -2 /etc/group
+student@linux-ess:~$ tail -3 /etc/group
 student:x:1000:
-ventieldopje24:x:1001:
+plocate:x:118:
+teacher:x:1001:
 ```
 
 
 ### Adding groups (groupadd).
+If there's a need for new groups we can do it with the `groupadd` command:
 ```bash
-student@linux-ess:~$ sudo groupadd pxl
+student@linux-ess:~$ sudo groupadd staff
 student@linux-ess:~$ tail -2 /etc/group
-ventieldopje24:x:1001:
-pxl:x:1002:
+teacher:x:1001:
+staff:x:1002:
 ```
 
-?> We can delete groups using the command `sudo groupdel pxl`.
+?> We can delete groups using the command `sudo groupdel staff`.
 
 ### Editing groups (groupmod)
-
+If we need to change a group we can use `groupmod`:
 ```bash
-student@linux-ess:~$ sudo groupmod -n hogeschool-pxl pxl
+student@linux-ess:~$ sudo groupmod -n personnel staff
 student@linux-ess:~$ tail -1 /etc/group
-hogeschool-pxl:x:1002:
+personnel:x:1002:
 ```
 
 ### Edit group memberships (usermod)
+If we want to add a user to a group we can use the `usermod` command:
+```bash
+student@linux-ess:~$ sudo usermod -a -G personnel teacher
+student@linux-ess:~$ id teacher
+uid=1001(teacher) gid=1001(teacher) groups=1001(teacher),50(personnel)
+student@linux-ess:~$ groups teacher
+teacher : teacher personnel
+```
 
-```
-student@linux-ess:~$ sudo usermod -a -G pxl student
-student@linux-ess:~$ su student
-Password:
-student@linux-ess:~$ groups
-student adm dialout cdrom floppy sudo audio dip video plugdev netdev pxl
-```
+?> <i class="fa-solid fa-circle-info"></i> If you forget the `-a` option the user will only be in the specified group and will be removed from all the groups he was in. This can be a serious problem if the user was the only one in the sudo group!
+
+?> <i class="fa-solid fa-circle-info"></i> The primary group of a user is specified in `/etc/passwd` and is the default group set on a new file or directory created by that user.
+
 
 ## Permissions
 

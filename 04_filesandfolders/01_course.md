@@ -420,6 +420,173 @@ Be mindfull when using the `rm -rf` command as the root user!
 ?> <i class="fa-solid fa-circle-info"></i> There is no garbage bin in linux. Removing a file means its gone forever!
 
 
+## Searching for files
+### Searching on the filesystem (find)
+The first command to search for files is `find`. It searches through the filesystem to locate files that we search for. We can specify in which directory the search starts (down the tree) and what the filename has to look like (with fileglobbing):
+
+?> <i class="fa-solid fa-circle-info"></i> If you do not specify a directory the search begins in the current working directory. By default the search always continues down the tree into the subdirectories.
+
+```bash
+student@linux-ess:~$ find -name "*sh*"
+./.bash_logout
+./.local/share
+./.lesshst
+./.ssh
+./.bashrc
+./.bash_history
+```
+
+We can also specify a directory from where to start the search:
+```bash
+student@linux-ess:~$ find / -name "*networkmanager*"
+find: ‘/boot/lost+found’: Permission denied
+find: ‘/tmp/systemd-private-630e73882a5f4981b6052d8443c96a61-systemd-resolved.service-NhxvQ2’: Permission denied
+find: ‘/tmp/systemd-private-630e73882a5f4981b6052d8443c96a61-systemd-logind.service-XPeDAD’: Permission denied
+find: ‘/tmp/vmware-root_698-2730496923’: Permission denied
+find: ‘/tmp/systemd-private-630e73882a5f4981b6052d8443c96a61-ModemManager.service-our0IA’: Permission denied
+find: ‘/tmp/systemd-private-630e73882a5f4981b6052d8443c96a61-systemd-timesyncd.service-LpOYjL’: Permission denied
+find: ‘/tmp/snap.lxd’: Permission denied
+find: ‘/run/udisks2’: Permission denied
+find: ‘/run/user/1000/systemd/inaccessible/dir’: Permission denied
+find: ‘/run/sudo’: Permission denied
+find: ‘/run/cryptsetup’: Permission denied
+find: ‘/run/credentials/systemd-sysusers.service’: Permission denied
+find: ‘/run/systemd/propagate’: Permission denied
+find: ‘/run/systemd/unit-root’: Permission denied
+find: ‘/run/systemd/inaccessible/dir’: Permission denied
+find: ‘/run/lvm’: Permission denied
+find: ‘/run/lock/lvm’: Permission denied
+find: ‘/run/initramfs’: Permission denied
+/usr/lib/python3/dist-packages/cloudinit/distros/parsers/networkmanager_conf.py
+/usr/lib/python3/dist-packages/cloudinit/distros/parsers/__pycache__/networkmanager_conf.cpython-310.pyc
+/usr/lib/python3/dist-packages/sos/report/plugins/__pycache__/networkmanager.cpython-310.pyc
+/usr/lib/python3/dist-packages/sos/report/plugins/networkmanager.py
+find: ‘/etc/polkit-1/localauthority’: Permission denied
+find: ‘/etc/ssl/private’: Permission denied
+...
+```
+
+We see too many error messages. It clutters the view and we don't get any results back from the directories where we have no privileges for the view their content.
+The solution is to use the `sudo` command:
+```bash
+student@linux-ess:~$ sudo find / -name "*networkmanager*"
+/usr/lib/python3/dist-packages/cloudinit/distros/parsers/networkmanager_conf.py
+/usr/lib/python3/dist-packages/cloudinit/distros/parsers/__pycache__/networkmanager_conf.cpython-310.pyc
+/usr/lib/python3/dist-packages/sos/report/plugins/__pycache__/networkmanager.cpython-310.pyc
+/usr/lib/python3/dist-packages/sos/report/plugins/networkmanager.py
+/snap/core20/1405/usr/lib/python3/dist-packages/cloudinit/distros/parsers/__pycache__/networkmanager_conf.cpython-38.pyc
+/snap/core20/1405/usr/lib/python3/dist-packages/cloudinit/distros/parsers/networkmanager_conf.py
+/snap/core20/1518/usr/lib/python3/dist-packages/cloudinit/distros/parsers/__pycache__/networkmanager_conf.cpython-38.pyc
+/snap/core20/1518/usr/lib/python3/dist-packages/cloudinit/distros/parsers/networkmanager_conf.py
+```
+
+If we want our search to be case insensitive we can use `-iname` instead of `-name`:
+```bash
+student@linux-ess:~$ sudo find / -iname "*networkmanager*"
+/run/NetworkManager
+/usr/lib/python3/dist-packages/cloudinit/distros/parsers/networkmanager_conf.py
+/usr/lib/python3/dist-packages/cloudinit/distros/parsers/__pycache__/networkmanager_conf.cpython-310.pyc
+/usr/lib/python3/dist-packages/sos/report/plugins/__pycache__/networkmanager.cpython-310.pyc
+/usr/lib/python3/dist-packages/sos/report/plugins/networkmanager.py
+/etc/NetworkManager
+/snap/core20/1405/etc/NetworkManager
+/snap/core20/1405/usr/lib/NetworkManager
+/snap/core20/1405/usr/lib/python3/dist-packages/cloudinit/distros/parsers/__pycache__/networkmanager_conf.cpython-38.pyc
+/snap/core20/1405/usr/lib/python3/dist-packages/cloudinit/distros/parsers/networkmanager_conf.py
+/snap/core20/1518/etc/NetworkManager
+/snap/core20/1518/usr/lib/NetworkManager
+/snap/core20/1518/usr/lib/python3/dist-packages/cloudinit/distros/parsers/__pycache__/networkmanager_conf.cpython-38.pyc
+/snap/core20/1518/usr/lib/python3/dist-packages/cloudinit/distros/parsers/networkmanager_conf.py
+```
+
+
+### Searching through a filesystem database (locate)
+Another way to search for files is to use the `locate` command. It searches through a database that holds information about the files in the filesystem. 
+
+?> <i class="fa-solid fa-circle-info"></i> Before we use the command to search for the file(s) it is always good practice to update the database.
+
+It's noticable that searching a database with `locate` is much faster than searching through the filesystem itself with `find.
+Make note that we do not specify a directory here. The search will always be done through all the files of the filesystem:
+```bash
+student@linux-ess:~$ touch testfile
+student@linux-ess:~$ ls
+server.jar  testfile
+student@linux-ess:~$ find -name "testfile"
+./testfile
+student@linux-ess:~$ locate testfile
+student@linux-ess:~$ sudo updatedb
+student@linux-ess:~$ locate testfile
+/home/student/testfile
+student@linux-ess:~$ locate .profile
+/etc/lvm/profile/cache-mq.profile
+/etc/lvm/profile/cache-smq.profile
+/etc/lvm/profile/command_profile_template.profile
+/etc/lvm/profile/lvmdbusd.profile
+/etc/lvm/profile/metadata_profile_template.profile
+/etc/lvm/profile/thin-generic.profile
+/etc/lvm/profile/thin-performance.profile
+/etc/lvm/profile/vdo-small.profile
+/etc/skel/.profile
+/home/student/.profile
+/snap/core20/1405/etc/skel/.profile
+/snap/core20/1405/usr/share/base-files/dot.profile
+...
+```
+
+If we also want to see files that we do not have the privileges for, then we have to use `sudo`:
+```bash
+student@linux-ess:~$ sudo locate .profile
+/etc/lvm/profile/cache-mq.profile
+/etc/lvm/profile/cache-smq.profile
+/etc/lvm/profile/command_profile_template.profile
+/etc/lvm/profile/lvmdbusd.profile
+/etc/lvm/profile/metadata_profile_template.profile
+/etc/lvm/profile/thin-generic.profile
+/etc/lvm/profile/thin-performance.profile
+/etc/lvm/profile/vdo-small.profile
+/etc/skel/.profile
+/home/student/.profile
+/root/.profile
+/snap/core20/1405/etc/skel/.profile
+/snap/core20/1405/root/.profile
+...
+```
+
+If we also want to search case insensitive, then we have to use the `-i` option:
+```bash
+student@linux-ess:~$ sudo locate -i networkmanager
+/etc/NetworkManager
+/etc/NetworkManager/dispatcher.d
+/etc/NetworkManager/dispatcher.d/hook-network-manager
+/snap/core20/1405/etc/NetworkManager
+/snap/core20/1405/etc/NetworkManager/dispatcher.d
+/snap/core20/1405/etc/NetworkManager/dispatcher.d/hook-network-manager
+/snap/core20/1405/usr/lib/NetworkManager
+/snap/core20/1405/usr/lib/NetworkManager/conf.d
+/snap/core20/1405/usr/lib/NetworkManager/conf.d/no-mac-addr-change.conf
+/snap/core20/1405/usr/lib/python3/dist-packages/cloudinit/distros/parsers/networkmanager_conf.py
+/snap/core20/1405/usr/lib/python3/dist-packages/cloudinit/distros/parsers/__pycache__/networkmanager_conf.cpython-38.pyc
+...
+```
+
+If we only want to search in filenames and not in directorynames we have to use the `-b` option:
+```bash
+student@linux-ess:~$ sudo locate -b -i networkmanager
+/etc/NetworkManager
+/snap/core20/1405/etc/NetworkManager
+/snap/core20/1405/usr/lib/NetworkManager
+/snap/core20/1405/usr/lib/python3/dist-packages/cloudinit/distros/parsers/networkmanager_conf.py
+/snap/core20/1405/usr/lib/python3/dist-packages/cloudinit/distros/parsers/__pycache__/networkmanager_conf.cpython-38.pyc
+/snap/core20/1518/etc/NetworkManager
+/snap/core20/1518/usr/lib/NetworkManager
+/snap/core20/1518/usr/lib/python3/dist-packages/cloudinit/distros/parsers/networkmanager_conf.py
+/snap/core20/1518/usr/lib/python3/dist-packages/cloudinit/distros/parsers/__pycache__/networkmanager_conf.cpython-38.pyc
+/usr/lib/python3/dist-packages/cloudinit/distros/parsers/networkmanager_conf.py
+/usr/lib/python3/dist-packages/cloudinit/distros/parsers/__pycache__/networkmanager_conf.cpython-310.pyc
+/usr/lib/python3/dist-packages/sos/report/plugins/networkmanager.py
+/usr/lib/python3/dist-packages/sos/report/plugins/__pycache__/networkmanager.cpython-310.pyc
+```
+
 ## Extra course material <!-- {docsify-ignore} -->
 
 <i class="fa-solid fa-film"></i> [[Pluralsight] Linux command syntax patterns](https://app.pluralsight.com/course-player?clipId=5c3b8432-e324-4b4b-adfd-2615298a7aba)
