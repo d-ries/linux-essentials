@@ -44,7 +44,22 @@ student@linux-ess:~$ id teacher
 uid=1001(teacher) gid=1001(teacher) groups=1001(teacher)
 ```
 
-?> <i class="fa-solid fa-circle-info"></i> Before we can login with the new user we have to give him a password with the `passwd` command:
+#### Setting user passwords
+If we want to change our password we can use the `passwd` command:
+```bash
+student@linux-ess:~$ passwd
+Changing password for student.
+Current password:
+New password:
+Retype new password:
+passwd: password updated successfully
+```
+
+?> <i class="fa-solid fa-circle-info"></i> Note that if we use `sudo passwd` that we are changing the password of the user root and not our password!
+
+?> <i class="fa-solid fa-circle-info"></i> Note that you password has to be long and difficult enough, otherwise the new password will not be accepted.
+
+Before we can login with the new user we have to give him a password with the `passwd` command:
 ```bash
 student@linux-ess:~$ sudo passwd teacher
 New password:
@@ -52,14 +67,12 @@ Retype new password:
 passwd: password updated successfully
 ```
 
-#### Setting user passwords
 The password gets stored in the file `/etc/shadow` for security reasons. Regular users cannot view the contents of this file:
 ```bash
 student@linux-ess:~$ tail -1 /etc/shadow
 tail: cannot open '/etc/shadow' for reading: Permission denied
 student@linux-ess:~$ sudo tail -1 /etc/shadow
 teacher:$y$j9T$Vtf.U//c4/N/CB8LzHfnl0$5iCgijrpqXfaA3v18w/nAL2rl8BmiBYX5rn5rf.j6B7:19171:0:99999:7:::
-```
 
 #### Default values 
 The default values used for adding a new user are kept in the file `/etc/default/useradd` and can be changed at any time:
