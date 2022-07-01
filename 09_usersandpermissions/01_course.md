@@ -6,15 +6,16 @@ As with any operating system we will be working with different users on the syst
 As we've seen before a lot in Linux is done using config files. The same can be said about user management. User configuration is stored in the file `/etc/passwd`. It contains a list of user accounts and some metadata seperated by colons:
 ```bash
 student@linux-ess:~$ tail /etc/passwd
-syslog:x:104:110::/home/syslog:/usr/sbin/nologin
-_apt:x:105:65534::/nonexistent:/usr/sbin/nologin
-tss:x:106:111:TPM software stack,,,:/var/lib/tpm:/bin/false
-uuidd:x:107:112::/run/uuidd:/usr/sbin/nologin
-tcpdump:x:108:113::/nonexistent:/usr/sbin/nologin
-sshd:x:109:65534::/run/sshd:/usr/sbin/nologin
-landscape:x:110:115::/var/lib/landscape:/usr/sbin/nologin
-pollinate:x:111:1::/var/cache/pollinate:/bin/false
-student:x:1000:1000:,,,:/home/student:/bin/bash
+pollinate:x:105:1::/var/cache/pollinate:/bin/false
+sshd:x:106:65534::/run/sshd:/usr/sbin/nologin
+syslog:x:107:113::/home/syslog:/usr/sbin/nologin
+uuidd:x:108:114::/run/uuidd:/usr/sbin/nologin
+tcpdump:x:109:115::/nonexistent:/usr/sbin/nologin
+tss:x:110:116:TPM software stack,,,:/var/lib/tpm:/bin/false
+landscape:x:111:117::/var/lib/landscape:/usr/sbin/nologin
+usbmux:x:112:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
+student:x:1000:1000:student:/home/student:/bin/bash
+lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false
 ```
 The first account in this file is the `root` account:
 ```bash
