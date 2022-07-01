@@ -210,7 +210,7 @@ teacher:x:1001:
 ```
 
 
-### Adding groups (groupadd).
+### Adding groups (groupadd)
 If there's a need for new groups we can do it with the `groupadd` command:
 ```bash
 student@linux-ess:~$ sudo groupadd staff
