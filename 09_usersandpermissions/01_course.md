@@ -53,8 +53,8 @@ student@linux-ess:~$ id teacher
 uid=1001(teacher) gid=1001(teacher) groups=1001(teacher)
 ```
 
-#### Homefolders
-By default homefolders are created in the `/home` directory. These folders aren't created by scratch. It uses a template that is located in `/etc/skel`. This means that if we edit any contents in this `skel` folder, it wil actually be copied to any new users we create. The `useradd` command uses quite some default values. We can check these default values by running the following command:
+#### Default values
+The `useradd` command uses quite some default values. We can check these default values by running the following command:
 ```
 student@linux-ess:~$ useradd -D
 GROUP=100
@@ -67,8 +67,10 @@ CREATE_MAIL_SPOOL=no
 ```
 These settings are kept in the file `/etc/default/useradd` and can be changed at any time.
 
+?> <i class="fa-solid fa-circle-info"></i> Notice that the default value for the shell is `/bin/sh`. It is good practice to alter this to `/bin/bash` so that every new user gets the `bourne again shell` as default.
+
 #### /etc/skel
-The default files a new user gets copied to his homefolder are stored in `/etc/skel`:
+By default homefolders are created as a subdirectory of the `/home` directory. These folders aren't created by scratch. It uses a template that is located in `/etc/skel`. This means that if we alter any contents in this `skel` folder, this wil actually be copied to any new users we create in the future:
 
 ```bash
 student@linux-ess:~$ ls -a /etc/skel
