@@ -26,7 +26,11 @@ To create a new virtual machine (VM) in VMWare you go to the menu `file`>`New vi
 
 ![VMware File New Vm](../images/02/VMware_File_New_VM.png)
 
-In the first screen we select the option to `install the operating system later`:
+In the first screen we select the option `Typical`:
+
+![VMware Install Typical](../images/02/VMware_Typical.png)
+
+Next we choose to `install the operating system later`:
 
 ![VMware Install Operating System Later](../images/02/VMware_Operating_System_Later.png)
 
