@@ -1,10 +1,10 @@
 # Assignment CH2
-## Task 1
+## Task 1 - Download Ubuntu Desktop
 Linux also has a desktop version. Download [Ubuntu Desktop](https://ubuntu.com/download/desktop).
 
 ![DownloadUbuntuDesktop](../images/02/GetUbuntuDesktop_Download_Ubuntu.png)
 
-## Task 2
+## Task 2 - Install Ubuntu Desktop
 Install [Ubuntu Desktop](https://ubuntu.com/download/desktop) in a new virtual machine and explore the interface.
 
 ### Create the new VM
@@ -107,9 +107,7 @@ On the last screen just press `enter`. The computer will reboot and the installa
 
 ![Ubuntu_Desktop_Enter_to_Restart](../images/02/LAB_Ubuntu_Desktop_Enter_to_Restart.png)
 
-## Task 3
-Log in for the first time.
-
+## Task 3 - Login for the first time
 The very first time we login we have to go through some configuration screens:
 
 ?> <i class="fa-solid fa-circle-info"></i> If a window named `Software Updater` pops up we can click `Remind Me Later`
@@ -127,7 +125,7 @@ The very first time we login we have to go through some configuration screens:
 ![Ubuntu_Desktop_First_Login_Ready_To_Go](../images/02/LAB_Ubuntu_Desktop_First_Login_Ready_To_Go.png)
 
 
-## Task 4
+## Task 4 - Get to know the Desktop Environment
 In the Ubuntu desktop machine, try to execute the following subtasks:
 - Try to add a user with your name.
 - Create a new text file with the tool "Text Editor" (=gedit).
