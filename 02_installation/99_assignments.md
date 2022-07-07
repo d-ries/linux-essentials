@@ -156,7 +156,7 @@ _VM/Snapshot/Revert to Snapshot..._
 
 ![Ubuntu_Desktop_Snapshot_Revert_To_Snapshot](../images/02/LAB_Ubuntu_Desktop_Snapshot_Revert_To_Snapshot.png)
 
-## Task 5 - Get to know the Desktop Environment
+## Task 5 - Explore the Desktop Environment
 In the Ubuntu desktop machine, try to execute the following subtasks:
 - Update the system via the app `Software Updater`
 - Create a new text file with the tool "Text Editor" (=gedit).
