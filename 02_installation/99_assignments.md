@@ -127,7 +127,7 @@ The very first time we login we have to go through some configuration screens:
 
 Now we are ready to explore Ubuntu Desktop:
 
-![Ubuntu_Desktop_First_Login_Ready_To_Go](../images/02/LAB_Ubuntu_Desktop_First_Login_Ready_To_Explore.png)
+![Ubuntu_Desktop_First_Login_Ready_To_Explore](../images/02/LAB_Ubuntu_Desktop_First_Login_Ready_To_Explore.png)
 
 
 ## Task 4 - Take a snapshot of the VM
@@ -154,7 +154,7 @@ _VM/Snapshot/Take Snapshot..._
 
 _VM/Snapshot/Revert to Snapshot..._
 
-
+![Ubuntu_Desktop_Snapshot_Revert_To_Snapshot](../images/02/LAB_Ubuntu_Desktop_Snapshot_Revert_To_Snapshot.png)
 
 ## Task 5 - Get to know the Desktop Environment
 In the Ubuntu desktop machine, try to execute the following subtasks:
