@@ -28,7 +28,7 @@ To create a new virtual machine (VM) in VMWare you go to the menu `file`>`New vi
 
 In the first screen we select the option to `install the operating system later`:
 
-![VMware Install Operating System Later](../images/02VMware_Operating_System_Later.png)
+![VMware Install Operating System Later](../images/02/VMware_Operating_System_Later.png)
 
 Next we choose the operating system `Linux`. In the version dropdown we select `Ubuntu 64 bit`. This is the Linux distribution that we will use during this course.
 
