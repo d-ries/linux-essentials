@@ -99,9 +99,35 @@ Now we have to wait untill the installation is finished:
 
 ![Ubuntu_Desktop_Installaton_Runs](../images/02/LAB_Ubuntu_Desktop_Installaton_Runs.png)
 
+Once the installation is finished we have to click on `Restart Now` to reboot the VM:
 
+![Ubuntu_Desktop_Reboot_After_Install](../images/02/LAB_Ubuntu_Desktop_Reboot_After_Install.png)
+
+On the last screen just press `enter`. The computer will reboot and the installation will be finished:
+
+![Ubuntu_Desktop_Enter_to_Restart](../images/02/LAB_Ubuntu_Desktop_Enter_to_Restart.png)
 
 ## Task 3
+Log in for the first time.
+
+The very first time we login we have to go through some configuration screens:
+
+?> <i class="fa-solid fa-circle-info"></i> If a window named `Software Updater` pops up we can click `Remind Me Later`
+
+![Ubuntu_Desktop_First_Login_Click_Student](../images/02/LAB_Ubuntu_Desktop_First_Login_Click_Student.png)
+
+![Ubuntu_Desktop_First_Login_Enter_Password](../images/02/LAB_Ubuntu_Desktop_First_Login_Enter_Password.png)
+
+![Ubuntu_Desktop_First_Login_Online_Accounts](../images/02/LAB_Ubuntu_Desktop_First_Login_Online_Accounts.png)
+
+![Ubuntu_Desktop_First_Login_Help_Improve](../images/02/LAB_Ubuntu_Desktop_First_Login_Help_Improve.png)
+
+![Ubuntu_Desktop_First_Login_Privacy](../images/02/LAB_Ubuntu_Desktop_First_Login_Privacy.png)
+
+![Ubuntu_Desktop_First_Login_Ready_To_Go](../images/02/LAB_Ubuntu_Desktop_First_Login_Ready_To_Go.png)
+
+
+## Task 4
 In the Ubuntu desktop machine, try to execute the following subtasks:
 - Try to add a user with your name.
 - Create a new text file with the tool "Text Editor" (=gedit).
