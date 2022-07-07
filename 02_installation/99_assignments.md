@@ -59,7 +59,7 @@ When booting the VM for the first time we need to press `enter` or wait 30 secon
 
 We have to wait a few seconds for the boot to finish:
 
-![Ubuntu_Desktop_First_Boot_Screen](../images/02/LAB_Ubuntu_Desktop_First_Boot_Screen.png
+![Ubuntu_Desktop_First_Boot_Screen](../images/02/LAB_Ubuntu_Desktop_First_Boot_Screen.png)
 
 In the next few steps there will be an installation process that we need to go through. 
 
