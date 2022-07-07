@@ -125,7 +125,33 @@ The very first time we login we have to go through some configuration screens:
 ![Ubuntu_Desktop_First_Login_Ready_To_Go](../images/02/LAB_Ubuntu_Desktop_First_Login_Ready_To_Go.png)
 
 
-## Task 4 - Get to know the Desktop Environment
+## Task 4 - Take a snapshot of the VM
+Before doing anything else, it's good practice to have a savepoint in time. If, at a later time, our Ubuntu Desktop breaks, we can allways return to this savepoint in time.
+Being able to roll back to this point will be a time saver, because otherwise we will need to install the Linux system again from scratch.
+
+`Take a snapshot of the Ubuntu Desktop VM, named "Clean Install"` as follows:
+
+_First shutdown the VM..._
+
+![Ubuntu_Desktop_Snapshot_Poweroff](../images/02/LAB_Ubuntu_Desktop_Snapshot_Poweroff.png)
+
+![Ubuntu_Desktop_Snapshot_Poweroff_Confirm](../images/02/LAB_Ubuntu_Desktop_Snapshot_Poweroff_Confirm.png)
+
+
+_VM/Snapshot/Take Snapshot..._
+ 
+![Ubuntu_Desktop_Snapshot_Take_Snapshot](../images/02/LAB_Ubuntu_Desktop_Snapshot_Take_Snapshot.png)
+
+![Ubuntu_Desktop_Snapshot_Take_Snapshot_Name](../images/02/LAB_Ubuntu_Desktop_Snapshot_Take_Snapshot_Name.png)
+
+
+?> <i class="fa-solid fa-circle-info"></i> At a later time you can always go back to this savepoint in time with:
+
+_VM/Snapshot/Revert to Snapshot..._
+
+
+
+## Task 5 - Get to know the Desktop Environment
 In the Ubuntu desktop machine, try to execute the following subtasks:
 - Try to add a user with your name.
 - Create a new text file with the tool "Text Editor" (=gedit).
