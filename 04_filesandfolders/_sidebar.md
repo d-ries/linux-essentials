@@ -6,6 +6,8 @@
 * [4 Files and folders](./04_filesandfolders/01_course.md)
 ** [Lab](./04_filesandfolders/02_lab.md)
 ** [Quiz](./04_filesandfolders/80_quiz.md)
+** [Assignment](./04_filesandfolders/99_assignments.md)
+** [Solutions](./04_filesandfolders/100_solutions.md)
 * [5 File contents](./05_filecontents/01_course.md)
 * [6 Software & packages](./06_software/01_course.md)
 * [7 Advanced command structures](./07_advancedcommands/01_course.md)
