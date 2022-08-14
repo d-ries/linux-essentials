@@ -7,6 +7,7 @@
 * [5 File contents](./05_filecontents/01_course.md)
 ** [Lab](./05_filecontents/02_lab.md)
 ** [Assignment](./05_filecontents/99_assignments.md)
+** [Solutions](./05_filecontents/100_solutions.md)
 * [6 Software & packages](./06_software/01_course.md)
 * [7 Advanced command structures](./07_advancedcommands/01_course.md)
 * [8 Filters & file operations ](./08_filters/01_course.md)
