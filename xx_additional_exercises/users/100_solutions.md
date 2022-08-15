@@ -3,13 +3,13 @@
 ## Task 1
 The definition of users is kept in the file /etc/passwd. This file have 1 line for each user. Each of these lines is divided into 7 fields, separated by a “:”. Give a description of each of these fields:
 
-Field 1:	Login name
-Field 2:	X to show there is a password for this user in /etc/shadow
-Field 3:	Numerical user ID
-Field 4:	Numerical group ID
-Field 5:	Username and/or comment field
-Field 6:	User home directory 
-Field 7:	Login shell 
+Field 1:	Login name <br />
+Field 2:	X to show there is a password for this user in /etc/shadow<br />
+Field 3:	Numerical user ID<br />
+Field 4:	Numerical group ID<br />
+Field 5:	Username and/or comment field<br />
+Field 6:	User home directory <br />
+Field 7:	Login shell <br />
 
 <br/>![](images/2022-08-15-16-13-12.png)
 <br/>![](images/2022-08-15-16-13-19.png)

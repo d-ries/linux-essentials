@@ -3,13 +3,13 @@
 ## Task 1
 The definition of users is kept in the file /etc/passwd. This file have 1 line for each user. Each of these lines is divided into 7 fields, separated by a “:”. Give a description of each of these fields:
 
-Field 1: ________
-Field 2: ________
-Field 3: ________
-Field 4: ________
-Field 5: ________
-Field 6: ________
-Field 7: ________
+Field 1: ________<br />
+Field 2: ________<br />
+Field 3: ________<br />
+Field 4: ________<br />
+Field 5: ________<br />
+Field 6: ________<br />
+Field 7: ________<br />
 
 
 ## Task 2
@@ -20,12 +20,12 @@ What is the name of the file with the coded passwords?
 
 ## Task 3
 Create a user with following characteristics:
-User-name:	    jan
-User-ID:	    1111
-Group-ID:	    100 (=users)
-Description:	Testuser jan
-Home-dir:	    /home/jan
-Shell:		    /bin/bash
+User-name:	    jan<br />
+User-ID:	    1111<br />
+Group-ID:	    100 (=users)<br />
+Description:	Testuser jan<br />
+Home-dir:	    /home/jan<br />
+Shell:		    /bin/bash<br />
 
 
 ## Task 4
@@ -43,14 +43,14 @@ Wat is changed in the file /etc/group?
 Wat is changed in the directory /home? 
 
 ## Task 8
-The user Jan is now created on your system. Now Jan should be able to ask information about himself. 
+The user Jan is now created on your system. Now Jan should be able to ask information about himself.<br /> 
 Log in as Jan and execute the following command: 
 ```bash
 id
 ```
 
 ## Task 9
-Remove the user Jan from your system using the command:  userdel –r jan
+Remove the user Jan from your system using the command:  userdel –r jan<br />
 What is changed in the file /etc/passwd?
 
 ## Task 10
@@ -68,7 +68,7 @@ Does the directory /home/jan still exist? YES / NO
 Create a user Piet, by only specifying its username and that he must have a home folder. 
 
 ## Task 14
-Examine the files that have been modified
+Examine the files that have been modified<br />
 What is changed in the file /etc/passwd?
 
 ## Task 15
