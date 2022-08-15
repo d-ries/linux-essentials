@@ -16,13 +16,13 @@ Your primary group | 1000
 <br/>![](images/2022-08-15-16-26-03.png)
 
 ## Task 2
-Create a group named “ict” with group-ID 1200.
+Create a group named "ict" with group-ID 1200.
 
 <br/>![](images/2022-08-15-16-26-17.png)
 
 
 ## Task 3
-Change the name of the group “ict” to “helpdesk”.
+Change the name of the group "ict" to "helpdesk".
 
 <br/>![](images/2022-08-15-16-26-29.png)
 
@@ -94,6 +94,6 @@ Give your user back its own primary group
 <br/>![](images/2022-08-15-16-30-11.png)
 
 ## Task 14
-Remove the group “helpdesk”
+Remove the group "helpdesk"
 
 <br/>![](images/2022-08-15-16-30-29.png)

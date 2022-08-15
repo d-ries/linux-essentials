@@ -33,7 +33,7 @@ Hello, I am `student` and my home folder is `/home/student` on the pc with name 
 <br/>![](images/2022-08-15-14-55-40.png)
 
 ## Task 5
-Create a variable named “myvar” with its content the text “super”. Show the following text on screen using this variable.
+Create a variable named "myvar" with its content the text "super". Show the following text on screen using this variable.
 ```
 Hello superwoman, I am superman !
 ```
@@ -53,7 +53,7 @@ Search for the command timedatectl in the man pages. How can we list alle time z
 
 
 ## Task 8
-Search on the internet how to use “locale -a” and editing the file “/etc/default/locale” to change the date to English instead of German 
+Search on the internet how to use "locale -a" and editing the file "/etc/default/locale" to change the date to English instead of German 
 
 <br/>![](images/2022-08-15-14-57-18.png)
 <br/>![](images/2022-08-15-14-57-23.png)
@@ -72,7 +72,7 @@ Example → Today, it is Wednesday, 10 August 2022. The time is 15:47.
 <br/>![](images/2022-08-15-14-58-30.png)
 
 ## Task 10
-Try and set the time to Dutch. Search the internet for “locale-gen”
+Try and set the time to Dutch. Search the internet for "locale-gen"
 
 <br/>![](images/2022-08-15-14-58-43.png)
 
@@ -99,7 +99,7 @@ Videos
 
 <br/>![](images/2022-08-15-14-59-20.png)
 
-?> <i class="fa-solid fa-circle-info"></i>  without the “ “ you’ll need to remove the arrow => to get an output. But the output will print everything on 1 
+?> <i class="fa-solid fa-circle-info"></i>  without the " " you’ll need to remove the arrow => to get an output. But the output will print everything on 1 
 line. 
 
 <br/>![](images/2022-08-15-14-59-42.png)

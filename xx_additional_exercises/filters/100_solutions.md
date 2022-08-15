@@ -17,7 +17,7 @@ Show the following text on your screen using commands, environment variables, et
 
 The computer ubuntu has the ip address `10.0.2.132` given to him by its mac address `000C2903E436`.
 
-?> <i class="fa-solid fa-circle-info"></i> Note: the mac address does not have colons and is all uppercase. Do all of this in on commandline. Do not use “;” to put multiple commands in a row.
+?> <i class="fa-solid fa-circle-info"></i> Note: the mac address does not have colons and is all uppercase. Do all of this in on commandline. Do not use ";" to put multiple commands in a row.
 
 ?> <i class="fa-solid fa-circle-info"></i>
 ```
@@ -107,7 +107,7 @@ Start with the ls command of the root-folder (/) and try to end with a list of f
 ## Task 14
 Use the ls -la command in your home folder. Change in the output: 
 
-?> <i class="fa-solid fa-circle-info"></i> The reference “.” To “. (this folder)” and “..” to “.. (parent folder)”. Also remove the line that shows the amount of files and folders in the directory. 
+?> <i class="fa-solid fa-circle-info"></i> The reference "." To ". (this folder)" and ".." to ".. (parent folder)". Also remove the line that shows the amount of files and folders in the directory. 
 ?> <i class="fa-solid fa-circle-info"></i> Hint: if you use the $ sign at the end of a string to search, it means the line needs to end with that string. 
 
 <br/>![](images/2022-08-15-15-43-58.png)

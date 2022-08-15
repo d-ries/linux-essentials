@@ -22,19 +22,19 @@ Search for folder for all files starting with scr, then any character followed b
 Make sure that the command ls /b* does not show the content of the found folders. Look this up in the man page.
 
 ## Task 7
-Show all files and directories ending with “.conf” found in the folder “/etc”
+Show all files and directories ending with ".conf" found in the folder "/etc"
 
 ## Task 8
-Show all files and directories ending with “.d” found in the folder “/etc”, do not show the contents of these directories
+Show all files and directories ending with ".d" found in the folder "/etc", do not show the contents of these directories
 
 ## Task 9
-Show all files and directories from the folder “/etc” that have “sh” somewhere in their name 
+Show all files and directories from the folder "/etc" that have "sh" somewhere in their name 
 
 ## Task 10
-Show all files and directories from the folder “/etc”  with just 10 characters in their name, do not show the contents of the found folders. 
+Show all files and directories from the folder "/etc"  with just 10 characters in their name, do not show the contents of the found folders. 
 
 ## Task 11
-Search in the “/etc” folder for a file that has “os” in its name followed by “release” somewhere. Show the contents of this file. 
+Search in the "/etc" folder for a file that has "os" in its name followed by "release" somewhere. Show the contents of this file. 
 
 ## Task 12
 Execute the following command and explain its result: 
@@ -43,10 +43,10 @@ ls -d /usr/share/bash-completion/completions/resolv*conf
 ```
 
 ## Task 13
-Search for all files that start with two numbers from the folder “/etc/grub.d”
+Search for all files that start with two numbers from the folder "/etc/grub.d"
 
 ## Task 14
-List all files that do not start with a number from the folder “/etc/grub.d”
+List all files that do not start with a number from the folder "/etc/grub.d"
 
 ## Task 15
 Extra: Try all examples of file-globbing of the textbook again. Practice makes perfect ;-)

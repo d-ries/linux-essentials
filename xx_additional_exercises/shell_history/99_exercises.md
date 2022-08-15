@@ -4,17 +4,17 @@
 Create the files sript.sh, scrupt.sh and scrApt.sh. Do this by using the touch commando three times. 
 
 ## Task 2
-Type CTRL-R to search in the bash_history and type some letters scr. You will see the last command that has been used with these letters, normally this would be “touch scrApt.sh”.
+Type CTRL-R to search in the bash_history and type some letters scr. You will see the last command that has been used with these letters, normally this would be "touch scrApt.sh".
 
 
 ## Task 3
 Type
 ```bash
-echo “just an intermediate command”
+echo "just an intermediate command"
 ```
 
 ## Task 4
-Execute the last touch from your history but change the letter “i” to the letter “u”. Use regular expressions. 
+Execute the last touch from your history but change the letter "i" to the letter "u". Use regular expressions. 
 
 
 ## Task 5

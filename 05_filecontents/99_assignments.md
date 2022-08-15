@@ -18,7 +18,7 @@ Show the last line of the file passwd located in the folder etc of the root fold
 Show the first 4 characters (=bytes) of the file /etc/passwd. What do you see? 
 
 ## Task 5
-Use cat to put the following text in a new file “mytextfile” in your home folder:
+Use cat to put the following text in a new file "mytextfile" in your home folder:
 This is my text
 spaced over multiple lines.
 
@@ -30,7 +30,7 @@ When you add a new use, a new line is added to the file /etc/passwd. Show the co
 
 
 ## Task 8
-Create with nano a file named “test.c” with the following text:	
+Create with nano a file named "test.c" with the following text:	
 
 ```
 #include <stdio.h>

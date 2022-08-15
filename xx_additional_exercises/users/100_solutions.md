@@ -1,7 +1,7 @@
 # Assignment Users
 
 ## Task 1
-The definition of users is kept in the file /etc/passwd. This file have 1 line for each user. Each of these lines is divided into 7 fields, separated by a “:”. Give a description of each of these fields:
+The definition of users is kept in the file /etc/passwd. This file have 1 line for each user. Each of these lines is divided into 7 fields, separated by a ":". Give a description of each of these fields:
 
 Field 1:	Login name <br />
 Field 2:	X to show there is a password for this user in /etc/shadow<br />
@@ -36,7 +36,7 @@ Shell:		/bin/bash
 <br/>![](images/2022-08-15-16-14-00.png)
 <br/>![](images/2022-08-15-16-14-05.png)
 
-?> <i class="fa-solid fa-circle-info"></i> After a user is created, its password is set to “!”, which means that this name cannot be used to log in. To make this possible you need to give Jan a password. Set Jan’s password to “January”. 
+?> <i class="fa-solid fa-circle-info"></i> After a user is created, its password is set to "!", which means that this name cannot be used to log in. To make this possible you need to give Jan a password. Set Jan’s password to "January". 
 
 <br/>![](images/2022-08-15-16-14-34.png)
 

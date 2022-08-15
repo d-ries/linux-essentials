@@ -16,7 +16,7 @@ Add the following text in the given files, on desktop and server:
 ## Task 2
 Find out what the command su does. 
 Run the command su <other_user> and su - <other_user> and observe the difference
-Run the command “su student” and “su – student” and observe the difference with the previous task
+Run the command "su student" and "su – student" and observe the difference with the previous task
 
 
 ## Task 4

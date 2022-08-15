@@ -1,7 +1,7 @@
 # Assignment I/O redirection
 
 ## Task 1
-Create a new file names “userinfo” in your homefoler. Do this by redirecting the output of the echo command of the variable $USER to this file. 
+Create a new file names "userinfo" in your homefoler. Do this by redirecting the output of the echo command of the variable $USER to this file. 
 
 ## Task 2
 Add the output of the echo command of the variable $UID to this file.
@@ -22,8 +22,8 @@ Execute ls /tmp/* while sending the result and error messages to the file ~/cont
 Empty out the file userinfo by adding only one character before the filename in the command line 
 
 ## Task 8
-Execute the command “ls /*”, from the result and any error messages only keep the lines with the word “root”. For example there should not be a line “lost+found”
+Execute the command "ls /*", from the result and any error messages only keep the lines with the word "root". For example there should not be a line "lost+found"
 
 ## Task 9
 Extra challenge: 
-From the last command, only send the error messages with the text “root” to the file ~/root-errors.log
+From the last command, only send the error messages with the text "root" to the file ~/root-errors.log

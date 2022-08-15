@@ -36,13 +36,13 @@ Subshell: 		/etc/bash_bashrc 	~/.bashrc
 ## Task 2
 Find out what the command su does. 
 Run the command su <other_user> and su - <other_user> and observe the difference
-Run the command “su student” and “su – student” and observe the difference with the previous task
+Run the command "su student" and "su – student" and observe the difference with the previous task
 
 <br/>![](images/2022-08-15-14-10-51.png)
 
 ```
 Switch user
-“-“ also loads the environment -> your path is set to the homefolder of the user you su’ed
+"-" also loads the environment -> your path is set to the homefolder of the user you su’ed
 ```
 
 ## Task 4

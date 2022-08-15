@@ -36,29 +36,29 @@ Make sure that the command ls /b* does not show the content of the found folders
 
 
 ## Task 7
-Show all files and directories ending with “.conf” found in the folder “/etc”
+Show all files and directories ending with ".conf" found in the folder "/etc"
 
 <br/>![](images/2022-08-15-15-07-51.png)
 
 ## Task 8
-Show all files and directories ending with “.d” found in the folder “/etc”, do not show the contents of these directories
+Show all files and directories ending with ".d" found in the folder "/etc", do not show the contents of these directories
 
 <br/>![](images/2022-08-15-15-08-11.png)
 
 
 ## Task 9
-Show all files and directories from the folder “/etc” that have “sh” somewhere in their name 
+Show all files and directories from the folder "/etc" that have "sh" somewhere in their name 
 
 <br/>![](images/2022-08-15-15-08-28.png)
 
 ## Task 10
-Show all files and directories from the folder “/etc”  with just 10 characters in their name, do not show the contents of the found folders. 
+Show all files and directories from the folder "/etc"  with just 10 characters in their name, do not show the contents of the found folders. 
 
 <br/>![](images/2022-08-15-15-08-56.png)
 
 
 ## Task 11
-Search in the “/etc” folder for a file that has “os” in its name followed by “release” somewhere. Show the contents of this file. 
+Search in the "/etc" folder for a file that has "os" in its name followed by "release" somewhere. Show the contents of this file. 
 
 <br/>![](images/2022-08-15-15-09-08.png)
 
@@ -73,13 +73,13 @@ ls -d /usr/share/bash-completion/completions/resolv*conf
 ?> <i class="fa-solid fa-circle-info"></i> It shows resolvconf because the * means 0 of more characters. 
 
 ## Task 13
-Search for all files that start with two numbers from the folder “/etc/grub.d”
+Search for all files that start with two numbers from the folder "/etc/grub.d"
 
 <br/>![](images/2022-08-15-15-10-09.png)
 
 
 ## Task 14
-List all files that do not start with a number from the folder “/etc/grub.d”
+List all files that do not start with a number from the folder "/etc/grub.d"
 
 <br/>![](images/2022-08-15-15-10-22.png)
 

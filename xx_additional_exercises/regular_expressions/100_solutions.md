@@ -86,7 +86,7 @@ Use regular expressions to filter the lines that:
 ## Task 3
 Use sed to: 
 
-1.	To create a file regtest_5.txt from the file regtest.txt where all numbers 5 are replaced with “five”
+1.	To create a file regtest_5.txt from the file regtest.txt where all numbers 5 are replaced with "five"
 <br/>![](images/2022-08-15-16-07-59.png)
 
 2.	To create a file regtest_7.txt from the file regtest.txt where the text ‘seven’ is replaced by the number 7
@@ -106,7 +106,7 @@ search the manpage of grep for a solution
 <br/>![](images/2022-08-15-16-08-52.png)
 
 ## Task 5
-Search in the bash manpage to the header name “REDIRECTION” (The text starts at the left-side line) . Is this search-function case sensitive? 
+Search in the bash manpage to the header name "REDIRECTION" (The text starts at the left-side line) . Is this search-function case sensitive? 
 <br/>![](images/2022-08-15-16-09-03.png)
 
 ?> <i class="fa-solid fa-circle-info"></i>  If you only use lowercase, the search function is not case sensitive. The moment you type an uppercase letter, it becomes case sensitive. 

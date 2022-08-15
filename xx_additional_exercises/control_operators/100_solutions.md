@@ -8,10 +8,10 @@ Make sure there are no more aliases for the commands rm, cp and mv. You made the
 <br/>![](images/2022-08-15-14-48-40.png)
 
 ## Task 2
-Create a command that while deleting the file “test”:
+Create a command that while deleting the file "test":
 - The error messages suppresses by sending them to the black hole (rm test 2> /dev/null)
-- The text “deleted successfully!” shows when the file is deleted
-- The text “warning while deleting” shows when the files couldn’t be deleted 
+- The text "deleted successfully!" shows when the file is deleted
+- The text "warning while deleting" shows when the files couldn’t be deleted 
 
 <br/>![](images/2022-08-15-14-49-00.png)
 
@@ -23,7 +23,7 @@ Imagine you need to create a backup of all home folders to the folder /backup. A
 ?> <i class="fa-solid fa-circle-info"></i>Option 2 is better in this situation. We only want to shut down when our back up happened. If it fails, we will come back to our powered-on pc and need to fix the problem that occurred. 
 
 ## Task 4
-Create a directory source and a directory goal in your home folder. Also create a text file named “important.txt” in the folder source. You need to copy this file to the folder goal. If the copy was successful, you can delete the folder source with the command rm -rf. How are you able to do this with only one command? Try this.
+Create a directory source and a directory goal in your home folder. Also create a text file named "important.txt" in the folder source. You need to copy this file to the folder goal. If the copy was successful, you can delete the folder source with the command rm -rf. How are you able to do this with only one command? Try this.
 
 <br/>![](images/2022-08-15-14-49-58.png)
 

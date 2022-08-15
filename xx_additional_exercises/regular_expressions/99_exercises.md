@@ -50,7 +50,7 @@ Use regular expressions to filter the lines that:
 ## Task 3
 Use sed to: 
 
-1.	To create a file regtest_5.txt from the file regtest.txt where all numbers 5 are replaced with “five”
+1.	To create a file regtest_5.txt from the file regtest.txt where all numbers 5 are replaced with "five"
 2.	To create a file regtest_7.txt from the file regtest.txt where the text ‘seven’ is replaced by the number 7
 3.	To create a file regtest_at.txt from the file regtest.txt where all the @ symbols are replaced by _at_
 
@@ -60,7 +60,7 @@ Count the amount of time 5 can be found in regtest.txt
 search the manpage of grep for a solution
 
 ## Task 5
-Search in the bash manpage to the header name “REDIRECTION” (The text starts at the left-side line) . Is this search-function case sensitive? 
+Search in the bash manpage to the header name "REDIRECTION" (The text starts at the left-side line) . Is this search-function case sensitive? 
 
 ## Task 6
 Try with the same regular expression to only show hidden files from your home folder. 

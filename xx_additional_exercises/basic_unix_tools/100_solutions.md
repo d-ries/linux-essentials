@@ -1,18 +1,18 @@
 # Assignment Basic Unix Tools
 
 ## Task 1
-Take a screenshot of your Ubuntu Desktop by pressing the PrtSc butten. A Screenshot file has “Screenshot” in the name in Ubuntu. Find this file using the locate command. 
+Take a screenshot of your Ubuntu Desktop by pressing the PrtSc butten. A Screenshot file has "Screenshot" in the name in Ubuntu. Find this file using the locate command. 
 
 <br/>![](images/2022-08-15-15-52-03.png)
 
 ## Task 2
-Create a summary of all files and folder from the root folder in the file “summary”. Make sure you know how look this command took to execute. 
+Create a summary of all files and folder from the root folder in the file "summary". Make sure you know how look this command took to execute. 
 
 <br/>![](images/2022-08-15-15-52-14.png)
 <br/>![](images/2022-08-15-15-52-20.png)
 
 ## Task 3
-Show the size of the “summary” file in human readable format 
+Show the size of the "summary" file in human readable format 
 
 <br/>![](images/2022-08-15-15-52-33.png)
 

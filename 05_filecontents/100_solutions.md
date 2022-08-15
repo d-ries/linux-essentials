@@ -21,7 +21,7 @@ Show the first 4 characters (=bytes) of the file /etc/passwd. What do you see?
 <br/>![](images/2022-08-14-23-02-29.png)
 
 ## Task 5
-Use cat to put the following text in a new file “mytextfile” in your home folder:
+Use cat to put the following text in a new file "mytextfile" in your home folder:
 This is my text
 spaced over multiple lines.
 <br/>![](images/2022-08-14-23-02-52.png)
@@ -36,7 +36,7 @@ When you add a new use, a new line is added to the file /etc/passwd. Show the co
 
 
 ## Task 8
-Create with nano a file named “test.c” with the following text:	
+Create with nano a file named "test.c" with the following text:	
 
 ```
 #include <stdio.h>

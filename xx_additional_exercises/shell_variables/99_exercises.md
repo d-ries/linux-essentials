@@ -24,7 +24,7 @@ Try to show following text with the echo command on your screen. (Hint: Use mult
 Hello, I am `student` and my home folder is `/home/student` on the pc with name `linux-ess-desktop`. You are now working in folder `/tmp`.
 
 ## Task 5
-Create a variable named “myvar” with its content the text “super”. Show the following text on screen using this variable.
+Create a variable named "myvar" with its content the text "super". Show the following text on screen using this variable.
 ```
 Hello superwoman, I am superman !
 ```
@@ -38,7 +38,7 @@ Search for the command timedatectl in the man pages. How can we list alle time z
 
 
 ## Task 8
-Search on the internet how to use “locale -a” and editing the file “/etc/default/locale” to change the date to English instead of German 
+Search on the internet how to use "locale -a" and editing the file "/etc/default/locale" to change the date to English instead of German 
 
 ?> <i class="fa-solid fa-circle-info"></i>You will need to log out and log in to let the changes take effect.
 
@@ -51,7 +51,7 @@ Example → Today, it is Wednesday, 10 August 2022. The time is 15:47.
 ```
 
 ## Task 10
-Try and set the time to Dutch. Search the internet for “locale-gen”
+Try and set the time to Dutch. Search the internet for "locale-gen"
 
 ?> <i class="fa-solid fa-circle-info"></i> You will need to log out and log in to let the changes take effect.
 

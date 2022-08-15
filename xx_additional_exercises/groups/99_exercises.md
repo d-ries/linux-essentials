@@ -14,10 +14,10 @@ users|
 Your primary group | 
 
 ## Task 2
-Create a group named “ict” with group-ID 1200.
+Create a group named "ict" with group-ID 1200.
 
 ## Task 3
-Change the name of the group “ict” to “helpdesk”.
+Change the name of the group "ict" to "helpdesk".
 
 ## Task 4
 Add your user to the group helpdesk as a secondary group.
@@ -50,4 +50,4 @@ Execute the ls -l command in your home folder. What do you notice about the two 
 Give your user back its own primary group
 
 ## Task 14
-Remove the group “helpdesk”
+Remove the group "helpdesk"
