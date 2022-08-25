@@ -11,4 +11,4 @@ This is *exactly* what Linus is looking for. After doing some research he finds 
 
 This is where our story begins. In this course we will follow Linus in a set of labs where we will use and learn new concepts with the goal of setting up and maintaining a minecraft server. 
 
-For the labs in this course we will use [Minetest](https://www.minetest.net/). This is an _open source_ project that looks alot like the real minecraft. The benefit of using Minetest is that it is free to play and support different operating systems.
+For the labs in this course we will use [Minetest](https://www.minetest.net/). This is an _open source_ project that looks alot like the real minecraft. The benefit of using Minetest is that it is free to play and support different operating systems out of the box.

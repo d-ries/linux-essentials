@@ -106,9 +106,24 @@ E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are y
 
 We see we get an error (`permission denied`). It is important that we learn to analyse error messages. As we can see the error also refers to the user `root`. In this chapter we've seen that some commands require _administrator rights_ to run. `apt-get` is a system command that impacts the entire system, so this command requires special rights. We can run this command as a super user by using the `sudo` command:
 ```bash
+student@linux-ess:~$ sudo apt-get install minetest
+[sudo] password for dries:
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following additional packages will be installed:
+...
+Setting up minetest (5.1.1+repack-1build1) ...
+Processing triggers for mime-support (3.64ubuntu1) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.2) ...
+Processing triggers for man-db (2.9.1-1) ...
 ```
 
-The installation is succesfull! Linus sees a whole bunch of output, but he has no clue where minetest is located or how he can even run the server files. In the next chapter we will explore how files & folders in Linux work.
+?> <i class="fa-solid fa-circle-info"></i> If you get an error running the command above, try running `sudo apt-get update` and run the `sudo apt-get install minetest` command again. We will learn about updating `apt` repositories in chapter 6.
+
+The command above will prompt for your password and might prompt to ask you if you are sure you want to install a bunch of packages. 
+
+The installation is succesfull (we think, we don't really get a success message or anything). Linus sees a whole bunch of output, but he has no clue where minetest is located or how he can even run the server files. In the next chapter we will explore how files & folders in Linux work.
 
 Sometimes its beneficial if we can copy & paste text into our CLI environment. When using the CLI in the virtual machine we cannot do this. We could connect to the virtual machine using SSH. This is a protocol that allows remote connections to machines that we can't physically access. One of the benefits of using SSH is that we can also copy and paste text into our CLI.
 
