@@ -392,7 +392,7 @@ student@linux-ess:~/aFolder$ ls
 aFile  aFile.doc  adocument.doc  anotherFolder.doc  anotherdocument.doc  backup.doc  prodocuments.doc  profiles.doc  profiles2.doc  yaay.doc
 ```
 
-?> <i class="fa-solid fa-circle-info"></i> Notice how we put an `i` at the end of the perl expression to search case-insensitive. So the ` rename -E 's/\.odt/.doc/i' ` rename the odt extensions to doc regardless of the casing.
+?> <i class="fa-solid fa-circle-info"></i> Notice how we put an `i` at the end of the perl expression to search case-insensitive. So the ` rename -E 's/\.odt/.doc/i' ` renames the odt extensions to doc regardless of the casing.
 
 
 ### Identifying files (file)
