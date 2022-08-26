@@ -357,10 +357,10 @@ cp: overwrite `aFile.backup'? y
 We saw that we could use the `mv` command to rename files and folders. This works and is often very easy but when you have to rename files in bulk you might want to consider another approach. The `rename` command is designed specifically to rename multiple files and folders with one command. To do this it uses a _regular expression_ (Regex). A Regex is a sequence of characters that define a search pattern. We will learn more about regular expressions later in this course. It uses this search pattern to make certain changes to the filenames:
 ```bash
 student@linux-ess:~/aFolder$ ls
-aFile  aFile.backup  afile.txt  anotherFolder.txt anotherfile.txt  backup.txt  profiles.backup  profiles.txt  yaay.txt
+aFile  aFile.backup  afile.txt  anotherFolder.txt  anotherfile.txt  backup.txt  profiles.backup  profiles.txt  profiles2.ODT  yaay.txt
 student@linux-ess:~/aFolder$ rename 's/file/document/' *.txt
 student@linux-ess:~/aFolder$ ls
-aFile  aFile.backup  adocument.txt  anotherFolder.txt  anotherdocument.txt  backup.txt  prodocuments.txt  profiles.backup  yaay.txt
+aFile  aFile.backup  adocument.txt  anotherFolder.txt  anotherdocument.txt  backup.txt  prodocuments.txt  profiles.backup  profiles2.ODT  yaay.txt
 ```
 
 ?> <i class="fa-solid fa-circle-info"></i> If rename is not yet installed you can do this with the command `sudo apt -y install rename`. The installation process will ask you for your password.
@@ -375,10 +375,10 @@ A lot is going on in the example above, let's summarize what is present:
 We could also use the `rename` command to change the file extentions of all files and folders:
 ```bash
 student@linux-ess:~/aFolder$ ls
-aFile  aFile.backup  adocument.txt  anotherFolder.txt  anotherdocument.txt  backup.txt  prodocuments.txt  profiles.backup  yaay.txt
+aFile  aFile.backup  adocument.txt  anotherFolder.txt  anotherdocument.txt  backup.txt  prodocuments.txt  profiles.backup  profiles2.ODT  yaay.txt
 student@linux-ess:~/aFolder$ rename 's/\.txt/.odt/' *
 student@linux-ess:~/aFolder$ ls
-aFile  aFile.backup  adocument.odt  anotherFolder.odt  anotherdocument.odt  backup.odt  prodocuments.odt  profiles.backup  yaay.odt
+aFile  aFile.backup  adocument.odt  anotherFolder.odt  anotherdocument.odt  backup.odt  prodocuments.odt  profiles.backup  profiles2.ODT  yaay.odt
 ```
 ?> <i class="fa-solid fa-circle-info"></i> Notice how we put a `\` (backslash) in front of the `.` sign in the search-string? Some characters have special meanings in regular expressions (for example: `* . $ [ ] ( ) / { }`). If we want the bash shell to see this character as a string we have to use _escaping_. This is the concept of using the `\` to indicate that the character that follows is interpreted as a string rather than a special character.
 
@@ -386,11 +386,13 @@ aFile  aFile.backup  adocument.odt  anotherFolder.odt  anotherdocument.odt  back
 We could also use the `rename` command to change multiple file extentions at once:
 ```bash
 student@linux-ess:~/aFolder$ ls
-aFile  aFile.backup  adocument.odt  anotherFolder.odt  anotherdocument.odt  backup.odt  prodocuments.odt  profiles.backup  yaay.odt
-student@linux-ess:~/aFolder$ rename -E 's/\.odt/.doc/' -E 's/\.backup/.doc/' *
+aFile  aFile.backup  adocument.odt  anotherFolder.odt  anotherdocument.odt  backup.odt  prodocuments.odt  profiles.backup  profiles2.ODT  yaay.odt
+student@linux-ess:~/aFolder$ rename -E 's/\.odt/.doc/i' -E 's/\.backup/.doc/' *
 student@linux-ess:~/aFolder$ ls
-aFile  aFile.doc  adocument.doc  anotherFolder.doc  anotherdocument.doc  backup.doc  prodocuments.doc  profiles.doc  yaay.doc
+aFile  aFile.doc  adocument.doc  anotherFolder.doc  anotherdocument.doc  backup.doc  prodocuments.doc  profiles.doc  profiles2.doc  yaay.doc
 ```
+
+?> <i class="fa-solid fa-circle-info"></i> Notice how we put an `i` at the end of the perl expression to search case-insensitive. So the ` rename -E 's/\.odt/.doc/i' ` rename the odt extensions to doc regardless of the casing.
 
 
 ### Identifying files (file)
