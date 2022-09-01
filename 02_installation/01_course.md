@@ -19,7 +19,7 @@ To use virtualisation there are several options. The most common virtualisation 
 - Virtualbox
 - Hyper-V
 
-In this course we will use and support VMware but the other software packages are similar. Students of PXL University College will get a free educational licence to use VMware Workstation pro through OnTheHub.
+In this course we will use and support VMware but the other software packages are similar. Students of PXL University College will get a free educational licence to use VMware Workstation pro through [BrightSpace](https://itacademy.brightspace.com/).
 
 ## Create a new VM
 To create a new virtual machine (VM) in VMWare you go to the menu `file`>`New virtual machine`. The wizard to create a new VM will appear.
