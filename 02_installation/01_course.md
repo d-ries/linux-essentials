@@ -126,7 +126,3 @@ Once the server is rebooted, you will have to press the `enter` key again to see
 
 ![Ubuntu_Server_Press_Enter_To_See_Login](../images/02/Ubuntu_Server_Press_Enter_To_See_Login.png)
   
-<br/><br/>    
-    
-All of these steps can also be viewed in the video below:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/u8WLsyMuSgw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
