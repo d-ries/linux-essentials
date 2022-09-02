@@ -118,11 +118,11 @@ For Extra Packages we will only opt to install `SSH server`:
 The operating system will be installed and configured. After a while the `Reboot now` option will appear. This indicates that the installation is complete:
 ![Ubuntu_Server_Reboot](../images/02/Ubuntu_Server_Reboot.png)
 
-During the Reboot process you will have to press the <enter> key on your keyboard :
+During the Reboot process you will have to press the `enter` key on your keyboard :
 
 ![Ubuntu_Server_Press_Enter_To_Reboot](../images/02/Ubuntu_Server_Press_Enter_To_Reboot.png)
 
-Once the server is rebooted, you will have to press the <enter> key again to see the login prompt.
+Once the server is rebooted, you will have to press the `enter` key again to see the login prompt.
 
 ![Ubuntu_Server_Press_Enter_To_See_Login](../images/02/Ubuntu_Server_Press_Enter_To_See_Login.png)
 
