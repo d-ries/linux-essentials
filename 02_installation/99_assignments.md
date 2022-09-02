@@ -110,7 +110,7 @@ On the last screen just press `enter`. The computer will reboot and the installa
 ## Task 3 - Login for the first time
 The very first time we log`in we have to go through some configuration screens:
 
-?> <i class="fa-solid fa-circle-info"></i> If a window named `Software Updater` pops up we can click `` ![Ubuntu_Desktop_First_Login_Click_Updates](../images/02/LAB_Ubuntu_Desktop_First_Boot_Updates.png)
+?> <i class="fa-solid fa-circle-info"></i> If a window named `Software Updater` pops up we can click `Install Now` ![Ubuntu_Desktop_First_Login_Click_Updates](../images/02/LAB_Ubuntu_Desktop_First_Boot_Updates.png)
 
 ![Ubuntu_Desktop_First_Login_Click_Student](../images/02/LAB_Ubuntu_Desktop_First_Login_Click_Student.png)
 
