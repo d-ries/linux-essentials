@@ -73,7 +73,7 @@ We choose the correct keyboard layout. For `azerty` we select `Belgian`:
 
 ?> <i class="fa-solid fa-circle-info"></i> If you have a QWERTY keyboard you have to stick with `English (US)`
 
-We go for the normal installation with some extra closed-source drivers and software:
+We go for the normal installation with some extra closed source drivers and software:
 
 ![Ubuntu_Desktop_Normal_Install](../images/02/LAB_Ubuntu_Desktop_Normal_Install.png)
 
@@ -108,15 +108,17 @@ On the last screen just press `enter`. The computer will reboot and the installa
 ![Ubuntu_Desktop_Enter_to_Restart](../images/02/LAB_Ubuntu_Desktop_Enter_to_Restart.png)
 
 ## Task 3 - Login for the first time
-The very first time we login we have to go through some configuration screens:
+The very first time we log`in we have to go through some configuration screens:
 
-?> <i class="fa-solid fa-circle-info"></i> If a window named `Software Updater` pops up we can click `Remind Me Later`
+?> <i class="fa-solid fa-circle-info"></i> If a window named `Software Updater` pops up we can click `` ![Ubuntu_Desktop_First_Login_Click_Updates](../images/02/LAB_Ubuntu_Desktop_First_Boot_Updates.png)
 
 ![Ubuntu_Desktop_First_Login_Click_Student](../images/02/LAB_Ubuntu_Desktop_First_Login_Click_Student.png)
 
 ![Ubuntu_Desktop_First_Login_Enter_Password](../images/02/LAB_Ubuntu_Desktop_First_Login_Enter_Password.png)
 
 ![Ubuntu_Desktop_First_Login_Online_Accounts](../images/02/LAB_Ubuntu_Desktop_First_Login_Online_Accounts.png)
+
+![Ubuntu_Desktop_First_Login_LivePatch](../images/02/LAB_Ubuntu_Desktop_First_Boot_Livepatch.png)
 
 ![Ubuntu_Desktop_First_Login_Help_Improve](../images/02/LAB_Ubuntu_Desktop_First_Login_Help_Improve.png)
 
