@@ -24,12 +24,4 @@ After following this course you can:
 * manage user and group permissions
 * Automate simple tasks using basics scripts and OS features.
 
-## Use this course offline <!-- {docsify-ignore} -->
-1. Download the repository using`git clone <repo-url>`.
-2. Install [nodejs](https://nodejs.org)
-3. Install the package _docsify_ using `npm install -g docsify-cli`
-4. Run this command in the repository working directory: `docsify serve`
-5. Navigate to `http://localhost:3000`
-
-
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons-Licentie" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /> Content on this site is licenced under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International licence</a>.
