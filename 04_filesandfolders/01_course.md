@@ -37,20 +37,30 @@ The command takes a path as an argument. In the example above we will navigate t
 
 We could also use the `cd` command without any argument. This will navigate back to the users homefolder as well:
 ```bash
+student@linux-ess:~$ cd /home/student
+student@linux-ess:~$ pwd
+/home/student
+student@linux-ess:~$ touch emptyfile
+student@linux-ess:/etc$ ls
+emptyfile
+student@linux-ess:~$ cd /etc
 student@linux-ess:/etc$ pwd
 /etc
 student@linux-ess:/etc$ cd
 student@linux-ess:~$ pwd
 /home/student
+student@linux-ess:~$ ls
+emptyfile
 ```
 
+?> <i class="fa-solid fa-circle-info"></i> The command `touch` is used to create an empty file named `emptyfile`. The command is explained later on in this chapter.
 
 ### Display a tree view in the shell (tree)
 You can display a tree view of a directory with its subdirectories with the `tree` command:
 ```bash
 student@linux-ess:~$ tree
 .
-└── server.jar
+└── emptyfile
 
 0 directories, 1 file
 ```
@@ -72,7 +82,7 @@ student@linux-ess:~$ tree -a
 │   └── share
 │       └── nano
 ├── .profile
-├── server.jar
+├── emptyfile
 ├── .ssh
 │   └── authorized_keys
 ├── .sudo_as_admin_successful
@@ -111,7 +121,7 @@ Absolute paths must start with a `/` sign. This means that an absolute path will
 student@linux-ess:/etc$ pwd
 /etc
 student@linux-ess:/etc$ cd /home/student/
-student@linux-ess:~/$pwd
+student@linux-ess:~/$ pwd
 /home/student
 ```
 ?> <i class="fa-solid fa-circle-info"></i> In Windows an absolute path will start with `C:\` rather than `/`!
@@ -160,7 +170,7 @@ student@linux-ess:/home/teacher$ pwd
 To list the contents of a directory, we can use the `ls` command. Using the command without any options or arguments will list de contents of the current working directory:
 ```bash
 student@linux-ess:~$ ls
-server.jar
+emptyfile
 ```
 
 We can also go in a certain directory to list its contents:
@@ -175,7 +185,7 @@ boot  etc  init  lib32  libx32  media       opt  root  sbin  srv   tmp  var
 The `ls` command can also take one argument. This argument is a path which can be absolute or relative. The `ls` command will then show the contents of this folder.
 ```bash
 student@linux-essentials:~$ ls
-server.jar
+emptyfile
 student@linux-essentials:~$ ls /
 bin   dev  home  lib    lib64   lost+found  mnt  proc  run   snap  sys  usr
 boot  etc  init  lib32  libx32  media       opt  root  sbin  srv   tmp  var
@@ -191,9 +201,9 @@ drwxr-xr-x 3 root    root    4.0K Oct  5 13:40 ..
 -rw------- 1 student student 1.7K Mar 17 12:14 .bash_history
 -rw-r--r-- 1 student student  220 Oct  5 13:40 .bash_logout
 -rw-r--r-- 1 student student 3.7K Oct  5 13:40 .bashrc
+-rw-r--r-- 1 student student    0 Feb 28 11:48 emptyfile
 -rw-r--r-- 1 student student  807 Oct  5 13:40 .profile
 -rw-r--r-- 1 student student    0 Oct  6 08:20 .sudo_as_admin_successful
--rw-r--r-- 1 student student  45M Feb 28 11:48 server.jar
 ```
 Notice how we combined 3 options in the command above. Both `ls -a -l -h` and `ls -alh` will function exactly the same and will use all 3 options. The options can be put in any order, so `ls -hal` is also correct. These 3 option are often the most used ones when it comes to the `ls` command. You could look them up in the manpage but we will give an overview:
 * the `-a` option will show hidden files and folders. **In Linux, hidden files and folders start with a `.` dot. eg. the `.bashrc` file.**
@@ -210,7 +220,7 @@ To create new directories we can use the `mkdir` (make directory) command. The c
 student@linux-ess:~$ mkdir backups
 student@linux-ess:~$ ls
 backups
-server.jar
+emptyfile
 ```
 In the example above the `mkdir` command will create a folder named `backups` in the current working directory (`~` or `/home/student`). The folder name here is a _relative path_. 
 
@@ -272,12 +282,12 @@ Note that we could also use single quotes `touch 'File Two'` or a backslash to e
 To move a file to another folder we can use the `mv` (move) command. This command takes two arguments: the source file/folder and the destination file/folder:
 ```bash
 student@linux-ess:~$ ls
-aFile  aFolder  server.jar
+aFile  aFolder  emptyfile
 student@linux-ess:~$ mv aFile aFolder/
 student@linux-ess:~$ ls aFolder
 aFile
 student@linux-ess:~$ ls
-aFolder  server.jar
+aFolder  emptyfile
 ```
 
 Since the second argument is a destination file or folder, we could use this command to rename a file as well. In the example below we use the `mv` command to move the file back to the homefolder but also renaming it:
@@ -292,21 +302,21 @@ newFileName
 When renaming only one file or folder, `mv` is the prefered command to use. The examples both used files, but the same logic works for renaming and moving folders.
 ```bash
 student@linux-ess:~$ ls 
-newFileName  aFolder  server.jar
+newFileName  aFolder  emptyfile
 student@linux-ess:~$ mv newFileName myFile 
 student@linux-ess:~$ mv aFolder myFolder 
 student@linux-ess:~$ ls
-myFile  myFolder  server.jar
+myFile  myFolder  emptyfile
 ```
 
 ### Copy files (cp)
 To make a copy of a file we can use the `cp` (copy) command as follows:
 ```bash
 student@linux-ess:~$ ls
-myFile  myFolder server.jar
-student@linux-ess:~$ cp server.jar serverbackup.jar
+myFile  myFolder emptyfile
+student@linux-ess:~$ cp emptyfile emptyfile.backup
 student@linux-ess:~$ ls
-myFile  myFolder  server.jar  serverbackup.jar
+myFile  myFolder  emptyfile  emptyfile.backup
 ```
 Both arguments are paths. The first path is the original file/folder. The second path is a path to the new location and (optional) filename/foldername. We can use the cp command to copy both files and folders to the same directory or a different directory.
 
@@ -314,17 +324,17 @@ Both arguments are paths. The first path is the original file/folder. The second
 The example below shows us how we can use the arguments in the `cp` command to copy files or folders to another directory. In this example we copy the file named `file12` into the directory called `folder99` using a _relative_ path.
 ```bash
 student@linux-ess:~$ ls
-aFile  aFolder  server.jar
+aFile  aFolder  emptyfile  emptyfile.backup
 student@linux-ess:~$ cp aFile aFolder/
 student@linux-ess:~$ ls aFolder
 aFile
 student@linux-ess:~$ ls
-aFile  aFolder  server.jar
+aFile  aFolder  emptyfile  emptyfile.backup
 student@linux-ess:~$ cp /home/student/aFile /home/student/aFolder/aFile.backup
 student@linux-ess:~$ ls aFolder
 aFile  aFile.backup
 student@linux-ess:~$ ls
-aFile  aFolder  server.jar
+aFile  aFolder  emptyfile  emptyfile.backup
 ```
 Note that we can use both _relative_ and _absolute_ paths in the copy command for both the original file/folder and the destination file/folder.
 
@@ -332,12 +342,12 @@ Note that we can use both _relative_ and _absolute_ paths in the copy command fo
 To copy complete directories (meaning all subfolders and files inside the directory) we will have to use the `-r` (recursive) option:
 ```bash
 student@linux-ess:~$ ls
-aFile  aFolder  server.jar
+aFile  aFolder  emptyfile  emptyfile.backup
 student@linux-ess:~$ ls aFolder
 aFile  aFile.backup
 student@linux-ess:~$ cp -r aFolder/ aFolderBackup
 student@linux-ess:~$ ls
-aFile  aFolder  aFolderBackup  server.jar
+aFile  aFolder  aFolderBackup    emptyfile  emptyfile.backup
 student@linux-ess:~$ ls aFolderBackup
 aFile  aFile.backup
 ```
@@ -348,7 +358,7 @@ We have to be aware that the `cp` command will overwrite existing files by defau
 student@linux-ess:~$ ls aFolder
 aFile  aFile.backup
 student@linux-ess:~$ ls
-aFile  aFolder  server.jar
+aFile  aFolder  emptyfile  emptyfile.backup
 student@linux-ess:~$ cp aFile aFolder/aFile.backup     # No error, the file gets overwritten
 student@linux-ess:~$ ls aFolder
 aFile  aFile.backup
@@ -526,7 +536,7 @@ Make note that we do not specify a directory here. The search will always be don
 ```bash
 student@linux-ess:~$ touch testfile
 student@linux-ess:~$ ls
-server.jar  testfile
+  emptyfile  emptyfile.backup  testfile
 student@linux-ess:~$ find -name "testfile"
 ./testfile
 student@linux-ess:~$ locate testfile
