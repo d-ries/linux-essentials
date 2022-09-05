@@ -101,13 +101,13 @@ student@linux-ess:~$ minetest --server
 2022-08-25 09:36:24: ACTION[Main]: Server for gameid="minetest" listening on 0.0.0.0:30000.
 ```
 
-We don't get our prompt back. This is because the server application is an active running proces. We can always interrupt this proces by using the keyboard combination `ctrl+c` twice.
+We don't get our prompt back. This is because the server application is an active running process. We can always interrupt this process by using the keyboard combination `ctrl+c` twice.
 
 ?> Note that we need to have the `minetest` executable running if we want to actually connect to the server later on!
 
-When running the command using the `--server` option, we can see that it created a `worlds/word` folder in `/home/student/.minetest`. This is interesting because, by default, this is where `minetest` stores al the configuration files of our actual server. We also notice that the server is _listening_ for connections on port `30000`.  
+When running the command using the `--server` option, we can see that it created a `worlds/world` folder in `/home/student/.minetest`. This is interesting because, by default, this is where `minetest` stores all the configuration files of our actual server. We also notice that the server is _listening_ for connections on port `30000`.  
 
-Linus does not want to use the default configuration though. He made a folder `~/linuscraft/serverfiles` for exactly the purpose of managing the world files. Using the manpage we can tell the server to use this path as to where the world files have to be saved:
+Linus does not want to use the default configuration though. He made a folder `~/linuscraft/serverfiles` for exactly the purpose of managing the world files. Using the manpage we see that we can tell the server to use this path as to where the world files have to be saved:
 ```bash
 student@linux-ess:~$  minetest --server --world ~/linuscraft/serverfiles/myworld --logfile ~/linuscraft/serverfiles/logfile.txt
         .__               __                   __
