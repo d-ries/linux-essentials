@@ -89,13 +89,13 @@ student@linux-ess:~/linuscraft/playerinfo$ pwd
 He would also like a folder `administration` inside the `linuscraft` folder. While using the folder `playerinfo` as the working directory (`cd /home/student/linuscraft/playerinfo`), he creates this folder using a relative path:
 
 ```bash
-student@linux-ess:~/linuscraft/serverfiles$ mkdir ../administration
+student@linux-ess:~/linuscraft/playerinfo$ mkdir ../administration
 ```
 
-To finish up he creates the folders named `backups` and `secrets`  inside the `linuscraft` folder using an absolute path:
+To finish up he creates the folders named `backups`, `secrets` and `serverfiles` inside the `linuscraft` folder using an absolute path:
 
 ```bash
-student@linux-ess:~/linuscraft$ mkdir /home/student/linuscraft/backups /home/student/linuscraft/secrets
+student@linux-ess:~/linuscraft$ mkdir /home/student/linuscraft/backups /home/student/linuscraft/secrets /home/student/linuscraft/serverfiles
 ```
 Notice how we can use multiple arguments with the `mkdir` command to create multiple folders with just one command.
 
@@ -107,8 +107,9 @@ student@linux-ess:~$ ls -lh linuscraft
 total 12K
 drwxr-xr-x 2 student student 4.0K May  4 21:45 administration
 drwxr-xr-x 2 student student 4.0K May  4 21:48 backups
-drwxr-xr-x 2 student student 4.0K May  4 21:48 secrets
 drwxr-xr-x 2 student student 4.0K May  4 21:44 playerinfo
+drwxr-xr-x 2 student student 4.0K May  4 21:48 secrets
+drwxr-xr-x 2 student student 4.0K May  4 21:48 serverfiles
 ```
 
 ## Create files 
@@ -137,7 +138,7 @@ He checks if all files have been created succesfully using the following set of 
 student@linux-ess:~$ ls ~
 linus.txt  linuscraft
 student@linux-ess:~$ ls linuscraft/
-administration  backuplog.txt  backups  contact.txt  playerinfo  secrets  todo.txt
+administration  backuplog.txt  backups  contact.txt  playerinfo  secrets  serverfiles  todo.txt
 student@linux-ess:~$ ls -a /home/student/linuscraft/secrets/
 .  ..  .private
 ```
@@ -156,7 +157,7 @@ There are 3 `txt` files present in the `linuscraft` folder. Linus learnt that in
 student@linux-ess:~$ cd linuscraft
 student@linux-ess:~/linuscraft$ ls
 administration  backuplog.txt  backups  contact.txt  playerinfo  secrets  todo.txt
-student@linux-ess:~/linuscraft$ rename 's/.txt//' *.txt
+student@linux-ess:~/linuscraft$ rename 's/\.txt//' *.txt
 student@linux-ess:~/linuscraft$ ls
 administration  backuplog  backups  contact  playerinfo  secrets  todo
 ```
