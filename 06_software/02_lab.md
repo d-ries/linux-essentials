@@ -101,7 +101,7 @@ student@linux-ess:~$ minetest --server
 2022-08-25 09:36:24: ACTION[Main]: Server for gameid="minetest" listening on 0.0.0.0:30000.
 ```
 
-We don't get our prompt back. This is because the server application is an active running process. We can always interrupt this process by using the keyboard combination `ctrl+c` twice.
+We don't get our prompt back. This is because the server application is an active running process. We can always interrupt this process by using the keyboard combination `ctrl+c`.
 
 ?> Note that we need to have the `minetest` executable running if we want to actually connect to the server later on!
 
@@ -119,12 +119,11 @@ student@linux-ess:~$  minetest --server --world ~/linuscraft/serverfiles/myworld
 2022-08-25 09:45:01: ACTION[Main]: World at [/home/student/linuscraft/serverfiles/myworld]
 2022-08-25 09:45:01: ACTION[Main]: Server for gameid="minetest" listening on 0.0.0.0:30000.
 ```
-We also used the `--logfile` option to save all the server logs to a specific file. We now see that the world has been created in `~/linuscraft/serverfiles/myworld`. We can check this by running an `ls` command:
+We also used the `--logfile` option to save all the server logs to a specific file. We now see that the world has been created in `~/linuscraft/serverfiles/myworld`. We can check this by pushing 'ctrl+c' (this will shutdown the minetest server) and running an `ls` command:
 ```bash
 student@linux-ess:~$ ls linuscraft/serverfiles/myworld/
-env_meta.txt  force_loaded.txt  ipban.txt  map.sqlite  map_meta.txt  world.mt
+env_meta.txt  force_loaded.txt  ipban.txt  map_meta.txt  map.sqlite  world.mt
 ```
-Our server is now up and running using the correct configuration! We close the process for now by pressing `ctrl+c` twice (this will shutdown the minetest server).
 
 ## Connecting to the server
 *First* we need to get the IP adres of the server. We type `ip a` and look for the IP address of our network interface (ens33 or eth0)
@@ -149,7 +148,7 @@ student@linux-ess:~$  minetest --server --world ~/linuscraft/serverfiles/myworld
 ```
 
 ### Download the client
-Next up we need to load up the client on Windows laptop. You can download the client on https://www.minetest.net/downloads/. Download and extract the `Minetest 5.6.0 - portable, 64-bit (recommended)`. After extracting the folder, you will find a file named `minetest.txt` in the subfolder `bin`:
+Next up we need to download the client on our Windows laptop. You can download the client on https://www.minetest.net/downloads/. Download and extract the `Minetest x.x.x - portable, 64-bit (recommended)`. After extracting the folder, you will find a file named `minetest.exe` in the subfolder `bin` which you can doubleclick:
 
 ![minetest-client](../images/06/minetest-client-folder.PNG)
 
@@ -162,6 +161,9 @@ On the right side of the menu we can enter the ip address that we found earlier 
 ![minetest-client-menu](../images/06/minetest-client-join-register.PNG)
 
 ?> The next time you join, you will have to click the login button and provide the selected password!
+
+We set the password and click on the `Register` button:
+![minetest-client-menu](../images/06/minetest-client-join-register2.PNG)
 
 After this process, the client should connect you to the server and you will be able to run around and build stuff!
 
