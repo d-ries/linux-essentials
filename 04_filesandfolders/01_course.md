@@ -55,6 +55,9 @@ student@linux-ess:~$ tree
 0 directories, 1 file
 ```
 
+?> <i class="fa-solid fa-circle-info"></i> If you are prompted that tree isn't yet installed just run the command he is proposing.
+
+
 We could also use the `-a` option to view the hidden files (files starting with a dot):
 ```bash
 student@linux-ess:~$ tree -a
