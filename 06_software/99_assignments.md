@@ -22,3 +22,36 @@ Another  ....snap  --> btop
 
 ## Task 1
 cmatrix   aafire    snap-asciiquarium
+
+
+6 Software & packages 
+
+Assignment
+
+Update the local APT cache. This will get the latest info from the repositories
+sudo apt update
+
+Upgrade all installed packages to the latest available version
+sudo apt upgrade
+
+Search for...
+apt search usage stats
+sudo apt install btop
+btop
+
+ 
+
+install ...
+
+lolcat
+
+
+
+
+
+remove
+
+download tar and run
+
+dpkg ?
+
