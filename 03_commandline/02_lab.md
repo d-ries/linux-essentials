@@ -106,7 +106,7 @@ E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are y
 
 We see we get an error (`permission denied`). It is important that we learn to analyse error messages. As we can see the error also refers to the user `root`. In this chapter we've seen that some commands require _administrator rights_ to run. `apt-get` is a system command that impacts the entire system, so this command requires special rights. We can run this command as a super user by using the `sudo` command:
 
-?> <i class="fa-solid fa-circle-info"></i> Use the `up arrow` to use the `history` and use the `left arrow` to go the the beginning of the line` to type sudo.
+?> <i class="fa-solid fa-circle-info"></i> Use the `up arrow` to use the _history_ and use the `left arrow` or `home key` to go to the _beginning of the line_ to type sudo.
 
 ```bash
 student@linux-ess:~$ sudo apt-get install minetest
