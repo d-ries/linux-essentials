@@ -104,37 +104,43 @@ E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission d
 E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root?
 ```
 
-We see we get an error (`permission denied`). It is important that we learn to analyse error messages. As we can see the error also refers to the user `root`. In this chapter we've seen that some commands require _administrator rights_ to run. `apt-get` is a system command that impacts the entire system, so this command requires special rights. We can run this command as a super user by using the `sudo` command:
+He sees an error (`permission denied`). It is important to learn to analyse error messages. As he can see the error also refers to the user `root`. In this chapter we've seen that some commands require _administrator rights_ to run. `apt-get` is a system command that impacts the entire system, so this command requires special rights. Linus can run this command as a super user by using the `sudo` command:
 
 ?> <i class="fa-solid fa-circle-info"></i> Use the `up arrow` to use the _history_ and use the `left arrow` or `home key` to go to the _beginning of the line_ to type sudo.
 
 ```bash
 student@linux-ess:~$ sudo apt-get install minetest
-[sudo] password for dries:
+[sudo] password for student:
 Reading package lists... Done
 Building dependency tree
 Reading state information... Done
 The following additional packages will be installed:
 ...
+After this operation, 38,8 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+...
 Setting up minetest (5.1.1+repack-1build1) ...
 Processing triggers for mime-support (3.64ubuntu1) ...
 Processing triggers for libc-bin (2.31-0ubuntu9.2) ...
 Processing triggers for man-db (2.9.1-1) ...
+...
+student@linux-ess:~$
 ```
 
-?> <i class="fa-solid fa-circle-info"></i> If you get an error running the command above, try running `sudo apt-get update` and run the `sudo apt-get install minetest` command again. We will learn about updating `apt` repositories in chapter 6.
+?> <i class="fa-solid fa-circle-info"></i> If you get an error running the command above, try running `sudo apt-get update` and run the `sudo apt-get install minetest` command again. We will learn about updating `apt` repositories in a later lesson.
 
-The command above will prompt for your password and might prompt to ask you if you are sure you want to install a bunch of packages. 
+The command above will prompt you for your password and might also prompt to ask you if you are sure you want to install a bunch of packages. 
 
-The installation is succesfull (we think, we don't really get a success message or anything). Linus sees a whole bunch of output, but he has no clue where minetest is located or how he can even run the server files. In the next chapter we will explore how files & folders in Linux work.
+The installation is successful (he thinks, because we don't really get a success message or anything). Linus sees a whole bunch of output, but he has no clue where minetest is located or how he can even run the server files. In the next chapter we will explore how files & folders in Linux work.
 
-Sometimes its beneficial if we can copy & paste text into our CLI environment. When using the CLI in the virtual machine we cannot do this. We could connect to the virtual machine using SSH. This is a protocol that allows remote connections to machines that we can't physically access. One of the benefits of using SSH is that we can also copy and paste text into our CLI.
+Sometimes its beneficial if we can copy & paste text into our CLI environment. When using the CLI in the virtual machine we cannot do this. We could connect to the virtual machine using SSH. This is a protocol that allows remote connections to machines that we can't physically access. For example if your sever is in the cloud. One of the benefits of using SSH is that we can also copy and paste text into our CLI.
+
 
 ## Setting up a SSH connection
 
-The procedure via SSH would be als follows:
+Linus tries to connect to his server over SSH. The procedure is as follows:
 
-*First* we need to get the IP adres of the server. We type `ip a` and look for the IP address of our network interface (ens33)
+*First* he needs to get the IP adres of the server. He types `ip a` and looks for the IP address of the network interface (ens33)
 ```bash
 ip a
 ```
@@ -142,7 +148,7 @@ ip a
 ![CLI_LAB_ip_a](../images/03/CLI_LAB_ip_a.png)
 <br />
 
-*Second* we need to open Powershell on the Desktop and make a ssh-connection to the server. We are now working on the server from our desktop. Cool, isn't it?
+*Second* he needs to open Powershell on the Desktop and make a ssh-connection to the server. He is now working on the server from his desktop. Cool, isn't it?
 ```bash
 ssh student@<server-ip>
 ```
@@ -150,6 +156,6 @@ ssh student@<server-ip>
 ![CLI_LAB_Powershell_SSH](../images/03/CLI_LAB_Powershell_SSH.png)
 <br />
 
-As you can see we now get a prompt. This is a shell on our Ubuntu server running in VMWare. The idea might sound weird because we have the virtual machine with a CLI running on our laptop. But imagine a scenario where the virtual machine wouldn't be running on our laptop but instead would be hosted somewhere on Amazon web services in the cloud. We would use the `ssh user@server-ip` command on our device to connect to that VM.
+As you can see he now gets a prompt new prompt. This is a shell on his Ubuntu server running in VMWare. The idea might sound weird because he has the virtual machine with a CLI running on his laptop. But imagine a scenario where the virtual machine wouldn't be running on his laptop but instead would be hosted somewhere on Amazon web services in the cloud. He would use the `ssh user@server-ip` command on his device to connect to that server.
 
 You can choose to stay working on your desktop using the `ssh` command in Powershell or go back to your VM in the interface of VMware Workstation.
