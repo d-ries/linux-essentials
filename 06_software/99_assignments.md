@@ -18,7 +18,7 @@ Install the package 'neofetch' and run the app
 Remove the package btop from the system. You shouldn't be able to run it anymore.
 
 ## Task 1
-Another  ....snap
+Another  ....snap  --> btop
 
 ## Task 1
-Test
+cmatrix   aafire    snap-asciiquarium
