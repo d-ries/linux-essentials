@@ -15,7 +15,7 @@ Use the command `apropos` and/or the command `man -k` to find the right commando
 - show the contents of a directory
 - clear the terminal screen
 - see who is logged in --> try all the commands
-- see how much free memory the server has
+- see how much free memory the server has  --> search in the manpage of this command how you can get the output more human readable (search in the manpage for _human_)
 - see how much space you have free on the disk 
 
 ## Task 5
