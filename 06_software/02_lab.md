@@ -6,7 +6,7 @@ Linus finally feels comfortable enough navigating the operating system using com
 Remember in [chapter 3 - lab](../03_commandline/02_lab.md) where we ran the following command:
 ```bash
 student@linux-ess:~$ sudo apt-get install minetest
-[sudo] password for dries:
+[sudo] password for student:
 Reading package lists... Done
 Building dependency tree
 Reading state information... Done
