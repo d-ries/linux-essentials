@@ -38,6 +38,17 @@ Try to use the history to rerun the command `cat .bash_history`. You will now se
 `sl` is to prank people who mistype 
 
 ## Task 11
+Run the command ` echo This is the echo command with a space in front`. Mind the space at the beginning of the line, before the echo command.
+Run the command `echo This is the echo command with no leading space`. Mind that there is no space in front of the echo command.
+Type history to check your history.
+You'll notice that commands started with a space will not be kept in history.
+Run the command `ls -a`.
+Run the same command `ls -a` again.
+Type history to check your history.
+You'll notice that repeating the same command consecutive will only keep the first occurence in history.
+
+
+## Task 11
 Run the command `apt install sl`. You'll notice more privileges are needed. We have to rerun this command with root privileges. Run the command `sudo !!` to rerun the last command with sudo in front. `sl` is to prank people that mistype the command `ls`. Type `sl` en push `enter`
 
 ## Task 12
