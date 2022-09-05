@@ -2,19 +2,19 @@
 When booting the virtual machine, all that will show is a black screen with some white text:
 ![CLI_Login_And_Welcome](../images/03/CLI_Login_And_Welcome.png)
 
-You will notice that there is no mouse pointer available. We will only use our keyboard as input device. This environment is called a _command line interface (CLI)_. There is no _graphic user interface (GUI)_ present in Ubuntu server. One of the reasons why they chose this is because having no GUI present will save system resources. A CLI is also proven to be a very efficient & trustworthy way of working & interacting with an operating system and its services.
+You will notice that there is no mouse pointer available. We will only use our keyboard as input device. This environment is called a _command line interface (CLI)_. There is no _graphical user interface (GUI)_ present in Ubuntu server. One of the reasons why they chose this is because having no GUI present will save system resources and narrows the attack surface. A CLI is also proven to be a very efficient & trustworthy way of working & interacting with an operating system and its services.
 
 ?>You can login with you username `student` and the password you have set `pxl`. Notice that you do not see what you are typing for the password. Just type the password and press `enter`.
 
-CLIs will be a lot more intersting towards automation, something that is harder when using a GUI. We can see this trend in Windows systems as well. Where _Powershell_ is becomming more and more popular to interact with Windows servers and performing automation tasks.
+CLIs will be a lot more intersting towards automation, something that is harder when using a GUI. We can see this trend in Windows systems as well, where _Powershell_ is becoming more and more popular to configure Windows servers and performing automation tasks.
 
 ## The prompt
 After logging in, you are shown the following line in the CLI. This is called the _prompt_:
 ![prompt](../images/03/prompt.png)
 
-The prompt exists of multiple parts which gives us more information about the system that we are using. We can see information about our user and the hostname of the server that we logged into.
+The prompt exists of multiple parts that give us more information about the system we are using. We see information about our user and the hostname of the server that we are logged into.
 
-The `~` symbol is an abbreviation of the homefolder of the logged in user (in our case the folder `/home/student`). We will learn about paths & folders in a later chapter. For now you can compare this to the path `C:\Users\student` in Windows. So what we actually see in between the `:` and the `$` sign is a path pointing to the folder we are currently in.
+The `~` symbol is an abbreviation of the homefolder of the logged in user (in our case the folder `/home/student`). We will learn about paths & folders in a later chapter. For now you can compare this to the path `C:\Users\student` in Windows. So what we actually see in between the `:` and the `$` sign is a path pointing to the folder we are currently working in.
 
 <i class="fa-solid fa-earth-europe"></i> [Linux prompt definition](http://www.linfo.org/prompt.html#:~:text=A%20command%20prompt%2C%20also%20referred,terminal%20window%20by%20a%20shell.)
 
@@ -105,7 +105,7 @@ passwd (1)           - change user password
 passwd (1ssl)        - compute password hashes
 passwd (5)           - the password file
 ```
-Looking at the output above we see 3 ```passwd``` entries containing different numbers between the brackets. The numbers refer to the _section_ of the manpage. By default, the `man` command will open section 1, which contains information about the command `passwd`. We can see that there is also a section 5 which contains information about the configuration file `/etc/passwd`. We can open this section as follows:
+Looking at the output above we see 3 ```passwd``` entries containing different numbers between the round brackets. The numbers refer to the _sections_ of the manpage. By default, the `man` command will open the first section is finds. In this case _section 1_, which contains information about the command `passwd`. We can see that there is also a _section 5_ which contains information about the configuration file `/etc/passwd`. We can open this section by specifying it as follows:
 ```bash
 man 5 passwd
 ```
@@ -124,7 +124,7 @@ To go to the next occurence you can push the letter _n_. To go to the previous o
 ?> <i class="fa-solid fa-circle-info"></i>It's allways a good idea to first type _g_ to go to the first line before starting your search!
 
 ### whereis & whatis
-We can quickly view the description of a command without opening the full manpage by using the `whatis` command as follows:
+We can quickly view the description of a command without opening the full manpage by using the `whatis` command:
 ```bash
 student@linux-ess:~$ whatis route
 route (8) - show / manipulate the IP routing table
@@ -138,11 +138,11 @@ whois: /usr/share/man/man1/whois.1.gz
 The manpages are stored in archives with a `.gz` extention. This is comparable to a `zip` file containing text files. When typing the command `man whois` it will actually open the text file in the archive `/usr/share/man/man1/whois.1.gz`.
 
 ## Shell history
-The command line interface in Linux environments is often called the _shell_. This shell keeps track of all the commands we have used in the past. This means we can use this to easily repeat / edit / lookup previously used commands.
+The command line interface in Linux environments is often called the _shell_. This shell keeps track of all the commands we have used in the past. This means we can use this to easily repeat, edit or lookup previously used commands.
 
-?> Try using the `arrow up` and `arrow down` keys after using some commands. You will notice that these commands will appear after the prompt.
+?> Try using the `arrow up` and `arrow down` keys after using some commands. You will notice that these commands will reappear after the prompt.
 
-Repeating the last command is very easy as well. We can type `!!` (often referred to as _bang bang_) and this will run the command that we last used. We often use it when we don't have enough privileges and we want to run the command again with sudo:
+Repeating the last command is very easy as well. We can type `!!` (often referred to as _bang bang_) and this will rerun the command that we last used. We often use it when we don't have enough privileges and we want to run the same command again with sudo:
 ```bash
 student@linux-ess:~$ cat /etc/shadow
 cat: /etc/shadow: Permission denied
@@ -176,7 +176,7 @@ student@linux-ess:~/linuscraft$ history 10
 ```
 The number that we use as an argument is the amount of commands the output will show. We can run any of these commands by using the identifier listed before the command as follows: `!n`. So for example running `!261` will run the command `mkdir testfolder`.
 
-?> Note that in some distros by default command lines that start with a space are not added to the history and if the command is identical to the previous command it is also witheld:
+?> Note that in some distros by default command lines that start with a space are not added to the history. If the command is identical to the previous command it is also witheld:
 ```bash
 student@linux-ess:~$ echo Start
 Start
@@ -195,7 +195,7 @@ student@linux-ess:~$ history 4
   223  history 4
 ```
 
-?> It's a good habbit to use `CTRL-R` to do a reverse search (newest to oldest) through your history. Just press `CTRL-R` and type your search string. Use `CTRL-R` again to search for the next command. Use arrows to go into the command line and alter words. Use `CTRL-C`to quit and go back to an empty command line.
+?> It's a good habbit to use `CTRL-R` to do a reverse search (newest to oldest) through your history. Just press `CTRL-R` and type your search string. Use `CTRL-R` again to search for the next command. Use the arrow keys to go into the command line and modify it. Use `CTRL-C`to quit and go back to an empty command line. Use `enter` to run the command.
 
 ## Extra course material <!-- {docsify-ignore} -->
 
