@@ -92,24 +92,23 @@ There are multiple files that start with .bash (history rc, logout,...)
 
 ## Task 10
 Create this directorystructure with just 1 command:
-`/home/student/school/aca_2018_2019/trimesters/2/vakken/ubuntuserver/exercises/chapter5`
+`/home/student/school/semester/1/courses/ubuntuserver/exercises/chapter5`
 
 ```bash
-mkdir -p /home/student/school/aca_2018_2019/trimesters/2/vakken/ubuntuserver/exercises/chapter5
+mkdir -p /home/student/school/semester/1/courses/ubuntuserver/exercises/chapter5
 ```
 
 ## Task 11
 Create, in the folder named 'exercises', a folder named 'chapter6'
 
 ```bash
-mkdir  /home/student/school/aca_2018_2019/trimesters/2/vakken/ubuntuserver/exercises/chapter6
+mkdir -p /home/student/school/semester/1/courses/ubuntuserver/exercises/chapter6
 ```
 
 ## Task 12
 Remove the folder named 'chapter5'
 ```bash
-Gooi chapter5 weg
-rmdir /home/student/school/aca_2018_2019/trimesters/2/vakken/ubuntuserver/exercises/chapter5
+rmdir /home/student/school/semester/1/courses/ubuntuserver/exercises/chapter5
 ```
 
 ## Task 13
@@ -135,14 +134,14 @@ cd
 ```
 
 ## Task 16
-use cat to print the contents of the .bashrc file that is located in johndoe's homefolder. Use relative-path syntax.
+use cat to print the contents of the .bashrc file that is located in johndoe's homefolder. Use a relative-path syntax.
 
 ```bash
 cat ../johndoe/.bashrc
 ```
 
 ## Task 17
-Try to navigate to another user's homefolder with a maximum of 7 keystrokes
+Try to navigate to the other user's homefolder with a maximum of 7 keystrokes
 
 ```
 cd -			    → 5 keystrokes
@@ -157,21 +156,3 @@ Clear the screen
 ```bash
 clear
 ```
-
-## Task 19
-What are the differences between these commands?
-- ls /etc/*
-```
-shows al dirs and files, and also the contents of the dirs
-```
-
-- ls /etc/*.*
-```
-shows all dirs and files with a . in the name, and also the contents of all dirs
-```
-
-- ls /etc/*a.*
-```
-shows all dirs and files with a 'a' in the name, and also the contents of all dirs
-```
-
