@@ -1,18 +1,13 @@
 # Assignment on file contents
 
 ## Task 1
-Find out why ‘less’ is better practice to do than ‘more’
-
-```
-Less is a pager where you are able to scroll upwards
-```
+Find out why you should use ‘less’ instead of ‘more’
 
 ## Task 2
-Show the first line of the file /proc/meminfo to find out how much memory you’ve given to your Ubuntu Virtual machine. 
+Show the first line of the file /proc/meminfo to find out how much memory you’ve given to your Ubuntu Virtual machine.
 
 ## Task 3
-Show the last line of the file passwd located in the folder etc of the root folder.
-
+Show the last line of the file passwd located in the folder etc of the root folder
 
 ## Task 4
 Show the first 4 characters (=bytes) of the file /etc/passwd. What do you see? 
