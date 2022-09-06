@@ -12,20 +12,20 @@ cd
 
 In your homedirectory, create the following structure:
 `
-PXL/Courses/S1/SystemEss
+PXL/Courses/S1/SystemsEss
 `
 
 
 
 ```bash
-mkdir -p PXL/Courses/S1/SystemEss
+mkdir -p PXL/Courses/S1/SystemsEss
 ```
 
 ## Task 3
 Create, without leaving your homedirectory, an empty file named `empty` in each folder created in the previous Task
 
 ```bash
-touch PXL/Courses/S1/SystemEss/empty PXL/Courses/S1/empty PXL/Courses/empy PXL/empty
+touch PXL/Courses/S1/SystemsEss/empty PXL/Courses/S1/empty PXL/Courses/empty PXL/empty
 ```
 
 ## Task 4
