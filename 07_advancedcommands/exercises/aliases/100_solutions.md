@@ -18,6 +18,6 @@ Remove the alias `c` to clear your screen
 <br/>![aliases_clear_2](images/aliases_clear_2.png)   
 
 ## Task 5
-Add an alias that will be remembered in the future (after reboot, etc) that when you issue the command `memory` the command ` ` will be executed    
+Search the manpage of the command `free` to find out how you can show the results in __gigabytes__ and __human readable__. Add an alias to the system that will be remembered in the future (after reboot, etc) that when you issue the command `memory` the command `free` will be executed with the options you have found.    
 <br/>![aliases_memory_1](images/aliases_memory_1.png)  
 <br/>![aliases_memory_2](images/aliases_memory_2.png)  
