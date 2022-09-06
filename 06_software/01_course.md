@@ -152,7 +152,7 @@ For updating our software we have a couple of options. To start of we can indivi
 When we want to update all the packages on our system we can use the `sudo apt upgrade` command. This will update all the installed packages.
 
 ## Gzip and tar
-Sometimes you might encounter a `tar` or `tar.gz` file. A  `tar.gz` file is also known as a `tarball`. Both are compressed files containing all kinds of files & folders. You can compare these to `zip` or `rar` files. We need to extract the files/folders inside this file before we can use them. To do so we can use the `tar` command. The options we use will vary depending on the case. Do we want to extract a `tar` file or a `tar.gz`file:
+Sometimes you might encounter a `tar` or `tar.gz` file for installing some software. A  `tar.gz` file is also known as a `tarball`. it's a compressed file containing all kinds of files & folders. You can compare these to `zip` or `rar` files. We need to extract the files/folders inside this file before we can use them. To do so we can use the `tar` command. The options we use will vary depending on the case. Do we want to extract a `tar` file or a `tar.gz`file:
 ```bash
 student@linux-ess:~/tarexample$ ls
 app.tar.gz  docs.tar
@@ -170,7 +170,7 @@ The options we use can be found in the manpage, but below you can find a small s
 * `-t`: Will only list the contents of the archive to the screen. It will not unpack anything.
 
 ## dpkg
-`dpkg` is package manager for Debian-based systems. Where Ubuntu uses `apt` as the default package manager, we can also use `dpkg`. `dpkg` was the predecessor of `apt-get` and `apt`. `dpkg` doesn't make use of repositories, so we have to have the installer file before using the command. It also doesn't download dependencies automatically. That's why they used to call it *the dependancy hell*  We can use `dpkg` to install / remove / ... `.deb` files. The example below installs the package `yourpackage`:
+`dpkg` was the first package manager for Debian-based systems. Where Ubuntu nowadays uses `apt` as the default package manager, we can also use `dpkg`. `dpkg` was the predecessor of `apt-get` and `apt`. `dpkg` doesn't make use of repositories, so we have to have the installer file before using the command. It also doesn't download dependencies automatically. That's why they used to call it *the dependancy hell*  We can use `dpkg` to install / remove / ... `.deb` files. The example below installs the package `yourpackage`:
 ```bash
 student@linux-ess:~$ sudo dpkg -i yourpackage.deb
 ```` 
@@ -178,4 +178,47 @@ student@linux-ess:~$ sudo dpkg -i yourpackage.deb
 `dpkg` can also be used to (re)configure particular packages. We can use this for example to change the keyboard layout on our server by running:
 ```bash
 student@linux-ess:~$ sudo dpkg-reconfigure keyboard-configuration
+```
+
+## snap
+One of the relative new players is snap. A snap is a bundle of the software we want to install with all of its dependencies stored in one file and executed in its own bubble. This means that two snaps cannot interfere with eachother. This for example makes it possible to install two different versions of the same software at the same time and running them together. Snaps have their own filesystem but can work with files on your systems too. You can find snaps in the snap store on a Desktop or with `snap search` on a server. Snaps are use more and more because they are distro independant. If you can install the snap daemon on the distro it will run all snaps. 
+
+The commands for working with snap are almost similar as apt. We have:
+snap search  
+snap list (installed apps)  
+snap info  
+snap install  
+snap remove  
+snap refresh (upgrades the snaps, happens every day automatically)  
+snap changes (history of changes)
+snap version
+
+snap update does not exist. the snap daemon checks for updates 4 times a day.
+
+You can install from different channels (like stable, beta,...) but the standard is stable and we keep it that way.
+
+```bash
+student@linux-ess:~$ snap search mapscii
+Name     Version  Publisher  Notes  Summary
+mapscii  0.3.1    nhaines    -      The whole world in your console.
+student@linux-ess:~$ snap info mapscii
+name:      mapscii
+summary:   The whole world in your console.
+publisher: Nathan Haines (nhaines)
+store-url: https://snapcraft.io/mapscii
+contact:   https://github.com/nathanhaines/mapscii
+license:   MIT
+description: |
+  A node.js based Vector Tile to Braille and ASCII renderer for
+  xterm-compatible terminals.
+snap-id: YmktiCRE0Dg3FvsSwXiNFHeygSzRtyIo
+channels:
+  latest/stable:    0.3.1 2020-08-12 (14) 29MB -
+  latest/candidate: ↑
+  latest/beta:      ↑
+  latest/edge:      0.3.1 2020-08-15 (14) 29MB -
+student@linux-ess:~$ sudo snap install mapscii
+[sudo] password for student:
+mapscii 0.3.1 from Nathan Haines (nhaines) installed
+student@linux-ess:~$ mapscii 
 ```
