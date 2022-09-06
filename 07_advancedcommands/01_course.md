@@ -238,11 +238,8 @@ student@linux-ess:~$ echo first && echo second
 first
 second
 student@linux-ess:~$ zecho first && echo second
-
 Command 'zecho' not found, did you mean:
-
   command 'echo' from deb coreutils (8.30-3ubuntu2)
-
 Try: sudo apt install <deb name>
 ```
 
@@ -251,13 +248,9 @@ Try: sudo apt install <deb name>
 student@linux-ess:~$ echo first || echo second
 first
 student@linux-ess:~$ zecho first || echo second
-
 Command 'zecho' not found, did you mean:
-
   command 'echo' from deb coreutils (8.30-3ubuntu2)
-
 Try: sudo apt install <deb name>
-
 second
 ```
 
