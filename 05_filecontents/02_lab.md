@@ -20,7 +20,7 @@ We can save the file using the keyboard combination `ctrl + o`. It will prompt t
 
 Make sure to check if the contents is correctly saved by using the `cat linuscraft/todo` command. If we want to only check the last couple of lines we could also use the `tail linuscraft/todo` command.
 
-<i class="fa-regular fa-pencil"></i> Wan't a challenge? Try using the editor `vi` or `vim` to insert the text. This is a special and popular text editor which has a command and insert mode. More information about this editor can be found [here](https://linuxfoundation.org/blog/classic-sysadmin-vim-101-a-beginners-guide-to-vim/)
+<i class="fa-solid fa-pencil"></i> Wan't a challenge? Try using the editor `vi` or `vim` to insert the text. This is a special and popular text editor which has a command and insert mode. More information about this editor can be found [here](https://linuxfoundation.org/blog/classic-sysadmin-vim-101-a-beginners-guide-to-vim/).
 
 The command above uses a relative path to the existing `todo` file. We can also use nano to create new files as follows:
 ```bash
@@ -28,7 +28,7 @@ student@linux-ess:~/linuscraft$ nano playerinfo/dries.txt
 ```
 
 We give this file the following contents:
-```bash
+```
 player aliases: dries, 3s, d r 1 3 s
 age: 32
 Notes:
@@ -43,7 +43,7 @@ student@linux-ess:~/linuscraft$ cat contact
 linus@pxl.be
 ```
 
-<i class="fa-regular fa-pencil"></i> What happens if we run the command `echo mark@pxl.be >./contact` after running the command above? Try using two `echo` commands to add both Linus and Mark's contact details!
+<i class="fa-solid fa-pencil"></i> What happens if we run the command `echo mark@pxl.be >./contact` after running the command above? Try using two `echo` commands to add both Linus and Mark's contact details!
 
 Next up Linus wants to quickly view the top 2 items on his todo list. We can do this by using the `head` command:
 ```bash
@@ -59,7 +59,7 @@ TODO LINUSCRAFT
 start server - unfinished
 automate backups - unfinished
 ```
-<i class="fa-regular fa-pencil"></i> What if we had a really long todo list that does not fit our CLI window. Try adding a couple more todo items to try this out. What command could you use to scroll through this list?
+<i class="fa-solid fa-pencil"></i> What if we had a really long todo list that does not fit our CLI window. Try adding a couple more todo items to try this out. What command could you use to scroll through this list?
 
 Lastly Linus wants to create a `playerlist` file comming from the contents of the `playerinfo` folder. We could create a listing of all the text files of all the players and save this to the `playerinfo` file rather than typing all the names manually. We can do this as follows:
 ```bash
