@@ -1,12 +1,12 @@
 # Assignment CH3
 ## Task 1
 Connect from Powershell on your laptop to your server over SSH and stay connected for the duration of the exercises. The benefit is that you can scroll through your screens with the mouse  
-
-<br/>![Connect via Powershell](images/Connect via Powershell.png)  
+<br/>![Connect via Powershell](images/Connect_via_Powershell.png)  
 
 ## Task 2
 Make use of the command `man man` to figure out what the commando `man -f` does and with which other command it can be replaced
-
+<br/>![man man_1](images/man_man_1.png)
+<br/>![man man_2](images/man_man_2.png)
 
 ## Task 3
 Make use of the command `man` to figure out what the option is for the command `shutdown` to reboot the machine instead of powering off
