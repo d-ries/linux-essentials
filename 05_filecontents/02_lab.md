@@ -1,5 +1,5 @@
 # Lab <!-- {docsify-ignore} -->
-In the previous lab Linus created a couple of folders and files. The issue is that these files are still empty. In this lab we will add contents to some of the existing files and add some new files aswell. 
+In the previous lab Linus created a couple of folders and files. The issue is that these files are still empty. In this lab we will add content to some of the existing files and add some new files as well. 
 
 We start of with the easiest way of entering text into a file. We can do this using a text editor such as `nano`.  Linus uses the `nano linuscraft/todo` command to give the todo file the following contents:
 ```
@@ -18,11 +18,13 @@ design logo - done
 
 We can save the file using the keyboard combination `ctrl + o`. It will prompt to confirm the path to the file(name). If you press enter the file contents will be saved. 
 
-Make sure to check if the contents is correctly saved by using the `cat linuscraft/todo` command. If we want to only check the last couple of lines we could also use the `tail linuscraft/todo` command.
+Make sure to check if the content is correctly saved by using the command `cat linuscraft/todo`. If we only want to check the last couple of lines we could also use the `tail linuscraft/todo` command.
 
-<i class="fa-solid fa-pencil"></i> Wan't a challenge? Try using the editor `vi` or `vim` to insert the text. This is a special and popular text editor which has a command and insert mode. More information about this editor can be found [here](https://linuxfoundation.org/blog/classic-sysadmin-vim-101-a-beginners-guide-to-vim/).
+<i class="fa-solid fa-pencil"></i> Wan't a challenge? Try using the editor `vi` or `vim` to insert the text. This is a special and popular text editor which has a command and insert mode. More information about this editor which you have to read first can be found [here](https://linuxfoundation.org/blog/classic-sysadmin-vim-101-a-beginners-guide-to-vim/).
 
-The command above uses a relative path to the existing `todo` file. We can also use nano to create new files as follows:
+The command above uses a relative path to the existing `todo` file.   
+  
+We can also use nano to create new files by specifying a filename that not yet exists:
 ```bash
 student@linux-ess:~/linuscraft$ nano playerinfo/dries.txt
 ```
@@ -38,12 +40,12 @@ Notes:
 
 The `contact` file only exists out of Linus his e-mail address. We can easily insert this using the `echo` command:
 ```bash
-student@linux-ess:~/linuscraft$ echo linus@pxl.be >./contact
+student@linux-ess:~/linuscraft$ echo linus@pxl.be > ./contact
 student@linux-ess:~/linuscraft$ cat contact
 linus@pxl.be
 ```
 
-<i class="fa-solid fa-pencil"></i> What happens if we run the command `echo mark@pxl.be >./contact` after running the command above? Try using two `echo` commands to add both Linus and Mark's contact details!
+<i class="fa-solid fa-pencil"></i> What happens if we run the command `echo mark@pxl.be > ./contact` after running the command above? Try using two `echo` commands to add both Linus and Mark's contact details!
 
 Next up Linus wants to quickly view the top 2 items on his todo list. We can do this by using the `head` command:
 ```bash
