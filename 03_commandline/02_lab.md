@@ -6,7 +6,7 @@ On the [downloads page of the Minetest website](https://www.minetest.net/downloa
 
 ![CLI_LAB_Download_Minetest](../images/03/lab_minetest_download.PNG)
 
-## Finding an installation tool
+## Finding ways to install minetest
 
 Linus needs to install this minetest on his server in some way. He needs to find a command that allows him to install packages.
 
