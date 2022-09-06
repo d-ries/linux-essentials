@@ -1,7 +1,7 @@
 # Assignment on file contents
 
 ## Task 1
-Find out why ‘less’ is better practice to do than ‘more’
+Find out why you should use ‘less’ instead of ‘more’
 
 ```
 Less is a pager where you are able to scroll upwards
