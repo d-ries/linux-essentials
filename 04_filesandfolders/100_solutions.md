@@ -72,8 +72,8 @@ cp ~/.* backup # Also copy hidden files
 # Assignment on working with directories
 
 ?> <i class="fa-solid fa-circle-info"></i> Some Tasks require a second user on your installation. 
-Execute `sudo useradd -m pieter` to create the new user
-Execute `sudo passwd pieter` to set a password for the new user
+Execute `sudo useradd -m jondoe` to create the new user
+Execute `sudo passwd johndoe` to set a password for the new user
 
 ## Task 8
 Install the command `tree` on your ubuntu machine. You can use this command to get an over view of directorystructures on your system.
@@ -120,10 +120,10 @@ rm -rf /home/student/school
 ```
 
 ## Task 14
-Navigate using absolute-path syntax into the home folder of the user named 'piet'
+Navigate using absolute-path syntax into the home folder of the user named 'johndoe'
 
 ```bash
-cd /home/piet
+cd /home/johndoe
 ```
 
 
@@ -135,10 +135,10 @@ cd
 ```
 
 ## Task 16
-use cat to print the contents of the .bashrc file that is located in piet's homefolder. Use relative-path syntax.
+use cat to print the contents of the .bashrc file that is located in johndoe's homefolder. Use relative-path syntax.
 
 ```bash
-cat ../piet/.bashrc
+cat ../johndoe/.bashrc
 ```
 
 ## Task 17
