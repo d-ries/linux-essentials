@@ -49,32 +49,46 @@ cacafire
 cacademo  
 
 ## Task 9
-snap --> update local cache
-
-snap search
-snap list (geinstalleerde)
-snap info
-snap install
-snap remove
-snap refresh (sowieso iedere dag upgrades)
-snap changes (historiek)
+Search for a snap package via the description "resource monitor"    
+snap search resource monitor  
 
 ## Task 10
-Install btop via snap and run it.
-
-
+Read the information about the snap `btop`  
+snap info btop  
 
 ## Task 11
-Install the snap 'asciiquarium' and run it
-snap install asciiquarium
+Install the snap `btop` 
+sudo snap install btop  
 
+## Task 12
+Run btop  
 
+## Task 13
+Show a list op installed snaps
+snap list 
 
+## Task 14
+Remove the snap btop
+sudo snap remove btop
 
-download tar and run
+## Task 15
+Show a list op installed snaps
+snap list  
 
-dpkg ?
+## Task 16
+snap changes (historiek)  
 
+## Task 17
+Check if the snap 'asciiquarium' exists. Read some info about the snap, install it and run it
+snap search asciiquarium
+snap info asciiquarium
+sudo snap install asciiquarium
+asciiquarium
+ctrl+c
 
-Minetest client on Ubuntu Desktop 
+## Task 18
+Try to install the minetest client on your Ubuntu Desktop and connect with the server to play the game. After installation you will find mimetest between your applicataions in the GUI.  Make sure that your minetest server is runnen. If not, use ctrl+r and search for mimetest untill you see the following command: minetest --server --world ~/linuscraft/serverfiles/myworld --logfile ~/linuscraft/serverfiles/logfile.txt  
+
+sudo apt install minetest
+
 
