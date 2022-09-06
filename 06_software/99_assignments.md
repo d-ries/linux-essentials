@@ -48,9 +48,16 @@ apt show caca-utils
 cacafire
 cacademo
 
-
 ## Task 9
 snap --> update local cache
+
+snap search
+snap list (geinstalleerde)
+snap info
+snap install
+snap remove
+snap refresh (sowieso iedere dag upgrades)
+snap changes (historiek)
 
 ## Task 10
 Install btop via snap and run it.
