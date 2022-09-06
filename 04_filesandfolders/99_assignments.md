@@ -57,7 +57,7 @@ Why doesn't tab-completion work when executing the following command to open .ba
 
 ## Task 10
 Create this directorystructure with just 1 command:
-`/home/student/school/aca_2018_2019/trimesters/2/vakken/ubuntuserver/exercises/chapter5`
+`/home/student/school/semester/1/courses/ubuntuserver/exercises/chapter5`
 
 
 ## Task 11
@@ -81,22 +81,13 @@ Navigate to your own home directory
 
 
 ## Task 16
-use cat to print the contents of the .bashrc file that is located in johndoe's homefolder. Use relative-path syntax.
+use cat to print the contents of the .bashrc file that is located in johndoe's homefolder. Use a relative-path syntax.
 
 
 ## Task 17
-Try to navigate to another user's homefolder with a maximum of 7 keystrokes
+Try to navigate to the other user's homefolder with a maximum of 7 keystrokes
 
 
 ## Task 18
 Clear the screen
-
-
-## Task 19
-What are the differences between these commands?
-- ls /etc/*
-
-- ls /etc/*.*
-
-- ls /etc/*a.*
 
