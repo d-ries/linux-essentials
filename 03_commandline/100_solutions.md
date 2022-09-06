@@ -1,6 +1,7 @@
 # Assignment CH3
 ## Task 1
 Connect from Powershell on your laptop to your server over SSH and stay connected for the duration of the exercises. The benefit is that you can scroll through your screens with the mouse  
+
 <br/>![Connect via Powershell](images/Connect via Powershell.png)  
 
 ## Task 2
