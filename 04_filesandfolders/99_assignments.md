@@ -24,7 +24,7 @@ Remove, with just one command, the folder `PXL` with all contents created in the
 
 
 ## Task 5
-Create a new folder "My Pictures". Go into this folder and create, with just one command, these following files:
+Create a new folder "My Pictures". Go into this folder and create, with just one command, these following files (notice the capitalization):
 - Picture1.JPG
 - picture2.JPG
 - Picture3.jpg
