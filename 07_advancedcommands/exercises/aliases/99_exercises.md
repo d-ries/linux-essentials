@@ -1,4 +1,4 @@
-# Asliases
+# Aliases
 
 ## Task 1
 Install the package lolcat and create an alias to run `lolcat` instead of `cat`
