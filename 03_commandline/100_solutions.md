@@ -4,22 +4,36 @@ Connect from Powershell on your laptop to your server over SSH and stay connecte
 <br/>![Connect via Powershell](images/Connect_via_Powershell.png)  
 
 ## Task 2
-Make use of the command `man man` to figure out what the commando `man -f` does and with which other command it can be replaced
-<br/>![man man_1](images/man_man_1.png)
+Make use of the command `man man` to figure out what the commando `man -f` does and with which other command it can be replaced  
+
+<br/>![man man_1](images/man_man_1.png)  
+
 <br/>![man man_2](images/man_man_2.png)
 
 ## Task 3
-Make use of the command `man` to figure out what the option is for the command `shutdown` to reboot the machine instead of powering off
+Make use of the command `man` to figure out what the option is for the command `shutdown` to reboot the machine instead of powering off  
+
+<br/>![man_shutdown.png](images/man_shutdown.png)
 
 ## Task 4
 Use the command `apropos` and/or the command `man -k` to find the right commando to:
-- reboot your vm
-- change your password or another user's password
-- show the contents of a directory
-- clear the terminal screen
-- see who is logged in --> try all the commands
-- see how much free memory the server has  --> search in the manpage of this command how you can get the output more human readable (search in the manpage for _human_)
-- see how much space you have free on the disk 
+- __reboot__ your vm
+- change your __password__ or another __user__'s password
+- show the __contents__ of a directory
+- __clear__ the terminal screen
+- see who is __logged in__/__on__ --> try all the commands
+- see how much free __memory__ the server has  --> search in the manpage of this command how you can get the output more human readable (search in the manpage for _human_)
+- see how much __disk space__ you have free 
+
+apropos reboot
+apropos "user password"
+apropos contents
+apropos clear
+apropos "logged in"          apropos "logged on"
+apropos memory
+apropos "disk space"
+
+
 
 ## Task 5
 Use the manpage of `ls` to figure out how you could also see the hidden files. Show the hidden files of your homefolder
