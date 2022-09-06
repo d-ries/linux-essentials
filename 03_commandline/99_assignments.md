@@ -10,13 +10,13 @@ Make use of the command `man` to figure out what the option is for the command `
 
 ## Task 4
 Use the command `apropos` and/or the command `man -k` to find the right commando to:
-- reboot your vm
-- change your password or another user's password
-- show the contents of a directory
-- clear the terminal screen
-- see who is logged in --> try all the commands
-- see how much free memory the server has  --> search in the manpage of this command how you can get the output more human readable (search in the manpage for _human_)
-- see how much space you have free on the disk 
+- __reboot__ your vm
+- change your __password__ or another __user__'s password
+- show the __contents__ of a directory
+- __clear__ the terminal screen
+- see who is __logged in__/__on__ --> try all the commands
+- see how much free __memory__ the server has  --> search in the manpage of this command how you can get the output more human readable (search in the manpage for _human_)
+- see how much __disk space__ you have free  
 
 ## Task 5
 Use the manpage of `ls` to figure out how you could also see the hidden files. Show the hidden files of your homefolder
