@@ -144,6 +144,28 @@ If we want to remove an alias we can use the unalias command:
 student@linux-ess:~$ unalias rm
 ```
 
+?> If you want to keep an aliase for future use (open a new shell, reboot, ...) you can add it to a (new) hidden file in your homefolder named `.bash_aliases`
+
+```bash
+student@linux-ess:~$ cat .bash_aliases
+alias memory='free --giga -h'
+student@linux-ess:~$ alias
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -alF'
+alias ls='ls --color=auto'
+alias memory='free --giga -h'
+student@linux-ess:~$ memory
+               total        used        free      shared  buff/cache   available
+Mem:            3.9G        301M        3.1G        1.0M        492M        3.3G
+Swap:             0B          0B          0B
+student@linux-ess:~$
+```
+
 ## I/O redirection
 ### I/O Streams
 When working with the shell we actually work with something called streams. There are 3 basic streams available when using a shell:
