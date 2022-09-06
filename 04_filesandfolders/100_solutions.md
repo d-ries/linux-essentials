@@ -72,7 +72,7 @@ cp ~/.* backup # Also copy hidden files
 # Assignment on working with directories
 
 ?> <i class="fa-solid fa-circle-info"></i> Some Tasks require a second user on your installation. 
-Execute `sudo useradd -m piet` to create the new user
+Execute `sudo useradd -m pieter` to create the new user
 Execute `sudo passwd pieter` to set a password for the new user
 
 ## Task 8
