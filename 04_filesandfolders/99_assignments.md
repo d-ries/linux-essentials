@@ -43,8 +43,8 @@ Copy all 'files' from this directory into a subdirectory named `backup` in your 
 # Assignment on working with directories
 
 ?> <i class="fa-solid fa-circle-info"></i> Some Tasks require a second user on your installation. 
-Execute `sudo useradd -m piet` to create the new user
-Execute `sudo passwd pieter` to set a password for the new user
+Execute `sudo useradd -m johndoe` to create the new user
+Execute `sudo passwd johndoe` to set a password for the new user
 
 ## Task 8
 Install the command `tree` on your ubuntu machine. You can use this command to get an over view of directorystructures on your system.
@@ -73,7 +73,7 @@ Remove all folders starting from the school-directory
 
 
 ## Task 14
-Navigate using absolute-path syntax into the home folder of the user named 'piet'
+Navigate using absolute-path syntax into the home folder of the user named 'johndoe'
 
 
 ## Task 15
@@ -81,7 +81,7 @@ Navigate to your own home directory
 
 
 ## Task 16
-use cat to print the contents of the .bashrc file that is located in piet's homefolder. Use relative-path syntax.
+use cat to print the contents of the .bashrc file that is located in johndoe's homefolder. Use relative-path syntax.
 
 
 ## Task 17
