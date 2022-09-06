@@ -35,7 +35,7 @@ Use the arrow keys to go to the command `cat .bashrc` and use the arrow keys aga
 
 ## Task 10
 Run the command to shutdown you server immediately. Restart you server via VMware Workstation.
-Connect to your server over SSH and stay connect for the exercises. If it doesn't work you have to check the IP of the server (from VMware Workstation).
+Connect to your server over SSH and stay connected for the exercises. If it doesn't work you have to check the IP of the server (from VMware Workstation).
 Try to use the history to rerun the command `cat .bash_history`. You will now see that the commands are added of the session before you rebooted. Every time you start a new shell the commands from this file are copied into the shell's memory so we can use the history.
 `sl` is to prank people who mistype 
 
