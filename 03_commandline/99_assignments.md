@@ -63,4 +63,4 @@ Push the key combination `CTRL-R` and type `shu` to search for the last used shu
 Try to connect from the Ubuntu Desktop to the Ubuntu Server over ssh.  
 
 ## Task 16
-Install `Windows Terminal` on you Windows laptop via the 'Microsoft Store'. Try to connect from the Windows Terminal to the Ubuntu Server over ssh. 
+Install `Windows Terminal` on your Windows laptop via the 'Microsoft Store'. Try to connect from the Windows Terminal to the Ubuntu Server over ssh. 
