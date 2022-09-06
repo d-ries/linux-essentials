@@ -57,37 +57,39 @@ Read the information about the snap `btop`
 snap info btop  
 
 ## Task 11
-Install the snap `btop` 
+Install the snap `btop`  
 sudo snap install btop  
 
 ## Task 12
-Run btop  
+Run btop    
+btop
 
 ## Task 13
-Show a list op installed snaps
+Show a list op installed snaps  
 snap list 
 
 ## Task 14
-Remove the snap btop
+Remove the snap btop  
 sudo snap remove btop
 
 ## Task 15
-Show a list op installed snaps
+Show a list op installed snaps  
 snap list  
 
 ## Task 16
-snap changes (historiek)  
+Show the history of changes in snap
+snap changes 
 
 ## Task 17
-Check if the snap 'asciiquarium' exists. Read some info about the snap, install it and run it
-snap search asciiquarium
-snap info asciiquarium
-sudo snap install asciiquarium
-asciiquarium
-ctrl+c
+Check if the snap 'asciiquarium' exists. Read some info about the snap, install it and run it  
+snap search asciiquarium  
+snap info asciiquarium  
+sudo snap install asciiquarium  
+asciiquarium  
+ctrl+c  
 
 ## Task 18
-Try to install the minetest client on your Ubuntu Desktop and connect with the server to play the game. After installation you will find mimetest between your applicataions in the GUI.  Make sure that your minetest server is runnen. If not, use ctrl+r and search for mimetest untill you see the following command: minetest --server --world ~/linuscraft/serverfiles/myworld --logfile ~/linuscraft/serverfiles/logfile.txt  
+Try to install the minetest client on your Ubuntu Desktop and connect with the server to play the game. After installation you will find mimetest between your applicataions in the GUI.  Make sure that your minetest server is runnen. If not, use ctrl+r and search for mimetest untill you see the following command: minetest --server --world ~/linuscraft/serverfiles/myworld --logfile ~/linuscraft/serverfiles/logfile.txt    
 
 sudo apt install minetest
 
