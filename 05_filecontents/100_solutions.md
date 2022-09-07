@@ -1,4 +1,4 @@
-# Assignment on file contents
+# Solutions on file contents
 
 ## Task 1
 Find out why you should use ‘less’ instead of ‘more’
