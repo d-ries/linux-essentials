@@ -20,18 +20,18 @@ Create the following files with only one command: script.sd, script.dh, script2.
 <br/>![](images/2022-08-15-15-06-41.png)
 
 ## Task 4
-Search your folder for all files ending in .sh or .sd or .dh or .ds or .ss or .dd  
+Search the folder for all files ending in .sh or .sd or .dh or .ds or .ss or .dd  
 Try to solve this one time with square brackets and one time without
 
 <br/>![](images/2022-08-15-15-07-00.png)
 
 
 ## Task 5
-Search for folder for all files starting with scr, then any character followed by pt. The files need to end with an h or an s
+Search the folder for all files starting with scr, then one random character, followed by pt. After pt there may be an unspecified amount of characters, but the file needs to end with an h or an s
 <br/>![](images/2022-08-15-15-07-25.png)
 
 ## Task 6
-Make sure that the command ls /b* does not show the content of the found folders. Look this up in the man page.
+Make sure that the command ls /b* does not show the content of the found folders. Search the man page for a solution
 
 <br/>![](images/2022-08-15-15-07-39.png)
 
@@ -42,7 +42,7 @@ Show all files and directories ending with ".conf" found in the folder "/etc"
 <br/>![](images/2022-08-15-15-07-51.png)
 
 ## Task 8
-Show all files and directories ending with ".d" found in the folder "/etc", do not show the contents of these directories
+Show all files and directories ending with the extension "d" (= ".d") found in the folder "/etc", do not show the contents of these directories
 
 <br/>![](images/2022-08-15-15-08-11.png)
 
@@ -71,7 +71,7 @@ ls -d /usr/share/bash-completion/completions/resolv*conf
 
 <br/>![](images/2022-08-15-15-09-36.png)
 
-?> <i class="fa-solid fa-circle-info"></i> It shows resolvconf because the * means 0 of more characters. 
+?> <i class="fa-solid fa-circle-info"></i> It shows resolvconf because the * means 0 or more characters. 
 
 ## Task 13
 Search for all files that start with two numbers from the folder "/etc/grub.d"
