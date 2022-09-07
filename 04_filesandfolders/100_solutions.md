@@ -1,4 +1,4 @@
-# Solutions CH4
+# Solutions on working with files and folders
 
 ## Task 1
 Navigate to your home directory
