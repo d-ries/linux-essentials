@@ -13,14 +13,14 @@ Try following command: ls scr[a-z]pt.*
 Create the following files with only one command: script.sd, script.dh, script2.dh, script.ds, script2.ds, scrip2.dd, script3.ss and script3.ds
 
 ## Task 4
-Search your folder for all files ending in .sh or .sd or .dh or .ds or .ss or .dd  
+Search the folder for all files ending in .sh or .sd or .dh or .ds or .ss or .dd  
 Try to solve this one time with square brackets and one time without
 
 ## Task 5
-Search for folder for all files starting with scr, then any character followed by pt. The files need to end with an h or an s
+Search the folder for all files starting with scr, then one random character, followed by pt. After pt there may be an unspecified amount of characters, but the file needs to end with an h or an s
 
 ## Task 6
-Make sure that the command ls /b* does not show the content of the found folders. Look this up in the man page.
+Make sure that the command ls /b* does not show the content of the found folders. Search the man page for a solution
 
 ## Task 7
 Show all files and directories ending with ".conf" found in the folder "/etc"
