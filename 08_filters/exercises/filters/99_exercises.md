@@ -1,4 +1,4 @@
-# Assignment on Filters
+# Solutions on Filters
 
 ## Task 1
 Show the last 5 created users, from newest to oldest.
