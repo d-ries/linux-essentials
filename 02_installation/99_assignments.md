@@ -1,4 +1,4 @@
-# Assignment CH2
+# Assignment on installation
 ## Task 1 - Download Ubuntu Desktop
 Linux also has a desktop version. Download [Ubuntu Desktop](https://ubuntu.com/download/desktop).
 
