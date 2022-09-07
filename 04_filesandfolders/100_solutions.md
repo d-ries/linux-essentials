@@ -1,4 +1,4 @@
-# Assignment on working with files
+# Solution CH4
 
 ## Task 1
 Navigate to your home directory
