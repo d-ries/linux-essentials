@@ -1,4 +1,4 @@
-# Assignment Standard File Permissions
+# Solutions on Standard File Permissions
 
 ## Task 1
 Execute the following command: <br />
