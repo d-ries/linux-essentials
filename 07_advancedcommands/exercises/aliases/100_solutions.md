@@ -1,4 +1,4 @@
-# Aliases
+# Solutions on Aliases
 
 ## Task 1
 Install the package lolcat and create an alias to run `lolcat` instead of `cat`. View the file ~/.bash_history with cat    
