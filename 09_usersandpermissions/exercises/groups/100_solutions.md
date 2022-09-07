@@ -1,4 +1,4 @@
-# Assignment Groups
+# Solutions on Groups
 
 ## Task 1
 Each linux (UNIX) system is a multi-user system. The different users are divided into groups.
