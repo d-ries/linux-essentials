@@ -217,7 +217,22 @@ student@linux-ess:~$ find / > results.txt 2> errors.txt
 
 If we want to redirect both `stderr` and `stdout` to the same file we can use the `&>` operator as follows:
 ```bash
-student@linux-ess$ find / &> results_and_errors.txt
+student@linux-ess:~$ find / &> results_and_errors.txt
+```
+
+If you want to redirect to a file and add the contents to that file you need to use two `>>`. This is because one `>` will always empty the file before adding the content:
+```bash
+student@linux-ess:~$ echo "text 1" > testfile
+student@linux-ess:~$ cat testfile
+text 1
+student@linux-ess:~$ echo "text 2" > testfile
+student@linux-ess:~$ cat testfile
+text 2
+student@linux-ess:~$ echo "text 3" >> testfile
+student@linux-ess:~$ cat testfile
+text 2
+text 3
+student@linux-ess:~$
 ```
 
 ## Control operators
