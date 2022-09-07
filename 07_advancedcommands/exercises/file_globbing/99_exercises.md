@@ -1,4 +1,4 @@
-# Assignment File globbing
+# Assignment on File globbing
 
 ## Task 1
 Create a new folder named FileGlobEx with the files script.sh, scrupt.sh and scrApt.sh. Use the touch command to create the files. 
