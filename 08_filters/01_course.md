@@ -128,9 +128,11 @@ Knowing that we can use multiple pipes (`|`) in a command, we can combine multip
 ```bash
 student@linux-ess:~$ cat auth.log | grep janedoe | grep -vi failed
 Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
-```
-or (there are multiple correct answers here)
-```
+```  
+  
+or (there are multiple correct answers here)  
+  
+```bash
 student@linux-ess:~$ cat auth.log | grep janedoe | grep Accepted
 Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
 ```
