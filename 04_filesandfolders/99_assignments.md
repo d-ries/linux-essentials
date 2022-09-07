@@ -1,4 +1,4 @@
-# Assignment on working with files
+# Assignment on working with files and folders
 
 ## Task 1
 Navigate to your home directory
