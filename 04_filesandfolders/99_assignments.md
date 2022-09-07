@@ -1,5 +1,3 @@
-# Assignment CH4
-
 # Assignment on working with files
 
 ## Task 1
