@@ -61,7 +61,7 @@ File4  File5  FileABC  Filec
 student@linux-ess:~/globbing$ ls F*ile*
 File4  File5  FileABC  Filec
 ```
-an asterix (`*`) in _file globbing_ means zero, one or more characters can be whatever they want. This is often called a wildcard that we can use one or multiple times in a filename. Another option would be a question mark (`?`) which is interpreted as exactly _one character_ can be what they want as seen in the following example:
+an asterisk (`*`) in _file globbing_ means zero, one or more characters can be whatever they want. This is often called a wildcard that we can use one or multiple times in a filename. Another option would be a question mark (`?`) which is interpreted as exactly _one character_ can be what they want as seen in the following example:
 ```bash
 student@linux-ess:~/globbing$ ls
 File4  File5  FileABC  Filec  afilea  file1  file2  file3  filea  fileb  filebc
