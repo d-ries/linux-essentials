@@ -1,4 +1,4 @@
-# Assignment CH3
+# Assignment on command line
 ## Task 1
 Connect to your server over SSH and stay connect for the exercises. The benefit is that you can scroll through your screens with the mouse
 
