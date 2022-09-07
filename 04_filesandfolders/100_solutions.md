@@ -1,4 +1,4 @@
-# Solution CH4
+# Solutions CH4
 
 ## Task 1
 Navigate to your home directory
