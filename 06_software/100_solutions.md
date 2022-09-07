@@ -1,4 +1,4 @@
-# Assignment CH6
+# Solutions on software
 
 In this assignment we will use `apt` instead of `apt-get` and `apt-cache`which are older commands
 
