@@ -15,15 +15,16 @@ Try following command: ls scr[a-z]pt.*
 <br/>![](images/2022-08-15-15-06-29.png)
 
 ## Task 3
-Create the following files with only one command: script.sd, script.dh, script2.dh, script.ds, script2.ds and script3.ds
+Create the following files with only one command: script.sd, script.dh, script2.dh, script.ds, script2.ds, scrip2.dd, script3.ss and script3.ds
 
 <br/>![](images/2022-08-15-15-06-41.png)
 
 ## Task 4
-Search your folder for all files ending in .sh or .sd or .dh or .ds
+Search your folder for all files ending in .sh or .sd or .dh or .ds or .ss or .dd  
+Try to solve this one time with square brackets and one time without
 
 <br/>![](images/2022-08-15-15-07-00.png)
-?> <i class="fa-solid fa-circle-info"></i> The second option works as well in this situation, but also shows results ending in .ss and .dd
+
 
 ## Task 5
 Search for folder for all files starting with scr, then any character followed by pt. The files need to end with an h or an s
