@@ -1,4 +1,4 @@
-# Assignment Regular Expressoins
+# Assignment on Regular Expressoins
 
 ?> <i class="fa-solid fa-circle-info"></i> http://www.regular-expressions.info/
 
