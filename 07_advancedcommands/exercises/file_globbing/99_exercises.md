@@ -10,10 +10,11 @@ Try following command: ls scr[a-z]pt.*
 ?> <i class="fa-solid fa-circle-info"></i> Currently it is set to automatically use not case sensitive.
 
 ## Task 3
-Create the following files with only one command: script.sd, script.dh, script2.dh, script.ds, script2.ds and script3.ds
+Create the following files with only one command: script.sd, script.dh, script2.dh, script.ds, script2.ds, scrip2.dd, script3.ss and script3.ds
 
 ## Task 4
-Search your folder for all files ending in .sh or .sd or .dh or .ds
+Search your folder for all files ending in .sh or .sd or .dh or .ds or .ss or .dd  
+Try to solve this one time with square brackets and one time without
 
 ## Task 5
 Search for folder for all files starting with scr, then any character followed by pt. The files need to end with an h or an s
