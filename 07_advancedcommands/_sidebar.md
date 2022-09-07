@@ -8,14 +8,10 @@
 * [6 Software & packages](./06_software/01_course.md)
 * [7 Advanced command structures](./07_advancedcommands/01_course.md)
 ** [Lab](./07_advancedcommands/02_lab.md)
-** Assignments
-** ___________
 ** [Assignment - control operators](./07_advancedcommands/exercises/control_operators/99_exercises.md)
 ** [Assignment - file globbing](./07_advancedcommands/exercises/file_globbing/99_exercises.md)
 ** [Assignment - aliases](./07_advancedcommands/exercises/aliases/99_exercises.md)
 ** [Assignment - I/O redirection](./07_advancedcommands/exercises/io_redirection/99_exercises.md)
-** Solutions
-** _________
 ** [Solutions - control operators](./07_advancedcommands/exercises/control_operators/100_solutions.md)
 ** [Solutions -  file globbing](./07_advancedcommands/exercises/file_globbing/100_solutions.md)
 ** [Solutions - aliases](./07_advancedcommands/exercises/aliases/100_solutions.md)
