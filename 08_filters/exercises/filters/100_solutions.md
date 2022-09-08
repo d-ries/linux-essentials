@@ -40,7 +40,7 @@ Show the lines from linux.txt that contain the word Linux, Minix or Unix
 <br/>![](images/2022-08-15-15-38-59.png)
 
 ## Task 5
-Show the number of lines that contain the word Unix in the file linux.txt. Search the manpage to find a solution
+Count the number of lines that contain the word Unix in the file linux.txt. The result is a number that reflects the number of lines. Search the manpage to find a solution
 <br/>![](images/2022-08-15-15-39-13.png)
 <br/>![](images/2022-08-15-15-39-17.png)
 
