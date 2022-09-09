@@ -18,6 +18,8 @@ student@linux-ess:~$ echo   I             like          to                      
 I like to game
 ```
 
+### Single and double quotes
+
 If we want to retain the spaces we have three options.
 The `first option` is to use `double quotes`. With this option the spaces will be retained and variables will still be interpreted.
 ```bash
@@ -43,7 +45,6 @@ student@linux-ess:~$ echo \ \  I \ \ \ \ \ \ \ like \ \ to \ \ \ \ \ \ \ \ \ \ \
     I       like   to              play    games
 ```
 
-### Single and double quotes
 
 ## File globbing
 When specifying filenames, we can get the shell to generate the filenames dynamically by giving a certain pattern. For example: we might want to find all the files starting with `temp` followed by whatever text or extention. The concept where we generate file names dynamically is called _file globbing_. There are a couple of special characters that we can use as seen in the example below:
