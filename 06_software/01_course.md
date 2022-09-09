@@ -186,12 +186,12 @@ One of the relative new players is snap. A snap is a bundle of the software we w
 The commands for working with snap are almost similar as apt. We have:
 snap search  
 snap list (installed apps)  
-snap info  
+snap info   
 snap install  
-snap remove  
-snap refresh (upgrades the snaps, happens every day automatically)  
-snap changes (history of changes)
-snap version
+snap remove   
+snap refresh (upgrades the snaps, happens every day automatically)     
+snap changes (history of changes)  
+snap version  
 
 snap update does not exist. the snap daemon checks for updates 4 times a day.
 
