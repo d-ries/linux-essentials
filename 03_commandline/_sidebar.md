@@ -5,7 +5,6 @@
 * [3 Command line interface](./03_commandline/01_course.md)
 ** [Lab](./03_commandline/02_lab.md)
 ** [Assignment](./03_commandline/99_assignments.md)
-** [Solutions](./03_commandline/100_solutions.md)
 * [4 Files and folders](./04_filesandfolders/01_course.md)
 * [5 File contents](./05_filecontents/01_course.md)
 * [6 Software & packages](./06_software/01_course.md)
