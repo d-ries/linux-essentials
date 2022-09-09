@@ -1,22 +1,20 @@
 # Solutions on command line
+
+Do the first exercises while being in the Ubuntu Server (no ssh)
+
 ## Task 1
-Connect from Powershell on your laptop to your server over SSH and stay connected for the duration of the exercises. The benefit is that you can scroll through your screens with the mouse  
-
-<br/>![Connect via Powershell](images/Connect_via_Powershell.png)  
-
-## Task 2
 Make use of the command `man man` to figure out what the commando `man -f` does and with which other command it can be replaced  
 
 <br/>![man man_1](images/man_man_1.png)  
 
 <br/>![man man_2](images/man_man_2.png)
 
-## Task 3
+## Task 2
 Make use of the command `man` to figure out what the option is for the command `shutdown` to reboot the machine instead of powering off  
 
 <br/>![man_shutdown.png](images/man_shutdown.png)
 
-## Task 4
+## Task 3
 Use the command `apropos` and/or the command `man -k` to find the right commando to:
 - __reboot__ your vm
 - change your __password__ or another __user__'s password
@@ -31,27 +29,32 @@ Use the command `apropos` and/or the command `man -k` to find the right commando
 <br/>![apropos2](images/apropos2.png)
   
 
-## Task 5
+## Task 4
 Use the manpage of `ls` to figure out how you could also see the hidden files. Show the hidden files of your homefolder
 
 <br/>![man_ls](images/man_ls.png)
 
-## Task 6 
+## Task 5 
 Try to only show the short description of the commando `ls`  
 
 <br/>![whatis_ls](images/whatis_ls.png)
 
-## Task 7 
+## Task 6 
 Try to figure out where the command `reboot` and its manpage are stored on the disk  
 
 <br/>![whereis_reboot](images/whereis_reboot.png)
 
-## Task 8 
+## Task 7 
 Run the command `cd`. Run the command to also view the hidden files in this directory. Then run the command `cat .bashrc`. This file contains a script which runs every time you open a new shell (eg. terminal window). We will explain it in a later lesson. Run the command to clear the screen  
 
 <br/>![hidden_files_cat](images/hidden_files_cat.png)  
 <br/>![clear](images/clear.png)
 
+
+## Task 8
+Connect from Powershell on your laptop to your server over SSH and stay connected for the duration of the exercises. The benefit is that you can scroll through your screens with the mouse  
+
+<br/>![Connect via Powershell](images/Connect_via_Powershell.png)  
 
 ## Task 9 
 Use the arrow keys to go to the command `cat .bashrc` and use the arrow keys again to change it to `cat .bash_history`. Hit enter to execute the command. This file holds your history. It receives your history of commands when you close a shell (close terminal window, logout, ...). You do not see the last commands you typed in this shell
