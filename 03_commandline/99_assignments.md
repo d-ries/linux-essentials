@@ -1,14 +1,14 @@
 # Assignment on command line
-## Task 1
-Connect to your server over SSH and stay connect for the exercises. The benefit is that you can scroll through your screens with the mouse
 
-## Task 2
+Do the first exercises while being in the Ubuntu Server (no ssh)  
+
+## Task 1
 Make use of the command `man` to figure out what the commando `man -f` does and with what other command it can be replaced
 
-## Task 3
+## Task 2
 Make use of the command `man` to figure out what the option is for the command `shutdown` to reboot the machine instead of powering off
 
-## Task 4
+## Task 3
 Use the command `apropos` and/or the command `man -k` to find the right commando to:
 - __reboot__ your vm
 - change your __password__ or another __user__'s password
@@ -18,14 +18,17 @@ Use the command `apropos` and/or the command `man -k` to find the right commando
 - see how much free __memory__ the server has  --> search in the manpage of this command how you can get the output more human readable (search in the manpage for _human_)
 - see how much __disk space__ you have free  
 
-## Task 5
+## Task 4
 Use the manpage of `ls` to figure out how you could also see the hidden files. Show the hidden files of your homefolder
 
-## Task 6 
+## Task 5 
 Try to only show the short description of the commando `ls`
 
-## Task 7 
+## Task 6 
 Try to figure out where the command `reboot` and its manpage are stored on the disk
+
+## Task 7
+Connect to your server over SSH and stay connect for the exercises. The benefit is that you can scroll through your screens with the mouse
 
 ## Task 8 
 Run the command `cd`. Run the command to also view the hidden files in this directory. Then run the command `cat .bashrc`. This file contains a script which runs every time you open a new shell (eg. terminal window). We will explain it in a later lesson. Run the command to clear the screen
