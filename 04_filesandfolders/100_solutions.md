@@ -15,8 +15,6 @@ In your homedirectory, create the following structure:
 PXL/Courses/S1/SystemsEss
 `
 
-
-
 ```bash
 mkdir -p PXL/Courses/S1/SystemsEss
 ```
@@ -29,26 +27,37 @@ touch PXL/Courses/S1/SystemsEss/empty PXL/Courses/S1/empty PXL/Courses/empty PXL
 ```
 
 ## Task 4
-Remove, with just one command, the folder `PXL` with all contents created in the previous Task
+Install the command `tree` on your ubuntu machine. You can use this command to get an overview of directorystructures on your system. Search the manpage of tree to show the contents of the root directory and one extra level.
 
 ```bash
-rm -rf PXL
+sudo apt install tree
+tree -L 2 /
 ```
 
 ## Task 5
-Create a new folder "My Pictures". Go into this folder and create, with just one command, these following files:
+Why doesn't tab-completion work when executing the following command to open .bashrc?:
+`cat /home/student/.bash<tab>`
+
+```
+There are multiple files that start with .bash (history rc, logout,...)
+```
+
+
+## Task 6
+Create a new folder "My Pictures" in you homefolder. Go into this folder and create, with just one command, these following files:
 - Picture1.JPG
 - picture2.JPG
 - Picture3.jpg
 - picture4.jpg
 
 ```bash
+cd
 mkdir My\ Pictures
 cd My\ Pictures
 touch Picture1.JPG picture2.JPG Picture3.jpg picture4.jpg
 ```
 
-## Task 6
+## Task 7
 Rename all files to with the command `rename` so no capitals exist anymore in any of the filenames
 
 ```bash
@@ -56,7 +65,7 @@ rename 's/P/p' *
 rename 's/JPG/jpg' *
 ```
 
-## Task 7 (Additional)
+## Task 8
 Make sure you are located in your homedirectory (~). <br/>
 Copy all 'files' from this directory into a subdirectory named `backup` in your homefolder.
 
@@ -69,26 +78,13 @@ cp ~/.* backup # Also copy hidden files
 
 ```
 
-# Assignment on working with directories
-
-?> <i class="fa-solid fa-circle-info"></i> Some Tasks require a second user on your installation. 
-Execute `sudo useradd -m jondoe` to create the new user
-Execute `sudo passwd johndoe` to set a password for the new user
-
-## Task 8
-Install the command `tree` on your ubuntu machine. You can use this command to get an over view of directorystructures on your system.
+## Task 9
+Remove, with just one command, the folder `PXL` with all contents created in the previous Task
 
 ```bash
-sudo apt install tree
+rm -rf PXL
 ```
 
-## Task 9
-Why doesn't tab-completion work when executing the following command to open .bashrc?:
-`cat /home/student/.bash<tab>`
-
-```
-There are multiple files that start with .bash (history rc, logout,...)
-```
 
 ## Task 10
 Create this directorystructure with just 1 command:
@@ -112,11 +108,16 @@ rmdir /home/student/school/semester/1/courses/ubuntuserver/exercises/chapter5
 ```
 
 ## Task 13
-Remove all folders starting from the school-directory
+Remove all folders starting from the school-directory  
 
 ```bash
 rm -rf /home/student/school
-```
+```  
+
+
+?> <i class="fa-solid fa-circle-info"></i> Some Tasks require a second user on your installation. 
+Execute `sudo useradd -m jondoe` to create the new user
+Execute `sudo passwd johndoe` to set a password for the new user
 
 ## Task 14
 Navigate using absolute-path syntax into the home folder of the user named 'johndoe'
