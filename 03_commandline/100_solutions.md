@@ -1,6 +1,6 @@
 # Solutions on command line
 
-Do the first exercises while being in the Ubuntu Server (no ssh)
+Do the first exercises while being in the Ubuntu Server (no ssh)  
 
 ## Task 1
 Make use of the command `man man` to figure out what the commando `man -f` does and with which other command it can be replaced  
@@ -44,17 +44,17 @@ Try to figure out where the command `reboot` and its manpage are stored on the d
 
 <br/>![whereis_reboot](images/whereis_reboot.png)
 
-## Task 7 
+## Task 7
+Connect from Powershell on your laptop to your server over SSH and stay connected for the duration of the exercises. The benefit is that you can scroll through your screens with the mouse  
+
+<br/>![Connect via Powershell](images/Connect_via_Powershell.png)  
+
+## Task 8 
 Run the command `cd`. Run the command to also view the hidden files in this directory. Then run the command `cat .bashrc`. This file contains a script which runs every time you open a new shell (eg. terminal window). We will explain it in a later lesson. Run the command to clear the screen  
 
 <br/>![hidden_files_cat](images/hidden_files_cat.png)  
 <br/>![clear](images/clear.png)
-
-
-## Task 8
-Connect from Powershell on your laptop to your server over SSH and stay connected for the duration of the exercises. The benefit is that you can scroll through your screens with the mouse  
-
-<br/>![Connect via Powershell](images/Connect_via_Powershell.png)  
+  
 
 ## Task 9 
 Use the arrow keys to go to the command `cat .bashrc` and use the arrow keys again to change it to `cat .bash_history`. Hit enter to execute the command. This file holds your history. It receives your history of commands when you close a shell (close terminal window, logout, ...). You do not see the last commands you typed in this shell
