@@ -24,7 +24,9 @@ A student named Linus Torvalds created a post in a newsgroup about his own opera
 
 ![linux](../images/01/linus.PNG)
 
-This has grown in the the Linux kernel that we know today.
+This has grown in the the Linux kernel that we know today.  
+
+* [The history of Linux](https://www.linuxbe.com/images/linux_events30.jpg)  
 
 #### Linux distributions
 Linux distributions (distros in short) are collections of tools on top of the Linux kernel. Every distro can have his own focus points. Some well known distros are Ubuntu, RedHat, Fedora, CentOS, Debian, Archlinux, Oracle Linux ...
