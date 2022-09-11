@@ -4,7 +4,7 @@
 Windows, made by Microsoft, is a well known operating system that we see a lot in Desktop environments, but there are other alternatives as well. One of the more popular ones are MacOSX, ChromeOS, but also Linux. Linux, as a desktop variant, is less prominent than the others.
 
 In Server / IOT / mobile environments we see a certain shift in used operating systems. Linux is one of the most popular operating systems in these markets. Some interesting statements:
-* [Most supercomputers run on Linux](https://itsfoss.com/linux-runs-top-supercomputers/)
+* [Most supercomputers run on Linux](https://www.top500.org/statistics/details/osfam/1/)
 * [111+ Linux Statistics and Facts – Linux Rocks!](https://webtribunal.net/blog/linux-statistics/)
 * [The most popular cloud infrastructure providers use Linux](https://www.linuxfoundation.org/blog/how-amazon-web-services-uses-linux-and-open-source/)
 
