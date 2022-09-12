@@ -17,7 +17,7 @@ Dennis Ritchie and Ken Thompson created the Unix operating system in 1969. The s
 * Unix: The commercial version
 * BSD Unix: The open source version
 
-In the '80 there were different versions of Unix. Because Unix was commercialized, the source code of Unix were rewritten: GNU project ("GNU is not unix")_. The goal of GNU was the development of an open source operating system where everyone could work on together as a community. The GNU project was missing a kernel.
+In the '80 there were different versions of Unix. Because Unix was commercialized, the source code of Unix were rewritten: GNU project ("GNU is not unix"). The goal of GNU was the development of an open source operating system where everyone could work on together as a community. The GNU project was missing a kernel.
 
 ### Linux
 A student named Linus Torvalds created a post in a newsgroup about his own operating system in the '90:
