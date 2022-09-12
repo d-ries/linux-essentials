@@ -24,8 +24,11 @@ A student named Linus Torvalds created a post in a newsgroup about his own opera
 
 ![linux](../images/01/linus.PNG)
 
-We are still using the Linux kernel today. The kernel is being further developed every day.
-* [The history of Linux](https://www.linuxbe.com/images/linux_events30.jpg)  
+We are still using the Linux kernel today. The kernel is being further developed every day.  
+
+* [The history of Linux - Timeline 1](https://en.wikipedia.org/wiki/Linux#/media/File:Unix_timeline.en.svg)  
+* [The history of Linux - Timeline 2](https://www.linuxbe.com/images/linux_events30.jpg)  
+
 
 #### Linux distributions
 Linux distributions (distros in short) simplify the process of installing gnu/linux and other apps on your computer. Well-known distros are Ubuntu, RedHat, Fedora, CentOS, Debian, Archlinux and Oracle Linux. Because linux is very scalable, there are also special distros for a certain purpose, for example clonezilla.
