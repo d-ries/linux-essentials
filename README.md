@@ -1,16 +1,10 @@
 ![pxl right](./images/pxl.png)
 # Linux Essentials
 ## Information <!-- {docsify-ignore} -->
-This course can be used to learn the fundamentals on how to work with a command line interface in Linux environments. This course will focus on basic operations such as working with files & folders, working with file contents, linux file structure, ...
-
-## Prior knowledge <!-- {docsify-ignore} -->
-To start this course you should have a basic knowledge of the Windows OS:
-* Basic user tasks
-* Installing software
-* Working with files & folders
+This course emphasizes using the command line interface in Linux environments. This course focuses on basic operations such as working with files & folders, working with file contents, linux file structure, ...
 
 ## Structure <!-- {docsify-ignore} -->
-This course will teach you how to use a Linux CLI. To achieve this we will use practical labs & exercises as wel as a manual containing some of the most essential commands and use cases. The practical labs will follow an authentic case of a Computer Science student named Linus who wants to setup his own Minecraft server.
+This course teaches you how to use a Linux CLI. To achieve this we use practical labs & exercises as well as a manual containing some of the most essential commands and use cases. The practical labs follow an authentic case of a Computer Science student named Linus who wants to setup his own Minecraft server.
 
 ## Goals <!-- {docsify-ignore} -->
 After following this course you can:
