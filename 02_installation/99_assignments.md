@@ -28,7 +28,7 @@ In the next screen we give the virtual machine a name. You can also specify a di
 
 ![VMware Name The VM](../images/02/LAB_VMware_Name_The_VM.png)
 
-In the next screen we configure the virtual harddisk size for the VM. We will create a disk that has 30GB of storage. Mind that the disk space will be allocated while saving files (max 30GB):
+In the next screen we configure the virtual harddisk size for the VM. We will create a disk that has 30GB of storage. Keep in mind that the disk space will be allocated while saving files (max 30GB):
 
 ![VMware Disk Size](../images/02/LAB_VMware_Disk_Size.png)
 
