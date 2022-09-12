@@ -28,7 +28,7 @@ We are still using the Linux kernel today. The kernel is being further developed
 * [The history of Linux](https://www.linuxbe.com/images/linux_events30.jpg)  
 
 #### Linux distributions
-Linux distributions (distros in short) simplify the process of installing gnu/linux and other apps on your computer. Well-known distros are Ubuntu, RedHat, Fedora, CentOS, Debian, Archlinux and Oracle Linux.
+Linux distributions (distros in short) simplify the process of installing gnu/linux and other apps on your computer. Well-known distros are Ubuntu, RedHat, Fedora, CentOS, Debian, Archlinux and Oracle Linux. Because linux is very scalable there are also special distros for a certain purpose.
 
 ![distros](../images/01/distros.png)
 
