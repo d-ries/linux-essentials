@@ -7,7 +7,7 @@ Virtualisation is a concept where you can run a computer system with an operatin
 
 ![Virtualization](../images/02/Virtualization.png)
 
-For this course we want to use and install the operating system [Ubuntu server](https://ubuntu.com/download/server) in a virtual environment. You could use any Linux distribution you want. For this course we will use a debian based distro.
+For this course we want to use and install the operating system [Ubuntu server](https://ubuntu.com/download/server) in a virtual environment. For this course we will use a debian based distro.
 
 ?> :fa-solid fa-list-check: _Download the `.iso` file for Ubuntu server using [this link](https://ubuntu.com/download/server). A `.iso` file is an exact copy of a CD/DVD. You will use this later to install the operating system in your virtual machine._
 
