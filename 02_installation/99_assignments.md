@@ -36,7 +36,7 @@ We have to click on `Customize Hardware` to configure the virtual machine a litt
 
 ![VMware Customize Hardware](../images/02/LAB_VMware_Customize_Hardware.png)
 
-We still need to link the Ubuntu-server ISO file to the virtual CD-rom drive. We do this by selecting `New CD/DVD` and browsing to the downloaded `iso` file:
+We still have to link the Ubuntu-server ISO file to the virtual CD-rom drive. We do this by selecting `New CD/DVD` and browsing to the downloaded `iso` file:
 
 ![VMware Select ISO](../images/02/LAB_VMware_Select_ISO.png)
 
