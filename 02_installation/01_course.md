@@ -15,11 +15,11 @@ For this course we want to use and install the operating system [Ubuntu server](
 
 ## Virtualisation software
 To use virtualisation there are several options. The most common virtualisation software is:
-- VMware workstation
+- VMware Workstation
 - Virtualbox
 - Hyper-V
 
-In this course we will use and support VMware but the other software packages are similar. Students of PXL University College will get a free educational licence to use VMware Workstation pro through [BrightSpace](https://itacademy.brightspace.com/).
+In this course we will use and support VMware Workstation but the other software packages have the same purpose. Students of PXL University College will get a free educational licence to use VMware Workstation pro through [BrightSpace](https://itacademy.brightspace.com/).
 
 ## Create a new VM
 To create a new virtual machine (VM) in VMWare you go to the menu `file`>`New virtual machine`. The wizard to create a new VM will appear.
@@ -63,7 +63,7 @@ You can now boot the VM by clicking the green arrow icon. This will boot the vir
 ![VMware Finish](../images/02/VMware_Start_VM.png)
 
 ## Installation Ubuntu server
-As described earlier we will use the distro Ubuntu. After creating and booting the virtual machine there will be an installation process that we need to run through. You will notice that there is no mouse pointer available. We will use the keypoint arrow keys & enter key to navigate through the steps.
+As described before we will use the distro Ubuntu. After creating and booting the virtual machine there will be an installation process that we need to run through. You will notice that there is no mouse pointer available. We will use the keypoint arrow keys & enter key to navigate through the steps.
 
 ?> <i class="fa-solid fa-circle-info"></i> Does booting the VM result in the error `This host supports Intel VT-x, but Intel VT-x is diabled`? You will have to activate the VT-X option in the BIOS of your laptop. More information can be found in [this article](https://www.qtithow.com/2020/12/fix-error-this-host-supports-Intel-VT-x.html).
 
@@ -72,7 +72,7 @@ We make the choice to Try or Install:
 
 ![Ubuntu_Server_Try_Or_Install](../images/02/Ubuntu_Server_Try_Or_Install.png)
 
-We start the installation process by selecting the laguage. We choose English:
+We start the installation process by selecting the language. We choose English:
 
 ![Ubuntu_Server_Language](../images/02/Ubuntu_Server_Language.png)
 
