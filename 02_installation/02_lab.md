@@ -39,8 +39,8 @@ student@linux-ess:~$ sudo shutdown now
 
 ### Taking a snapshot of the VM in VMware Workstation
 
-Before doing anything else, Linus needs to have a savepoint in time. If, at a later time, he breaks his Linux System, he can allways return to this savepoint in time.
-Being able to roll back to this point will be a time saver, because otherwise he will need to install the Linux system again from scratch.
+Before doing anything else, it's recommended to take a snapshot. If, at a later time, he breaks his Linux System, he can allways return to this snapshot in time.
+Being able to roll back to this point saves time. Otherwise he will need to install the Linux system again from scratch.
 
 `Take a snapshot of the Ubuntu Server VM, named "Clean Install"` as follows:
 
