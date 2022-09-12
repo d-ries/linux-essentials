@@ -133,8 +133,8 @@ Now we are ready to explore Ubuntu Desktop:
 
 
 ## Task 4 - Take a snapshot of the VM
-Before doing anything else, it's good practice to have a savepoint in time. If, at a later time, our Ubuntu Desktop breaks, we can allways return to this savepoint in time.
-Being able to roll back to this point will be a time saver, because otherwise we will need to install the Linux system again from scratch.
+Before doing anything else, it's good practice to take a snapshot. If, at a later time, our Ubuntu Desktop breaks, we can allways return to this snapshot.
+Being able to roll back to this point is a time saver, because otherwise we have to reinstall the Linux system again from scratch.
 
 `Take a snapshot of the Ubuntu Desktop VM, named "Clean Install"` as follows:
 
