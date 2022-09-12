@@ -52,4 +52,4 @@ _VM/Snapshot/Take Snapshot..._
 ![Installation_LAB_Take_Snapshot_Name](../images/02/Installation_LAB_Take_Snapshot_Name.png)
 
 
-?> <i class="fa-solid fa-circle-info"></i> At a later time you can always go back to this savepoint in time with:  _VM/Snapshot/Revert to Snapshot..._
+?> <i class="fa-solid fa-circle-info"></i> At a later time you can always go back to this snapshot in time with:  _VM/Snapshot/Revert to Snapshot..._
