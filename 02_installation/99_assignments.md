@@ -159,18 +159,18 @@ _VM/Snapshot/Revert to Snapshot..._
 ![Ubuntu_Desktop_Snapshot_Revert_To_Snapshot](../images/02/LAB_Ubuntu_Desktop_Snapshot_Revert_To_Snapshot.png)
 
 ## Task 5 - Explore the Desktop Environment
-In the Ubuntu desktop machine, try to execute the following subtasks:
-- Change the wallpaper
-- Create a new text file with the tool "Text Editor" (=gedit) and try to save it in your documents folder. 
-- Check with the file explorer (Files) if the file exists. 
-- Delete the file and empty the trash.
-- Pin (=Favorite) the Terminal -application to the Dock (=launcher).
-- Install Chromium
-- Surf with Firefox and Chromium to the school website.
-- Install wps-office
-- Install Spotify
-- Install Visual Studio Code
-- Install Gimp
-- Configure the Thunderbird app to use your school email.
+In the Ubuntu desktop machine, try to execute the following subtasks:  
+- Change the wallpaper  
+- Create a new text file with the tool "Text Editor" (=gedit) and try to save it in your documents folder  
+- Check with the file explorer (Files) if the file exists  
+- Delete the file and empty the trash  
+- Pin (=Favorite) the Terminal -application to the Dock (=launcher)  
+- Install the Chromium webbrowser  
+- Surf with Firefox and Chromium to the school website  
+- Install wps-office and test the app  
+- Install Spotify and test the app  
+- Install Visual Studio Code and test the app  
+- Install Gimp and test the app  
+- Configure the Thunderbird app to use for your school email  
 
 
