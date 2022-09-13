@@ -92,13 +92,13 @@ man sudo.conf
 
 ?> <i class="fa-solid fa-circle-info"></i> manpages are pretty big and exist out of multiple pages and/or sections. To view the next page in a manpage you can press the `spacebar` or you can use the `arrow keys`. Manpages are pretty easy to search. Just type `/` followed by a keyword. The manpage will highlight the first occurence of that keyword. You can use the key `n` (_next_) to go to the next occurence of the keyword. Exiting a manpage can be done by pressing the `q` (_quit_) key. Want to know more about manpages? type `man man`!
 
-You can search in the description of installed commands by using the `-k` option (or the command apropos) as follows:
+You can search in the description of installed commands by using the `-k` option (or use the command apropos) as follows:
 ```bash
 man -k shutdown                        or                  apropos shutdown
 ```
 
 ### manpage sections
-Sometimes  `man <keyword>` is used to get help of a command, but also used to get help of a (config)file, daemon, ... This is an issue because `man <keyword>` needs to open the manpage you are looking for. What if the keyword exists as a command and as a configuration file? A perfect example for this is `passwd`:
+Sometimes  `man <keyword>` is used to get help of a command, but it's also used to get the help of a (config)file, daemon, ... This is an issue because `man <keyword>` needs to open the manpage you are looking for. What if the keyword exists as a command and as a configuration file? A perfect example for this is `passwd`:
 ```
 student@linux-ess:~$ apropos passwd
 ...
@@ -133,13 +133,13 @@ route (8) - show / manipulate the IP routing table
 
 To view the location of the manpage itself we can use the `whereis` command:
 ```bash
-student@linux-ess:~$ whereis -m whois
-whois: /usr/share/man/man1/whois.1.gz
+student@linux-ess:~$ whereis -m ls
+whois: /usr/share/man/man1/ls.1.gz
 ```
-The manpages are stored in archives with a `.gz` extention. This is comparable to a `zip` file containing text files. When typing the command `man whois` it will actually open the text file in the archive `/usr/share/man/man1/whois.1.gz`.
+The manpages are stored in archives with a `.gz` extention. This is comparable to a `zip` file containing text files. When typing the command `man ls` it will actually open the text file in the archive `/usr/share/man/man1/ls.1.gz`.
 
 ## Shell history
-The command line interface in Linux environments is often called the _shell_. This shell keeps track of all the commands we have used in the past. This means we can use this to easily repeat, edit or lookup previously used commands.
+A command line interface in Linux environments is  called a _shell_. A shell often keeps track of all the commands we have used in the past. This means we can use this to easily repeat, edit or lookup previously used commands.
 
 ?> Try using the `arrow up` and `arrow down` keys after using some commands. You will notice that these commands will reappear after the prompt.
 
