@@ -34,7 +34,7 @@ sudo shutdown now
 ```
 This command will shut down the Ubuntu server machine. This is also the propper way of shutting down the virtual machine! The `sudo` command stands for _super user do_. Some commands require administrator rights. By adding the `sudo` command in front, you will run this command as the _super user_. This user, in Linux, is called _root_ (compared to the administrator user in Windows). The example actually exists out of 2 commands. The `sudo` command followed by the `shutdown command`. The `shutdown` command will use _the parameter_ `now`.
 
-Commands often have all kinds of options (beginning with a hyphen) and paramaters (separated with spaces) to extend the functionality of a command. The `shutdown` command will take an (optional) value that defines when the server needs to actually shutdown. If no value is given, it will plan the shutdown task 1 minute after running the command. Let's look at some other options with the command `man shutdown`:
+Commands often have all kinds of options (beginning with a hyphen (-)) and paramaters (separated with spaces) to extend the functionality of a command. The `shutdown` command will take an (optional) value that defines when the server needs to actually shutdown. If no value is given, it will plan the shutdown task 1 minute after running the command. Let's look at some other options with the command `man shutdown`:
 ```bash
 SHUTDOWN(8)                                            shutdown                                           SHUTDOWN(8)
 
