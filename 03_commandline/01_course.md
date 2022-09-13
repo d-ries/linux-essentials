@@ -86,7 +86,7 @@ man shutdown
 ```
 Not only commands have their own manpage, config/system files might have a manpage as well. The command below shows the manpage of the `syslog.conf` file:
 ```bash
-man syslog.conf
+man sudo.conf
 ``` 
 
 ?> <i class="fa-solid fa-circle-info"></i> manpages are pretty big and exist out of multiple pages and/or sections. To view the next page in a manpage you can press the `spacebar` or you can use the `arrow keys`. Manpages are pretty easy to search. Just type `/` followed by a keyword. The manpage will highlight the first occurence of that keyword. You can use the key `n` (_next_) to go to the next occurence of the keyword. Exiting a manpage can be done by pressing the `q` (_quit_) key. Want to know more about manpages? type `man man`!
