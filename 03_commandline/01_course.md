@@ -16,7 +16,8 @@ The prompt exists of multiple parts that give us more information about the syst
 
 The `~` symbol is an abbreviation of the homefolder of the logged in user (in our case the folder `/home/student`). We will learn about paths & folders in a later chapter. For now you can compare this to the path `C:\Users\student` in Windows. So what we actually see in between the `:` and the `$` sign is a path pointing to the folder we are currently working in.
 
-<i class="fa-solid fa-earth-europe"></i> [Linux prompt definition](http://www.linfo.org/prompt.html#:~:text=A%20command%20prompt%2C%20also%20referred,terminal%20window%20by%20a%20shell.)
+<i class="fa-solid fa-earth-europe"></i> [Linux prompt definition](http://www.linfo.org/prompt.html#:~:text=A%20comm
+d%20prompt%2C%20also%20referred,terminal%20window%20by%20a%20shell.)
 
 
 ![sudo right](../images/03/sandwich.png)
@@ -91,7 +92,7 @@ man sudo.conf
 
 ?> <i class="fa-solid fa-circle-info"></i> manpages are pretty big and exist out of multiple pages and/or sections. To view the next page in a manpage you can press the `spacebar` or you can use the `arrow keys`. Manpages are pretty easy to search. Just type `/` followed by a keyword. The manpage will highlight the first occurence of that keyword. You can use the key `n` (_next_) to go to the next occurence of the keyword. Exiting a manpage can be done by pressing the `q` (_quit_) key. Want to know more about manpages? type `man man`!
 
-You can search in the description of an installed command by using the `-k` option (or the command apropos) as follows:
+You can search in the description of installed commands by using the `-k` option (or the command apropos) as follows:
 ```bash
 man -k shutdown                        or                  apropos shutdown
 ```
