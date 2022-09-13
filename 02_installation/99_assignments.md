@@ -161,8 +161,10 @@ _VM/Snapshot/Revert to Snapshot..._
 ## Task 5 - Explore the Desktop Environment
 In the Ubuntu desktop machine, try to execute the following subtasks:
 - Change the wallpaper
-- Create a new text file with the tool "Text Editor" (=gedit) and try to save it in your documents folder.
-- Pin the Terminal -application to the Dock (=launcher).
+- Create a new text file with the tool "Text Editor" (=gedit) and try to save it in your documents folder. 
+- Check with the file explorer (Files) if the file exists. 
+- Delete the file and empty the trash.
+- Pin (=Favorite) the Terminal -application to the Dock (=launcher).
 - Surf to the school website.
 - Install Chromium
 - Install wps-office
