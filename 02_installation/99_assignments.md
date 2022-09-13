@@ -165,12 +165,12 @@ In the Ubuntu desktop machine, try to execute the following subtasks:
 - Check with the file explorer (Files) if the file exists  
 - Delete the file and empty the trash  
 - Pin (=Favorite) the Terminal -application to the Dock (=launcher)  
-- Install the Chromium webbrowser, start the app, pin it to the Dock and place it above the Firefox icon  
-- Surf with Firefox and Chromium to the school website  
+- Surf with Firefox to the school website
+- Install the Chromium webbrowser, start the app, pin it to the Dock and place it above the Firefox icon    
+- Surf with Chromium to your school webmail portal
 - Install wps-office and test the apps  
 - Install Spotify and test the app  
 - Install Visual Studio Code and test the app  
-- Install Gimp and take a look at the app  
-- Configure the Thunderbird app to use for your school email  
+- Install Gimp and take a look at the app   
 
 
