@@ -67,6 +67,7 @@ As described before we will use the distro Ubuntu. After creating and booting th
 
 ?> <i class="fa-solid fa-circle-info"></i> Does booting the VM result in the error `This host supports Intel VT-x, but Intel VT-x is diabled`? You will have to activate the VT-X option in the BIOS of your laptop. More information can be found in [this article](https://www.qtithow.com/2020/12/fix-error-this-host-supports-Intel-VT-x.html).
 
+?> <i class="fa-solid fa-circle-info"></i> If you want to leave your VM and get your mouse back in the OS of your laptop (=Windows) you'll have to press `CTRL+ALT` !
 
 We make the choice to Try or Install:
 
