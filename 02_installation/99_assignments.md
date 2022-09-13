@@ -165,8 +165,8 @@ In the Ubuntu desktop machine, try to execute the following subtasks:
 - Check with the file explorer (Files) if the file exists. 
 - Delete the file and empty the trash.
 - Pin (=Favorite) the Terminal -application to the Dock (=launcher).
-- Surf to the school website.
 - Install Chromium
+- Surf with Firefox and Chromium to the school website.
 - Install wps-office
 - Install Spotify
 - Install Visual Studio Code
