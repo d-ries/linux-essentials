@@ -91,7 +91,7 @@ man sudo.conf
 
 ?> <i class="fa-solid fa-circle-info"></i> manpages are pretty big and exist out of multiple pages and/or sections. To view the next page in a manpage you can press the `spacebar` or you can use the `arrow keys`. Manpages are pretty easy to search. Just type `/` followed by a keyword. The manpage will highlight the first occurence of that keyword. You can use the key `n` (_next_) to go to the next occurence of the keyword. Exiting a manpage can be done by pressing the `q` (_quit_) key. Want to know more about manpages? type `man man`!
 
-You can search the description of an installed command by using the `-k` option (or the command apropos) as follows:
+You can search in the description of an installed command by using the `-k` option (or the command apropos) as follows:
 ```bash
 man -k shutdown                        or                  apropos shutdown
 ```
