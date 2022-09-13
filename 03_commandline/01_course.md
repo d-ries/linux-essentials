@@ -97,7 +97,7 @@ man -k shutdown                        or                  apropos shutdown
 ```
 
 ### manpage sections
-Sometimes certain keywords can be used as a command, but may also be used as a (config)file, daemon, ... This is an issue because `man <keyword>` needs to open the propper manpage for that keyword. What if the keyword exists as a command and as a configuration file? A perfect example for this is `passwd`:
+Sometimes  `man <keyword>` is used to get help of a command, but also used to get help of a (config)file, daemon, ... This is an issue because `man <keyword>` needs to open the manpage you are looking for. What if the keyword exists as a command and as a configuration file? A perfect example for this is `passwd`:
 ```
 student@linux-ess:~$ apropos passwd
 ...
