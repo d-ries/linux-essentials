@@ -23,7 +23,7 @@ student    11683  0.0  0.0  21328  3608 pts/0    R+   14:49   0:00 ps -u
 In this example we can see that: 
 *	student started process 11683, which is command ps -u
 *	pts/0 is used
-*	STAT shows the status of the process, ‘r’ for running of ‘s’ for sleeping
+*	STAT shows the status of the process, ‘r’ for running or ‘s’ for sleeping
 *	USER is de name of the user who started the process
 *	PID is the unique number of the process. This number will later be used to kill of send signals to a process. 
 *	%CPU and %MEM are the CPU and memory time the process is using. 
@@ -31,7 +31,7 @@ In this example we can see that:
 *	START is the time the process started
 *	TIME is de cumulative system time that has been used. 
 
-A lot of processes running on your system are not associated with a terminal, these are mostly process that run in the background. For example: logging of system activities, listening to incoming data from the network. These process often start when Linux start and stop when you shut down. When starting a graphical environment a lot of background process start as well, look at audio, authentication, …) 
+A lot of processes running on your system are not associated with a terminal, these are mostly processes that run in the background. For example: logging of system activities, listening to incoming data from the network. These process often start when Linux start and stop when you shut down. When starting a graphical environment a lot of background process start as well, look at audio, authentication, …) 
 
 To show all running processes for your current user use: 
 ```bash
