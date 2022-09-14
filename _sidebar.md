@@ -11,4 +11,5 @@
 * [8 Filters & file operations ](./08_filters/01_course.md)
 * [9 Users & permissions](./09_usersandpermissions/01_course.md)
 * [10 Automation](./10_automation/01_course.md)
-* [11 What's next](./11_next/01_course.md)
+* [11 Managing running processes](./11_managingrunningprocesses/01_course.md)
+* [12 What's next](./12_next/01_course.md)
