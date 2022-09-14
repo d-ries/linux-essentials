@@ -146,7 +146,7 @@ A third option is the gnome-system-monitor, this option can be used to manage pr
 *	Memory maps show which libraries and other components from memory are used by the process
 *	Properties show extra information about the process
 
-![systemmonitor](../images/11/systemMonitsor.PNG)
+![systemmonitor](../images/11/systemMonitor.PNG)
 
 To show all processes and not only the ones of the current user, go to the menu button and choose all processes. As root you’ll be able to manage all processes. 
 The monitor option is only available in graphical interfaces, when this is not available as with the server version of Ubuntu. You’ll need to use commands to manage processes.
