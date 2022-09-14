@@ -60,3 +60,7 @@ xr for others, wr for group and no permissions for the file owner. Check with th
 - Can the file owner check the file contents? Why / Why not?
 - Can he change permissions?
 - Can he delete the file? 
+
+## Task 6
+Create the directory sturcture with the necessary users, groups and ACLs as show in the image below.
+![foldersecurity](../../../images/09/folderSecurity.PNG)
