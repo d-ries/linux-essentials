@@ -56,7 +56,7 @@ student     1943  0.0  0.1 245296  6640 ?        Ssl  13:41   0:00 /usr/libexec/
 student     1948  0.0  0.9 643640 39360 ?        Sl   13:41   0:00 /usr/libexec/goa-daemon
 :
 ```
-To show all running process of all users use: $ps aux | less
+To show all running processes of all users use: 
 ```bash
 student@linux-ess-desktop:~$ ps aux | less
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
