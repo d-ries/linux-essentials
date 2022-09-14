@@ -154,7 +154,7 @@ To show all processes and not only the ones of the current user, go to the menu 
 ?> <i class="fa-solid fa-circle-info"></i> The System monitor is only available in graphical interfaces. When this is not available, as with the server version of Ubuntu, you’ll need to use CLI commands to manage processes.
 
 ## Managing front- and background processes
-Our bash shell does not have graphical User Interface tool to run different programs simultaneously, but we are able to run programs in the front- or background. With this options it is possible to run multiple programs at the same time in our shell and you’ll be able to choose what is running at what time. There are different methods of running programs in the background. 
+Our bash shell, unlike a Graphical User Interface, does not have the possibility to run and show different programs simultaneously in the shell, but we are able to run programs in the front- or background.Knowing that it is possible to run multiple programs at the same time in our shell there must be a way to choose what is running at the fore- and background at what time. For starters there are different methods of running programs in the background. 
 You can add a & after the command to start it in the background
 ```bash
 student@linux-ess-desktop:~$ find /usr > /tmp/allusrfiles &
