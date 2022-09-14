@@ -27,7 +27,8 @@ In this example we can see that:
 *	USER is de name of the user who started the process
 *	PID is the unique number of the process. This number will later be used to kill of send signals to a process. 
 *	%CPU and %MEM are the CPU and memory time the process is using. 
-*	VSZ, the virtual set size, shows the image size of the process in kilobytes and RSS, the resident set size, shows the size of the process in memory. 
+*	VSZ, the virtual set size, shows the image size of the process in kilobytes 
+*	RSS, the resident set size, shows the size of the process in memory. 
 *	START is the time the process started
 *	TIME is de cumulative system time that has been used. 
 
@@ -99,7 +100,7 @@ PID USER       UID GROUP      GID    VSZ   RSS COMMAND
 :
 ```
 
-We can also add the option –sort= to the command and chose a parameter to sort our list. We chose the rss command from large to small with the – sign. 
+We can also add the option –-sort= to the command and choose a parameter to sort our list. We chose the rss values from large to small with the – sign. 
 ```bash
 student@linux-ess-desktop:~$ ps -eo pid,user,uid,group,gid,vsz,rss,comm --sort=-rss | less
     PID USER       UID GROUP      GID    VSZ   RSS COMMAND
@@ -148,8 +149,9 @@ A third option is the gnome-system-monitor, this option can be used to manage pr
 
 ![systemmonitor](../images/11/systemMonitor.PNG)
 
-To show all processes and not only the ones of the current user, go to the menu button and choose all processes. As root you’ll be able to manage all processes. 
-The monitor option is only available in graphical interfaces, when this is not available as with the server version of Ubuntu. You’ll need to use commands to manage processes.
+To show all processes and not only the ones of the current user, go to the menu button and choose all processes. As root you’ll be able to manage all processes.  
+
+?> <i class="fa-solid fa-circle-info"></i> The System monitor is only available in graphical interfaces. When this is not available, as with the server version of Ubuntu, you’ll need to use CLI commands to manage processes.
 
 ## Managing front- and background processes
 Our bash shell does not have graphical User Interface tool to run different programs simultaneously, but we are able to run programs in the front- or background. With this options it is possible to run multiple programs at the same time in our shell and you’ll be able to choose what is running at what time. There are different methods of running programs in the background. 
