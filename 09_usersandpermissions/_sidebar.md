@@ -15,4 +15,5 @@
 ** [Assignments: standard file permissions](./09_usersandpermissions/exercises/standard_file_permissions/99_exercises.md)
 ** [Assignments: extra assignments](./09_usersandpermissions/exercises/users_groups_permissions_extra_exercises/99_exercises.md)
 * [10 Automation](./10_automation/01_course.md)
-* [11 What's next](./11_next/01_course.md)
+* [11 Managing running processes](./11_managingrunningprocesses/01_course.md)
+* [12 What's next](./12_next/01_course.md)

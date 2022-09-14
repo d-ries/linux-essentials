@@ -1,8 +1,6 @@
 <!-- docs/_sidebar.md -->
 * [Home](/)
 * [1 Introduction](./01_introduction/01_course.md)
-** [Lab](./01_introduction/02_lab.md)
-** [Assignment](./01_introduction/99_assignments.md)
 * [2 Installation](./02_installation/01_course.md)
 * [3 Command line interface](./03_commandline/01_course.md)
 * [4 Files and folders](./04_filesandfolders/01_course.md)
@@ -13,4 +11,6 @@
 * [9 Users & permissions](./09_usersandpermissions/01_course.md)
 * [10 Automation](./10_automation/01_course.md)
 * [11 Managing running processes](./11_managingrunningprocesses/01_course.md)
+** [Lab](./11_managingrunningprocesses/02_lab.md)
+** [Assignment](./11_managingrunningprocesses/99_assignments.md)
 * [12 What's next](./12_next/01_course.md)
