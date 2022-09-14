@@ -257,3 +257,132 @@ teacher : teacher personnel
 ### Changing ownership (chgrp, chown)
 
 ### Default permissions (umask)
+
+### Access control lists
+The ACL feature was created to give users the ability to selectively share files and folders with other users and groups. Before ACL’s are usable, they need to be turned on when the filsystem is mounted. In our Ubuntu installation ACL’s are loaded in by standard. To add ACL’s to a file or folder, use the setfacl command. ACL’s can be looked at with the getfacl command. To add ACL’s you need to be the owner of the file or folder, if you are added by an ACL you will not be able to add ACL’s yourself. All ACL permissions are cumulative, this means if we are in 2 groups that are added to a file with ACL’s. One with r— rights and one with rwx rights, we will have rwx rights. 
+With the setfacl command, we’ll be able to modify, with the -m parameter, or delete, with the -x parameter, ACL’s. 
+```bash
+student@linux-ess-desktop:~$ touch /tmp/memo.txt
+student@linux-ess-desktop:~$ ls -l /tmp/memo.txt
+-rw-rw-r-- 1 student student 0 sep 14 18:27 /tmp/memo.txt
+student@linux-ess-desktop:~$ setfacl -m u:Tina:rw /tmp/memo.txt
+student@linux-ess-desktop:~$ setfacl -m g:Sales:rw /tmp/memo.txt
+student@linux-ess-desktop:~$ ls -l /tmp/memo.txt
+-rw-rw-r--+ 1 student student 0 sep 14 18:27 /tmp/memo.txt
+```
+With getfacl we can check the existing ACL’s on a file or folder. Note that we can also see that ACL’s are set by a + in the ls -l command
+```bash
+student@linux-ess-desktop:~$ getfacl /tmp/memo.txt 
+getfacl: Removing leading '/' from absolute path names
+# file: tmp/memo.txt
+# owner: student
+# group: student
+user::rw-
+user:Tina:rw-
+group::rw-
+group:Sales:rw-
+mask::rw-
+other::r--
+```
+In previous example, we also see a mask option, this option decides the maximum permission. We can also add this parameter as follows:
+```bash
+student@linux-ess-desktop:~$ setfacl -m m:r /tmp/memo.txt 
+student@linux-ess-desktop:~$ getfacl /tmp/memo.txt 
+getfacl: Removing leading '/' from absolute path names
+# file: tmp/memo.txt
+# owner: student
+# group: student
+user::rw-
+user:Tina:rw-			#effective:r--
+group::rw-			#effective:r--
+group:Sales:rw-			#effective:r--
+mask::r--
+other::r--
+```
+We can also add default ACL’s by adding the d: parameter. The default part makes sure new fils or folders get the same ACL’s as their parent directory. Note that this only applies if the user creating the file or folder has the permissions to do so! 
+```bash
+student@linux-ess-desktop:~$ mkdir /tmp/memos
+student@linux-ess-desktop:~$ setfacl -m d:g:design:rwx /tmp/memos/
+student@linux-ess-desktop:~$ getfacl /tmp/memos/
+getfacl: Removing leading '/' from absolute path names
+# file: tmp/memos/
+# owner: student
+# group: student
+user::rwx
+group::rwx
+other::r-x
+default:user::rwx
+default:group::rwx
+default:group:design:rwx
+default:mask::rwx
+default:other::r-x
+
+student@linux-ess-desktop:~$ mkdir /tmp/memos/January
+student@linux-ess-desktop:~$ getfacl /tmp/memos/January/
+getfacl: Removing leading '/' from absolute path names
+# file: tmp/memos/January/
+# owner: student
+# group: student
+user::rwx
+group::rwx
+group:design:rwx
+mask::rwx
+other::r-x
+default:user::rwx
+default:group::rwx
+default:group:design:rwx
+default:mask::rwx
+default:other::r-x
+
+student@linux-ess-desktop:~$ touch /tmp/memos/January/19
+student@linux-ess-desktop:~$ getfacl /tmp/memos/January/19
+getfacl: Removing leading '/' from absolute path names
+# file: tmp/memos/January/19
+# owner: student
+# group: student
+user::rw-
+group::rwx			#effective:rw-
+group:design:rwx		#effective:rw-
+mask::rw-
+other::r--
+```
+
+### Enabling access control lists
+Some Linux file systems have a standard support for ACLs via the kernel. With the following command we can check which file systems are enable to use ACL's on our system.
+```bash
+student@linux-ess-desktop:~$ grep POSIX_ACL /boot/config-$(uname -r)
+CONFIG_EXT4_FS_POSIX_ACL=y
+CONFIG_REISERFS_FS_POSIX_ACL=y
+CONFIG_JFS_POSIX_ACL=y
+CONFIG_XFS_POSIX_ACL=y
+CONFIG_BTRFS_FS_POSIX_ACL=y
+CONFIG_F2FS_FS_POSIX_ACL=y
+CONFIG_FS_POSIX_ACL=y
+CONFIG_SHIFT_FS_POSIX_ACL=y
+CONFIG_NTFS3_FS_POSIX_ACL=y
+CONFIG_TMPFS_POSIX_ACL=y
+CONFIG_JFFS2_FS_POSIX_ACL=y
+CONFIG_EROFS_FS_POSIX_ACL=y
+CONFIG_CEPH_FS_POSIX_ACL=y
+CONFIG_9P_FS_POSIX_ACL=y
+```
+File systems that don't have ACL support via the kernel are still able to get it via the mount option. ACL support is added with different methods:
+*	The ACL option in the 4th field of the file /etc/stab
+*	Adding the ACL line in the default mount option field in the superblock of the file system
+*	Adding the ACL option to the mount command when you manually mount file systems
+When the acl option is not present for your filesystem you can add the acl mount option with the command tune2fs -o. For example, you have a usb-stick with a ext4 file system named /dev/sdb1, this is seen in a later chapter. 
+```bash
+student@linux-ess-desktop:~$ sudo tune2fs -o acl /dev/sdb1
+tune2fs 1.46.5 (30-Dec-2021)
+student@linux-ess-desktop:~$ sudo tune2fs -l /dev/sdb1 | grep "mount options"
+Default mount options:    user_xattr acl
+```
+A second option was to enable acl by adding the acl option in the file /etc/fstab, this automatically acitivates on startup of you system.
+```bash
+student@linux-ess-desktop:~$ cat /etc/fstab
+/dev/sdc1 	/var/stuff 	ext4 	acl 		1 	     2
+```
+The last option was to enable acls when manually mounting a filesystem. We do not have an entry in the /etc/fstab file with this method. This method is only temporary, on restart our mount will be gone. 
+```bash
+student@linux-ess-desktop:~$ sudo mount -o acl /dev/sdb1 /var/stuff
+```
