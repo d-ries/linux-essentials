@@ -170,9 +170,9 @@ student@linux-ess-desktop:~$ jobs
 [4]-  Running                 sleep 15 &
 [5]+  Done                    find /usr > /tmp/allusrfiles
 ```
-The + shows the most recents process added to the background
-The – shows the second to last process added to the background
-To pause a process and put it in the background use ctrl + Z. 
+The + shows the last (=most recent) process added to the background  
+The – shows the second to last process added to the background  
+To pause a process and put it in the background use ctrl + Z  
 ```bash
 student@linux-ess-desktop:~$ sleep 50
 ^Z
@@ -191,7 +191,7 @@ sleep 50
 *	%string : command needs to start with string
 *	%?string : job has string in the commandline 
 *	%+ : last job send to background
-*	%- : second to last program send to background
+*	%- : second to last program send to background  
 With the bg command you can resume a paused process that is located in the background
 ```bash
 student@linux-ess-desktop:~$ sleep 50
@@ -204,9 +204,11 @@ student@linux-ess-desktop:~$ bg %1
 student@linux-ess-desktop:~$ jobs
 [1]+  Running                 sleep 50 &
 ```
-A process running in the background can still show its output, even when another process is running. For example, when working with nano, an output can come up in your screen. Press ctrl + L to renew the window. 
-Hint: use 2> /dev/null to send all errors to the void so they won’t show up. 
-Killing or renicing (changing the priority) is also possible with these commands
+A process running in the background can still show its output, even when another process is running. For example, when working with nano, an output can come up in your screen. Press ctrl + L to renew the window.   
+?> <i class="fa-solid fa-circle-info"></i> Use 2> /dev/null to send all errors to the void so they won’t show up  
+Killing or renicing (changing the priority) is also possible with these processes  
+    
+Sending signals to a process with kill:
 ```bash
 student@linux-ess-desktop:~$ sleep 500 &
 [1] 11977
@@ -222,15 +224,18 @@ student@linux-ess-desktop:~$ sleep 500 &
 [1] 11983
 student@linux-ess-desktop:~$ kill -SIGKILL 11983
 ```
-With the kill or killall command, there are more possibilities than stopping a process. You can reload configuration files, pause, continue, … To do this signals are used, numbers of names. A few examples, use the kill -l command to show all options:
+With the kill or killall command, there are more possibilities than stopping a process. You can reload configuration files, pause, continue, … To do this, signals, numbers and/or names are used. A few examples, use the kill -l command to show all options:
 *	SIGKILL (9): abruptly and immediately stop a process
-*	SIGTERM (15): stand way of stopping a process, cleanly shutdown the process
+*	SIGTERM (15): stand way of stopping a process, cleanly shutdown of the process
 *	SIGHUP (1): tell a process to reload its configuration files
 *	SIGSTOP (19): pause a process
 *	SIGCONT (18): resume a process
-*	…
-Processes are unable to ignore the signals SIGKILL and SIGSTOP. For even more info about the signals use man 7 signal. When multiple signal numbers are listed, use the middle one. The first number is used for Alpha, the last for MIPS. 
-With the nice command, a process can start with a given nice-value or priority. This value gives the process priority to use the CPU. -20 is the best or highest nice-value and 19 the worst or lowest. A normal use can only use a value between 0 and 19. 
+*	…  
+    
+?> <i class="fa-solid fa-circle-info"></i> Processes are unable to ignore the signals SIGKILL and SIGSTOP. For even more info about the signals use man 7 signal. When multiple signal numbers are listed, use the middle one. The first number is used for Alpha, the last for MIPS.   
+
+  
+With the nice command, a process can start with a given nice-value or priority. This value gives the process priority to use the CPU. -20 is the best or highest nice-value and 19 the worst or lowest. A normal user can only use a positive value from 0 till 19. 
 ```bash
 student@linux-ess-desktop:~$ nice -n 10 sleep 100 &
 [4] 11986
