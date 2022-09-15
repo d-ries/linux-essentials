@@ -160,9 +160,64 @@ You can add a & after the command to start it in the background
 student@linux-ess-desktop:~$ find /usr > /tmp/allusrfiles &
 [1] 11896
 ```
-You can use the at command to run a process at a specific time. With the cron command it is possible to do this on a regular basis. 
-To see what processes are running in the background use the jobs command.
+You can use the at command to run a process at a specific time. With the cron command it is possible to do this on a regular basis. For the at command we echo an output into the at command as shown by an example below, you can check what is scheduled and remove when necerry with the atrm or at -r command. Cron works different, it uses a file where we put everything we want to happen with the timing, in the example below we echo some text to a file every minute. Remove the line from the crontab to stop this from happening. To check all possibilities check the man at and man cron pages. To see what processes are running in the background use the jobs command.
 ```bash
+tudent@linux-ess-desktop:~$ sudo apt-get install at
+student@linux-ess-desktop:~$ echo "hello" | at -m 2pm
+student@linux-ess-desktop:~$ echo "reboot" | at now + 2 days
+warning: commands will be executed using /bin/sh
+job 4 at Sat Sep 17 13:26:00 2022
+student@linux-ess-desktop:~$ at -l
+3	Sat Sep 17 13:25:00 2022 a student
+4	Sat Sep 17 13:26:00 2022 a student
+1	Thu Sep 15 14:00:00 2022 a student
+student@linux-ess-desktop:~$ atrm 3
+student@linux-ess-desktop:~$ at -l
+4	Sat Sep 17 13:26:00 2022 a student
+1	Thu Sep 15 14:00:00 2022 a student
+
+@linux-ess-desktop:~$ crontab -e
+no crontab for student - using an empty one
+
+Select an editor.  To change later, run 'select-editor'.
+  1. /bin/nano        <---- easiest
+  2. /usr/bin/vim.tiny
+  3. /bin/ed
+
+Choose 1-3 [1]: 1
+crontab: installing new crontab
+
+* * * * * echo 'run this command every minute' >> /tmp/spam.txt
+
+@linux-ess-desktop:~$ crontab -l
+# Edit this file to introduce tasks to be run by cron.
+# 
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+# 
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').
+# 
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+# 
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+# 
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+# 
+# For more information see the manual pages of crontab(5) and cron(8)
+# 
+# m h  dom mon dow   command
+* * * * * echo 'run this command every minute' >> /tmp/spam.txt
+student@linux-ess-desktop:~$ cat /tmp/spam.txt 
+run this command every minute
+run this command every minute
+
 student@linux-ess-desktop:~$ jobs
 [1]   Running                 sleep 30 &
 [2]   Running                 sleep 25 &
@@ -234,7 +289,6 @@ With the kill or killall command, there are more possibilities than stopping a p
     
 ?> <i class="fa-solid fa-circle-info"></i> Processes are unable to ignore the signals SIGKILL and SIGSTOP. For even more info about the signals use man 7 signal. When multiple signal numbers are listed, use the middle one. The first number is used for Alpha, the last for MIPS.   
 
-  
 With the nice command, a process can start with a given nice-value or priority. This value gives the process priority to use the CPU. -20 is the best or highest nice-value and 19 the worst or lowest. A normal user can only use a positive value from 0 till 19. 
 ```bash
 student@linux-ess-desktop:~$ nice -n 10 sleep 100 &
