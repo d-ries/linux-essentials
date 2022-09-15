@@ -21,5 +21,5 @@ spaced over multiple lines.
 Use cat to copy the file .bashrc in your home folder to a new file named .bashrc.backup
 
 ## Task 7
-When you add a new use, a new line is added to the file /etc/passwd. Show the contents of the file but in order from newest user to oldest user (other way around than normal) 
+When you add a new user, a new line is added to the file /etc/passwd. Show the contents of the file but in order from newest user to oldest user (other way around than normal) 
 
