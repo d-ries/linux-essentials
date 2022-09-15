@@ -11,7 +11,7 @@ nameserver fec0:0:0:ffff::2
 ```
 This will print the entire file contents in the terminal.
 
-?> <i class="fa-solid fa-circle-info"></i> Note that you cannot scroll in a server CLI environment. If the file content is to big for the terminal size it will scroll over the screen and you will only be able to see the last 30 to 40 lines! You could swap to commands such as `more` or `less` (see further) to solve this issue.
+?> <i class="fa-solid fa-circle-info"></i> Note that you cannot scroll in a server CLI environment. If the file content is too big for the terminal size it will scroll over the screen and you will only be able to see the last 30 to 40 lines! You could swap to commands such as `more` or `less` (see further) to solve this issue.
 
 The `tac` command is the `cat` command written in reverse order. This is also exactly what this command does, it outputs the file contents in reverse order (from bottom to top):
 ```bash
