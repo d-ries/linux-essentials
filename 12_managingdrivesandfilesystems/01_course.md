@@ -8,12 +8,19 @@ Some drives are automatically mounted to our file system when inserting a remova
 To start this chapter, we’ll need to add drives to our virtual machine first.
   
 ![addingADrive](../images/12/addingADrive.PNG)  
+
 ![addingADrive2](../images/12/addingADrive2.PNG)  
+
 ![addingADrive2](../images/12/addingADrive3.PNG)  
+
 ![addingADrive2](../images/12/addingADrive4.PNG)  
+
 ![addingADrive2](../images/12/addingADrive5.PNG)  
+
 ![addingADrive2](../images/12/addingADrive6.PNG)  
+
 ![addingADrive2](../images/12/addingADrive7.PNG)  
+  
 
 Reboot your installation if it was still running, otherwise start the virtual machine and the drive will be there. 
 Be sure to take a snapshot before continuing this chapter and to double check the steps taken, so we do not repartition our drive where Linux is installed! A bad entry in the /etc/fstab file also created trouble when loading Linux.
