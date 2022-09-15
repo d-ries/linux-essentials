@@ -7,13 +7,13 @@ In our Linux distribution at least 1 partition is necessary, the root partition 
 Some drives are automatically mounted to our file system when inserting a removable media. For example, a CD can get mounted under /media/cdrom or /run/media/<username>/<cdrom name>. When this doesn’t occur automatically, a administrator should create the mount point to a folder of his/her choice. Linux is able to work with VFAT, used in USB sticks, handy when exchanging files with a windows system. It also has kernel support for New Technology File System (NTFS), but there often additional drivers are needed to load NTFS. 
 To start this chapter, we’ll need to add drives to our virtual machine first.
 
-![addingADrive](../images/addingADrive.PNG)
-![addingADrive2](../images/addingADrive2.PNG)
-![addingADrive2](../images/addingADrive3.PNG)
-![addingADrive2](../images/addingADrive4.PNG)
-![addingADrive2](../images/addingADrive5.PNG)
-![addingADrive2](../images/addingADrive6.PNG)
-![addingADrive2](../images/addingADrive7.PNG)
+![addingADrive](../images/12/addingADrive.PNG)
+![addingADrive2](../images/12/addingADrive2.PNG)
+![addingADrive2](../images/12/addingADrive3.PNG)
+![addingADrive2](../images/12/addingADrive4.PNG)
+![addingADrive2](../images/12/addingADrive5.PNG)
+![addingADrive2](../images/12/addingADrive6.PNG)
+![addingADrive2](../images/12/addingADrive7.PNG)
 
 Reboot your installation if it was still running, otherwise start the virtual machine and the drive will be there. 
 Be sure to take a snapshot before continuing this chapter and to double check the steps taken, so we do not repartition our drive where Linux is installed! A bad entry in the /etc/fstab file also created trouble when loading Linux.
@@ -677,7 +677,7 @@ student@linux-ess:~$ ls -l /dev/mapper/* | awk '{print $1" "$3" "$4" "$9,$10,$11
 crw------- root root 12:43 /dev/mapper/control
 lrwxrwxrwx root root /dev/mapper/ubuntu--vg-ubuntu--lv -> ../dm-0
 ```
-![ubuntulvm](ubuntuLVM.PNG)
+![ubuntulvm](../images/12/ubuntuLVM.PNG)
 
 As shown in the figure, it starts with one or more physical volumes, from these you can create a volumegroup. From this volumegroup we create logical volumes. We can check these 3 steps with the commands used earlier: pvdisplay, vgdisplay and lvdisplay. We will now create our own volume group and logical volumes from the physical volume created earlier. To create this physical volume we used the pvcreate command, to create a volumegroup we can use a similar command: vgcreate, we name our group myvg0.
 ```bash
