@@ -6,14 +6,14 @@ The other special partition is the Linux LVM. This physical volume lets us creat
 In our Linux distribution at least 1 partition is necessary, the root partition or “/“. But most of the time multiple partitions are created, for example the directories /home, /var and/or /tmp. Each of these directories get mounted to a mount point under the / partition. When adding files or folders to this mount point, the files and folders get saved on this different partition. These different partitions and mounting of them happens automatically so it’s not visible for the end user. Each of our disk partitions gets a device name when installing Linux, for example sda2. An entry in the file /etc/fstab tells Linux where to mount each partition, which occurs at startup. Note the difference with Windows that everything is mounted under the root (/) and not under a drive letter like c:, d:, …
 Some drives are automatically mounted to our file system when inserting a removable media. For example, a CD can get mounted under /media/cdrom or `/run/media/<username>/<cdrom name>`. When this doesn’t occur automatically, a administrator should create the mount point to a folder of his/her choice. Linux is able to work with VFAT, used in USB sticks, handy when exchanging files with a windows system. It also has kernel support for New Technology File System (NTFS), but there often additional drivers are needed to load NTFS. 
 To start this chapter, we’ll need to add drives to our virtual machine first.
-
-![addingADrive](../images/12/addingADrive.PNG)
-![addingADrive2](../images/12/addingADrive2.PNG)
-![addingADrive2](../images/12/addingADrive3.PNG)
-![addingADrive2](../images/12/addingADrive4.PNG)
-![addingADrive2](../images/12/addingADrive5.PNG)
-![addingADrive2](../images/12/addingADrive6.PNG)
-![addingADrive2](../images/12/addingADrive7.PNG)
+  
+![addingADrive](../images/12/addingADrive.PNG)  
+![addingADrive2](../images/12/addingADrive2.PNG)  
+![addingADrive2](../images/12/addingADrive3.PNG)  
+![addingADrive2](../images/12/addingADrive4.PNG)  
+![addingADrive2](../images/12/addingADrive5.PNG)  
+![addingADrive2](../images/12/addingADrive6.PNG)  
+![addingADrive2](../images/12/addingADrive7.PNG)  
 
 Reboot your installation if it was still running, otherwise start the virtual machine and the drive will be there. 
 Be sure to take a snapshot before continuing this chapter and to double check the steps taken, so we do not repartition our drive where Linux is installed! A bad entry in the /etc/fstab file also created trouble when loading Linux.
