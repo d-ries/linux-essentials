@@ -1,0 +1,892 @@
+# Managing drives and filesystems
+Every hard drive that is used in our systems is not just plug and play, to use it we need to partion it first. Portioning meaning cutting in parts, these parts receive a certain structure your computer can work with also called a file system. 
+The basics of data storage is almost the same for most operating systems nowadays. When installing an operating system the drive we used, HDD or SSD, gets partitioned and each partition gets formatted in a certain file system. In Linux some partitions are formatted in a special way, namely the swap partition and Linux Logical Volume Manager (LVM). 
+In our system HDD’s and SSD’s are use for permanent storage. RAM and swap are used for temporary storage. For example when running a command, the command gets copied from your drive to RAM to execute it more quickly. This because our RAM can be read faster than drives by our CPU. However RAM had a smaller capacity due to it’s cost and RAM gets deleted every time our computer is shut down. When our RAM runs out of memory, we can use the swap partition to temporary hold the RAM parts that are not in use and load other data into RAM. 
+The other special partition is the Linux LVM. This physical volume lets us create pools of storage called volume groups. These groups give more flexibility to enlarge or shrink logical volumes than normal drive partitions offer.
+In our Linux distribution at least 1 partition is necessary, the root partition or “/“. But most of the time multiple partitions are created, for example the directories /home, /var and/or /tmp. Each of these directories get mounted to a mount point under the / partition. When adding files or folders to this mount point, the files and folders get saved on this different partition. These different partitions and mounting of them happens automatically so it’s not visible for the end user. Each of our disk partitions gets a device name when installing Linux, for example sda2. An entry in the file /etc/fstab tells Linux where to mount each partition, which occurs at startup. Note the difference with Windows that everything is mounted under the root (/) and not under a drive letter like c:, d:, …
+Some drives are automatically mounted to our file system when inserting a removable media. For example, a CD can get mounted under /media/cdrom or /run/media/<username>/<cdrom name>. When this doesn’t occur automatically, a administrator should create the mount point to a folder of his/her choice. Linux is able to work with VFAT, used in USB sticks, handy when exchanging files with a windows system. It also has kernel support for New Technology File System (NTFS), but there often additional drivers are needed to load NTFS. 
+To start this chapter, we’ll need to add drives to our virtual machine first.
+
+![addingADrive](../images/addingADrive.PNG)
+![addingADrive2](../images/addingADrive2.PNG)
+![addingADrive2](../images/addingADrive3.PNG)
+![addingADrive2](../images/addingADrive4.PNG)
+![addingADrive2](../images/addingADrive5.PNG)
+![addingADrive2](../images/addingADrive6.PNG)
+![addingADrive2](../images/addingADrive7.PNG)
+
+Reboot your installation if it was still running, otherwise start the virtual machine and the drive will be there. 
+Be sure to take a snapshot before continuing this chapter and to double check the steps taken, so we do not repartition our drive where Linux is installed! A bad entry in the /etc/fstab file also created trouble when loading Linux.
+
+## Understanding partitiontables and diskpartitions
+Traditionally MBR partition tables were used to save the size and layout of partitions. In Linux a lot of tools are available to do this. But nowadays the new standard Global Unique Identifiers, GUID, partition tables are used. Your computers needs to use UEFI for this standard. This change occurred because of the limits of MBR. MBR partitions could be a maximum of 2TB, the GUID partitions can get to a maximum of 9,4 ZB (Zetabytes). We can use the commands fdisk or gdisk to partition a drive. gdisk gives the possibility to create larger partitions than fdisk, other sub commands to create, delete or change partitions are more or less the same.
+```bash
+student@linux-ess:~$ sudo fdisk -l /dev/sdb
+Disk /dev/sdb: 8 GiB, 8589934592 bytes, 16777216 sectors
+Disk model: VMware Virtual S
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+```
+Every SCSI, SATA or USB device gets represented by sd? (sda, sdb, sdc, …). These device can have a maximum of 16 subdivisions (sdc, sdc1 -> sdc15) this means there is a maximum of 15 partitions. A drive can have 4 primary partition maximum. If you need more than 4 partitions, you’ll need to use extend partitions. The first drive mostly shows up as /dev/sda. As said before at least one partition is created when installing Linux, this partion is used as a Linux LVM fysical partition where other logical partitions can be created. 
+```bash
+student@linux-ess:~$ sudo fdisk -l /dev/sda
+[sudo] password for student:
+Disk /dev/sda: 20 GiB, 21474836480 bytes, 41943040 sectors
+Disk model: VMware Virtual S
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: A9E92175-1433-43DC-968D-95C5E18A2105
+
+Device       Start      End  Sectors  Size Type
+/dev/sda1     2048     4095     2048    1M BIOS boot
+/dev/sda2     4096  3719167  3715072  1.8G Linux filesystem
+/dev/sda3  3719168 41940991 38221824 18.2G Linux filesystem
+```
+Looking at our sda drive we see it partitioned into /boot of +- 1GB. The * indicates this partition is bootable. The rest of the drive is a fysical LVM partition. This one is used to create logical volumes. 
+With lsblk we see all availeble drives and its partitiones. 
+```bash
+student@linux-ess:~$ lsblk
+$NAME                      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+loop0                       7:0    0 63.2M  1 loop /snap/core20/1623
+loop1                       7:1    0   48M  1 loop /snap/snapd/16778
+loop2                       7:2    0 79.9M  1 loop /snap/lxd/22923
+loop3                       7:3    0   62M  1 loop /snap/core20/1587
+loop4                       7:4    0  103M  1 loop /snap/lxd/23541
+loop5                       7:5    0   47M  1 loop /snap/snapd/16292
+sda                         8:0    0   20G  0 disk
+├─sda1                      8:1    0    1M  0 part
+├─sda2                      8:2    0  1.8G  0 part /boot
+└─sda3                      8:3    0 18.2G  0 part
+  └─ubuntu--vg-ubuntu--lv 253:0    0   10G  0 lvm  /
+sdb                         8:16   0    8G  0 disk
+sr0                        11:0    1  1.4G  0 rom
+```
+
+## Adding a disk with one partition
+Next we’ll partition the new drive and install a file system afterwards we’ll be able to mount our drive to a folder in Linux. The easiest method is to use the full drive for one partition. It is possible to add multiple partitions, you’ll need to add a file system to each partition afterwards and each partition need to be mounted separately. If a drive is mounted, like a USB stick, and you want to repartition it, you’ll need to unmount it first. 
+We’ll now start with creating a partition and installing a file system on our extra drive. If a mistake is made while working with the fdisk command, finish the current operation and press q to stop. 
+First up, check the device name of our newly added drive by using the lsblk command
+```bash
+student@linux-ess:~$ lsblk
+$NAME                      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+loop0                       7:0    0 63.2M  1 loop /snap/core20/1623
+loop1                       7:1    0   48M  1 loop /snap/snapd/16778
+loop2                       7:2    0 79.9M  1 loop /snap/lxd/22923
+loop3                       7:3    0   62M  1 loop /snap/core20/1587
+loop4                       7:4    0  103M  1 loop /snap/lxd/23541
+loop5                       7:5    0   47M  1 loop /snap/snapd/16292
+sda                         8:0    0   20G  0 disk
+├─sda1                      8:1    0    1M  0 part
+├─sda2                      8:2    0  1.8G  0 part /boot
+└─sda3                      8:3    0 18.2G  0 part
+  └─ubuntu--vg-ubuntu--lv 253:0    0   10G  0 lvm  /
+sdb                         8:16   0    8G  0 disk
+sr0                        11:0    1  1.4G  0 rom
+```
+In this case we’ll need to use /dev/sdb. Now start by using the fdisk command.
+```bash
+student@linux-ess:~$ sudo fdisk /dev/sdb
+
+Welcome to fdisk (util-linux 2.37.2).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+Device does not contain a recognized partition table.
+Created a new DOS disklabel with disk identifier 0x8b8ca071.
+
+Command (m for help):
+```
+We’ll fist check if our drive isn’t already formatted. Press p to check for partitions.
+```bash
+Command (m for help): p
+Disk /dev/sdb: 8 GiB, 8589934592 bytes, 16777216 sectors
+Disk model: VMware Virtual S
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x8b8ca071
+
+Command (m for help):
+```
+If a partition would be present, we’ll need to delete it before going on. You could do this by pressing d. It will then tell you what partition is selected, pressing enter will delete this partition. 
+We are now ready to create a new partition, do this by pressing n. We’ll now be prompted to choose a primary, p, or extended, e, partition. As this is our first partition, choose the primary partition by pressing p. Afterwords enter the partition number, again as this is our first partition, we’ll use number 1. Do this by enter 1 and pressing enter. Next it’s prompted where our first sector should start, we’ll use the default value, so just press enter. Now it’s time to set the size of the partition, you could enter a number, but we’ll use the full size of our drive. Enter the number of the last sector or just press enter. Now we can check our newly created partition again by pressing p. If everything is as expected, press w to write or save the changes to the partition table. 
+```bash
+Command (m for help): n
+Partition type
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended (container for logical partitions)
+Select (default p): p
+Partition number (1-4, default 1): 1
+First sector (2048-16777215, default 2048):
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-16777215, default 16777215):
+
+Created a new partition 1 of type 'Linux' and of size 8 GiB.
+
+Command (m for help): p
+Disk /dev/sdb: 8 GiB, 8589934592 bytes, 16777216 sectors
+Disk model: VMware Virtual S
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x8b8ca071
+
+Device     Boot Start      End  Sectors Size Id Type
+/dev/sdb1        2048 16777215 16775168   8G 83 Linux
+
+Command (m for help): w
+The partition table has been altered.
+Calling ioctl() to re-read partition table.
+Syncing disks.
+```
+If this should fail its probably because the drive was still mounted. Unmount the drive and use the partprobe command to save the changes to the partition table. If that still fails, reboot your computer and try again. 
+```bash
+student@linux-ess:~$ sudo partprobe /dev/sdb
+```
+The new partition still is not ready for use. We need to install a file system on it as mentioned before. Use the mkfs command to accomplish this. The standard mkfs command creates a ext2 file system, normally you would like a journaling system or ext3/ ext4. Change the mkfs command with parameter -t to get this. Another option is to use the mkfs.ext4 command, this is a shorter option. We could also use a xfs-file system.
+```bash
+student@linux-ess:~$ sudo mkfs -t ext4 /dev/sdb1
+mke2fs 1.46.5 (30-Dec-2021)
+Creating filesystem with 2096896 4k blocks and 524288 inodes
+Filesystem UUID: f2fee344-9305-46d7-9942-339fd434dd8d
+Superblock backups stored on blocks:
+        32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (16384 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+student@linux-ess:~$ sudo mkfs.ext4 /dev/sdb1
+mke2fs 1.46.5 (30-Dec-2021)
+Creating filesystem with 2096896 4k blocks and 524288 inodes
+Filesystem UUID: f2fee344-9305-46d7-9942-339fd434dd8d
+Superblock backups stored on blocks:
+        32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (16384 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+student@linux-ess:~$ sudo mkfs -t xfs /dev/sdb1
+meta-data=/dev/sdb1              isize=512    agcount=4, agsize=524224 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=0
+         =                       reflink=1    bigtime=0 inobtcount=0
+data     =                       bsize=4096   blocks=2096896, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =internal log           bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+
+student@linux-ess:~$ sudo mkfs.xfs /dev/sdb1
+meta-data=/dev/sdb1              isize=512    agcount=4, agsize=524224 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=0
+         =                       reflink=1    bigtime=0 inobtcount=0
+data     =                       bsize=4096   blocks=2096896, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =internal log           bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+```
+Now that we created a partition and installed a file system, its time to mount our newly created drive to a mount point. Use the mount command to do this. 
+```bash
+student@linux-ess:~$ sudo mkdir /mnt/test
+student@linux-ess:~$ sudo mount /dev/sdb1 /mnt/test
+student@linux-ess:~$ sudo df -h /mnt/test
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdb1       7.8G   24K  7.4G   1% /mnt/test
+student@linux-ess:~$ sudo mount | grep sdb1
+/dev/sdb1 on /mnt/test type ext4 (rw,relatime)
+```
+With the df command we see that /dev/sdb1 is mounted to the folder /mnt/test. We can also see it provides XGB of memory. The mount command shows all mounted drives, with grep we filter to see our drive. 
+When the drive is no longer in use, we can unmount is with the unmount command
+```bash
+student@linux-ess:~$ sudo umount /dev/sdb1
+```
+With the mount command, the drive gets unmounted when the pc shuts down or is restarted. When we want the drive to be mounted on startup we’ll need to add a entry in the /etc/fstab file. 
+```bash
+student@linux-ess:~$ sudo nano /etc/fstab
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# / was on /dev/ubuntu-vg/ubuntu-lv during curtin installation
+/dev/disk/by-id/dm-uuid-LVM-cPT0cPGoZhK91HrSeQ2ByYSCtWdNqE7Co7jRC0O2XWz9dWt2g7CQ0oEtCcVhxL8v / ext4 defaults 0 1
+# /boot was on /dev/sda2 during curtin installation
+/dev/disk/by-uuid/0b189ed9-2d70-4955-9e36-66ad45dbbee7 /boot ext4 defaults 0 1
+/dev/sdb1 /mnt/test ext4 defaults 0 2
+```
+In this example /dev/sdb1 gets mounted to the folder /mnt/test with ext4 as its file system. The defaults means it gets mounted with default options (rw, auto, …). The two numbers at the end stand for: 0 tells the system it does not need to make backup files of this file system with the help of the dump command. This command is barely used nowadays because of crashes, but the number field is still availeble. The 2 at the end indicates the order the system is checked at boot. This value is 1 for the root file system and 2 for others. If you do not want to check at boot time set this field to 0. Now this entry is added to the /etc/fstab file, the drive will mount next time your system boots. 
+
+## adding a disk with multiple partitions
+We’ll now begin again with our drive and try to create multiple partitions. The partitions we want are: 
+*	500 MB (sdb1 and sdb2)
+*	300MB (sdb3)
+*	350 MB (sdb5)
+*	400 MB (sdb6)
+sdb4, which is missing in our list, is a extended partition which takes all remaining disk space. sdb5 and sdb6 will use disk space from this extended partition. 
+First, unmount the drive if you have mounted it or if it mounted automatically with an entry in the /etc/fstab file. You can already remove this entry from /etc/fstab as well. 
+```bash
+student@linux-ess:~$ sudo umount /dev/sdb1
+```
+ Now we go back to our fdisk command
+```bash
+student@linux-ess:~$ sudo fdisk /dev/sdb
+
+Welcome to fdisk (util-linux 2.37.2).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+
+Command (m for help):
+```
+Check for existing partitions, we know there is one, by pressing p. We’ll delete this partition by enter d, checking the selected partition and pressing enter. 
+```bash
+Command (m for help): p
+Disk /dev/sdb: 8 GiB, 8589934592 bytes, 16777216 sectors
+Disk model: VMware Virtual S
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x8b8ca071
+
+Device     Boot Start      End  Sectors Size Id Type
+/dev/sdb1        2048 16777215 16775168   8G 83 Linux
+
+Command (m for help): d
+Selected partition 1
+Partition 1 has been deleted.
+
+Command (m for help):
+```
+Again we’ll create new partitions by entering n, for sdb1, sdb2 and sdb3 we’ll use primary partitions. So use p. Enter the number of the partition, 1. We now need to enter the amount to allocate to the partition. Do this by entering a + followed by the amount. This is asked in bytes, but its easier to use K, M, G for bigger numbers. Our first partition needs to be 500MB, so we enter +500M. 
+If you did not remove the previous partition you’ll get a notification the partion has an ext4 signature. You’ll need to enter y to the question if this can be removed. 
+```bash
+Command (m for help): n
+Partition type
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended (container for logical partitions)
+Select (default p): p
+Partition number (1-4, default 1): 1
+First sector (2048-16777215, default 2048):
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-16777215, default 16777215): +500M
+
+Created a new partition 1 of type 'Linux' and of size 500 MiB.
+Partition #1 contains a ext4 signature.
+
+Do you want to remove the signature? [Y]es/[N]o: y
+
+The signature will be removed by a write command.
+
+Command (m for help):
+```
+Create the following 2 partitions the same way
+```bash
+Command (m for help): n
+Partition type
+   p   primary (1 primary, 0 extended, 3 free)
+   e   extended (container for logical partitions)
+Select (default p): p
+Partition number (2-4, default 2): 2
+First sector (1026048-16777215, default 1026048):
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (1026048-16777215, default 16777215): +500M
+
+Created a new partition 2 of type 'Linux' and of size 500 MiB.
+
+Command (m for help): n
+Partition type
+   p   primary (2 primary, 0 extended, 2 free)
+   e   extended (container for logical partitions)
+Select (default p): p
+Partition number (3,4, default 3): 3
+First sector (2050048-16777215, default 2050048):
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2050048-16777215, default 16777215): +300M
+
+Created a new partition 3 of type 'Linux' and of size 300 MiB.
+
+Command (m for help):
+```
+For the fourth partition, we change the partition type to extended as mentioned before.
+```bash
+Command (m for help): n
+Partition type
+   p   primary (3 primary, 0 extended, 1 free)
+   e   extended (container for logical partitions)
+Select (default e): e
+
+Selected partition 4
+First sector (2664448-16777215, default 2664448):
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2664448-16777215, default 16777215):
+
+Created a new partition 4 of type 'Extended' and of size 6.7 GiB.
+
+Command (m for help):
+```
+Now create partition 5 and 6 as before, notice we do not need to choose a partition type this time. This is not possible as all the partition space is filled up. Our fdisk command knows there is an extended partition and that it needs to use this one for any new partitions. 
+```bash
+Command (m for help): n
+All primary partitions are in use.
+Adding logical partition 5
+First sector (2666496-16777215, default 2666496):
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2666496-16777215, default 16777215): +350M
+
+Created a new partition 5 of type 'Linux' and of size 350 MiB.
+
+Command (m for help): n
+All primary partitions are in use.
+Adding logical partition 6
+First sector (3385344-16777215, default 3385344):
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (3385344-16777215, default 16777215): +400M
+
+Created a new partition 6 of type 'Linux' and of size 400 MiB.
+
+Command (m for help):
+```
+Check all the configurations by entering p. If we want to check if there is any free space on our drive we can do so by entering F. 
+```bash
+Command (m for help): p
+Disk /dev/sdb: 8 GiB, 8589934592 bytes, 16777216 sectors
+Disk model: VMware Virtual S
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x8b8ca071
+
+Device     Boot   Start      End  Sectors  Size Id Type
+/dev/sdb1          2048  1026047  1024000  500M 83 Linux
+/dev/sdb2       1026048  2050047  1024000  500M 83 Linux
+/dev/sdb3       2050048  2664447   614400  300M 83 Linux
+/dev/sdb4       2664448 16777215 14112768  6.7G  5 Extended
+/dev/sdb5       2666496  3383295   716800  350M 83 Linux
+/dev/sdb6       3385344  4204543   819200  400M 83 Linux
+
+Filesystem/RAID signature on partition 1 will be wiped.
+
+Command (m for help): F
+Unpartitioned space /dev/sdb: 5.99 GiB, 6436159488 bytes, 12570624 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+
+  Start      End  Sectors Size
+4206592 16777215 12570624   6G
+
+Command (m for help):
+```
+We can see that all partition types are Linux at the moment, we’ll change some to swap, FAT32 and Linux LVM. Do this by entering t and the number of the file system we want. To get a list of all file systems enter l, we need to check the number of swap (82), FAT32 (c) and Linux LVM (8e).
+```bash
+Command (m for help): l
+
+00 Empty            24 NEC DOS          81 Minix / old Lin  bf Solaris
+01 FAT12            27 Hidden NTFS Win  82 Linux swap / So  c1 DRDOS/sec (FAT-
+02 XENIX root       39 Plan 9           83 Linux            c4 DRDOS/sec (FAT-
+03 XENIX usr        3c PartitionMagic   84 OS/2 hidden or   c6 DRDOS/sec (FAT-
+04 FAT16 <32M       40 Venix 80286      85 Linux extended   c7 Syrinx
+05 Extended         41 PPC PReP Boot    86 NTFS volume set  da Non-FS data
+06 FAT16            42 SFS              87 NTFS volume set  db CP/M / CTOS / .
+07 HPFS/NTFS/exFAT  4d QNX4.x           88 Linux plaintext  de Dell Utility
+08 AIX              4e QNX4.x 2nd part  8e Linux LVM        df BootIt
+09 AIX bootable     4f QNX4.x 3rd part  93 Amoeba           e1 DOS access
+0a OS/2 Boot Manag  50 OnTrack DM       94 Amoeba BBT       e3 DOS R/O
+0b W95 FAT32        51 OnTrack DM6 Aux  9f BSD/OS           e4 SpeedStor
+0c W95 FAT32 (LBA)  52 CP/M             a0 IBM Thinkpad hi  ea Linux extended
+0e W95 FAT16 (LBA)  53 OnTrack DM6 Aux  a5 FreeBSD          eb BeOS fs
+0f W95 Ext'd (LBA)  54 OnTrackDM6       a6 OpenBSD          ee GPT
+10 OPUS             55 EZ-Drive         a7 NeXTSTEP         ef EFI (FAT-12/16/
+11 Hidden FAT12     56 Golden Bow       a8 Darwin UFS       f0 Linux/PA-RISC b
+12 Compaq diagnost  5c Priam Edisk      a9 NetBSD           f1 SpeedStor
+14 Hidden FAT16 <3  61 SpeedStor        ab Darwin boot      f4 SpeedStor
+16 Hidden FAT16     63 GNU HURD or Sys  af HFS / HFS+       f2 DOS secondary
+17 Hidden HPFS/NTF  64 Novell Netware   b7 BSDI fs          fb VMware VMFS
+18 AST SmartSleep   65 Novell Netware   b8 BSDI swap        fc VMware VMKCORE
+1b Hidden W95 FAT3  70 DiskSecure Mult  bb Boot Wizard hid  fd Linux raid auto
+1c Hidden W95 FAT3  75 PC/IX            bc Acronis FAT32 L  fe LANstep
+1e Hidden W95 FAT1  80 Old Minix        be Solaris boot     ff BBT
+
+Aliases:
+   linux          - 83
+   swap           - 82
+   extended       - 05
+   uefi           - EF
+   raid           - FD
+   lvm            - 8E
+   linuxex        - 85
+
+Command (m for help): t
+Partition number (1-6, default 6): 2
+Hex code or alias (type L to list all): 82
+
+Changed type of partition 'Linux' to 'Linux swap / Solaris'.
+
+Command (m for help): t
+Partition number (1-6, default 6): 5
+Hex code or alias (type L to list all): c
+
+Changed type of partition 'Linux' to 'W95 FAT32 (LBA)'.
+
+Command (m for help): t
+Partition number (1-6, default 6): 6
+Hex code or alias (type L to list all): 8e
+
+Changed type of partition 'Linux' to 'Linux LVM'.
+```
+Check all configurations again by entering p. If everything is as expected we can save by entering w. Again if this fails, use the partprobe command to save all changes. 
+```bash
+Command (m for help): p
+Disk /dev/sdb: 8 GiB, 8589934592 bytes, 16777216 sectors
+Disk model: VMware Virtual S
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x8b8ca071
+
+Device     Boot   Start      End  Sectors  Size Id Type
+/dev/sdb1          2048  1026047  1024000  500M 83 Linux
+/dev/sdb2       1026048  2050047  1024000  500M 82 Linux swap / Solaris
+/dev/sdb3       2050048  2664447   614400  300M 83 Linux
+/dev/sdb4       2664448 16777215 14112768  6.7G  5 Extended
+/dev/sdb5       2666496  3383295   716800  350M  c W95 FAT32 (LBA)
+/dev/sdb6       3385344  4204543   819200  400M 8e Linux LVM
+
+Filesystem/RAID signature on partition 1 will be wiped.
+
+Command (m for help): w
+The partition table has been altered.
+Calling ioctl() to re-read partition table.
+Syncing disks.
+```
+We are now able to search for all our partitions in the /proc/partitions folder.
+```bash
+student@linux-ess:~$ grep sdb /proc/partitions
+   8       16    8388608 sdb
+   8       17     512000 sdb1
+   8       18     512000 sdb2
+   8       19     307200 sdb3
+   8       20          1 sdb4
+   8       21     358400 sdb5
+   8       22     409600 sdb6
+```
+All partitions are now ready with their different types. We now need to enter the command to install the file systems to these partitions. Again we use the mkfs command for sdb1, sdb3 and sdb5. Sdb2 will be a swap space, we use the command mkswap to accomplish this. For the lvm volume, sdb6, we need to create a fysical volume with the pvcreate command.
+```bash
+student@linux-ess:~$ sudo mkfs.ext4 /dev/sdb1
+mke2fs 1.46.5 (30-Dec-2021)
+Creating filesystem with 128000 4k blocks and 128000 inodes
+Filesystem UUID: 2860cdfd-1eb5-4fad-b5bf-fcd4b9362009
+Superblock backups stored on blocks:
+        32768, 98304
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (4096 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+student@linux-ess:~$ sudo mkswap /dev/sdb2
+Setting up swapspace version 1, size = 500 MiB (524283904 bytes)
+no label, UUID=c7fc81ae-3382-40ab-b37e-7cdeb76535aa
+student@linux-ess:~$ sudo mkfs.ext2 /dev/sdb3
+mke2fs 1.46.5 (30-Dec-2021)
+Creating filesystem with 76800 4k blocks and 76800 inodes
+Filesystem UUID: e9e9e303-c9f1-48a6-97d0-d527b0fb7cd0
+Superblock backups stored on blocks:
+        32768
+
+Allocating group tables: done
+Writing inode tables: done
+Writing superblocks and filesystem accounting information: done
+
+student@linux-ess:~$ sudo mkfs.vfat /dev/sdb5
+mkfs.fat 4.2 (2021-01-31)
+student@linux-ess:~$ sudo pvcreate /dev/sdb6
+  Physical volume "/dev/sdb6" successfully created.
+```
+All of the partitions are now read to be mounted, used as swapspace or added to a volume group. We’ll check our partitions and mount point with the fdisk and lsblk commands. We can check all physical volumes with the pvs command.  
+```bash
+student@linux-ess:~$ sudo fdisk -l
+...
+Disk /dev/sdb: 8 GiB, 8589934592 bytes, 16777216 sectors
+Disk model: VMware Virtual S
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x8b8ca071
+
+Device     Boot   Start      End  Sectors  Size Id Type
+/dev/sdb1          2048  1026047  1024000  500M 83 Linux
+/dev/sdb2       1026048  2050047  1024000  500M 82 Linux swap / Solaris
+/dev/sdb3       2050048  2664447   614400  300M 83 Linux
+/dev/sdb4       2664448 16777215 14112768  6.7G  5 Extended
+/dev/sdb5       2666496  3383295   716800  350M  c W95 FAT32 (LBA)
+/dev/sdb6       3385344  4204543   819200  400M 8e Linux LVM
+...
+student@linux-ess:~$ sudo lsblk -f /dev/sdb
+NAME   FSTYPE      FSVER    LABEL UUID                                   FSAVAIL FSUSE% MOUNTPOINTS
+sdb
+├─sdb1 ext4        1.0            2860cdfd-1eb5-4fad-b5bf-fcd4b9362009
+├─sdb2 swap        1              c7fc81ae-3382-40ab-b37e-7cdeb76535aa
+├─sdb3 ext2        1.0            e9e9e303-c9f1-48a6-97d0-d527b0fb7cd0
+├─sdb4
+├─sdb5 vfat        FAT16          5555-CA20
+└─sdb6 LVM2_member LVM2 001       M5f0lN-AczT-hscz-nzs9-iyVe-f49T-V04MNd
+student@linux-ess:~$ sudo pvs
+  PV         VG        Fmt  Attr PSize   PFree
+  /dev/sda3  ubuntu-vg lvm2 a--   18.22g   8.22g
+  /dev/sdb6            lvm2 ---  400.00m 400.00m
+```
+
+## LVMs
+Now that we created a physical volume on our Linux LVM, we’ll go a little further into this. Back in the day, when LVM wasn’t available, when the drive ran out of memory, we needed to replace it by a larger one and copy everything from the old drive. This took time and was very inefficient. LVM gives us more flexibility to add new physical volumes to a volume group. The brings a few advantages:
+*	Adding drive space is possible even when the logical volume is in use
+*	You can add physical volume whenever needed to a volume group
+*	It’s possible to change data from one physical volume to another, this way we can replace smaller drives with larger ones without downtime. 
+*	Even downsizing a file system is possible, you’ll need to unmount the logical volume for this to work and the file systems allows for this to happen. 
+*	LVM also supports advanced possibilities like mirroring and working with clusters.
+Use the command vgs to check for volume groups, pvs to check for physical volumes and lvs to check for logical volumes. 
+```bash
+student@linux-ess:~$ sudo vgs
+  VG        #PV #LV #SN Attr   VSize  VFree
+  ubuntu-vg   1   1   0 wz--n- 18.22g 8.22g
+student@linux-ess:~$ sudo pvs
+  PV         VG        Fmt  Attr PSize   PFree
+  /dev/sda3  ubuntu-vg lvm2 a--   18.22g   8.22g
+  /dev/sdb6            lvm2 ---  400.00m 400.00m
+student@linux-ess:~$ sudo lvs
+  LV        VG        Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  ubuntu-lv ubuntu-vg -wi-ao---- 10.00g
+```
+First we’ll check our main drive, if we have a Linux LVM partition
+```bash
+student@linux-ess:~$ sudo fdisk -l /dev/sda
+Disk /dev/sda: 20 GiB, 21474836480 bytes, 41943040 sectors
+Disk model: VMware Virtual S
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: A9E92175-1433-43DC-968D-95C5E18A2105
+
+Device       Start      End  Sectors  Size Type
+/dev/sda1     2048     4095     2048    1M BIOS boot
+/dev/sda2     4096  3719167  3715072  1.8G Linux filesystem
+/dev/sda3  3719168 41940991 38221824 18.2G Linux filesystem
+```
+With the pvdisplay command we can check if the partition is already in use by a LVM group.
+```bash
+student@linux-ess:~$ sudo pvdisplay /dev/sda3
+  --- Physical volume ---
+  PV Name               /dev/sda3
+  VG Name               ubuntu-vg
+  PV Size               <18.23 GiB / not usable 3.00 MiB
+  Allocatable           yes
+  PE Size               4.00 MiB
+  Total PE              4665
+  Free PE               2105
+  Allocated PE          2560
+  PV UUID               9cx3Lm-p95X-Q5fO-ZLSo-KPtf-1ZoN-UyqahD
+```
+We see that /dev/sda3 has a fysical size of 18.23GiB. This volume is added to the volume group: ubuntu-vg. The smallest unit storage that can be granted is 4 MiB.
+?> <i class="fa-solid fa-circle-info"></i> Extra info: 1 MB = 1000000 bytes = 10^6 bytes 
+1 MiB = 1048576 bytes = 2^20 bytes
+To check the information about this volume group us the command vgdisplay.
+```bash
+student@linux-ess:~$ sudo vgdisplay
+  --- Volume group ---
+  VG Name               ubuntu-vg
+  System ID
+  Format                lvm2
+  Metadata Areas        1
+  Metadata Sequence No  2
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                1
+  Open LV               1
+  Max PV                0
+  Cur PV                1
+  Act PV                1
+  VG Size               18.22 GiB
+  PE Size               4.00 MiB
+  Total PE              4665
+  Alloc PE / Size       2560 / 10.00 GiB
+  Free  PE / Size       2105 / 8.22 GiB
+  VG UUID               cPT0cP-GoZh-K91H-rSeQ-2ByY-SCtW-dNqE7C
+```
+With the lvdisplay command, we can check where this volumegroup is allocated to. 
+```bash
+student@linux-ess:~$ sudo lvdisplay
+  --- Logical volume ---
+  LV Path                /dev/ubuntu-vg/ubuntu-lv
+  LV Name                ubuntu-lv
+  VG Name                ubuntu-vg
+  LV UUID                o7jRC0-O2XW-z9dW-t2g7-CQ0o-EtCc-VhxL8v
+  LV Write Access        read/write
+  LV Creation host, time ubuntu-server, 2022-07-09 10:36:52 +0000
+  LV Status              available
+  # open                 1
+  LV Size                10.00 GiB
+  Current LE             2560
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           253:0
+```
+We can see that the logical volume ubuntu-lv is getting allocation space from the volumegroup ubuntu-vg.
+In the folder /dev/mapper you’ll find the file ubuntu--vg-ubuntu--lv, this name refers to its logical volume.
+```bash
+student@linux-ess:~$ ls /dev/mapper/
+control  ubuntu--vg-ubuntu--lv
+```
+In the fstab file we see that these 3 volumes are automatically mounted with their filesystems. The root- and home-directory are formatted as xfs, the swap volume is formatted as swap. We’ll now check the connection between all these groups and volumes.
+```bash
+student@linux-ess:~$ cat /etc/fstab
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# / was on /dev/ubuntu-vg/ubuntu-lv during curtin installation
+/dev/disk/by-id/dm-uuid-LVM-cPT0cPGoZhK91HrSeQ2ByYSCtWdNqE7Co7jRC0O2XWz9dWt2g7CQ0oEtCcVhxL8v / ext4 defaults 0 1
+
+student@linux-ess:~$ ls -l /dev/ubuntu-vg/*
+lrwxrwxrwx 1 root root 7 Sep 15 12:43 /dev/ubuntu-vg/ubuntu-lv -> ../dm-0
+student@linux-ess:~$ ls -l /dev/dm*
+brw-rw----  1 root disk  253, 0 Sep 15 12:43 /dev/dm-0
+crw-rw----+ 1 root audio  14, 9 Sep 15 12:43 /dev/dmmidi
+
+/dev/dma_heap:
+total 0
+crw------- 1 root root 249, 0 Sep 15 12:43 system
+student@linux-ess:~$ ls -l /dev/mapper/* | awk '{print $1" "$3" "$4" "$9,$10,$11}'
+crw------- root root 12:43 /dev/mapper/control
+lrwxrwxrwx root root /dev/mapper/ubuntu--vg-ubuntu--lv -> ../dm-0
+```
+![ubuntulvm](ubuntuLVM.PNG)
+
+As shown in the figure, it starts with one or more physical volumes, from these you can create a volumegroup. From this volumegroup we create logical volumes. We can check these 3 steps with the commands used earlier: pvdisplay, vgdisplay and lvdisplay. We will now create our own volume group and logical volumes from the physical volume created earlier. To create this physical volume we used the pvcreate command, to create a volumegroup we can use a similar command: vgcreate, we name our group myvg0.
+```bash
+student@linux-ess:~$ sudo vgcreate myvg0 /dev/sdb6
+[sudo] password for student:
+  Volume group "myvg0" successfully created
+student@linux-ess:~$ sudo vgdisplay myvg0
+sudo vgdisplay myvg0
+  --- Volume group ---
+  VG Name               myvg0
+  System ID
+  Format                lvm2
+  Metadata Areas        1
+  Metadata Sequence No  1
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                0
+  Open LV               0
+  Max PV                0
+  Cur PV                1
+  Act PV                1
+  VG Size               396.00 MiB
+  PE Size               4.00 MiB
+  Total PE              99
+  Alloc PE / Size       0 / 0
+  Free  PE / Size       99 / 396.00 MiB
+  VG UUID               AtpRkW-tbTs-MSIv-mXlY-mgvO-H1bJ-gD7ryc
+```
+From the free 400MiB, 396 MiB is usable in blocks of 4MiB. We’ll now create a logical volume 'music' with our group with the lvcreate command.
+```bash
+student@linux-ess:~$ sudo lvcreate -n music -L 100M myvg0
+  Logical volume "music" created.
+student@linux-ess:~$ sudo lvs myvg0
+  LV    VG    Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  music myvg0 -wi-a----- 100.00m
+student@linux-ess:~$ ls /dev/mapper/myvg0*
+/dev/mapper/myvg0-music
+```
+If we want to use this logical volume, we need to give it a file system and mount it to our system as shown before with the mount command or the /etc/fstab file.
+```bash
+student@linux-ess:~$ sudo mkfs.ext4 /dev/mapper/myvg0-music
+mke2fs 1.46.5 (30-Dec-2021)
+Creating filesystem with 25600 4k blocks and 25600 inodes
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (1024 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+student@linux-ess:~$ sudo mkdir /mnt/mymusic
+student@linux-ess:~$ sudo mount /dev/mapper/myvg0-music /mnt/mymusic/
+student@linux-ess:~$ sudo df -h /mnt/mymusic/
+Filesystem               Size  Used Avail Use% Mounted on
+/dev/mapper/myvg0-music   90M   24K   83M   1% /mnt/mymusic
+student@linux-ess:~$ sudo nano /etc/fstab
+/dev/mapper/myvg0-music /mnt/mymusic ext4 default 1 2
+```
+If we now want to enlarge our logical volume, we can do so without unmounting it. We do need to have free volume in our volumegroup. First you’ll need to enlarge the logical volume and afterwards the file system. So first, we’ll check the available space in our group and logical volume.
+```bash
+student@linux-ess:~$ sudo df -h /mnt/mymusic/
+Filesystem               Size  Used Avail Use% Mounted on
+/dev/mapper/myvg0-music   90M   24K   83M   1% /mnt/mymusic
+student@linux-ess:~$ sudo vgs myvg0
+  VG    #PV #LV #SN Attr   VSize   VFree
+  myvg0   1   1   0 wz--n- 396.00m 296.00m
+```
+We can than extend the volume as possible with the lvextend command.
+```bash
+student@linux-ess:~$ sudo lvextend -L +100M /dev/mapper/myvg0-music
+  Size of logical volume myvg0/music changed from 100.00 MiB (25 extents) to 200.00 MiB (50 extents).
+  Logical volume myvg0/music successfully resized.
+```
+Afterwards the file system needs to be enlarged as well, this is possible with the resize2fs command for ext filesystems and xfs_growfs for xfs filesystems. 
+```bash
+student@linux-ess:~$ sudo resize2fs /dev/mapper/myvg0-music
+resize2fs 1.46.5 (30-Dec-2021)
+Filesystem at /dev/mapper/myvg0-music is mounted on /mnt/mymusic; on-line resizing required
+old_desc_blocks = 1, new_desc_blocks = 1
+The filesystem on /dev/mapper/myvg0-music is now 51200 (4k) blocks long.
+```
+Check if the file system is enlarged after the configuration. 
+```bash
+student@linux-ess:~$ sudo df -h /mnt/mymusic/
+Filesystem               Size  Used Avail Use% Mounted on
+/dev/mapper/myvg0-music  184M  120K  175M   1% /mnt/mymusic
+```
+Now that we have seen how to enlarge a volume, we can try and make it smaller again as well. To start this we need to unmount our volume and check the logical volume for defragmentation with the e2fsck command. Next we need to risize the file system first to the newly wanted smaller size. Afterwards we can make the volumegroup smaller. Now we can remount the logical volume and check if all configurations were successful. 
+```bash
+student@linux-ess:~$ student@linux-ess:~$ sudo umount /mnt/mymusic
+student@linux-ess:~$ sudo e2fsck -f /dev/mapper/myvg0-music
+e2fsck 1.46.5 (30-Dec-2021)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+/dev/mapper/myvg0-music: 11/51200 files (9.1% non-contiguous), 4262/51200 blocks
+student@linux-ess:~$ sudo resize2fs /dev/mapper/myvg0-music 50M
+resize2fs 1.46.5 (30-Dec-2021)
+Resizing the filesystem on /dev/mapper/myvg0-music to 12800 (4k) blocks.
+The filesystem on /dev/mapper/myvg0-music is now 12800 (4k) blocks long.
+
+student@linux-ess:~$ sudo lvreduce -L 50M -r /dev/mapper/myvg0-music
+  Rounding size to boundary between physical extents: 52.00 MiB.
+fsck from util-linux 2.37.2
+/dev/mapper/myvg0-music: clean, 11/25600 files, 2646/12800 blocks
+resize2fs 1.46.5 (30-Dec-2021)
+Resizing the filesystem on /dev/mapper/myvg0-music to 13312 (4k) blocks.
+The filesystem on /dev/mapper/myvg0-music is now 13312 (4k) blocks long.
+
+  Size of logical volume myvg0/music changed from 200.00 MiB (50 extents) to 52.00 MiB (13 extents).
+  Logical volume myvg0/music successfully resized.
+student@linux-ess:~$ sudo mount /dev/mapper/myvg0-music /mnt/mymusic/
+student@linux-ess:~$ sudo df -h /mnt/mymusic/
+Filesystem               Size  Used Avail Use% Mounted on
+/dev/mapper/myvg0-music   42M   72K   39M   1% /mnt/mymusic
+```
+
+## The mount command
+We’ve now mostly mounted our volumes and drives with the mount command and shown off the /etc/fstab file. But the mount command isn’t only used to mount local storagedevices. We can also mount network directories with NFS or Samba, mount image files and mount drives or USB flash drives which didn’t automount. 
+To check what file systems are supported by the kernel to mount, check the /proc/filesystems file. These file systems are supported by the kernel, but not necessarily by your Linux distribution! 
+```bash
+student@linux-ess:~$ cat /proc/filesystems
+nodev   sysfs
+nodev   tmpfs
+nodev   bdev
+nodev   proc
+nodev   cgroup
+nodev   cgroup2
+nodev   cpuset
+nodev   devtmpfs
+nodev   configfs
+nodev   debugfs
+nodev   tracefs
+nodev   securityfs
+nodev   sockfs
+nodev   bpf
+nodev   pipefs
+nodev   ramfs
+nodev   hugetlbfs
+nodev   devpts
+        ext3
+        ext2
+        ext4
+        squashfs
+        vfat
+nodev   ecryptfs
+        fuseblk
+nodev   fuse
+nodev   fusectl
+nodev   mqueue
+nodev   pstore
+        btrfs
+nodev   autofs
+```
+To check all modules which can be loaded by your kernel when a file system is mounted use the command: 
+```bash
+student@linux-ess:~$ ls /lib/modules/$(uname -r)/kernel/fs
+9p      befs            ceph    efs    freevxfs  hfsplus  ksmbd  nfs_common  ntfs3      pstore    romfs         udf
+adfs    bfs             cifs    erofs  fscache   hpfs     lockd  nfsd        ocfs2      qnx4      shiftfs.ko    ufs
+affs    binfmt_misc.ko  coda    exfat  fuse      isofs    minix  nilfs2      omfs       qnx6      smbfs_common  vboxsf
+afs     btrfs           cramfs  f2fs   gfs2      jffs2    netfs  nls         orangefs   quota     sysv          xfs
+autofs  cachefiles      dlm     fat    hfs       jfs      nfs    ntfs        overlayfs  reiserfs  ubifs         zonefs
+```
+For more info check the manpage on filesystems: man fs
+
+## Swapspace
+Up next, we check how to use a swapspace. We already created one before, but did not add it to our usable swapspace. The swapspace is used when your system runs out of RAM and needs to offload any unused data, which is needed later on again. To create a swapspace we use the command mkswap, to turn the swapspace on or off, use the swapon or swapoff command.
+We’ll recreate adding swapspace by the following example. First we check the availeble space at this time.
+```bash
+student@linux-ess:~$ free -h
+               total        used        free      shared  buff/cache   available
+Mem:           3.8Gi       304Mi       2.8Gi       1.0Mi       678Mi       3.3Gi
+Swap:             0B          0B          0B
+```
+We’ll now create a file of 1 GiB and make a swapspace out of this. At the end we turn it on to make it usable for our system. We can check this by just entering the swapon command without parameters. We can also check the full available swapspace as shown earlier.
+```bash
+student@linux-ess:~$ free -h
+               total        used        free      shared  buff/cache   available
+Mem:           3.8Gi       304Mi       2.8Gi       1.0Mi       678Mi       3.3Gi
+Swap:             0B          0B          0B
+student@linux-ess:~$ sudo dd if=/dev/zero of=/var/opt/myswap bs=1M count=1024
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 4.21084 s, 255 MB/s
+student@linux-ess:~$ sudo chmod 0600 /var/opt/myswap
+student@linux-ess:~$ sudo mkswap /var/opt/myswap
+Setting up swapspace version 1, size = 1024 MiB (1073737728 bytes)
+no label, UUID=0a79aa31-fca6-4ad7-893b-4d3da75233fb
+student@linux-ess:~$ sudo swapon /var/opt/myswap
+student@linux-ess:~$ swapon
+NAME            TYPE  SIZE USED PRIO
+/var/opt/myswap file 1024M   0B   -2
+student@linux-ess:~$ free -h
+               total        used        free      shared  buff/cache   available
+Mem:           3.8Gi       308Mi       1.8Gi       1.0Mi       1.7Gi       3.3Gi
+Swap:          1.0Gi          0B       1.0Gi
+```
+Again we can add this to the /etc/fstab file to make this extra swapspace permanently available. 
+```bash
+student@linux-ess:~$ sudo nano /etc/fstab
+/var/opt/myswap swap swap defaults 0 0
+```
+We use swap in the second field as there is no mounting point for swapspace. To turn on any swapspace immediately we can use the swapon -a command. 
+If we want to remove swapspace we fist need to check that it isn’t in use. If this is the case we can remove it by the swapoff command. 
+```bash
+student@linux-ess:~$ swapon
+NAME            TYPE  SIZE USED PRIO
+/var/opt/myswap file 1024M   0B   -2
+student@linux-ess:~$ sudo swapoff /var/opt/myswap
+```
