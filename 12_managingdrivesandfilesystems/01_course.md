@@ -404,7 +404,7 @@ Command (m for help): l
 0b W95 FAT32        51 OnTrack DM6 Aux  9f BSD/OS           e4 SpeedStor
 0c W95 FAT32 (LBA)  52 CP/M             a0 IBM Thinkpad hi  ea Linux extended
 0e W95 FAT16 (LBA)  53 OnTrack DM6 Aux  a5 FreeBSD          eb BeOS fs
-0f W95 Ext'd (LBA)  54 OnTrackDM6       a6 OpenBSD          ee GPT
+0f W95 Ext´d (LBA)  54 OnTrackDM6       a6 OpenBSD          ee GPT
 10 OPUS             55 EZ-Drive         a7 NeXTSTEP         ef EFI (FAT-12/16/
 11 Hidden FAT12     56 Golden Bow       a8 Darwin UFS       f0 Linux/PA-RISC b
 12 Compaq diagnost  5c Priam Edisk      a9 NetBSD           f1 SpeedStor
