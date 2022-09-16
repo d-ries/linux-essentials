@@ -36,7 +36,7 @@ Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
 ```
-Every SCSI, SATA or USB device gets represented by sd? (sda, sdb, sdc, …). These device can have a maximum of 16 subdivisions (sdc, sdc1 -> sdc15) this means there is a maximum of 15 partitions. A drive can have 4 primary partition maximum. If you need more than 4 partitions, you’ll need to use extend partitions. The first drive mostly shows up as /dev/sda. As said before at least one partition is created when installing Linux, this partion is used as a Linux LVM fysical partition where other logical partitions can be created. 
+Every SCSI, SATA or USB device gets represented by sd? (sda, sdb, sdc, …). These device can have a maximum of 16 subdivisions (sdc, sdc1 -> sdc15) this means there is a maximum of 15 partitions. A drive can have 4 primary partition maximum. If you need more than 4 partitions, you’ll need to use extend partitions. The first drive mostly shows up as /dev/sda. As said before at least one partition is created when installing Linux, this partion is used as a Linux LVM physical partition where other logical partitions can be created. 
 ```bash
 student@linux-ess:~$ sudo fdisk -l /dev/sda
 [sudo] password for student:
@@ -53,8 +53,8 @@ Device       Start      End  Sectors  Size Type
 /dev/sda2     4096  3719167  3715072  1.8G Linux filesystem
 /dev/sda3  3719168 41940991 38221824 18.2G Linux filesystem
 ```
-Looking at our sda drive we see it partitioned into /boot of +- 1GB. The * indicates this partition is bootable. The rest of the drive is a fysical LVM partition. This one is used to create logical volumes. 
-With lsblk we see all availeble drives and its partitiones. 
+Looking at our sda drive we see it partitioned into /boot of +- 1GB. The * indicates this partition is bootable. The rest of the drive is a physical LVM partition. This one is used to create logical volumes. 
+With lsblk we see all available drives and its partitiones. 
 ```bash
 student@linux-ess:~$ lsblk
 $NAME                      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
@@ -236,7 +236,7 @@ student@linux-ess:~$ sudo nano /etc/fstab
 /dev/disk/by-uuid/0b189ed9-2d70-4955-9e36-66ad45dbbee7 /boot ext4 defaults 0 1
 /dev/sdb1 /mnt/test ext4 defaults 0 2
 ```
-In this example /dev/sdb1 gets mounted to the folder /mnt/test with ext4 as its file system. The defaults means it gets mounted with default options (rw, auto, …). The two numbers at the end stand for: 0 tells the system it does not need to make backup files of this file system with the help of the dump command. This command is barely used nowadays because of crashes, but the number field is still availeble. The 2 at the end indicates the order the system is checked at boot. This value is 1 for the root file system and 2 for others. If you do not want to check at boot time set this field to 0. Now this entry is added to the /etc/fstab file, the drive will mount next time your system boots. 
+In this example /dev/sdb1 gets mounted to the folder /mnt/test with ext4 as its file system. The defaults means it gets mounted with default options (rw, auto, …). The two numbers at the end stand for: 0 tells the system it does not need to make backup files of this file system with the help of the dump command. This command is barely used nowadays because of crashes, but the number field is still available. The 2 at the end indicates the order the system is checked at boot. This value is 1 for the root file system and 2 for others. If you do not want to check at boot time set this field to 0. Now this entry is added to the /etc/fstab file, the drive will mount next time your system boots. 
 
 ## adding a disk with multiple partitions
 We’ll now begin again with our drive and try to create multiple partitions. The partitions we want are: 
@@ -488,7 +488,7 @@ student@linux-ess:~$ grep sdb /proc/partitions
    8       21     358400 sdb5
    8       22     409600 sdb6
 ```
-All partitions are now ready with their different types. We now need to enter the command to install the file systems to these partitions. Again we use the mkfs command for sdb1, sdb3 and sdb5. Sdb2 will be a swap space, we use the command mkswap to accomplish this. For the lvm volume, sdb6, we need to create a fysical volume with the pvcreate command.
+All partitions are now ready with their different types. We now need to enter the command to install the file systems to these partitions. Again we use the mkfs command for sdb1, sdb3 and sdb5. Sdb2 will be a swap space, we use the command mkswap to accomplish this. For the lvm volume, sdb6, we need to create a physical volume with the pvcreate command.
 ```bash
 student@linux-ess:~$ sudo mkfs.ext4 /dev/sdb1
 mke2fs 1.46.5 (30-Dec-2021)
@@ -606,7 +606,7 @@ student@linux-ess:~$ sudo pvdisplay /dev/sda3
   Allocated PE          2560
   PV UUID               9cx3Lm-p95X-Q5fO-ZLSo-KPtf-1ZoN-UyqahD
 ```
-We see that /dev/sda3 has a fysical size of 18.23GiB. This volume is added to the volume group: ubuntu-vg. The smallest unit storage that can be granted is 4 MiB.
+We see that /dev/sda3 has a physical size of 18.23GiB. This volume is added to the volume group: ubuntu-vg. The smallest unit storage that can be granted is 4 MiB.
 ?> <i class="fa-solid fa-circle-info"></i> Extra info: 1 MB = 1000000 bytes = 10^6 bytes 
 1 MiB = 1048576 bytes = 2^20 bytes
 To check the information about this volume group us the command vgdisplay.
@@ -855,7 +855,7 @@ For more info check the manpage on filesystems: man fs
 
 ## Swapspace
 Up next, we check how to use a swapspace. We already created one before, but did not add it to our usable swapspace. The swapspace is used when your system runs out of RAM and needs to offload any unused data, which is needed later on again. To create a swapspace we use the command mkswap, to turn the swapspace on or off, use the swapon or swapoff command.
-We’ll recreate adding swapspace by the following example. First we check the availeble space at this time.
+We’ll recreate adding swapspace by the following example. First we check the available space at this time.
 ```bash
 student@linux-ess:~$ free -h
                total        used        free      shared  buff/cache   available
