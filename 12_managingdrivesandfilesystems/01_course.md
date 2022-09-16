@@ -685,8 +685,8 @@ student@linux-ess:~$ ls -l /dev/mapper/* | awk '{print $1" "$3" "$4" "$9,$10,$11
 crw------- root root 12:43 /dev/mapper/control
 lrwxrwxrwx root root /dev/mapper/ubuntu--vg-ubuntu--lv -> ../dm-0
 ```
-![ubuntulvm](../images/12/ubuntuLVM.PNG#gh-dark-mode-only)
-![ubuntulvm](../images/12/ubuntuLVMblackarrows.PNG#gh-light-mode-only)
+![ubuntulvm](https://raw.githubusercontent.com/d-ries/linux-essentials/main/images/12/ubuntuLVM.PNG?token=GHSAT0AAAAAABYRCSWRJTQ5GISHHVLXT6TCYZER4LA#gh-dark-mode-only)
+![ubuntulvm](https://raw.githubusercontent.com/d-ries/linux-essentials/main/images/12/ubuntuLVM.PNG?token=GHSAT0AAAAAABYRCSWRJTQ5GISHHVLXT6TCYZER4LA#gh-light-mode-only)
 <picture>
   <source srcset="https://raw.githubusercontent.com/d-ries/linux-essentials/main/images/12/ubuntuLVM.PNG?token=GHSAT0AAAAAABYRCSWRJTQ5GISHHVLXT6TCYZER4LA" media="(prefers-color-scheme: dark)">
   <img src="https://raw.githubusercontent.com/d-ries/linux-essentials/main/images/12/ubuntuLVMblackarrows.PNG?token=GHSAT0AAAAAABYRCSWQRZUIFYC2ROPBH6X6YZER4ZA">
