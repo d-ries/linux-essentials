@@ -64,3 +64,9 @@ xr for others, wr for group and no permissions for the file owner. Check with th
 ## Task 6
 Create the directory sturcture with the necessary users, groups and ACLs as show in the image below.
 ![foldersecurity](../../../images/09/folderSecurity.PNG)
+
+## Task 7
+Find out how to copy the ACL-configurations of one folder to another one. 
+
+## Task 8
+Find out how to create a backup of the ACL-configurations set on a directory.
