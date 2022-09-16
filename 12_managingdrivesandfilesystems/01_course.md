@@ -688,8 +688,8 @@ lrwxrwxrwx root root /dev/mapper/ubuntu--vg-ubuntu--lv -> ../dm-0
 ![ubuntulvm](../images/12/ubuntuLVM.PNG#gh-dark-mode-only)
 ![ubuntulvm](../images/12/ubuntuLVMblackarrows.PNG#gh-light-mode-only)
 <picture>
-  <source srcset="../images/12/ubuntuLVM.PNG" media="(prefers-color-scheme: dark)">
-  <img src="../images/12/ubuntuLVMblackarrows.PNG">
+  <source srcset="https://github.com/d-ries/linux-essentials/blob/main/images/12/ubuntuLVM.PNG" media="(prefers-color-scheme: dark)">
+  <img src="https://github.com/d-ries/linux-essentials/blob/main/images/12/ubuntuLVMblackarrows.PNG">
 </picture>
 
 As shown in the figure, it starts with one or more physical volumes, from these you can create a volumegroup. From this volumegroup we create logical volumes. We can check these 3 steps with the commands used earlier: pvdisplay, vgdisplay and lvdisplay. We will now create our own volume group and logical volumes from the physical volume created earlier. To create this physical volume we used the pvcreate command, to create a volumegroup we can use a similar command: vgcreate, we name our group myvg0.
