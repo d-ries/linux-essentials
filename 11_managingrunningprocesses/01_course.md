@@ -6,14 +6,14 @@ An example of a process is to start the vi-editor by using the vi-command that i
 ## Listing processes with ps
 ps is the oldest and most used command to list the running processes. 
 ```bash
-student@linux-ess-desktop:~$ ps
+student@linux-ess:~$ ps
     PID TTY          TIME CMD
    2556 pts/0    00:00:00 bash
   11680 pts/0    00:00:00 ps
 ```
 By adding the option u to the ps command some additional information is shown. These being: The usernames, start time of the process, CPU- and memory usage, from where the process is started for example tty1 or pts/0. The concept of these terminals descends from the time people exclusively worked from terminals. There was one person on one terminal. Nowadays multiple terminals can be opened on the same screen by opening multiple virtual terminals. 
 ```bash
-student@linux-ess-desktop:~$ ps -u
+student@linux-ess:~$ ps -u
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 student     1906  0.0  0.1 171040  6104 tty2     Ssl+ 13:41   0:00 /usr/libexec/gdm-wayland-ses
 student     1915  0.0  0.3 231688 15420 tty2     Sl+  13:41   0:00 /usr/libexec/gnome-session-b
@@ -36,7 +36,7 @@ A lot of processes running on your system are not associated with a terminal, th
 
 To show all running processes for your current user use: 
 ```bash
-student@linux-ess-desktop:~$ ps ux | less
+student@linux-ess:~$ ps ux | less
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 student     1807  0.0  0.3  20956 13480 ?        Ss   13:41   0:00 /lib/systemd/systemd --user
 student     1808  0.0  0.1 105604  5328 ?        S    13:41   0:00 (sd-pam)
@@ -59,7 +59,7 @@ student     1948  0.0  0.9 643640 39360 ?        Sl   13:41   0:00 /usr/libexec/
 ```
 To show all running processes of all users use: 
 ```bash
-student@linux-ess-desktop:~$ ps aux | less
+student@linux-ess:~$ ps aux | less
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root           1  0.0  0.3 102468 13252 ?        Ss   13:41   0:03 /sbin/init splash
 root           2  0.0  0.0      0     0 ?        S    13:41   0:00 [kthreadd]
@@ -80,7 +80,7 @@ root          17  0.0  0.0      0     0 ?        S    13:41   0:00 [cpuhp/0]
 
 In the following example the option -e is used to show all running processes, the option -o is given when specific data is wanted. We chose for the process ID, user and user ID, group and group ID, virtual set size, resident set size and the command. 
 ```bash
-student@linux-ess-desktop:~$ ps -eo pid,user,uid,group,gid,vsz,rss,comm | less
+student@linux-ess:~$ ps -eo pid,user,uid,group,gid,vsz,rss,comm | less
 PID USER       UID GROUP      GID    VSZ   RSS COMMAND
   1 root         0 root         0 102468 13252 systemd
   2 root         0 root         0      0     0 kthreadd
@@ -102,7 +102,7 @@ PID USER       UID GROUP      GID    VSZ   RSS COMMAND
 
 We can also add the option –-sort= to the command and choose a parameter to sort our list. We chose the rss values from large to small with the – sign. 
 ```bash
-student@linux-ess-desktop:~$ ps -eo pid,user,uid,group,gid,vsz,rss,comm --sort=-rss | less
+student@linux-ess:~$ ps -eo pid,user,uid,group,gid,vsz,rss,comm --sort=-rss | less
     PID USER       UID GROUP      GID    VSZ   RSS COMMAND
    2049 student   1000 student   1000 4206700 249244 gnome-shell
    2398 student   1000 student   1000 210408 69364 Xwayland
@@ -157,26 +157,26 @@ To show all processes and not only the ones of the current user, go to the menu 
 Our bash shell, unlike a Graphical User Interface, does not have the possibility to run and show different programs simultaneously in the shell, but we are able to run programs in the front- or background.Knowing that it is possible to run multiple programs at the same time in our shell there must be a way to choose what is running at the fore- and background at what time. For starters there are different methods of running programs in the background. 
 You can add a & after the command to start it in the background
 ```bash
-student@linux-ess-desktop:~$ find /usr > /tmp/allusrfiles &
+student@linux-ess:~$ find /usr > /tmp/allusrfiles &
 [1] 11896
 ```
 You can use the at command to run a process at a specific time. With the cron command it is possible to do this on a regular basis. For the at command we echo an output into the at command as shown by an example below, you can check what is scheduled and remove when necerry with the atrm or at -r command. Cron works different, it uses a file where we put everything we want to happen with the timing, in the example below we echo some text to a file every minute. Remove the line from the crontab to stop this from happening. To check all possibilities check the man at and man cron pages. To see what processes are running in the background use the jobs command.
 ```bash
-tudent@linux-ess-desktop:~$ sudo apt-get install at
-student@linux-ess-desktop:~$ echo "hello" | at -m 2pm
-student@linux-ess-desktop:~$ echo "reboot" | at now + 2 days
+tudent@linux-ess:~$ sudo apt-get install at
+student@linux-ess:~$ echo "hello" | at -m 2pm
+student@linux-ess:~$ echo "reboot" | at now + 2 days
 warning: commands will be executed using /bin/sh
 job 4 at Sat Sep 17 13:26:00 2022
-student@linux-ess-desktop:~$ at -l
+student@linux-ess:~$ at -l
 3	Sat Sep 17 13:25:00 2022 a student
 4	Sat Sep 17 13:26:00 2022 a student
 1	Thu Sep 15 14:00:00 2022 a student
-student@linux-ess-desktop:~$ atrm 3
-student@linux-ess-desktop:~$ at -l
+student@linux-ess:~$ atrm 3
+student@linux-ess:~$ at -l
 4	Sat Sep 17 13:26:00 2022 a student
 1	Thu Sep 15 14:00:00 2022 a student
 
-@linux-ess-desktop:~$ crontab -e
+@linux-ess:~$ crontab -e
 no crontab for student - using an empty one
 
 Select an editor.  To change later, run 'select-editor'.
@@ -189,7 +189,7 @@ crontab: installing new crontab
 
 * * * * * echo 'run this command every minute' >> /tmp/spam.txt
 
-@linux-ess-desktop:~$ crontab -l
+@linux-ess:~$ crontab -l
 # Edit this file to introduce tasks to be run by cron.
 # 
 # Each task to run has to be defined through a single line
@@ -214,11 +214,11 @@ crontab: installing new crontab
 # 
 # m h  dom mon dow   command
 * * * * * echo 'run this command every minute' >> /tmp/spam.txt
-student@linux-ess-desktop:~$ cat /tmp/spam.txt 
+student@linux-ess:~$ cat /tmp/spam.txt 
 run this command every minute
 run this command every minute
 
-student@linux-ess-desktop:~$ jobs
+student@linux-ess:~$ jobs
 [1]   Running                 sleep 30 &
 [2]   Running                 sleep 25 &
 [3]   Running                 sleep 20 &
@@ -229,7 +229,7 @@ The + shows the last (=most recent) process added to the background
 The – shows the second to last process added to the background  
 To pause a process and put it in the background use ctrl + Z  
 ```bash
-student@linux-ess-desktop:~$ sleep 50
+student@linux-ess:~$ sleep 50
 ^Z
 [1]   Done                    sleep 30
 [2]   Done                    sleep 25
@@ -239,7 +239,7 @@ student@linux-ess-desktop:~$ sleep 50
 ```
 To bring the command back to the front, use the fg command.
 ```bash
-student@linux-ess-desktop:~$ fg
+student@linux-ess:~$ fg
 sleep 50
 ```
 *	Fg %<jobnumber>
@@ -249,14 +249,14 @@ sleep 50
 *	%- : second to last program send to background  
 With the bg command you can resume a paused process that is located in the background
 ```bash
-student@linux-ess-desktop:~$ sleep 50
+student@linux-ess:~$ sleep 50
 ^Z
 [1]+  Stopped                 sleep 50
-student@linux-ess-desktop:~$ jobs
+student@linux-ess:~$ jobs
 [1]+  Stopped                 sleep 50
-student@linux-ess-desktop:~$ bg %1
+student@linux-ess:~$ bg %1
 [1]+ sleep 50 &
-student@linux-ess-desktop:~$ jobs
+student@linux-ess:~$ jobs
 [1]+  Running                 sleep 50 &
 ```
 A process running in the background can still show its output, even when another process is running. For example, when working with nano, an output can come up in your screen. Press ctrl + L to renew the window.   
@@ -265,19 +265,19 @@ Killing or renicing (changing the priority) is also possible with these processe
     
 Sending signals to a process with kill:
 ```bash
-student@linux-ess-desktop:~$ sleep 500 &
+student@linux-ess:~$ sleep 500 &
 [1] 11977
-student@linux-ess-desktop:~$ kill 11977
+student@linux-ess:~$ kill 11977
 [1]+  Terminated              sleep 500
-student@linux-ess-desktop:~$ sleep 500 &
+student@linux-ess:~$ sleep 500 &
 [1] 11981
-student@linux-ess-desktop:~$ kill -9 11981
-student@linux-ess-desktop:~$ sleep 500 &
+student@linux-ess:~$ kill -9 11981
+student@linux-ess:~$ sleep 500 &
 [1] 11982
-student@linux-ess-desktop:~$ kill -15 11982
-student@linux-ess-desktop:~$ sleep 500 &
+student@linux-ess:~$ kill -15 11982
+student@linux-ess:~$ sleep 500 &
 [1] 11983
-student@linux-ess-desktop:~$ kill -SIGKILL 11983
+student@linux-ess:~$ kill -SIGKILL 11983
 ```
 With the kill or killall command, there are more possibilities than stopping a process. You can reload configuration files, pause, continue, … To do this, signals, numbers and/or names are used. A few examples, use the kill -l command to show all options:
 *	SIGKILL (9): abruptly and immediately stop a process
@@ -291,22 +291,22 @@ With the kill or killall command, there are more possibilities than stopping a p
 
 With the nice command, a process can start with a given nice-value or priority. This value gives the process priority to use the CPU. -20 is the best or highest nice-value and 19 the worst or lowest. A normal user can only use a positive value from 0 till 19. 
 ```bash
-student@linux-ess-desktop:~$ nice -n 10 sleep 100 &
+student@linux-ess:~$ nice -n 10 sleep 100 &
 [4] 11986
-student@linux-ess-desktop:~$ ps ao user,ni,comm | grep sleep
+student@linux-ess:~$ ps ao user,ni,comm | grep sleep
 student   10 sleep
-student@linux-ess-desktop:~$ nice -n -15 sleep 100 &
+student@linux-ess:~$ nice -n -15 sleep 100 &
 [6] 11995
-student@linux-ess-desktop:~$ nice: cannot set niceness: Permission denied
-student@linux-ess-desktop:~$ ps ao user,ni,comm | grep sleep
+student@linux-ess:~$ nice: cannot set niceness: Permission denied
+student@linux-ess:~$ ps ao user,ni,comm | grep sleep
 student    0 sleep
 ```
 Use the renice command to change the priority of a running process. Only root can set the priority higher.
 ```bash
-student@linux-ess-desktop:~$ nice -n 0 sleep 100 &
+student@linux-ess:~$ nice -n 0 sleep 100 &
 [1] 12011
-student@linux-ess-desktop:~$ sudo renice -n -5 12011
+student@linux-ess:~$ sudo renice -n -5 12011
 12011 (process ID) old priority 0, new priority -5
-student@linux-ess-desktop:~$ ps ao user,ni,comm | grep sleep
+student@linux-ess:~$ ps ao user,ni,comm | grep sleep
 student   -5 sleep
 ```
