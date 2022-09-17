@@ -1,7 +1,7 @@
 # Introduction
 
 ## Linux
-Windows, made by Microsoft, is a well-known operating system mostly using Desktop environments, but there are other alternatives as well. One of the more popular ones are MacOSX, ChromeOS and, of course, Linux. Linux, using a desktop environment, is less prominent than the others.
+Windows, made by Microsoft, is a well-known Operating System mostly used on Desktop computers, but there are other alternatives as well. One of the more popular ones are MacOSX, ChromeOS and, of course, Linux. Linux, using a desktop environment, is less prominent than the others.
 
 In Server / IOT / mobile environments, a certain shift in used operating systems occurred. Linux is one of the most popular operating systems in these markets. Some interesting statements:
 * [Most supercomputers run on Linux](https://www.top500.org/statistics/details/osfam/1/)
