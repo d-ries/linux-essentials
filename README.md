@@ -8,7 +8,7 @@ This course teaches you how to use a Linux CLI. To achieve this we use practical
 
 ## Goals <!-- {docsify-ignore} -->
 After following this course you can:
-* Explain some of the fundamental features of a linux operating system.
+* Explain some of the fundamental features of a Linux Operating System.
 * Install and configure a Linux OS in a virtual environment.
 * Use basic commands in a command line interface.
 * Use commands with arguments and options.
@@ -17,5 +17,6 @@ After following this course you can:
 * Manage users and groups
 * manage user and group permissions
 * Automate simple tasks using basics scripts and OS features.
+* ...
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons-Licentie" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /> Content on this site is licenced under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International licence</a>.
