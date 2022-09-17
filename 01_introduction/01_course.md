@@ -3,24 +3,24 @@
 ## Linux
 Windows, made by Microsoft, is a well-known Operating System mostly used on Desktop computers, but there are other alternatives as well. One of the more popular ones are MacOSX, ChromeOS and, of course, Linux. Linux, using a desktop environment, is less prominent than the others.
 
-In Server / IOT / mobile environments, a certain shift in used operating systems occurred. Linux is one of the most popular operating systems in these markets. Some interesting statements:
+In Server / IOT / mobile environments, a certain shift in used Operating Systems occurred. Linux is one of the most popular operating systems in these markets. Some interesting statements:
 * [Most supercomputers run on Linux](https://www.top500.org/statistics/details/osfam/1/)
 * [111+ Linux Statistics and Facts – Linux Rocks!](https://webtribunal.net/blog/linux-statistics/)
 * [The most popular cloud infrastructure providers use Linux](https://www.linuxfoundation.org/blog/how-amazon-web-services-uses-linux-and-open-source/)
 
 ![tux right](../images/tux.png)
 
-Linux is used in smartphones, (web) servers, tablets, IoT devices, Smart washing machines, self driving cars, modems, routers, PlayStation, ... In brief: Linux is used way more than you would initially think. Linux even has his own mascotte, the penguin named Tux!
+Linux is used in smartphones, (web) servers, tablets, IoT devices, Smart washing machines, self driving cars, modems, routers, PlayStations, ... In brief: Linux is used way more than you would initially think. Linux even has its own mascotte, the penguin named Tux!
 
 ### Unix
-Dennis Ritchie and Ken Thompson created the Unix operating system in 1969. The source code from this OS was was shared at that time. After a while the company AT&T Bell Labs decided they wanted to sell Unix commercially. BSD further developed the operating system independently from Unix. This led to subsequent versions:
+Dennis Ritchie and Ken Thompson created the Unix operating system in 1969. The source code from this OS was shared at that time. After a while the company AT&T Bell Labs decided they wanted to sell Unix commercially. BSD further developed the Operating System independently from Unix. This led to subsequent versions:
 * Unix: The commercial version
 * BSD Unix: The open source version
 
-In the '80 there were different versions of Unix. Because Unix was commercialized (AT&T), the source code of Unix was rewritten: GNU project ("GNU is not unix"). The goal of GNU was the development of an open source operating system where everyone could work on together as a community. The GNU project was missing a kernel.
+In the '80 there were different versions of Unix. Because Unix was commercialized (AT&T), the source code of Unix was rewritten: GNU project ("GNU is not unix"). The goal of GNU was the development of an open source Operating System where everyone could work on together as a community. The GNU project was missing a kernel.
 
 ### Linux
-A student named Linus Torvalds created a post in a newsgroup about his own operating system in the '90:
+A student named Linus Torvalds created a post in a newsgroup about his own Operating System in the '90:
 
 ![linux](../images/01/linus.PNG)
 
