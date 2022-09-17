@@ -686,10 +686,6 @@ crw------- root root 12:43 /dev/mapper/control
 lrwxrwxrwx root root /dev/mapper/ubuntu--vg-ubuntu--lv -> ../dm-0
 ```
 ![ubuntulvm](../images/12/ubuntuLVM.PNG)
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../images/12/ubuntuLVM.PNG">
-  <img alt="Text changing depending on mode. Light: 'So light!' Dark: 'So dark!'" src="../images/12/ubuntuLVMblackarrows.PNG">
-</picture>
 
 As shown in the figure, it starts with one or more physical volumes, from these you can create a volumegroup. From this volumegroup we create logical volumes. We can check these 3 steps with the commands used earlier: pvdisplay, vgdisplay and lvdisplay. We will now create our own volume group and logical volumes from the physical volume created earlier. To create this physical volume we used the pvcreate command, to create a volumegroup we can use a similar command: vgcreate, we name our group myvg0.
 ```bash
