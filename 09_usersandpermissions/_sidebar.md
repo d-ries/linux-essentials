@@ -17,4 +17,4 @@
 * [10 Automation](./10_automation/01_course.md)
 * [11 Managing running processes](./11_managingrunningprocesses/01_course.md)
 * [12 Managing drives and filesystems](./12_managingdrivesandfilesystems/01_course.md)
-* [13 What's next](./13_next/01_course.md)
+* [13 Logging](./13_Logging/01_course.md)
