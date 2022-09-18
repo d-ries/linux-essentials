@@ -14,4 +14,4 @@
 ** [Lab](./11_managingrunningprocesses/02_lab.md)
 ** [Assignment](./11_managingrunningprocesses/99_assignments.md)
 * [12 Managing drives and filesystems](./12_managingdrivesandfilesystems/01_course.md)
-* [13 What's next](./13_next/01_course.md)
+* [13 Logging](./13_Logging/01_course.md)
