@@ -1,7 +1,7 @@
 ![pxl right](./images/pxl.png)
 # Linux Essentials
 ## Information <!-- {docsify-ignore} -->
-This course emphasizes using the command line interface in Linux environments. This course focuses on basic operations such as working with files & folders, working with file contents, linux file structure, ...
+This course emphasizes using the command line interface in Linux environments. This course focuses on basic operations such as working with hard disks, filesystems, files & folders, working with file contents, linux file structure, file permissions, ...
 
 ## Structure <!-- {docsify-ignore} -->
 This course teaches you how to use a Linux CLI. To achieve this we use practical labs & exercises as well as a manual containing some of the most essential commands and use cases. The practical labs follow an authentic case of a Computer Science student named Linus who wants to setup his own Minecraft server.
