@@ -39,6 +39,7 @@
       },
       plugins: [
       function(hook, vm) {
+        // Custom hook to replace µi µ blocks to warning divs styling
         hook.afterEach(function(html, next) {
             let warnings = html.match(/µi.+?µ/g);
             if (warnings) {
@@ -49,6 +50,25 @@
               });
             } 
             next(html);
+        
+        });
+
+        // Custom hook to replace images specific for dark mode
+        hook.afterEach(function(html, next){
+          // add source path objects to this array to auto replace them based on the theme.
+          // By default images in the markdown file should be configured to use the light theme image.
+          // This image will then be replaced by the dark theme image path when using dark theme.
+          const darkThemeImagePaths = [
+            {originalPath: '../images/12/ubuntuLVMblackarrows.PNG', darkThemePath: '../images/12/ubuntuLVM.PNG' }
+          ];
+
+          const ThemeColor = localStorage.getItem('DARK_LIGHT_THEME');
+          if (ThemeColor == 'dark'){
+            darkThemeImagePaths.forEach(e => {
+              html = html.replace(e.originalPath, e.darkThemePath);
+            });
+          }
+          next(html);
         });
       }
       ]

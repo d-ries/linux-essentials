@@ -685,7 +685,7 @@ student@linux-ess:~$ ls -l /dev/mapper/* | awk '{print $1" "$3" "$4" "$9,$10,$11
 crw------- root root 12:43 /dev/mapper/control
 lrwxrwxrwx root root /dev/mapper/ubuntu--vg-ubuntu--lv -> ../dm-0
 ```
-![ubuntulvm](../images/12/ubuntuLVM.PNG)
+![ubuntulvm](../images/12/ubuntuLVMblackarrows.PNG)
 
 As shown in the figure, it starts with one or more physical volumes, from these you can create a volumegroup. From this volumegroup we create logical volumes. We can check these 3 steps with the commands used earlier: pvdisplay, vgdisplay and lvdisplay. We will now create our own volume group and logical volumes from the physical volume created earlier. To create this physical volume we used the pvcreate command, to create a volumegroup we can use a similar command: vgcreate, we name our group myvg0.
 ```bash
