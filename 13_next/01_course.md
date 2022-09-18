@@ -1,7 +1,5 @@
-# What's next
+# What will be added in the near future
 
-Disk Management  
 LVM  
-Processes  
 Logging (journalctl   &   /var/log/...)  
 
