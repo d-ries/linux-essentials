@@ -12,10 +12,10 @@ After following this course you can:
 * Install and configure a Linux OS in a virtual environment.
 * Use basic commands in a command line interface.
 * Use commands with arguments and options.
-* Work with files, folders and paths in a CLI.
+* Work with hard drives, filesystems, files, folders and paths in a CLI.
 * Install, update and remove software.
 * Manage users and groups
-* manage user and group permissions
+* manage user, group and file permissions
 * Automate simple tasks using basics scripts and OS features.
 * ...
 
