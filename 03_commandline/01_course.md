@@ -105,7 +105,7 @@ passwd (1)           - change user password
 passwd (1ssl)        - compute password hashes
 passwd (5)           - the password file
 ```
-Looking at the output above we see 3 ```passwd``` entries containing different numbers between the round brackets. The numbers refer to the _sections_ of the manpage. By default, the `man` command will open the first section is finds. In this case _section 1_, which contains information about the command `passwd`. We can see that there is also a _section 5_ which contains information about the configuration file `/etc/passwd`. We can open this section by specifying it as follows:
+Looking at the output above we see 3 ```passwd``` entries containing different numbers between the round brackets. The numbers refer to the _sections_ of the manpage. By default, the `man` command will open the first section it finds. In this case _section 1_, which contains information about the command `passwd`. We can see that there is also a _section 5_ which contains information about the configuration file `/etc/passwd`. We can open this section by specifying it as follows:
 ```bash
 man 5 passwd
 ```
