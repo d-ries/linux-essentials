@@ -84,7 +84,7 @@ Type man followed by a command (for which you want help) and start reading:
 ```bash
 man shutdown
 ```
-Not only commands have their own manpage, config/system files might have a manpage as well. The command below shows the manpage of the `syslog.conf` file:
+Not only commands have their own manpage, config/system files might have a manpage as well. The command below shows the manpage of the `sudo.conf` file:
 ```bash
 man sudo.conf
 ``` 
