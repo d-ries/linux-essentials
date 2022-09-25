@@ -31,7 +31,7 @@ whatis apt-get
 ```
 He wants to get more information about the usage of the command so he decides to view te manpage:
 ```bash
-man wget
+man apt-get
 ```
 This command gives us the full _manual_ of the `apt-get` command:
 
