@@ -148,7 +148,7 @@ ip a
 ![CLI_LAB_ip_a](../images/03/CLI_LAB_ip_a.png)
 <br />
 
-*Second* he needs to open Powershell on the Desktop and make a ssh-connection to the server. He is now working on the server from his desktop. Cool, isn't it?
+*Second* he desides to open Powershell on the Desktop and make a ssh-connection to the server. He is now working on the server from his desktop. Cool, isn't it?
 ```bash
 ssh student@<server-ip>
 ```
