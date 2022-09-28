@@ -13,7 +13,7 @@ This command prints the current working directory. The working directory refers 
 student@linux-ess:~$ pwd
 /home/student
 ```
-In Windows, an _absolute path_ starts with `C:\...`. In Linux we do not use Drive letters. The highest folder (in Windows often `C:\`) in Linux is called the _root directory_. This directory is reffered to as a `/` at the beginning of a path. More about _absolute_ and _relative_ paths later in this chapter.
+In Windows, an _absolute path_ starts with `C:\...`. In Linux we do not use Drive letters. The drive (in Windows often `C:\`) in Linux is called the _root directory_. This directory is reffered to as a `/` at the beginning of a path. More about _absolute_ and _relative_ paths later in this chapter.
 
 The folder `student` is our current working directory. This folder is a subfolder of the folder `home` which on his turn is a subfolder of the _root directory_ `/`.
 
