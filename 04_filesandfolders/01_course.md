@@ -7,7 +7,7 @@ student@linux-ess:~$ whatis pwd
 pwd - print name of current/working directory
 ```
 
-This command prints the current working directory. The working directory refers to the directory where the prompt is active in. Any command we run that involves files or folders will be ran in this directory:
+This command prints the current working directory. The working directory refers to the directory where the prompt is active in. 
 
 ```bash
 student@linux-ess:~$ pwd
