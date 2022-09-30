@@ -19,7 +19,7 @@ The folder `student` is our current working directory. This folder is a subfolde
 
 ![DirectoryHierarchy](../images/04/DirectoryHierarchy.png)
 
-?> <i class="fa-solid fa-circle-info"></i> Remember the prompt which contained an active path? The `~` sign was an abbreviation for the folder `/home/student`. This is called the _homefolder_. Every user on the operating system will get their own _homefolder_ in the folder `/home` just like in Windows, where every user has his own folder under `C:\Users`. This user has all permissions (read, write, execute) in his own homefolder. Outside of that folder he often only has _read_ permissions.
+?> <i class="fa-solid fa-circle-info"></i> Remember the prompt which contained an active path? The `~` sign was an abbreviation for the folder `/home/student`. This is called the _homefolder_. Every user on the operating system will get their own _homefolder_ in the folder `/home` just like in Windows, where every user has his own folder under `C:\Users`. A user has all permissions (read, write, execute) in his own homefolder. Outside of that folder he often only has _read_ permissions.
 
 ### Change working directory (cd)
 You can change the current working directory with the `cd` command (change directory):
@@ -35,7 +35,7 @@ student@linux-ess:~$ pwd
 ```
 The command takes a path as an argument. In the example above we will navigate to the folder `etc` on the root directory `/`. We can see this in the output of the `pwd` command and in the prompt definition. As shown in the second part of the example above we can also use the `~` sign to quickly navigate to the user's homefolder.
 
-We could also use the `cd` command without any argument. This will navigate back to the users homefolder as well:
+?> <i class="fa-solid fa-circle-info"></i> We could also use the `cd` command without any argument. This will navigate back to the users homefolder as well:
 ```bash
 student@linux-ess:~$ cd /home/student
 student@linux-ess:~$ pwd
@@ -111,9 +111,9 @@ student@linux-ess:~$ tree /etc/dhcp
 ```
 
 ### Absolute & relative paths
-When using commands we often have to use paths to certain folders/files. The `cd` command for example requires a path to navigate to.
+When using commands we often have to use paths to certain folders or files. The `cd` command for example requires a path to navigate to.
 
-Paths are used to point towards files and folders on the filesystem. We can use two types of paths: _relative_ and _absolute_ paths. Both types work in both Linux and Windows.
+Paths are used to point towards files and folders on the filesystem. We can use two types of paths: _relative_ and _absolute_ paths. 
 
 #### Absolute path
 Absolute paths must start with a `/` sign. This means that an absolute path will start from the _root_ (`/`) directory (the highest level on the filesystem) and will work its way down. For example:
@@ -124,10 +124,14 @@ student@linux-ess:/etc$ cd /home/student/
 student@linux-ess:~/$ pwd
 /home/student
 ```
+
 ?> <i class="fa-solid fa-circle-info"></i> In Windows an absolute path will start with `C:\` rather than `/`!
 
 
-?> <i class="fa-solid fa-circle-info"></i> Did you know the Linux CLI has command and pathcompletion? Try pressing the `tab` key when typing part of a command or folder name. If any command, file or folder matches the first part of the text you typed it will automatically complete the word for you!
+?> <i class="fa-solid fa-circle-info"></i> Did you know the Linux CLI has command and pathcompletion? Try pressing the `tab` key when typing part of a command, file or folder name. If any command, file or folder matches the first part of the text you typed it will automatically complete the word for you!
+
+?> <i class="fa-solid fa-circle-info"></i> When using tab competion on a directory it will end with a slash (/) at the end. `cd /home/student/`. The last slash (/) is optional, so it is exactly the same as `cd /home/student`  
+
 
 #### Relative path
 A relative path will always start from _the current working directory_ and will point to another file or folder from there. For example:
