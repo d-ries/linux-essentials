@@ -1,5 +1,7 @@
 # Assignment on working with files and folders
 
+`Connect over ssh to you server to do the exercises'
+
 ## Task 1
 Navigate to your home directory
 
@@ -83,3 +85,22 @@ Try to navigate to the other user's homefolder with a maximum of 7 keystrokes
 ## Task 18
 Clear the screen
 
+
+## Task 19
+Multiple people can have a ssh connection to the same server and meanwhile a person can be working on the server itself. Each person will have it's own screen (terminal window). 
+Make sure you are logged in on the server itself and are also logged in over ssh. Make sure you see both screens at the same time.  
+
+Search for commands that have the text "logged on" in their short description of the manpage
+
+  
+## Task 20
+In the shell of your ssh session type one of the two commands you found in the previous task.
+You will see two screens, tty1 and .
+  
+Everything is a file in linux. This is also true for the screen/window you're working in. When you are connected over _ssh_, your screen name is _pts/2_. When you are working _on the server_ itself, your screen name is _tty1_.  
+  
+In the shell of your ssh session type `echo hello there > /dev/tty1`. The greater than sign will redirect the output of the text _hello there_ to the tty1 device. The text appears on the screen on the server.
+  
+Try the following command in the shell of you ssh connection: `sl > /dev/tty1`.
+  
+If you want to see your prompt again on the server itself, you just have to press _enter_
