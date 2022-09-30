@@ -9,7 +9,7 @@ Navigate to your home directory
 
 In your homedirectory, create the following structure:
 `
-PXL/Courses/S1/SystemsEss
+PXL/Courses/S1/LinuxEss
 `
 
 ## Task 3
