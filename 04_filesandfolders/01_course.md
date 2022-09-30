@@ -210,11 +210,11 @@ drwxr-xr-x 3 root    root    4.0K Oct  5 13:40 ..
 -rw-r--r-- 1 student student    0 Oct  6 08:20 .sudo_as_admin_successful
 ```
 Notice how we combined 3 options in the command above. Both `ls -a -l -h` and `ls -alh` will function exactly the same and will use all 3 options. The options can be put in any order, so `ls -hal` is also correct. These 3 options are used most often when it comes to the `ls` command. You could search for them in the manpage but we will give an overview:
-* the `-a` option will also show hidden files and folders. **In Linux, hidden files and folders start with a dot (.). e.g. the `.bashrc` file.**
+* the `-a` option will _also show hidden files and folders_. **In Linux, hidden files and folders start with a dot (.). e.g. the `.bashrc` file.**
 * the `-l` option will show a _long listing_. This means that it will show all the extra output\* and not just the file and folder names.
-* the `-h` option refers to _human readable sizes_ and will make filesizes appear with the proper measuring unit rather than showing all sizes in bytes.
+* the `-h` option refers to _human readable_ and will make filesizes appear with the proper measuring unit rather than showing all sizes in bytes.
 
-\* The `-rw-r--r-- 1` column refers to permissions on that specific file/folder. We will explain this in the chapter `users & permissions`. The column containing `student  student` refer to the owner of that specific file/folder and are linked to the permission column. The `45M` on the last line refer to the file size and  `Feb 28 11:48` refers to the timestamp of the last modification of the file.
+\* The `-rw-r--r--` column refers to permissions on that specific file/folder. We will explain this in the chapter `users & permissions`. The columns containing `student  student` refer to the owner and groupowner of that specific file/folder and are linked to the permissions column. The `3.7K` on the line of the file .bashrc refers to the file size and `Oct 5 13:40` refers to the timestamp of the last modification of the file.
 
 ?> <i class="fa-solid fa-circle-info"></i> Everything in Linux is a file. Not just the files, but folders too! They are just defined as _special_ files. Your hard disk? A file. A USB drive? A File. Hardware such as your keyboard? You guessed it, a file!
 
