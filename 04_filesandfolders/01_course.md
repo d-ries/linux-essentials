@@ -148,7 +148,7 @@ When using relative paths, we can use some shortcuts:
 ..(two dots): Refers to the parent directory 
 ~ (tilde): Refers to the current user's homefolder
 ```
-This means that, when in the folder `/home/student/Downloads`, we could use `..` to navigate to the parent directory `/home/student`:
+This means that, when in the folder `/home/student/Downloads`, we could use `..` to navigate to the parent directory `/home/student`
 ```bash
 student@linux-ess:~/Downloads$ pwd
 /home/student/Downloads
@@ -186,13 +186,13 @@ boot  etc  init  lib32  libx32  media       opt  root  sbin  srv   tmp  var
 ```
 
 
-The `ls` command can also take one argument. This argument is a path which can be absolute or relative. The `ls` command will then show the contents of this folder.
+The `ls` command can also take one argument. This argument is a path which can be absolute or relative. The `ls` command will then show the contents of that folder.
 ```bash
 student@linux-essentials:~$ ls
 emptyfile
 student@linux-essentials:~$ ls /
-bin   dev  home  lib    lib64   lost+found  mnt  proc  run   snap  sys  usr
-boot  etc  init  lib32  libx32  media       opt  root  sbin  srv   tmp  var
+bin   dev  home  lib32  libx32      media  opt   root  sbin  srv  tmp  var
+boot  etc  lib   lib64  lost+found  mnt    proc  run   snap  sys  usr
 student@linux-essentials:~$ 
 ```
 
@@ -209,8 +209,8 @@ drwxr-xr-x 3 root    root    4.0K Oct  5 13:40 ..
 -rw-r--r-- 1 student student  807 Oct  5 13:40 .profile
 -rw-r--r-- 1 student student    0 Oct  6 08:20 .sudo_as_admin_successful
 ```
-Notice how we combined 3 options in the command above. Both `ls -a -l -h` and `ls -alh` will function exactly the same and will use all 3 options. The options can be put in any order, so `ls -hal` is also correct. These 3 option are often the most used ones when it comes to the `ls` command. You could look them up in the manpage but we will give an overview:
-* the `-a` option will show hidden files and folders. **In Linux, hidden files and folders start with a `.` dot. eg. the `.bashrc` file.**
+Notice how we combined 3 options in the command above. Both `ls -a -l -h` and `ls -alh` will function exactly the same and will use all 3 options. The options can be put in any order, so `ls -hal` is also correct. These 3 options are used most often when it comes to the `ls` command. You could search for them in the manpage but we will give an overview:
+* the `-a` option will also show hidden files and folders. **In Linux, hidden files and folders start with a dot (.). e.g. the `.bashrc` file.**
 * the `-l` option will show a _long listing_. This means that it will show all the extra output\* and not just the file and folder names.
 * the `-h` option refers to _human readable sizes_ and will make filesizes appear with the proper measuring unit rather than showing all sizes in bytes.
 
