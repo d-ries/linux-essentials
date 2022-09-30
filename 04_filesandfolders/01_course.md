@@ -130,7 +130,7 @@ student@linux-ess:~/$ pwd
 
 ?> <i class="fa-solid fa-circle-info"></i> Did you know the Linux CLI has command and pathcompletion? Try pressing the `tab` key when typing part of a command, file or folder name. If any command, file or folder matches the first part of the text you typed it will automatically complete the word for you!
 
-?> <i class="fa-solid fa-circle-info"></i> When using tab competion on a directory it will end with a slash (/) at the end. `cd /home/student/`. The last slash (/) is optional, so it is exactly the same as `cd /home/student`  
+?> <i class="fa-solid fa-circle-info"></i> When using tab competion on a directory it will end with a slash (/), e.g. `cd /home/student/`. The last slash (/) is optional, so it is exactly the same as `cd /home/student`  
 
 
 #### Relative path
