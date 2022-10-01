@@ -346,8 +346,9 @@ Since the second argument is a destination file or folder, we could use this com
 student@linux-ess:~/aFolder$ ls 
 aFile
 student@linux-ess:~/aFolder$ mv aFile ../newFileName
+student@linux-ess:~/aFolder$ ls 
 student@linux-ess:~/aFolder$ ls ~
-newFileName
+aFolder  backups  Downloads  emptyfile  File  fileOne  fileTwo  'File Two'  newFileName  One
 ```  
   
   
@@ -358,11 +359,11 @@ newFileName
 When renaming only one file or folder, `mv` is the prefered command to use. The examples both used files, but the same logic works for renaming and moving folders.
 ```bash
 student@linux-ess:~$ ls 
-newFileName  aFolder  emptyfile
+aFolder  backups  Downloads  emptyfile  File  fileOne  fileTwo  'File Two'  newFileName  One
 student@linux-ess:~$ mv newFileName myFile 
 student@linux-ess:~$ mv aFolder myFolder 
 student@linux-ess:~$ ls
-myFile  myFolder  emptyfile
+backups  Downloads  emptyfile  File  fileOne  fileTwo  'File Two'  myFile  myFolder  One
 ```
 
 ### Copy files (cp)
