@@ -307,7 +307,11 @@ student@linux-ess:~$ ls aFolder
 aFile
 student@linux-ess:~$ ls
 aFolder  emptyfile
-```
+```  
+  
+  
+![Directories_Ch4_MoveAndRenameFile](../images/04/Ch4_MoveAndRenameFile.png)  
+  
 
 Since the second argument is a destination file or folder, we could use this command to rename a file as well. In the example below we use the `mv` command to move the file back to the homefolder but also renaming it:
 ```bash
