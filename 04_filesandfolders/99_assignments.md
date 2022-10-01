@@ -47,76 +47,81 @@ Install the command `tree` on your ubuntu machine. You can use this command to g
 Why doesn't tab-completion work when executing the following command to open .bashrc?:
 `cat /home/student/.bash<tab>`
 
-
 ## Task 8
+Go to the directory _/etc_.
+Use an absolute path to go to the directory PXL/Software/Virtualization/VMware Workstation
+
+## Task 9
+You are in the directory _VMware Workstation_.
+Use a __relative path__ to go to the directory _LinuxEss_
+
+## Task 10
+You are in the directory _LinuxEss_.
+Use  __the ~__ to go to the directory _.ssh_ in your homefolder.
+
+## Task 11
+Go to your homefolder
+list the files and folders
+list the files and folders in a long listing
+also list the hidden files
+list the files of the directory _/etc_ in a long listing with the filesizes in a _human readable_ format
+ 
+## Task 12
 Create a new folder "My Pictures" in you homefolder. Go into this folder and create, with just one command, these following files (notice the capitalization):
 - Picture1.JPG
 - picture2.JPG
 - Picture3.jpg
 - picture4.jpg
-
  
-## Task 9
+## Task 13
 Rename all files to with the command `rename` so no capitals exist anymore in any of the filenames
 
-
-## Task 10
+## Task 14
 Make sure you are located in your homedirectory (~). <br/>
 Copy all 'files' from this directory into a subdirectory named `backup` in your homefolder.
 
-## Task 11
+## Task 15
 Remove, with just one command, the folder `PXL` with all contents created in the previous Task
 
-
-## Task 12
+## Task 16
 Create this directorystructure with just 1 command:
 `/home/student/school/semester/1/courses/ubuntuserver/exercises/chapter5`
 
-
-## Task 11
+## Task 17
 Create, in the folder named 'exercises', a folder named 'chapter6'
 
-
-## Task 13
+## Task 18
 Remove the folder named 'chapter5'
 
-
-## Task 14
+## Task 19
 Remove all folders starting from the school-directory  
-
 
 ?> <i class="fa-solid fa-circle-info"></i> Some Tasks require a second user on your installation. 
 Execute `sudo useradd -m johndoe` to create the new user
 Execute `sudo passwd johndoe` to set a password for the new user
 
-## Task 15
+## Task 20
 Navigate using absolute-path syntax into the home folder of the user named 'johndoe'
 
-
-## Task 16
+## Task 21
 Navigate to your own home directory
 
-
-## Task 17
+## Task 22
 use cat to print the contents of the .bashrc file that is located in johndoe's homefolder. Use a relative-path syntax.
 
-
-## Task 18
+## Task 23
 Try to navigate to the other user's homefolder with a maximum of 7 keystrokes
 
-
-## Task 19
+## Task 24
 Clear the screen
 
-
-## Task 20
+## Task 25
 Multiple people can have a ssh connection to the same server and meanwhile a person can be working on the server itself. Each person will have it's own screen (terminal window). 
 Make sure you are logged in on the server itself and are also logged in over ssh. Make sure you see both screens at the same time.  
 
 Search for commands that have the text "logged on" in their short description of the manpage
-
   
-## Task 21
+## Task 26
 In the shell of your ssh session type one of the two commands you found in the previous task.
 You will see two screens, tty1 and .
   
