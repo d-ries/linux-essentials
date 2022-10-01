@@ -251,6 +251,9 @@ This will create the folders `Steam` and `games` if they don't exist.
 
 ## Working with files
 ### Create an empty file (touch)
+
+![Directories_fileOne_fileTwo](../images/04/Ch4_fileOne_fileTwo.png)
+
 One easy way to create an empty file is with touch. The example starts with an empty directory, creates two files with touch and then lists
 those files:
 ```bash
