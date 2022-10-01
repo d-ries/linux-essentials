@@ -178,22 +178,22 @@ student@linux-ess:/home/teacher$ pwd
 To list the contents of a directory, we can use the `ls` command. Using the command without any options or arguments will list de contents of the current working directory:
 ```bash
 student@linux-ess:~$ ls
-emptyfile
+emptyfile  Downloads
 ```
 
 We can also go in a certain directory to list its contents:
 ```bash
 student@linux-ess:~$ cd /
 student@linux-ess:/$ ls     
-bin   dev  home  lib    lib64   lost+found  mnt  proc  run   snap  sys  usr
-boot  etc  init  lib32  libx32  media       opt  root  sbin  srv   tmp  var
+bin   dev  home  lib32  libx32      media  opt   root  sbin  srv  tmp  var
+boot  etc  lib   lib64  lost+found  mnt    proc  run   snap  sys  usr
 ```
 
 
 The `ls` command can also take one argument. This argument is a path which can be absolute or relative. The `ls` command will then show the contents of that folder.
 ```bash
 student@linux-essentials:~$ ls
-emptyfile
+emptyfile  Downloads
 student@linux-essentials:~$ ls /
 bin   dev  home  lib32  libx32      media  opt   root  sbin  srv  tmp  var
 boot  etc  lib   lib64  lost+found  mnt    proc  run   snap  sys  usr
@@ -209,8 +209,10 @@ drwxr-xr-x 3 root    root    4.0K Oct  5 13:40 ..
 -rw------- 1 student student 1.7K Mar 17 12:14 .bash_history
 -rw-r--r-- 1 student student  220 Oct  5 13:40 .bash_logout
 -rw-r--r-- 1 student student 3.7K Oct  5 13:40 .bashrc
+drwxrwxr-x 2 student student 4.0K Oct  1 14:31 Downloads
 -rw-r--r-- 1 student student    0 Feb 28 11:48 emptyfile
 -rw-r--r-- 1 student student  807 Oct  5 13:40 .profile
+drwxr-xr-x 2 student student 4.0K Oct  5 13:40 .ssh
 -rw-r--r-- 1 student student    0 Oct  6 08:20 .sudo_as_admin_successful
 ```
 Notice how we combined 3 options in the command above. Both `ls -a -l -h` and `ls -alh` will function exactly the same and will use all 3 options. The options can be put in any order, so `ls -hal` is also correct. These 3 options are used most often when it comes to the `ls` command. You could search for them in the manpage but we will give an overview:
@@ -230,8 +232,7 @@ To create new directories we can use the `mkdir` (make directory) command. The c
 ```bash
 student@linux-ess:~$ mkdir backups
 student@linux-ess:~$ ls
-backups
-emptyfile
+backups  Downloads  emptyfile
 ```
 In the example above the `mkdir` command will create a folder named `backups` in the current working directory (`~` or `/home/student`). The folder name here is a _relative path_. 
 
@@ -244,6 +245,13 @@ mkdir: cannot create directory ‘backups/Steam/games/PayDay2’: No such file o
 The command tries to make a folder named `PayDay2` in the folder `games` which is located in the folder `Steam` which is located in the folder `Backups`. However we get an error because the folders `games` or `Steam` do not exist. We can tell to create any missing subfolders in the path by using the `-p` option:
 ```
 student@linux-ess:~$ mkdir -p backups/Steam/games/PayDay2
+student@linux-ess:~$ tree backups
+backups
+└── Steam
+    └── games
+        └── PayDay2
+
+3 directories, 0 files
 ```
 This will create the folders `Steam` and `games` if they don't exist.
 
@@ -258,15 +266,17 @@ One easy way to create an empty file is with touch. The example starts with an e
 those files:
 ```bash
 student@linux-ess:~$ ls -l
+-rw-rw-r-- 1 student student    0 Oct  1 14:31 emptyfile
 total 0
 student@linux-ess:~$ touch fileOne
 student@linux-ess:~$ touch fileTwo
 student@linux-ess:~$ ls -l
 total 0
+-rw-rw-r-- 1 student student 0 Oct  1 14:31 emptyfile
 -rw-r--r-- 1 student student 0 Feb 12 09:50 fileOne
 -rw-r--r-- 1 student student 0 Feb 12 09:50 fileTwo
 ```
-Note that both of these files are empty as seen by the file size. In the next chapter we will look into ways to create files with contents.
+?> <i class="fa-solid fa-circle-info"></i> Note that both of these files are empty as seen by the file size. In the next chapter we will look into ways to create files with contents.
 
 
 ### Files with spaces in the name
@@ -276,21 +286,30 @@ Note that both of these files are empty as seen by the file size. In the next ch
 If we want to work with files with spaces in the name we can put the name between double quotes:
 ```bash
 student@linux-ess:~$ ls -l
+-rw-rw-r-- 1 student student 0 Oct  1 14:31 emptyfile
+-rw-r--r-- 1 student student 0 Feb 12 09:50 fileOne
+-rw-r--r-- 1 student student 0 Feb 12 09:50 fileTwo
 total 0
 student@linux-ess:~$ touch File One
 student@linux-ess:~$ ls -l
 total 0
+-rw-rw-r-- 1 student student 0 Oct  1 14:31 emptyfile
+-rw-r--r-- 1 student student 0 Feb 12 09:50 fileOne
+-rw-r--r-- 1 student student 0 Feb 12 09:50 fileTwo
 -rw-r--r-- 1 student student 0 Feb 12 09:50 File
 -rw-r--r-- 1 student student 0 Feb 12 09:50 One
 student@linux-ess:~$ touch "File Two"
 student@linux-ess:~$ ls -l
 total 0
+-rw-rw-r-- 1 student student 0 Oct  1 14:31 emptyfile
+-rw-r--r-- 1 student student 0 Feb 12 09:50 fileOne
+-rw-r--r-- 1 student student 0 Feb 12 09:50 fileTwo
 -rw-r--r-- 1 student student 0 Feb 12 09:50 File
 -rw-r--r-- 1 student student 0 Feb 12 09:50 File Two
 -rw-r--r-- 1 student student 0 Feb 12 09:50 One
 
 ```
-Note that we could also use single quotes `touch 'File Two'` or a backslash to escape the space `touch File\ Two`.
+?> <i class="fa-solid fa-circle-info"></i> Note that we could also use single quotes `touch 'File Two'` or a backslash to escape the space `touch File\ Two`.
 
 
 
