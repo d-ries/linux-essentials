@@ -315,7 +315,7 @@ drwxrwxr-x 2 student student 4096 Oct  1 14:31 Downloads
 -rw-r--r-- 1 student student 0 Feb 12 09:50 fileOne
 -rw-r--r-- 1 student student 0 Feb 12 09:50 fileTwo
 -rw-r--r-- 1 student student 0 Feb 12 09:50 File
--rw-r--r-- 1 student student 0 Feb 12 09:50 File Two
+-rw-r--r-- 1 student student 0 Feb 12 09:50 'File Two'
 -rw-r--r-- 1 student student 0 Feb 12 09:50 One
 ```  
 ?> <i class="fa-solid fa-circle-info"></i> Note that we could also use single quotes `touch 'File Two'` or a backslash to escape the space `touch File\ Two`.
@@ -329,12 +329,12 @@ drwxrwxr-x 2 student student 4096 Oct  1 14:31 Downloads
 To move a file to another folder we can use the `mv` (move) command. This command takes two arguments: the source file/folder and the destination file/folder:
 ```bash
 student@linux-ess:~$ ls
-aFile  aFolder  emptyfile
+aFile  aFolder  backups  Downloads  emptyfile  File  fileOne  fileTwo  'File Two'  One
 student@linux-ess:~$ mv aFile aFolder/
+student@linux-ess:~$ ls
+aFolder  backups  Downloads  emptyfile  File  fileOne  fileTwo  'File Two'  One
 student@linux-ess:~$ ls aFolder
 aFile
-student@linux-ess:~$ ls
-aFolder  emptyfile
 ```  
   
   
