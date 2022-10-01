@@ -223,6 +223,9 @@ Notice how we combined 3 options in the command above. Both `ls -a -l -h` and `l
 ?> <i class="fa-solid fa-circle-info"></i> Everything in Linux is a file. Not just the files, but folders too! They are just defined as _special_ files. Your hard disk? A file. A USB drive? A File. Hardware such as your keyboard? You guessed it, a file!
 
 ### Create directories (mkdir)
+
+![Directories_Downloads_Steam_games_teacher_backups](../images/04/Ch4_Downloads_Steam_games_teacher_backups.png)
+
 To create new directories we can use the `mkdir` (make directory) command. The command takes a path as an argument:
 ```bash
 student@linux-ess:~$ mkdir backups
