@@ -4,6 +4,8 @@
 
 ## Task 1
 Navigate to your home directory with the least number of keystrokes (three to be exact)
+What is the command to show the full path of where you are in the filetree?
+What is the full path of your homefolder?
 
 
 ## Task 2
@@ -25,13 +27,18 @@ Please use tab-completion whenever you can!
 ![Task](../images/04/Ch4_Task3.png)  
 
 ## Task 4
-While staying in your homefolder create the directory _WindowsEss_ as a subdirectory of _S1_. Do this by using an _relative path_.
+While in your homefolder create the directory _WindowsEss_ as a subdirectory of _S1_. Do this by using an _relative path_.
 
 Please use tab-completion whenever you can!  
 ![Task](../images/04/Ch4_Task4.png)  
 
 ## Task 5
-Create, without leaving your homedirectory, an empty file named `empty` in each folder created in the previous Task
+While in your homedirectory, create the following structure with _just one command_:
+`
+PXL/Software/Virtualization/VMware Workstation
+`  
+Mind the space in the filename! 
+![Task](../images/04/Ch4_Task5.png)   
 
 ## Task 6
 Install the command `tree` on your ubuntu machine. You can use this command to get an overview of directorystructures on your system. Search the manpage of tree to show the contents of the root directory and one extra level.
