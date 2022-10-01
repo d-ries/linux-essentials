@@ -11,7 +11,8 @@ In your homedirectory, create the following structure:
 `
 PXL/Courses/S1/LinuxEss
 `  
-![Task](../images/04/Ch4_Task2.png)
+![Task](../images/04/Ch4_Task2.png)  
+
 ?> <i class="fa-solid fa-circle-info"></i> You'll need this structure in a next Task
 
 ## Task 3
