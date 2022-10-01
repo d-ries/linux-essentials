@@ -293,7 +293,7 @@ total 0
 Note that we could also use single quotes `touch 'File Two'` or a backslash to escape the space `touch File\ Two`.
 
 
-
+![Directories_Ch4_MoveAFile](../images/04/Ch4_MoveAFile.png)
 
 ### Move files (mv)
 To move a file to another folder we can use the `mv` (move) command. This command takes two arguments: the source file/folder and the destination file/folder:
