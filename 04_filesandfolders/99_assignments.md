@@ -11,22 +11,37 @@ In your homedirectory, create the following structure:
 `
 PXL/Courses/S1/LinuxEss
 `  
+Do this by going into each created directory to create the next one.
 ![Task](../images/04/Ch4_Task2.png)  
 
 ?> <i class="fa-solid fa-circle-info"></i> You'll need this structure in a next Task
 
 ## Task 3
-Create, without leaving your homedirectory, an empty file named `empty` in each folder created in the previous Task
+Go back to your homefolder.
+While staying in your homefolder create the directory _S2_ as a subdirectory of _Courses_. Do this by using an _absolute path_.
+While staying in your homefolder create the directory _NetworksEss_ as a subdirectory of _S2_. Do this also by using an _absolute path_.
+
+Please use tab-completion whenever you can!  
+![Task](../images/04/Ch4_Task2.png)  
 
 ## Task 4
-Install the command `tree` on your ubuntu machine. You can use this command to get an overview of directorystructures on your system. Search the manpage of tree to show the contents of the root directory and one extra level.
+While staying in your homefolder create the directory _WindowsEss_ as a subdirectory of _S1_. Do this by using an _relative path_.
+
+Please use tab-completion whenever you can!  
+![Task](../images/04/Ch4_Task2.png)  
 
 ## Task 5
+Create, without leaving your homedirectory, an empty file named `empty` in each folder created in the previous Task
+
+## Task 6
+Install the command `tree` on your ubuntu machine. You can use this command to get an overview of directorystructures on your system. Search the manpage of tree to show the contents of the root directory and one extra level.
+
+## Task 7
 Why doesn't tab-completion work when executing the following command to open .bashrc?:
 `cat /home/student/.bash<tab>`
 
 
-## Task 6
+## Task 8
 Create a new folder "My Pictures" in you homefolder. Go into this folder and create, with just one command, these following files (notice the capitalization):
 - Picture1.JPG
 - picture2.JPG
@@ -34,19 +49,19 @@ Create a new folder "My Pictures" in you homefolder. Go into this folder and cre
 - picture4.jpg
 
 
-## Task 7
+## Task 9
 Rename all files to with the command `rename` so no capitals exist anymore in any of the filenames
 
 
-## Task 8
+## Task 10
 Make sure you are located in your homedirectory (~). <br/>
 Copy all 'files' from this directory into a subdirectory named `backup` in your homefolder.
 
-## Task 9
+## Task 11
 Remove, with just one command, the folder `PXL` with all contents created in the previous Task
 
 
-## Task 10
+## Task 12
 Create this directorystructure with just 1 command:
 `/home/student/school/semester/1/courses/ubuntuserver/exercises/chapter5`
 
@@ -55,11 +70,11 @@ Create this directorystructure with just 1 command:
 Create, in the folder named 'exercises', a folder named 'chapter6'
 
 
-## Task 12
+## Task 13
 Remove the folder named 'chapter5'
 
 
-## Task 13
+## Task 14
 Remove all folders starting from the school-directory  
 
 
@@ -67,34 +82,34 @@ Remove all folders starting from the school-directory
 Execute `sudo useradd -m johndoe` to create the new user
 Execute `sudo passwd johndoe` to set a password for the new user
 
-## Task 14
+## Task 15
 Navigate using absolute-path syntax into the home folder of the user named 'johndoe'
 
 
-## Task 15
+## Task 16
 Navigate to your own home directory
 
 
-## Task 16
+## Task 17
 use cat to print the contents of the .bashrc file that is located in johndoe's homefolder. Use a relative-path syntax.
 
 
-## Task 17
+## Task 18
 Try to navigate to the other user's homefolder with a maximum of 7 keystrokes
 
 
-## Task 18
+## Task 19
 Clear the screen
 
 
-## Task 19
+## Task 20
 Multiple people can have a ssh connection to the same server and meanwhile a person can be working on the server itself. Each person will have it's own screen (terminal window). 
 Make sure you are logged in on the server itself and are also logged in over ssh. Make sure you see both screens at the same time.  
 
 Search for commands that have the text "logged on" in their short description of the manpage
 
   
-## Task 20
+## Task 21
 In the shell of your ssh session type one of the two commands you found in the previous task.
 You will see two screens, tty1 and .
   
