@@ -320,7 +320,12 @@ aFile
 student@linux-ess:~/aFolder$ mv aFile ../newFileName
 student@linux-ess:~/aFolder$ ls ~
 newFileName
-```
+```  
+  
+  
+![Directories_Ch4_RenameFileWithMV.png](../images/04/Ch4_RenameFileWithMV.png) 
+  
+  
 
 When renaming only one file or folder, `mv` is the prefered command to use. The examples both used files, but the same logic works for renaming and moving folders.
 ```bash
