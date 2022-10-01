@@ -22,13 +22,13 @@ While staying in your homefolder create the directory _S2_ as a subdirectory of 
 While staying in your homefolder create the directory _NetworksEss_ as a subdirectory of _S2_. Do this also by using an _absolute path_.
 
 Please use tab-completion whenever you can!  
-![Task](../images/04/Ch4_Task2.png)  
+![Task](../images/04/Ch4_Task3.png)  
 
 ## Task 4
 While staying in your homefolder create the directory _WindowsEss_ as a subdirectory of _S1_. Do this by using an _relative path_.
 
 Please use tab-completion whenever you can!  
-![Task](../images/04/Ch4_Task2.png)  
+![Task](../images/04/Ch4_Task4.png)  
 
 ## Task 5
 Create, without leaving your homedirectory, an empty file named `empty` in each folder created in the previous Task
