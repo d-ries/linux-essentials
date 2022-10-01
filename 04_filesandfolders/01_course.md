@@ -52,7 +52,9 @@ student@linux-ess:~$ pwd
 student@linux-ess:~$ ls
 emptyfile
 ```
-
+  
+![DirectoryEmptyFile](../images/04/Ch4_Emptyfile.png)
+  
 ?> <i class="fa-solid fa-circle-info"></i> The command `touch` is used to create an empty file named `emptyfile`. The command is explained later on in this chapter.
 
 ### Display a tree view in the shell (tree)
