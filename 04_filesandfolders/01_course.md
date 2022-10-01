@@ -117,6 +117,8 @@ When using commands we often have to use paths to certain folders or files. The 
 
 Paths are used to point towards files and folders on the filesystem. We can use two types of paths: _relative_ and _absolute_ paths. 
 
+![Directories_Downloads_Steam_games](../images/04/Ch4_Downloads_Steam_games.png)
+
 #### Absolute path
 Absolute paths must start with a `/` sign. This means that an absolute path will start from the _root_ (`/`) directory (the highest level on the filesystem) and will work its way down. For example:
 ```bash
