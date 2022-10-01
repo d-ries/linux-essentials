@@ -3,16 +3,16 @@
 `Connect over ssh to you server to do the exercises'
 
 ## Task 1
-Navigate to your home directory
+Navigate to your home directory with the least number of keystrokes (three to be exact)
 
 
 ## Task 2
-?> <i class="fa-solid fa-circle-info"></i> You'll need this structure in a next Task
-
 In your homedirectory, create the following structure:
 `
 PXL/Courses/S1/LinuxEss
-`
+`  
+![Task](../images/04/Ch4_Task2.png)
+?> <i class="fa-solid fa-circle-info"></i> You'll need this structure in a next Task
 
 ## Task 3
 Create, without leaving your homedirectory, an empty file named `empty` in each folder created in the previous Task
