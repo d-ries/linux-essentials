@@ -72,9 +72,11 @@ Create a new folder "My Pictures" in you homefolder. Go into this folder and cre
 - picture2.JPG
 - Picture3.jpg
 - picture4.jpg
- 
+  
+Mind the casing!
+
 ## Task 13
-Rename all files to with the command `rename` so no capitals exist anymore in any of the filenames
+Use the command `rename` twice to rename all files so no capitals exist anymore in any of the filenames.
 
 ## Task 14
 Make sure you are located in your homedirectory (~). <br/>
