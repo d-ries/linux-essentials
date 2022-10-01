@@ -270,6 +270,9 @@ Note that both of these files are empty as seen by the file size. In the next ch
 
 
 ### Files with spaces in the name
+
+![Directories_Ch4_filenameWithSpaces](../images/04/Ch4_filenameWithSpaces.png)
+
 If we want to work with files with spaces in the name we can put the name between double quotes:
 ```bash
 student@linux-ess:~$ ls -l
