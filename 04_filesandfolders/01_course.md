@@ -266,13 +266,17 @@ One easy way to create an empty file is with touch. The example starts with an e
 those files:
 ```bash
 student@linux-ess:~$ ls -l
+total 8
+drwxrwxr-x 3 student student 4096 Oct  1 14:34 backups
+drwxrwxr-x 2 student student 4096 Oct  1 14:31 Downloads
 -rw-rw-r-- 1 student student    0 Oct  1 14:31 emptyfile
-total 0
 student@linux-ess:~$ touch fileOne
 student@linux-ess:~$ touch fileTwo
 student@linux-ess:~$ ls -l
 total 0
--rw-rw-r-- 1 student student 0 Oct  1 14:31 emptyfile
+drwxrwxr-x 3 student student 4096 Oct  1 14:34 backups
+drwxrwxr-x 2 student student 4096 Oct  1 14:31 Downloads
+-rw-rw-r-- 1 student student    0 Oct  1 14:31 emptyfile
 -rw-r--r-- 1 student student 0 Feb 12 09:50 fileOne
 -rw-r--r-- 1 student student 0 Feb 12 09:50 fileTwo
 ```
@@ -286,14 +290,18 @@ total 0
 If we want to work with files with spaces in the name we can put the name between double quotes:
 ```bash
 student@linux-ess:~$ ls -l
--rw-rw-r-- 1 student student 0 Oct  1 14:31 emptyfile
+total 0
+drwxrwxr-x 3 student student 4096 Oct  1 14:34 backups
+drwxrwxr-x 2 student student 4096 Oct  1 14:31 Downloads
+-rw-rw-r-- 1 student student    0 Oct  1 14:31 emptyfile
 -rw-r--r-- 1 student student 0 Feb 12 09:50 fileOne
 -rw-r--r-- 1 student student 0 Feb 12 09:50 fileTwo
-total 0
 student@linux-ess:~$ touch File One
 student@linux-ess:~$ ls -l
 total 0
--rw-rw-r-- 1 student student 0 Oct  1 14:31 emptyfile
+drwxrwxr-x 3 student student 4096 Oct  1 14:34 backups
+drwxrwxr-x 2 student student 4096 Oct  1 14:31 Downloads
+-rw-rw-r-- 1 student student    0 Oct  1 14:31 emptyfile
 -rw-r--r-- 1 student student 0 Feb 12 09:50 fileOne
 -rw-r--r-- 1 student student 0 Feb 12 09:50 fileTwo
 -rw-r--r-- 1 student student 0 Feb 12 09:50 File
@@ -301,14 +309,15 @@ total 0
 student@linux-ess:~$ touch "File Two"
 student@linux-ess:~$ ls -l
 total 0
--rw-rw-r-- 1 student student 0 Oct  1 14:31 emptyfile
+drwxrwxr-x 3 student student 4096 Oct  1 14:34 backups
+drwxrwxr-x 2 student student 4096 Oct  1 14:31 Downloads
+-rw-rw-r-- 1 student student    0 Oct  1 14:31 emptyfile
 -rw-r--r-- 1 student student 0 Feb 12 09:50 fileOne
 -rw-r--r-- 1 student student 0 Feb 12 09:50 fileTwo
 -rw-r--r-- 1 student student 0 Feb 12 09:50 File
 -rw-r--r-- 1 student student 0 Feb 12 09:50 File Two
 -rw-r--r-- 1 student student 0 Feb 12 09:50 One
-
-```
+```  
 ?> <i class="fa-solid fa-circle-info"></i> Note that we could also use single quotes `touch 'File Two'` or a backslash to escape the space `touch File\ Two`.
 
 
