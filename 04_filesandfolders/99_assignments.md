@@ -48,7 +48,7 @@ Create a new folder "My Pictures" in you homefolder. Go into this folder and cre
 - Picture3.jpg
 - picture4.jpg
 
-
+ 
 ## Task 9
 Rename all files to with the command `rename` so no capitals exist anymore in any of the filenames
 
