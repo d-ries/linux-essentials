@@ -382,9 +382,9 @@ Both arguments are paths. The first path is the original file/folder. The second
 
 #### Copy to another directory
 
-![copy_emptyfile_emptyfilebackup](../images/04/Ch4_copy_emptyfile_emptyfilebackup.png)  
+![Ch4_copy_myfile_emptyfilebkp](../images/04/Ch4_copy_myfile_emptyfilebkp.png)  
 
-The example below shows us how we can use the arguments in the `cp` command to copy files or folders to another directory. In this example we copy the file named `myFile` into the directory called `myFolder` using a _relative_ path.
+The example below shows us how we can use the arguments in the `cp` command to copy files or folders to another directory. In this example we copy the file named _myFile_ into the directory called _myFolder_ using a _relative_ path. We also copy the file named _emptyfile_ into the directory called _myFolder_ and give it the new name _emptyFile.bkp_. We do this with using an absolute path. 
 ```bash
 student@linux-ess:~$ ls
 backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File Two'  myFile  myFolder  One
@@ -392,14 +392,14 @@ student@linux-ess:~$ cp myFile myFolder/
 student@linux-ess:~$ ls myFolder
 myFile
 student@linux-ess:~$ ls
-aFile  aFolder  emptyfile  emptyfile.backup
-student@linux-ess:~$ cp /home/student/aFile /home/student/aFolder/aFile.backup
-student@linux-ess:~$ ls aFolder
-aFile  aFile.backup
+backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File Two'  myFile  myFolder  One
+student@linux-ess:~$ cp /home/student/emptyFile /home/student/myFolder/emptyFile.bkp
+student@linux-ess:~$ ls myFolder
+myFile  emptyFile.bkp
 student@linux-ess:~$ ls
-aFile  aFolder  emptyfile  emptyfile.backup
+backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File Two'  myFile  myFolder  One
 ```
-Note that we can use both _relative_ and _absolute_ paths in the copy command for both the original file/folder and the destination file/folder.
+?> <i class="fa-solid fa-circle-info"></i> Note that we can use both _relative_ and _absolute_ paths in the copy command for both the original file/folder and the destination file/folder.
 
 #### Copy recursive
 To copy complete directories (meaning all subfolders and files inside the directory) we will have to use the `-r` (recursive) option:
