@@ -460,6 +460,9 @@ A lot is going on in the example above, let's summarize what is present:
 ?> <i class="fa-solid fa-circle-info"></i> a `*` (asterisk) is considered a wildcard character in bash. It refers to _zero, one or more characters_. So in the example above this translates to: "run this replacement regex on all files containing zero,one or more characters of any kind, following and ending with the string `.txt`.
 
 We could also use the `rename` command to change the file extentions of all files and folders:
+
+![Ch4_Rename_Extentions](../images/04/Ch4_Rename_Extentions.png) 
+
 ```bash
 student@linux-ess:~/renamedir$ ls
 aFile  aFile.backup  adocument.txt  anotherFolder.txt  anotherdocument.txt  backup.txt  prodocuments.txt  profiles.backup  profiles2.ODT  yaay.txt
@@ -472,7 +475,7 @@ aFile  aFile.backup  adocument.odt  anotherFolder.odt  anotherdocument.odt  back
 
 We could also use the `rename` command to change multiple file extentions at once:
 
-![Ch4_Rename_Extentions](../images/04/Ch4_Rename_Extentions.png) 
+![Ch4_Rename_Extentions_Case_Insensitive](../images/04/Ch4_Rename_Extentions_Case_Insensitive.png) 
 
 ```bash
 student@linux-ess:~/renamedir$ ls
@@ -488,22 +491,23 @@ aFile  aFile.doc  adocument.doc  anotherFolder.doc  anotherdocument.doc  backup.
 ### Identifying files (file)
 In Linux we don't have to use file extentions. This means we don't always know the file type. We can use the `file` command to identify the type of a file:
 ```bash
-student@linux-ess:~$ file pxl.png
-pxl.png: PNG image data, 1920 x 1080, 8-bit/color RGBA, non-interlaced
+student@linux-ess:~$ wget --cipher 'DEFAULT:!DH' http://www.pxl.be/img/logo.png
+student@linux-ess:~$ file logo.png
+logo.png: PNG image data, 150 x 150, 8-bit/color RGBA, non-interlaced
 student@linux-ess:~$ file /etc/passwd
 /etc/passwd: ASCII text
 ```
 
 ## Delete files & folders (rm)
-For deleting folders we could use the `rmdir` command but nobody ever does,... **ever**. This is because it wont delete folders containing other folders out of the box and it wont ever delete folders that have files in them.
+For deleting folders we could use the `rmdir` command but keep in mind that it wont delete folders containing other files or folders.
 
 For deleting both files and folders we mostly use the `rm` command:
 ```bash
 student@linux-ess:~$ ls
-sampleFile moreStuff
-student@linux-ess:~$ rm sampleFile
+backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File Two'  myFile  myFolder  myFolder.backup  One
+student@linux-ess:~$ rm emptyfile.backup
 student@linux-ess:~$ ls
-moreStuff
+backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File Two'  myFile  myFolder  myFolder.backup  One
 ```
 The `rm` command has different options as well, the most used combination is `rm -rf`:
 * `-r` will mean it will remove files & folders recursive
