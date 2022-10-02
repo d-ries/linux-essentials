@@ -367,7 +367,9 @@ backups  Downloads  emptyfile  File  fileOne  fileTwo  'File Two'  myFile  myFol
 ```
 
 ### Copy files (cp)
-![copy_emptyfile_emptyfilebackup](../images/04/Ch4_copy_emptyfile_emptyfilebackup.png) 
+
+![copy_emptyfile_emptyfilebackup](../images/04/Ch4_copy_emptyfile_emptyfilebackup.png)  
+
 To make a copy of a file we can use the `cp` (copy) command as follows:
 ```bash
 student@linux-ess:~$ ls
@@ -379,7 +381,9 @@ backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File T
 Both arguments are paths. The first path is the original file/folder. The second path is a path to the new location and (optional) filename/foldername. We can use the cp command to copy both files and folders to the same directory or a different directory.
 
 #### Copy to another directory
-![copy_emptyfile_emptyfilebackup](../images/04/Ch4_copy_emptyfile_emptyfilebackup.png) 
+
+![copy_emptyfile_emptyfilebackup](../images/04/Ch4_copy_emptyfile_emptyfilebackup.png)  
+
 The example below shows us how we can use the arguments in the `cp` command to copy files or folders to another directory. In this example we copy the file named `myFile` into the directory called `myFolder` using a _relative_ path.
 ```bash
 student@linux-ess:~$ ls
