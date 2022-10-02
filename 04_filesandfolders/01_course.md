@@ -450,7 +450,7 @@ student@linux-ess:~/renamedir$ ls
 aFile  aFile.backup  adocument.txt  anotherFolder.txt  anotherdocument.txt  backup.txt  prodocuments.txt  profiles.backup  profiles2.ODT  yaay.txt
 ```
 
-?> <i class="fa-solid fa-circle-info"></i> If rename is not yet installed you can do this with the command `sudo apt -y install rename`. The installation process will ask you for your password.
+?> <i class="fa-solid fa-circle-info"></i> If rename is not yet installed you can do this with the command `sudo apt -y install rename`.   
 
 A lot is going on in the example above, let's summarize what is present:
 * The folder we are in contains some `txt` files, some `backup` files and files with `no extension`. Some of the files contain the word `file` that we want to replace with `document`. Remember that by default Linux is case-sensitive, so `file`is not the same as `File`.
@@ -471,6 +471,9 @@ aFile  aFile.backup  adocument.odt  anotherFolder.odt  anotherdocument.odt  back
 
 
 We could also use the `rename` command to change multiple file extentions at once:
+
+![Ch4_Rename_Extentions](../images/04/Ch4_Rename_Extentions.png) 
+
 ```bash
 student@linux-ess:~/renamedir$ ls
 aFile  aFile.backup  adocument.odt  anotherFolder.odt  anotherdocument.odt  backup.odt  prodocuments.odt  profiles.backup  profiles2.ODT  yaay.odt
