@@ -421,15 +421,15 @@ myFile  emptyFile.bkp
 #### Overwrite files
 We have to be aware that the `cp` command will overwrite existing files by default. We can use the `-i` (interactive) option to get a prompt where we have to confirm if we want to overwrite the file as seen in the example below:
 ```bash
-student@linux-ess:~$ ls aFolder
-aFile  aFile.backup
 student@linux-ess:~$ ls
-aFile  aFolder  emptyfile  emptyfile.backup
-student@linux-ess:~$ cp aFile aFolder/aFile.backup     # No error, the file gets overwritten
-student@linux-ess:~$ ls aFolder
-aFile  aFile.backup
-student@linux-ess:~$ cp -i aFile aFolder/aFile.backup     # you will be asked to overwrite or not
-cp: overwrite `aFile.backup'? y
+backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File Two'  myFile  myFolder  myFolder.backup  One
+student@linux-ess:~$ ls myFolder
+myFile  emptyFile.bkp
+student@linux-ess:~$ cp myFile myFolder/emptyFile.bkp     # No error, the file gets overwritten
+student@linux-ess:~$ ls myFolder
+myFile  emptyFile.bkp
+student@linux-ess:~$ cp -i myFile myFolder/emptyFile.bkp     # you will be asked to overwrite or not
+cp: overwrite `emptyFile.bkp'? y
 ```
 
 ### Rename files (rename)
