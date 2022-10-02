@@ -501,25 +501,27 @@ student@linux-ess:~$ file /etc/passwd
 ## Delete files & folders (rm)
 For deleting folders we could use the `rmdir` command but keep in mind that it wont delete folders containing other files or folders.
 
+![Ch4_rm_file](../images/04/Ch4_rm_file.png)
+
 For deleting both files and folders we mostly use the `rm` command:
 ```bash
-student@linux-ess:~$ ls
-backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File Two'  myFile  myFolder  myFolder.backup  One
-student@linux-ess:~$ rm emptyfile.backup
-student@linux-ess:~$ ls
-backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File Two'  myFile  myFolder  myFolder.backup  One
+student@linux-ess:~/renamedir$ ls
+aFile  aFile.doc  adocument.doc  anotherFolder.doc  anotherdocument.doc  backup.doc  prodocuments.doc  profiles.doc  profiles2.doc  yaay.doc
+student@linux-ess:~/renamedir$ rm profiles2.doc
+student@linux-ess:~/renamedir$ ls
+aFile  aFile.doc  adocument.doc  anotherFolder.doc  anotherdocument.doc  backup.doc  prodocuments.doc  profiles.doc  yaay.doc
 ```
 The `rm` command has different options as well, the most used combination is `rm -rf`:
 * `-r` will mean it will remove files & folders recursive
 * `-f` will force the command to remove non-empty directories as well. Something that wont happen out of the box.
 ```bash
 student@linux-ess:~$ ls
-myFolder fileAbc
-student@linux-ess:~$ ls myFolder
-afolder afile another_file
-student@linux-ess:~$ rm -rf myFolder
+backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File Two'  myFile  myFolder  myFolder.backup  One renamedir
+student@linux-ess:~$ ls renamedir
+aFile  aFile.doc  adocument.doc  anotherFolder.doc  anotherdocument.doc  backup.doc  prodocuments.doc  profiles.doc  yaay.doc
+student@linux-ess:~$ rm -rf renamedir
 student@linux-ess:~$ ls
-fileAbc
+backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File Two'  myFile  myFolder  myFolder.backup  One
 ```
 
 Be mindfull when using the `rm -rf` command as the root user!
