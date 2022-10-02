@@ -402,17 +402,20 @@ backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File T
 ?> <i class="fa-solid fa-circle-info"></i> Note that we can use both _relative_ and _absolute_ paths in the copy command for both the original file/folder and the destination file/folder.
 
 #### Copy recursive
+
+![Ch4_copy_recursive_myfolderbackup](../images/04/Ch4_copy_recursive_myfolderbackup.png) 
+
 To copy complete directories (meaning all subfolders and files inside the directory) we will have to use the `-r` (recursive) option:
 ```bash
 student@linux-ess:~$ ls
-aFile  aFolder  emptyfile  emptyfile.backup
-student@linux-ess:~$ ls aFolder
-aFile  aFile.backup
-student@linux-ess:~$ cp -r aFolder/ aFolderBackup
+backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File Two'  myFile  myFolder  One
+student@linux-ess:~$ ls myFolder
+myFile  emptyFile.bkp
+student@linux-ess:~$ cp -r myFolder/ myFolder.backup
 student@linux-ess:~$ ls
-aFile  aFolder  aFolderBackup    emptyfile  emptyfile.backup
-student@linux-ess:~$ ls aFolderBackup
-aFile  aFile.backup
+backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File Two'  myFile  myFolder  myFolder.backup  One
+student@linux-ess:~$ ls myFolder.backup
+myFile  emptyFile.bkp
 ```
 
 #### Overwrite files
