@@ -511,6 +511,9 @@ student@linux-ess:~/renamedir$ rm profiles2.doc
 student@linux-ess:~/renamedir$ ls
 aFile  aFile.doc  adocument.doc  anotherFolder.doc  anotherdocument.doc  backup.doc  prodocuments.doc  profiles.doc  yaay.doc
 ```
+
+![Ch4_rm_rf](../images/04/Ch4_rm_rf.png)
+
 The `rm` command has different options as well, the most used combination is `rm -rf`:
 * `-r` will mean it will remove files & folders recursive
 * `-f` will force the command to remove non-empty directories as well. Something that wont happen out of the box.
