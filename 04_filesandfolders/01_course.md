@@ -442,12 +442,11 @@ We saw that we could use the `mv` command to rename files and folders. This work
 student@linux-ess:~$ mkdir renamedir 
 student@linux-ess:~$ cd renamedir
 student@linux-ess:~/renamedir$ touch aFile  aFile.backup  afile.txt  anotherfile.txt  backup.txt  profiles.backup  profiles.txt  profiles2.ODT  yaay.txt
-student@linux-ess:~/renamedir$ mkdir anotherFolder.txt  
 student@linux-ess:~/renamedir$ ls
-aFile  aFile.backup  afile.txt  anotherFolder.txt  anotherfile.txt  backup.txt  profiles.backup  profiles.txt  profiles2.ODT  yaay.txt
+aFile  aFile.backup  afile.txt  anotherfile.txt  backup.txt  profiles.backup  profiles.txt  profiles2.ODT  yaay.txt
 student@linux-ess:~/renamedir$ rename 's/file/document/' *.txt
 student@linux-ess:~/renamedir$ ls
-aFile  aFile.backup  adocument.txt  anotherFolder.txt  anotherdocument.txt  backup.txt  prodocuments.txt  profiles.backup  profiles2.ODT  yaay.txt
+aFile  aFile.backup  adocument.txt  anotherdocument.txt  backup.txt  prodocuments.txt  profiles.backup  profiles2.ODT  yaay.txt
 ```
 
 ?> <i class="fa-solid fa-circle-info"></i> If rename is not yet installed you can do this with the command `sudo apt -y install rename`.   
@@ -465,10 +464,10 @@ We could also use the `rename` command to change the file extentions of all file
 
 ```bash
 student@linux-ess:~/renamedir$ ls
-aFile  aFile.backup  adocument.txt  anotherFolder.txt  anotherdocument.txt  backup.txt  prodocuments.txt  profiles.backup  profiles2.ODT  yaay.txt
+aFile  aFile.backup  adocument.txt  anotherdocument.txt  backup.txt  prodocuments.txt  profiles.backup  profiles2.ODT  yaay.txt
 student@linux-ess:~/renamedir$ rename 's/\.txt/.odt/' *
 student@linux-ess:~/renamedir$ ls
-aFile  aFile.backup  adocument.odt  anotherFolder.odt  anotherdocument.odt  backup.odt  prodocuments.odt  profiles.backup  profiles2.ODT  yaay.odt
+aFile  aFile.backup  adocument.odt  anotherdocument.odt  backup.odt  prodocuments.odt  profiles.backup  profiles2.ODT  yaay.odt
 ```
 ?> <i class="fa-solid fa-circle-info"></i> Notice how we put a `\` (backslash) in front of the `.` sign in the search-string? Some characters have special meanings in regular expressions (for example: `* . $ [ ] ( ) / { }`). If we want the bash shell to see this character as a string we have to use _escaping_. This is the concept of using the `\` to indicate that the character that follows is interpreted as a string rather than a special character.
 
@@ -479,10 +478,10 @@ We could also use the `rename` command to change multiple file extentions at onc
 
 ```bash
 student@linux-ess:~/renamedir$ ls
-aFile  aFile.backup  adocument.odt  anotherFolder.odt  anotherdocument.odt  backup.odt  prodocuments.odt  profiles.backup  profiles2.ODT  yaay.odt
+aFile  aFile.backup  adocument.odt  anotherdocument.odt  backup.odt  prodocuments.odt  profiles.backup  profiles2.ODT  yaay.odt
 student@linux-ess:~/renamedir$ rename -E 's/\.odt/.doc/i' -E 's/\.backup/.doc/' *
 student@linux-ess:~/renamedir$ ls
-aFile  aFile.doc  adocument.doc  anotherFolder.doc  anotherdocument.doc  backup.doc  prodocuments.doc  profiles.doc  profiles2.doc  yaay.doc
+aFile  aFile.doc  adocument.doc  anotherdocument.doc  backup.doc  prodocuments.doc  profiles.doc  profiles2.doc  yaay.doc
 ```
 
 ?> <i class="fa-solid fa-circle-info"></i> Notice how we put an `i` at the end of the perl expression to search case-insensitive. So the ` rename -E 's/\.odt/.doc/i' ` renames the odt extensions to doc regardless of the casing.
@@ -506,10 +505,10 @@ For deleting folders we could use the `rmdir` command but keep in mind that it w
 For deleting both files and folders we mostly use the `rm` command:
 ```bash
 student@linux-ess:~/renamedir$ ls
-aFile  aFile.doc  adocument.doc  anotherFolder.doc  anotherdocument.doc  backup.doc  prodocuments.doc  profiles.doc  profiles2.doc  yaay.doc
+aFile  aFile.doc  adocument.doc  anotherdocument.doc  backup.doc  prodocuments.doc  profiles.doc  profiles2.doc  yaay.doc
 student@linux-ess:~/renamedir$ rm profiles2.doc
 student@linux-ess:~/renamedir$ ls
-aFile  aFile.doc  adocument.doc  anotherFolder.doc  anotherdocument.doc  backup.doc  prodocuments.doc  profiles.doc  yaay.doc
+aFile  aFile.doc  adocument.doc  anotherdocument.doc  backup.doc  prodocuments.doc  profiles.doc  yaay.doc
 ```
 
 ![Ch4_rm_rf](../images/04/Ch4_rm_rf.png)
@@ -521,7 +520,7 @@ The `rm` command has different options as well, the most used combination is `rm
 student@linux-ess:~$ ls
 backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File Two'  myFile  myFolder  myFolder.backup  One renamedir
 student@linux-ess:~$ ls renamedir
-aFile  aFile.doc  adocument.doc  anotherFolder.doc  anotherdocument.doc  backup.doc  prodocuments.doc  profiles.doc  yaay.doc
+aFile  aFile.doc  adocument.doc  anotherdocument.doc  backup.doc  prodocuments.doc  profiles.doc  yaay.doc
 student@linux-ess:~$ rm -rf renamedir
 student@linux-ess:~$ ls
 backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File Two'  myFile  myFolder  myFolder.backup  One
