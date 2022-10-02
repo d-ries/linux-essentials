@@ -349,7 +349,7 @@ student@linux-ess:~/aFolder$ mv aFile ../newFileName
 student@linux-ess:~/aFolder$ ls 
 student@linux-ess:~/aFolder$ ls ~
 aFolder  backups  Downloads  emptyfile  File  fileOne  fileTwo  'File Two'  newFileName  One
-```  
+```   
   
   
 ![Directories_Ch4_RenameFileWithMV.png](../images/04/Ch4_RenameFileWithMV.png) 
