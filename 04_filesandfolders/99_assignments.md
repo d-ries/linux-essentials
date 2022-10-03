@@ -37,7 +37,8 @@ While in your homedirectory, create the following structure with _just one comma
 `
 PXL/Software/Virtualization/VMware Workstation
 `  
-Mind the space in the filename! 
+Mind the space in the filename!   
+You will have to search the manpage for the option to use. It will make all parent directories that are needed. Here it means that to create the directory _VMware Workstation_ the server will create all the other directories first if they do not yet exist (PXL, Software and Virtualization)
 ![Task](../images/04/Ch4_Task5.png)   
 
 ## Task 6
