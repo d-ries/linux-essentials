@@ -41,7 +41,7 @@ student@linux-ess:~$ cd /home/student
 student@linux-ess:~$ pwd
 /home/student
 student@linux-ess:~$ touch emptyfile
-student@linux-ess:/etc$ ls
+student@linux-ess:~$ ls
 emptyfile
 student@linux-ess:~$ cd /etc
 student@linux-ess:/etc$ pwd
