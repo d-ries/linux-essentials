@@ -109,6 +109,13 @@ Navigate to your own home directory
 ## Task 22
 use cat to print the contents of the .bashrc file that is located in root's homefolder. Use a relative-path syntax. Use bang bang (!!) if you need more privileges!
 
+For the next task, we need to add a user named teacher. Use the following commands:
+```bah
+student@linus-ess:~$ sudo useradd -m -G adm,cdrom,sudo,dip,student,plugdev,lxd -s /bin/bash teacher
+student@linux-ess:~$ sudo passwd teacher
+New  password: pxl (pxl is niet zichtbaar getypt)
+Retype new password: pxl (pxl is niet zichtbaar getypt)
+```
 ## Task 23
 Try to navigate to the teacher's homefolder with a maximum of 7 keystrokes
 
