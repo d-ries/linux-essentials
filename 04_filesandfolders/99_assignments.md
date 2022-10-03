@@ -100,18 +100,14 @@ Remove the folder named 'chapter5' without using the `rm` command
 ## Task 19
 Recreate the directory 'chapter5'   
 
-?> <i class="fa-solid fa-circle-info"></i> Some Tasks require a second user on your server. 
-Execute `sudo useradd -m teacher` to create the new user
-Execute `sudo passwd teacher` to set a password for the new user
-
 ## Task 20
-Navigate using absolute-path into the home folder of the user named 'teacher'
+Navigate using absolute-path into the directory log which is a subdirectory of the directory var
 
 ## Task 21
 Navigate to your own home directory
 
 ## Task 22
-use cat to print the contents of the .bashrc file that is located in teacher's homefolder. Use a relative-path syntax.
+use cat to print the contents of the .bashrc file that is located in root's homefolder. Use a relative-path syntax. Use bang bang (!!) if you need more privileges!
 
 ## Task 23
 Try to navigate to the teacher's homefolder with a maximum of 7 keystrokes
