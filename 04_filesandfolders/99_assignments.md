@@ -61,11 +61,11 @@ You are in the directory _LinuxEss_.
 Use  __the ~__ to go to the directory _.ssh_ in your homefolder.
 
 ## Task 11
-Go to your homefolder
-list the files and folders
-list the files and folders in a long listing
-also list the hidden files
-list the files of the directory _/etc_ in a long listing with the filesizes in a _human readable_ format
+Go to your homefolder  
+list the files and folders  
+list the files and folders in a long listing  
+also list the hidden files  
+list the files of the directory _/etc_ in a long listing with the filesizes in a _human readable_ format  
  
 ## Task 12
 Create a new folder "My Pictures" in you homefolder. Go into this folder and create, with just one command, these following files (notice the capitalization):
@@ -109,13 +109,6 @@ Navigate to your own home directory
 ## Task 22
 use cat to print the contents of the .bashrc file that is located in root's homefolder. Use a relative-path syntax. Use bang bang (!!) if you need more privileges!
 
-For the next task, we need to add a user named teacher. Use the following commands:
-```bah
-student@linus-ess:~$ sudo useradd -m -G adm,cdrom,sudo,dip,student,plugdev,lxd -s /bin/bash teacher
-student@linux-ess:~$ sudo passwd teacher
-New  password: pxl (pxl is niet zichtbaar getypt)
-Retype new password: pxl (pxl is niet zichtbaar getypt)
-```
 ## Task 23
 Try to navigate to the teacher's homefolder with a maximum of 7 keystrokes
 
