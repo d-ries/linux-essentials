@@ -110,7 +110,7 @@ Navigate to your own home directory
 use cat to print the contents of the .bashrc file that is located in root's homefolder. Use a relative-path syntax. Use bang bang (!!) if you need more privileges!
 
 ## Task 23
-Try to navigate to the teacher's homefolder with a maximum of 7 keystrokes
+Try to navigate to the directory /etc/dhcp with a maximum of 8 keystrokes
 
 ## Task 24
 Clear the screen
