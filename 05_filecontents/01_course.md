@@ -47,7 +47,7 @@ student@linux-ess:~$ cat count1.txt count2.txt
 1 2 3
 4 5 6
 ```
-All filenames in the `cat` command are actually paths. So in the example above we use _relative_ paths to the files that are in the current working directory (`/home/student`). This means that the command `cat /home/student/count1.txt /home/student/count2.txt` would give the exact same output.
+All arguments in the cat command could have a preceding path. So in the example above we use _relative_ paths to the files that are in the current working directory (`/home/student`). This means that the command `cat /home/student/count1.txt /home/student/count2.txt` would give the exact same output.
 
 ## View first or last region of a file (head & tail)
 Sometimes you don't want to view the entire file contents. Only the first or last couple of lines will suffice (in log files for example). To achieve this we can use the `head` or `tail` commands:
