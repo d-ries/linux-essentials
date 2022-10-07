@@ -67,16 +67,16 @@ news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
 By default this command will show the first 10 lines of a file. When using `tail` it will show the last 10 lines:
 ```bash
 student@linux-ess:~$ tail /etc/passwd
-messagebus:x:103:106::/nonexistent:/usr/sbin/nologin
-syslog:x:104:110::/home/syslog:/usr/sbin/nologin
-_apt:x:105:65534::/nonexistent:/usr/sbin/nologin
-tss:x:106:111:TPM software stack,,,:/var/lib/tpm:/bin/false
-uuidd:x:107:112::/run/uuidd:/usr/sbin/nologin
-tcpdump:x:108:113::/nonexistent:/usr/sbin/nologin
-sshd:x:109:65534::/run/sshd:/usr/sbin/nologin
-landscape:x:110:115::/var/lib/landscape:/usr/sbin/nologin
-pollinate:x:111:1::/var/cache/pollinate:/bin/false
-dries:x:1000:1000:,,,:/home/dries:/bin/bash
+pollinate:x:105:1::/var/cache/pollinate:/bin/false
+sshd:x:106:65534::/run/sshd:/usr/sbin/nologin
+syslog:x:107:113::/home/syslog:/usr/sbin/nologin
+uuidd:x:108:114::/run/uuidd:/usr/sbin/nologin
+tcpdump:x:109:115::/nonexistent:/usr/sbin/nologin
+tss:x:110:116:TPM software stack,,,:/var/lib/tpm:/bin/false
+landscape:x:111:117::/var/lib/landscape:/usr/sbin/nologin
+usbmux:x:112:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
+student:x:1000:1000:student:/home/student:/bin/bash
+lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false
 ```
 
 We can manipulate the amount of lines in the command output as follows (you can change the number `2` by any number):
@@ -88,12 +88,12 @@ daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
 
 This command is often used for log files, where the last lines usually have information about the latest events. eg:
 ```bash
-student@linux-ess:~$ tail -5 /var/log/dpkg.log
-2021-08-19 22:20:53 status half-configured man-db:amd64 2.9.1-1
-2021-08-19 22:20:53 status installed man-db:amd64 2.9.1-1
-2021-08-19 22:20:53 trigproc libc-bin:amd64 2.31-0ubuntu9.2 <none>
-2021-08-19 22:20:53 status half-configured libc-bin:amd64 2.31-0ubuntu9.2
-2021-08-19 22:20:53 status installed libc-bin:amd64 2.31-0ubuntu9.2
+student@linux-ess:~$ tail -5 /var/log/auth.log
+Oct  7 16:23:06 ubuntu-server systemd-logind[840]: Watching system buttons on /dev/input/event1 (AT Translated Set 2 keyboard)
+Oct  7 16:23:26 ubuntu-server sshd[1100]: Accepted password for student from 192.168.109.1 port 63147 ssh2
+Oct  7 16:23:26 ubuntu-server sshd[1100]: pam_unix(sshd:session): session opened for user student(uid=1000) by (uid=0)
+Oct  7 16:23:26 ubuntu-server systemd-logind[840]: New session 1 of user student.
+Oct  7 16:23:26 ubuntu-server systemd: pam_unix(systemd-user:session): session opened for user student(uid=1000) by (uid=0)
 ```
 
 ?> <i class="fa-solid fa-circle-info"></i> We can even view log files realtime by using `tail -f` (`-f` stands for _follow_). This will start an active process that at first will show the last 10 lines of a file. When something gets added to this file, it will be added realtime in the command output. To terminate this active process use `ctrl+c`.
