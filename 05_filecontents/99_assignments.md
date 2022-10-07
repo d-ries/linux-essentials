@@ -24,4 +24,4 @@ Use cat to copy the file .bashrc in your home folder to a new file named .bashrc
 When you add a new user, a new line is added to the file /etc/passwd. Show the contents of the file but in order from newest user to oldest user (other way around than normal) 
 
 ## Task 8
-This exercise needs to be executed on the server.  Open the syslog file (search with find or locate) and keep it open. Disconnect your network card in VMware Workstation (in statusbar on the right side). See the added log entries. Reconnect the network card in VMWare Workstation. See the added log entries. Close the view with ctrl+c.
+Use the tail command to keep the file /var/log/auth.log open, so that you see all new log entries appear when they happen. (You can press enter a few times to seperate the new coming lines) In a new Powershell window start a new ssh session and log in. Then log out again. Wat did you see in the logs?
