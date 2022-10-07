@@ -13,9 +13,9 @@ Show the last line of the file passwd located in the folder etc of the root fold
 Show the first 4 characters (=bytes) of the file /etc/passwd. What do you see? 
 
 ## Task 5
-Use cat to put the following text in a new file "mytextfile" in your home folder:
-This is my text
-spaced over multiple lines.
+Use cat to put the following text in a new file "mytextfile" in your home folder:  
+This is my text  
+spaced over multiple lines.  
 
 ## Task 6
 Use cat to copy the file .bashrc in your home folder to a new file named .bashrc.backup
@@ -23,3 +23,5 @@ Use cat to copy the file .bashrc in your home folder to a new file named .bashrc
 ## Task 7
 When you add a new user, a new line is added to the file /etc/passwd. Show the contents of the file but in order from newest user to oldest user (other way around than normal) 
 
+## Task 8
+This exercise needs to be executed on the server.  Open the syslog file (search with find or locate) and keep it open. Disconnect your network card in VMware Workstation (in statusbar on the right side). See the added log entries. Reconnect the network card in VMWare Workstation. See the added log entries. Close the view with ctrl+c.
