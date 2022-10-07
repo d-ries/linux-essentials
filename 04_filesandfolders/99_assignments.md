@@ -68,13 +68,12 @@ also list the hidden files
 list the files of the directory _/etc_ in a long listing with the filesizes in a _human readable_ format  
  
 ## Task 12
-Create a new folder "My Pictures" in you homefolder. Go into this folder and create, with just one command, these following files (notice the capitalization):
+Create a new folder "My Pictures" in your homefolder. Go into this folder and create, with just one command, these following files (notice the capitalization):
 - Picture1.JPG
 - picture2.JPG
 - Picture3.jpg
 - picture4.jpg
   
-Mind the casing!
 
 ## Task 13
 Use the command `rename` twice to rename all files so no capitals exist anymore in any of the filenames.
