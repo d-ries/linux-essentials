@@ -2,12 +2,19 @@
 ## View a file completely (cat & tac)
 To view file contents we can use the `cat` command. This command takes in a path to a file as an argument:
 ```bash
-student@linux-ess:~$ cat /etc/resolv.conf
-# [network]
-# generateResolvConf = false
-nameserver 8.8.8.8
-nameserver fec0:0:0:ffff::1
-nameserver fec0:0:0:ffff::2
+student@linux-ess:~$ cat /etc/os-release
+PRETTY_NAME="Ubuntu 22.04.1 LTS"
+NAME="Ubuntu"
+VERSION_ID="22.04"
+VERSION="22.04.1 LTS (Jammy Jellyfish)"
+VERSION_CODENAME=jammy
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=jammy
 ```
 This will print the entire file contents in the terminal.
 
@@ -15,12 +22,19 @@ This will print the entire file contents in the terminal.
 
 The `tac` command is the `cat` command written in reverse order. This is also exactly what this command does, it outputs the file contents in reverse order (from bottom to top):
 ```bash
-student@linux-ess:~$ tac /etc/resolv.conf
-nameserver fec0:0:0:ffff::2
-nameserver fec0:0:0:ffff::1
-nameserver 8.8.8.8
-# generateResolvConf = false
-# [network]
+student@linux-ess:~$ tac /etc/os-release
+UBUNTU_CODENAME=jammy
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+SUPPORT_URL="https://help.ubuntu.com/"
+HOME_URL="https://www.ubuntu.com/"
+ID_LIKE=debian
+ID=ubuntu
+VERSION_CODENAME=jammy
+VERSION="22.04.1 LTS (Jammy Jellyfish)"
+VERSION_ID="22.04"
+NAME="Ubuntu"
+PRETTY_NAME="Ubuntu 22.04.1 LTS"
 ```
 
 The `cat` and `tac` commands can take multiple files as arguments and will concatenate the contents in the terminal as follows:
