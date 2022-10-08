@@ -189,21 +189,23 @@ A text editor window will open as shown in the figure below where you can naviga
 ![nano](../images/05/nano.PNG)
 
 At the bottom of the screen it shows some of the shortcuts you can use. Some of the most interesting ones are:
-* ctrl+o: this is used to save (write out) the file changes. This will prompt for a filename and will overwrite the file if a file with the same name already exists.
-* ctrl+x: quit the text editor and go back to the prompt. When you made changes to the file you will be asked if you want to save the changes and ifso you will have to enter a filename and press enter. It will overwrite the file if a file with the same name already exists.
+* _ctrl+o_: this is used to save (write out) the file changes. This will prompt for a filename and will overwrite the file if a file with the same name already exists.
+* _ctrl+x_: quit the text editor and go back to the prompt. When you made changes to the file you will be asked if you want to save the changes and ifso you will have to enter a filename and press enter. It will overwrite the file if a file with the same name already exists.
     
-* shift+arrows: select a portion of the text
-* ctrl+k: cut selected text or the whole line (if no text is selected).
-* ctrl+u: paste any cut content.  
+* _shift+arrows_: select a portion of the text
+* _ctrl+k_: cut selected text or the whole line (if no text is selected).
+* _ctrl+u_: paste any cut content.  
   
-* ctrl+w: find a certain text in the file (ctrl+q to search in the opposite direction).
-* ctrl+\: search and replace - give the word to search for and then give the word to replace it with (then use yes, no, all, ...) (you can type ctrl+< ) 
-* ctrl+/: goto a certain line (and column)  
+* _ctrl+w_: find a certain text in the file (ctrl+q to search in the opposite direction).
+* _ctrl+\_: search and replace - give the word to search for and then give the word to replace it with (then use yes, no, all, ...) (you can type ctrl+< ) 
+* _ctrl+/_: goto a certain line (and column)  
   
-* alt+u: undo the last change.
-* alt+e: redo the last change.
+* _alt+u_: undo the last change.
+* _alt+e_: redo the last change.
 
 ?> <i class="fa-solid fa-circle-info"></i> If you want to cut a specific text you can select it first by pressing _shift+arrow keys_. Then use _ctrl+k_ to cut and afterwards _ctrl+u_ to paste. 
+
+?> <i class="fa-solid fa-circle-info"></i> The fastest way to 'save and quit nano' is to type _ctrl+s_ (to save the file) followed by _ctrl+x_ (to exit nano). 
 
 ?> Another very popular text editor in Linux systems is `vi`. This editor is really powerfull but also has a steep learning curve. In this course we will not cover `vi` But feel free to experiment on your own. 
 
