@@ -48,5 +48,11 @@ just because I can.
 ## Task 12
 Print the full contents of the previously made files "mytextfile" and "myechotextfile" with only one command.
 
+## Task 13
+Get the last 10 created users and put them in the file "newestUsers" with only one command.
+
+## Task 14
+Change the password part of the student user to the know password "pxl" in the file "newestUsers".
+
 ## Optional Task
 use the command vimtutor to learn how to use vim. What is so different with this editor? 
