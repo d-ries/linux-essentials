@@ -102,11 +102,11 @@ Oct  7 16:23:26 ubuntu-server systemd: pam_unix(systemd-user:session): session o
 When viewing big files with `cat` you might have noticed that the terminal will only show the last bit of the content. We can use commands such as `more` and `less` to view (and scroll through) the entire content. With `more` you can only scroll down and this one screen at a time by pressing the _spacebar_ or _page down_. With less you can also scroll up by pressing _page up_.  With less scrolling only one line can also be done by using the _up arrow_ or _down arrow_. To exit `more`or `less` you can simply press _q_ or _ctrl+c_.
 ```bash
 student@linux-ess:~$ less /var/log/dpkg.log
-2021-08-19 21:52:34 startup packages remove
-2021-08-19 21:52:34 status installed linux-virtual:amd64 5.4.0.81.85
+2022-09-19 21:52:34 startup packages remove
+2022-09-19 21:52:34 status installed linux-virtual:amd64 5.4.0.81.85
 ... output omitted
-2021-08-19 21:52:34 status half-configured linux-headers-5.4.0-81:all 5.4.0-81.91
-2021-08-19 21:52:34 status half-installed linux-headers-5.4.0-81:all 5.4.0-81.91
+2022-09-19 21:52:34 status half-configured linux-headers-5.4.0-81:all 5.4.0-81.91
+2022-09-19 21:52:34 status half-installed linux-headers-5.4.0-81:all 5.4.0-81.91
 ```
 ?> <i class="fa-solid fa-circle-info"></i> Did you know that by default manpages are also opened with `less`. So you can also search within files opened with `less` by using _/_ and _n_ for next and _p_ for previous. You can also go to the first line by pressing _g_ and to the last line by pressing _G_.
 
@@ -154,7 +154,7 @@ student@linux-ess:~$ cat jokes.txt
 What is a Linux user's favorite game?
 sudo ku
 ```
- We pressed ctrl+d after the line 'sudo ku'
+ We pressed __ctrl+d__ after the line 'sudo ku'
  
 #### Copy files using cat
 Knowing what we learnt about using _output redirection_ (`>`) we can actually use this to copy file contents to another file as follows:
@@ -168,7 +168,7 @@ sudo ku
 ### Using a custom end marker
 Another method of creating files with a certain content is to define a _custom end marker_ for the `cat > FILENAME` command as shown in the example below. By doing this you won't have to use the `crtl+d` keyboard combination to stop the input and write the text to the file but you can just type the word (`end` in the example) given as the custom end marker:
 ```bash
-student@linux-ess:~$ cat > schooltasks.txt <<end
+student@linux-ess:~$ cat > schooltasks.txt << end
 > create new vm
 > learn new commands
 > play minecraft
@@ -189,14 +189,21 @@ A text editor window will open as shown in the figure below where you can naviga
 ![nano](../images/05/nano.PNG)
 
 At the bottom of the screen it shows some of the shortcuts you can use. Some of the most interesting ones are:
-* ctrl+o: this is used to save (write out) the file changes. This will prompt for a filename and will overwrite a file if the name already exists.
-* ctr+q: quit the text editor and go back to the prompt. When you made changes to the file you will be asked if you want to save the changes and ifso you will have to enter a filename and press enter.
-* ctrl+k: cut content.
-* ctrl+u: paste any copied/cut content.
-* ctrl+w: find a certain text in the file (where is).
+* ctrl+o: this is used to save (write out) the file changes. This will prompt for a filename and will overwrite the file if a file with the same name already exists.
+* ctrl+x: quit the text editor and go back to the prompt. When you made changes to the file you will be asked if you want to save the changes and ifso you will have to enter a filename and press enter. It will overwrite the file if a file with the same name already exists.
+    
+* shift+arrows: select a portion of the text
+* ctrl+k: cut selected text or the whole line (if no text is selected).
+* ctrl+u: paste any cut content.  
+  
+* ctrl+w: find a certain text in the file (ctrl+q to search in the opposite direction).
+* ctrl+\: search and replace - give the word to search for and then give the word to replace it with (then use yes, no, all, ...) (you can type ctrl+< ) 
+* ctrl+/: goto a certain line (and column)  
+  
 * alt+u: undo the last change.
+* alt+e: redo the last change.
 
-?> <i class="fa-solid fa-circle-info"></i> If you want to cut a specific text you can select it first by pressing _shift+arrow keys_. Then use _ctrl+k_ and _ctrl+u_. 
+?> <i class="fa-solid fa-circle-info"></i> If you want to cut a specific text you can select it first by pressing _shift+arrow keys_. Then use _ctrl+k_ to cut and afterwards _ctrl+u_ to paste. 
 
 ?> Another very popular text editor in Linux systems is `vi`. This editor is really powerfull but also has a steep learning curve. In this course we will not cover `vi` But feel free to experiment on your own. 
 
