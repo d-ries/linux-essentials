@@ -210,7 +210,7 @@ At the bottom of the screen it shows some of the shortcuts you can use. Some of 
 
 ?> <i class="fa-solid fa-circle-info"></i> If you want to cut a specific text you can select it first by pressing _shift+arrow keys_. Then use _ctrl+k_ to cut and afterwards _ctrl+u_ to paste. 
 
-?> <i class="fa-solid fa-circle-info"></i> The fastest way to 'save and quit nano' is to type _ctrl+s_ (to save the file) followed by _ctrl+x_ (to exit nano). 
+?> <i class="fa-solid fa-circle-info"></i> The fastest way to 'save and quit nano' is to type _ctrl+s_ (to save the changes) followed by _ctrl+x_ (to exit nano). 
 
 ?> Another very popular text editor in Linux systems is `vi`. This editor is really powerfull but also has a steep learning curve. In this course we will not cover `vi` But feel free to experiment on your own. vim, an easier option of vi is also installed on your system. To learn more about this, a tutor is available with the command: vimtutor .   
 
