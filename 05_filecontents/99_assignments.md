@@ -55,4 +55,4 @@ Get the last 10 created users and put them in the file "newestUsers" with only o
 Change the password part of the student user to the know password "pxl" in the file "newestUsers".
 
 ## Optional Task
-use the command vimtutor to learn how to use vim. What is so different with this editor? 
+use the command `vimtutor` to learn how to use vim. What is so different with this editor? 
