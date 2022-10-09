@@ -38,15 +38,15 @@ Open the configuration file of ssh, _/etc/ssh/sshd_config_, with the _less_ comm
 
 ## Task 11
 Use nano to edit the text in the file "myechotextfile" you created earlier in your home folder:  
-This is my text, edited,
-still spaced over multiple lines
-inserted by echo and edited by nano.
+This is my text, edited,  
+still spaced over multiple lines  
+inserted by echo and edited by nano.  
 
 ## Task 12
 Use cat with the end marker "LinuxIsFun" to overwrite the text in the file "myechotextfile" you created earlier in your home folder:  
-This text is way more interesting.
-I still use multiple lines d'oh,
-just because I can.
+This text is way more interesting.  
+I still use multiple lines d'oh,  
+just because I can.  
 
 ## Task 13
 Print the full contents of the previously made files "mytextfile" and "myechotextfile" with only one command.
