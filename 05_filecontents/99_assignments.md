@@ -57,7 +57,7 @@ Get the last 10 created users and put them in the file "newestUsers" with only o
 ## Task 15
 a. Open a new file, named _Linus Torvalds_ with `nano`. Copy the folowing text into the nano editor.  
 
-```bash
+```
 linus Benedict torvalds, * , is a Finnish-American software engineer who is the creator and, historically, the main developer of the Linux kernel, used by Linux distributions and other operating systems such as Android. 
 He also created the distributed version control system Git.
 
@@ -94,7 +94,7 @@ h. Search for 'torvalds' and replace with 'Torvalds'
 i. Goto line 9, column 80. Replace the dot (.) with an exclamation mark (!)  
 j. Goto the last line of text. Cut the whole line. Undo the cut. Redo the cut  
 k. Use Cut and Paste to move the last line of text to the top of the document  
-l. Search the help within nano to find out how to show the 'line numbers'. Show the line numbers  
+l. Search the help within nano to find out how to show the 'total number of lines, words and characters'.   
 m. Use two times a shortcut (ctrl+...) to save and quit nano   
 
 
