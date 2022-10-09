@@ -84,17 +84,18 @@ The history of Linux
 Linus was born 28 December 1969 in Finland
 ```
   
-b. Save the changes and exit nano
-c. Open the file again with nano
-d. Search for the text "1981" to know what happened that year.
-e. The second paragraph holds two of the same lines. Use a shortcut to delete one of the two lines.
-f. Search for 'linus' and replace with 'Linus'
-g. Select only the text 'born 28 December 1969' of the last line. Cut it and paste it on the first line where the asterisk is (\*).
-h. Search for 'torvalds' and replace with 'Torvalds'
-i. Goto line 10. 
-j. Goto the last line. Cut the whole line. Undo the cut. Redo the cut.
-k. Use Cut and Paste to move the last line to the top of the document
-l. Use two times a shortcut (ctrl+...) to save and quit nano
+b. Save the changes and exit nano  
+c. Open the file again with nano  
+d. Search for the text "1981" to know what happened that year  
+e. The second paragraph holds two of the same lines. Use a shortcut to delete one of the two lines  
+f. Search for 'linus' and replace with 'Linus'  
+g. Select only the text 'born 28 December 1969' of the last line. Cut it and paste it on the first line where the asterisk is (\*)  
+h. Search for 'torvalds' and replace with 'Torvalds'  
+i. Goto line 9, column 80. Replace the dot (.) with an exclamation mark (!)  
+j. Goto the last line of text. Cut the whole line. Undo the cut. Redo the cut  
+k. Use Cut and Paste to move the last line of text to the top of the document  
+l. Search the help within nano to find out how to show the 'line numbers'. Show the line numbers  
+m. Use two times a shortcut (ctrl+...) to save and quit nano   
 
 
 
