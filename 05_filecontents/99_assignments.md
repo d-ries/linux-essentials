@@ -55,7 +55,48 @@ Print the full contents of the previously made files "mytextfile" and "myechotex
 Get the last 10 created users and put them in the file "newestUsers" with only one command.
 
 ## Task 15
-Change the password part of the student user to the know password "pxl" in the file "newestUsers".
+a. Open a new file, named _Linus Torvalds_ with `nano`. Copy the folowing text into the nano editor.  
+
+```bash
+linus Benedict torvalds, * , is a Finnish-American software engineer who is the creator and, historically, the main developer of the Linux kernel, used by Linux distributions and other operating systems such as Android. 
+He also created the distributed version control system Git.
+
+linus torvalds was born in Helsinki, Finland. His parents were campus radicals at the University of Helsinki in the 1960s. 
+linus torvalds was born in Helsinki, Finland. His parents were campus radicals at the University of Helsinki in the 1960s. 
+
+Torvalds attended the University of Helsinki from 1988 to 1996, graduating with a master's degree in computer science.
+His academic career was interrupted after his first year of study when he joined the Finnish Navy Nyland Brigade in the summer of 1989, selecting the 11-month officer training program to fulfill the mandatory military service of Finland. 
+
+He gained the rank of second lieutenant, with the role of an artillery observer. 
+
+He bought computer science professor Andrew Tanenbaum's book Operating Systems: Design and Implementation, in which Tanenbaum describes MINIX, an educational stripped-down version of Unix. In 1990, Torvalds resumed his university studies, and was exposed to Unix for the first time.His MSc thesis was titled Linux: A Portable Operating System.
+
+His interest in computers began with a Commodore VIC-20 at the age of 11 in 1981. He started programming for it in BASIC, then later by directly accessing the 6502 CPU in machine code (he did not utilize assembly language).
+He wrote a Pac-Man clone, Cool Man. 
+
+On 5 January 1991 he purchased an Intel 80386-based clone of IBM PC before receiving his MINIX copy, which in turn enabled him to begin work on Linux.
+
+The first Linux prototypes were publicly released in late 1991. Version 1.0 was released on 14 March 1994.
+
+Torvalds first encountered the GNU Project in 1991 when another Swedish-speaking computer science student, Lars Wirzenius, took him to the University of Technology to listen to free software guru Richard Stallman's speech. Torvalds used _____ GNU General Public License version 2 (GPLv2) for his Linux kernel.
+
+The history of Linux 
+Linus was born 28 December 1969 in Finland
+```
+  
+b. Save the changes and exit nano
+c. Open the file again with nano
+d. Search for the text "1981" to know what happened that year.
+e. The second paragraph holds two of the same lines. Use a shortcut to delete one of the two lines.
+f. Search for 'linus' and replace with 'Linus'
+g. Select only the text 'born 28 December 1969' of the last line. Cut it and paste it on the first line where the asterisk is (\*).
+h. Search for 'torvalds' and replace with 'Torvalds'
+i. Goto line 10. 
+j. Goto the last line. Cut the whole line. Undo the cut. Redo the cut.
+k. Use Cut and Paste to move the last line to the top of the document
+l. Use two times a shortcut (ctrl+...) to save and quit nano
+
+
 
 ## Optional Task
 use the command `vimtutor` to learn how to use vim. What is so different with this editor? 
