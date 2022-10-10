@@ -23,6 +23,8 @@ Use echo to put the following text in a new file "myechotextfile" in your home f
 This is my text  
 spaced over multiple lines  
 inserted by echo.
+ 
+More difficult: It is also possible to do this in one command.
 
 ## Task 7
 Use cat to copy the file .bashrc in your home folder to a new file named .bashrc.backup
