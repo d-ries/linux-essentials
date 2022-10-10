@@ -36,7 +36,7 @@ When you add a new user, a new line is added to the file /etc/passwd. Show the c
 Use the tail command to keep the file /var/log/auth.log open, so that you see all new log entries appear when they happen. (You can press enter a few times to seperate the new coming lines) In a new Powershell window start a new ssh session and log in. Then log out again. Wat did you see in the logs?
 
 ## Task 10
-Open the configuration file of ssh, _/etc/ssh/sshd_config_, with the _less_ command and try the search function to search for X11. This is something we'll use later on to enable screens to open over SSH.
+Open the configuration file of ssh, `/etc/ssh/sshd_config`, with the _less_ command and try the search function to search for X11. This is something we'll use later on to enable screens to open over SSH.
 
 ## Task 11
 Use nano to edit the text in the file "myechotextfile" you created earlier in your home folder:  
@@ -114,7 +114,7 @@ This text is way more interesting.
 I still use multiple lines d'oh,
 just because I can.
 ```
-We have seen 2 other commands where we can specify to print the filename aswell, check the man pages of the seen commands and find out which 2 commands can be used. Try them out and print the full contents of the files with the filenames.
+We have seen 2 commands in this chapter where we can specify to print the filename aswell, check the man pages of the seen commands and find out which 2 commands can be used. Try them out and print the full contents of the files with the filenames.
 
 ## Optional Task
 use the command `vimtutor` to learn how to use vim. What is so different with this editor? 
