@@ -208,7 +208,7 @@ At the bottom of the screen it shows some of the shortcuts you can use. Some of 
 * _alt+e_: redo the last change.  
   
 * _alt+s_: enable/disable auto wrap text over lines.    
-* _alt/n_: show/hide line numbers.
+* _alt+n_: show/hide line numbers.
   
 * _ctrl+home_: goto first line
 * _ctrl+end_: goto last line  
