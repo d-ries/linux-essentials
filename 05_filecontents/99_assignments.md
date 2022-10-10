@@ -100,10 +100,10 @@ l. Search the help within nano to find out how to show the 'total number of line
 m. Use two times a shortcut (ctrl+...) to save and quit nano   
 
 ## Task 16
-Use the _head_ command to print eveything in the _/etc/passwd_ file, without knowing the amount of lines in the file. Now try this with the _tail_ command.
+Use the _head_ command to print everything in the _/etc/passwd_ file, without knowing the amount of lines in the file. You will have to search the manpage for a solution. Now try this with the _tail_ command.
 
 ## Task 17
-We can use cat to print the contents of multiple files underneath eachother, but it is not very clear what comes from what files. 
+We can use cat to print the contents of multiple files underneath eachother, but it is hard to figure out which part comes from which file. 
 For example check:
 ```bash
 student@linux-ess:~$ cat mytextfile myechotextfile
@@ -115,6 +115,10 @@ I still use multiple lines d'oh,
 just because I can.
 ```
 We have seen 2 other commands where we can specify to print the filename aswell, check the man pages of the seen commands and find out which 2 commands can be used. Try them out and print the full contents of the files with the filenames.
+
+## Task 18
+Use the _head_ and _tail_ command to print the second last line of the _/etc/passwd_ file.
+
 
 ## Optional Task
 use the command `vimtutor` to learn how to use vim. What is so different with this editor? 
