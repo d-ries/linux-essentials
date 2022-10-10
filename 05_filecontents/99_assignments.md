@@ -97,5 +97,8 @@ k. Use Cut and Paste to move the last line of text to the top of the document
 l. Search the help within nano to find out how to show the 'total number of lines, words and characters'.   
 m. Use two times a shortcut (ctrl+...) to save and quit nano   
 
+## Task 16
+Use the _head_ command to print eveything in a file, without knowing the amount of lines in the file. Now try this with the _tail_ command.
+
 ## Optional Task
 use the command `vimtutor` to learn how to use vim. What is so different with this editor? 
