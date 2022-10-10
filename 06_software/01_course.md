@@ -142,7 +142,7 @@ Processing triggers for man-db (2.9.1-1) ...
 
  We also have a somewhat more agressive command to remove packages: `sudo apt purge <packagename>`. The difference between `remove` and `purge` is that when using `purge` it will remove any config files linked to that application as well. When using `remove` those config files will stay on the system.
 
-?> <i class="fa-solid fa-circle-info"></i> To get a list of installed software packages we can use `apt list`. Warning: this list can be very very long!
+?> <i class="fa-solid fa-circle-info"></i> To get a list of all possible software packages we can use `apt list`. To get a list of installed software packages we can use `apt list --installed`. Warning: this list can be very very long!
 
 ### Updating software (apt upgrade)
 For updating our software we have a couple of options. To start of we can individually update certain packages by simply using the `sudo apt install <packagename>` command. When you use this command with a package that has already been installed, it will try to update it to the latest version.
@@ -151,7 +151,129 @@ For updating our software we have a couple of options. To start of we can indivi
 
 When we want to update all the packages on our system we can use the `sudo apt upgrade` command. This will update all the installed packages.
 
-## Gzip and tar
+## gzip and tar
+
+### gzip
+
+If we compress a file, we keep the content, but the filesize will become smaller.  We can compress a file with gzip.
+
+```bash
+student@ubuntu-server:~$ cd
+student@ubuntu-server:~$ cp /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_jammy_universe_binary-amd64_Packages .
+student@ubuntu-server:~$ ls -lh archive*
+-rw-r--r-- 1 student student 62M Oct 10 19:40 archive.ubuntu.com_ubuntu_dists_jammy_universe_binary-amd64_Packages
+student@ubuntu-server:~$ gzip archive.ubuntu.com_ubuntu_dists_jammy_universe_binary-amd64_Packages
+student@ubuntu-server:~$ ls -lh archive*
+-rw-r--r-- 1 student student 17M Oct 10 19:40 archive.ubuntu.com_ubuntu_dists_jammy_universe_binary-amd64_Packages.gz
+```
+
+The file has an extension of gz and  is a lot smaller now, but you cannot see its contents. The original file is gone and we only have the compressed file now.
+
+
+### gunzip
+
+If we want to decompress the file we can use gunzip.
+```bash
+student@ubuntu-server:~$ ls -lh archive*
+-rw-r--r-- 1 student student 17M Oct 10 19:40 archive.ubuntu.com_ubuntu_dists_jammy_universe_binary-amd64_Packages.gz
+student@ubuntu-server:~$ gunzip archive.ubuntu.com_ubuntu_dists_jammy_universe_binary-amd64_Packages.gz
+student@ubuntu-server:~$ ls -lh archive*
+-rw-r--r-- 1 student student 62M Oct 10 19:40 archive.ubuntu.com_ubuntu_dists_jammy_universe_binary-amd64_Packages
+```
+
+The file regained its original size and the content can be viewed/edited again. The zipped file is gone again and we only have the original file.
+
+
+### tar
+
+If we want to put multiple files and folders together in one file, we can use tar. We use the option -c to create the tarfile.
+
+```bash
+student@ubuntu-server:~$ tree
+.
+├── Downloads
+│   ├── logo.png
+│   └── Steam
+│       └── games
+│           └── pacman
+├── emptyfile
+student@ubuntu-server:~$ tar -cf Downloads.tar Downloads     # create tar
+student@ubuntu-server:~$ tar -tf Downloads.tar Downloads     # view contents of tar
+Downloads/
+Downloads/logo.png
+Downloads/Steam/
+Downloads/Steam/games/
+Downloads/Steam/games/pacman
+```
+
+### tarball
+
+We can also zip the tar file when we create it.
+
+```bash
+student@ubuntu-server:~$ tree
+.
+├── Downloads
+│   ├── logo.png
+│   └── Steam
+│       └── games
+│           └── pacman
+├── emptyfile
+student@ubuntu-server:~$ tar -czf Downloads.tar.gz  Downloads     # create tar
+student@ubuntu-server:~$ tar -tf Downloads.tar Downloads   
+student@ubuntu-server:~$ tar -tzf Downloads.tar.gz                             # view contents of tarball
+Downloads/
+Downloads/logo.png
+Downloads/Steam/
+Downloads/Steam/games/
+Downloads/Steam/games/pacman
+```
+
+
+### Untar
+
+We can untar a tarfile (.tar) or tarball (.tar.gz).
+
+```bash
+student@ubuntu-server:~$ tree
+.
+├── Downloads
+│   ├── logo.png
+│   └── Steam
+│       └── games
+│           └── pacman
+├── Downloads.tar
+├── Downloads.tar.gz
+├── emptyfile
+
+student@ubuntu-server:~$ mkdir backup
+student@ubuntu-server:~$ tar -xzf Downloads.tar.gz  -C backup    # zipped tarball
+student@ubuntu-server:~$ tar -xf Downloads.tar -C /tmp             # tarfile
+student@ubuntu-server:~$ tree
+.
+├── backup
+│   └── Downloads
+│       ├── logo.png
+│       └── Steam
+│           └── games
+│               └── pacman
+
+
+student@ubuntu-server:~$ tree /tmp/Downloads/
+/tmp/Downloads/
+├── logo.png
+└── Steam
+    └── games
+        └── pacman
+
+2 directories, 2 files
+
+```
+
+
+
+### Installing packages via a tarball
+
 Sometimes you might encounter a `tar` or `tar.gz` file for installing some software. A  `tar.gz` file is also known as a `tarball`. it's a compressed file containing all kinds of files & folders. You can compare these to `zip` or `rar` files. We need to extract the files/folders inside this file before we can use them. To do so we can use the `tar` command. The options we use will vary depending on the case. Do we want to extract a `tar` file or a `tar.gz`file:
 ```bash
 student@linux-ess:~/tarexample$ ls
@@ -168,7 +290,8 @@ The options we use can be found in the manpage, but below you can find a small s
 * `-z`: This makes sure we run the file through `gzip`, another archive tool. The extention `tar.gz` hints that it is processed through `gzip`.
 * `-C`: This changes the directory before extracting to the path supplied as an argument. This means the contents will be extracted in this folder.
 * `-t`: Will only list the contents of the archive to the screen. It will not unpack anything.
-
+  
+  
 ## dpkg
 `dpkg` was the first package manager for Debian-based systems. Where Ubuntu nowadays uses `apt` as the default package manager, we can also use `dpkg`. `dpkg` was the predecessor of `apt-get` and `apt`. `dpkg` doesn't make use of repositories, so we have to have the installer file before using the command. It also doesn't download dependencies automatically. That's why they used to call it *the dependancy hell*  We can use `dpkg` to install / remove / ... `.deb` files. The example below installs the package `yourpackage`:
 ```bash
@@ -179,7 +302,8 @@ student@linux-ess:~$ sudo dpkg -i yourpackage.deb
 ```bash
 student@linux-ess:~$ sudo dpkg-reconfigure keyboard-configuration
 ```
-
+  
+  
 ## snap
 One of the relative new players is snap. A snap is a bundle of the software we want to install with all of its dependencies stored in one file and executed in its own bubble. This means that two snaps cannot interfere with eachother. This for example makes it possible to install two different versions of the same software at the same time and running them together. Snaps have their own filesystem but can work with files on your systems too. You can find snaps in the snap store on a Desktop or with `snap search` on a server. Snaps are use more and more because they are distro independant. If you can install the snap daemon on the distro it will run all snaps. 
 
