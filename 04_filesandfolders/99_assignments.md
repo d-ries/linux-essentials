@@ -124,7 +124,7 @@ Search for commands that have the text "logged on" in their short description of
 In the shell of your ssh session type one of the two commands you found in the previous task.
 You will see two screens, tty1 and .
   
-Everything is a file in linux. This is also true for the screen/window you're working in. When you are connected over _ssh_, your screen name is _pts/2_. When you are working _on the server_ itself, your screen name is _tty1_.  
+Everything is a file in linux. This is also true for the screen/window you're working in. When you are connected over _ssh_, your screen name is _pts/0_. When you are working _on the server_ itself, your screen name is _tty1_.  
   
 In the shell of your ssh session type `echo hello there > /dev/tty1`. The greater than sign will redirect the output of the text _hello there_ to the tty1 device. The text appears on the screen on the server.
   
