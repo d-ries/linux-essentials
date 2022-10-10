@@ -15,13 +15,13 @@ Show the first 4 characters (=bytes) of the file /etc/passwd. What do you see?
 ## Task 5
 Use cat to put the following text in a new file "mytextfile" in your home folder:  
 This is my text  
-spaced over multiple lines
+spaced over multiple lines  
 inserted by cat.
 
 ## Task 6
 Use echo to put the following text in a new file "myechotextfile" in your home folder:  
 This is my text  
-spaced over multiple lines
+spaced over multiple lines  
 inserted by echo.
 
 ## Task 7
@@ -96,8 +96,6 @@ j. Goto the last line of text. Cut the whole line. Undo the cut. Redo the cut
 k. Use Cut and Paste to move the last line of text to the top of the document  
 l. Search the help within nano to find out how to show the 'total number of lines, words and characters'.   
 m. Use two times a shortcut (ctrl+...) to save and quit nano   
-
-
 
 ## Optional Task
 use the command `vimtutor` to learn how to use vim. What is so different with this editor? 
