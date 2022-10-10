@@ -201,7 +201,7 @@ At the bottom of the screen it shows some of the shortcuts you can use. Some of 
   
 * _ctrl+w_: find a certain text in the file (ctrl+q to search in the opposite direction).
 * _ctrl+\_: search and replace - give the word to search for and then give the word to replace it with (then use yes, no, all, ...) (you can type ctrl+< ) 
-* _ctrl+/_: goto a certain line (and column).  
+* _ctrl+/_: goto a certain line (and column). (you can also type _ctrl+-_)
   
   
 * _alt+u_: undo the last change.
