@@ -117,7 +117,7 @@ just because I can.
 We have seen 2 commands in this chapter where we can specify to print the filename aswell, check the man pages of the seen commands and find out which 2 commands can be used. Try them out and print the full contents of the files with the filenames.
 
 ## Task 18
-Use the head and tail command to print the second last line of the /etc/passwd file.
+Use the _head_ and _tail_ command to print the second last line of the /etc/passwd file.
 
 ## Optional Task
 use the command `vimtutor` to learn how to use vim. What is so different with this editor? 
