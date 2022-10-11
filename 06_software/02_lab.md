@@ -187,3 +187,33 @@ student@linux-ess:~$ minetest --server --world ~/linuscraft/serverfiles/myworld
 2022-08-25 10:37:33: ACTION[Server]: linus digs default:acacia_tree at (6,5,3)
 ```
 
+### Running a downloaded map
+The default map is quite empty so Linus wants to impress his friends by downloading a prebuild map he found on Google. To do this we go into your `serverfiles` directory:
+```bash
+student@linux-ess:~$ cd ~/linuscraft/serverfiles
+```
+
+After doing so we will download the zip file containing our new world by running the command below:
+```bash
+student@linux-ess:~$ wget https://d-ries.github.io/linux-essentials/data/customworld.zip
+```
+
+This will give us a `zip` file that we need to extract by running ```unzip customworld.zip```.
+
+We can remove the zipfile as we no longer need this:
+```bash
+student@linux-ess:~$ rm -rf customworld.zip
+student@linux-ess:~/linuscraft/serverfiles$ ls
+Quadropolis  logfile.txt  myworld
+```
+
+As seen in the output above, the new world is called `Quadropolis`. We can now use the command we saw earlier to start the server using the new map files:
+```bash
+student@linux-ess:~/linuscraft/serverfiles$ minetest --server --world ~/linuscraft/serverfiles/Quadropolis/ --logfile ~/linuscraft/serverfiles/logfile.txt
+```
+?> You might get some warnings because the new map is made to use some mods. You can ignore these warnings for now, or try to install the required mods yourself! The world will work without the usage of these mods
+
+When you join the server now, you will notice that the map isn't as empty as it was before:
+![minetest-client-world](../images/06/minetest-client-world.PNG)
+
+As you can see we get some errors aswell, this is because we are missing some mods. We will ignore these error messages for now.
