@@ -7,7 +7,6 @@
 * [5 File contents](./05_filecontents/01_course.md)
 * [6 Software & packages](./06_software/01_course.md)
 * [7 Advanced command structures](./07_advancedcommands/01_course.md)
-** [Lab](./07_advancedcommands/02_lab.md)
 ** [Assignment - control operators](./07_advancedcommands/exercises/control_operators/99_exercises.md)
 ** [Assignment - file globbing](./07_advancedcommands/exercises/file_globbing/99_exercises.md)
 ** [Assignment - aliases](./07_advancedcommands/exercises/aliases/99_exercises.md)
