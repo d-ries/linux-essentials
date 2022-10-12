@@ -202,7 +202,7 @@ This will give us a `zip` file that we need to extract by running ```unzip custo
 
 We can remove the zipfile as we no longer need this:
 ```bash
-student@linux-ess:~$ rm -rf customworld.zip
+student@linux-ess:~$ rm customworld.zip
 student@linux-ess:~/linuscraft/serverfiles$ ls
 Quadropolis  logfile.txt  myworld
 ```
