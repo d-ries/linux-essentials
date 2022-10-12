@@ -84,7 +84,7 @@ Copy all 'files' within this directory into a subdirectory named `backup` in you
  
 
 ## Task 15
-Remove, with just one command, the folder `PXL` with all contents created in the previous Task
+Remove, with just one command, the folder `PXL` with all contents created in Task 5
 
 ## Task 16
 Create this directorystructure with just 1 command:
