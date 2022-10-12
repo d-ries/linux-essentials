@@ -216,4 +216,4 @@ student@linux-ess:~/linuscraft/serverfiles$ minetest --server --world ~/linuscra
 When you join the server now, you will notice that the map isn't as empty as it was before:
 ![minetest-client-world](../images/06/minetest-client-world.PNG)
 
-As you can see we get some errors aswell, this is because we are missing some mods. We will ignore these error messages for now.
+As you can see we get some errors as well, this is because we are missing some mods. We will ignore these error messages for now.
