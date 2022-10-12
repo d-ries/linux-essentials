@@ -195,14 +195,15 @@ student@linux-ess:~$ cd ~/linuscraft/serverfiles
 
 After doing so we will download the zip file containing our new world by running the command below:
 ```bash
-student@linux-ess:~$ wget https://d-ries.github.io/linux-essentials/data/customworld.zip
+student@linux-ess:~/linuscraft/serverfiles$ wget https://d-ries.github.io/linux-essentials/data/customworld.zip
 ```
+If we want to take a look into the zip, we can use ```less customworld.zip```  
 
 This will give us a `zip` file that we need to extract by running ```unzip customworld.zip```.
 
 We can remove the zipfile as we no longer need this:
 ```bash
-student@linux-ess:~$ rm customworld.zip
+student@linux-ess:~/linuscraft/serverfiles$ rm customworld.zip
 student@linux-ess:~/linuscraft/serverfiles$ ls
 Quadropolis  logfile.txt  myworld
 ```
