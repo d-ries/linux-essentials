@@ -54,9 +54,9 @@ Get:33 http://archive.ubuntu.com/ubuntu focal-backports/universe Translation-en 
 Get:34 http://archive.ubuntu.com/ubuntu focal-backports/universe amd64 c-n-f Metadata [860 B]
 Fetched 8672 kB in 2s (3651 kB/s)
 ```
-?> <i class="fa-solid fa-circle-info"></i> Note that we used the `sudo` command. This is needed because `apt` is a system wide command that impacts the entire system (installing/removing/updating software). Therefore we cannot run it as a user with default permissions. `sudo` will always ask for your password!
+?> <i class="fa-solid fa-circle-info"></i> Note that we used the `sudo` command. This is needed because `apt` is a system wide command that impacts the entire system (installing/removing/updating software). Therefore we cannot run it as a user with default permissions.
 
-We can see that this command gets data from a bunch of servers. These servers are called _repositories_ (servers with a collection of packages and metadata of those packages). When we install software later, it will use the database based on the repoistories to check if the package that we want to install is available.
+We can see that this command gets data from a bunch of servers. These servers are called _repositories_ (servers with a collection of packages). When we install software later, it will use the database based on the repoistories to check if the package that we want to install is available.
 
 The list of repositories that `apt` uses can be found in the file `/etc/apt/sources.list`. We can manually add more repositories to this file or use the command `add-apt-repository` but we will not go into this for now.
 
