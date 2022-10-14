@@ -79,8 +79,9 @@ Create a new folder "My Pictures" in your homefolder. Go into this folder and cr
 Use the command `rename` twice to rename all files so no capitals exist anymore in any of the filenames.
 
 ## Task 14
-Make sure you are located in your homedirectory (~). <br/>
-Copy all 'files' within this directory into a subdirectory named `backup` in your homefolder. You don't need to copy the subdirectories, but you need to copy the hidden files too.
+Make sure you are located in your homedirectory (~). <br/>  
+Create a new directory named `backup` in your homefolder.  
+Copy all 'files' within your homedirectory into the subdirectory named `backup`. You don't need to copy the subdirectories, but you need to copy the hidden files too.
  
 
 ## Task 15
