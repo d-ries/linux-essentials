@@ -345,4 +345,53 @@ student@linux-ess:~$ sudo snap install mapscii
 [sudo] password for student:
 mapscii 0.3.1 from Nathan Haines (nhaines) installed
 student@linux-ess:~$ mapscii 
-```
+```  
+  
+  
+## zip vs gzip
+`gzip` compresses only one file and therefore is used with `tar` which brings multiple files into one file.  
+`zip`is used when you want to compress a bunch of files into one file in one step. 
+  
+```bash
+student@linux-ess:~$ ls -a
+.   ..   .bash_history   .bash_logout   .bashrc   .profile   .ssh
+student@linux-ess:~$ zip myzipfile.zip .bashrc .profile
+  adding: .bashrc (deflated 54%)
+  adding: .profile (deflated 51%)
+student@linux-ess:~$ ls -l
+total 2440
+-rw-rw-r-- 1 student student    2440 Oct 14 15:00 myzipfile.zip
+student@linux-ess:~$ unzip -l myzipfile.zip     # only list the files 
+student@linux-ess:~$ rm .bashrc .profile
+student@linux-ess:~$ ls -a
+.   ..   .bash_history   .bash_logout   .ssh
+student@linux-ess:~$ unzip myzipfile.zip
+Archive:  myzipfile.zip
+  inflating: .bashrc
+  inflating: .profile
+student@linux-ess:~$ ls -a
+.   ..   .bash_history   .bash_logout   .bashrc   .profile   .ssh  
+```` 
+
+So why do we use `tar` and `gzip` if we can use `zip` instead? This is because `tar` will also keep the ownerships and the rights on each file. We will compare the two with an example (if you don't really understand the ownership in the example, mind that it will be explained in a later lesson):  
+
+```bash
+student@linux-ess:~$ ls -lh .bashrc
+-rw-r--r-- 1 student student 3.7K Jan  6  2022 .bashrc        # mind the owner student
+student@linux-ess:~$ zip zipdemo.zip .bashrc
+  adding: .bashrc (deflated 54%)
+student@linux-ess:~$ tar -czf tardemo.tgz .bashrc
+student@ulinux-ess:~$ ls -lh zipdemo.zip tardemo.tgz
+-rw-rw-r-- 1 student student 1.9K Oct 14 15:21 tardemo.tgz
+-rw-rw-r-- 1 student student 1.9K Oct 14 15:19 zipdemo.zip 
+student@ulinux-ess:~$ cp zipdemo.zip tardemo.tgz /tmp
+student@ulinux-ess:~$ cd /tmp
+student@ulinux-ess:/tmp$ sudo unzip zipdemo.zip              # sudo -> do as root user  -> just to demo the rights
+student@ulinux-ess:/tmp$ ls -lh .bashrc
+-rw-r--r-- 1 root root 3.7K Jan  6  2022 .bashrc             # root is the owner because he created the files with unzipping the zipfile
+student@ulinux-ess:/tmp$ sudo rm .bashrc
+student@ulinux-ess:/tmp$ sudo tar xzf tardemo.tgz            # sudo -> do as root user  -> just to demo the rights
+student@ulinux-ess:/tmp$ ls -lh .bashrc
+-rw-r--r-- 1 student student 3.7K Jan  6  2022 .bashrc       # student is still the owner even though the files are created by root (sudo) while untarring
+```` 
+
