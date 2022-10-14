@@ -205,16 +205,11 @@ We can remove the zipfile as we no longer need this:
 ```bash
 student@linux-ess:~/linuscraft/serverfiles$ rm customworld.zip
 student@linux-ess:~/linuscraft/serverfiles$ ls
-Quadropolis  logfile.txt  myworld
+pxl-world  logfile.txt  myworld
 ```
 
-As seen in the output above, the new world is called `Quadropolis`. We can now use the command we saw earlier to start the server using the new map files:
+As seen in the output above, the new world is called `pxl-world`. We can now use the command we saw earlier to start the server using the new map files:
 ```bash
-student@linux-ess:~/linuscraft/serverfiles$ minetest --server --world ~/linuscraft/serverfiles/Quadropolis/ --logfile ~/linuscraft/serverfiles/logfile.txt
+student@linux-ess:~/linuscraft/serverfiles$ minetest --server --world ~/linuscraft/serverfiles/pxl-world/ --logfile ~/linuscraft/serverfiles/logfile.txt
 ```
-?> You might get some warnings because the new map is made to use some mods. You can ignore these warnings for now, or try to install the required mods yourself! The world will work without the usage of these mods
-
-When you join the server now, you will notice that the map isn't as empty as it was before:
-![minetest-client-world](../images/06/minetest-client-world.PNG)
-
-As you can see we get some errors as well, this is because we are missing some mods. We will ignore these error messages for now.
+If you join now, you should be in a world that contains a lake/sea with the PXL university college logo floating in the air!
