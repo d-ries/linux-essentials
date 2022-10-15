@@ -198,7 +198,7 @@ student@ubuntu-server:~$ tree
 │           └── pacman
 ├── emptyfile
 student@ubuntu-server:~$ tar -cf Downloads.tar Downloads     # create tar
-student@ubuntu-server:~$ tar -tf Downloads.tar Downloads     # view contents of tar
+student@ubuntu-server:~$ tar -tf Downloads.tar               # view contents of tar
 Downloads/
 Downloads/logo.png
 Downloads/Steam/
@@ -219,9 +219,8 @@ student@ubuntu-server:~$ tree
 │       └── games
 │           └── pacman
 ├── emptyfile
-student@ubuntu-server:~$ tar -czf Downloads.tar.gz  Downloads     # create tar
-student@ubuntu-server:~$ tar -tf Downloads.tar Downloads   
-student@ubuntu-server:~$ tar -tzf Downloads.tar.gz                             # view contents of tarball
+student@ubuntu-server:~$ tar -czf Downloads.tar.gz  Downloads             # create tar 
+student@ubuntu-server:~$ tar -tzf Downloads.tar.gz                        # view contents of tarball
 Downloads/
 Downloads/logo.png
 Downloads/Steam/
@@ -230,9 +229,9 @@ Downloads/Steam/games/pacman
 ```
 
 
-### Untar
+### Extract a tar
 
-We can untar a tarfile (.tar) or tarball (.tar.gz).
+We can extract a tarfile (.tar) or tarball (.tar.gz).
 
 ```bash
 student@ubuntu-server:~$ tree
@@ -247,7 +246,7 @@ student@ubuntu-server:~$ tree
 ├── emptyfile
 
 student@ubuntu-server:~$ mkdir backup
-student@ubuntu-server:~$ tar -xzf Downloads.tar.gz  -C backup    # zipped tarball
+student@ubuntu-server:~$ tar -xzf Downloads.tar.gz  -C backup      # zipped tarball
 student@ubuntu-server:~$ tar -xf Downloads.tar -C /tmp             # tarfile
 student@ubuntu-server:~$ tree
 .
@@ -258,6 +257,7 @@ student@ubuntu-server:~$ tree
 │           └── games
 │               └── pacman
 
+...
 
 student@ubuntu-server:~$ tree /tmp/Downloads/
 /tmp/Downloads/
@@ -390,7 +390,7 @@ student@ulinux-ess:/tmp$ sudo unzip zipdemo.zip              # sudo -> do as roo
 student@ulinux-ess:/tmp$ ls -lh .bashrc
 -rw-r--r-- 1 root root 3.7K Jan  6  2022 .bashrc             # root is the owner because he created the files with unzipping the zipfile
 student@ulinux-ess:/tmp$ sudo rm .bashrc
-student@ulinux-ess:/tmp$ sudo tar xzf tardemo.tgz            # sudo -> do as root user  -> just to demo the rights
+student@ulinux-ess:/tmp$ sudo tar -xzf tardemo.tgz            # sudo -> do as root user  -> just to demo the rights
 student@ulinux-ess:/tmp$ ls -lh .bashrc
 -rw-r--r-- 1 student student 3.7K Jan  6  2022 .bashrc       # student is still the owner even though the files are created by root (sudo) while untarring
 ```` 
