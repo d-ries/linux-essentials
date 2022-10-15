@@ -3,7 +3,7 @@ In Windows we have several options to install software. We usually use installer
 
 Remember that latest hyped video game that you preordered and turned out to be a total bust? When installing that game it might prompt you saying/asking that you need to install the lastest version of DirectX or Visual C++ Redistributable? These are other pieces of software that are needed to run the initial application or game. We call these pieces of software _dependencies_. Most of the times the original installer installs these for us but sometimes we have to manually find and install these dependencies ourselves.
 
-Installing software on Linux systems hasn't always been easy. Back in the days we had to download source code and compile applications ourselves, put them in the right folders and make sure we have all the needed dependencies to run the application.  We might come across this process in the present day, but most of the time we are gonna install software using _package managers_. These are tools that run through a database to find the application that we want to install. If it finds an application matching the specified name it will install the application as well as all the required dependencies. Another benefit is that the package manager will also manage updates of all our applications and dependencies.
+Installing software on Linux systems hasn't always been easy. Back in the days we had to download source code and compile applications ourselves, put them in the right folders and make sure we have all the needed dependencies to run the application.  We might come across this process in the present day, but most of the time we are gonna install software using _package managers_. These are tools that run through a database to find the application that we want to install. If it finds an application matching the specified name it will install the application as well as all the required dependencies. If we remove an application it will also remove all dependencies that are no loger required. Another benefit is that the package manager will also manage updates of all our applications and dependencies.
 
 ## installing, removing and updating software (apt)
 When installing software packages in Ubuntu we often use the `apt` (advanced package system) command. The man page gives us all the info we need to use this with command:
@@ -25,7 +25,7 @@ DESCRIPTION
        specialized APT tools like apt-get(8) and apt-cache(8).
 ```
 
-As described above `apt` (or it's predecessor `apt-get`) is a package manager. We can use this tool to install packages (read: software) on our Linux machine. Note that `apt` is the specific package manager for Ubuntu. There are several alternatives available such as `dpkg`, `pacman`, `rpm`, `yum`, `dnf` ... which usually come pre-installed with your linux distribution.
+As described above `apt` (or it's predecessor `apt-get`) is a package manager. We can use this tool to install packages (read: software) on our Linux machine. Note that `apt` is the specific package manager for Ubuntu. There are several alternatives available such as `dpkg`, `pacman`, `rpm`, `yum`, `dnf` ... which might come pre-installed with a specific linux distribution.
 
 ### Repositories
 An important thing to note about `apt` is that it uses a database of available packages. We can update this list of packages by running the command below:
