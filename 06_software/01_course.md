@@ -6,7 +6,7 @@ Remember that latest hyped video game that you preordered and turned out to be a
 Installing software on Linux systems hasn't always been easy. Back in the days we had to download source code and compile applications ourselves, put them in the right folders and make sure we have all the needed dependencies to run the application.  We might come across this process in the present day, but most of the time we are gonna install software using _package managers_. These are tools that run through a database to find the application that we want to install. If it finds an application matching the specified name it will install the application as well as all the required dependencies. If we remove an application it will also remove all dependencies that are no loger required. Another benefit is that the package manager will also manage updates of all our applications and dependencies.
 
 ## installing, removing and updating software (apt)
-When installing software packages in Ubuntu we often use the `apt` (advanced package system) command. The man page gives us all the info we need to use this with command:
+When installing software packages in Ubuntu we often use the `apt` (advanced package system) command. The man page gives us all the info we need to use the command:
 ```bash
 student@linux-ess:~$ man apt
 APT(8)                                                   APT                                                   APT(8)
