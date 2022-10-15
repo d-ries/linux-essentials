@@ -58,19 +58,32 @@ Show the history of changes in snap
 
 ## Task 17
 Check if the snap 'asciiquarium' exists. Read some info about the snap, install it and run it  
-  
+    
 ## Task 18
 Zip the _homedirectory_ of the user student (with all files and folders) into a file called _/tmp/myhomefolder.zip_.  
-Bekijk de inhoud van de zipfile om te controleren.  
-Make a directory called _zipdemo_ in the temporary folder (_/tmp_).  
-Unzip the zipfile _myhomfolder.zip_ in the directory _/tmp/zipdemo_  
-  
-## Task 19
-Make a tarball called _/tmp/myhomefolder.tgz_ with the files and folders of the _homedirectory_ of the user student.  
-Make a directory called _tardemo_ in the temporary folder (_/tmp_).  
-Extract the tarball _myhomfolder.tgz_ in the directory _/tmp/tardemo_  
-  
-## Task 20
-Try to install the minetest client on your Ubuntu Desktop and connect with the server to play the game. After installation you will find minetest between your applicataions in the GUI.  Make sure that your minetest server is running. If not, use ctrl+r and search for minetest untill you see the following command: minetest --server --world ~/linuscraft/serverfiles/pxl-world --logfile ~/linuscraft/serverfiles/logfile.txt  
+View the contents of the zipfile to check the result.  
 
+## Task 19
+Search the manpage of zip to find out how you can delete a file from your zipfile.  
+Delete the file .bash_history from the zipfile _/tmp/myhomefolder.zip_  
+Check the contents of the zipfile.  
+
+## Task 20
+Make a directory called _zipdemo_ in the temporary folder (_/tmp_).  
+Unzip the zipfile _myhomfolder.zip_ in the directory _/tmp/zipdemo_ 
+Use `tree` to check if the process completed successfully.
+  
+## Task 21
+Make a tarball called _/tmp/myhomefolder.tar.gz_ with the files and folders of the _homedirectory_ of the user student.  
+View the contents of the tarfile to check the result.  
+Make a directory called _tardemo_ in the temporary folder (_/tmp_).  
+Extract the tarball _myhomfolder.tar.gz_ in the directory _/tmp/tardemo_  
+  
+## Task 22
+Extra Challenge: Try to remove the file _.bashrc_ from the tarball (task 21)  
+Search the manpage of tar to find a solution.  
+Check the contents of the tarball at the end of the exercise.   
+
+## Task 23
+Try to install the minetest client on your Ubuntu Desktop and connect with the server to play the game. After installation you will find minetest between your applicataions in the GUI.  Make sure that your minetest server is running. If not, use ctrl+r and search for minetest untill you see the following command: minetest --server --world ~/linuscraft/serverfiles/pxl-world --logfile ~/linuscraft/serverfiles/logfile.txt     
 
