@@ -61,6 +61,7 @@ Check if the snap 'asciiquarium' exists. Read some info about the snap, install 
   
 ## Task 18
 Zip the _homedirectory_ of the user student (with all files and folders) into a file called _/tmp/myhomefolder.zip_.  
+Bekijk de inhoud van de zipfile om te controleren.  
 Make a directory called _zipdemo_ in the temporary folder (_/tmp_).  
 Unzip the zipfile _myhomfolder.zip_ in the directory _/tmp/zipdemo_  
   
