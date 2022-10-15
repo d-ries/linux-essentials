@@ -27,7 +27,7 @@ Search with apt for "the matrix" and install the package which resembles the dis
 Remove the package btop from the system. You shouldn't be able to run it anymore  
 
 ## Task 8
-List the packages that are installed with apt. In the list you will see one entry for `caca-utils`. Search in the manpage of 'apt' how you can see some info of this packages. You will see that this package holds several utilities. Try the last two. Tip: You can push 'enter' to try and see different things. Use `ctrl+c` to quit a utility.  
+List all the packages that are installed with apt. In the list you will see one entry for `caca-utils`. Search in the manpage of 'apt' how you can see some info of this packages. You will see that this package holds several utilities. Try the last two. Tip: You can push 'enter' to try and see different things. Use `ctrl+c` to quit a utility.  
 
 ## Task 9
 Search for a snap package via the description "resource monitor"    
