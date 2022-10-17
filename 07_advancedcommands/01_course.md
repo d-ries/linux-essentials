@@ -238,7 +238,7 @@ student@linux-ess:~$
 
 ## Control operators
 ### Seperating commands
-We can use a `;` (semicolon) character to seperate multiple commands one line. Each command can have its own options and arguments and they will be ran sequentially. The shell will wait for a command to finish before starting the next one:
+We can use a `;` (semicolon) character to seperate multiple commands on one line. Each command can have its own options and arguments and they will be ran sequentially. The shell will wait for a command to finish before starting the next one:
 ```bash
 student@linux-ess:~$ echo hello ; echo pxl ; pwd
 hello
@@ -276,6 +276,20 @@ student@linux-ess:~$ touch testfile
 student@linux-ess:~$ ls test*
 testfile
 student@linux-ess:~$ rm testfile && echo file deleted || echo failed to delete
+file deleted
+student@linux-ess:~$ ls test*
+ls: cannot access 'test*': No such file or directory
+student@linux-ess:~$ rm testfile && echo file deleted || echo failed to delete
+rm: cannot remove 'testfile': No such file or directory
+failed to delete
+```
+
+In this example it would be best to redirect our errors to the _void_ as well, because we generate our own fault message now. Use `/dev/null` as seen earlier to do this in combination with the redirection of the stderr as follows:
+```bash
+student@linux-ess:~$ touch testfile
+student@linux-ess:~$ ls test*
+testfile
+student@linux-ess:~$ rm 2> /dev/null testfile && echo file deleted || echo failed to delete
 file deleted
 student@linux-ess:~$ ls test*
 ls: cannot access 'test*': No such file or directory
