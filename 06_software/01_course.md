@@ -310,6 +310,8 @@ One of the relative new players is snap. A snap is a bundle of the software we w
 The commands for working with snap are almost similar as apt. We have:  
 snap search  
 snap list (installed apps)  
+snap list --all (shows all the installed versions)
+snap revert <snapname> --revision <revnumber>      (go back to a previous version of the snap)  
 snap info   
 snap install  
 snap remove   
