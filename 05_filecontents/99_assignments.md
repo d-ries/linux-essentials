@@ -10,7 +10,7 @@ Show the first line of the file /proc/meminfo to find out how much memory you’
 Show the last line of the file passwd located in the folder etc of the root folder
 
 ## Task 4
-Show the first 4 characters (=bytes) of the file /etc/passwd. What do you see? 
+Show the first 4 characters (=bytes) of the file /etc/passwd. Search the manpage of head to find out how to do it. What do you see? 
 
 ## Task 5
 Use cat to put the following text in a new file "mytextfile" in your home folder:  
