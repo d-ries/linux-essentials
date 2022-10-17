@@ -117,7 +117,7 @@ Building dependency tree
 Reading state information... Done
 E: Unable to locate package zap
 ```
-The output indicates that it cannot locate the package `zap`. This means that it checked all its repositories for a package with the name `zap` but it could not be found. If the package does exists we would have to add the repository containing the package and run `sudo apt-get update`.
+The output indicates that it cannot locate the package `zap`. This means that it checked all its repositories for a package with the name `zap` but it could not be found. If the package does exists we would have to add the repository containing the package and run `sudo apt update`.
 
 ### Removing software (apt remove)
 To remove software we can simply use the command below:
@@ -307,7 +307,7 @@ student@linux-ess:~$ sudo dpkg-reconfigure keyboard-configuration
 ## snap
 One of the relative new players is snap. A snap is a bundle of the software we want to install with all of its dependencies stored in one file and executed in its own bubble. This means that two snaps cannot interfere with eachother. This for example makes it possible to install two different versions of the same software at the same time and running them together. Snaps have their own filesystem but can work with files on your systems too. You can find snaps in the snap store on a Desktop or with `snap search` on a server. Snaps are used more and more because they are distro independant. If you can install the snap daemon on the distro it will run all snaps. 
 
-The commands for working with snap are almost similar as apt. We have:
+The commands for working with snap are almost similar as apt. We have:  
 snap search  
 snap list (installed apps)  
 snap info   
