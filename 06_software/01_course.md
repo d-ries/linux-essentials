@@ -159,12 +159,12 @@ If we compress a file, we keep the content, but the filesize will become smaller
 
 ```bash
 student@ubuntu-server:~$ cd
-student@ubuntu-server:~$ cp /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_jammy_universe_binary-amd64_Packages .
-student@ubuntu-server:~$ ls -lh archive*
--rw-r--r-- 1 student student 62M Oct 10 19:40 archive.ubuntu.com_ubuntu_dists_jammy_universe_binary-amd64_Packages
-student@ubuntu-server:~$ gzip archive.ubuntu.com_ubuntu_dists_jammy_universe_binary-amd64_Packages
-student@ubuntu-server:~$ ls -lh archive*
--rw-r--r-- 1 student student 17M Oct 10 19:40 archive.ubuntu.com_ubuntu_dists_jammy_universe_binary-amd64_Packages.gz
+student@ubuntu-server:~$ cp /var/lib/apt/lists/be.archive.ubuntu.com_ubuntu_dists_jammy_universe_binary-amd64_Packages .
+student@ubuntu-server:~$ ls -lh be.archive*
+-rw-r--r-- 1 student student 62M Oct 10 19:40 be.archive.ubuntu.com_ubuntu_dists_jammy_universe_binary-amd64_Packages
+student@ubuntu-server:~$ gzip be.archive.ubuntu.com_ubuntu_dists_jammy_universe_binary-amd64_Packages
+student@ubuntu-server:~$ ls -lh be.archive*
+-rw-r--r-- 1 student student 17M Oct 10 19:40 be.archive.ubuntu.com_ubuntu_dists_jammy_universe_binary-amd64_Packages.gz
 ```
 
 The file has an extension of gz and  is a lot smaller now, but you cannot see its contents. The original file is gone and we only have the compressed file now.
@@ -174,11 +174,11 @@ The file has an extension of gz and  is a lot smaller now, but you cannot see it
 
 If we want to decompress the file we can use gunzip.
 ```bash
-student@ubuntu-server:~$ ls -lh archive*
--rw-r--r-- 1 student student 17M Oct 10 19:40 archive.ubuntu.com_ubuntu_dists_jammy_universe_binary-amd64_Packages.gz
-student@ubuntu-server:~$ gunzip archive.ubuntu.com_ubuntu_dists_jammy_universe_binary-amd64_Packages.gz
-student@ubuntu-server:~$ ls -lh archive*
--rw-r--r-- 1 student student 62M Oct 10 19:40 archive.ubuntu.com_ubuntu_dists_jammy_universe_binary-amd64_Packages
+student@ubuntu-server:~$ ls -lh be.archive*
+-rw-r--r-- 1 student student 17M Oct 10 19:40 be.archive.ubuntu.com_ubuntu_dists_jammy_universe_binary-amd64_Packages.gz
+student@ubuntu-server:~$ gunzip be.archive.ubuntu.com_ubuntu_dists_jammy_universe_binary-amd64_Packages.gz
+student@ubuntu-server:~$ ls -lh be.archive*
+-rw-r--r-- 1 student student 62M Oct 10 19:40 be.archive.ubuntu.com_ubuntu_dists_jammy_universe_binary-amd64_Packages
 ```
 
 The file regained its original size and the content can be viewed/edited again. The zipped file is gone again and we only have the original file.
