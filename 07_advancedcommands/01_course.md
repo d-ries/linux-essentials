@@ -210,6 +210,7 @@ If we want to redirect `stderr` we can use the same concept as follows:
 student@linux-ess:~$ find / 2> /dev/null
 ```
 In this example every files that's found (with no error) will be printed on our screen. The errors that are generated (eg. not able to dive in a certain directory to look for files because of lack of privileges) will not be shown on the screen because they are redirected to the recycle bin.
+This path `/dev/null` is often referred to as `the void` because we can throw in as much "garbage" as we want.
 
 And we could even combine redirecting both streams to seperate files in one command:
 ```bash
