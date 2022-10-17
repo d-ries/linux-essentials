@@ -6,19 +6,19 @@ In this assignment we will use `apt` instead of `apt-get` and `apt-cache`which a
 Update the local APT cache. This will get the latest info from the repositories  
 
 ## Task 2
-Upgrade all installed packages to the latest available version  
+Upgrade all packages installed with _apt_ to the latest available version  
 
 ## Task 3
-Search for a package that has something to do with 'usage stats'. You will see `btop` as one of the results. Install the package and run the app  
+Search with apt for a package that has something to do with 'usage stats'. You will see `btop` as one of the results. Install the package and run the app  
 
 ## Task 4
-Search for a package that has something to do with colorful cat. You will see `lolcat` as one of the results. Install the package and run the following commands:  
+Search with apt for a package that has something to do with colorful cat. You will see `lolcat` as one of the results. Install the package and run the following commands:  
 cd  
 cat .bash_history  
 lolcat .bash_history  
   
 ## Task 5
-Install the package 'neofetch' and run the app  
+Install with apt the package 'neofetch' and run the app  
 
 ## Task 6
 Search with apt for "the matrix" and install the package which resembles the display of the matrix movie. Run the app  
