@@ -310,7 +310,7 @@ One of the relative new players is snap. A snap is a bundle of the software we w
 The commands for working with snap are almost similar as apt. We have:  
 snap search  
 snap list (installed apps)  
-snap list --all (shows all the installed versions)
+snap list --all (shows all the installed versions)  
 snap revert <snapname> --revision <revnumber>      (go back to a previous version of the snap)  
 snap info   
 snap install  
@@ -364,6 +364,13 @@ student@linux-ess:~$ ls -l
 total 2440
 -rw-rw-r-- 1 student student    2440 Oct 14 15:00 myzipfile.zip
 student@linux-ess:~$ unzip -l myzipfile.zip     # only list the files 
+Archive:  myzipfile.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     3771  2022-01-06 16:23   .bashrc
+      807  2022-01-06 16:23   .profile
+---------                     -------
+     4578                     2 files
 student@linux-ess:~$ rm .bashrc .profile
 student@linux-ess:~$ ls -a
 .   ..   .bash_history   .bash_logout   .ssh
