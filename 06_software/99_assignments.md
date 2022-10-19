@@ -85,5 +85,10 @@ Search the manpage of tar to find a solution.
 Check the contents of the tarball at the end of the exercise.   
 
 ## Task 23
-Try to install the minetest client on your Ubuntu Desktop and connect with the server to play the game. After installation you will find minetest between your applicataions in the GUI.  Make sure that your minetest server is running. If not, use ctrl+r and search for minetest untill you see the following command: minetest --server --world ~/linuscraft/serverfiles/pxl-world --logfile ~/linuscraft/serverfiles/logfile.txt     
+Try and install google chrome on your ubuntu Desktop with the command line interface.  
+As you can see when you search for a download, you'll only find a .deb package to download. Use this package with dpkg to install google chrome.   
 
+More difficult: Try to download this .deb package with wget to accomplish the full installation in your CLI.
+
+## Task 24
+Try to install the minetest client on your Ubuntu Desktop and connect with the server to play the game. After installation you will find minetest between your applicataions in the GUI.  Make sure that your minetest server is running. If not, use ctrl+r and search for minetest untill you see the following command: minetest --server --world ~/linuscraft/serverfiles/pxl-world --logfile ~/linuscraft/serverfiles/logfile.txt     
