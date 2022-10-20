@@ -23,3 +23,6 @@ student@linux-ess:~$ memory
 Mem:            3.9G        315M        3.0G        1.0M        575M        3.3G
 Swap:             0B          0B          0B
 ```
+
+## Task 6
+Use Task 8 of the control operators assignments and create an alias _show_ with it. 
