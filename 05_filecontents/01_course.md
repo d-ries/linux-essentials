@@ -108,7 +108,7 @@ student@linux-ess:~$ less /var/log/dpkg.log
 2022-09-19 21:52:34 status half-configured linux-headers-5.4.0-81:all 5.4.0-81.91
 2022-09-19 21:52:34 status half-installed linux-headers-5.4.0-81:all 5.4.0-81.91
 ```
-?> <i class="fa-solid fa-circle-info"></i> Did you know that by default manpages are also opened with `less`. So you can also search within files opened with `less` by using _/_ and _n_ for next, _N_ for previous and even _p_ to go back to the first occurence of you searchstring. You can also go to the first line by pressing _g_ and to the last line by pressing _G_.
+?> <i class="fa-solid fa-circle-info"></i> Did you know that by default manpages are also opened with `less`. So you can also search within files opened with `less` by using _/_ and _n_ for next, _N_ for previous and even _p_ to go back to the first occurence of you searchstring. If you want to search case insensitive you can type _-i_. You can also go to the first line by pressing _g_ and to the last line by pressing _G_.
 
 ## Create files with contents
 ### Using echo
