@@ -6,7 +6,7 @@ Create a new folder named FileGlobEx with the files script.sh, scrupt.sh and scr
 ## Task 2
 Try following command: ls scr[a-z]pt.*
 - Make sure this command is case sensitive and test
-- Make sure this command is not case sensitive and test
+- Make sure this command is not case sensitive and test  
 ?> <i class="fa-solid fa-circle-info"></i> Currently it is set to automatically use not case sensitive.
 
 ## Task 3
