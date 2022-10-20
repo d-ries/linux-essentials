@@ -37,3 +37,6 @@ What is the output of: (Try to answer without typing it in the terminal first)
 echo \\\\\??\#\"\ \\ #\\
 ```
 
+## Task 8
+Change the error output of the ls command to: "I cannot find this file or folder, sorry". The working of the command should stay the same.
+
