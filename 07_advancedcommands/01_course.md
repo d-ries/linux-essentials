@@ -295,6 +295,5 @@ file deleted
 student@linux-ess:~$ ls test*
 ls: cannot access 'test*': No such file or directory
 student@linux-ess:~$ rm testfile && echo file deleted || echo failed to delete
-rm: cannot remove 'testfile': No such file or directory
 failed to delete
 ```
