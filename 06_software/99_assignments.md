@@ -70,7 +70,7 @@ Check the contents of the zipfile.
 
 ## Task 20
 Make a directory called _zipdemo_ in the temporary folder (_/tmp_).  
-Unzip the zipfile _myhomfolder.zip_ in the directory _/tmp/zipdemo_ 
+Unzip the zipfile _myhomefolder.zip_ in the directory _/tmp/zipdemo_ 
 Use `tree` to check if the process completed successfully.
   
 ## Task 21
