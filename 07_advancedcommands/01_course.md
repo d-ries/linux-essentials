@@ -138,7 +138,7 @@ student@linux-ess:~$ rm jokes.txt
 rm: remove regular file 'jokes.txt'? y
 ```
 
-You already used aliases. For example the ls command we use prints colored text in its output. This is because we use the alias. If we put a `\` in front a command it will use the command instead of the alias.
+You already used aliases. For example the ls command we use prints colored text in its output. This is because we use the alias. If we put a `\` in front of a command it will use the command instead of the alias.
 ```bash
 student@linux-ess:~$ alias ls
 alias ls='ls --color=auto'
