@@ -114,6 +114,9 @@ student@linux-ess:~/globbing$ echo \*\*\*\* TITLE \*\*\*\*
 **** TITLE ****
 ```
 
+?> You can imagine what would happen if we would delete the file _file*_ without using the escaping.
+
+
 ## Aliases
 Aliases are a way to give a simple name to a rather complex command as seen below:
 ```bash
