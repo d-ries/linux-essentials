@@ -120,7 +120,7 @@ student@linux-ess:~/globbing$ echo \*\*\*\* TITLE \*\*\*\*
 ## Aliases
 Aliases are a way to give a simple name to a rather complex command as seen below:
 ```bash
-student@linux-ess:~$ alias show='ls -lah ~'
+student@linux-ess:~$ alias show='ls -lah'
 student@linux-ess:~$ show
 total 16K
 drwxr-xr-x 1 student student  512 Jun  4 22:19 .
