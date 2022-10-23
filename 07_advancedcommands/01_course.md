@@ -195,17 +195,13 @@ Every stream has its own identifier (=number) as seen in the image above. These 
 We can redirect any of these streams to make the output go _somewhere else_. Often 'somewhere else' means to a file. This means we can seperate regular output (stdout) and errors (stderr) to get saved into seperate files. Below we begin with an example on how you can save the regular output of a command to a file:
 ```bash
 student@linux-ess:~$ ls / 1> listrootfolder
-student@linux-ess:~$ head listrootfolder
+student@linux-ess:~$ head -6 listrootfolder
 bin
 boot
 dev
 etc
 home
-init
 lib
-lib32
-lib64
-libx32
 ```
 The `1>` means we redirect stream `1` to the file `listrootfolder`. Stream `1` refers to the `stdout` stream. Note that in this case the number `1` is optional, so the command below will work as well:
 ```bash
@@ -219,7 +215,7 @@ If we want to redirect `stderr` we can use the same concept as follows:
 ```bash
 student@linux-ess:~$ find / 2> /dev/null
 ```
-In this example every files that's found (with no error) will be printed on our screen. The errors that are generated (eg. not able to dive in a certain directory to look for files because of lack of privileges) will not be shown on the screen because they are redirected to the recycle bin.
+In this example every file that's found (which is regular output) will be printed on our screen. The errors that are generated (eg. not able to dive in a certain directory to look for files because of lack of privileges) will not be shown on the screen because they are redirected to the black hole.
 This path `/dev/null` is often referred to as `the void` or `the black hole` because we can throw in as much "garbage" as we want.
 
 And we could even combine redirecting both streams to seperate files in one command:
