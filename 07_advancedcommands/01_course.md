@@ -192,7 +192,7 @@ Because both `stdout` and `stderr` get printed on our screen, we don't notice th
 Every stream has its own identifier (=number) as seen in the image above. These identifiers are important in the next paragraphs.
 
 ### Stream redirection
-We can redirect any of these streams to make the output go _somewhere else_. Often 'somewhere else' means to a file. This means we can both seperate regular output (stdout) and errors (stderr) to get saved into seperate files. Below is an example on how you can save the output of a command to a file:
+We can redirect any of these streams to make the output go _somewhere else_. Often 'somewhere else' means to a file. This means we can seperate regular output (stdout) and errors (stderr) to get saved into seperate files. Below we begin with an example on how you can save the regular output of a command to a file:
 ```bash
 student@linux-ess:~$ ls / 1> listrootfolder
 student@linux-ess:~$ head listrootfolder
