@@ -171,6 +171,12 @@ Swap:             0B          0B          0B
 student@linux-ess:~$
 ```
 
+The order in which the shell checks for commands in the shell: 
+* Aliases. Names set by the alias command that represent a particular command and a set of options. 
+* Built-in command. This is a command built into the shell.
+* Filesystem command. This command is stored in and executed from the computer’s filesystem. (These are the commands that are indicated by the value of the PATH variable).
+
+
 ## I/O redirection
 ### I/O Streams
 When working with the shell we actually work with something called streams. There are 3 basic streams available when using a shell:
