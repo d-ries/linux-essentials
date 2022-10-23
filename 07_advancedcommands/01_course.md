@@ -39,10 +39,11 @@ student@linux-ess:~$ echo '    I             like      to                  $acti
     I             like      to                  $action
 ```
 
-The `third option` is to escape every space. Don't use this mechanism in variables because it won't work.
+The `third option` is to escape every space. Don't use this mechanism within the value of a variable because it won't work.
 ```bash
-student@linux-ess:~$ echo \ \  I \ \ \ \ \ \ \ like \ \ to \ \ \ \ \ \ \ \ \ \ \ \ \ \ play\ \ \ \ games
-    I       like   to              play    games
+student@linux-ess:~$ action='play       games'  
+student@linux-ess:~$ echo \ \  I \ \ \ \ \ \ \ like \ \ to \ \ \ \ \ \ \ \ \ \ \ \ \ \ $action
+    I       like   to              play       games
 ```
 
 
