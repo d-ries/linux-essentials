@@ -9,7 +9,7 @@ Update the local APT cache. This will get the latest info from the repositories
 Upgrade all packages installed with _apt_ to the latest available version  
 
 ## Task 3
-Search with apt for a package that has something to do with 'usage stats'. You will see `btop` as one of the results. Install the package and run the app  
+Search with apt for a package that has something to do with 'usage and stats'. You will see `btop` as one of the results. Install the package and run the app  
 
 ## Task 4
 Search with apt for a package that has something to do with colorful cat. You will see `lolcat` as one of the results. Install the package and run the following commands:  
