@@ -300,6 +300,6 @@ student@linux-ess:~$ rm 2> /dev/null testfile && echo file deleted || echo faile
 file deleted
 student@linux-ess:~$ ls test*
 ls: cannot access 'test*': No such file or directory
-student@linux-ess:~$ rm 2> /dev/null testfile && echo file deleted || echo failed to delete
+student@linux-ess:~$ rm testfile 2>/dev/null && echo file deleted || echo failed to delete
 failed to delete
 ```
