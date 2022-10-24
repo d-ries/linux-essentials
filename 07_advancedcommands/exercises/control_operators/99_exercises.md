@@ -8,7 +8,7 @@ If you've made aliases for the commands rm, cp and mv in the past, you 'll have 
 ## Task 2
 Create a command that while deleting the file "test":
 - suppresses the error messages by sending them to the black hole (device `null`)
-- displays he text "deleted successfully!" when the file is deleted successfully
+- displays the text "deleted successfully!" when the file is deleted successfully
 - displays the text "couldn't delete the file!" when the files couldn’t be deleted 
 
 ## Task 3
