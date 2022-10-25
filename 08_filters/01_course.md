@@ -19,14 +19,16 @@ auth.log                      100%[=============================================
 student@linux-ess:~$ cat auth.log
 Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
 Jun 09 11:11:11 linux-ess: Server listening on :: port 22.
-Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g>
+Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g
 Jun 10 21:38:01 linux-ess: Failed password for: student from 192.168.0.1 port 37362 ssh2
 Jun 10 21:39:01 linux-ess: Failed password for: johndoe from 192.168.0.2 port 37849 ssh2
 Jun 10 21:42:01 linux-ess: Accepted password for: student from 84.298.138.41 port 48785 ssh2
 Jun 14 14:12:33 linux-ess: Accepted password for: johndoe from 192.168.0.3 port 38654 ssh2
-Jun 14 14:14:12 linux-ess: Accepted publickey for: student from 85.245.107.42 port 48298 ssh2: RSA SHA256:Keo89erjOEkmo>Jun 15 17:42:18 linux-ess: Failed password for: janedoe from 192.168.0.10 port 48239 ssh2
+Jun 14 14:14:12 linux-ess: Accepted publickey for: student from 85.245.107.42 port 48298 ssh2: RSA SHA256:Keo89erjOEkmo
+Jun 15 17:42:18 linux-ess: Failed password for: janedoe from 192.168.0.10 port 48239 ssh2
 Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
-Jun 19 22:43:23 linux-ess: Failed password for: johndoe from 85.245.107.42 port 22834 ssh2: RSA SHA256:eoKmezlE3iOp38Dj>Jun 22 08:04:00 linux-ess: Accepted password for: johndoe from 192.168.0.99 port 38299 ssh2
+Jun 19 22:43:23 linux-ess: Failed password for: johndoe from 85.245.107.42 port 22834 ssh2: RSA SHA256:eoKmezlE3iOp38Dj
+Jun 22 08:04:00 linux-ess: Accepted password for: johndoe from 192.168.0.99 port 38299 ssh2
 Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 44293 ssh2
 Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 48987 ssh2
 Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 22658 ssh2
@@ -41,14 +43,14 @@ A pipe (`|`) is a specific symbol that we can use to link commands together. The
  ```bash
 student@linux-ess:~$ head -3 auth.log | tail -2
 Jun 09 11:11:11 linux-ess: Server listening on :: port 22.
-Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g>
+Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g
 ```
 The example above will run the `head -3` command which will take the first 3 lines of the file `auth.log`. The output containing the first 3 lines of the file will then be used as input for the `tail -2` command which results in taking the bottom 2 lines of the first 3 lines of the file `auth.log`. This means that the result is the second and third line of the file.
 
 You can use as many pipes as you want in a command line. It will just keep passing the output of a command to the input of the next command and so on:
 ```bash
 student@linux-ess:~$ cat auth.log | head | tail -3 | head -2 | tail -1
-Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
+Jun 15 17:42:18 linux-ess: Failed password for: janedoe from 192.168.0.10 port 48239 ssh2
 ```
 
 ### Write to file (tee)
@@ -72,7 +74,7 @@ student@linux-ess:~$ tail -3 auth.log | head -1 | tee /filteredlogfile
 Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
 tee: /filteredlogfile: Permission denied
 student@linux-ess:~$ cat /filteredlogfile
-cat: qdfqdf: No such file or directory
+cat: /filteredlogfile: No such file or directory
 student@linux-ess:~$ tail -3 auth.log | head -1 | sudo tee /filteredlogfile
 Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
 student@linux-ess:~$ cat /filteredlogfile
@@ -104,29 +106,43 @@ Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port
 ```
 Both commands give the same result and work the same. What we can see is that the `grep` command will filter the file contents based on a string or pattern (in this case the string `jane`). 
 
-?> An important note to make is that, by default, `grep` is a case sensitive command. It will only show the lines in the file containing that specific keyword. Note that writing the keyword in caps will result in 0 lines being returned:
+?> An important note to make is that, by default, `grep` is a case sensitive command. It will only show the lines in the file containing that specific keyword. Note that searching for the string _failed_ in all lower case will result in 0 lines being returned:
 ```bash
-student@linux-ess:~$ cat auth.log | grep JANE
+student@linux-ess:~$ cat auth.log | grep failed
 student@linux-ess:~$
 ```
 However there is an option `-i` to make grep work case insensitive: 
 ```bash
-student@linux-ess:~$ cat auth.log | grep -i JANE
+student@linux-ess:~$ cat auth.log | grep -i failed
+Jun 10 21:38:01 linux-ess: Failed password for: student from 192.168.0.1 port 37362 ssh2
+Jun 10 21:39:01 linux-ess: Failed password for: johndoe from 192.168.0.2 port 37849 ssh2
 Jun 15 17:42:18 linux-ess: Failed password for: janedoe from 192.168.0.10 port 48239 ssh2
-Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
+Jun 19 22:43:23 linux-ess: Failed password for: johndoe from 85.245.107.42 port 22834 ssh2: RSA SHA256:eoKmezlE3iOp38Dj
+Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 44293 ssh2
+Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 48987 ssh2
+Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 22658 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 34598 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
 ```
 
 Another interesting option is `-v` which will return all lines _not_ containing the string/pattern:
 ```bash
-student@linux-ess:~$ cat auth.log | grep -v password
+student@linux-ess:~$ cat auth.log | grep -i -v failed
 Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
 Jun 09 11:11:11 linux-ess: Server listening on :: port 22.
-Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7gkeOeirKlzmgIogh
+Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g
+Jun 10 21:42:01 linux-ess: Accepted password for: student from 84.298.138.41 port 48785 ssh2
+Jun 14 14:12:33 linux-ess: Accepted password for: johndoe from 192.168.0.3 port 38654 ssh2
+Jun 14 14:14:12 linux-ess: Accepted publickey for: student from 85.245.107.42 port 48298 ssh2: RSA SHA256:Keo89erjOEkmo
+Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
+Jun 22 08:04:00 linux-ess: Accepted password for: johndoe from 192.168.0.99 port 38299 ssh2
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
 ```
 
 Knowing that we can use multiple pipes (`|`) in a command, we can combine multiple grep commands as well. Imagine the scenario where we want to find only successful login attemps made by the user `janedoe`. We could do this as follows:
 ```bash
-student@linux-ess:~$ cat auth.log | grep janedoe | grep -vi failed
+student@linux-ess:~$ cat auth.log | grep -vi failed | grep janedoe
 Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
 ```  
   
@@ -158,7 +174,7 @@ this is line three
 this is line four
 ```
 
-?> Another important note to make is dat filters only work on the output stream and not on the error stream. So if we want to search through the errors as well we have to combine the two streams:
+?> Another important note to make is that filters only work on the output stream and not on the error stream. So if we want to search through the errors as well we have to combine the two streams:
 ```bash
 student@linux-ess:~$ find /etc/ssl -name "*.c??"
 /etc/ssl/openssl.cnf
@@ -174,22 +190,21 @@ student@linux-ess:~$ find /etc/ssl -name "*.c??" |& tr 'abcde' 'ABCDE'
 finD: ‘/EtC/ssl/privAtE’: PErmission DEniED
 ```
 
-Or another example where we only want to see the Permission denieds of the folders /etc, /sys and /tmp but with a search of the whole disk
+Or another example where we only want to see the debug files from the sys folder that have _kernel_ in the name. We see here that it prints all the error lines because the grep filter does not work on the error stream
 ```bash
-student@linux-ess:~$ find / |& grep Perm | grep -E "\s./etc|\s./sys|\s./tmp"
-find: ‘/tmp/systemd-private-89c1ab052a974e86b212f7024be16cee-ModemManager.service-40sq8x’: Permission denied
-find: ‘/tmp/vmware-root_682-2697467275’: Permission denied
-find: ‘/tmp/systemd-private-89c1ab052a974e86b212f7024be16cee-systemd-timesyncd.service-3UeLrQ’: Permission denied
-find: ‘/tmp/systemd-private-89c1ab052a974e86b212f7024be16cee-systemd-resolved.service-uSO3ro’: Permission denied
-find: ‘/tmp/systemd-private-89c1ab052a974e86b212f7024be16cee-systemd-logind.service-SWwh5K’: Permission denied
-find: ‘/tmp/snap.lxd’: Permission denied
-find: ‘/etc/polkit-1/localauthority’: Permission denied
-find: ‘/etc/ssl/private’: Permission denied
-find: ‘/etc/multipath’: Permission denied
-find: ‘/sys/kernel/tracing’: Permission denied
-find: ‘/sys/kernel/debug’: Permission denied
-find: ‘/sys/fs/pstore’: Permission denied
-find: ‘/sys/fs/bpf’: Permission denied
+student@linux-ess:~$ find /sys -iname "*kernel*" | grep debug
+find: '/sys/kernel/tracing': Permission denied
+find: '/sys/kernel/debug': Permission denied
+find: '/sys/fs/pstore': Permission denied
+find: '/sys/fs/bpf': Permission denied
+/sys/fs/cgroup/sys-kernel-debug.mount
+```
+
+The solution is again to merge the two streams together:
+```bash
+student@linux-ess:~$ find /sys -iname "*kernel*" |& grep debug
+find: '/sys/kernel/debug': Permission denied
+/sys/fs/cgroup/sys-kernel-debug.mount
 ```
 
 ### Regular expressions
