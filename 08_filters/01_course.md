@@ -39,15 +39,15 @@ Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44
 ## Using pipes
 A pipe (`|`) is a specific symbol that we can use to link commands together. The pipe symbol will take the `stdout` from the previous command and fowards it to the `stdin` of the next command:
  ```bash
-student@linux-ess:~$ head -3 auth.log | tail -2 auth.log
-Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
-Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
+student@linux-ess:~$ head -3 auth.log | tail -2
+Jun 09 11:11:11 linux-ess: Server listening on :: port 22.
+Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g>
 ```
 The example above will run the `head -3` command which will take the first 3 lines of the file `auth.log`. The output containing the first 3 lines of the file will then be used as input for the `tail -2` command which results in taking the bottom 2 lines of the first 3 lines of the file `auth.log`. This means that the result is the second and third line of the file.
 
 You can use as many pipes as you want in a command line. It will just keep passing the output of a command to the input of the next command and so on:
 ```bash
-student@linux-ess:~$ cat auth.log | head | tail -3 | tail -2 | head -1
+student@linux-ess:~$ cat auth.log | head | tail -3 | head -2 | tail -1
 Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
 ```
 
