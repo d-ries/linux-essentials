@@ -64,3 +64,11 @@ Search in the bash manpage to the header name "REDIRECTION" (The text starts at 
 
 ## Task 6
 Try with the same regular expression to only show hidden files from your home folder. 
+  
+## Task 7
+Use the command `ls -la ~` and change in the output: 
+
+?> <i class="fa-solid fa-circle-info"></i> The reference "." To ". (this folder)" and ".." to ".. (parent folder)". Also remove the line that shows the amount of files and folders in the directory   
+  
+?> <i class="fa-solid fa-circle-info"></i> Hint: if you use the $ sign at the end of a string to search, it means the line needs to end with that string.   
+To complete this task you will have to use the `sed` command multiple times
