@@ -25,7 +25,7 @@ Test
 ```
 
 ## Task 4
-Show the lines from linux.txt that contain the word Linux, Minix or Unix
+Show the lines from linux.txt that contain the word Linux, Minix or Unix. Use the option _-e_ multiple times to search for each string.
 
 ## Task 5
 Count the number of lines that contain the word Unix in the file linux.txt. The result is a number that reflects the number of lines. Search the manpage to find a solution  
