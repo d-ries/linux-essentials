@@ -47,7 +47,7 @@ Start with the ls command of the root-folder (/) and try to end with a list of f
 ## Task 9
 Use the command `ls -la ~` and change in the output: 
 
-?> <i class="fa-solid fa-circle-info"></i> The reference "." To ". (this folder)" and ".." to ".. (parent folder)". Also remove the line that shows the amount of files and folders in the directory. 
+?> <i class="fa-solid fa-circle-info"></i> The reference "." To ". (this folder)" and ".." to ".. (parent folder)". Also remove the line that shows the amount of files and folders in the directory.   
 ?> <i class="fa-solid fa-circle-info"></i> Hint: if you use the $ sign at the end of a string to search, it means the line needs to end with that string.   
 To complete this task you will have to use the `sed` command multiple times
 
@@ -57,8 +57,8 @@ Go to your homefolder. Paste all shown files and folders (not the hidden ones) f
 ## Task 11
 Show all installed packages, but online show the name and version in alphabetical order.
 
-?> <i class="fa-solid fa-circle-info">Hint: You need to use tr to make it easier.</i>   
-?> <i class="fa-solid fa-circle-info">Hint: You only need to use tr and cut once.</i> 
+?> <i class="fa-solid fa-circle-info"></i>Hint: You need to use tr to make it easier.  
+?> <i class="fa-solid fa-circle-info"></i>Hint: You only need to use tr and cut once. 
 
 ## Task 12
 How many installed packages are there on your system?
