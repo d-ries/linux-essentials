@@ -54,3 +54,11 @@ To complete this task you will have to use the `sed` command multiple times
 ## Task 10
 Go to your homefolder. Paste all shown files and folders (not the hidden ones) from the directory one after the other and count the number of words. The result is only a number 
 
+## Task 11
+Show all installed packages, but online show the name and version in alphabetical order.
+
+?> <i class="fa-solid fa-circle-info">Hint: You need to use tr to make it easier.</i>   
+?> <i class="fa-solid fa-circle-info">Hint: You only need to use tr and cut once.</i> 
+
+## Task 12
+How many installed packages are there on your system?
