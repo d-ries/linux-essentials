@@ -35,6 +35,28 @@ Disk model: VMware Virtual S
 Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
+student@linux-ess:~$
+student@linux-ess:~$ sudo gdisk -l /dev/sdb
+GPT fdisk (gdisk) version 1.0.8
+
+Partition table scan:
+  MBR: protective
+  BSD: not present
+  APM: not present
+  GPT: present
+
+Found valid GPT with protective MBR; using GPT.
+Disk /dev/sdb: 16777216 sectors, 8.0 GiB
+Model: VMware Virtual S
+Sector size (logical/physical): 512/512 bytes
+Disk identifier (GUID): 4B226FAA-BFB1-4A6F-9F76-CA70124E6336
+Partition table holds up to 128 entries
+Main partition table begins at sector 2 and ends at sector 33
+First usable sector is 34, last usable sector is 16777182
+Partitions will be aligned on 2048-sector boundaries
+Total free space is 16777149 sectors (8.0 GiB)
+
+Number  Start (sector)    End (sector)  Size       Code  Name
 ```
 Every SCSI, SATA or USB device gets represented by sd? (sda, sdb, sdc, …). These device can have a maximum of 16 subdivisions (sdc, sdc1 -> sdc15) this means there is a maximum of 15 partitions. A drive can have 4 primary partition maximum. If you need more than 4 partitions, you’ll need to use extend partitions. The first drive mostly shows up as /dev/sda. As said before at least one partition is created when installing Linux, this partion is used as a Linux LVM physical partition where other logical partitions can be created. 
 ```bash
@@ -52,6 +74,31 @@ Device       Start      End  Sectors  Size Type
 /dev/sda1     2048     4095     2048    1M BIOS boot
 /dev/sda2     4096  3719167  3715072  1.8G Linux filesystem
 /dev/sda3  3719168 41940991 38221824 18.2G Linux filesystem
+student@linux-ess:~$
+student@linux-ess:~$ sudo gdisk -l /dev/sda
+GPT fdisk (gdisk) version 1.0.8
+
+Partition table scan:
+  MBR: protective
+  BSD: not present
+  APM: not present
+  GPT: present
+
+Found valid GPT with protective MBR; using GPT.
+Disk /dev/sda: 41943040 sectors, 20.0 GiB
+Model: VMware Virtual S
+Sector size (logical/physical): 512/512 bytes
+Disk identifier (GUID): A9E92175-1433-43DC-968D-95C5E18A2105
+Partition table holds up to 128 entries
+Main partition table begins at sector 2 and ends at sector 33
+First usable sector is 34, last usable sector is 41943006
+Partitions will be aligned on 2048-sector boundaries
+Total free space is 4029 sectors (2.0 MiB)
+
+Number  Start (sector)    End (sector)  Size       Code  Name
+   1            2048            4095   1024.0 KiB  EF02
+   2            4096         3719167   1.8 GiB     8300
+   3         3719168        41940991   18.2 GiB    8300
 ```
 Looking at our sda drive we see it partitioned into /boot of +- 1GB. The * indicates this partition is bootable. The rest of the drive is a physical LVM partition. This one is used to create logical volumes. 
 With lsblk we see all available drives and its partitiones. 
@@ -107,6 +154,20 @@ Created a new DOS disklabel with disk identifier 0x8b8ca071.
 
 Command (m for help):
 ```
+```bash
+student@linux-ess:~$ sudo gdisk /dev/sdb
+GPT fdisk (gdisk) version 1.0.8
+
+Partition table scan:
+  MBR: protective
+  BSD: not present
+  APM: not present
+  GPT: present
+
+Found valid GPT with protective MBR; using GPT.
+
+Command (? for help):
+```
 We’ll fist check if our drive isn’t already formatted. Press p to check for partitions.
 ```bash
 Command (m for help): p
@@ -119,6 +180,22 @@ Disklabel type: dos
 Disk identifier: 0x8b8ca071
 
 Command (m for help):
+```
+```bash
+Command (? for help): p
+Disk /dev/sdb: 16777216 sectors, 8.0 GiB
+Model: VMware Virtual S
+Sector size (logical/physical): 512/512 bytes
+Disk identifier (GUID): 4B226FAA-BFB1-4A6F-9F76-CA70124E6336
+Partition table holds up to 128 entries
+Main partition table begins at sector 2 and ends at sector 33
+First usable sector is 34, last usable sector is 16777182
+Partitions will be aligned on 2048-sector boundaries
+Total free space is 16777149 sectors (8.0 GiB)
+
+Number  Start (sector)    End (sector)  Size       Code  Name
+
+Command (? for help):
 ```
 If a partition would be present, we’ll need to delete it before going on. You could do this by pressing d. It will then tell you what partition is selected, pressing enter will delete this partition. 
 We are now ready to create a new partition, do this by pressing n. We’ll now be prompted to choose a primary, p, or extended, e, partition. As this is our first partition, choose the primary partition by pressing p. Afterwords enter the partition number, again as this is our first partition, we’ll use number 1. Do this by enter 1 and pressing enter. Next it’s prompted where our first sector should start, we’ll use the default value, so just press enter. Now it’s time to set the size of the partition, you could enter a number, but we’ll use the full size of our drive. Enter the number of the last sector or just press enter. Now we can check our newly created partition again by pressing p. If everything is as expected, press w to write or save the changes to the partition table. 
@@ -150,6 +227,41 @@ Command (m for help): w
 The partition table has been altered.
 Calling ioctl() to re-read partition table.
 Syncing disks.
+```
+```bash
+Command (? for help): n
+Partition number (1-128, default 1): 1
+First sector (34-16777182, default = 2048) or {+-}size{KMGTP}:
+Last sector (2048-16777182, default = 16777182) or {+-}size{KMGTP}:
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300):
+Changed type of partition to 'Linux filesystem'
+
+Command (? for help): p
+Disk /dev/sdb: 16777216 sectors, 8.0 GiB
+Model: VMware Virtual S
+Sector size (logical/physical): 512/512 bytes
+Disk identifier (GUID): 4B226FAA-BFB1-4A6F-9F76-CA70124E6336
+Partition table holds up to 128 entries
+Main partition table begins at sector 2 and ends at sector 33
+First usable sector is 34, last usable sector is 16777182
+Partitions will be aligned on 2048-sector boundaries
+Total free space is 2014 sectors (1007.0 KiB)
+
+Number  Start (sector)    End (sector)  Size       Code  Name
+   1            2048        16777182   8.0 GiB     8300  Linux filesystem
+
+Command (? for help): w
+
+Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
+PARTITIONS!!
+
+Do you want to proceed? (Y/N): Y
+OK; writing new GUID partition table (GPT) to /dev/sdb.
+Warning: The kernel is still using the old partition table.
+The new table will be used at the next reboot or after you
+run partprobe(8) or kpartx(8)
+The operation has completed successfully.
 ```
 If this should fail its probably because the drive was still mounted. Unmount the drive and use the partprobe command to save the changes to the partition table. If that still fails, reboot your computer and try again. 
 ```bash
@@ -260,6 +372,21 @@ Be careful before using the write command.
 
 Command (m for help):
 ```
+```bash
+student@linux-ess:~$ sudo gdisk /dev/sdb
+GPT fdisk (gdisk) version 1.0.8
+
+Partition table scan:
+  MBR: protective
+  BSD: not present
+  APM: not present
+  GPT: present
+
+Found valid GPT with protective MBR; using GPT.
+
+Command (? for help):
+```
+
 Check for existing partitions, we know there is one, by pressing p. We’ll delete this partition by enter d, checking the selected partition and pressing enter. 
 ```bash
 Command (m for help): p
@@ -279,6 +406,26 @@ Selected partition 1
 Partition 1 has been deleted.
 
 Command (m for help):
+```
+```bash
+Command (? for help): p
+Disk /dev/sdb: 16777216 sectors, 8.0 GiB
+Model: VMware Virtual S
+Sector size (logical/physical): 512/512 bytes
+Disk identifier (GUID): 4B226FAA-BFB1-4A6F-9F76-CA70124E6336
+Partition table holds up to 128 entries
+Main partition table begins at sector 2 and ends at sector 33
+First usable sector is 34, last usable sector is 16777182
+Partitions will be aligned on 2048-sector boundaries
+Total free space is 2014 sectors (1007.0 KiB)
+
+Number  Start (sector)    End (sector)  Size       Code  Name
+   1            2048        16777182   8.0 GiB     8300  Linux filesystem
+
+Command (? for help): d
+Using 1
+
+Command (? for help):
 ```
 Again we’ll create new partitions by entering n, for sdb1, sdb2 and sdb3 we’ll use primary partitions. So use p. Enter the number of the partition, 1. We now need to enter the amount to allocate to the partition. Do this by entering a + followed by the amount. This is asked in bytes, but its easier to use K, M, G for bigger numbers. Our first partition needs to be 500MB, so we enter +500M. 
 If you did not remove the previous partition you’ll get a notification the partion has an ext4 signature. You’ll need to enter y to the question if this can be removed. 
@@ -300,6 +447,17 @@ Do you want to remove the signature? [Y]es/[N]o: y
 The signature will be removed by a write command.
 
 Command (m for help):
+```
+```bash
+Command (? for help): n
+Partition number (1-128, default 1): 1
+First sector (34-16777182, default = 2048) or {+-}size{KMGTP}:
+Last sector (2048-16777182, default = 16777182) or {+-}size{KMGTP}: +500M
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300):
+Changed type of partition to 'Linux filesystem'
+
+Command (? for help):
 ```
 Create the following 2 partitions the same way
 ```bash
@@ -327,6 +485,25 @@ Created a new partition 3 of type 'Linux' and of size 300 MiB.
 
 Command (m for help):
 ```
+```bash
+Command (? for help): n
+Partition number (2-128, default 2): 2
+First sector (34-16777182, default = 1026048) or {+-}size{KMGTP}:
+Last sector (1026048-16777182, default = 16777182) or {+-}size{KMGTP}: +500M
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300):
+Changed type of partition to 'Linux filesystem'
+
+Command (? for help): n
+Partition number (3-128, default 3): 3
+First sector (34-16777182, default = 2050048) or {+-}size{KMGTP}:
+Last sector (2050048-16777182, default = 16777182) or {+-}size{KMGTP}: +300M
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300):
+Changed type of partition to 'Linux filesystem'
+
+Command (? for help):
+```
 For the fourth partition, we change the partition type to extended as mentioned before.
 ```bash
 Command (m for help): n
@@ -343,6 +520,7 @@ Created a new partition 4 of type 'Extended' and of size 6.7 GiB.
 
 Command (m for help):
 ```
+We do not make an extended partition with gdisk, we can create up to 128 partitions, so no need to create an extended one! 
 Now create partition 5 and 6 as before, notice we do not need to choose a partition type this time. This is not possible as all the partition space is filled up. Our fdisk command knows there is an extended partition and that it needs to use this one for any new partitions. 
 ```bash
 Command (m for help): n
@@ -362,6 +540,26 @@ Last sector, +/-sectors or +/-size{K,M,G,T,P} (3385344-16777215, default 1677721
 Created a new partition 6 of type 'Linux' and of size 400 MiB.
 
 Command (m for help):
+```
+To keep the same numbers as with fdisk, we skip partition 4.
+```bash
+Command (? for help): n
+Partition number (4-128, default 4): 5
+First sector (34-16777182, default = 2664448) or {+-}size{KMGTP}:
+Last sector (2664448-16777182, default = 16777182) or {+-}size{KMGTP}: +350M
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300):
+Changed type of partition to 'Linux filesystem'
+
+Command (? for help): n
+Partition number (4-128, default 4): 6
+First sector (34-16777182, default = 3381248) or {+-}size{KMGTP}:
+Last sector (3381248-16777182, default = 16777182) or {+-}size{KMGTP}: +400M
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300):
+Changed type of partition to 'Linux filesystem'
+
+Command (? for help):
 ```
 Check all the configurations by entering p. If we want to check if there is any free space on our drive we can do so by entering F. 
 ```bash
@@ -393,6 +591,27 @@ Sector size (logical/physical): 512 bytes / 512 bytes
 4206592 16777215 12570624   6G
 
 Command (m for help):
+```
+```bash
+Command (? for help): p
+Disk /dev/sdb: 16777216 sectors, 8.0 GiB
+Model: VMware Virtual S
+Sector size (logical/physical): 512/512 bytes
+Disk identifier (GUID): 4B226FAA-BFB1-4A6F-9F76-CA70124E6336
+Partition table holds up to 128 entries
+Main partition table begins at sector 2 and ends at sector 33
+First usable sector is 34, last usable sector is 16777182
+Partitions will be aligned on 2048-sector boundaries
+Total free space is 12578749 sectors (6.0 GiB)
+
+Number  Start (sector)    End (sector)  Size       Code  Name
+   1            2048         1026047   500.0 MiB   8300  Linux filesystem
+   2         1026048         2050047   500.0 MiB   8300  Linux filesystem
+   3         2050048         2664447   300.0 MiB   8300  Linux filesystem
+   5         2664448         3381247   350.0 MiB   8300  Linux filesystem
+   6         3381248         4200447   400.0 MiB   8300  Linux filesystem
+
+Command (? for help):
 ```
 We can see that all partition types are Linux at the moment, we’ll change some to swap, FAT32 and Linux LVM. Do this by entering t and the number of the file system we want. To get a list of all file systems enter l, we need to check the number of swap (82), FAT32 (c) and Linux LVM (8e).
 ```bash
@@ -451,6 +670,178 @@ Hex code or alias (type L to list all): 8e
 
 Changed type of partition 'Linux' to 'Linux LVM'.
 ```
+```bash
+Command (? for help): l
+Type search string, or <Enter> to show all codes:
+0700 Microsoft basic data                0701 Microsoft Storage Replica
+0702 ArcaOS Type 1                       0c01 Microsoft reserved
+2700 Windows RE                          3000 ONIE boot
+3001 ONIE config                         3900 Plan 9
+4100 PowerPC PReP boot                   4200 Windows LDM data
+4201 Windows LDM metadata                4202 Windows Storage Spaces
+7501 IBM GPFS                            7f00 ChromeOS kernel
+7f01 ChromeOS root                       7f02 ChromeOS reserved
+8200 Linux swap                          8300 Linux filesystem
+8301 Linux reserved                      8302 Linux /home
+8303 Linux x86 root (/)                  8304 Linux x86-64 root (/)
+8305 Linux ARM64 root (/)                8306 Linux /srv
+8307 Linux ARM32 root (/)                8308 Linux dm-crypt
+8309 Linux LUKS                          830a Linux IA-64 root (/)
+830b Linux x86 root verity               830c Linux x86-64 root verity
+830d Linux ARM32 root verity             830e Linux ARM64 root verity
+830f Linux IA-64 root verity             8310 Linux /var
+8311 Linux /var/tmp                      8312 Linux user's home
+8313 Linux x86 /usr                      8314 Linux x86-64 /usr
+8315 Linux ARM32 /usr                    8316 Linux ARM64 /usr
+8317 Linux IA-64 /usr                    8318 Linux x86 /usr verity
+Press the <Enter> key to see more codes, q to quit:
+8319 Linux x86-64 /usr verity            831a Linux ARM32 /usr verity
+831b Linux ARM64 /usr verity             831c Linux IA-64 /usr verity
+8400 Intel Rapid Start                   8401 SPDK block device
+8500 Container Linux /usr                8501 Container Linux resizable rootfs
+8502 Container Linux /OEM customization  8503 Container Linux root on RAID
+8e00 Linux LVM                           a000 Android bootloader
+a001 Android bootloader 2                a002 Android boot 1
+a003 Android recovery 1                  a004 Android misc
+a005 Android metadata                    a006 Android system 1
+a007 Android cache                       a008 Android data
+a009 Android persistent                  a00a Android factory
+a00b Android fastboot/tertiary           a00c Android OEM
+a00d Android vendor                      a00e Android config
+a00f Android factory (alt)               a010 Android meta
+a011 Android EXT                         a012 Android SBL1
+a013 Android SBL2                        a014 Android SBL3
+a015 Android APPSBL                      a016 Android QSEE/tz
+a017 Android QHEE/hyp                    a018 Android RPM
+a019 Android WDOG debug/sdi              a01a Android DDR
+a01b Android CDT                         a01c Android RAM dump
+a01d Android SEC                         a01e Android PMIC
+Press the <Enter> key to see more codes, q to quit:
+a01f Android misc 1                      a020 Android misc 2
+a021 Android device info                 a022 Android APDP
+a023 Android MSADP                       a024 Android DPO
+a025 Android recovery 2                  a026 Android persist
+a027 Android modem ST1                   a028 Android modem ST2
+a029 Android FSC                         a02a Android FSG 1
+a02b Android FSG 2                       a02c Android SSD
+a02d Android keystore                    a02e Android encrypt
+a02f Android EKSST                       a030 Android RCT
+a031 Android spare1                      a032 Android spare2
+a033 Android spare3                      a034 Android spare4
+a035 Android raw resources               a036 Android boot 2
+a037 Android FOTA                        a038 Android system 2
+a039 Android cache                       a03a Android user data
+a03b LG (Android) advanced flasher       a03c Android PG1FS
+a03d Android PG2FS                       a03e Android board info
+a03f Android MFG                         a040 Android limits
+a200 Atari TOS basic data                a500 FreeBSD disklabel
+a501 FreeBSD boot                        a502 FreeBSD swap
+a503 FreeBSD UFS                         a504 FreeBSD ZFS
+a505 FreeBSD Vinum/RAID                  a580 Midnight BSD data
+Press the <Enter> key to see more codes, q to quit:
+a581 Midnight BSD boot                   a582 Midnight BSD swap
+a583 Midnight BSD UFS                    a584 Midnight BSD ZFS
+a585 Midnight BSD Vinum                  a600 OpenBSD disklabel
+a800 Apple UFS                           a901 NetBSD swap
+a902 NetBSD FFS                          a903 NetBSD LFS
+a904 NetBSD concatenated                 a905 NetBSD encrypted
+a906 NetBSD RAID                         ab00 Recovery HD
+af00 Apple HFS/HFS+                      af01 Apple RAID
+af02 Apple RAID offline                  af03 Apple label
+af04 AppleTV recovery                    af05 Apple Core Storage
+af06 Apple SoftRAID Status               af07 Apple SoftRAID Scratch
+af08 Apple SoftRAID Volume               af09 Apple SoftRAID Cache
+af0a Apple APFS                          b300 QNX6 Power-Safe
+bb00 Barebox boot loader                 bc00 Acronis Secure Zone
+be00 Solaris boot                        bf00 Solaris root
+bf01 Solaris /usr & Mac ZFS              bf02 Solaris swap
+bf03 Solaris backup                      bf04 Solaris /var
+bf05 Solaris /home                       bf06 Solaris alternate sector
+bf07 Solaris Reserved 1                  bf08 Solaris Reserved 2
+bf09 Solaris Reserved 3                  bf0a Solaris Reserved 4
+bf0b Solaris Reserved 5                  c001 HP-UX data
+Press the <Enter> key to see more codes, q to quit:
+c002 HP-UX service                       e100 ONIE boot
+e101 ONIE config                         e900 Veracrypt data
+ea00 XBOOTLDR partition                  eb00 Haiku BFS
+ed00 Sony system partition               ed01 Lenovo system partition
+ef00 EFI system partition                ef01 MBR partition scheme
+ef02 BIOS boot partition                 f800 Ceph OSD
+f801 Ceph dm-crypt OSD                   f802 Ceph journal
+f803 Ceph dm-crypt journal               f804 Ceph disk in creation
+f805 Ceph dm-crypt disk in creation      f806 Ceph block
+f807 Ceph block DB                       f808 Ceph block write-ahead log
+f809 Ceph lockbox for dm-crypt keys      f80a Ceph multipath OSD
+f80b Ceph multipath journal              f80c Ceph multipath block 1
+f80d Ceph multipath block 2              f80e Ceph multipath block DB
+f80f Ceph multipath block write-ahead l  f810 Ceph dm-crypt block
+f811 Ceph dm-crypt block DB              f812 Ceph dm-crypt block write-ahead lo
+f813 Ceph dm-crypt LUKS journal          f814 Ceph dm-crypt LUKS block
+f815 Ceph dm-crypt LUKS block DB         f816 Ceph dm-crypt LUKS block write-ahe
+f817 Ceph dm-crypt LUKS OSD              fb00 VMWare VMFS
+fb01 VMWare reserved                     fc00 VMWare kcore crash protection
+fd00 Linux RAID
+
+Command (? for help): t
+Partition number (1-6): 2
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300): L
+Type search string, or <Enter> to show all codes: Linux
+8200 Linux swap                          8300 Linux filesystem
+8301 Linux reserved                      8302 Linux /home 
+8303 Linux x86 root (/)                  8304 Linux x86-64 root (/)
+8305 Linux ARM64 root (/)                8306 Linux /srv  
+8307 Linux ARM32 root (/)                8308 Linux dm-crypt
+8309 Linux LUKS                          830a Linux IA-64 root (/)
+830b Linux x86 root verity               830c Linux x86-64 root verity
+830d Linux ARM32 root verity             830e Linux ARM64 root verity
+830f Linux IA-64 root verity             8310 Linux /var  
+8311 Linux /var/tmp                      8312 Linux user's home
+8313 Linux x86 /usr                      8314 Linux x86-64 /usr
+8315 Linux ARM32 /usr                    8316 Linux ARM64 /usr
+8317 Linux IA-64 /usr                    8318 Linux x86 /usr verity
+8319 Linux x86-64 /usr verity            831a Linux ARM32 /usr verity
+831b Linux ARM64 /usr verity             831c Linux IA-64 /usr verity
+8500 Container Linux /usr                8501 Container Linux resizable rootfs
+8502 Container Linux /OEM customization  8503 Container Linux root on RAID
+8e00 Linux LVM                           fd00 Linux RAID  
+Hex code or GUID (L to show codes, Enter = 8300): 8200
+Changed type of partition to 'Linux swap'
+
+Command (? for help): t
+Partition number (1-6): 2
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300): EF00
+Changed type of partition to 'EFI system partition'
+
+Command (? for help): t
+Partition number (1-6): 6
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300): L
+Type search string, or <Enter> to show all codes: Linux
+8200 Linux swap                          8300 Linux filesystem
+8301 Linux reserved                      8302 Linux /home 
+8303 Linux x86 root (/)                  8304 Linux x86-64 root (/)
+8305 Linux ARM64 root (/)                8306 Linux /srv  
+8307 Linux ARM32 root (/)                8308 Linux dm-crypt
+8309 Linux LUKS                          830a Linux IA-64 root (/)
+830b Linux x86 root verity               830c Linux x86-64 root verity
+830d Linux ARM32 root verity             830e Linux ARM64 root verity
+830f Linux IA-64 root verity             8310 Linux /var  
+8311 Linux /var/tmp                      8312 Linux user's home
+8313 Linux x86 /usr                      8314 Linux x86-64 /usr
+8315 Linux ARM32 /usr                    8316 Linux ARM64 /usr
+8317 Linux IA-64 /usr                    8318 Linux x86 /usr verity
+8319 Linux x86-64 /usr verity            831a Linux ARM32 /usr verity
+831b Linux ARM64 /usr verity             831c Linux IA-64 /usr verity
+8500 Container Linux /usr                8501 Container Linux resizable rootfs
+8502 Container Linux /OEM customization  8503 Container Linux root on RAID
+8e00 Linux LVM                           fd00 Linux RAID  
+Hex code or GUID (L to show codes, Enter = 8300): 8e00
+Changed type of partition to 'Linux LVM'
+
+Command (? for help):
+```
 Check all configurations again by entering p. If everything is as expected we can save by entering w. Again if this fails, use the partprobe command to save all changes. 
 ```bash
 Command (m for help): p
@@ -476,6 +867,38 @@ Command (m for help): w
 The partition table has been altered.
 Calling ioctl() to re-read partition table.
 Syncing disks.
+```
+```bash
+Command (? for help): p
+Disk /dev/sdb: 16777216 sectors, 8.0 GiB
+Model: VMware Virtual S
+Sector size (logical/physical): 512/512 bytes
+Disk identifier (GUID): 4B226FAA-BFB1-4A6F-9F76-CA70124E6336
+Partition table holds up to 128 entries
+Main partition table begins at sector 2 and ends at sector 33
+First usable sector is 34, last usable sector is 16777182
+Partitions will be aligned on 2048-sector boundaries
+Total free space is 12578749 sectors (6.0 GiB)
+
+Number  Start (sector)    End (sector)  Size       Code  Name
+   1            2048         1026047   500.0 MiB   8300  Linux filesystem
+   2         1026048         2050047   500.0 MiB   8200  Linux swap
+   3         2050048         2664447   300.0 MiB   8300  Linux filesystem
+   5         2664448         3381247   350.0 MiB   EF00  EFI system partition
+   6         3381248         4200447   400.0 MiB   8E00  Linux LVM
+
+Command (? for help): w
+
+Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
+PARTITIONS!!
+
+Do you want to proceed? (Y/N): Y
+OK; writing new GUID partition table (GPT) to /dev/sdb.
+Warning: The kernel is still using the old partition table.
+The new table will be used at the next reboot or after you
+run partprobe(8) or kpartx(8)
+The operation has completed successfully.
+student@linux-ess:~$
 ```
 We are now able to search for all our partitions in the /proc/partitions folder.
 ```bash
@@ -555,6 +978,53 @@ student@linux-ess:~$ sudo pvs
   /dev/sda3  ubuntu-vg lvm2 a--   18.22g   8.22g
   /dev/sdb6            lvm2 ---  400.00m 400.00m
 ```
+```bash
+student@linux-ess:~$ sudo parted -l
+Model: VMware, VMware Virtual S (scsi)
+Disk /dev/sda: 21.5GB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags:
+
+Number  Start   End     Size    File system  Name  Flags
+ 1      1049kB  2097kB  1049kB                     bios_grub
+ 2      2097kB  1904MB  1902MB  ext4
+ 3      1904MB  21.5GB  19.6GB
+
+
+Model: VMware, VMware Virtual S (scsi)
+Disk /dev/sdb: 8590MB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags:
+
+Number  Start   End     Size   File system     Name                  Flags
+ 1      1049kB  525MB   524MB  ext4            Linux filesystem
+ 2      525MB   1050MB  524MB  linux-swap(v1)  Linux swap            swap
+ 3      1050MB  1364MB  315MB  ext2            Linux filesystem
+ 5      1364MB  1731MB  367MB                  EFI system partition  boot, esp
+ 6      1731MB  2151MB  419MB                  Linux LVM             lvm
+
+
+Model: Linux device-mapper (linear) (dm)
+Disk /dev/mapper/myvg0-music: 54.5MB
+Sector size (logical/physical): 512B/512B
+Partition Table: loop
+Disk Flags:
+
+Number  Start  End     Size    File system  Flags
+ 1      0.00B  54.5MB  54.5MB  ext4
+
+
+Model: Linux device-mapper (linear) (dm)
+Disk /dev/mapper/ubuntu--vg-ubuntu--lv: 10.7GB
+Sector size (logical/physical): 512B/512B
+Partition Table: loop
+Disk Flags:
+
+Number  Start  End     Size    File system  Flags
+ 1      0.00B  10.7GB  10.7GB  ext4
+ ```
 
 ## LVMs
 Now that we created a physical volume on our Linux LVM, we’ll go a little further into this. Back in the day, when LVM wasn’t available, when the drive ran out of memory, we needed to replace it by a larger one and copy everything from the old drive. This took time and was very inefficient. LVM gives us more flexibility to add new physical volumes to a volume group. The brings a few advantages:
