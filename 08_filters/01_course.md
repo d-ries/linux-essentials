@@ -208,7 +208,7 @@ find: '/sys/kernel/debug': Permission denied
 ```
 
 ### Regular expressions
-In the examples above we only used simple strings to find certain lines in a file. Sometimes we want to filter on dynamic content. Imagine finding all logins from an ip address containing '192' followed by other characters, or finding users that have "doe" as a lastname. To achieve this we have to use a dynamic syntax called a regular expression.
+In the examples above we only used simple strings to find certain lines in a file. Sometimes we want to filter on dynamic content. Imagine finding all logins from an ip address containing '192' followed by other characters, or finding users that have "doe" as a lastname. In these case we will search for strings via a certain pattern. To achieve this we have to use a dynamic syntax called a regular expression.
 
 Regular expressions can turn into a real rabbit hole. We will only focus on the most used cases and a couple of practical examples but know that there is a whole _regex_ world to be explored that is beyond the scope of this course!
 
