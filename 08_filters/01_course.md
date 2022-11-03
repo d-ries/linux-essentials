@@ -786,5 +786,24 @@ student@linux-ess:~$ tail -4 auth.log | sed '/Failed/d'
 Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
 ```
 
-
-
+Offcourse we can use our knowledge of regular expressions with sed, but if you want to use extended regular expressions you need to specify the option `-r`:
+```bash
+student@ubuntu-server:~$ grep -C2 www regexlist.txt
+32
+64
+htp://www.pxl.be
+http://www.pxl.be
+https://www.pxl.be
+192.168.1.19
+192.168.5.117
+student@ubuntu-server:~$ grep -C2 www regexlist.txt | sed -r 's_https?://.*_url masked_'
+32
+64
+htp://www.pxl.be
+url masked
+url masked
+192.168.1.19
+192.168.5.117
+```
+  
+?> Because we use slashes (`/`) in our regex we can opt to use underscores (`_`) as seperator
