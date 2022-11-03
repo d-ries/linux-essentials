@@ -725,7 +725,7 @@ Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 8
 Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 77898 ssh2
 Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
 ```
-The example above wil change the string `Failed` to `Incorrect` for every line.
+The example above will change the string `Failed` to `Incorrect` once for every line.
 
 ?> Note that only in the output the changes are applied. The file itself isn't altered. If you want to apply it on the file itself you can add the option `-i`:
 ```bash
@@ -734,7 +734,7 @@ student@linux-ess:~$ cat lastfourlines
 Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 34598 ssh2
 Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
 Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
-Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2 
 student@linux-ess:~$ sed -i 's/Failed/Incorrect/' lastfourlines
 student@linux-ess:~$ cat lastfourlines
 Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 34598 ssh2
@@ -754,7 +754,7 @@ student@linux-ess:~$ echo "example this is an example" | sed 's/example/test/g'
 test this is an test
 ```
 
-?> There is also an `i` flag that will make the regex case insensitive:
+?> There is also an `i` flag that will make the regex (=search string) case insensitive:
 ```bash
 student@linux-ess:~$ echo "example this is an Example" | sed 's/example/test/g'
 test this is an Example
