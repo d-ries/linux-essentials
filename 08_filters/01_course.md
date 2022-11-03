@@ -217,17 +217,17 @@ The `grep` command can use different kinds of _regex_ patterns. By default it us
 For the examples used in this (sub)chapter we will use a seperate file that you can download using the command below:
 ```bash
 student@linux-ess:~$ wget https://d-ries.github.io/linux-essentials/data/regexlist.txt
---2022-06-20 06:12:53--  https://d-ries.github.io/linux-essentials/data/regexlist.txt
-Resolving d-ries.github.io (d-ries.github.io)... 185.199.110.153, 185.199.109.153, 185.199.111.153, ...
+--2022-11-03 19:49:29--  https://d-ries.github.io/linux-essentials/data/regexlist.txt
+Resolving d-ries.github.io (d-ries.github.io)... 185.199.110.153, 185.199.111.153, 185.199.108.153, ...
 Connecting to d-ries.github.io (d-ries.github.io)|185.199.110.153|:443... connected.
 HTTP request sent, awaiting response... 200 OK
-Length: 227 [text/plain]
-Saving to: ‘regexlist.txt.1’
+Length: 317 [text/plain]
+Saving to: ‘regexlist.txt’
 
-regexlist.txt.1                                    100%[============================================================================>]     227  --.-KB/s    in 0s
+regexlist.txt                              100%[=====================================================================================>]     317  --.-KB/s    in 0.001s
 
-2022-06-20 06:12:54 (8.81 MB/s) - ‘regexlist.txt.1’ saved [227/227]
- student@linux-ess:~$ cat regexlist.txt
+2022-11-03 19:49:29 (588 KB/s) - ‘regexlist.txt’ saved [317/317]
+student@linux-ess:~$ cat regexlist.txt
 Charlotte
 Lawrence
 Max
