@@ -413,11 +413,11 @@ student@linux-ess:~$ cat regexlist.txt | grep "[0-9]$"
 
 So what about matching exactly 1 character? A `.` translates to exactly one character of any type:
 ```bash
-student@linux-ess:~$ cat regexlist.txt | grep ".... "
-This is a test
-This has been tested
+student@linux-ess:~$ cat regexlist.txt | grep "T.m"
+Tim
+Tom
 ```
-The example above translates to `4 characters of any type followed by a space`. We can combine this with starts & endings as well: 
+We can combine this with starts & endings as well: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep "^...\."
 192.168.0.1
@@ -454,7 +454,7 @@ student@linux-ess:~$ cat regexlist.txt | grep -E "https?://.+\."
 https://pxl.be
 http://pxl.be
 ```
-Note that this example does not check for valid domain names.
+Note that this example does not check for valid domain names.  
 
 ?> The questionmark (`?`) in a regex means the previous character is _optional_!
 
