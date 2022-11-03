@@ -50,9 +50,9 @@ Use regular expressions to filter the lines that:
 ## Task 3
 Use sed to: 
 
-1.	To create a file regtest_5.txt from the file regtest.txt where all numbers 5 are replaced with "five"
-2.	To create a file regtest_7.txt from the file regtest.txt where the text ‘seven’ is replaced by the number 7
-3.	To create a file regtest_at.txt from the file regtest.txt where all the @ symbols are replaced by _at_
+1.	create a file regtest_5.txt from the file regtest.txt where all numbers 5 are replaced with "five"
+2.	create a file regtest_7.txt from the file regtest.txt where the text ‘seven’ is replaced by the number 7
+3.	create a file regtest_at.txt from the file regtest.txt where all the @ symbols are replaced by _at_
 
 
 ## Task 4
