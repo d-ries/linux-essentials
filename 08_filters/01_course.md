@@ -442,9 +442,11 @@ Note that this does not validate a valid IPv4 address, whether or not it is publ
 
 ?> The `{1,3}` syntax means that the previous characters need to appear between 1 and 3 times!
 
+?> The `^` at the beginning and `$` at the end means that nothing else is allowed on the same line!
+
 Creating a regex that checks for a valid e-mail address format:
 ```bash
-student@linux-ess:~$ cat regexlist.txt | grep -E "^.+\@[a-zA-Z0-9]+\.[a-zA-Z]+"
+student@linux-ess:~$ cat regexlist.txt | grep -E "^.+\@[a-zA-Z0-9]+\.[a-zA-Z]{2,}"
 dries.swinnen@pxl.be
 ```
 
