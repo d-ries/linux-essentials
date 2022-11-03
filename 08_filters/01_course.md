@@ -228,34 +228,45 @@ regexlist.txt.1                                    100%[========================
 
 2022-06-20 06:12:54 (8.81 MB/s) - ‘regexlist.txt.1’ saved [227/227]
  student@linux-ess:~$ cat regexlist.txt
-Dries
-Gert
-Niek
-Lode
-Maarten
-Tom
-David
-Bert
+Charlotte
+Lawrence
+Max
+Stan
+Emma
+Sara
+John
+Kelly
+Ian
+Ellen
 Tim
-Tommy
+Robin
+Nora
+Tom
+Caroline
+Michael
+john.doe@pxl.b
+john.doe@pxl.be
+p
+pl
+px
 pxl
 pxxl
 pxxxl
 pxxxxl
-pl
-This is a test
-This has been tested
-192
-172
-127
-192.168.0.1
-192.168.1.1
-192.168.1.2
+128
+32
+64
+htp://www.pxl.be
+http://www.pxl.be
+https://www.pxl.be
+192.168.1.19
+192.168.5.117
 172.16.0.4
 127.0.0.1
-dries.swinnen@pxl.be
-http://pxl.be
-https://pxl.be
+pxe
+pxe boot
+This is a test
+This has been tested
 ```
 
 To start of we will use some special symbols that we've used before. We've seen the impact of an asterisk (`*`) in the chapter about _file globbing_. An asterisk has a similar functionality in a regex but there are some important key differences:
@@ -265,86 +276,113 @@ To start of we will use some special symbols that we've used before. We've seen 
 Take the example below. We expect only the `pxl` variants to show up, but as we can see in the output all of the file contents show. This is because every line matches the regex `zero, one or more of the letter p`:
  ```
 student@linux-ess:~$ cat regexlist.txt | grep "p*"
-Dries
-Gert
-Niek
-Lode
-Maarten
-Tom
-David
-Bert
+Charlotte
+Lawrence
+Max
+Stan
+Emma
+Sara
+John
+Kelly
+Ian
+Ellen
 Tim
-Tommy
+Robin
+Nora
+Tom
+Caroline
+Michael
+john.doe@pxl.b
+john.doe@pxl.be
+p
+pl
+px
 pxl
 pxxl
 pxxxl
 pxxxxl
-pl
-This is a test
-This has been tested
-192
-172
-127
-192.168.0.1
-192.168.1.1
-192.168.1.2
+128
+32
+64
+htp://www.pxl.be
+http://www.pxl.be
+https://www.pxl.be
+192.168.1.19
+192.168.5.117
 172.16.0.4
 127.0.0.1
-dries.swinnen@pxl.be
-http://pxl.be
-https://pxl.be
+pxe
+pxe boot
+This is a test
+This has been tested
 ``` 
 
 If we want to filter the lines with a `p` and the following character might be an `x` this is done by using the following syntax:
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep "px*"
+john.doe@pxl.b
+john.doe@pxl.be
+p
+pl
+px
 pxl
 pxxl
 pxxxl
 pxxxxl
-pl
-dries.swinnen@pxl.be
-http://pxl.be
-https://pxl.be
+htp://www.pxl.be
+http://www.pxl.be
+https://www.pxl.be
+pxe
+pxe boot
 ```
 Notice that the line doesn't have to start with the pattern.
 
 Because of the fact that we do not put any characters behind the x we could also not specify this character:
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep "p"
+john.doe@pxl.b
+john.doe@pxl.be
+p
+pl
+px
 pxl
 pxxl
 pxxxl
 pxxxxl
-pl
-dries.swinnen@pxl.be
-http://pxl.be
-https://pxl.be
+htp://www.pxl.be
+http://www.pxl.be
+https://www.pxl.be
+pxe
+pxe boot
 ```
 
 Now we tell the regex to find lines that contain a `p` followed by zero, one or more `x` characters. This is exactly why `pl` shows up (it contains zero of the character x):
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep "px*l"
+john.doe@pxl.b
+john.doe@pxl.be
+pl
 pxl
 pxxl
 pxxxl
 pxxxxl
-pl
-dries.swinnen@pxl.be
-http://pxl.be
-https://pxl.be
+htp://www.pxl.be
+http://www.pxl.be
+https://www.pxl.be
 ```
 
 Imagine if we wanted to use a regex that contains one or more of a character rather than zero, one or more. We can do this using the `+` sign. If we use this we will see that the line with the text `pl` isn't in the results anymore:
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -E "px+l"
+john.doe@pxl.b
+john.doe@pxl.be
 pxl
 pxxl
 pxxxl
 pxxxxl
-dries.swinnen@pxl.be
-http://pxl.be
-https://pxl.be
+htp://www.pxl.be
+http://www.pxl.be
+https://www.pxl.be
 ```
 ?> Note that if we don't use the -E option here we have to escape the plus sign (+).   ... | grep "px\\+l"
 
@@ -352,77 +390,81 @@ To take it even a step further, what about exactly 3 occurences? Easy, we can do
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -E "px{3}l"
 pxxxl
-pxxxxl
 ```
-?> Note that if we don't use the -E option here we have to escape the curly braces ({}).   ... | grep "px\\{3\\}l"
+The `{3}` is linked to the character before that.  
 
-The `{3}` is linked to the character before that. Notice how the one with 4 `x`'s shows up as well. This is because 4 times the letter `x` contains 3 times the letter `x`. We could solve this by adding the letter `l` afterwards:
-```bash
-student@linux-ess:~$ cat regexlist.txt | grep -E "px{3}l"
-pxxxl
-```
+?> Note that if we don't use the -E option here we have to escape the curly braces ({}).   ... | grep "px\\{3\\}l"
 
 Imagine now we wanted to check for lines that start or end with a specific character or character set. We'll start of with lines starting with a specific character:
 ```bash
-student@linux-ess:~$ cat regexlist.txt | grep "^[DGN]"
-Dries
-Gert
-Niek
-David
+student@linux-ess:~$  cat regexlist.txt | grep "^[SMC]"
+Charlotte
+Max
+Stan
+Sara
+Caroline
+Michael
 ```
 The example above uses a `^` sign that indicates the start of a line. Next up we use square brackets `[ ]` that we can use to specify characters that can be used as the start of the line. In this case the letters `D`, `G`, and `N`. We could aslo use ranges:
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep "^[0-9]"
-192
-172
-127
-192.168.0.1
-192.168.1.1
-192.168.1.2
+128
+32
+64
+192.168.1.19
+192.168.5.117
 172.16.0.4
 127.0.0.1
 student@linux-ess:~$ cat regexlist.txt | grep "^[a-z]"
+john.doe@pxl.b
+john.doe@pxl.be
+p
+pl
+px
 pxl
 pxxl
 pxxxl
 pxxxxl
-pl
-dries.swinnen@pxl.be
-https://pxl.be
-http://pxl.be
+htp://www.pxl.be
+http://www.pxl.be
+https://www.pxl.be
+pxe
+pxe boot
 ```
 ?> The square brackets are not linked to the beginning and end of a line, so you can use them wherever in the regex. Be aware that these are case sensitive!
 
 To check for lines ending with a specific character we can use a `$` sign:
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep "e$"
-Lode
-dries.swinnen@pxl.be
-https://pxl.be
-http://pxl.be
+Charlotte
+Lawrence
+Caroline
+john.doe@pxl.be
+htp://www.pxl.be
+http://www.pxl.be
+https://www.pxl.be
+pxe
 student@linux-ess:~$ cat regexlist.txt | grep "[0-9]$"
-192
-172
-127
-192.168.0.1
-192.168.1.1
-192.168.1.2
+128
+32
+64
+192.168.1.19
+192.168.5.117
 172.16.0.4
 127.0.0.1
 ```
 
 So what about matching exactly 1 character? A `.` translates to exactly one character of any type:
 ```bash
-student@linux-ess:~$ cat regexlist.txt | grep "T.m"
+student@linux-ess:~$ cat regexlist.txt | grep -i "t.m"
 Tim
 Tom
 ```
 We can combine this with starts & endings as well: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep "^...\."
-192.168.0.1
-192.168.1.1
-192.168.1.2
+192.168.1.19
+192.168.5.117
 172.16.0.4
 127.0.0.1
 ```
@@ -432,9 +474,8 @@ This translates to `start with any type of character` (`^.`) followed by 2 more 
 Creating a regex that checks for a IPv4 address:
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -E "^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$"
-192.168.0.1
-192.168.1.1
-192.168.1.2
+192.168.1.19
+192.168.5.117
 172.16.0.4
 127.0.0.1
 ```
@@ -447,14 +488,14 @@ Note that this does not validate a valid IPv4 address, whether or not it is publ
 Creating a regex that checks for a valid e-mail address format:
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -E "^.+\@[a-zA-Z0-9]+\.[a-zA-Z]{2,}"
-dries.swinnen@pxl.be
+john.doe@pxl.be
 ```
 
 Creating a regex that checks for a valid url format:
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -E "https?://.+\."
-https://pxl.be
-http://pxl.be
+http://www.pxl.be
+https://www.pxl.be
 ```
 Note that this example does not check for valid domain names.  
 
