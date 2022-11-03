@@ -9,7 +9,7 @@ Create the file regtest.txt with the following content:
 apple
 banana
 apricot
-peer
+pear
 peach
 strawberry
 mango
