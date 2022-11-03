@@ -40,7 +40,7 @@ Use regular expressions to filter the lines that:
 6.	End with the letter t 
 7.	Start with a number 
 8.	Start with a number and end with a letter 
-9.	Contains 2 or more consecutive letters a
+9.	Contains 2 or more consecutive letters i
 10.	Only contains numbers
 11.	Only contains letters
 12.	Contains one or more numbers, followed by one or more letters
