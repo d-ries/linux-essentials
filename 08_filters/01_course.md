@@ -503,6 +503,15 @@ Caroline
 ```  
 Here we search for lines ending with an `e` and beginning with a `C`   
   
+  
+If we want to filter lines that only have the searchstring as a whole word we use the option `-w`:
+```bash
+student@ubuntu-server:~$ cat regexlist.txt | grep -w "test"
+This is a test
+```  
+Here we search for lines with `test` as a single word   
+  
+
 #### Pattern examples
 Creating a regex that checks for a IPv4 address:
 ```bash
