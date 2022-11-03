@@ -324,7 +324,7 @@ https://pxl.be
 
 Now we tell the regex to find lines that contain a `p` followed by zero, one or more `x` characters. This is exactly why `pl` shows up (it contains zero of the character x):
 ```bash
-student@linux-ess:~$ cat regexlist.txt | grep "px\*l"
+student@linux-ess:~$ cat regexlist.txt | grep "px*l"
 pxl
 pxxl
 pxxxl
@@ -337,7 +337,7 @@ https://pxl.be
 
 Imagine if we wanted to use a regex that contains one or more of a character rather than zero, one or more. We can do this using the `+` sign. If we use this we will see that the line with the text `pl` isn't in the results anymore:
 ```bash
-student@linux-ess:~$ cat regexlist.txt | grep -E "px+"
+student@linux-ess:~$ cat regexlist.txt | grep -E "px+l"
 pxl
 pxxl
 pxxxl
@@ -346,15 +346,15 @@ dries.swinnen@pxl.be
 http://pxl.be
 https://pxl.be
 ```
-?> Note that if we don't use the -E option here we have to escape the plus sign (+).   ... | grep "px\+"
+?> Note that if we don't use the -E option here we have to escape the plus sign (+).   ... | grep "px\\+l"
 
 To take it even a step further, what about exactly 3 occurences? Easy, we can do this as follows:
 ```bash
-student@linux-ess:~$ cat regexlist.txt | grep -E "px{3}"
+student@linux-ess:~$ cat regexlist.txt | grep -E "px{3}l"
 pxxxl
 pxxxxl
 ```
-?> Note that if we don't use the -E option here we have to escape the curly braces ({}).   ... | grep "px\{3\}"
+?> Note that if we don't use the -E option here we have to escape the curly braces ({}).   ... | grep "px\\{3\\}l"
 
 The `{3}` is linked to the character before that. Notice how the one with 4 `x`'s shows up as well. This is because 4 times the letter `x` contains 3 times the letter `x`. We could solve this by adding the letter `l` afterwards:
 ```bash
