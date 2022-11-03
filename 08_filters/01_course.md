@@ -762,6 +762,19 @@ student@linux-ess:~$ echo "example this is an Example" | sed 's/example/test/gi'
 test this is an test
 ```
 
+We're also able to use sed to mask certain text:
+```bash
+student@ubuntu-server:~$ head -2 auth.log
+Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
+Jun 09 11:11:11 linux-ess: Server listening on :: port 22.
+student@ubuntu-server:~$ head -2 auth.log | sed 's/..:..:../00:00:00/'
+Jun 09 00:00:00 linux-ess: Server listening on 0.0.0.0 port 22.
+Jun 09 00:00:00 linux-ess: Server listening on :: port 22.
+student@ubuntu-server:~$ head -2 auth.log | sed 's/..:..:..//'
+Jun 09  linux-ess: Server listening on 0.0.0.0 port 22.
+Jun 09  linux-ess: Server listening on :: port 22.
+```
+
 Lastly we will look at the `d` flag which will remove any line containing the string:
 ```bash
 student@linux-ess:~$ tail -4 auth.log
@@ -772,4 +785,6 @@ Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44
 student@linux-ess:~$ tail -4 auth.log | sed '/Failed/d'
 Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
 ```
+
+
 
