@@ -481,7 +481,7 @@ Ellen
 Robin
 Michael
 ```
-Here we search for lines beginning with een `M` or ending with an `n`
+Here we search for lines beginning with an `M` or ending with an `n`
 
 We could do the same with usinig the option -E multiple times:
 ```bash
@@ -501,7 +501,7 @@ student@linux-ess:~$ cat regexlist.txt | grep "e$" | grep "^C"
 Charlotte
 Caroline
 ```  
-  
+Here we search for lines ending with an `e` and beginning with a `C`   
   
 #### Pattern examples
 Creating a regex that checks for a IPv4 address:
