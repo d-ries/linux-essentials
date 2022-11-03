@@ -405,7 +405,7 @@ Sara
 Caroline
 Michael
 ```
-The example above uses a `^` sign that indicates the start of a line. Next up we use square brackets `[ ]` that we can use to specify characters that can be used as the start of the line. In this case the letters `D`, `G`, and `N`. We could aslo use ranges:
+The example above uses a `^` sign that indicates the start of a line. Next up we use square brackets `[ ]` that we can use to specify characters that can be used as the start of the line. In this case the letters `S`, `M`, and `C`. We could also use ranges:
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep "^[0-9]"
 128
@@ -468,8 +468,41 @@ student@linux-ess:~$ cat regexlist.txt | grep "^...\."
 172.16.0.4
 127.0.0.1
 ```
-This translates to `start with any type of character` (`^.`) followed by 2 more characters of any type (`..`), followed by a regular dot (`\.`). Notice how we escaped the last dot so it doesn't get interpreted as a special regex character!
+This translates to `start with any type of character` (`^.`) followed by 2 more characters of any type (`..`), followed by a regular dot (`\.`). Notice how we escaped the last dot so it doesn't get interpreted as a special regex character!  
 
+If we want to filter the lines that have one or another pattern we could use the character `|`:  
+```bash
+student@linux-ess:~$ cat regexlist.txt | grep -E "^M|n$"
+Max
+Stan
+John
+Ian
+Ellen
+Robin
+Michael
+```
+Here we search for lines beginning with een `M` or ending with an `n`
+
+We could do the same with usinig the option -E multiple times:
+```bash
+student@linux-ess:~$ cat regexlist.txt | grep -e "^M" -e "n$"
+Max
+Stan
+John
+Ian
+Ellen
+Robin
+Michael
+```  
+  
+If we want to filter lines that comply with multiple patterns we could use the command grep multiple times:
+```bash
+student@linux-ess:~$ cat regexlist.txt | grep "e$" | grep "^C"
+Charlotte
+Caroline
+```  
+  
+  
 #### Pattern examples
 Creating a regex that checks for a IPv4 address:
 ```bash
