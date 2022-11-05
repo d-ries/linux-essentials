@@ -108,7 +108,7 @@ teacher:x:1001:1001:Teacher Account:/home/teacher:/bin/bash
 ```
 
 ?> All of the options that we can use can be found in the manpage by running `man usermod`.  
-?> If we want to create a user that cannot be logged into, we can change it's shell to `/bin/false` or `/sbin/nologin`. The difference between these to is that `/sbin/nologin` gives a polite message that you cannot log in to this account before exiting, this text can be changed in the file `/etc/nologin.txt`. The option `/bin/false` directly exits without prompting anything. 
+?> If we want to create a user that cannot be logged into, we can change it's shell to `/bin/false` or `/sbin/nologin`. The difference between these two is that `/sbin/nologin` gives a polite message that you cannot log in to this account before exiting. The option `/bin/false` directly exits without prompting anything. 
 
 #### Setting user passwords
 If we want to change our password we can use the `passwd` command:
