@@ -247,16 +247,177 @@ teacher : teacher personnel
 
 ?> <i class="fa-solid fa-circle-info"></i> The primary group of a user is specified in `/etc/passwd` and is the default group set on a new file or directory created by that user.
 
-
 ## Permissions
+
+From the very start, Unix (and thus Linux) was built as a multiuser operating system. Having multiple users on the same system means you need a way to keep users from accessing files from other users, and keep regular users from accessing files and programs that are intended to be used only by the system administrator. On the other hand users also need to be able to share files with others so they can collaborate effectively. As a system administrator being able to lock down or grant access to files is one the most important steps in keeping a system secure. 
+
+As you have seen in the previous section, your system already comes with a sensible set of file permissions. As a regular user you have full control in your own homefolder. You can create, edit and remove files and folders from your own home-directory `/home/student`. If you try to make a file in the `/var` directory however you will get an error. You are able to see the user database in `/etc/passwd` but cannot edit it as a regular user. `/etc/shadow` holds the passwords of users, that is why you are not even allowed to read it. 
+
+Permission errors are a common source of problems. Understanding and manipulating file permissions is a crucial step in becoming a competent Linux admin.
+
+?> <i class="fa-solid fa-circle-info"></i> Just because you can, doesn't mean you should. When troubleshooting permission errors always remember that permissions are your first line of defense against malicious actors. Always ask yourself why a program or a user should have access, and err on the side of caution. Don't just grant permissions to get rid of the error!
+
 
 ### Octal notations
 
+When looking at the extended info for a file using `ls` with the `-l` option. You'll see three sets of three permissions applied to a file. The possible permission are: **r**ead, **w**rite and e**x**ecute. Permission to read a file's content, permission to change a file's content and permission to execute a file as a script or program. When a permission is not granted, you'll find a - in the position of the permission denied. 
+
+```bash
+student@linux-ess:~/course$ ls -l
+total 4
+-rw-rw-r-- 1 student student    0 okt  2 19:36 config
+drwxrwxr-x 2 student student 4096 okt  2 19:36 folder
+-rw-rw-r-- 1 student student    0 okt  2 19:36 rights.jpg
+-rw-rw-r-- 1 student student    0 okt  2 19:36 test.txt
+```
+
+?> <i class="fa-solid fa-circle-info"></i>Directories in Linux have the same set of permissions. But because you need execute to access files in the directory, there is little you can do without it. The common permissions are rwx for a directory where you can do everything, r-x for a read-only directory, and ofcourse --- when you want to block access completely. 
+
+There are three sets because there are three different sets of people that permissions can be applied to. The first set describes the permissions for the owner of the file (the first name behind the permissions), the second applies to everyone that is a member of the group that owns the file (the second name). The last set is for everyone who doesn't fall under one of the first two categories. So in short: The three sets apply to **user**, **group** and **other**, in that order.
+
+When a user creates a file he automatically becomes the owner of that file. The group that owns the file is determined by the user's **primary group**. By default a user's primary group is a group with the same name as the username, which is why you'll often see owner and group owner have the same name (like student student in the above example). The `/dev` folder, that contains the files representing your hardware, is one of the places where you'll find files owned by the root-user with a different group as owner.
+
+```bash
+student@linux-ess:~$ ls -l /dev/sr0
+brw-rw----+ 1 root cdrom 11, 0 okt 2 14:47 sr0
+```   
+
+File permissions are written on disk as a field of bits in the file's properties. A bit is set to 1 when a permission is granted, 0 when it's not. So rwxrw-r-- becomes 111110100. Because humans are not very good at parsing binary sequences, they are represented as as octal numbers, numbers from 0 to 7 (000 to 111 in binary). To calculate the octal number remember that read is worth 4, write 2 and execute 1. Add those you need and you'll get the octal notation. The example above becomes 764 (rwx, 4+2+1=7, rw-, 4+2+0=6, r--, 4+0+0=4).
+
 ### Changing permissions (chmod)
+
+To change the permissions on a file you can use the `chmod`-command.
+
+To add or substract permissions of a file you can use the following method, where rwx stand for the rights you want to add or substract, and ugo stand for user, group and other respectively. If you don't specify for who you want the change, it is changed on all three:
+
+```bash
+student@linux-ess:~/course$ ls -l test.txt 
+-rw-rw-r-- 1 student student 0 okt  2 19:36 test.txt
+student@linux-ess:~/course$ chmod +x test.txt 
+student@linux-ess:~/course$ ls -l test.txt 
+-rwxrwxr-x 1 student student 0 okt  2 19:36 test.txt
+student@linux-ess:~/course$ chmod g-w test.txt 
+student@linux-ess:~/course$ ls -l test.txt 
+-rwxr-xr-x 1 student student 0 okt  2 19:36 test.txt
+student@linux-ess:~/course$ chmod go-rx test.txt
+student@linux-ess:~/course$ ls -l test.txt  
+-rwx------ 1 student student 0 okt  2 19:36 test.txt
+```
+
+To completely rewrite permissions you use chmod with an octal mode. 
+
+```bash
+student@linux-ess:~/course$ ls -l config
+-rw-rw-r-- 1 student student    0 okt  2 19:36 config
+student@linux-ess:~/course$ chmod 600 config 
+student@linux-ess:~/course$ ls -l config
+-rw------- 1 student student    0 okt  2 19:36 config
+student@linux-ess:~/course$ chmod 744 config
+student@linux-ess:~/course$ ls -l config
+-rwxr--r-- 1 student student    0 okt  2 19:36 config
+```
+
+The latter option is faster when you have to completely rewrite permissions (since you don't need to check the existing permissions, just overwrite). The former can be practical for making quick changes like making a file executable.
 
 ### Changing ownership (chgrp, chown)
 
+Besides changing the permissions of a file, you'll also need to change whom these permissions apply to, by changing the user or group that owns a file. You will need sudo to assign files to different users/groups.
+
+To change the group owner of a file or directory, you can use the `chgrp` command. To change this recursively use the `-R` option
+
+```bash
+student@linux-ess:~$ ls -l course/
+total 4
+-rwxr--r-- 1 student student    0 okt  2 19:36 config
+drwxrwxr-x 2 student student 4096 okt  2 19:36 folder
+-rw-rw-r-- 1 student student    0 okt  2 19:36 rights.jpg
+-rw-rw-rw- 1 student student    0 okt  2 19:36 test.txt
+student@linux-ess:~$ sudo chgrp -R staff course/
+student@linux-ess:~$ ls -l course/
+total 4
+-rwxr--r-- 1 student staff    0 okt  2 19:36 config
+drwxrwxr-x 2 student staff 4096 okt  2 19:36 folder
+-rw-rw-r-- 1 student staff    0 okt  2 19:36 rights.jpg
+-rw-rw-rw- 1 student staff    0 okt  2 19:36 test.txt
+student@linux-ess:~$ ls -ld course/
+drwxrwxr-x 3 student staff 4096 okt  2 19:36 course/
+```
+The `chown` command is more versatile, it allows you to change owner and/or group. It has the same -R option to change an entire file-tree.
+
+```bash
+student@linux-ess:~/course$ sudo chown student2 rights.jpg #changes the owner
+student@linux-ess:~/course$ ls -l rights.jpg
+-rw-rw-r-- 1 student2 staff    0 okt  2 19:36 rights.jpg
+student@linux-ess:~/course$ sudo chown root:personeel config folder #changes owner and group
+student@linux-ess:~/course$ ls -l 
+total 4
+-rwxr--r-- 1 root     personeel    0 okt  2 19:36 config
+drwxrwxr-x 2 root     personeel 4096 okt  2 19:36 folder
+-rw-rw-r-- 1 student2 staff        0 okt  2 19:36 rights.jpg
+-rw-rw-rw- 1 student  staff        0 okt  2 19:36 test.txt
+student@linux-ess:~/course$ sudo chown :staff config #changes the group
+student@linux-ess:~/course$ ls -l config
+-rwxr--r-- 1 root     staff    0 okt  2 19:36 config
+```
+
 ### Default permissions (umask)
+
+A last thing we need to look at are the default permissions. What permissions are applied when you create new files and folders? 
+
+The maximum permissions for new files is 666, so -rw-rw-rw-. New files are never created with execute permissions. This is enforced by kernel code so if you want to change that you'll have to start programming. It is ofcourse possible to add execute bits after file creation using `chmod` but it always requires a conscious decission for security reasons. Folders don't have this limitation as a folder without an execute bit set is quite useless. 
+
+```bash
+student@linux-ess:~/course$ touch file
+student@linux-ess:~/course$ mkdir folder
+student@linux-ess:~/course$ ls -l
+total 4
+-rw-rw-r-- 1 student student    0 okt 15 15:56 file
+drwxrwxr-x 2 student student 4096 okt 15 15:56 folder
+```
+As you can see, we don't get the expected -rw-rw-rw- for the file, nor drwxrwxrwx for the folder. This is because most distributions are more strict than the Linux kernel allows. Using the kernel default would mean created files and folders are writable by every user on the system. They are however readable by `other` so beware of this with sensitive files.
+
+The exact configuration of permissions for new files and folders is set by the `umask`. This is a value that defines the 'mask' that is applied for all processes. To see the current mask, use the command `umask`.
+
+```bash
+student@linux-ess:~/course$ umask
+0002 #ignore the first 0 for now
+```
+So how does this work? We know the default is 666: if you substract the umask from that you get 664 or rw-rw-r-- (for folders we start with 777, so end with 775). A umask of 000 allows everything, a umask of 777 will make a new file have no permissions. The numbers still work the same (4 for read, 2 for write, 1 for execute) but this time you are using them to **mask** certain permission bits, or put more simply: deny certain permissions on new files and folders.
+
+You can change the umask by using the same umask command.
+
+```bash
+student@linux-ess:~/course$ umask 000
+student@linux-ess:~/course$ touch newfile1
+student@linux-ess:~/course$ ls -l newfile1
+-rw-rw-rw- 1 student student 0 okt 15 16:23 newfile1
+student@linux-ess:~/course$ umask 026 #if you want to mask multiple bits, add them together
+student@linux-ess:~/course$ touch newfile2
+student@linux-ess:~/course$ ls -l newfile2
+-rw-r----- 1 student student 0 okt 15 16:24 newfile2
+student@linux-ess:~/course$ umask 077 
+student@linux-ess:~/course$ mkdir newfolder1
+student@linux-ess:~/course$ ls -ld newfolder1
+drwx------ 2 student student 4096 okt 15 16:25 newfolder1
+```
+?> <i class="fa-solid fa-circle-info"></i>Setting the umask using the command changes the umask for your current terminal session. Exiting the terminal will reset it to the default value. To make it permanent add `umask <your umask>` to your user's `.bashrc` file in your home directory.
+
+```bash
+student@linux-ess:~/course$ touch file
+student@linux-ess:~/course$ sudo touch file2
+student@linux-ess:~/course$ ls -l
+-rw-rw-r-- 1 student student 0 okt 15 16:44 file
+-rw-r--r-- 1 root    root    0 okt 15 16:44 file2
+```
+One last thing to be aware of: If you look at the above files, you'll see that files created by the root user have a different umask set. This is explained by looking at the system-wide umask setting, found in the `/etc/login.defs` file.
+
+```bash
+student@linux-ess:~/course$ nano /etc/login.defs
+UMASK           022 #line 151
+...
+USERGROUPS_ENAB yes #line 230
+```
+To change the setting system-wide you can change the value for umask here. The default umask specified is the one the root user uses (no write for anybody but the owner). The reason files created by regular users get an extra w for the group, is the option on line 230. This option specifies that for any non-root user that has the same user-id as group-id (so the primary group is unchanged) the group umask-bits gets changed to the user umask-bits, explaining the 002 umask seen above.
 
 ### Access control lists
 The ACL feature was created to give users the ability to selectively share files and folders with other users and groups. Before ACL’s are usable, they need to be turned on when the filsystem is mounted. In our Ubuntu installation ACL’s are loaded in by standard. To add ACL’s to a file or folder, use the setfacl command. ACL’s can be looked at with the getfacl command. To add ACL’s you need to be the owner of the file or folder, if you are added by an ACL you will not be able to add ACL’s yourself. All ACL permissions are cumulative, this means if we are in 2 groups that are added to a file with ACL’s. One with r— rights and one with rwx rights, we will have rwx rights. 
