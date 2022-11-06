@@ -212,7 +212,7 @@ In the examples above we only used simple strings to find certain lines in a fil
 
 Regular expressions can turn into a real rabbit hole. We will only focus on the most used cases and a couple of practical examples but know that there is a whole _regex_ world to be explored that is beyond the scope of this course!
 
-The `grep` command can use different kinds of _regex_ patterns. By default it uses _basic regular expressions (BRE)_ but for a lot of cases we want to extend this to _extended regular expressions (ERE). To do this we have to use the `-E` option in the  `grep` command. This gives us a lot more functionality when it comes to building dynamic search queries. **A lot of the commands explained below won't work without the `-E` option!**
+The `grep` command can use different kinds of _regex_ patterns. By default it uses _basic regular expressions (BRE)_ but for a lot of cases we want to extend this to _extended regular expressions (ERE)_. To do this we have to use the `-E` option in the  `grep` command. This gives us a lot more functionality when it comes to building dynamic search queries. **A lot of the commands explained below won't work without the `-E` option!**
 
 For the examples used in this (sub)chapter we will use a seperate file that you can download using the command below:
 ```bash
