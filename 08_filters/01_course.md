@@ -397,7 +397,7 @@ The `{3}` is linked to the character before that.
 
 Imagine now we wanted to check for lines that start or end with a specific character or character set. We'll start of with lines starting with a specific character:
 ```bash
-student@linux-ess:~$  cat regexlist.txt | grep "^[SMC]"
+student@linux-ess:~$  cat regexlist.txt | grep -i "^[smc]"
 Charlotte
 Max
 Stan
