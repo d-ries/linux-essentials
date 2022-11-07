@@ -35,5 +35,5 @@ https://www.pxl.be
 127.0.0.1
 pxe
 pxe boot
-This is a test
+This is a test.
 This has been tested
