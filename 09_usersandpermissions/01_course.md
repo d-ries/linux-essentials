@@ -1,9 +1,9 @@
 # Users and permissions
-As with any operating system we will be working with different users on the system. We've been using the user `student`. We can confirm this by running the command `whoami`. Another command we can run is the command `who` or `w`. This will show us all of the users that are logged in on the system (mind that both commands have a different output!).
+As with any operating system we will be working with different users on the system. We've been using the user `student`. We can confirm this by running the command `whoami`. Other commands we can run are `who` or `w`. These will show us all of the users that are logged in on the system (mind that both commands have a different output!).
 
 ## User management
 ### /etc/passwd
-As we've seen before a lot in Linux is done using config files. The same can be said about user management. User configuration is stored in the file `/etc/passwd`. It contains a list of user accounts and some metadata seperated by colons:
+As we've seen before all system configuration is done using config files. The same is true for user management. User configuration is stored in the file `/etc/passwd`. It contains a list of user accounts together with some metadata seperated by colons:
 ```bash
 student@linux-ess:~$ tail /etc/passwd
 pollinate:x:105:1::/var/cache/pollinate:/bin/false
@@ -23,12 +23,12 @@ student@linux-ess:~$ head -1 /etc/passwd
 root:x:0:0:root:/root:/bin/bash
 ```
 
-We can see more info that just usernames. These lines contain the user identifier (`1000` for `student`), home folder location, default shell, ... 
+We can see more info than just usernames. These lines contain the user identifier (`1000` for `student`), home folder location, default shell, ... 
 
 ?> <i class="fa-solid fa-circle-info"></i> You can find more information about this file, the columns and the contents by running the command `man 5 passwd`.
 
 ### Adding users (useradd)
-To add users we can simply use the `useradd` command. Its important to note that we have to run these commands with `sudo` rights. This is because it are system commands that affect the entire system. To add a new user with the username `teacher` we could run the following command:
+To add users we can simply use the `useradd` command. Its important to note that we have to run this command with `sudo` rights. This is because it is a system command that affects the entire system. To add a new user with the username `teacher` we could run the following command:
 ```bash
 student@linux-ess:~$ sudo useradd -m -d /home/teacher -c "Teacher Account" teacher
 [sudo] password for student:
@@ -38,6 +38,10 @@ lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false
 teacher:x:1001:1001:Teacher Account:/home/teacher:/bin/sh
 ```
 The `-d` takes in an argument and uses this argument as a path to where the homefolder has to be created. The `m` option (`create home`) will make sure the home folder actually gets created with the correct permissions. Lastly the `-c` (`comment`) option sets extra metadata to the user. 
+
+
+?> <i class="fa-solid fa-circle-info"></i> Mind that the option -d is optional and if not specified it defaults to a directory with the same name as the username within the directory /home.
+
 
 ?> <i class="fa-solid fa-circle-info"></i> We can delete users by running the command `userdel -r teacher`. The option `-r` will also remove that user's homefolder.
 
@@ -51,6 +55,10 @@ Every user has a userid (the third field in `/etc/passwd`). To view the userid o
 ```bash
 student@linux-ess:~$ id teacher
 uid=1001(teacher) gid=1001(teacher) groups=1001(teacher)
+student@linux-ess:~$ ls -l /home
+total 8
+drwxr-x--- 5 student student 4096 Nov  4 16:04 student
+drwxr-x--- 2 teacher teacher 4096 Nov  7 20:28 teacher
 ```
 
 #### Default values
@@ -70,7 +78,7 @@ These settings are kept in the file `/etc/default/useradd` and can be changed at
 ?> <i class="fa-solid fa-circle-info"></i> Notice that the default value for the shell is `/bin/sh`. It is good practice to alter this to `/bin/bash` so that every new user gets the `bourne again shell` as default.
 
 #### /etc/skel
-By default homefolders are created as a subdirectory of the `/home` directory. These folders aren't created by scratch. It uses a template that is located in `/etc/skel`. This means that if we alter any contents in this `skel` folder, this wil actually be copied to any new users we create in the future:
+By default homefolders are created as a subdirectory of the `/home` directory. These folders aren't created from scratch. The contents of the folder `/etc/skel` are copied within each newly created homefolder. This means that if we alter any contents in this `skel` folder, this wil actually be copied to any new user that will be created in the future:
 
 ```bash
 student@linux-ess:~$ ls -a /etc/skel
@@ -87,11 +95,11 @@ __.bash\_history__: holds the history (new commands get added to this file on cl
 __.profile__: executed when user logs in
 
 ### Editing users (usermod & userdel)
-To edit a user's account info, we can use the `usermod` command. This command has several options that we can use to edit specific things. For example to edit the comment field op a user we can run the following command:
+To edit a user's account configuration, we can use the `usermod` command. This command has several options that we can use to edit specific settings. For example to edit the comment field of a user we can run the following command:
 ```bash
-student@linux-ess:~$ sudo usermod -c "Gert VW" teacher
+student@linux-ess:~$ sudo usermod -c "John Doe" teacher
 student@linux-ess:~$ tail -1 /etc/passwd
-teacher:x:1002:1003:Gert VW:/home/teacher:/bin/sh
+teacher:x:1002:1003:John Doe:/home/teacher:/bin/sh
 ```
 
 To edit the default shell for a specific user we could do the following:
@@ -107,7 +115,7 @@ lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false
 teacher:x:1001:1001:Teacher Account:/home/teacher:/bin/bash
 ```
 
-?> All of the options that we can use can be found in the manpage by running `man usermod`.  
+?> View the manpage of `usermod` for all possible options.  
 ?> If we want to create a user that cannot be logged into, we can change it's shell to `/bin/false` or `/sbin/nologin`. The difference between these two is that `/sbin/nologin` gives a polite message that you cannot log in to this account before exiting. The option `/bin/false` directly exits without prompting anything. 
 
 #### Setting user passwords
