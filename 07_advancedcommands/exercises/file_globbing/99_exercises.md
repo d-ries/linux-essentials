@@ -20,7 +20,7 @@ Try to solve this one time with square brackets and one time without
 Search the folder for all files starting with scr, then one random character, followed by pt. After pt there may be an unspecified amount of characters, but the file needs to end with an h or an s
 
 ## Task 6
-Make sure that the command ls /b* does not show the content of the found folders. Search the man page for a solution
+Make sure that the command ls /b* does not show the content of the found folders but the folders themselves. Search the man page for a solution
 
 ## Task 7
 Show all files and directories ending with ".conf" found in the folder "/etc"
