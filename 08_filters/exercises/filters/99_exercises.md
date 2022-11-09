@@ -33,7 +33,8 @@ Count the number of lines that contain the word Unix in the file linux.txt. The 
 ## Task 6
 Show all lines from the file linux.txt that start with a capital. 
 
-?> <i class="fa-solid fa-circle-info"></i> Capital letters can be matched using [A-Z]
+?> <i class="fa-solid fa-circle-info"></i> Capital letters can be matched using [A-Z]  
+  
 ?> <i class="fa-solid fa-circle-info"></i> The start of a line can be match using ^
 
 
@@ -51,9 +52,9 @@ Go to your homefolder. Paste all shown files and folders (not the hidden ones) f
 ## Task 10
 Show all installed packages, but online show the name and version in alphabetical order.
 
-?> <i class="fa-solid fa-circle-info"></i>Hint: You need to use tr to make it easier.   
+?> <i class="fa-solid fa-circle-info"></i> Hint: You need to use tr to make it easier.   
   
-?> <i class="fa-solid fa-circle-info"></i>Hint: You only need to use tr and cut once. 
+?> <i class="fa-solid fa-circle-info"></i> Hint: You only need to use tr and cut once. 
 
 ## Task 11
 How many installed packages are there on your system?
