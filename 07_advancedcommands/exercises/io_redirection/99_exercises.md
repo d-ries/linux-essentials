@@ -1,7 +1,7 @@
 # Assignment on I/O redirection
 
 ## Task 1
-Create a new file named "userinfo" in your homefoler. Do this by redirecting the output of the echo command of the variable $USER to this file  
+Create a new file named "userinfo" in your homefolder. Do this by redirecting the output of the echo command of the variable $USER to this file  
 
 ## Task 2
 Add the output of an echo of the variable $UID to this file  
