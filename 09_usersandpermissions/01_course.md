@@ -49,16 +49,16 @@ As seen in the folder `/home` or in the file `/etc/passwd` the new user has been
 ```bash
 student@linux-ess:~$ tail -1 /etc/passwd
 teacher:x:1001:1001:Teacher Account:/home/teacher:/bin/sh
+student@linux-ess:~$ ls -l /home
+total 8
+drwxr-x--- 5 student student 4096 Nov  4 16:04 student
+drwxr-x--- 2 teacher teacher 4096 Nov  7 20:28 teacher
 ```
 
 Every user has a userid (the third field in `/etc/passwd`). To view the userid of a user you can use the `id` command:
 ```bash
 student@linux-ess:~$ id teacher
 uid=1001(teacher) gid=1001(teacher) groups=1001(teacher)
-student@linux-ess:~$ ls -l /home
-total 8
-drwxr-x--- 5 student student 4096 Nov  4 16:04 student
-drwxr-x--- 2 teacher teacher 4096 Nov  7 20:28 teacher
 ```
 
 #### Default values
