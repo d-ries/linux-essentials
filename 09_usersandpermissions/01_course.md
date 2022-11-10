@@ -75,7 +75,7 @@ CREATE_MAIL_SPOOL=no
 ```
 These settings are kept in the file `/etc/default/useradd` and can be changed at any time.
 
-?> <i class="fa-solid fa-circle-info"></i> Notice that the default value for the shell is `/bin/sh`. It is good practice to alter this to `/bin/bash` so that every new user gets the `bourne again shell` as default.
+?> <i class="fa-solid fa-circle-info"></i> Notice that the default value for the shell is `/bin/sh`. It is good practice to alter this to `/bin/bash` so that every new user that will be created in the future gets the `bourne again shell` as default.
 
 #### /etc/skel
 By default homefolders are created as a subdirectory of the `/home` directory. These folders aren't created from scratch. The contents of the folder `/etc/skel` are copied within each newly created homefolder. This means that if we alter any contents in this `skel` folder, this wil actually be copied to any new user that will be created in the future:
