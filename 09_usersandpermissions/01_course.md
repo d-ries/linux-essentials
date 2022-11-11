@@ -107,12 +107,12 @@ student:x:1000:1000:Student Account:/home/student:/bin/bash
 To edit the default shell for a specific user we could do the following:
 ```bash
 student@linux-ess:~$ tail -3 /etc/passwd
-student:x:1000:1000:student:/home/student:/bin/bash
+student:x:1000:1000:Student Account:/home/student:/bin/bash
 lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false
 teacher:x:1001:1001:Teacher Account:/home/teacher:/bin/sh
 student@linux-ess:~$ sudo usermod -s /bin/bash teacher
 student@linux-ess:~$ tail -3 /etc/passwd
-student:x:1000:1000:student:/home/student:/bin/bash
+student:x:1000:1000:Student Account:/home/student:/bin/bash
 lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false
 teacher:x:1001:1001:Teacher Account:/home/teacher:/bin/bash
 ```
