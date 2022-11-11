@@ -3,7 +3,7 @@
 ## Bash scripts
 Scripting is a great way to automate simple tasks or chains of commands. Imagine you want to take a backup. Usually this means creating a `zip` archive of certain files and folders, giving this `zip` file the appropriate name and then move the `zip` file to a certain folder. Running these commands manually is prone to errors and time consuming. A better way would be to bundle these commands in a script, so we can instead run one command that will trigger running all of the steps described above.
 
-In Ubuntu we ofter use _bash_ scripts. _bash_ refers to the default shell that we use as a user in Ubuntu. There are different kinds of _shells_ but this is out of scope for this course. Most syntax seen in this chapter will work in most shell environments.
+In Ubuntu we often use _bash_ scripts. _bash_ refers to the default shell that we use as a user in Ubuntu. There are different kinds of _shells_ but this is out of scope for this course. Most syntax seen in this chapter will work in most shell environments.
 
 ?> Note that we will focus on the basic syntax of a shell script. You can always learn more about if statements, loops, custom options and arguments, tests, ... in scripts but this is out of scope for this course.
 
@@ -19,7 +19,7 @@ We give the file the following contents:
 echo "hello world"
 echo "this is our first bash script"
 ```
-The first line in this script is a special line that will make sure the script will be ran in a `bash` shell. After that we can have different lines of all kinds of commands that will be ran in that order.
+The first line in this script is named in the shebang and is a special line that will make sure the script will be ran in a `bash` shell. After that we can have different lines of all kinds of commands that will be run in sequential order.
 
 ?> using `#` signs are interpreted as comments. Any code after those signs will not be executed.
 
@@ -28,16 +28,17 @@ In the example above we will run 2 `echo` commands. To run this bash script, we 
 ```bash
 student@linux-ess:~$ chmod +x helloworld.sh
 ```
-After doing this we got 2 options to actually execute the script:
+After doing this we can execute the script:
 ```bash
 student@linux-ess:~$ ./helloworld.sh
 hello world
 this is our first bash script
-student@linux-ess:~$ bash helloworld.sh
-hello world
-this is our first bash script
 ```
+  
 
+?> Although the script is in the working directory, we have to specify it with __./__helloworld.sh
+  
+  
 ### date with shell embedding
 Lets extend our script with some nifty logic to use to output of a certain command in another command. We edit the script contents as follows:
 ```bash
@@ -54,19 +55,22 @@ this is our first bash script
 the date of today is Tue Jun 28 22:04:09 CEST 2022
 ```
 The concept we've used here is called _shell embedding_. The `$(...)` syntax opens up a new (sub)shell and runs a command. The output of the `date` command is then directly used in the echo command.
+  
+  
 ### Variables
 ```bash
 #!/bin/bash
-CUSTOMDIR=/tmp
+CUSTOMDIR=testdir
 echo "customdir is set to $CUSTOMDIR"
-touch $CUSTOMDIR/testfile
-ls $CUSTOMDIR
+mkdir ~/$CUSTOMDIR
+touch ~/$CUSTOMDIR/testfile
+ls -l ~/$CUSTOMDIR/*
 ```
 
 ```bash
 student@linux-ess:~$ bash helloworld.sh
-customdir is set to /tmp
-testfile
+customdir is set to testdir
+-rw-r----- 1 student student 0 Nov 11 15:52 /home/student/testdir/testfile
 ```
 
 #### System variables
