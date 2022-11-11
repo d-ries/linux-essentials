@@ -296,10 +296,10 @@ drwxrwxr-x 2 student student 4096 okt  2 19:36 folder
 -rw-rw-r-- 1 student student    0 okt  2 19:36 test.txt
 ```
    
-?> <i class="fa-solid fa-circle-info"></i>The first character is a _-_ (minus) for a regular file and a _d_ for a directory. 
+?> <i class="fa-solid fa-circle-info"></i> The first character is a _-_ (minus) for a regular file and a _d_ for a directory. 
   
 
-?> <i class="fa-solid fa-circle-info"></i>Directories in Linux have the same set of permissions. But because you need execute to access files in the directory, there is little you can do without it. The common permissions are rwx for a directory where you can do everything, r-x for a read-only directory, and ofcourse --- when you want to block access completely. 
+?> <i class="fa-solid fa-circle-info"></i> Directories in Linux have the same set of permissions. But because you need execute to access files in the directory, there is little you can do without it. The common permissions are rwx for a directory where you can do everything, r-x for a read-only directory, and ofcourse --- when you want to block access completely. 
 
 There are three sets because there are three different sets of people that permissions can be applied to. The first set describes the permissions for the owner of the file (the first name behind the permissions), the second applies to everyone that is a member of the group that owns the file (the second name). The last set is for everyone who doesn't fall under one of the first two categories. So in short: The three sets apply to **userowner**, **groupowner** and **others**, in that order.
 
@@ -352,7 +352,7 @@ The latter option is faster when you have to completely rewrite permissions (sin
 
 ### Changing ownership (chgrp, chown)
 
-Besides changing the permissions of a file, you'll also need to change whom these permissions apply to, by changing the user or group that owns a file. You will need sudo to assign files to different users/groups.
+Besides changing the permissions of a file, you'll also need to change to whom these permissions apply to, by changing the user or group that owns the file. You will need sudo to assign files to different users/groups.
 
 To change the group owner of a file or directory, you can use the `chgrp` command. To change this recursively use the `-R` option
 
@@ -363,32 +363,32 @@ total 4
 drwxrwxr-x 2 student student 4096 okt  2 19:36 folder
 -rw-rw-r-- 1 student student    0 okt  2 19:36 rights.jpg
 -rw-rw-rw- 1 student student    0 okt  2 19:36 test.txt
-student@linux-ess:~$ sudo chgrp -R staff course/
+student@linux-ess:~$ sudo chgrp -R it course/
 student@linux-ess:~$ ls -l course/
 total 4
--rwxr--r-- 1 student staff    0 okt  2 19:36 config
-drwxrwxr-x 2 student staff 4096 okt  2 19:36 folder
--rw-rw-r-- 1 student staff    0 okt  2 19:36 rights.jpg
--rw-rw-rw- 1 student staff    0 okt  2 19:36 test.txt
+-rwxr--r-- 1 student it    0 okt  2 19:36 config
+drwxrwxr-x 2 student it 4096 okt  2 19:36 folder
+-rw-rw-r-- 1 student it    0 okt  2 19:36 rights.jpg
+-rw-rw-rw- 1 student it    0 okt  2 19:36 test.txt
 student@linux-ess:~$ ls -ld course/
-drwxrwxr-x 3 student staff 4096 okt  2 19:36 course/
+drwxrwxr-x 3 student it 4096 okt  2 19:36 course/
 ```
 The `chown` command is more versatile, it allows you to change owner and/or group. It has the same -R option to change an entire file-tree.
 
 ```bash
-student@linux-ess:~/course$ sudo chown student2 rights.jpg #changes the owner
+student@linux-ess:~/course$ sudo chown teacher rights.jpg #changes the owner
 student@linux-ess:~/course$ ls -l rights.jpg
--rw-rw-r-- 1 student2 staff    0 okt  2 19:36 rights.jpg
-student@linux-ess:~/course$ sudo chown root:personeel config folder #changes owner and group
+-rw-rw-r-- 1 teacher it    0 okt  2 19:36 rights.jpg
+student@linux-ess:~/course$ sudo chown teacher:root config folder #changes owner and group
 student@linux-ess:~/course$ ls -l 
 total 4
--rwxr--r-- 1 root     personeel    0 okt  2 19:36 config
-drwxrwxr-x 2 root     personeel 4096 okt  2 19:36 folder
--rw-rw-r-- 1 student2 staff        0 okt  2 19:36 rights.jpg
--rw-rw-rw- 1 student  staff        0 okt  2 19:36 test.txt
-student@linux-ess:~/course$ sudo chown :staff config #changes the group
+-rwxr--r-- 1 teacher root    0 okt  2 19:36 config
+drwxrwxr-x 2 teacher root 4096 okt  2 19:36 folder
+-rw-rw-r-- 1 teacher it        0 okt  2 19:36 rights.jpg
+-rw-rw-rw- 1 student it        0 okt  2 19:36 test.txt
+student@linux-ess:~/course$ sudo chown :it config #changes the group
 student@linux-ess:~/course$ ls -l config
--rwxr--r-- 1 root     staff    0 okt  2 19:36 config
+-rwxr--r-- 1 root    it        0 okt  2 19:36 config
 ```
 
 ### Default permissions (umask)
