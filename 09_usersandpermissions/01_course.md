@@ -280,7 +280,7 @@ As you have seen in the previous section, your system already comes with a sensi
 
 Permission errors are a common source of problem. Understanding and manipulating file permissions is a crucial step in becoming a competent Linux admin.
 
-?> <i class="fa-solid fa-circle-info"></i> Just because you can, doesn't mean you should. When troubleshooting permission errors always remember that permissions are your first line of defense against malicious actors. Always ask yourself why a program or a user should have access, and err on the side of caution. Don't just grant permissions to get rid of the error!
+?> <i class="fa-solid fa-circle-info"></i> Just because you can, doesn't mean you should. When troubleshooting permission errors always remember that permissions are your first line of defense against malicious actors. Always ask yourself why a program or a user should have access, and handle with caution. Don't just grant permissions to get rid of the error!
 
 
 ### Octal notations
