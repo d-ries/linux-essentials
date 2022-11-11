@@ -311,38 +311,40 @@ brw-rw---- 1 root disk   8, 0 Nov 11 10:44 /dev/sda
 brw-rw---- 1 root cdrom 11, 0 Nov 11 10:43 /dev/sr0
 ```   
 
-File permissions are written on disk as a field of bits in the file's properties. A bit is set to 1 when a permission is granted, 0 when it's not. So rwxrw-r-- becomes 111110100. Because humans are not very good at parsing binary sequences, they are represented as as octal numbers, numbers from 0 to 7 (000 to 111 in binary). To calculate the octal number remember that read is worth 4, write 2 and execute 1. Add those you need and you'll get the octal notation. The example above becomes 764 (rwx, 4+2+1=7, rw-, 4+2+0=6, r--, 4+0+0=4).
+File permissions are written on disk as a field of bits in the file's properties. A bit is set to 1 when a permission is granted, 0 when it's not. So rwxrw-r-- becomes 111110100. Because humans are not very good at parsing binary sequences, they are represented as as octal numbers, numbers from 0 to 7 (000 to 111 in binary). To calculate the octal number remember that read is worth 4, write 2 and execute 1. Add those you need and you'll get the octal notation. The example above becomes 764 (rwx, 4+2+1=7,      rw-, 4+2+0=6,        r--, 4+0+0=4).
 
 ### Changing permissions (chmod)
 
-To change the permissions on a file you can use the `chmod`-command.
+To change the permissions on a file you can use the `chmod` command.
 
-To add or substract permissions of a file you can use the following method, where rwx stand for the rights you want to add or substract, and ugo stand for user, group and other respectively. If you don't specify for who you want the change, it is changed on all three:
+To add or substract permissions of a file you can use the following method, where _rwx_ stands for the rights you want to add or substract, and _ugo_ stands for userowner, groupowner and others respectively. If you don't specify for who you want the change, it is changed on all three:
 
 ```bash
-student@linux-ess:~/course$ ls -l test.txt 
--rw-rw-r-- 1 student student 0 okt  2 19:36 test.txt
-student@linux-ess:~/course$ chmod +x test.txt 
-student@linux-ess:~/course$ ls -l test.txt 
--rwxrwxr-x 1 student student 0 okt  2 19:36 test.txt
-student@linux-ess:~/course$ chmod g-w test.txt 
-student@linux-ess:~/course$ ls -l test.txt 
--rwxr-xr-x 1 student student 0 okt  2 19:36 test.txt
-student@linux-ess:~/course$ chmod go-rx test.txt
-student@linux-ess:~/course$ ls -l test.txt  
--rwx------ 1 student student 0 okt  2 19:36 test.txt
+student@linux-ess:~$ touch test  
+student@linux-ess:~$ ls -l test
+-rw-rw-r-- 1 student student 0 Nov 11 13:11 test
+student@linux-ess:~$ chmod +x test  
+student@linux-ess:~$ ls -l test   
+-rwxrwxr-x 1 student student 0 okt  2 19:36 test  
+student@linux-ess:~$ chmod g-w test  
+student@linux-ess:~$ ls -l test   
+-rwxr-xr-x 1 student student 0 okt  2 19:36 test  
+student@linux-ess:~$ chmod go-rx test
+student@linux-ess:~$ ls -l test 
+-rwx------ 1 student student 0 okt  2 19:36 test
 ```
 
-To completely rewrite permissions you use chmod with an octal mode. 
+When completely rewrite permissions you can also use chmod with an octal notation: 
 
 ```bash
-student@linux-ess:~/course$ ls -l config
+student@linux-ess:~$ touch config  
+student@linux-ess:~$ ls -l config  
 -rw-rw-r-- 1 student student    0 okt  2 19:36 config
-student@linux-ess:~/course$ chmod 600 config 
-student@linux-ess:~/course$ ls -l config
+student@linux-ess:~$ chmod 600 config 
+student@linux-ess:~$ ls -l config
 -rw------- 1 student student    0 okt  2 19:36 config
-student@linux-ess:~/course$ chmod 744 config
-student@linux-ess:~/course$ ls -l config
+student@linux-ess:~$ chmod 744 config
+student@linux-ess:~$ ls -l config
 -rwxr--r-- 1 student student    0 okt  2 19:36 config
 ```
 
