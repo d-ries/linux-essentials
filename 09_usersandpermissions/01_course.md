@@ -472,63 +472,89 @@ student@linux-ess:~$ ls -l file4
   
   
 ### Access control lists
-The ACL feature was created to give users the ability to selectively share files and folders with other users and groups. Before ACL’s are usable, they need to be turned on when the filsystem is mounted. In our Ubuntu installation ACL’s are loaded in by standard. To add ACL’s to a file or folder, use the setfacl command. ACL’s can be looked at with the getfacl command. To add ACL’s you need to be the owner of the file or folder, if you are added by an ACL you will not be able to add ACL’s yourself. All ACL permissions are cumulative, this means if we are in 2 groups that are added to a file with ACL’s. One with r— rights and one with rwx rights, we will have rwx rights. 
-With the setfacl command, we’ll be able to modify, with the -m parameter, or delete, with the -x parameter, ACL’s. 
+The ACL feature was created to give users the ability to selectively share files and folders with other users and groups. Before ACL’s are usable, it needs to be turned on when the filesystem is mounted. In our Ubuntu installation ACL’s are loaded  by standard. To add ACL’s to a file or folder, use the `setfacl` command. ACL’s can be viewed with the `getfacl` command. To add ACL’s you need to be the owner of the file or folder, if you are added by an ACL you will not be able to add ACL’s yourself. All ACL permissions are cumulative, this means if we are in 2 groups that are added to a file with ACL’s. One with r— rights and one with rwx rights, we will have rwx rights. 
+With the `setfacl` command, we’ll be able to modify (-m) or delete (-x) ACL’s. 
+  
 ```bash
-student@linux-ess:~$ touch /tmp/memo.txt
-student@linux-ess:~$ ls -l /tmp/memo.txt
--rw-rw-r-- 1 student student 0 sep 14 18:27 /tmp/memo.txt
-student@linux-ess:~$ setfacl -m u:Tina:rw /tmp/memo.txt
-student@linux-ess:~$ setfacl -m g:Sales:rw /tmp/memo.txt
-student@linux-ess:~$ ls -l /tmp/memo.txt
--rw-rw-r--+ 1 student student 0 sep 14 18:27 /tmp/memo.txt
-```
-With getfacl we can check the existing ACL’s on a file or folder. Note that we can also see that ACL’s are set by a + in the ls -l command
-```bash
-student@linux-ess:~$ getfacl /tmp/memo.txt 
+student@linux-ess:~$ touch /tmp/memo
+student@linux-ess:~$ ls -l /tmp/memo
+-rw-r----- 1 student student 0 Nov 11 14:15 /tmp/memo
+student@linux-ess:~$ getfacl /tmp/memo
 getfacl: Removing leading '/' from absolute path names
-# file: tmp/memo.txt
+# file: tmp/memo
 # owner: student
 # group: student
 user::rw-
-user:Tina:rw-
-group::rw-
-group:Sales:rw-
-mask::rw-
-other::r--
+group::r--
+other::---
+
+student@linux-ess:~$ setfacl -m u:teacher:rw /tmp/memo
+student@linux-ess:~$ setfacl -m g:it:rw /tmp/memo
+student@linux-ess:~$ ls -l /tmp/memo
+-rw-rw----+ 1 student student 0 Nov 11 14:15 /tmp/memo
 ```
+With `getfacl` we can check the existing ACL’s on a file or folder. Note that we can also see that ACL’s are set by a __+__ in the `ls -l` command
+```bash
+student@linux-ess:~$ getfacl /tmp/memo
+getfacl: Removing leading '/' from absolute path names
+# file: tmp/memo
+# owner: student
+# group: student
+user::rw-
+user:teacher:rw-
+group::r--
+group:it:rw-
+mask::rw-
+other::---
+
+```
+  
 In previous example, we also see a mask option, this option decides the maximum permission. We can also add this parameter as follows:
 ```bash
-student@linux-ess:~$ setfacl -m m:r /tmp/memo.txt 
-student@linux-ess:~$ getfacl /tmp/memo.txt 
+student@linux-ess:~$ setfacl -m m:r /tmp/memo 
+student@linux-ess:~$ getfacl /tmp/memo 
 getfacl: Removing leading '/' from absolute path names
-# file: tmp/memo.txt
+# file: tmp/memo
 # owner: student
 # group: student
 user::rw-
-user:Tina:rw-			#effective:r--
-group::rw-			#effective:r--
-group:Sales:rw-			#effective:r--
+user:teacher:rw-                #effective:r--
+group::r--
+group:it:rw-                    #effective:r--
 mask::r--
-other::r--
+other::---
+
 ```
-We can also add default ACL’s by adding the d: parameter. The default part makes sure new fils or folders get the same ACL’s as their parent directory. Note that this only applies if the user creating the file or folder has the permissions to do so! 
+  
+We can also add default ACL’s by adding the d: parameter. The default part makes sure new files and folders get the same ACL’s as their parent directory. Note that this only applies if the user creating the file or folder has the permissions to do so! 
+  
 ```bash
 student@linux-ess:~$ mkdir /tmp/memos
-student@linux-ess:~$ setfacl -m d:g:design:rwx /tmp/memos/
-student@linux-ess:~$ getfacl /tmp/memos/
+student@linux-ess:~$ ls -ld /tmp/memos
+drwxr-x--- 2 student student 4096 Nov 11 14:48 /tmp/memos
+student@linux-ess:~$ getfacl /tmp/memos
 getfacl: Removing leading '/' from absolute path names
-# file: tmp/memos/
+# file: tmp/memos
 # owner: student
 # group: student
 user::rwx
-group::rwx
-other::r-x
+group::r-x
+other::---
+
+student@linux-ess:~$ setfacl -m d:g:it:rwx /tmp/memos
+student@linux-ess:~$ getfacl /tmp/memos
+getfacl: Removing leading '/' from absolute path names
+# file: tmp/memos
+# owner: student
+# group: student
+user::rwx
+group::r-x
+other::---
 default:user::rwx
-default:group::rwx
-default:group:design:rwx
+default:group::r-x
+default:group:it:rwx
 default:mask::rwx
-default:other::r-x
+default:other::---
 
 student@linux-ess:~$ mkdir /tmp/memos/January
 student@linux-ess:~$ getfacl /tmp/memos/January/
@@ -537,27 +563,28 @@ getfacl: Removing leading '/' from absolute path names
 # owner: student
 # group: student
 user::rwx
-group::rwx
-group:design:rwx
+group::r-x
+group:it:rwx
 mask::rwx
-other::r-x
+other::---
 default:user::rwx
-default:group::rwx
-default:group:design:rwx
+default:group::r-x
+default:group:it:rwx
 default:mask::rwx
-default:other::r-x
+default:other::---
 
-student@linux-ess:~$ touch /tmp/memos/January/19
-student@linux-ess:~$ getfacl /tmp/memos/January/19
+student@linux-ess:~$ touch /tmp/memos/January/22
+student@linux-ess:~$ getfacl /tmp/memos/January/22
 getfacl: Removing leading '/' from absolute path names
-# file: tmp/memos/January/19
+# file: tmp/memos/January/22
 # owner: student
 # group: student
 user::rw-
-group::rwx			#effective:rw-
-group:design:rwx		#effective:rw-
+group::r-x                      #effective:r--
+group:it:rwx                    #effective:rw-
 mask::rw-
-other::r--
+other::---
+
 ```
 
 ### Enabling access control lists
