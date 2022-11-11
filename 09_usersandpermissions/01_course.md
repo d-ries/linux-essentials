@@ -123,7 +123,7 @@ teacher:x:1001:1001:Teacher Account:/home/teacher:/bin/bash
 ?> If we want to create a user that cannot be logged into, we can change his shell to `/bin/false` or `/sbin/nologin`. The difference between these two is that `/sbin/nologin` gives a polite message that you cannot log in to this account before exiting. The option `/bin/false` directly exits without prompting anything. 
 
 #### Setting user passwords
-If we want to change our password we can use the `passwd` command:
+If we want to change our own password we can use the `passwd` command (without sudo!):
 ```bash
 student@linux-ess:~$ passwd
 Changing password for student.
@@ -132,7 +132,14 @@ New password:
 Retype new password:
 passwd: password updated successfully
 ```
+  
+?> <i class="fa-solid fa-circle-info"></i> Note that your password has to be long and difficult enough, otherwise the new password will not be accepted.
+  
+  
+?> <i class="fa-solid fa-circle-info"></i> Note that if we use `sudo passwd` that we are changing the password of the user root and not our own password!
 
+    
+  
 As seen in the previous commands we created a new user with the username `teacher` but we never gave it a password. To do this we can run the `passwd` command with `sudo` rights and with a username as argument. This forces setting a new password for that specific user:
 ```bash
 student@linux-ess:~$ sudo passwd teacher
@@ -140,10 +147,6 @@ New password:
 Retype new password:
 passwd: password updated successfully
 ```
-
-?> <i class="fa-solid fa-circle-info"></i> Note that if we use `sudo passwd` that we are changing the password of the user root and not our password!
-
-?> <i class="fa-solid fa-circle-info"></i> Note that you password has to be long and difficult enough, otherwise the new password will not be accepted.
 
 The password gets stored in the file `/etc/shadow` for security reasons. Regular users cannot view the contents of this file:
 ```bash
@@ -156,7 +159,7 @@ As seen in the example above the password isn't shown in plaintext. This is beca
 
 
 ## Switching users (su)
-To switch user accounts we could use the `exit` command to close the current shell and this will, eventually, end up in giving us the login prompt of the server. An alternative is to use the `su` (`switch user`) command:
+To switch user accounts we could `logout` or `exit` the current session. An alternative is to use the `su` (`switch user`) command:
 ```bash
 student@linux-ess:~$ whoami; pwd
 student
@@ -173,7 +176,7 @@ student
 /home/student
 ```
 
-Note that root can become whoever he wants without the need to know that users password:
+Note that root can become whoever he wants without the need to know that user's password:
 ```bash
 student@linux-ess:~$ whoami; pwd
 student
@@ -186,7 +189,7 @@ teacher@linux-ess:~$ exit
 logout
 ```
 
-Note that to become root (without knowing his password) we can also use the `sudo` command:
+Note that to become root (without knowing his password) we can also use the `sudo su` command:
 ```bash
 student@linux-ess:~$ whoami; pwd
 student
@@ -204,52 +207,61 @@ We want to be mindful of commands that we run as the `root` user. This user has 
 
 ## Group management
 
-### View groupinfo of a user (id,groups)
-To view the groups a user is added to we can use the commands `id` and `groups`:
+### View groupinfo of a user (id, groups)
+To view the groups a user is member of we can use the commands `id` and `groups`:
 ```bash
-student@linux-ess:~$ id teacher
-uid=1001(teacher) gid=1001(teacher) groups=1001(teacher)
-student@linux-ess:~$ groups teacher
-teacher : teacher
+student@linux-ess:~$ id student
+uid=1000(student) gid=1000(student) groups=1000(student),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),110(lxd)
+student@linux-ess:~$ groups student
+student : student adm cdrom sudo dip plugdev lxd
 ```
 
 ### /etc/group
 The file where the group info of the users is stored is `/etc/group`. We could also make changes to this file instead of using commands.
 ```bash
-student@linux-ess:~$ tail -3 /etc/group
+student@linux-ess:~$ grep student /etc/group
+adm:x:4:syslog,student
+cdrom:x:24:student
+sudo:x:27:student
+dip:x:30:student
+plugdev:x:46:student
+lxd:x:110:student
 student:x:1000:
-plocate:x:118:
-teacher:x:1001:
 ```
 
 
 ### Adding groups (groupadd)
 If there's a need for new groups we can do it with the `groupadd` command:
 ```bash
-student@linux-ess:~$ sudo groupadd staff
-student@linux-ess:~$ tail -2 /etc/group
+student@linux-ess:~$ sudo groupadd ict
+student@linux-ess:~$ tail -3 /etc/group
+student:x:1000:
 teacher:x:1001:
-staff:x:1002:
+ict:x:1002:
 ```
 
-?> We can delete groups using the command `sudo groupdel staff`.
+?> We can delete groups using the command `sudo groupdel ict`.
 
 ### Editing groups (groupmod)
 If we need to change a group we can use `groupmod`:
 ```bash
-student@linux-ess:~$ sudo groupmod -n personnel staff
-student@linux-ess:~$ tail -1 /etc/group
-personnel:x:1002:
+student@linux-ess:~$ sudo groupmod -n it ict
+student@linux-ess:~$ tail -3 /etc/group
+student:x:1000:
+teacher:x:1001:
+it:x:1002:
 ```
 
 ### Edit group memberships (usermod)
-If we want to add a user to a group we can use the `usermod` command:
+If we want to add a user to a group we can also use the `usermod` command:
 ```bash
-student@linux-ess:~$ sudo usermod -a -G personnel teacher
+student@linux-ess:~$ sudo usermod -a -G it teacher
 student@linux-ess:~$ id teacher
-uid=1001(teacher) gid=1001(teacher) groups=1001(teacher),50(personnel)
+uid=1001(teacher) gid=1001(teacher) groups=1001(teacher),1002(it)
 student@linux-ess:~$ groups teacher
-teacher : teacher personnel
+teacher : teacher it
+student@linux-ess:~$ grep it /etc/group
+it:x:1002:teacher
 ```
 
 ?> <i class="fa-solid fa-circle-info"></i> If we forget the `-a` option the user will only be in the specified group and will be removed from all the groups he was in. This can be a serious problem if the user was the only one in the sudo group!
