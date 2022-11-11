@@ -1,5 +1,5 @@
 # Assignments CH11
-?> _Note that these assignments are considered extra's that will not be evaluated on any exam._
+
 
 ## Task 1
 List all processes running on your system, showing a full set of columns. Pipe that output to the less command so you can page through the list of processes.
