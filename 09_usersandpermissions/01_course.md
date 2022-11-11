@@ -588,7 +588,7 @@ other::---
 ```
 
 ### Enabling access control lists
-Some Linux file systems have a standard support for ACLs via the kernel. With the following command we can check which file systems are enable to use ACL's on our system.
+Some Linux file systems have a standard support for ACLs via the kernel. With the following command we can check which file systems have ACL's enabled by default.
 ```bash
 student@linux-ess:~$ grep POSIX_ACL /boot/config-$(uname -r)
 CONFIG_EXT4_FS_POSIX_ACL=y
@@ -609,20 +609,21 @@ CONFIG_9P_FS_POSIX_ACL=y
 File systems that don't have ACL support via the kernel are still able to get it via the mount option. ACL support is added with different methods:
 *	The ACL option in the 4th field of the file /etc/stab
 *	Adding the ACL line in the default mount option field in the superblock of the file system
-*	Adding the ACL option to the mount command when you manually mount file systems
-When the acl option is not present for your filesystem you can add the acl mount option with the command tune2fs -o. For example, you have a usb-stick with a ext4 file system named /dev/sdb1, this is seen in a later chapter. 
+*	Adding the ACL option to the mount command when you manually mount the file system
+  
+When the acl option is not present for your filesystem you can add the acl mount option with the command tune2fs -o. For example, you have a usb-stick with an ext4 file system named /dev/sdb1, this is seen in a later chapter. 
 ```bash
 student@linux-ess:~$ sudo tune2fs -o acl /dev/sdb1
 tune2fs 1.46.5 (30-Dec-2021)
 student@linux-ess:~$ sudo tune2fs -l /dev/sdb1 | grep "mount options"
 Default mount options:    user_xattr acl
 ```
-A second option was to enable acl by adding the acl option in the file /etc/fstab, this automatically acitivates on startup of you system.
+A second option is to enable ACL by adding the acl option in the file /etc/fstab, this automatically acitivates on startup of your system.
 ```bash
 student@linux-ess:~$ cat /etc/fstab
 /dev/sdc1 	/var/stuff 	ext4 	acl 		1 	     2
 ```
-The last option was to enable acls when manually mounting a filesystem. We do not have an entry in the /etc/fstab file with this method. This method is only temporary, on restart our mount will be gone. 
+The last option is to enable ACLs when manually mounting the filesystem. We do not have an entry in the /etc/fstab file with this method. This method is only temporary, on restart our mount will be forgotten. 
 ```bash
 student@linux-ess:~$ sudo mount -o acl /dev/sdb1 /var/stuff
 ```
