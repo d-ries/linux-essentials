@@ -285,7 +285,7 @@ Permission errors are a common source of problem. Understanding and manipulating
 
 ### Octal notations
 
-When looking at the extended info for a file using `ls` with the `-l` option. You'll see three sets of three permissions applied to a file. The possible permission are: **r**ead, **w**rite and e**x**ecute. Permission to read a file's content, permission to change a file's content and permission to execute a file as a script or program. When a permission is not granted, you'll find a - in the position of the permission denied. 
+When looking at the extended info for a file using `ls` with the `-l` option (=long listing), you'll see three sets of three permissions applied to the file. The possible permission are: **r**ead, **w**rite and e**x**ecute. Permission to read a file's content, permission to change a file's content and permission to execute a file as a script or program. When a permission is not granted, you'll find a - in the position of the permission denied. 
 
 ```bash
 student@linux-ess:~/course$ ls -l
@@ -298,7 +298,7 @@ drwxrwxr-x 2 student student 4096 okt  2 19:36 folder
 
 ?> <i class="fa-solid fa-circle-info"></i>Directories in Linux have the same set of permissions. But because you need execute to access files in the directory, there is little you can do without it. The common permissions are rwx for a directory where you can do everything, r-x for a read-only directory, and ofcourse --- when you want to block access completely. 
 
-There are three sets because there are three different sets of people that permissions can be applied to. The first set describes the permissions for the owner of the file (the first name behind the permissions), the second applies to everyone that is a member of the group that owns the file (the second name). The last set is for everyone who doesn't fall under one of the first two categories. So in short: The three sets apply to **user**, **group** and **other**, in that order.
+There are three sets because there are three different sets of people that permissions can be applied to. The first set describes the permissions for the owner of the file (the first name behind the permissions), the second applies to everyone that is a member of the group that owns the file (the second name). The last set is for everyone who doesn't fall under one of the first two categories. So in short: The three sets apply to **userowner**, **groupowner** and **others**, in that order.
 
 When a user creates a file he automatically becomes the owner of that file. The group that owns the file is determined by the user's **primary group**. By default a user's primary group is a group with the same name as the username, which is why you'll often see owner and group owner have the same name (like student student in the above example). The `/dev` folder, that contains the files representing your hardware, is one of the places where you'll find files owned by the root-user with a different group as owner.
 
