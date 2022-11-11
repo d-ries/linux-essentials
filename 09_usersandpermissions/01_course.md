@@ -395,7 +395,7 @@ student@linux-ess:~/course$ ls -l config
 
 A last thing we need to look at are the default permissions. What permissions are applied when you create new files and folders? 
 
-The maximum permissions for new files is 666, so -rw-rw-rw-. New files are never created with execute permissions. This is enforced by kernel code so if you want to change that you'll have to start programming. It is ofcourse possible to add execute bits after file creation using `chmod` but it always requires a conscious decission for security reasons. Folders don't have this limitation as a folder without an execute bit set is quite useless. 
+The maximum permissions for new files is 666, so -rw-rw-rw-. New files are never created with execute permissions. This is enforced by the kernel. It is ofcourse possible to add the execute bit after file creation using `chmod`, but it always requires a conscious decission for security reasons. Folders don't have this limitation as a folder without an execute bit set is quite useless. 
 
 ```bash
 student@linux-ess:~/course$ touch file
@@ -407,7 +407,7 @@ drwxrwxr-x 2 student student 4096 okt 15 15:56 folder
 ```
 As you can see, we don't get the expected -rw-rw-rw- for the file, nor drwxrwxrwx for the folder. This is because most distributions are more strict than the Linux kernel allows. Using the kernel default would mean created files and folders are writable by every user on the system. They are however readable by `other` so beware of this with sensitive files.
 
-The exact configuration of permissions for new files and folders is set by the `umask`. This is a value that defines the 'mask' that is applied for all processes. To see the current mask, use the command `umask`.
+The exact configuration of permissions for new files and folders is set by the `umask`. This is a value that defines the 'mask' that is applied for all newly created files and folders. To see the current mask, use the command `umask`.
 
 ```bash
 student@linux-ess:~/course$ umask
@@ -431,7 +431,7 @@ student@linux-ess:~/course$ mkdir newfolder1
 student@linux-ess:~/course$ ls -ld newfolder1
 drwx------ 2 student student 4096 okt 15 16:25 newfolder1
 ```
-?> <i class="fa-solid fa-circle-info"></i>Setting the umask using the command changes the umask for your current terminal session. Exiting the terminal will reset it to the default value. To make it permanent add `umask <your umask>` to your user's `.bashrc` file in your home directory.
+?> <i class="fa-solid fa-circle-info"></i> Setting the umask using the command changes the umask for your current terminal session. Exiting the terminal will reset it to the default value. To make it permanent add `umask <your umask>` to your user's `.bashrc` file in your home directory.
 
 ```bash
 student@linux-ess:~/course$ touch file
@@ -449,7 +449,28 @@ UMASK           022 #line 151
 USERGROUPS_ENAB yes #line 230
 ```
 To change the setting system-wide you can change the value for umask here. The default umask specified is the one the root user uses (no write for anybody but the owner). The reason files created by regular users get an extra w for the group, is the option on line 230. This option specifies that for any non-root user that has the same user-id as group-id (so the primary group is unchanged) the group umask-bits gets changed to the user umask-bits, explaining the 002 umask seen above.
-
+  
+  
+?> <i class="fa-solid fa-circle-info"></i> You can also use the letter notation with umask:
+```bash
+student@linux-ess:~$ umask
+0002
+student@linux-ess:~$ umask -S
+u=rwx,g=rwx,o=rx
+student@linux-ess:~$ touch file3
+student@linux-ess:~$ ls -l file3
+-rw-rw-r-- 1 student student 0 Nov 11 14:01 file3
+student@linux-ess:~$ umask u=rwx,g=rx,o=
+student@linux-ess:~$ umask
+0027
+student@linux-ess:~$ umask -S
+u=rwx,g=rx,o=
+student@linux-ess:~$ touch file4
+student@linux-ess:~$ ls -l file4
+-rw-r----- 1 student student 0 Nov 11 14:03 file4
+```  
+  
+  
 ### Access control lists
 The ACL feature was created to give users the ability to selectively share files and folders with other users and groups. Before ACL’s are usable, they need to be turned on when the filsystem is mounted. In our Ubuntu installation ACL’s are loaded in by standard. To add ACL’s to a file or folder, use the setfacl command. ACL’s can be looked at with the getfacl command. To add ACL’s you need to be the owner of the file or folder, if you are added by an ACL you will not be able to add ACL’s yourself. All ACL permissions are cumulative, this means if we are in 2 groups that are added to a file with ACL’s. One with r— rights and one with rwx rights, we will have rwx rights. 
 With the setfacl command, we’ll be able to modify, with the -m parameter, or delete, with the -x parameter, ACL’s. 
