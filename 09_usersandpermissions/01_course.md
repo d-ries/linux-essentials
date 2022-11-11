@@ -264,9 +264,9 @@ student@linux-ess:~$ grep it /etc/group
 it:x:1002:teacher
 ```
 
-?> <i class="fa-solid fa-exclamation"></i> If we forget the `-a` option the user will only be in the specified group and will be removed from all the groups he was in. This can be a serious problem if the user was the only one in the sudo group!
+?> <i class="fa-solid fa-exclamation"></i> If we forget the `-a` (__add__) option the user will only be in the specified group and will be removed from all the groups he was in. This can be a serious problem if the user was the only one in the sudo group!
 
-?> <i class="fa-solid fa-circle-info"></i> If we want to remove a user from a group and the users is in many more groups we do not use the '-a' option and we have to specify all the groups he must remain in. In that case it is easier to edit the group file `/etc/group` by hand. 
+?> <i class="fa-solid fa-circle-info"></i> If we want to __remove__ a user from a specific group we have to specify all the groups he must remain in (and don't use the -a option). In that case it will be easier to edit the group file `/etc/group` by hand. 
 
 ?> <i class="fa-solid fa-circle-info"></i> A user knows a change in group membership only when he logs in. So after a change a user has to login again to notice the difference.
 
