@@ -64,7 +64,7 @@ uid=1001(teacher) gid=1001(teacher) groups=1001(teacher)
 #### Default values
 The `useradd` command uses quite some default values. We can check these default values by running the following command:
 ```
-student@linux-ess:~$ useradd -D
+student@linux-ess:~$ sudo useradd -D
 GROUP=100
 HOME=/home
 INACTIVE=-1
@@ -73,9 +73,9 @@ SHELL=/bin/sh
 SKEL=/etc/skel
 CREATE_MAIL_SPOOL=no
 ```
-These settings are kept in the file `/etc/default/useradd` and can be changed at any time.
+These settings are kept in the file `/etc/default/useradd` and can be changed at any time by altering the file or using `useradd -D [option]`.
 
-?> <i class="fa-solid fa-circle-info"></i> Notice that the default value for the shell is `/bin/sh`. It is good practice to alter this to `/bin/bash` so that every new user that will be created in the future gets the `bourne again shell` as default.
+?> <i class="fa-solid fa-circle-info"></i> Notice that the default value for the shell is `/bin/sh`. It is good practice to alter this to `/bin/bash` so that every new user that will be created in the future gets the `bourne again shell` as default (eg. sudo useradd -D --shell /bin/bash).
 
 #### /etc/skel
 By default homefolders are created as a subdirectory of the `/home` directory. These folders aren't created from scratch. The contents of the folder `/etc/skel` are copied within each newly created homefolder. This means that if we alter any contents in this `skel` folder, this wil actually be copied to any new user that will be created in the future:
@@ -97,9 +97,11 @@ __.profile__: executed when user logs in
 ### Editing users (usermod & userdel)
 To edit a user's account configuration, we can use the `usermod` command. This command has several options that we can use to edit specific settings. For example to edit the comment field of a user we can run the following command:
 ```bash
-student@linux-ess:~$ sudo usermod -c "John Doe" teacher
-student@linux-ess:~$ tail -1 /etc/passwd
-teacher:x:1002:1003:John Doe:/home/teacher:/bin/sh
+student@linux-ess:~$ grep student /etc/passwd
+student:x:1000:1000:student:/home/student:/bin/bash
+student@linux-ess:~$ sudo usermod -c "Student Account" student
+student@linux-ess:~$ grep student /etc/passwd
+student:x:1000:1000:Student Account:/home/student:/bin/bash
 ```
 
 To edit the default shell for a specific user we could do the following:
