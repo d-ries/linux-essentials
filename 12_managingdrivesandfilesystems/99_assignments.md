@@ -1,5 +1,5 @@
 # Assignments CH11
-?> _Note that these assignments are considered extra's that will not be evaluated on any exam._
+
 
 To start these assignments, add a virtual drive of 1GB or use a USB flash drive of at least 1 GB.
 
