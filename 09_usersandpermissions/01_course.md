@@ -295,16 +295,20 @@ drwxrwxr-x 2 student student 4096 okt  2 19:36 folder
 -rw-rw-r-- 1 student student    0 okt  2 19:36 rights.jpg
 -rw-rw-r-- 1 student student    0 okt  2 19:36 test.txt
 ```
+   
+?> <i class="fa-solid fa-circle-info"></i>The first character is a _-_ (minus) for a regular file and a _d_ for a directory. 
+  
 
 ?> <i class="fa-solid fa-circle-info"></i>Directories in Linux have the same set of permissions. But because you need execute to access files in the directory, there is little you can do without it. The common permissions are rwx for a directory where you can do everything, r-x for a read-only directory, and ofcourse --- when you want to block access completely. 
 
 There are three sets because there are three different sets of people that permissions can be applied to. The first set describes the permissions for the owner of the file (the first name behind the permissions), the second applies to everyone that is a member of the group that owns the file (the second name). The last set is for everyone who doesn't fall under one of the first two categories. So in short: The three sets apply to **userowner**, **groupowner** and **others**, in that order.
 
-When a user creates a file he automatically becomes the owner of that file. The group that owns the file is determined by the user's **primary group**. By default a user's primary group is a group with the same name as the username, which is why you'll often see owner and group owner have the same name (like student student in the above example). The `/dev` folder, that contains the files representing your hardware, is one of the places where you'll find files owned by the root-user with a different group as owner.
+When a user creates a file he automatically becomes the owner of that file. The group that owns the file is determined by the user's **primary group**. By default a user's primary group is a group with the same name as the username, which is why you'll often see owner and group owner have the same name (like _student student_ in the above example). The `/dev` folder, that contains the files representing your hardware, is one of the places where you'll find files owned by the root-user with a different group as owner.
 
 ```bash
-student@linux-ess:~$ ls -l /dev/sr0
-brw-rw----+ 1 root cdrom 11, 0 okt 2 14:47 sr0
+student@linux-ess:~$ ls -l /dev/s[dr]?
+brw-rw---- 1 root disk   8, 0 Nov 11 10:44 /dev/sda
+brw-rw---- 1 root cdrom 11, 0 Nov 11 10:43 /dev/sr0
 ```   
 
 File permissions are written on disk as a field of bits in the file's properties. A bit is set to 1 when a permission is granted, 0 when it's not. So rwxrw-r-- becomes 111110100. Because humans are not very good at parsing binary sequences, they are represented as as octal numbers, numbers from 0 to 7 (000 to 111 in binary). To calculate the octal number remember that read is worth 4, write 2 and execute 1. Add those you need and you'll get the octal notation. The example above becomes 764 (rwx, 4+2+1=7, rw-, 4+2+0=6, r--, 4+0+0=4).
