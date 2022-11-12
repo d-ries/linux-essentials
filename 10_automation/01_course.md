@@ -8,7 +8,8 @@ In Ubuntu we often use _bash_ scripts. _bash_ refers to the default shell that w
 ?> Note that we will focus on the basic syntax of a shell script. You can always learn more about if statements, loops, custom options and arguments, tests, ... in scripts but this is out of scope for this course.
 
 ### Hello world
-To start of with our first bash script we'll create a new file called `helloworld.sh` and add some contents using `nano`:
+To start of with our first bash script we'll create a new file called `helloworld.sh` and add some contents using `nano`.  
+
 ```bash
 student@linux-ess:~$ nano helloworld.sh
 ```
@@ -36,11 +37,15 @@ this is our first bash script
 ```
   
 
-?> Although the script is in the working directory, we have to specify it with __./__helloworld.sh
+?> Although the script is in the working directory, we have to specify it with: __./__helloworld.sh  Another way to run it, is to specify the full path: /home/student/helloworld.sh
+  
+  
+?> Only scripts that are saved in a directory which is specified in the $PATH variable can be executed without specifying the full path.
   
   
 ### date with shell embedding
-Lets extend our script with some nifty logic to use to output of a certain command in another command. We edit the script contents as follows:
+Lets extend our script with some nifty logic to use to output of a certain command in another command. We edit the script contents as follows:  
+_nano helloworld.sh_  
 ```bash
 #!/bin/bash
 echo "hello world"
@@ -49,7 +54,7 @@ echo "the date of today is $(date)"
 ```
 When we run this script, we get the following output:
 ```bash
-student@linux-ess:~$ bash helloworld.sh
+student@linux-ess:~$ ./helloworld.sh
 hello world
 this is our first bash script
 the date of today is Tue Jun 28 22:04:09 CEST 2022
@@ -58,6 +63,8 @@ The concept we've used here is called _shell embedding_. The `$(...)` syntax ope
   
   
 ### Variables
+We also can make use of variables to reuse data:
+_nano vars.sh_
 ```bash
 #!/bin/bash
 CUSTOMDIR=testdir
@@ -67,47 +74,60 @@ touch ~/$CUSTOMDIR/testfile
 ls -l ~/$CUSTOMDIR/*
 ```
 
+?> We can run the script without setting the execute script (chmod u+x) first, but then we have to specify the interpreter (here bash) to define in which language the sript is written
+
 ```bash
-student@linux-ess:~$ bash helloworld.sh
+student@linux-ess:~$ bash vars.sh
 customdir is set to testdir
 -rw-r----- 1 student student 0 Nov 11 15:52 /home/student/testdir/testfile
 ```
 
 #### System variables
+We also can make use of variables that are set on the system:
+_nano sysvars.sh_
 ```bash
 #!/bin/bash
 echo "hello $USER"
 echo "your homefolder is $HOME"
 ```
-
+  
+_chmod u+x sysvars.sh  
+  
 ```bash
-student@linux-ess:~$ bash helloworld.sh
+student@linux-ess:~$ ./sysvars.sh
 hello student
 your homefolder is /home/student
 ```
-
-Lets combine some of the stuff we learned so far. Lets create a new script called `countfiles.sh`:
+  
+Lets combine some of the stuff we learned so far.   
+  
+Lets create a new script called `countfiles.sh`:
+  
+_nano countfiles.sh_
 ```bash
 #!/bin/bash
 echo "hello $USER"
-echo "your homefolder has $(ls ~ | wc -w) files/folders."
+echo "your homefolder has $(ls -A1 ~ | wc -l) files/folders."
 ```
+  
 When we execute it, we get the following result:
 ```bash
 student@linux-ess:~$ bash countfiles.sh
 hello student
 your homefolder has 12 files/folders.
 ```
-
-Another example:
+  
+Another example creates a file with the current date in the filename:
+  
+_nano datefile.sh_
 ```bash
 #!/bin/bash
 # This will create a variable with the current date as value
 createdate=$(date +"%Y-%m-%d")
-
-touch ~/$createdate-superfile
+touch ~/${createdate}-superfile
 ```
-
+  
+    
 #### Reading user input
 ```bash
 #!/bin/bash
@@ -121,8 +141,9 @@ Lets extend this script to give it some more functionality and combine some of t
 #!/bin/bash
 echo "enter the absolute path of a folder you want to check:"
 read folder
-echo "the selected folder is $folder. This folder contains $(ls $folder | wc -w) regular files/folders. Showing the first 5:"
-ls $folder | tr ' ' '/n' | head -5
+echo "the selected folder is $folder. This folder contains $(ls -A1 $folder | wc -l) files/folders. 
+echo "Showing the first 5:"
+ls -A1 | head -5
 ```
 
 ```bash
