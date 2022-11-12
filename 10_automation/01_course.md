@@ -290,7 +290,7 @@ In the example below we are going to echo some text to a file every minute.
   
 Simply remove the line from the crontab to stop this from happening. For more info check the manpage of `cron`.  
   
-<? Mind that the first time we open cron we have to specify which editor we want to use. If you choose '1' you will have the editor `nano`.  
+?> Mind that the first time we open cron we have to specify which editor we want to use. If you choose '1' you will have the editor `nano`.  
   
 
 ```bash
