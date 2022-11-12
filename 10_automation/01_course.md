@@ -189,7 +189,7 @@ Param one was: first
 Param two was: 2nd
 ```
 
-## adding to PATH
+## The PATH variable
   
 Linux has multiple places where binaries are stored. These are often bundled in the PATH variable.  
 If we run a command without specifying the path where the command is saved, there will be searched for within every path of the PATH variable.
@@ -243,7 +243,7 @@ student@linux-ess:~$ which reboot
 /usr/sbin/reboot
 ```
     
-## at
+## At
   
 You can use the at command to run a script/command at a specific time.  
 For the at command we echo an output into the at command as shown by an example below:  
