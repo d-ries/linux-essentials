@@ -285,7 +285,7 @@ In the example below we are going to echo some text to a file every minute.
 |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...  
 |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat  
 |  |  |  |  |  
-__*  *  *  *  *   echo Command run at $(date) >> /tmp/crontest__  
+*  *  *  *  *   echo Command run at $(date) >> /tmp/crontest  
   
   
 Simply remove the line from the crontab to stop this from happening. For more info check the manpage of `cron`.  
