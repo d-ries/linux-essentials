@@ -203,7 +203,7 @@ root@linux-ess:~# exit
 logout
 ```
 
-We want to be mindful of commands that we run as the `root` user. This user has permissions on all the files, folders and services on our system. This means that running commands as `root` can have a huge impact when being exploited.
+We want to be mindful of commands that we run as the `root` user. This user can have permissions on all the files, folders and services on our system. This means that running commands as `root` can have a huge impact when being exploited.
 
 ## Group management
 
@@ -264,9 +264,9 @@ student@linux-ess:~$ grep it /etc/group
 it:x:1002:teacher
 ```
 
-?> <i class="fa-solid fa-exclamation"></i> If we forget the `-a` (__add__) option the user will only be in the specified group and will be removed from all the groups he was in. This can be a serious problem if the user was the only one in the sudo group!
+?> <i class="fa-solid fa-exclamation"></i> If we forget the `-a` (__add__) option the user will only be in the specified supplementary group and will be removed from all the groups he was in. This can be a serious problem if the user was the only one in the sudo group!
 
-?> <i class="fa-solid fa-circle-info"></i> If we want to __remove__ a user from a specific group we have to specify all the groups he must remain in (and don't use the -a option). In that case it will be easier to edit the group file `/etc/group` by hand. 
+?> <i class="fa-solid fa-circle-info"></i> If we want to __remove__ a user from a specific supplementary group we have to specify all the supplementary groups he must remain in (and don't use the -a option). In that case it will be easier to edit the group file `/etc/group` by hand. 
 
 ?> <i class="fa-solid fa-circle-info"></i> A user knows a change in group membership only when he logs in. So after a change a user has to login again to notice the difference.
 
