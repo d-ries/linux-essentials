@@ -158,8 +158,8 @@ teacher:$y$j9T$Vtf.U//c4/N/CB8LzHfnl0$5iCgijrpqXfaA3v18w/nAL2rl8BmiBYX5rn5rf.j6B
 As seen in the example above the password isn't shown in plaintext. This is because Linux systems use hashing algoritms to encrypt the passwords. The algoritm used here is called _sha512_.
 
 
-## Switching users (su)
-To switch user accounts we could `logout` or `exit` the current session. An alternative is to use the `su` (`switch user`) command:
+## Substitute user (su)
+You can log out a user using `logout` or `exit`. Of course you can log back in as a different user after logging out. With the command su (substitute user) you can temporarily work as another user:
 ```bash
 student@linux-ess:~$ whoami; pwd
 student
