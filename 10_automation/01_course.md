@@ -24,10 +24,16 @@ The first line in this script is named in the shebang and is a special line that
 
 ?> using `#` signs are interpreted as comments. Any code after those signs will not be executed.
 
-In the example above we will run 2 `echo` commands. To run this bash script, we will have to add _execute_ rights:
+In the example above we will run 2 `echo` commands. 
+  
+To run this bash script, we will have to add _execute_ rights:
 
 ```bash
-student@linux-ess:~$ chmod +x helloworld.sh
+student@linux-ess:~$ ls -l helloworld.sh
+-rw-rw-r-- 1 student student 371 Nov 11 15:55 helloworld.sh
+student@linux-ess:~$ chmod u+x helloworld.sh
+student@linux-ess:~$ ls -l helloworld.sh
+-rwxrw-r-- 1 student student 371 Nov 11 15:55 helloworld.sh
 ```
 After doing this we can execute the script:
 ```bash
@@ -37,10 +43,10 @@ this is our first bash script
 ```
   
 
-?> Although the script is in the working directory, we have to specify it with: __./__helloworld.sh  Another way to run it, is to specify the full path: /home/student/helloworld.sh
+?> Although the script is in the working directory, we have to specify it with: ./helloworld.sh  Another way to run it, is to specify the full path: /home/student/helloworld.sh
   
   
-?> Only scripts that are saved in a directory which is specified in the $PATH variable can be executed without specifying the full path.
+?> Only scripts that are executable and saved in a directory which is specified in the $PATH variable can be executed without specifying the full path.
   
   
 ### date with shell embedding
