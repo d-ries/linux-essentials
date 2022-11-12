@@ -63,8 +63,8 @@ The concept we've used here is called _shell embedding_. The `$(...)` syntax ope
   
   
 ### Variables
-We also can make use of variables to reuse data:
-_nano vars.sh_
+We also can make use of variables to reuse data:  
+_nano vars.sh_  
 ```bash
 #!/bin/bash
 CUSTOMDIR=testdir
@@ -83,15 +83,15 @@ customdir is set to testdir
 ```
 
 #### System variables
-We also can make use of variables that are set on the system:
-_nano sysvars.sh_
+We also can make use of variables that are set on the system:  
+_nano sysvars.sh_  
 ```bash
 #!/bin/bash
 echo "hello $USER"
 echo "your homefolder is $HOME"
 ```
   
-_chmod u+x sysvars.sh  
+_chmod u+x sysvars.sh_    
   
 ```bash
 student@linux-ess:~$ ./sysvars.sh
@@ -103,7 +103,7 @@ Lets combine some of the stuff we learned so far.
   
 Lets create a new script called `countfiles.sh`:
   
-_nano countfiles.sh_
+_nano countfiles.sh_  
 ```bash
 #!/bin/bash
 echo "hello $USER"
@@ -119,43 +119,53 @@ your homefolder has 12 files/folders.
   
 Another example creates a file with the current date in the filename:
   
-_nano datefile.sh_
+_nano datefile.sh_  
 ```bash
 #!/bin/bash
 # This will create a variable with the current date as value
 createdate=$(date +"%Y-%m-%d")
-touch ~/${createdate}-superfile
+touch ~/${createdate}-superfile && echo "File ${createdate}-superfile created/touched in homedir."
 ```
-  
+When we execute it, we get the following result:
+```bash
+student@linux-ess:~$ bash datefile.sh
+File 2022-11-11-superfile created/touched in homedir.
+```
+?> Mind that if we ask for the value of a variable by putting a dollar sign in front (eg. `echo $createdate`). But when we put text right after the variable without a space in between, we almost always have to put the variable within boundaries with the curly brackets (eg. `echo ${createdate}superfile` )  
     
 #### Reading user input
+Sometimes it can be helpful to ask for user input. We place the answer of the user in a variable, so that we can reuse it later on in the script:
+  
+_nano list5.sh_
 ```bash
 #!/bin/bash
-echo "enter the absolute path of a folder you want to check:"
+echo "Enter the absolute path of a folder you want to check:"
 read folder
-echo "the selected folder is $folder. 
+echo "The selected folder is $folder." 
 ```
 
-Lets extend this script to give it some more functionality and combine some of the concepts we've learned before:
+Let's extend this script to give it some more functionality and combine some of the concepts we've learned before:
 ```bash
 #!/bin/bash
-echo "enter the absolute path of a folder you want to check:"
+echo "Enter the absolute path of a folder you want to check:"
 read folder
-echo "the selected folder is $folder. This folder contains $(ls -A1 $folder | wc -l) files/folders. 
+echo "The selected folder is $folder. This folder contains $(ls -A1 $folder | wc -l) files/folders." 
 echo "Showing the first 5:"
 ls -A1 | head -5
 ```
 
+Let's see what it does:  
 ```bash
-student@linux-ess:~$ ./listcontents.sh
-enter the absolute path of a folder you want to check:
+student@linux-ess:~$ ./list5.sh
+Enter the absolute path of a folder you want to check:
 /home/student
-the selected folder is /home/student. This folder contains 16 regular files/folders. Showing the first 5:
-2022-06-28-backup
-2022-06-28-superfile
+the selected folder is /home/student. This folder contains 23 files/folders.
+Showing the first 5:
+2022-11-11-superfile
 auth.log
-count1.txt
-creafile.sh
+.bash_history
+.bash_logout
+.bashrc
 ```
 
 ### Using a parameter
