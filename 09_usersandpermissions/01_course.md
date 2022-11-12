@@ -253,7 +253,7 @@ it:x:1002:
 ```
 
 ### Edit group memberships (usermod)
-If we want to add a user to a group we can also use the `usermod` command:
+If we want to add a user to a supplementary group we can also use the `usermod` command:
 ```bash
 student@linux-ess:~$ sudo usermod -a -G it teacher
 student@linux-ess:~$ id teacher
