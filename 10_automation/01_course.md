@@ -248,35 +248,50 @@ student@linux-ess:~$ which reboot
 You can use the at command to run a script/command at a specific time.  
 For the at command we echo an output into the at command as shown by an example below:  
 ```bash
-student@linux-ess:~$ datefile.sh | at 2pm
-student@linux-ess:~$ echo "hello" | at now + 2 days
+student@linux-ess:~$ ./datefile.sh | at 14:00
 warning: commands will be executed using /bin/sh
-job 4 at Sat Sep 17 13:26:00 2022
+job 1 at Sat Nov 12 14:00:00 2022
+student@linux-ess:~$ echo "hello world" > /tmp/hello.txt | at now + 2 days
+warning: commands will be executed using /bin/sh
+job 2 at Mon Nov 14 10:36:00 2022
 student@linux-ess:~$ at -l
-3	Sat Sep 17 13:25:00 2022 a student
-4	Sat Sep 17 13:26:00 2022 a student
-1	Thu Sep 15 14:00:00 2022 a student
+2       Mon Nov 14 10:36:00 2022 a student
+1       Sat Nov 12 14:00:00 2022 a student
 ```  
   
-you can check what is scheduled and remove when necerry with the atrm or at -r command:  
+you can check what is scheduled with the `atq` or `at -l` commands and remove when necesarry with the `atrm`, `at -d` or `at -r` commands:  
   
 ```bash
 student@linux-ess:~$ at -l
-3	Sat Sep 17 13:25:00 2022 a student
-4	Sat Sep 17 13:26:00 2022 a student
-1	Thu Sep 15 14:00:00 2022 a student
-student@linux-ess:~$ atrm 3
+2       Mon Nov 14 10:36:00 2022 a student
+1       Sat Nov 12 14:00:00 2022 a student
+student@linux-ess:~$ at -d 2
 student@linux-ess:~$ at -l
-4	Sat Sep 17 13:26:00 2022 a student
-1	Thu Sep 15 14:00:00 2022 a student
+1       Sat Nov 12 14:00:00 2022 a student
 ```  
   
-
 For more info check the manpage of `at`.
-
+  
+    
 ## Crontab
   
-With the cron command it is possible to do this on a regular basis. Cron works different, it uses a file where we put everything we want to happen with the timing, in the example below we echo some text to a file every minute. Remove the line from the crontab to stop this from happening. For more info check the manpage of `cron`.
+With the cron command it is possible to plan to run your scripts/commands to run on a regular basis. Cron works different, it uses a file where we put the commands/scripts we want to run and specify when the runs have to happen. To open your crontab-file you give the command `crontab -e`.   
+  
+In the example below we are going to echo some text to a file every minute. 
+
+.---------------- minute (0 - 59)
+|  .------------- hour (0 - 23)
+|  |  .---------- day of month (1 - 31)
+|  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+|  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+|  |  |  |  |
+__*  *  *  *  *   echo Command run at $(date) >> /tmp/crontest__
+
+  
+Simply remove the line from the crontab to stop this from happening. For more info check the manpage of `cron`.
+  
+<? Mind that the first time we open cron we have to specify which editor we want to use. If you choose '1' you will have the editor `nano`.
+  
 
 ```bash
 @linux-ess:~$ crontab -e
@@ -289,35 +304,17 @@ Select an editor.  To change later, run 'select-editor'.
 
 Choose 1-3 [1]: 1
 crontab: installing new crontab
-
-* * * * * echo 'run this command every minute' >> /tmp/spam.txt
+...
+# m h  dom mon dow   command
+* * * * * echo Command run at $(date) >> /tmp/crontest
 
 @linux-ess:~$ crontab -l
-# Edit this file to introduce tasks to be run by cron.
-# 
-# Each task to run has to be defined through a single line
-# indicating with different fields when the task will be run
-# and what command to run for the task
-# 
-# To define the time you can provide concrete values for
-# minute (m), hour (h), day of month (dom), month (mon),
-# and day of week (dow) or use '*' in these fields (for 'any').
-# 
-# Notice that tasks will be started based on the cron's system
-# daemon's notion of time and timezones.
-# 
-# Output of the crontab jobs (including errors) is sent through
-# email to the user the crontab file belongs to (unless redirected).
-# 
-# For example, you can run a backup of all your user accounts
-# at 5 a.m every week with:
-# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
-# 
-# For more information see the manual pages of crontab(5) and cron(8)
-# 
+...
 # m h  dom mon dow   command
-* * * * * echo 'run this command every minute' >> /tmp/spam.txt
-student@linux-ess:~$ cat /tmp/spam.txt 
-run this command every minute
-run this command every minute
+* * * * * echo Command run at $(date) >> /tmp/crontest
+
+student@linux-ess:~$ cat /tmp/crontest
+Command run at Sat Nov 12 11:02:01 AM UTC 2022
+Command run at Sat Nov 12 11:03:01 AM UTC 2022
+Command run at Sat Nov 12 11:04:01 AM UTC 2022
 ```
