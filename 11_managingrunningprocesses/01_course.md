@@ -137,21 +137,6 @@ In the top window there are a few possible command to use:
 *	r to renice, after r, you will need the PID of the process and the value between -20 and 19
 *	k to kill, followed by the PID of the process, thereafter 15 to kill clean or 9 to kill abruptly
 
-## Listing process with the system monitor
-A third option is the gnome-system-monitor, this option can be used to manage processes in a graphical way. To start this program go to applications and click system monitor, in this window choose processes. You can also open this program by entering the gnome-system-monitor command. At standard all process of the current user are shown alphabetically, other sorting options can be set by clicking on the column-titles. Right clicking a process gives options to:
-*	Stop: pause the process, equal to ctrl + Z in the shell
-*	Continue: restart a stopped process
-*	End: terminate a process with signal 15 (clean)
-*	Kill: terminate a process with signal 9 (abrupt)
-*	Change: a slider can be set to renice, only root can set a negative or higher priority, you’ll need to enter the root-password when trying this. 
-*	Memory maps show which libraries and other components from memory are used by the process
-*	Properties show extra information about the process
-
-![systemmonitor](../images/11/systemMonitor.PNG)
-
-To show all processes and not only the ones of the current user, go to the menu button and choose all processes. As root you’ll be able to manage all processes.  
-
-?> <i class="fa-solid fa-circle-info"></i> The System monitor is only available in graphical interfaces. When this is not available, as with the server version of Ubuntu, you’ll need to use CLI commands to manage processes.
 
 ## Managing front- and background processes
 Our bash shell, unlike a Graphical User Interface, does not have the possibility to run and show different programs simultaneously in the shell, but we are able to run programs in the front- or background.Knowing that it is possible to run multiple programs at the same time in our shell there must be a way to choose what is running at the fore- and background at what time. For starters there are different methods of running programs in the background. 
@@ -260,7 +245,10 @@ student@linux-ess:~$ jobs
 [1]+  Running                 sleep 50 &
 ```
 A process running in the background can still show its output, even when another process is running. For example, when working with nano, an output can come up in your screen. Press ctrl + L to renew the window.   
-?> <i class="fa-solid fa-circle-info"></i> Use 2> /dev/null to send all errors to the void so they won’t show up  
+    
+?><i class="fa-solid fa-circle-info"></i> Use 2> /dev/null to send all errors to the void so they won’t show up  
+  
+      
 Killing or renicing (changing the priority) is also possible with these processes  
     
 Sending signals to a process with kill:
