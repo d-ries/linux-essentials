@@ -318,3 +318,45 @@ Command run at Sat Nov 12 11:02:01 AM UTC 2022
 Command run at Sat Nov 12 11:03:01 AM UTC 2022
 Command run at Sat Nov 12 11:04:01 AM UTC 2022
 ```
+  
+If we have to run a script as another user or with elevated privileges (as root), we can make use of the general _crontab_ file in _/etc_. In this file there is an additional column to specify the user under which the script has to run.
+You will need elevated privileges to edit this file (sudo).
+In the following example we will run a backup script every friday at 23:30:
+  
+  
+```bash
+student@linux-ess:~$ sudo nano /etc/crontab
+# /etc/crontab: system-wide crontab
+# Unlike any other crontab you don't have to run the `crontab'
+# command to install the new version when you edit this file
+# and files in /etc/cron.d. These files also have username fields,
+# that none of the other crontabs do.
+
+SHELL=/bin/sh
+# You can also override PATH, but by default, newer versions inherit it from the environment
+#PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  * user-name command to be executed
+17 *    * * *   root    cd / && run-parts --report /etc/cron.hourly
+25 6    * * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6    * * 7   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6    1 * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+30 23   5 * *   root    /scripts/backuphomefolders.sh
+```
+
+?> Notice that there are some folders (cron.daily, cron.weekly, cron.monthly) that can hold scripts that will be executed by cron regularly.
+ 
+  
+```bash
+student@linux-ess:~$ ls /etc/cron.daily/
+apport  apt-compat  dpkg  logrotate  man-db
+```
+
+?> In Linux the system is managed with __systemd__. And systemd also has an implementation for repeating jobs, namely _timers_. But that's out of scope for this course.
