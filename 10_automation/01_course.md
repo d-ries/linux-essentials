@@ -278,7 +278,7 @@ For more info check the manpage of `at`.
 With the cron command it is possible to plan to run your scripts/commands to run on a regular basis. Cron works different, it uses a file where we put the commands/scripts we want to run and specify when the runs have to happen. To open your crontab-file you give the command `crontab -e`.   
   
 In the example below we are going to echo some text to a file every minute.  
-  
+```  
 .---------------- minute (0 - 59)  
 |  .------------- hour (0 - 23)  
 |  |  .---------- day of month (1 - 31)  
@@ -286,7 +286,7 @@ In the example below we are going to echo some text to a file every minute.
 |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat  
 |  |  |  |  |  
 *  *  *  *  *   echo Command run at $(date) >> /tmp/crontest  
-  
+```  
   
 Simply remove the line from the crontab to stop this from happening. For more info check the manpage of `cron`.  
   
