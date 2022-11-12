@@ -176,7 +176,18 @@ auth.log
 
 ### Using a parameter
   
-Just one, nothing else!
+We are going to keep it simple, so we will not use more than nine parameters. In our example we will only use two ($1 and $2), but know that method stays the same for all nine ($1-$9). As a sidenote I can tell you that $0 also exists and holds the command with which the script was run.
+
+```bash
+student@linux-ess:~$ nano params.sh
+student@linux-ess:~$ cat params.sh
+echo Param one is: $1
+echo Param two is: $2
+student@linux-ess:~$ chmod u+x params.sh
+student@linux-ess:~$ ./params.sh first 2nd
+Param one was: first
+Param two was: 2nd
+```
 
 ## adding to PATH
   
@@ -232,15 +243,24 @@ student@linux-ess:~$ which reboot
 /usr/sbin/reboot
 ```
     
-## Crontab
+## at
   
-You can use the at command to run a process at a specific time. With the cron command it is possible to do this on a regular basis. For the at command we echo an output into the at command as shown by an example below, you can check what is scheduled and remove when necerry with the atrm or at -r command. Cron works different, it uses a file where we put everything we want to happen with the timing, in the example below we echo some text to a file every minute. Remove the line from the crontab to stop this from happening. To check all possibilities check the man at and man cron pages. To see what processes are running in the background use the jobs command.
+You can use the at command to run a script/command at a specific time.  
+For the at command we echo an output into the at command as shown by an example below:  
 ```bash
-tudent@linux-ess:~$ sudo apt-get install at
-student@linux-ess:~$ echo "hello" | at -m 2pm
-student@linux-ess:~$ echo "reboot" | at now + 2 days
+student@linux-ess:~$ datefile.sh | at 2pm
+student@linux-ess:~$ echo "hello" | at now + 2 days
 warning: commands will be executed using /bin/sh
 job 4 at Sat Sep 17 13:26:00 2022
+student@linux-ess:~$ at -l
+3	Sat Sep 17 13:25:00 2022 a student
+4	Sat Sep 17 13:26:00 2022 a student
+1	Thu Sep 15 14:00:00 2022 a student
+```  
+  
+you can check what is scheduled and remove when necerry with the atrm or at -r command:  
+  
+```bash
 student@linux-ess:~$ at -l
 3	Sat Sep 17 13:25:00 2022 a student
 4	Sat Sep 17 13:26:00 2022 a student
@@ -249,7 +269,16 @@ student@linux-ess:~$ atrm 3
 student@linux-ess:~$ at -l
 4	Sat Sep 17 13:26:00 2022 a student
 1	Thu Sep 15 14:00:00 2022 a student
+```  
+  
 
+For more info check the manpage of `at`.
+
+## Crontab
+  
+With the cron command it is possible to do this on a regular basis. Cron works different, it uses a file where we put everything we want to happen with the timing, in the example below we echo some text to a file every minute. Remove the line from the crontab to stop this from happening. For more info check the manpage of `cron`.
+
+```bash
 @linux-ess:~$ crontab -e
 no crontab for student - using an empty one
 
@@ -291,3 +320,4 @@ crontab: installing new crontab
 student@linux-ess:~$ cat /tmp/spam.txt 
 run this command every minute
 run this command every minute
+```
