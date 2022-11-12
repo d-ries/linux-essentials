@@ -175,10 +175,63 @@ auth.log
 ```
 
 ### Using a parameter
+  
 Just one, nothing else!
 
 ## adding to PATH
+  
+Linux has multiple places where binaries are stored. These are often bundled in the PATH variable.  
+If we run a command without specifying the path where the command is saved, there will be searched for within every path of the PATH variable.
 
+```bash
+student@linux-ess:~$ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+```
+  
+?> Mind that every path is seperated with a semicolon
+  
+```bash
+student@linux-ess:~$ echo $PATH | tr ':' '\n'
+/usr/local/sbin
+/usr/local/bin
+/usr/sbin
+/usr/bin
+/sbin
+/bin
+/usr/games
+/usr/local/games
+/snap/bin
+```
+
+The PATH variable gets set and altered in multiple scripts. It starts with a system wide setting in /etc/environment :  
+  
+```bash
+student@linux-ess:~$ cat /etc/environment
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"  
+student@linux-ess:~$ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+```
+So we can alter this file if we want to change the PATH variable for every user on the system. The change will be visible for a user when he logs in.
+
+But if we want to alter the PATH variable for one user, we can do this from within the file ~/.profile. The change will be visible for a user when he logs in: 
+  
+```bash
+student@linux-ess:~$ grep -C1 "HOME/bin" .profile
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+```
+  
+?> Mind that this already exists, so it is best to save your scripts in a (new) folder named _bin_ in your homefolder. Also mind that after creating the _bin_ directory you have to login again so the _bin_ folder gets added to the PATH variable.
+  
+  
+As we have seen already you can use the command `which` to find out if the command gets found and where precisely.
+```bash
+student@linux-ess:~$ which reboot
+/usr/sbin/reboot
+```
+    
 ## Crontab
   
 You can use the at command to run a process at a specific time. With the cron command it is possible to do this on a regular basis. For the at command we echo an output into the at command as shown by an example below, you can check what is scheduled and remove when necerry with the atrm or at -r command. Cron works different, it uses a file where we put everything we want to happen with the timing, in the example below we echo some text to a file every minute. Remove the line from the crontab to stop this from happening. To check all possibilities check the man at and man cron pages. To see what processes are running in the background use the jobs command.
