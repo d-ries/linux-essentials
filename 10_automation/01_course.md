@@ -317,13 +317,14 @@ student@linux-ess:~$ cat /tmp/crontest
 Command run at Sat Nov 12 11:02:01 AM UTC 2022
 Command run at Sat Nov 12 11:03:01 AM UTC 2022
 Command run at Sat Nov 12 11:04:01 AM UTC 2022
-```
-  
-If we have to run a script as another user or with elevated privileges (as root), we can make use of the general _crontab_ file in _/etc_. In this file there is an additional column to specify the user under which the script has to run.
-You will need elevated privileges to edit this file (sudo).
-In the following example we will run a backup script every friday at 23:30:
+```  
   
   
+If we have to run a script as another user or with elevated privileges (as root), we can make use of the general _crontab_ file in _/etc_. In this file there is an additional column to specify the user under which the script has to run.  
+You will need elevated privileges to edit this file (sudo).  
+In the following example we will run a backup script every friday at 23:30:  
+    
+    
 ```bash
 student@linux-ess:~$ sudo nano /etc/crontab
 # /etc/crontab: system-wide crontab
