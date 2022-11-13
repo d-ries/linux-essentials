@@ -19,23 +19,24 @@ What is the name of the file with the coded passwords?
 
 
 ## Task 3
-Create a user with following characteristics:
-User-name:	    jan<br />
+Create a user with following characteristics:  
+User-name:	    john<br />
 User-ID:	    1111<br />
 Group-ID:	    100 (=users)<br />
-Description:	Testuser jan<br />
-Home-dir:	    /home/jan<br />
+Description:	John Doe<br />
+Home-dir:	    /home/john<br />
 Shell:		    /bin/bash<br />
-
-
+  
+   
 ## Task 4
 Check the changed files:
 Wat is changed in the file /etc/passwd?
 
 ## Task 5
 What is changed in the file /etc/shadow?
-
-
+  
+?> <i class="fa-solid fa-circle-info"></i> After a user is created, its password is set to "!", which means that this name cannot be used to log in. To make this possible you need to give John a password. Set John’s password to "January".
+  
 ## Task 6
 Wat is changed in the file /etc/group?
 
@@ -43,14 +44,14 @@ Wat is changed in the file /etc/group?
 Wat is changed in the directory /home? 
 
 ## Task 8
-The user Jan is now created on your system. Now Jan should be able to ask information about himself.<br /> 
-Log in as Jan and execute the following command: 
+The user John is now created on your system. Now John should be able to ask information about himself.<br /> 
+Log in as John and execute the following command: 
 ```bash
 id
 ```
 
 ## Task 9
-Remove the user Jan from your system using the command:  userdel –r jan<br />
+Remove the user John from your system using the command:  userdel –r john<br />
 What is changed in the file /etc/passwd?
 
 ## Task 10
@@ -61,11 +62,11 @@ What is changed in the file /etc/shadow?
 What is changed in the file /etc/group?
 
 ## Task 12
-Does the directory /home/jan still exist? YES / NO
+Does the directory /home/john still exist? 
 
 
 ## Task 13
-Create a user Piet, by only specifying its username and that he must have a home folder. 
+Create a user Sarah, by only specifying the username and that she must have a home folder. 
 
 ## Task 14
 Examine the files that have been modified<br />
@@ -82,13 +83,13 @@ What is changed in the file /etc/group?
 What is changed in the directory /home?
 
 ## Task 18
-Give the user Piet a password
+Give the user Sarah a password
 
 ## Task 19
-Try to log in as Piet
+Try to log in as Sarah
 
 ## Task 20
-Remove the user Piet, but keep his home folder
+Remove the user Sarah, but keep her home folder
 
 ## Task 21
-Delete Piet’s home folder
+Delete Sarah’s home folder
