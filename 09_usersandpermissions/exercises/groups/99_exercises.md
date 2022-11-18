@@ -7,7 +7,7 @@ Give the id of the following groups:
 
 Group | Group-ID
 --- | ---
-Root | 
+root | 
 adm | 
 lp | 
 users| 
