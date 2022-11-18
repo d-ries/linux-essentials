@@ -35,7 +35,7 @@ Check if the system now knows you have been added to the group
 Delete your user from the group helpdesk 
 
 ## Task 9
-Add you user to the group helpdesk as the primary group 
+Add your user to the group helpdesk as the primary group 
 
 ## Task 10
 Make sure the system knows that this is your new primary group
