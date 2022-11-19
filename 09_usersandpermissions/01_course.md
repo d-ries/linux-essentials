@@ -388,7 +388,7 @@ drwxrwxr-x 2 teacher root 4096 okt  2 19:36 folder
 -rw-rw-rw- 1 student it        0 okt  2 19:36 test.txt
 student@linux-ess:~/course$ sudo chown :it config #changes the group
 student@linux-ess:~/course$ ls -l config
--rwxr--r-- 1 root    it        0 okt  2 19:36 config
+-rwxr--r-- 1 teacher    it        0 okt  2 19:36 config
 ```
 
 ### Default permissions (umask)
