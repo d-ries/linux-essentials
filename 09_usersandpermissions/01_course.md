@@ -472,7 +472,7 @@ student@linux-ess:~$ ls -l file4
   
   
 ### Access control lists
-The ACL feature was created to give users the ability to selectively share files and folders with other users and groups. Before ACL’s are usable, it needs to be turned on when the filesystem is mounted. In our Ubuntu installation ACL’s are loaded  by standard. To add ACL’s to a file or folder, use the `setfacl` command. ACL’s can be viewed with the `getfacl` command. To add ACL’s you need to be the owner of the file or folder, if you are added by an ACL you will not be able to add ACL’s yourself. All ACL permissions are cumulative, this means if we are in 2 groups that are added to a file with ACL’s. One with r— rights and one with rwx rights, we will have rwx rights. 
+The ACL feature was created to give users the ability to selectively share files and folders with other users and groups. Before ACL’s are usable, it needs to be turned on when the filesystem is mounted. In our Ubuntu installation ACL’s are loaded  by default. To add ACL’s to a file or folder, use the `setfacl` command. ACL’s can be viewed with the `getfacl` command. To add ACL’s you need to be the owner of the file or folder, if you are added by an ACL you will not be able to add ACL’s yourself. All ACL permissions are cumulative, this means if we are in 2 groups that are added to a file with ACL’s. One with r— rights and one with rwx rights, we will have rwx rights. 
 With the `setfacl` command, we’ll be able to modify (-m) or delete (-x) ACL’s. 
   
 ```bash
