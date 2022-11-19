@@ -395,7 +395,7 @@ student@linux-ess:~/course$ ls -l config
 
 A last thing we need to look at are the default permissions. What permissions are applied when you create new files and folders? 
 
-The maximum permissions for new files is 666, so -rw-rw-rw-. New files are never created with execute permissions. This is enforced by the kernel. It is ofcourse possible to add the execute bit after file creation using `chmod`, but it always requires a conscious decission for security reasons. Folders don't have this limitation as a folder without an execute bit set is quite useless. 
+The maximum permissions for new files is 666, so -rw-rw-rw-. New files are never created with execute permissions. This is enforced by the kernel. It is of course possible to add the execute bit after file creation using `chmod`, but it always requires a conscious decission for security reasons. Folders don't have this limitation as a folder without an execute bit set is quite useless. 
 
 ```bash
 student@linux-ess:~/course$ touch file
