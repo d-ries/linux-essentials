@@ -8,7 +8,7 @@ ls /root
 
 
 ## Task 2
-This output is show because the directory /root is property of the user ‘root’ and because the security is set so that no one except for the ‘root’ (and maybe users who are member of the group ‘root’) have access. You can see this using the command ls -ld /root
+This output is shown because the directory /root is property of the user ‘root’ and because the security is set so that no one except for the ‘root’ (and maybe users who are member of the group ‘root’) have access. You can see this using the command ls -ld /root
 Now let’s say you are the system administrator and you need access to the directories of the group ‘root’. In this case we need to add our user to the group ‘root’. <br />
 What command can be used to accomplish this?
 
