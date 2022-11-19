@@ -462,7 +462,7 @@ student@linux-ess:~$ ls -l file3
 -rw-rw-r-- 1 student student 0 Nov 11 14:01 file3
 student@linux-ess:~$ umask u=rwx,g=rx,o=
 student@linux-ess:~$ umask
-0027
+0017
 student@linux-ess:~$ umask -S
 u=rwx,g=rx,o=
 student@linux-ess:~$ touch file4
