@@ -32,11 +32,11 @@ Create the groups and users as mentioned in the situation above.
 
 ## Task 2
 Create 7 users named: <br />
-Walter, Michael, Dirk, James, Ine, Els and Tina<br />
+Walter, Michael, George, James, Mia, Emma and Charlotte<br />
 <br />
-Els, Tina and Ine have users as their primary group, their secondary group should be Sales.<br />
+Emma, Charlotte and Mia have users as their primary group, their secondary group should be Sales.<br />
 Walter and Michael are member of the group planning <br />
-Dirk and James are part of both the departments and are because of this member of both groups<br />
+George and James are part of both the departments and are because of this member of both groups<br />
 <br />
 Alle users have their home directory in /home/username.<br />
 There are 3 extra directories, which can be found in /home:<br />
