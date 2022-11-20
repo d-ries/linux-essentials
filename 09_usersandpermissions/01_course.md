@@ -268,9 +268,66 @@ it:x:1002:teacher
 
 ?> <i class="fa-solid fa-circle-info"></i> If we want to __remove__ a user from a specific supplementary group we have to specify all the supplementary groups he must remain in (and don't use the -a option). In that case it will be easier to edit the group file `/etc/group` by hand. 
 
+?> <i class="fa-solid fa-circle-info"></i> The primary group of a user is specified in `/etc/passwd` and is the default group set on a new file or directory created by that user.
+
 ?> <i class="fa-solid fa-circle-info"></i> A user knows a change in group membership only when he logs in. So after a change a user has to login again to notice the difference.
 
-?> <i class="fa-solid fa-circle-info"></i> The primary group of a user is specified in `/etc/passwd` and is the default group set on a new file or directory created by that user.
+
+In the example below we see that user student's `primary` groups is changed to 'it' and this is shown by the id and grep of the passwd-file. However the groups-command does not show the change of group, also when we create a new file, the old primary group is still used. As explaned before, we need to log out and in again to get the changes to happen. This is also shown in the example.
+```bash
+student@linux-ess:~$ grep student /etc/passwd
+student:x:1000:1000:Student Account:/home/student:/bin/bash
+student@linux-ess:~$ id student
+uid=1000(student) gid=1000(student) groups=1000(student),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),110(lxd)
+student@linux-ess:~$ groups
+student : student adm cdrom sudo dip plugdev lxd
+student@linux-ess:~$ ls -l
+total 16
+drwxr-xr-x 5 student student 4096 Nov  9 15:04 Documents
+drwxr-xr-x 2 student student 4096 Oct 28 14:54 Downloads
+drwxr-xr-x 6 student student 4096 Oct 23 12:22 linuscraft
+drwx------ 5 student student 4096 Oct 19 15:07 snap
+student@linux-ess:~$ sudo usermod -g it student
+[sudo] password for student:
+student@linux-ess:~$ grep student /etc/passwd
+student:x:1000:1999:Student Account:/home/student:/bin/bash
+student@linux-ess:~$ id student
+uid=1000(student) gid=1999(it) groups=1999(it),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),110(lxd)
+student@linux-ess:~$ groups student
+student : student adm cdrom sudo dip plugdev lxd
+student@linux-ess:~$ ls -l
+total 16
+drwxr-xr-x 5 student it 4096 Nov  9 15:04 Documents
+drwxr-xr-x 2 student it 4096 Oct 28 14:54 Downloads
+drwxr-xr-x 6 student it 4096 Oct 23 12:22 linuscraft
+drwx------ 5 student it 4096 Oct 19 15:07 snap
+student@linux-ess:~$ touch test
+student@linux-ess:~$ ls -l
+total 16
+drwxr-xr-x 5 student it      4096 Nov  9 15:04 Documents
+drwxr-xr-x 2 student it      4096 Oct 28 14:54 Downloads
+drwxr-xr-x 6 student it      4096 Oct 23 12:22 linuscraft
+drwx------ 5 student it      4096 Oct 19 15:07 snap
+-rw-r--r-- 1 student student    0 Nov 18 14:02 test
+student@linux-ess:~$ exit
+```
+
+Notice in the example above that when we changed the primary group, all the user student's files were also edited to the new primary group of this user. But because we didn't update the groups by loggin out and in again, our old primary group is used for the new file. In the Permissions part of this chapter we'll learn how to change the groupowner to correct this mistake. If we log in again, we see that our groups are updated.
+
+```bash
+ssh student@ip-address # Log in again
+student@linux-ess:~$ touch test2
+student@linux-ess:~$ ls -l
+total 16
+drwxr-xr-x 5 student it      4096 Nov  9 15:04 Documents
+drwxr-xr-x 2 student it      4096 Oct 28 14:54 Downloads
+drwxr-xr-x 6 student it      4096 Oct 23 12:22 linuscraft
+drwx------ 5 student it      4096 Oct 19 15:07 snap
+-rw-r--r-- 1 student student    0 Nov 18 14:02 test
+-rw-r--r-- 1 student it         0 Nov 18 14:04 test2
+student@linux-ess:~$ groups student
+student : it adm cdrom sudo dip plugdev lxd
+```
 
 ## Permissions
 
