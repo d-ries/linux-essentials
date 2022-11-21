@@ -32,17 +32,17 @@ Create the groups and users as mentioned in the situation above.
 
 ## Task 2
 Create 7 users named: <br />
-Walter, Karel, Dirk, Evert, Ine, Els and Tina<br />
+Walter, Michael, George, James, Mia, Emma and Charlotte<br />
 <br />
-Els, Tina and Ine have users as their primary group, their secondary group should be Sales.<br />
-Walter and Karel are member of the group planning <br />
-Dirk and Evert are part of both the departments and are because of this member of both groups<br />
+Emma, Charlotte and Mia have users as their primary group, their secondary group should be Sales.<br />
+Walter and Michael are member of the group planning <br />
+George and James are part of both the departments and are because of this member of both groups<br />
 <br />
 Alle users have their home directory in /home/username.<br />
 There are 3 extra directories, which can be found in /home:<br />
 /home/planning: contains the planning, customizable for all members of planning. <br />
 /home/sales: contains information about sales, customizable for all members of sales<br />
-/home/general: contains general information for everyone? (Evert is responsible for this folder and therefore only Evert has writing permissions on this directory and its content. 
+/home/general: contains general information for everyone? (James is responsible for this folder and therefore only James has writing permissions on this directory and its content. 
 
 All users (members of the group users) have reading permissions for these directories. 
 Test these settings!
