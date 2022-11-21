@@ -540,7 +540,7 @@ When installed, it needs to be turned on when the filesystem is mounted. In our 
 student@linux-ess:~$ touch memo
 student@linux-ess:~$ ls -l memo
 -rw-rw-r-- 1 student student 0 Nov 11 14:15 memo
-student@linux-ess:~$ getfacl /tmp/memo
+student@linux-ess:~$ getfacl memo
 # file: memo
 # owner: student
 # group: student
