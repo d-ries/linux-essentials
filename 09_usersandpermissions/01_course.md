@@ -533,113 +533,107 @@ The ACL feature was created to give users the ability to selectively share files
 With the `setfacl` command, we’ll be able to modify (-m) or delete (-x) ACL’s. 
   
 ```bash
-student@linux-ess:~$ touch /tmp/memo
-student@linux-ess:~$ ls -l /tmp/memo
--rw-r----- 1 student student 0 Nov 11 14:15 /tmp/memo
+student@linux-ess:~$ touch memo
+student@linux-ess:~$ ls -l memo
+-rw-rw-r-- 1 student student 0 Nov 11 14:15 memo
 student@linux-ess:~$ getfacl /tmp/memo
-getfacl: Removing leading '/' from absolute path names
-# file: tmp/memo
+# file: memo
 # owner: student
 # group: student
 user::rw-
-group::r--
-other::---
+group::rw-
+other::r--
 
-student@linux-ess:~$ setfacl -m u:teacher:rw /tmp/memo
-student@linux-ess:~$ setfacl -m g:it:rw /tmp/memo
-student@linux-ess:~$ ls -l /tmp/memo
--rw-rw----+ 1 student student 0 Nov 11 14:15 /tmp/memo
+student@linux-ess:~$ setfacl -m u:teacher:rw memo
+student@linux-ess:~$ setfacl -m g:it:rw memo
+student@linux-ess:~$ ls -l memo
+-rw-rw-r--+ 1 student student 0 Nov 11 14:15 memo
 ```
 With `getfacl` we can check the existing ACL’s on a file or folder. Note that we can also see that ACL’s are set by a __+__ in the `ls -l` command
 ```bash
-student@linux-ess:~$ getfacl /tmp/memo
-getfacl: Removing leading '/' from absolute path names
-# file: tmp/memo
+student@linux-ess:~$ getfacl memo
+# file: memo
 # owner: student
 # group: student
 user::rw-
 user:teacher:rw-
-group::r--
+group::rw-
 group:it:rw-
 mask::rw-
-other::---
+other::r--
 
 ```
-  
+?> <i class="fa-solid fa-circle-info"></i> For teacher to be able to access the student's file memo in it's homefolder we need to edit some permissions. A possible solution would be: `setfacl -m u:teacher:rx /home/student`. Now, teacher can enter and look in the homefolder of student.   
 In previous example, we also see a mask option, this option decides the maximum permission. We can also add this parameter as follows:
 ```bash
-student@linux-ess:~$ setfacl -m m:r /tmp/memo 
-student@linux-ess:~$ getfacl /tmp/memo 
-getfacl: Removing leading '/' from absolute path names
-# file: tmp/memo
+student@linux-ess:~$ setfacl -m m:r memo 
+student@linux-ess:~$ getfacl memo 
+# file: memo
 # owner: student
 # group: student
 user::rw-
 user:teacher:rw-                #effective:r--
-group::r--
+group::rw-
 group:it:rw-                    #effective:r--
 mask::r--
-other::---
+other::r--
 
 ```
   
-We can also add default ACL’s by adding the d: parameter. The default part makes sure new files and folders get the same ACL’s as their parent directory. Note that this only applies if the user creating the file or folder has the permissions to do so! 
+We can also add default ACL’s by adding the d: parameter or adding the -d option. The default part makes sure new files and folders get the same ACL’s as their parent directory. Note that this only applies if the user creating the file or folder has the permissions to do so! 
   
 ```bash
-student@linux-ess:~$ mkdir /tmp/memos
-student@linux-ess:~$ ls -ld /tmp/memos
-drwxr-x--- 2 student student 4096 Nov 11 14:48 /tmp/memos
-student@linux-ess:~$ getfacl /tmp/memos
-getfacl: Removing leading '/' from absolute path names
-# file: tmp/memos
+student@linux-ess:~$ mkdir memos
+student@linux-ess:~$ ls -ld memos
+drwxrwxr-x 2 student student 4096 Nov 11 14:48 memos
+student@linux-ess:~$ getfacl memos
+# file: memos
 # owner: student
 # group: student
 user::rwx
-group::r-x
-other::---
-
-student@linux-ess:~$ setfacl -m d:g:it:rwx /tmp/memos
-student@linux-ess:~$ getfacl /tmp/memos
-getfacl: Removing leading '/' from absolute path names
-# file: tmp/memos
+group::rwx
+other::r-x
+student@linux-ess:~$ setfacl -m g:it:rwx memos         # we need to add the group to the folder directly as well, otherwise the group wont be able to enter this folder.
+student@linux-ess:~$ setfacl -m d:g:it:rwx memos       # or setfacl -d -m g:it:rwx memos
+student@linux-ess:~$ getfacl memos
+# file: memos
 # owner: student
 # group: student
 user::rwx
-group::r-x
-other::---
+group::rwx
+group:it:rwx
+other::r-x                 
 default:user::rwx
-default:group::r-x
+default:group::rwx
 default:group:it:rwx
 default:mask::rwx
-default:other::---
+default:other::r-x
 
-student@linux-ess:~$ mkdir /tmp/memos/January
-student@linux-ess:~$ getfacl /tmp/memos/January/
-getfacl: Removing leading '/' from absolute path names
-# file: tmp/memos/January/
+student@linux-ess:~$ mkdir memos/January
+student@linux-ess:~$ getfacl memos/January/
+# file: memos/January/
 # owner: student
 # group: student
 user::rwx
-group::r-x
+group::rwx
 group:it:rwx
 mask::rwx
-other::---
+other::r-x
 default:user::rwx
-default:group::r-x
+default:group::rwx
 default:group:it:rwx
 default:mask::rwx
-default:other::---
+default:other::r-x
 
-student@linux-ess:~$ touch /tmp/memos/January/22
-student@linux-ess:~$ getfacl /tmp/memos/January/22
-getfacl: Removing leading '/' from absolute path names
-# file: tmp/memos/January/22
+student@linux-ess:~$ touch memos/January/22
+student@linux-ess:~$ getfacl memos/January/22
+# file: memos/January/22
 # owner: student
 # group: student
 user::rw-
 group::r-x                      #effective:r--
 group:it:rwx                    #effective:rw-
 mask::rw-
-other::---
+other::r--
 
 ```
