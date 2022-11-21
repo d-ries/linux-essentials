@@ -28,7 +28,13 @@ The owner of the shared directories is the ‘root’ user
 
 
 ### Task 1.1
-Create the groups and users as mentioned in the situation above. 
+Create the folders, groups and users as mentioned in the situation above. 
+
+### Task 1.2
+Give all users the correct groups as mentioned in the situation above.
+
+### Task 1.3
+Set all the permissions and ACL's as mentioned in the situation above.
 
 ## Task 2
 Create 7 users named: <br />
