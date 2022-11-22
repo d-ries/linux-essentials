@@ -273,7 +273,7 @@ it:x:1002:teacher
 ?> <i class="fa-solid fa-circle-info"></i> A user knows a change in group membership only when he logs in. So after a change a user has to login again to notice the difference.
 
 
-In the example below we see that user student's `primary` groups is changed to 'it' and this is shown by the id and grep of the passwd-file. However the groups-command does not show the change of group, also when we create a new file, the old primary group is still used. As explaned before, we need to log out and in again to get the changes to happen. This is also shown in the example.
+In the example below we see that user student's `primary` group is changed to 'it' and this is shown by the id and grep of the passwd-file. However the groups-command does not show the change of group, also when we create a new file, the old primary group is still used. As explaned before, we need to log out and in again to get the changes to happen. This is also shown in the example.
 ```bash
 student@linux-ess:~$ grep student /etc/passwd
 student:x:1000:1000:Student Account:/home/student:/bin/bash
