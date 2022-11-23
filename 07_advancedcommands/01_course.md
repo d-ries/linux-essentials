@@ -86,7 +86,7 @@ filea
 student@linux-ess:~/globbing$ ls file[1ac]
 file1  filea  
 ```
-When using brackets we can also define ranges:
+When using brackets we also can define ranges:
 ```bash
 student@linux-ess:~/globbing$ ls
 afilea  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec
@@ -97,6 +97,17 @@ FileABC
 student@linux-ess:~/globbing$ ls File[a-zA-Z]*
 FileABC  Filec
 student@linux-ess:~/globbing$ ls file[0-9]
+file1  file2  file3
+```
+When using brackets we also can exclude the specified range by specifying a caret (^) or an exclamation mark (!) at the beginning:
+```bash
+student@linux-ess:~/globbing$ ls
+afilea  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec
+student@linux-ess:~/globbing$ ls file[a-z]
+filea  fileb
+student@linux-ess:~/globbing$ ls file[^a-z]*
+file1  file2  file3
+student@linux-ess:~/globbing$ ls file[!a-z]*
 file1  file2  file3
 ```
 ### Prevent file globbing
