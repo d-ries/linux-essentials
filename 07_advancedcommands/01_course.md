@@ -103,8 +103,8 @@ When using brackets we also can exclude the specified range by specifying a care
 ```bash
 student@linux-ess:~/globbing$ ls
 afilea  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec
-student@linux-ess:~/globbing$ ls file[a-z]
-filea  fileb
+student@linux-ess:~/globbing$ ls file[a-z]*
+filea  fileabc  fileb  filebc
 student@linux-ess:~/globbing$ ls file[^a-z]*
 file1  file2  file3
 student@linux-ess:~/globbing$ ls file[!a-z]*
