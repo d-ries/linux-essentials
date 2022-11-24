@@ -574,7 +574,9 @@ other::r--
 
 ```
 ?> <i class="fa-solid fa-circle-info"></i> For teacher to be able to access the student's file memo in it's homefolder we need to edit some permissions. A possible solution would be: `setfacl -m u:teacher:rx /home/student`. Now, teacher can enter and look in the homefolder of student.   
-In previous example, we also see a mask option, this option decides the maximum permission. We can also add this parameter as follows:
+  
+  
+?> <i class="fa-solid fa-circle-info"></i> In previous example, we also see a mask option, this option decides the maximum permission and also has precedence over the regular file permissions except for the user owner. We can also add this parameter as follows:
 ```bash
 student@linux-ess:~$ setfacl -m m:r memo 
 student@linux-ess:~$ getfacl memo 
@@ -588,6 +590,8 @@ group:it:rw-                    #effective:r--
 mask::r--
 other::r--
 
+student@linux-ess:~$ ls -l memo
+-rw-r--r--+ 1 student student 0 Nov 11 14:15 memo
 ```
   
 We can also add default ACL’s by adding the d: parameter or adding the -d option. The default part makes sure new files and folders get the same ACL’s as their parent directory. Note that this only applies if the user creating the file or folder has the permissions to do so! 
