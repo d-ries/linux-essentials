@@ -49,7 +49,7 @@ The special groups for the shared directories: <br />
 | /home/shared/design | design | 
 | /home/shared/info | info | 
 
-The owner of the shared directories is the ‘root’ user
+The userowner of the shared directories is the ‘root’ user
 
 
 ### Task 7.1
