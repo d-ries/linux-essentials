@@ -14,7 +14,7 @@ r-x for others, rw- for group and no permissions (---) for the file owner. Check
 - Can he delete the file? 
 
 ## Task 4
-Create the directory sturcture with the necessary users, groups and ACLs as show in the image below.
+Create the directory sturcture with the necessary users, groups and ACLs as shown in the image below.
 ![foldersecurity](../../../images/09/folderSecurity.PNG)
   
 Test where the users Ava and Oliver have read and write permissions.
@@ -36,10 +36,11 @@ Suppose you work in a company where devices are designed, created, repaired and 
 
 The groups for the different employments are:
 
-- Employment: Linux group
-- Engineers: engineer
-- Technician: technic (primary group)
-- Sales: sales
+| Employment | Linux group |
+| --- | --- |
+| Engineers | engineer |
+| Technician | technic (primary group) |
+| Sales | sales |
 
 
 The special groups for the shared directories: <br />
