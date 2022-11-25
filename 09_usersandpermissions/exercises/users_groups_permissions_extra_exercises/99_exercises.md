@@ -44,7 +44,7 @@ The groups for the different employments are:
 
 The special groups for the shared directories: <br />
 
-| Directory | Linux group | 
+| Directory | Linux group with all permissions | 
 | --- | --- |
 | /home/shared/design | design | 
 | /home/shared/info | info, engineers | 
