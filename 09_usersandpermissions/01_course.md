@@ -593,7 +593,35 @@ other::r--
 student@linux-ess:~$ ls -l memo
 -rw-r--r--+ 1 student student 0 Nov 11 14:15 memo
 ```
+
+If we want to remove an ACL entry from the file we can use the -x option:
+```bash
+student@linux-ess:~$ setfacl -x g:it memo
+student@linux-ess:~$ getfacl memo 
+# file: memo
+# owner: student
+# group: student
+user::rw-
+user:teacher:rw-                #effective:r--
+group::rw-
+mask::r--
+other::r--
   
+```
+  
+If we want to remove all ACL entries from the file we can use the -b option:
+```bash
+student@linux-ess:~$ setfacl -b memo
+student@linux-ess:~$ getfacl memo 
+# file: memo
+# owner: student
+# group: student
+user::rw-
+group::rw-
+other::r--
+
+```
+
 We can also add default ACL’s by adding the d: parameter or adding the -d option. The default part makes sure new files and folders get the same ACL’s as their parent directory. Note that this only applies if the user creating the file or folder has the permissions to do so! 
   
 ```bash
