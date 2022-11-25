@@ -8,7 +8,7 @@ Make sure the user itstudent becomes a sudoer. Test if this works.
 
 ## Task 3
 Copy the file /etc/hosts to your home directory (do not do this as root!). Set the permissions with the chmod command as follows: 
-xr for others, wr for group and no permissions for the file owner. Check with the ls -l command if everything is changed. 
+r-x for others, rw- for group and no permissions (---) for the file owner. Check with the ls -l command if everything is changed. 
 - Can the file owner check the file contents? Why / Why not?
 - Can he change permissions?
 - Can he delete the file? 
