@@ -16,6 +16,8 @@ r-x for others, rw- for group and no permissions (---) for the file owner. Check
 ## Task 4
 Create the directory sturcture with the necessary users, groups and ACLs as show in the image below.
 ![foldersecurity](../../../images/09/folderSecurity.PNG)
+  
+Test where the users Ava and Oliver have read and write permissions.
 
 ## Task 5
 Find out how to copy the ACL-configurations of one folder to another one. 
