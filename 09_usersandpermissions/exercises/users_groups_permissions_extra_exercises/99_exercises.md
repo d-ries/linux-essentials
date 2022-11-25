@@ -46,8 +46,8 @@ The special groups for the shared directories: <br />
 
 | Directory | Linux group with all permissions | 
 | --- | --- |
-| /home/shared/design | design | 
-| /home/shared/info | info, engineers | 
+| /home/shared/design | engineers | 
+| /home/shared/info | sales, engineers | 
 
 The userowner of the shared directories is the ‘root’ user
 
