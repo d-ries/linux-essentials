@@ -5,9 +5,9 @@
 Suppose you work in a company where devices are designed, created, repaired and sold. Engineers are appointed to design the devices. Technicians are appointed to create and repair these devices and for selling them, sellers are appointed. Alle employees of this company work on a central Linux system. The users of this system should be defined so the engineers have their own home directory and have a shared directory /home/shared/design (where they have all permissions). All technicians share one home directory /home/technicians and all Sales personnel have their own home directory but share a directory /home/shared/info (where they have all permissions) where all technical/marketing data is stored about the devices. The engineers also need access to the directory /hope/shared/info (all permissions). <br />
 
 (username/password)
-- The engineers are: 		    George/zomer1	Isla/zomer2
+- The engineers are: 		    George/summer1	Isla/summer2
 - The technicians are:		    Leo/winter1	    Amelia/winter2
-- The Sales personnel are:	    Jack/budget1	Grace/budget2
+- The Sales personnel are:	    Jack/spring1	Grace/spring2
 
 The groups for the different employments are:
 
