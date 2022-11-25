@@ -29,18 +29,21 @@ Find out how to create a backup of the ACL-configurations set on a directory.
 
 Suppose you work in a company where devices are designed, created, repaired and sold. Engineers are appointed to design the devices. Technicians are appointed to create and repair these devices and for selling them, sellers are appointed. Alle employees of this company work on a central Linux system. The users of this system should be defined so the __engineers have their own home directory and have a shared directory /home/shared/design (where they have all permissions)__. All __technicians share one home directory /home/technicians__ and all __Sales personnel have their own home directory but share a directory /home/shared/info (where they have all permissions)__ where all technical/marketing data is stored about the devices. The __engineers also need access to the directory /hope/shared/info (all permissions)__. <br />
 
-(username/password)
+
 - The engineers are: 		    George/summer1	Isla/summer2
 - The technicians are:		    Leo/winter1	    Amelia/winter2
 - The Sales personnel are:	    Jack/spring1	Grace/spring2
 
 The groups for the different employments are:
 
-| Employment | Linux group |
-| --- | --- |
-| Engineers | engineer |
-| Technician | technic (primary group) |
-| Sales | sales |
+| Employment | Linux group | User | Password |
+| --- | --- | --- | --- |
+| Engineers | engineer | George | summer1 |
+| | | Isla | summer2 |
+| Technician | technic (primary group) | Leo | winter1 |
+| | | Amelia | winter2 |
+| Sales | sales | Jack | spring1 |
+| | | Grace | spring2 |
 
 
 The special groups for the shared directories: <br />
