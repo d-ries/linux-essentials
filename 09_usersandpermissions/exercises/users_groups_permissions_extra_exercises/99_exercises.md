@@ -34,9 +34,9 @@ The groups for the different employments are:
 
 | Employment | Linux group | User | Password |
 | --- | --- | --- | --- |
-| Engineers | engineer | George | summer1 |
+| Engineers | engineers | George | summer1 |
 | | | Isla | summer2 |
-| Technician | technic (primary group) | Leo | winter1 |
+| Technicians | technicians (primary group) | Leo | winter1 |
 | | | Amelia | winter2 |
 | Sales | sales | Jack | spring1 |
 | | | Grace | spring2 |
