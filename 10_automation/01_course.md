@@ -157,7 +157,7 @@ echo "Enter the absolute path of a folder you want to check:"
 read folder
 echo "The selected folder is $folder. This folder contains $(ls -A1 $folder | wc -l) files/folders." 
 echo "Showing the first 5:"
-ls -A1 | head -5
+ls -A1 $folder | head -5
 ```
 
 Let's see what it does:  
