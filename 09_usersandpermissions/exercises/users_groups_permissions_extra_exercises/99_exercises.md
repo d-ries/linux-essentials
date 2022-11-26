@@ -77,5 +77,5 @@ There are 3 extra directories, which can be found in /home:<br />
 /home/sales: contains information about sales, customizable for all members of sales<br />
 /home/general: contains general information for everyone? (James is responsible for this folder and therefore only James has writing permissions on this directory and its content. 
 
-All users (members of the group users) have reading permissions for these directories. 
-Test these settings!
+All users (members of the group users) have reading permissions for these directories.   
+Test the scenario!
