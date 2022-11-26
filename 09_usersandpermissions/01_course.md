@@ -551,7 +551,7 @@ jacob@linux-ess:~$ head -3 /home/liam/.profile
 jacob@linux-ess:~$ exit
 ```
   
-?> As you can see the user Jacob can view the files from the homefolder of the user liam.
+?> As you can see the user Jacob can view the files from the homefolder of the user Liam.
   
 We will give the users their default primary group back:
 ```bash
