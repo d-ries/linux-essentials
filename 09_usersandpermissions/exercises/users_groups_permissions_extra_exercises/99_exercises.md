@@ -67,15 +67,15 @@ Set all the permissions and ACL's for the scenario mentioned above.
 Create 7 users named: <br />
 Walter, Michael, Ben, James, Mia, Emma and Charlotte<br />
 <br />
-Emma, Charlotte and Mia have users as their primary group, their secondary group should be Sales.<br />
-Walter and Michael are member of the group planning <br />
+Emma, Charlotte and Mia have the group _users_ as their primary group, their secondary group should be _Sales_.<br />
+Walter and Michael are member of the group _Planning_ <br />
 Ben and James are part of both the departments and are because of this member of both groups<br />
 <br />
-Alle users have their home directory in /home/username.<br />
-There are 3 extra directories, which can be found in /home:<br />
-/home/planning: contains the planning, customizable for all members of planning. <br />
-/home/sales: contains information about sales, customizable for all members of sales<br />
-/home/general: contains general information for everyone? (James is responsible for this folder and therefore only James has writing permissions on this directory and its content. 
+Alle users have their home directory in _/home/username_.<br />
+There are 3 extra directories, which can be found in _/home_:<br />
+_/home/planning_: contains the planning, customizable for all members of planning. <br />
+_/home/sales_: contains information about sales, customizable for all members of sales<br />
+_/home/general_: contains general information for everyone? (James is responsible for this folder and therefore only James has writing permissions on this directory and its content. 
 
 All users (members of the group users) have reading permissions for these directories.   
 Test the scenario!
