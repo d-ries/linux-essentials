@@ -59,7 +59,7 @@ Create the folders, groups and users as mentioned in the situation above.
 Give all users the correct groups as mentioned in the situation above.
 
 ### Task 7.3
-Set all the permissions and ACL's for the scenario mentioned above.
+Set all the permissions and ACL's for the scenario mentioned above. Do not use the special bit setgid.  
   
     
     
@@ -77,7 +77,7 @@ _/home/planning_: contains the planning, customizable for all members of plannin
 _/home/sales_: contains information about sales, customizable for all members of sales<br />
 _/home/general_: contains general information for everyone? (James is responsible for this folder and therefore only James has writing permissions on this directory and its content.   
   
-Make sure that the users who need to work together can also change eachoter's files.
+Make sure that the users who need to work together can also change eachoter's files. Make use of setgid and do not use ACLs.
 
 All users (members of the group users) have reading permissions for these directories.   
 Test the scenario!
