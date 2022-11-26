@@ -553,7 +553,7 @@ jacob@linux-ess:~$ exit
   
 ?> As you can see the user Jacob can view the files from the homefolder of the user Liam.
   
-We will give the users their default primary group back:
+We will give the users their default primary group:
 ```bash
 student@linux-ess:~$ sudo groupadd liam
 student@linux-ess:~$ sudo groupadd jacob
