@@ -20,7 +20,7 @@ Dennis Ritchie and Ken Thompson created the Unix operating system in 1969. The s
 In the '80 there were different versions of Unix. Because Unix was commercialized (AT&T), the source code of Unix was rewritten: GNU project ("GNU is not unix"). The goal of GNU was the development of an open source Operating System where everyone could work on together as a community. The GNU project was missing a kernel.
 
 ### Linux
-A student named Linus Torvalds created a post in a newsgroup about his own Operating System in the '90:
+A student, named Linus Torvalds, created a post in a newsgroup about his own Operating System in the '90:
 
 ![linux](../images/01/linus.PNG)
 
