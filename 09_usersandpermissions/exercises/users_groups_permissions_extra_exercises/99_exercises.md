@@ -65,11 +65,11 @@ Set all the permissions and ACL's for the scenario mentioned above.
     
 ## Task 8
 Create 7 users named: <br />
-Walter, Michael, George, James, Mia, Emma and Charlotte<br />
+Walter, Michael, Ben, James, Mia, Emma and Charlotte<br />
 <br />
 Emma, Charlotte and Mia have users as their primary group, their secondary group should be Sales.<br />
 Walter and Michael are member of the group planning <br />
-George and James are part of both the departments and are because of this member of both groups<br />
+Ben and James are part of both the departments and are because of this member of both groups<br />
 <br />
 Alle users have their home directory in /home/username.<br />
 There are 3 extra directories, which can be found in /home:<br />
