@@ -59,7 +59,7 @@ Create the folders, groups and users as mentioned in the situation above.
 Give all users the correct groups as mentioned in the situation above.
 
 ### Task 7.3
-Set all the permissions and ACL's as mentioned in the situation above.
+Set all the permissions and ACL's for the scenario mentioned above.
   
     
     
