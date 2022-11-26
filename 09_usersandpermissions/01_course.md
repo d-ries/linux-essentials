@@ -528,7 +528,7 @@ student@linux-ess:~$ ls -l file4
 ```  
   
   
-### Working together in a team (setguid)
+### Working together in a team (setgid)
 
 If we want to be able to work together it is key that all users are able to change each others files. The solution to give all users the same primary group is a security issue because this also changes the rights on their homefolders:
 
@@ -623,7 +623,7 @@ drwxrwsr-x 3 root ict 4096 Nov 26 16:12 /shares/ict/
   
 ?> As you can see in the permissions of the groupowner it now ends with a letter _s_. A lowercase _s_ means that there is an _x_ underneath, an uppercase _s_ means that there is no _x_ underneath.
 
-The special bit setguid says that files and folders that will be created in this folder will have the same groupowner as this folder:
+The special bit setgid says that files and folders that will be created in this folder will have the same groupowner as this folder:
 ```bash
 student@linux-ess:~$ ls -l /shares/ict/ 
 total 4
