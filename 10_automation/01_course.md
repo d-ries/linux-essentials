@@ -80,7 +80,7 @@ touch ~/$CUSTOMDIR/testfile
 ls -l ~/$CUSTOMDIR/*
 ```
 
-?> We can run the script without setting the execute script (chmod u+x) first, but then we have to specify the interpreter (here bash) to define in which language the sript is written
+?> We can run the script without setting the execute script (chmod u+x) first, but then we have to specify the interpreter (here bash) to define in which language the script is written
 
 ```bash
 student@linux-ess:~$ bash vars.sh
