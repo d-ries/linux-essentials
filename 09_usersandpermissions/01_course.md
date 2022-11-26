@@ -528,6 +528,134 @@ student@linux-ess:~$ ls -l file4
 ```  
   
   
+### Working together in a team (setguid)
+
+If we want to be able to work together it is key that all users are able to change each others files. The solution to give all users the same primary group is a security issue because this also changes the rights on their homefolders:
+
+```bash
+student@linux-ess:~$ sudo useradd -m -g it -s /bin/bash liam
+student@linux-ess:~$ sudo passwd liam
+student@linux-ess:~$ sudo useradd -m -g it -s /bin/bash jacob
+student@linux-ess:~$ sudo passwd jacob
+student@linux-ess:~$ ls -ld /home/liam  /home/jacob
+drwxr-x--- 2 jacob it 4096 Nov 26 15:39 /home/jacob
+drwxr-x--- 2 liam  it 4096 Nov 26 15:32 /home/liam
+student@linux-ess:~$ sudo ls -l /home/jacob/.profile
+-rw-r--r-- 1 jacob it 807 Jan  6  2022 /home/jacob/.profile
+student@linux-ess:~$ su - jacob
+Password:
+jacob@linux-ess:~$ head -3 /home/liam/.profile
+# ~/.profile: executed by the command interpreter for login shells.
+# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
+# exists.  
+jacob@linux-ess:~$ exit
+```
+  
+?> As you can see the user Jacob can view the files from the homefolder of the user liam.
+  
+We will give the users their default primary group back:
+```bash
+student@linux-ess:~$ sudo groupadd liam
+student@linux-ess:~$ sudo groupadd jacob
+student@linux-ess:~$ sudo usermod -g liam liam
+student@linux-ess:~$ sudo usermod -g jacob jacob
+student@linux-ess:~$ ls -ld /home/liam  /home/jacob
+drwxr-x--- 2 jacob jacob 4096 Nov 26 15:39 /home/jacob
+drwxr-x--- 2 liam  liam  4096 Nov 26 15:32 /home/liam
+```
+  
+We will create a group for the two users to give them rights on a shared folder that we will create in a few. We'll also apply the users to the group:
+```bash
+student@linux-ess:~$ sudo groupadd ict
+student@linux-ess:~$ sudo usermod -aG ict liam
+student@linux-ess:~$ sudo usermod -aG ict jacob
+student@linux-ess:~$ grep ict /etc/group
+ict:x:1005:liam,jacob
+```
+    
+We will make a directory that will be shared between the two users, and we will give it the necessary permissions:
+```bash
+student@linux-ess:~$ sudo mkdir -p /shares/ict
+student@linux-ess:~$ ls -ld /shares/ict
+drwxr-xr-x 2 root root 4096 Nov 26 15:58 /shares/ict
+student@linux-ess:~$ sudo chgrp ict /shares/ict
+student@linux-ess:~$ sudo chmod g+w /shares/ict
+student@linux-ess:~$ ls -ld /shares/ict
+drwxrwxr-x 2 root ict 4096 Nov 26 15:58 /shares/ict
+```
+
+?> As you can see members of the group ict have the permission to enter the share and to create/delete files and folders within the share
+
+But there's a problem when the users create a file within the share:
+```bash
+student@linux-ess:~$ su - jacob
+Password:
+jacob@linux-ess:~$ cd /shares/ict/
+jacob@linux-ess:/shares/ict$ touch testfile
+jacob@linux-ess:/shares/ict$ mkdir testdir
+jacob@linux-ess:/shares/ict$ ls -l
+total 4
+drwxrwxr-x 2 jacob jacob 4096 Nov 26 16:12 testdir
+-rw-rw-r-- 1 jacob jacob    0 Nov 26 16:11 testfile
+jacob@linux-ess:/shares/ict$ exit
+logout
+student@linux-ess:~$ su - liam
+Password:
+liam@linux-ess:~$ cd /shares/ict/
+liam@linux-ess:/shares/ict$ ls
+testdir  testfile
+liam@linux-ess:/shares/ict$ echo hallo >> testfile
+-bash: testfile: Permission denied
+liam@linux-ess:/shares/ict$ exit
+```
+
+?> As you can see they cannot work together on the same files
+
+A solution is the use of the special bit, named setgid.
+We can give it to the share with the command chmod g+s (to remove we would use g-s):
+```bash
+student@linux-ess:~$ ls -ld /shares/ict/
+drwxrwxr-x 3 root ict 4096 Nov 26 16:12 /shares/ict/
+student@linux-ess:~$ sudo chmod g+s /shares/ict
+student@linux-ess:~$ ls -ld /shares/ict/
+drwxrwsr-x 3 root ict 4096 Nov 26 16:12 /shares/ict/
+```
+  
+?> As you can see in the permissions of the groupowner it now ends with a letter _s_. A lowercase _s_ means that there is an _x_ underneath, an uppercase _s_ means that there is no _x_ underneath.
+
+The special bit setguid says that files and folders that will be created in this folder will have the same groupowner as this folder:
+```bash
+student@linux-ess:~$ ls -l /shares/ict/ 
+total 4
+drwxrwxr-x 2 jacob jacob 4096 Nov 26 16:12 testdir
+-rw-rw-r-- 1 jacob jacob    0 Nov 26 16:11 testfile
+student@linux-ess:~$ su - jacob
+Password:
+jacob@linux-ess:~$ cd /shares/ict/
+jacob@linux-ess:/shares/ict$ echo "This is Jacob's text" > testfile2
+jacob@linux-ess:/shares/ict$ mkdir testdir2
+jacob@linux-ess:/shares/ict$ ls -l
+total 12
+drwxrwxr-x 2 jacob jacob 4096 Nov 26 16:12 testdir
+drwxrwsr-x 2 jacob ict   4096 Nov 26 16:26 testdir2
+-rw-rw-r-- 1 jacob jacob    0 Nov 26 16:11 testfile
+-rw-rw-r-- 1 jacob ict     21 Nov 26 16:26 testfile2
+jacob@linux-ess:/shares/ict$ exit
+logout
+student@linux-ess:~$ su - liam
+Password:
+liam@linux-ess:~$ cd /shares/ict/
+liam@linux-ess:/shares/ict$ echo "This is Liam's text" >> testfile2
+liam@linux-ess:/shares/ict$ cat testfile2
+This is Jacob's text
+This is Liam's text
+liam@linux-ess:/shares/ict$ exit
+```
+
+?> As you can see now both users can work together with eachother's files.
+  
+    
+      
 ### Access control lists
 The ACL feature was created to give users the ability to selectively share files and folders with other users and groups. 
 Before ACL’s are usable we need to install the needed package:
