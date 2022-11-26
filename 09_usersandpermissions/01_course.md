@@ -623,7 +623,7 @@ drwxrwsr-x 3 root ict 4096 Nov 26 16:12 /shares/ict/
   
 ?> As you can see in the permissions of the groupowner it now ends with a letter _s_. A lowercase _s_ means that there is an _x_ underneath, an uppercase _s_ means that there is no _x_ underneath.
 
-The special bit setgid says that files and folders that will be created in this folder will have the same groupowner as this folder:
+The special bit setgid says that files and folders that will be created in this folder will have the same groupowner as this folder has:
 ```bash
 student@linux-ess:~$ ls -l /shares/ict/ 
 total 4
