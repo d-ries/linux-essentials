@@ -653,9 +653,93 @@ liam@linux-ess:/shares/ict$ exit
 ```
 
 ?> As you can see now both users can work together with eachother's files.
-  
-    
-      
+
+### The sticky bit
+
+The setgid bit solves the main problem of making files in a shared folder created by one user accessible to other users in the same non-primary group. However this opens up another problem: Every user with access to the share can now delete or rename the files other users place in this folder. In some cases, like a shared project people are working on, this is fine. But in cases you don't want to allow this, another special permission bit is used: the **sticky bit**. Setting this bit on a folder will disallow any user (except the root user) from renaming or removing files or subfolders he does not own inside that folder.
+
+This principle is also used in the system's ´/tmp´ folder, disallowing users to remove another user's temporary files.
+
+```bash
+student@linux-ess:~$ ls -ld /tmp/
+drwxrwxrwt 24 root root 4096 nov 27 13:50 /tmp/
+``` 
+?> Notice the t that replaced the x in the 'other' set of permissions when the sticky bit is set.
+
+Just like with other permission bits you use **chmod** to add or remove the sticky bit.
+
+```bash
+jacob@linux-ess:/shares/ict$ su - liam
+Password: 
+liam@linux-ess:~$ cd /shares/ict/
+liam@linux-ess:/shares/ict$ ls -l
+total 8
+-rw-rw-r-- 1 jacob jacob    0 nov 27 14:59 testdir
+drwxrwsr-x 2 jacob ict   4096 nov 27 15:03 testdir2
+-rw-rw-r-- 1 jacob jacob    0 nov 27 14:59 testfile
+-rw-rw-r-- 1 jacob ict      4 nov 27 15:03 testfile2
+liam@linux-ess:/shares/ict$ rm testfile2 	#Liam can remove Jacob's file.
+liam@linux-ess:/shares/ict$ ls -l
+total 4
+-rw-rw-r-- 1 jacob jacob    0 nov 27 14:59 testdir
+drwxrwsr-x 2 jacob ict   4096 nov 27 15:03 testdir2
+-rw-rw-r-- 1 jacob jacob    0 nov 27 14:59 testfile
+liam@linux-ess:/shares/ict$ exit
+logout
+student@linux-ess:~$ sudo chmod +t /shares/ict/
+student@linux-ess:~$ ls -ld /shares/ict/
+drwxrwsr-t 3 root ict 4096 nov 27 15:05 /shares/ict/
+student@linux-ess:~$ su - liam
+Password: 
+liam@linux-ess:~$ cd /shares/ict
+liam@linux-ess:/shares/ict$ rm -rf testdir2/
+rm: cannot remove 'testdir2/': Operation not permitted	#Liam can no longer delete Jacob's files or folders
+liam@linux-ess:/shares/ict$ exit
+logout
+student@linux-ess:~$ sudo chmod -t /shares/ict/
+student@linux-ess:~$ ls -ld /shares/ict/
+drwxrwsr-x 3 root ict 4096 nov 27 15:05 /shares/ict/
+```
+
+Within the special permissions field, the sticky bit is the rightmost bit, with a value of one. You can use this if you want to completely rewrite the permissions of a folder using octal notation. Just add a one before the standard mode.
+
+```bash
+student@linux-ess:~$ cd /shares/
+student@linux-ess:/shares$ sudo mkdir ict2
+student@linux-ess:/shares$ sudo chown :ict ict2/
+student@linux-ess:/shares$ ls -ld ict2/
+drwxr-xr-x 2 root ict 4096 nov 27 15:16 ict2/
+student@linux-ess:/shares$ sudo chmod 1775 ict2/
+student@linux-ess:/shares$ ls -ld ict2/
+drwxrwxr-t 2 root ict 4096 nov 27 15:16 ict2/
+
+student@linux-ess:/shares$ sudo mkdir ict3
+student@linux-ess:/shares$ sudo chown :ict ict3/
+student@linux-ess:/shares$ ls -ld
+drwxr-xr-x 5 root root 4096 nov 27 15:20 .
+student@linux-ess:/shares$ sudo chmod 3770 ict3/
+student@linux-ess:/shares$ ls -ld
+drwxr-xr-x 5 root root 4096 nov 27 15:20 .
+student@linux-ess:/shares$ ls -ld ict3/
+drwxrws--T 2 root ict 4096 nov 27 15:20 ict3/ #both setgid and sticky bit are set, when the x for other is not set t changes to T
+```
+As you can see above: To combine it with the setgid bit, the second bit in the triplet with a value of two, you add both values together.
+
+To unset the sticky bit use a zero. A three-digit mode will also remove the sticky bit. Notice that the setgid bit is kept. To remove all special permissions add another zero in front.
+
+```bash
+student@linux-ess:/shares$ ls -ld ict3/
+drwxrws--T 2 root ict 4096 nov 27 15:20 ict3/
+student@linux-ess:/shares$ sudo chmod 0777 ict3/
+student@linux-ess:/shares$ ls -ld ict3/
+drwxrwsrwx 2 root ict 4096 nov 27 15:20 ict3/
+student@linux-ess:/shares$ sudo chmod 00775 ict3/
+student@linux-ess:/shares$ ls -ld ict3/
+drwxrwxr-x 2 root ict 4096 nov 27 15:20 ict3/
+```
+
+?> As you may have noticed there is a third bit we haven't talked about. setuid, the first bit in the field. This allows executable files to run with the permissions of the owner of the file, not the one executing it. This is used by the _passwd_ command to allow users to change their own password for example, as a normal user has no access to the /etc/shadow-file. Setting the setuid bit can have serious security risks, and is almost always a very bad idea. So you should probably ignore this knowledge
+          
 ### Access control lists
 The ACL feature was created to give users the ability to selectively share files and folders with other users and groups. 
 Before ACL’s are usable we need to install the needed package:
