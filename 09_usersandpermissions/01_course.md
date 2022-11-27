@@ -692,8 +692,8 @@ drwxrwsr-t 3 root ict 4096 nov 27 15:05 /shares/ict/
 student@linux-ess:~$ su - liam
 Password: 
 liam@linux-ess:~$ cd /shares/ict
-liam@linux-ess:/shares/ict$ rm -rf testdir2/
-rm: cannot remove 'testdir2/': Operation not permitted	#Liam can no longer delete Jacob's files or folders
+liam@linux-ess:/shares/ict$ rm -rf testdir2/  #Liam can no longer delete Jacob's files or folders
+rm: cannot remove 'testdir2/': Operation not permitted	
 liam@linux-ess:/shares/ict$ exit
 logout
 student@linux-ess:~$ sudo chmod -t /shares/ict/
