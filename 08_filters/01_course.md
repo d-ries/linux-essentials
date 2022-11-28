@@ -497,9 +497,8 @@ Michael
   
 If we want to filter lines that comply with multiple patterns we could use the command grep multiple times:
 ```bash
-student@linux-ess:~$ cat regexlist.txt | grep "e$" | grep "^C"
-Charlotte
-Caroline
+student@linux-ess:~$ cat regexlist.txt | grep "^E" | grep "a$" 
+Emma
 ```  
 Here we search for lines ending with an `e` and beginning with a `C`   
   
@@ -612,7 +611,7 @@ Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 3459
 Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
 Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
 Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
-student@linux-ess:~$ cat auth.log | egrep "Accepted|Failed" | cut -d ':' -f5 | cut -d' ' -f2 | sort | uniq
+student@linux-ess:~$ cat auth.log | grep -E "Accepted|Failed" | cut -d ':' -f5 | cut -d' ' -f2 | sort | uniq
 doeg
 janedoe
 johndoe
