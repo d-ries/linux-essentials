@@ -606,6 +606,11 @@ liam@linux-ess:/shares/ict$ ls
 testdir  testfile
 liam@linux-ess:/shares/ict$ echo hallo >> testfile
 -bash: testfile: Permission denied
+liam@linux-ess:/shares/ict$ ls -ld testdir
+drwxrwxr-x 2 jacob jacob 4096 Nov 27 20:44 testdir
+liam@linux-ess:/shares/ict$ cd testdir
+liam@linux-ess:/shares/ict/testdir$ touch testfile2
+touch: cannot touch 'testfile2': Permission denied
 liam@linux-ess:/shares/ict$ exit
 ```
 
