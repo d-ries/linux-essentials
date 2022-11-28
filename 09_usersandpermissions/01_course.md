@@ -674,7 +674,7 @@ drwxrwxrwt 24 root root 4096 nov 27 13:50 /tmp/
 Just like with other permission bits you use **chmod** to add or remove the sticky bit.
 
 ```bash
-jacob@linux-ess:/shares/ict$ su - liam
+student@linux-ess:~$ su - liam
 Password: 
 liam@linux-ess:~$ cd /shares/ict/
 liam@linux-ess:/shares/ict$ ls -l
