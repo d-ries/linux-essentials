@@ -483,7 +483,7 @@ Michael
 ```
 Here we search for lines beginning with an `M` or ending with an `n`
 
-We could do the same with usinig the option -E multiple times:
+We could do the same with using the option -E multiple times:
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -e "^M" -e "n$"
 Max
