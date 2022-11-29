@@ -743,6 +743,37 @@ student@linux-ess:/shares$ ls -ld ict3/
 drwxrwxr-x 2 root ict 4096 nov 27 15:20 ict3/
 ```
 
+If we want the users of the group ict to work on eachother's file than we have to set the kernel parameter fs.protected_regular=1 :
+
+```bash
+student@linux-ess:~$ su - liam
+Password: 
+liam@linux-ess:~$ cd /shares/ict/
+liam@linux-ess:/shares/ict$ ls -l
+total 8
+-rw-rw-r-- 1 jacob jacob    0 nov 27 14:59 testdir
+drwxrwsr-x 2 jacob ict   4096 nov 27 15:03 testdir2
+-rw-rw-r-- 1 jacob jacob    0 nov 27 14:59 testfile
+-rw-rw-r-- 1 jacob ict      4 nov 27 15:03 testfile2
+liam@linux-ess:/shares/ict$ echo text from liam > testfile2 	#Liam cannot change Jacob's files.
+-bash: testfile2 Permission denied
+liam@linux-ess:/shares/ict$ exit
+student@linux-ess:~$ sudo sysctl -a | grep regular
+fs.protected_regular = 2
+student@linux-ess:~$ sudo sysctl fs.protected_regular=1
+fs.protected_regular = 1
+student@linux-ess:~$ su - liam
+Password: 
+liam@linux-ess:~$ cd /shares/ict/
+liam@linux-ess:/shares/ict$ echo text from liam > testfile2 	#Liam can change Jacob's files.
+liam@linux-ess:~$ cat testfile2
+text from liam
+```
+
+?> If we want to keep the kernel parameter in the future we have to change this parameter in the file _/usr/lib/sysctl.d/99-protect-links.conf
+
+
+
 ?> As you may have noticed there is a third bit we haven't talked about. setuid, the first bit in the field. This allows executable files to run with the permissions of the owner of the file, not the one executing it. This is used by the _passwd_ command to allow users to change their own password for example, as a normal user has no access to the /etc/shadow-file. Setting the setuid bit can have serious security risks, and is almost always a very bad idea. So you should probably ignore this knowledge
           
 ### Access control lists
