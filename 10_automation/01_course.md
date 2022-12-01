@@ -51,7 +51,7 @@ this is our first bash script
   
 ### date with shell embedding
 Lets extend our script with some nifty logic to use to output of a certain command in another command. We edit the script contents as follows:  
-_nano helloworld.sh_  
+_nano showdate.sh_  
 ```bash
 #!/bin/bash
 echo "hello world"
