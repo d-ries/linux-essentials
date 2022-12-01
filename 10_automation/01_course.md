@@ -60,7 +60,8 @@ echo "the date of today is $(date)"
 ```
 When we run this script, we get the following output:
 ```bash
-student@linux-ess:~$ ./helloworld.sh
+student@linux-ess:~$ chmod u+x showdate.sh
+student@linux-ess:~$ ./showdate.sh
 hello world
 this is our first bash script
 the date of today is Tue Jun 28 22:04:09 CEST 2022
