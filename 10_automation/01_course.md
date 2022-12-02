@@ -252,7 +252,7 @@ For the at command we echo an output into the at command as shown by an example 
 student@linux-ess:~$ ./datefile.sh | at 14:00
 warning: commands will be executed using /bin/sh
 job 1 at Sat Nov 12 14:00:00 2022
-student@linux-ess:~$ echo "hello world" > /tmp/hello.txt | at now + 2 days
+student@linux-ess:~$ echo 'echo "hello world222345" > /tmp/hello.txt' | at now + 1 minutes
 warning: commands will be executed using /bin/sh
 job 2 at Mon Nov 14 10:36:00 2022
 student@linux-ess:~$ at -l
