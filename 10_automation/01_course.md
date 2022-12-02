@@ -249,7 +249,7 @@ student@linux-ess:~$ which reboot
 You can use the at command to run a script/command at a specific time.  
 For the at command we echo an output into the at command as shown by an example below:  
 ```bash
-student@linux-ess:~$ ./datefile.sh | at 14:00
+student@linux-ess:~$ echo ./datefile.sh | at 14:00
 warning: commands will be executed using /bin/sh
 job 1 at Sat Nov 12 14:00:00 2022
 student@linux-ess:~$ echo 'echo "hello world222345" > /tmp/hello.txt' | at now + 1 minutes
