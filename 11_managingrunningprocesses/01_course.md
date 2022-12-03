@@ -176,7 +176,7 @@ To bring the command back to the front, use the fg command.
 student@linux-ess:~$ fg
 sleep 50
 ```
-*	Fg %<jobnumber>
+*	fg %<jobnumber>
 *	%string : command needs to start with string
 *	%?string : job has string in the commandline 
 *	%+ : last job send to background
