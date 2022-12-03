@@ -80,44 +80,44 @@ root          17  0.0  0.0      0     0 ?        S    13:41   0:00 [cpuhp/0]
 
 In the following example the option -e is used to show all running processes, the option -o is given when specific data is wanted. We chose for the process ID, user and user ID, group and group ID, virtual set size, resident set size and the command. 
 ```bash
-student@linux-ess:~$ ps -eo pid,user,uid,group,gid,vsz,rss,comm | less
-PID USER       UID GROUP      GID    VSZ   RSS COMMAND
-  1 root         0 root         0 102468 13252 systemd
-  2 root         0 root         0      0     0 kthreadd
-  3 root         0 root         0      0     0 rcu_gp
-  4 root         0 root         0      0     0 rcu_par_gp
-  5 root         0 root         0      0     0 netns
-  7 root         0 root         0      0     0 kworker/0:0H-events_highpri
- 10 root         0 root         0      0     0 mm_percpu_wq
- 11 root         0 root         0      0     0 rcu_tasks_rude_
- 12 root         0 root         0      0     0 rcu_tasks_trace
- 13 root         0 root         0      0     0 ksoftirqd/0
- 14 root         0 root         0      0     0 rcu_sched
- 15 root         0 root         0      0     0 migration/0
- 16 root         0 root         0      0     0 idle_inject/0
- 17 root         0 root         0      0     0 cpuhp/0
- 18 root         0 root         0      0     0 cpuhp/1
+student@linux-ess:~$ ps -eo user,pid,%mem,vsz,rss,tty,stat,start,comm | less
+USER         PID %MEM    VSZ   RSS TT       STAT  STARTED COMMAND
+root           1  0.2 166152 11288 ?        Ss   12:47:06 systemd
+root           2  0.0      0     0 ?        S    12:47:06 kthreadd
+root           3  0.0      0     0 ?        I<   12:47:06 rcu_gp
+root           4  0.0      0     0 ?        I<   12:47:06 rcu_par_gp
+root           5  0.0      0     0 ?        I<   12:47:06 netns
+root           7  0.0      0     0 ?        I<   12:47:06 kworker/0:0H-events_highpri
+root           9  0.0      0     0 ?        I<   12:47:06 kworker/0:1H-events_highpri
+root          10  0.0      0     0 ?        I<   12:47:06 mm_percpu_wq
+root          11  0.0      0     0 ?        S    12:47:06 rcu_tasks_rude_
+root          12  0.0      0     0 ?        S    12:47:06 rcu_tasks_trace
+root          13  0.0      0     0 ?        S    12:47:06 ksoftirqd/0
+root          14  0.0      0     0 ?        I    12:47:06 rcu_sched
+root          15  0.0      0     0 ?        S    12:47:06 migration/0
+root          16  0.0      0     0 ?        S    12:47:06 idle_inject/0
+root          18  0.0      0     0 ?        S    12:47:06 cpuhp/0
 :
 ```
 
 We can also add the option –-sort= to the command and choose a parameter to sort our list. We chose the rss values from large to small with the – sign. 
 ```bash
-student@linux-ess:~$ ps -eo pid,user,uid,group,gid,vsz,rss,comm --sort=-rss | less
-    PID USER       UID GROUP      GID    VSZ   RSS COMMAND
-   2049 student   1000 student   1000 4206700 249244 gnome-shell
-   2398 student   1000 student   1000 210408 69364 Xwayland
-   2449 student   1000 student   1000 532284 67976 gsd-xsettings
-   2248 student   1000 student   1000 745232 65668 evolution-alarm
-   1972 student   1000 student   1000 593316 63092 gnome-remote-de
-  11720 student   1000 student   1000 2802980 59368 gjs
-   2538 student   1000 student   1000 573632 55012 gnome-terminal-
-  10308 root         0 root         0 874784 42912 snapd
-   1948 student   1000 student   1000 643640 39360 goa-daemon
-   2295 student   1000 student   1000 297212 38652 vmtoolsd
-   2596 student   1000 student   1000 502600 31468 update-notifier
-   2176 student   1000 student   1000 849096 30592 evolution-calen
-   1817 student   1000 student   1000 1508176 30068 pulseaudio
-   2164 student   1000 student   1000 671504 29232 xdg-desktop-por
+student@linux-ess:~$ ps -eo user,pid,%mem,vsz,rss,tty,stat,start,comm --sort=-%mem | less
+USER         PID %MEM    VSZ   RSS TT       STAT  STARTED COMMAND
+root         845  1.1 948808 47616 ?        Ssl  12:47:38 snapd
+root         541  0.6 354884 27232 ?        SLsl 12:47:28 multipathd
+root         894  0.5 109748 21672 ?        Ssl  12:47:38 unattended-upgr
+root         840  0.4  32652 18900 ?        Ss   12:47:38 networkd-dispat
+root         498  0.3  64264 15012 ?        S<s  12:47:28 systemd-journal
+root         849  0.3 392564 12632 ?        Ssl  12:47:38 udisksd
+systemd+     820  0.3  25392 12288 ?        Ss   12:47:35 systemd-resolve
+root         892  0.2 316948 11908 ?        Ssl  12:47:38 ModemManager
+root         717  0.2  51124 11860 ?        Ss   12:47:32 VGAuthService
+root           1  0.2 166152 11288 ?        Ss   12:47:06 systemd
+root        1190  0.2  17164 10868 ?        Ss   12:56:04 sshd
+student     1193  0.2  17084  9952 ?        Ss   12:56:05 systemd
+root         889  0.2  15420  8904 ?        Ss   12:47:38 sshd
+root         719  0.2 241132  8712 ?        Ssl  12:47:32 vmtoolsd
 :
 ```
 
