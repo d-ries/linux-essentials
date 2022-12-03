@@ -36,7 +36,7 @@ A lot of processes running on your system are not associated with a terminal, th
 
 To show all running processes for your current user use: 
 ```bash
-student@linux-ess:~$ ps ux | less
+student@linux-ess:~$ ps -ux | less
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 student     1807  0.0  0.3  20956 13480 ?        Ss   13:41   0:00 /lib/systemd/systemd --user
 student     1808  0.0  0.1 105604  5328 ?        S    13:41   0:00 (sd-pam)
@@ -59,7 +59,7 @@ student     1948  0.0  0.9 643640 39360 ?        Sl   13:41   0:00 /usr/libexec/
 ```
 To show all running processes of all users use: 
 ```bash
-student@linux-ess:~$ ps aux | less
+student@linux-ess:~$ ps -aux | less
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root           1  0.0  0.3 102468 13252 ?        Ss   13:41   0:03 /sbin/init splash
 root           2  0.0  0.0      0     0 ?        S    13:41   0:00 [kthreadd]
@@ -230,12 +230,12 @@ With the nice command, a process can start with a given nice-value or priority. 
 ```bash
 student@linux-ess:~$ nice -n 10 sleep 100 &
 [4] 11986
-student@linux-ess:~$ ps ao user,ni,comm | grep sleep
+student@linux-ess:~$ ps -ao user,ni,comm | grep sleep
 student   10 sleep
 student@linux-ess:~$ nice -n -15 sleep 100 &
 [6] 11995
 student@linux-ess:~$ nice: cannot set niceness: Permission denied
-student@linux-ess:~$ ps ao user,ni,comm | grep sleep
+student@linux-ess:~$ ps -ao user,ni,comm | grep sleep
 student    0 sleep
 ```
 Use the renice command to change the priority of a running process. Only root can set the priority higher.
