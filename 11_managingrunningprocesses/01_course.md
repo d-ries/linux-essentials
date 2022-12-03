@@ -24,7 +24,7 @@ In this example we can see that:
 *	student started process 11683, which is command ps -u  
 *	pts/0 is used  
 *	STAT shows the status of the process, ‘r’ for running or ‘s’ for sleeping  
-*	USER is de name of the user who started the process  
+*	USER is the name of the user as which the process runs  
 *	PID is the unique number of the process. This number will later be used to kill or send signals to the process  
 *	%CPU and %MEM are the CPU and memory time the process is using  
 *	VSZ, the virtual set size, shows the image size of the process in kilobytes  
