@@ -142,15 +142,22 @@ In the top window there are a few possible command to use:
 Our bash shell, unlike a Graphical User Interface, does not have the possibility to run and show different programs simultaneously in the shell, but we are able to run programs in the front- or background.Knowing that it is possible to run multiple programs at the same time in our shell there must be a way to choose what is running at the fore- and background at what time. For starters there are different methods of running programs in the background. 
 You can add a & after the command to start it in the background
 ```bash
-student@linux-ess:~$ find /usr > /tmp/allusrfiles &
-[1] 11896
-
-student@linux-ess:~$ jobs
-[1]   Running                 sleep 30 &
-[2]   Running                 sleep 25 &
-[3]   Running                 sleep 20 &
-[4]-  Running                 sleep 15 &
-[5]+  Done                    find /usr > /tmp/allusrfiles
+student@ubuntu-server:~$ sleep 300 &
+[1] 1462
+student@ubuntu-server:~$ sleep 250 &
+[2] 1463
+student@ubuntu-server:~$ sleep 200 &
+[3] 1464
+student@ubuntu-server:~$ sleep 150 &
+[4] 1465
+student@ubuntu-server:~$ find /usr > /tmp/alluserfiles &
+[5] 1466
+student@ubuntu-server:~$ jobs
+[1]   Running                 sleep 300 &
+[2]   Running                 sleep 250 &
+[3]   Running                 sleep 200 &
+[4]-  Running                 sleep 150 &
+[5]+  Done                    find /usr > /tmp/alluserfiles
 ```
 The + shows the last (=most recent) process added to the background  
 The – shows the second to last process added to the background  
@@ -158,10 +165,10 @@ To pause a process and put it in the background use ctrl + Z
 ```bash
 student@linux-ess:~$ sleep 50
 ^Z
-[1]   Done                    sleep 30
-[2]   Done                    sleep 25
-[3]   Done                    sleep 20
-[4]   Done                    sleep 15
+[1]   Done                    sleep 300
+[2]   Done                    sleep 250
+[3]   Done                    sleep 200
+[4]   Done                    sleep 150
 [5]+  Stopped                 sleep 50
 ```
 To bring the command back to the front, use the fg command.
