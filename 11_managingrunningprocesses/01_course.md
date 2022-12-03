@@ -100,7 +100,7 @@ root          18  0.0      0     0 ?        S    12:47:06 cpuhp/0
 :
 ```
 
-We can also add the option –-sort= to the command and choose a parameter to sort our list. We chose the rss values from large to small with the – sign. 
+We can also add the option --sort= to the command and choose a parameter to sort our list. We chose the %mem values from large to small by placing another – sign right before it. 
 ```bash
 student@linux-ess:~$ ps -eo user,pid,%mem,vsz,rss,tty,stat,start,comm --sort=-%mem | less
 USER         PID %MEM    VSZ   RSS TT       STAT  STARTED COMMAND
