@@ -224,7 +224,7 @@ With the kill or killall command, there are more possibilities than stopping a p
 *	SIGCONT (18): resume a process
 *	…  
     
-?> <i class="fa-solid fa-circle-info"></i> Processes are unable to ignore the signals SIGKILL and SIGSTOP. For even more info about the signals use man 7 signal. When multiple signal numbers are listed, use the middle one. The first number is used for Alpha, the last for MIPS.   
+?> <i class="fa-solid fa-circle-info"></i> Processes are unable to ignore the signals SIGKILL and SIGSTOP. For even more info about the signals use man 7 signal. When multiple signal numbers are listed, use the middle one.   
 
 With the nice command, a process can start with a given nice-value or priority. This value gives the process priority to use the CPU. -20 is the best or highest nice-value and 19 the worst or lowest. A normal user can only use a positive value from 0 till 19. 
 ```bash
