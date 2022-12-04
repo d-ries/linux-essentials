@@ -25,8 +25,8 @@ In this example we can see that:
 *	USER is the name of the user as which the process runs  
 *	PID is the unique number of the process. This number will later be used to kill or send signals to the process  
 *	%CPU and %MEM are the CPU and memory time the process is using  
-*	VSZ, the virtual set size, shows the image size of the process in kilobytes  
-*	RSS, the resident set size, shows the size of the process in memory 
+*	VSZ, the virtual set size, shows the image size of the process in kilobytes (size of memory given to the process)  
+*	RSS, the resident set size, shows the size of the process in memory (actual size in use by the process)
 *	START is the time the process started  
 *	TIME is the cumulative system time that has been used  
 
