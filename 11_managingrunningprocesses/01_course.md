@@ -30,7 +30,7 @@ In this example we can see that:
 *	START is the time the process started  
 *	TIME is the cumulative system time that has been used  
 
-A lot of processes running on your system are not associated with a terminal, these are mostly processes that run in the background. For example: logging of system activities, listening to incoming data from the network. These processes often start when Linux start and stop when you shut down. When starting a graphical environment (like Ubuntu Desktop) a lot of background process start as well, look at audio, authentication, …) 
+A lot of processes running on your system are not associated with a terminal, these are mostly processes that run in the background. For example: logging of system activities, listening to incoming data from the network. These processes often start when Linux starts and stop when you shut down. When starting a graphical environment (like Ubuntu Desktop) a lot of background process start as well, look at audio, authentication, …) 
 
 To show all running processes for your current user use: 
 ```bash
@@ -76,7 +76,7 @@ root          17  0.0  0.0      0     0 ?        S    13:41   0:00 [cpuhp/0]
 :
 ```
 
-In the following example the option -e is used to show all running processes, the option -o is given when specific data is wanted. We chose for the process ID, user and user ID, group and group ID, virtual set size, resident set size and the command. 
+In the following example the option -e is used to show all running processes, the option -o is given when specific data is wanted. We chose for the username, process ID, memory usage, virtual set size, resident set size, tty , status, start time and the command. 
 ```bash
 student@linux-ess:~$ ps -eo user,pid,%mem,vsz,rss,tty,stat,start,comm | less
 USER         PID %MEM    VSZ   RSS TT       STAT  STARTED COMMAND
