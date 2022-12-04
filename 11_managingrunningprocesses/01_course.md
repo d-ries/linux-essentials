@@ -104,26 +104,27 @@ root          18  0.0      0     0 ?        S    12:47:06 cpuhp/0
 
 We can also add the option --sort= to the command and choose a parameter to sort our list. We chose the %mem values from large to small by placing another – sign right before it. 
 ```bash
-student@linux-ess:~$ ps -eo user,pid,%mem,vsz,rss,tty,stat,start,comm --sort=-%mem | less
+student@linux-ess:~$ ps -eo user,pid,%mem,vsz,rss,tty,stat,start,comm --sort=-rss  | head -20
 USER         PID %MEM    VSZ   RSS TT       STAT  STARTED COMMAND
-root         845  1.1 948808 47616 ?        Ssl  12:47:38 snapd
-root         541  0.6 354884 27232 ?        SLsl 12:47:28 multipathd
-root         894  0.5 109748 21672 ?        Ssl  12:47:38 unattended-upgr
-root         840  0.4  32652 18900 ?        Ss   12:47:38 networkd-dispat
-root         498  0.3  64264 15012 ?        S<s  12:47:28 systemd-journal
-root         849  0.3 392564 12632 ?        Ssl  12:47:38 udisksd
-systemd+     820  0.3  25392 12288 ?        Ss   12:47:35 systemd-resolve
-root         892  0.2 316948 11908 ?        Ssl  12:47:38 ModemManager
-root         717  0.2  51124 11860 ?        Ss   12:47:32 VGAuthService
-root           1  0.2 166152 11288 ?        Ss   12:47:06 systemd
-root        1190  0.2  17164 10868 ?        Ss   12:56:04 sshd
-student     1193  0.2  17084  9952 ?        Ss   12:56:05 systemd
-root         889  0.2  15420  8904 ?        Ss   12:47:38 sshd
-root         719  0.2 241132  8712 ?        Ssl  12:47:32 vmtoolsd
+root        1303  1.0 874820 42356 ?        Ssl  06:37:14 snapd
+root         498  0.9  72440 37876 ?        S<s  06:31:35 systemd-journal
+root         542  0.6 354880 27228 ?        SLsl 06:31:35 multipathd
+root         905  0.5 109744 21560 ?        Ssl  06:31:44 unattended-upgr
+root         845  0.4  32648 19100 ?        Ss   06:31:43 networkd-dispat
+root         854  0.3 392568 12944 ?        Ssl  06:31:43 udisksd
+root           1  0.3 102068 12804 ?        Ss   06:31:16 systemd
+systemd+     824  0.3  25392 12604 ?        Ss   06:31:41 systemd-resolve
+root         735  0.2  51124 11892 ?        Ss   06:31:39 VGAuthService
+root         895  0.2 243276 11724 ?        Ssl  06:31:44 ModemManager
+root        8289  0.2  17164 10932 ?        Ss   09:50:51 sshd
+student     1277  0.2  17052  9840 ?        Ss   06:37:13 systemd
+root         901  0.2  15420  9500 ?        Ss   06:31:44 sshd
+student     8367  0.2  18272  9136 ?        S    09:50:54 sshd
+root         736  0.2 314864  8944 ?        Ssl  06:31:39 vmtoolsd
 :
 ```
   
-?> The previous command could also be done with the BSD style via the command: ps axo user,pid,%mem,vsz,rss,tty,stat,start,comm  k -%mem
+?> The previous command could also be done with the BSD style via the command: ps axo user,pid,%mem,vsz,rss,tty,stat,start,comm  k -rss
   
 
 ## Listing processes with top
