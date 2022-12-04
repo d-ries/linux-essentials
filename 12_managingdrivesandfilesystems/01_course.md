@@ -1048,12 +1048,13 @@ Number  Start  End     Size    File system  Flags
  ```
 
 ## LVMs
-Now that we created a physical volume on our Linux LVM, we’ll go a little further into this. Back in the day, when LVM wasn’t available, when the drive ran out of memory, we needed to replace it by a larger one and copy everything from the old drive. This took time and was very inefficient. LVM gives us more flexibility to add new physical volumes to a volume group. The brings a few advantages:
+Now that we created a physical volume on our Linux LVM, we’ll go a little further into this. Back in the day, when LVM wasn’t available, when a drive ran out of memory, we needed to replace it by a larger one and copy everything from the old drive. This took time and was very inefficient. LVM gives us more flexibility to add new physical volumes to a volume group. This brings a few advantages:
 *	Adding drive space is possible even when the logical volume is in use
 *	You can add physical volume whenever needed to a volume group
 *	It’s possible to change data from one physical volume to another, this way we can replace smaller drives with larger ones without downtime. 
 *	Even downsizing a file system is possible, you’ll need to unmount the logical volume for this to work and the file systems allows for this to happen. 
-*	LVM also supports advanced possibilities like mirroring and working with clusters.
+*	LVM also supports advanced possibilities like mirroring and working with clusters.  
+
 Use the command vgs to check for volume groups, pvs to check for physical volumes and lvs to check for logical volumes. 
 ```bash
 student@linux-ess:~$ sudo vgs
@@ -1097,10 +1098,12 @@ student@linux-ess:~$ sudo pvdisplay /dev/sda3
   Allocated PE          2560
   PV UUID               9cx3Lm-p95X-Q5fO-ZLSo-KPtf-1ZoN-UyqahD
 ```
-We see that /dev/sda3 has a physical size of 18.23GiB. This volume is added to the volume group: ubuntu-vg. The smallest unit storage that can be granted is 4 MiB.
-?> <i class="fa-solid fa-circle-info"></i> Extra info: 1 MB = 1000000 bytes = 10^6 bytes 
-1 MiB = 1048576 bytes = 2^20 bytes
-To check the information about this volume group us the command vgdisplay.
+We see that /dev/sda3 has a physical size of 18.23GiB. This volume is added to the volume group: ubuntu-vg. The smallest unit storage that can be granted is 4 MiB.  
+
+?> <i class="fa-solid fa-circle-info"> Extra info: 1 MB = 1000000 bytes = 10^6^ bytes  
+1 MiB = 1048576 bytes = 2^20^ bytes</i>  
+
+To check the information about this volume group use the command vgdisplay.
 ```bash
 student@linux-ess:~$ sudo vgdisplay
   --- Volume group ---
@@ -1216,7 +1219,7 @@ student@linux-ess:~$ sudo lvs myvg0
 student@linux-ess:~$ ls /dev/mapper/myvg0*
 /dev/mapper/myvg0-music
 ```
-If we want to use this logical volume, we need to give it a file system and mount it to our system as shown before with the mount command or the /etc/fstab file.
+If we want to use this logical volume, we need to give it a file system and mount it to our system. This is possible, as shown before, with the mount command or an entry in the /etc/fstab file.
 ```bash
 student@linux-ess:~$ sudo mkfs.ext4 /dev/mapper/myvg0-music
 mke2fs 1.46.5 (30-Dec-2021)
@@ -1297,7 +1300,7 @@ Filesystem               Size  Used Avail Use% Mounted on
 ```
 
 ## The mount command
-We’ve now mostly mounted our volumes and drives with the mount command and shown off the /etc/fstab file. But the mount command isn’t only used to mount local storagedevices. We can also mount network directories with NFS or Samba, mount image files and mount drives or USB flash drives which didn’t automount. 
+We’ve now mostly mounted our volumes and drives with the mount command and shown off the /etc/fstab file. But the mount command isn’t only used to mount local storage devices. We can also mount network directories with NFS or Samba, mount image files and mount drives or USB flash drives which didn’t automount. 
 To check what file systems are supported by the kernel to mount, check the /proc/filesystems file. These file systems are supported by the kernel, but not necessarily by your Linux distribution! 
 ```bash
 student@linux-ess:~$ cat /proc/filesystems
@@ -1342,7 +1345,7 @@ affs    binfmt_misc.ko  coda    exfat  fuse      isofs    minix  nilfs2      omf
 afs     btrfs           cramfs  f2fs   gfs2      jffs2    netfs  nls         orangefs   quota     sysv          xfs
 autofs  cachefiles      dlm     fat    hfs       jfs      nfs    ntfs        overlayfs  reiserfs  ubifs         zonefs
 ```
-For more info check the manpage on filesystems: man fs
+For more information check the manpage on filesystems: man fs
 
 ## Swapspace
 Up next, we check how to use a swapspace. We already created one before, but did not add it to our usable swapspace. The swapspace is used when your system runs out of RAM and needs to offload any unused data, which is needed later on again. To create a swapspace we use the command mkswap, to turn the swapspace on or off, use the swapon or swapoff command.
@@ -1355,10 +1358,6 @@ Swap:             0B          0B          0B
 ```
 We’ll now create a file of 1 GiB and make a swapspace out of this. At the end we turn it on to make it usable for our system. We can check this by just entering the swapon command without parameters. We can also check the full available swapspace as shown earlier.
 ```bash
-student@linux-ess:~$ free -h
-               total        used        free      shared  buff/cache   available
-Mem:           3.8Gi       304Mi       2.8Gi       1.0Mi       678Mi       3.3Gi
-Swap:             0B          0B          0B
 student@linux-ess:~$ sudo dd if=/dev/zero of=/var/opt/myswap bs=1M count=1024
 1024+0 records in
 1024+0 records out
