@@ -19,7 +19,7 @@ student     1389  0.0  0.1   9120  5748 pts/0    Ss   06:37   0:00 -bash
 student     7593  0.0  0.0  10068  1564 pts/0    R+   07:20   0:00 ps u
 ```
 In this example we can see that:   
-*	student started process 11683, which is command ps u  
+*	student started process 7593, which is command ps u  
 *	pts/0 is used  
 *	STAT shows the status of the process, ‘r’ for running or ‘s’ for sleeping  
 *	USER is the name of the user as which the process runs  
