@@ -27,7 +27,7 @@ Reboot your installation if it was still running, otherwise start the virtual ma
 Be sure to take a snapshot before continuing this chapter and to double check the steps taken, so we do not repartition our drive where Linux is installed! A bad entry in the /etc/fstab file also results in trouble when booting Linux.
 
 ## Understanding partition tables and disk partitions
-Traditionally MBR partition tables were used to save the size and layout of partitions. In Linux a lot of tools are available to do this. But nowadays the new standard Global Unique Identifiers, GUID, partition tables are used. Your computers needs to use UEFI for this standard. This change occurred because of the limits of MBR. MBR partitions could be a maximum of 2TB with a maximum of 4 primary partitions or 3 primary and 1 extended partition. The GUID partitions can get to a maximum of 9,4 ZB (Zettabytes or 10^21^ bytes) with a maximum of 255 partitions in Linux (128 in Windows), which can be primary or logical partitions. We can use the commands fdisk or gdisk to partition a drive. gdisk gives the possibility to create larger partitions than fdisk, other sub commands to create, delete or change partitions are more or less the same.
+Traditionally MBR partition tables were used to save the size and layout of partitions. In Linux a lot of tools are available to do this. But nowadays the new standard Global Unique Identifiers, GUID, partition tables are used. Your computers needs to use UEFI for this standard. This change occurred because of the limits of MBR. MBR partitions could be a maximum of 2TB with a maximum of 4 primary partitions or 3 primary and 1 extended partition. The GUID partitions can get to a maximum of 9,4 ZB (Zettabytes or 10^21^ bytes) with a maximum of 128 partitions, which can be primary or logical partitions. We can use the commands fdisk or gdisk to partition a drive. gdisk gives the possibility to create larger partitions than fdisk, other sub commands to create, delete or change partitions are more or less the same.
 ```bash
 student@linux-ess:~$ sudo fdisk -l /dev/sdb
 Disk /dev/sdb: 8 GiB, 8589934592 bytes, 16777216 sectors
@@ -58,7 +58,7 @@ Total free space is 16777149 sectors (8.0 GiB)
 
 Number  Start (sector)    End (sector)  Size       Code  Name
 ```
-Every SCSI, SATA or USB device gets represented by sd? (sda, sdb, sdc, …). These device can have a maximum of 16 subdivisions (sdc, sdc1 -> sdc15) this means there is a maximum of 15 partitions. With MBR, a drive can have 4 primary partition maximum. If you need more than 4 partitions, you’ll need to use extend partitions. The first drive mostly shows up as /dev/sda. As said before at least one partition is created when installing Linux, this partion is used as a Linux LVM physical partition where other logical partitions can be created. 
+Every SCSI, SATA or USB device gets represented by sd? (sda, sdb, sdc, …). These device can have a maximum of 16 subdivisions (sdc, sdc1 -> sdc15) this means there is a maximum of 15 partitions with MBR, when using GPT there is a maximum of 128 partitions (sdd, sdd1 -> sdd127). With MBR, a drive can have 4 primary partition maximum. If you need more than 4 partitions, you’ll need to use extend partitions. The first drive mostly shows up as /dev/sda. As said before at least one partition is created when installing Linux, this partion is used as a Linux LVM physical partition where other logical partitions can be created. 
 ```bash
 student@linux-ess:~$ sudo fdisk -l /dev/sda
 [sudo] password for student:
@@ -121,8 +121,8 @@ sr0                        11:0    1  1.4G  0 rom
 ```
 
 ## Adding a disk with one partition
-Next we’ll partition the new drive and install a file system afterwards we’ll be able to mount our drive to a folder in Linux. The easiest method is to use the full drive for one partition. It is possible to add multiple partitions, you’ll need to add a file system to each partition afterwards and each partition need to be mounted separately. If a drive is mounted, like a USB stick, and you want to repartition it, you’ll need to unmount it first. 
-We’ll now start with creating a partition and installing a file system on our extra drive. If a mistake is made while working with the fdisk command, finish the current operation and press q to stop. 
+Next up, we’ll partition the new drive and install a file system afterwards we’ll be able to mount our drive to a folder in Linux. The easiest method is to use the full drive for one partition. It is possible to add multiple partitions, you’ll need to add a file system to each partition afterwards and each partition need to be mounted separately. If a drive is mounted, like a USB stick, and you want to repartition it, you’ll need to unmount it first. 
+We’ll now start with creating a partition and installing a file system on our extra drive. If a mistake is made while working with the fdisk/gdisk command, finish the current operation and press q to stop.  
 First up, check the device name of our newly added drive by using the lsblk command
 ```bash
 student@linux-ess:~$ lsblk
@@ -138,10 +138,10 @@ sda                         8:0    0   20G  0 disk
 ├─sda2                      8:2    0  1.8G  0 part /boot
 └─sda3                      8:3    0 18.2G  0 part
   └─ubuntu--vg-ubuntu--lv 253:0    0   10G  0 lvm  /
-sdb                         8:16   0    8G  0 disk
+sdb                         8:16   0    8G  0 disk                    # Our newly added drive of 8GB.
 sr0                        11:0    1  1.4G  0 rom
 ```
-In this case we’ll need to use /dev/sdb. Now start by using the fdisk command.
+In this case we’ll need to use /dev/sdb. Now start by using the fdisk or gdisk command and the drive we want to use.
 ```bash
 student@linux-ess:~$ sudo fdisk /dev/sdb
 
@@ -198,7 +198,7 @@ Number  Start (sector)    End (sector)  Size       Code  Name
 Command (? for help):
 ```
 If a partition would be present, we’ll need to delete it before going on. You could do this by pressing d. It will then tell you what partition is selected, pressing enter will delete this partition. 
-We are now ready to create a new partition, do this by pressing n. We’ll now be prompted to choose a primary, p, or extended, e, partition. As this is our first partition, choose the primary partition by pressing p. Afterwords enter the partition number, again as this is our first partition, we’ll use number 1. Do this by enter 1 and pressing enter. Next it’s prompted where our first sector should start, we’ll use the default value, so just press enter. Now it’s time to set the size of the partition, you could enter a number, but we’ll use the full size of our drive. Enter the number of the last sector or just press enter. Now we can check our newly created partition again by pressing p. If everything is as expected, press w to write or save the changes to the partition table. 
+We are now ready to create a new partition, do this by pressing n. We’ll now be prompted to choose a primary, p, or extended, e, partition with fdisk, gdisk doesn't ask for this. As this is our first partition, choose the primary partition by pressing p. Afterwords enter the partition number, again as this is our first partition, we’ll use number 1. Do this by pressing 1 and pressing enter. Next it’s prompted where our first sector should start, we’ll use the default value, so just press enter. Now it’s time to set the size of the partition, you could enter a number, but we’ll use the full size of our drive. Enter the number of the last sector or just press enter. Now we can check our newly created partition again by pressing p. If everything is as expected, press w to write or save the changes to the partition table. 
 ```bash
 Command (m for help): n
 Partition type
@@ -327,7 +327,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 student@linux-ess:~$ sudo mount | grep sdb1
 /dev/sdb1 on /mnt/test type ext4 (rw,relatime)
 ```
-With the df command we see that /dev/sdb1 is mounted to the folder /mnt/test. We can also see it provides XGB of memory. The mount command shows all mounted drives, with grep we filter to see our drive. 
+With the df command we see that /dev/sdb1 is mounted to the folder /mnt/test. We can also see it provides 7.8GB of memory. The mount command shows all mounted drives, with grep we filter to see our drive. 
 When the drive is no longer in use, we can unmount is with the unmount command
 ```bash
 student@linux-ess:~$ sudo umount /dev/sdb1
@@ -348,7 +348,7 @@ student@linux-ess:~$ sudo nano /etc/fstab
 /dev/disk/by-uuid/0b189ed9-2d70-4955-9e36-66ad45dbbee7 /boot ext4 defaults 0 1
 /dev/sdb1 /mnt/test ext4 defaults 0 2
 ```
-In this example /dev/sdb1 gets mounted to the folder /mnt/test with ext4 as its file system. The defaults means it gets mounted with default options (rw, auto, …). The two numbers at the end stand for: 0 tells the system it does not need to make backup files of this file system with the help of the dump command. This command is barely used nowadays because of crashes, but the number field is still available. The 2 at the end indicates the order the system is checked at boot. This value is 1 for the root file system and 2 for others. If you do not want to check at boot time set this field to 0. Now this entry is added to the /etc/fstab file, the drive will mount next time your system boots. 
+In this example /dev/sdb1 gets mounted to the folder /mnt/test with ext4 as its file system. The word defaults mean it gets mounted with default options (rw, auto, …). The two numbers at the end stand for: 0 tells the system it does not need to make backup files of this file system with the help of the dump command. This command is barely used nowadays because of crashes, but the number field is still available. The 2 at the end indicates the order the system is checked at boot. This value is 1 for the root file system and 2 for others. If you do not want to check at boot time set this field to 0. Now this entry is added to the /etc/fstab file, the drive will mount next time your system boots. 
 
 ## adding a disk with multiple partitions
 We’ll now begin again with our drive and try to create multiple partitions. The partitions we want are: 
