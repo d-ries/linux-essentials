@@ -743,8 +743,7 @@ student@linux-ess:/shares$ ls -ld ict3/
 drwxrwxr-x 2 root ict 4096 nov 27 15:20 ict3/
 ```
 
-If we want the users of the group ict to work on eachother's file than we have to set the kernel parameter fs.protected_regular=1 :
-
+If you want the users of the group ict to work together on each others files and you want that they can't remove each other files you have to set the kernel parameter fs.protected_regular=1.
 ```bash
 student@linux-ess:~$ su - liam
 Password: 
