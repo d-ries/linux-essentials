@@ -245,7 +245,8 @@ student@linux-ess:~$ nice -n -15 sleep 100 &
 [6] 11995
 student@linux-ess:~$ nice: cannot set niceness: Permission denied
 student@linux-ess:~$ ps -ao user,ni,comm | grep sleep
-student    0 sleep
+student    10 sleep
+student    0  sleep
 ```
 Use the renice command to change the priority of a running process. Only root can set the priority higher.
 ```bash
