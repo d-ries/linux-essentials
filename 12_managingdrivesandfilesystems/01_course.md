@@ -58,7 +58,7 @@ Total free space is 16777149 sectors (8.0 GiB)
 
 Number  Start (sector)    End (sector)  Size       Code  Name
 ```
-Every SCSI, SATA or USB device gets represented by sd? (sda, sdb, sdc, …). These device can have a maximum of 16 subdivisions (sdc, sdc1 -> sdc15) this means there is a maximum of 15 partitions. A drive can have 4 primary partition maximum. If you need more than 4 partitions, you’ll need to use extend partitions. The first drive mostly shows up as /dev/sda. As said before at least one partition is created when installing Linux, this partion is used as a Linux LVM physical partition where other logical partitions can be created. 
+Every SCSI, SATA or USB device gets represented by sd? (sda, sdb, sdc, …). These device can have a maximum of 16 subdivisions (sdc, sdc1 -> sdc15) this means there is a maximum of 15 partitions. With MBR, a drive can have 4 primary partition maximum. If you need more than 4 partitions, you’ll need to use extend partitions. The first drive mostly shows up as /dev/sda. As said before at least one partition is created when installing Linux, this partion is used as a Linux LVM physical partition where other logical partitions can be created. 
 ```bash
 student@linux-ess:~$ sudo fdisk -l /dev/sda
 [sudo] password for student:
