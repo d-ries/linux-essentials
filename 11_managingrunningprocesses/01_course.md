@@ -182,11 +182,13 @@ To bring the command back to the front, use the fg command.
 student@linux-ess:~$ fg
 sleep 50
 ```
-*	fg %<jobnumber>
-*	%string : command needs to start with string
-*	%?string : job has string in the commandline 
-*	%+ : last job send to background
-*	%- : second to last program send to background  
+The fg command can be used in different ways, following are some options: 
+*	fg %\<jobnumber>
+*	fg %string : command needs to start with string
+*	fg %?string : job has string in the commandline 
+*	fg %+ or fg : last job send to background
+*	fg %- : second to last program send to background  
+
 With the bg command you can resume a paused process that is located in the background
 ```bash
 student@linux-ess:~$ sleep 50
