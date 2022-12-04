@@ -13,15 +13,13 @@ student@linux-ess:~$ ps
 ```
 By adding the option u to the ps command some additional information is shown. These being: The usernames, start time of the process, CPU- and memory usage, from where the process is started for example tty1 or pts/0. The concept of these terminals descends from the time people exclusively worked from terminals. There was one person on one terminal. Nowadays multiple terminals can be opened on the same screen by opening multiple virtual terminals. 
 ```bash
-student@linux-ess:~$ ps -u
+student@linux-ess:~$ ps u
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-student     1906  0.0  0.1 171040  6104 tty2     Ssl+ 13:41   0:00 /usr/libexec/gdm-wayland-ses
-student     1915  0.0  0.3 231688 15420 tty2     Sl+  13:41   0:00 /usr/libexec/gnome-session-b
-student     2556  0.0  0.1  20040  5684 pts/0    Ss   13:41   0:00 bash
-student    11683  0.0  0.0  21328  3608 pts/0    R+   14:49   0:00 ps -u
+student     1389  0.0  0.1   9120  5748 pts/0    Ss   06:37   0:00 -bash
+student     7593  0.0  0.0  10068  1564 pts/0    R+   07:20   0:00 ps u
 ```
 In this example we can see that:   
-*	student started process 11683, which is command ps -u  
+*	student started process 11683, which is command ps u  
 *	pts/0 is used  
 *	STAT shows the status of the process, ‘r’ for running or ‘s’ for sleeping  
 *	USER is the name of the user as which the process runs  
@@ -32,11 +30,11 @@ In this example we can see that:
 *	START is the time the process started  
 *	TIME is the cumulative system time that has been used  
 
-A lot of processes running on your system are not associated with a terminal, these are mostly processes that run in the background. For example: logging of system activities, listening to incoming data from the network. These process often start when Linux start and stop when you shut down. When starting a graphical environment a lot of background process start as well, look at audio, authentication, …) 
+A lot of processes running on your system are not associated with a terminal, these are mostly processes that run in the background. For example: logging of system activities, listening to incoming data from the network. These processes often start when Linux start and stop when you shut down. When starting a graphical environment (like Ubuntu Desktop) a lot of background process start as well, look at audio, authentication, …) 
 
 To show all running processes for your current user use: 
 ```bash
-student@linux-ess:~$ ps -ux | less
+student@linux-ess:~$ ps ux | less
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 student     1807  0.0  0.3  20956 13480 ?        Ss   13:41   0:00 /lib/systemd/systemd --user
 student     1808  0.0  0.1 105604  5328 ?        S    13:41   0:00 (sd-pam)
@@ -59,7 +57,7 @@ student     1948  0.0  0.9 643640 39360 ?        Sl   13:41   0:00 /usr/libexec/
 ```
 To show all running processes of all users use: 
 ```bash
-student@linux-ess:~$ ps -aux | less
+student@linux-ess:~$ ps aux | less
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root           1  0.0  0.3 102468 13252 ?        Ss   13:41   0:03 /sbin/init splash
 root           2  0.0  0.0      0     0 ?        S    13:41   0:00 [kthreadd]
@@ -99,6 +97,10 @@ root          16  0.0      0     0 ?        S    12:47:06 idle_inject/0
 root          18  0.0      0     0 ?        S    12:47:06 cpuhp/0
 :
 ```
+  
+?> The previous command could also be done with the BSD style via the command: ps axo user,pid,%mem,vsz,rss,tty,stat,start,comm
+  
+
 
 We can also add the option --sort= to the command and choose a parameter to sort our list. We chose the %mem values from large to small by placing another – sign right before it. 
 ```bash
@@ -120,6 +122,9 @@ root         889  0.2  15420  8904 ?        Ss   12:47:38 sshd
 root         719  0.2 241132  8712 ?        Ssl  12:47:32 vmtoolsd
 :
 ```
+  
+?> The previous command could also be done with the BSD style via the command: ps axo user,pid,%mem,vsz,rss,tty,stat,start,comm  k -%mem
+  
 
 ## Listing processes with top
 Another command that can be used is top, this command is more screen oriented than ps and provides the possibility to change the state of processes by using the kill command to end a process or renice command to change the priority. If you want to edit all processes you’ll need to start top as root. 
