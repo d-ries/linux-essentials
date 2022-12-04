@@ -170,6 +170,7 @@ Command (? for help):
 ```
 We’ll fist check if our drive isn’t already formatted. Press p to check for partitions.
 ```bash
+# FDISK
 Command (m for help): p
 Disk /dev/sdb: 8 GiB, 8589934592 bytes, 16777216 sectors
 Disk model: VMware Virtual S
@@ -182,6 +183,7 @@ Disk identifier: 0x8b8ca071
 Command (m for help):
 ```
 ```bash
+# GDISK
 Command (? for help): p
 Disk /dev/sdb: 16777216 sectors, 8.0 GiB
 Model: VMware Virtual S
@@ -200,6 +202,7 @@ Command (? for help):
 If a partition would be present, we’ll need to delete it before going on. You could do this by pressing d. It will then tell you what partition is selected, pressing enter will delete this partition. 
 We are now ready to create a new partition, do this by pressing n. We’ll now be prompted to choose a primary, p, or extended, e, partition with fdisk, gdisk doesn't ask for this. As this is our first partition, choose the primary partition by pressing p. Afterwords enter the partition number, again as this is our first partition, we’ll use number 1. Do this by pressing 1 and pressing enter. Next it’s prompted where our first sector should start, we’ll use the default value, so just press enter. Now it’s time to set the size of the partition, you could enter a number, but we’ll use the full size of our drive. Enter the number of the last sector or just press enter. Now we can check our newly created partition again by pressing p. If everything is as expected, press w to write or save the changes to the partition table. 
 ```bash
+# FDISK
 Command (m for help): n
 Partition type
    p   primary (0 primary, 0 extended, 4 free)
@@ -229,6 +232,7 @@ Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
 ```bash
+# GDISK
 Command (? for help): n
 Partition number (1-128, default 1): 1
 First sector (34-16777182, default = 2048) or {+-}size{KMGTP}:
@@ -351,17 +355,18 @@ student@linux-ess:~$ sudo nano /etc/fstab
 In this example /dev/sdb1 gets mounted to the folder /mnt/test with ext4 as its file system. The word defaults mean it gets mounted with default options (rw, auto, …). The two numbers at the end stand for: 0 tells the system it does not need to make backup files of this file system with the help of the dump command. This command is barely used nowadays because of crashes, but the number field is still available. The 2 at the end indicates the order the system is checked at boot. This value is 1 for the root file system and 2 for others. If you do not want to check at boot time set this field to 0. Now this entry is added to the /etc/fstab file, the drive will mount next time your system boots. 
 
 ## adding a disk with multiple partitions
-We’ll now begin again with our drive and try to create multiple partitions. The partitions we want are: 
-*	500 MB (sdb1 and sdb2)
-*	300MB (sdb3)
-*	350 MB (sdb5)
-*	400 MB (sdb6)
-sdb4, which is missing in our list, is a extended partition which takes all remaining disk space. sdb5 and sdb6 will use disk space from this extended partition. 
-First, unmount the drive if you have mounted it or if it mounted automatically with an entry in the /etc/fstab file. You can already remove this entry from /etc/fstab as well. 
+We’ll now start again with our drive and try to create multiple partitions. The partitions we want are: 
+*	sdb1 and sbd2: 500 MB
+*	sdb3: 300MB 
+*	sdb5: 350 MB
+*	sdb6: 400 MB  
+
+Sdb4, which is missing in our list, is an extended partition when using fdisk, which takes all remaining disk space. sdb5 and sdb6 will use disk space from this extended partition. When using gdisk this is not needed, but we will use the same numbers to keep consistency.   
+First, unmount the drive if you have mounted it or if it mounted automatically with an entry in the /etc/fstab file. You also need to remove this entry from /etc/fstab. 
 ```bash
 student@linux-ess:~$ sudo umount /dev/sdb1
 ```
- Now we go back to our fdisk command
+ Now we go back to our fdisk or gdisk command.
 ```bash
 student@linux-ess:~$ sudo fdisk /dev/sdb
 
@@ -387,8 +392,9 @@ Found valid GPT with protective MBR; using GPT.
 Command (? for help):
 ```
 
-Check for existing partitions, we know there is one, by pressing p. We’ll delete this partition by enter d, checking the selected partition and pressing enter. 
+Check for existing partitions, we know there is one, by pressing p. We’ll delete this partition by entering d, checking the selected partition and if correct, pressing enter. 
 ```bash
+# FDISK
 Command (m for help): p
 Disk /dev/sdb: 8 GiB, 8589934592 bytes, 16777216 sectors
 Disk model: VMware Virtual S
@@ -408,6 +414,7 @@ Partition 1 has been deleted.
 Command (m for help):
 ```
 ```bash
+# GDISK
 Command (? for help): p
 Disk /dev/sdb: 16777216 sectors, 8.0 GiB
 Model: VMware Virtual S
@@ -427,9 +434,10 @@ Using 1
 
 Command (? for help):
 ```
-Again we’ll create new partitions by entering n, for sdb1, sdb2 and sdb3 we’ll use primary partitions. So use p. Enter the number of the partition, 1. We now need to enter the amount to allocate to the partition. Do this by entering a + followed by the amount. This is asked in bytes, but its easier to use K, M, G for bigger numbers. Our first partition needs to be 500MB, so we enter +500M. 
-If you did not remove the previous partition you’ll get a notification the partion has an ext4 signature. You’ll need to enter y to the question if this can be removed. 
+Now, we’ll create new partitions by entering n, for sdb1, sdb2 and sdb3 we’ll use primary partitions. So use p, when using fdisk. Enter the number of the partition, 1. We now need to enter the amount to allocate to the partition. Do this by entering a + followed by the amount. This is asked in bytes, but its easier to use K, M, G for bigger numbers. Our first partition needs to be 500MB, so we enter +500M. 
+If you did not remove the previous partition you’ll get a notification the partion has an ext4 signature. You’ll need to enter _y_ to the question if this can be removed. 
 ```bash
+# FDISK
 Command (m for help): n
 Partition type
    p   primary (0 primary, 0 extended, 4 free)
@@ -449,6 +457,7 @@ The signature will be removed by a write command.
 Command (m for help):
 ```
 ```bash
+# GDISK
 Command (? for help): n
 Partition number (1-128, default 1): 1
 First sector (34-16777182, default = 2048) or {+-}size{KMGTP}:
@@ -459,8 +468,9 @@ Changed type of partition to 'Linux filesystem'
 
 Command (? for help):
 ```
-Create the following 2 partitions the same way
+Create the next 2 partitions the same way, sdb2 with 500MB and sdb3 with 300MB.
 ```bash
+# FDISK
 Command (m for help): n
 Partition type
    p   primary (1 primary, 0 extended, 3 free)
@@ -486,6 +496,7 @@ Created a new partition 3 of type 'Linux' and of size 300 MiB.
 Command (m for help):
 ```
 ```bash
+# GDISK
 Command (? for help): n
 Partition number (2-128, default 2): 2
 First sector (34-16777182, default = 1026048) or {+-}size{KMGTP}:
@@ -504,8 +515,9 @@ Changed type of partition to 'Linux filesystem'
 
 Command (? for help):
 ```
-For the fourth partition, we change the partition type to extended as mentioned before.
+For the fourth partition, we change the partition type to extended when using fdisk as mentioned before.
 ```bash
+# FDISK
 Command (m for help): n
 Partition type
    p   primary (3 primary, 0 extended, 1 free)
@@ -521,8 +533,9 @@ Created a new partition 4 of type 'Extended' and of size 6.7 GiB.
 Command (m for help):
 ```
 We do not make an extended partition with gdisk, we can create up to 128 partitions, so no need to create an extended one! 
-Now create partition 5 and 6 as before, notice we do not need to choose a partition type this time. This is not possible as all the partition space is filled up. Our fdisk command knows there is an extended partition and that it needs to use this one for any new partitions. 
+Now create partition 5 with 350MB and 6 with 400MB as before, notice we do not need to choose a partition type this time. This is not possible as all the partition space is used in fdisk. Our fdisk command knows there is an extended partition and that it needs to use this one for any new partitions. 
 ```bash
+# FDISK
 Command (m for help): n
 All primary partitions are in use.
 Adding logical partition 5
@@ -543,6 +556,7 @@ Command (m for help):
 ```
 To keep the same numbers as with fdisk, we skip partition 4.
 ```bash
+# GDISK
 Command (? for help): n
 Partition number (4-128, default 4): 5
 First sector (34-16777182, default = 2664448) or {+-}size{KMGTP}:
@@ -561,8 +575,9 @@ Changed type of partition to 'Linux filesystem'
 
 Command (? for help):
 ```
-Check all the configurations by entering p. If we want to check if there is any free space on our drive we can do so by entering F. 
+Check all the configurations by entering p. If we want to check if there is any free space on our drive we can do so by entering F in fdisk, gdisk shows this when pressing p. 
 ```bash
+# FDISK
 Command (m for help): p
 Disk /dev/sdb: 8 GiB, 8589934592 bytes, 16777216 sectors
 Disk model: VMware Virtual S
@@ -593,6 +608,7 @@ Sector size (logical/physical): 512 bytes / 512 bytes
 Command (m for help):
 ```
 ```bash
+# GDISK
 Command (? for help): p
 Disk /dev/sdb: 16777216 sectors, 8.0 GiB
 Model: VMware Virtual S
@@ -615,6 +631,7 @@ Command (? for help):
 ```
 We can see that all partition types are Linux at the moment, we’ll change some to swap, FAT32 and Linux LVM. Do this by entering t and the number of the file system we want. To get a list of all file systems enter l, we need to check the number of swap (82), FAT32 (c) and Linux LVM (8e).
 ```bash
+# FDISK
 Command (m for help): l
 
 00 Empty            24 NEC DOS          81 Minix / old Lin  bf Solaris
@@ -671,6 +688,7 @@ Hex code or alias (type L to list all): 8e
 Changed type of partition 'Linux' to 'Linux LVM'.
 ```
 ```bash
+# GDISK
 Command (? for help): l
 Type search string, or <Enter> to show all codes:
 0700 Microsoft basic data                0701 Microsoft Storage Replica
@@ -690,7 +708,7 @@ Type search string, or <Enter> to show all codes:
 830b Linux x86 root verity               830c Linux x86-64 root verity
 830d Linux ARM32 root verity             830e Linux ARM64 root verity
 830f Linux IA-64 root verity             8310 Linux /var
-8311 Linux /var/tmp                      8312 Linux user's home
+8311 Linux /var/tmp                      8312 Linux user`s home
 8313 Linux x86 /usr                      8314 Linux x86-64 /usr
 8315 Linux ARM32 /usr                    8316 Linux ARM64 /usr
 8317 Linux IA-64 /usr                    8318 Linux x86 /usr verity
@@ -844,6 +862,7 @@ Command (? for help):
 ```
 Check all configurations again by entering p. If everything is as expected we can save by entering w. Again if this fails, use the partprobe command to save all changes. 
 ```bash
+# FDISK
 Command (m for help): p
 Disk /dev/sdb: 8 GiB, 8589934592 bytes, 16777216 sectors
 Disk model: VMware Virtual S
@@ -869,6 +888,7 @@ Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
 ```bash
+# GDISK
 Command (? for help): p
 Disk /dev/sdb: 16777216 sectors, 8.0 GiB
 Model: VMware Virtual S
@@ -944,7 +964,7 @@ mkfs.fat 4.2 (2021-01-31)
 student@linux-ess:~$ sudo pvcreate /dev/sdb6
   Physical volume "/dev/sdb6" successfully created.
 ```
-All of the partitions are now read to be mounted, used as swapspace or added to a volume group. We’ll check our partitions and mount point with the fdisk and lsblk commands. We can check all physical volumes with the pvs command.  
+All of the partitions are now ready to be mounted, used as swapspace or added to a volume group. We’ll check our partitions and mount point with the fdisk and lsblk commands. We can check all physical volumes with the pvs command.  
 ```bash
 student@linux-ess:~$ sudo fdisk -l
 ...
@@ -978,6 +998,7 @@ student@linux-ess:~$ sudo pvs
   /dev/sda3  ubuntu-vg lvm2 a--   18.22g   8.22g
   /dev/sdb6            lvm2 ---  400.00m 400.00m
 ```
+We can also chack all the block devices with partitions with the parted command.
 ```bash
 student@linux-ess:~$ sudo parted -l
 Model: VMware, VMware Virtual S (scsi)
