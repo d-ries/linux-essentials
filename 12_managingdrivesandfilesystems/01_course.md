@@ -23,8 +23,8 @@ To start this chapter, we’ll need to add drives to our virtual machine first.
 ![addingADrive2](../images/12/addingADrive7.PNG)  
   
 
-Reboot your installation if it was still running, otherwise start the virtual machine and the drive will be recognised by the kernel and ready to be initialised. 
-Be sure to take a snapshot before continuing this chapter and to double check the steps taken, so we do not repartition our drive where Linux is installed! A bad entry in the /etc/fstab file also results in trouble when booting Linux.
+Reboot your Virtual Machine if it was still running, otherwise start it and the drive will be recognised by the kernel and ready to be initialised. 
+Be sure to take a snapshot before continuing this chapter and to double check the steps taken. Be careful and do not repartition the drive on which Linux is installed! A bad entry in the /etc/fstab file could also result in an unbootable Linux.
 
 ## Understanding partition tables and disk partitions
 Traditionally MBR partition tables were used to save the size and layout of partitions. In Linux a lot of tools are available to do this. But nowadays the new standard Global Unique Identifiers, GUID, partition tables are used. Your computers needs to use UEFI for this standard. This change occurred because of the limits of MBR. MBR partitions could be a maximum of 2TB with a maximum of 4 primary partitions or 3 primary and 1 extended partition. The GUID partitions can get to a maximum of 9,4 ZB (Zettabytes or 10^21^ bytes) with a maximum of 128 partitions, which can be primary or logical partitions. We can use the commands fdisk or gdisk to partition a drive. gdisk gives the possibility to create larger partitions than fdisk, other sub commands to create, delete or change partitions are more or less the same.
