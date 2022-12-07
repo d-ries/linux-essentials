@@ -321,7 +321,7 @@ log      =internal log           bsize=4096   blocks=2560, version=2
          =                       sectsz=512   sunit=0 blks, lazy-count=1
 realtime =none                   extsz=4096   blocks=0, rtextents=0
 ```
-Now that we created a partition and installed a file system, it's time to mount our newly created drive to a mount point. Use the mount command to do this. 
+Now that we created a partition and created a file system on it, it's time to mount our newly created partition to a mount point. Use the mount command to do this. 
 ```bash
 student@linux-ess:~$ sudo mkdir /mnt/test
 student@linux-ess:~$ sudo mount /dev/sdb1 /mnt/test
@@ -332,11 +332,11 @@ student@linux-ess:~$ sudo mount | grep sdb1
 /dev/sdb1 on /mnt/test type ext4 (rw,relatime)
 ```
 With the df command we see that /dev/sdb1 is mounted to the folder /mnt/test. We can also see it provides 7.8GB of memory. The mount command shows all mounted partitions, with grep we filter to see only our new partition. 
-When the drive is no longer in use, we can unmount it with the umount command
+When the partition is no longer in needed, we can unmount it with the umount command
 ```bash
 student@linux-ess:~$ sudo umount /dev/sdb1
 ```
-With the mount command, the partition gets unmounted when the pc shuts down or is restarted. When we want the partition to be mounted on startup we’ll need to add an entry for it in the /etc/fstab file. 
+With the mount command, the partition is temporarily mounted and gets unmounted when the pc gets rebooted. When we want the partition to be remounted on startup we’ll need to add an entry for it in the /etc/fstab file. 
 ```bash
 student@linux-ess:~$ sudo nano /etc/fstab
 # /etc/fstab: static file system information.
@@ -352,7 +352,7 @@ student@linux-ess:~$ sudo nano /etc/fstab
 /dev/disk/by-uuid/0b189ed9-2d70-4955-9e36-66ad45dbbee7 /boot ext4 defaults 0 1
 /dev/sdb1 /mnt/test ext4 defaults 0 2
 ```
-In this example /dev/sdb1 gets mounted to the folder /mnt/test with ext4 as its file system. The word defaults mean it gets mounted with default options (rw, auto, …). The two numbers at the end stand for: 0 tells the system it does not need to make backup files of this file system with the help of the dump command. This command is barely used nowadays because of crashes, but the number field is still available. The 2 at the end indicates the order the system is checked at boot. This value is 1 for the root file system and 2 for others. If you do not want to check at boot time set this field to 0. Now this entry is added to the /etc/fstab file, the drive will mount next time your system boots. 
+In this example /dev/sdb1 gets mounted to the folder /mnt/test with ext4 as its file system. The word defaults means that it gets mounted with default options (rw, auto, …). The two numbers at the end stand for: the first one tells the system it does not need to make backup files of this file system with the help of the dump command. This command is barely used nowadays, but the number field is still available. The second one indicates the order on which the system checks this mount. This value is 1 for the root file system and 2 for others. If you do not want to check this partition at boot time set this field to 0. Now that this partition is added to the /etc/fstab file, it will be mounted every time your system boots. 
 
 ## adding a disk with multiple partitions
 We’ll now start again with our drive and try to create multiple partitions. The partitions we want are: 
