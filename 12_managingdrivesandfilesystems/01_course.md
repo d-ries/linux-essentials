@@ -58,7 +58,7 @@ Total free space is 16777149 sectors (8.0 GiB)
 
 Number  Start (sector)    End (sector)  Size       Code  Name
 ```
-Every SCSI, SATA or USB device gets represented by sd? (sda, sdb, sdc, …). With MBR these devices can have a maximum of 16 subdivisions (sdc, sdc1 -> sdc15) this means there is a maximum of 15 partitions with MBR. When using GPT there is a maximum of 128 partitions (sdd, sdd1 -> sdd127). With MBR, a drive can have 4 (primary) partitions maximum. If you need more than 4 partitions, you’ll need to use extended partitions. The first drive mostly shows up as /dev/sda. As said before at least one partition is created when installing Linux, this partion is used as a Linux LVM physical partition where other logical partitions can be created. 
+Every SCSI, SATA or USB device gets represented by sd? (sda, sdb, sdc, …). With MBR these devices can have a maximum of 16 subdivisions (sdc, sdc1 -> sdc15) this means there is a maximum of 15 partitions with MBR. When using GPT there is a maximum of 128 partitions (sdd, sdd1 -> sdd127). With MBR, a drive can have 4 (primary) partitions maximum. If you need more than 4 partitions, you’ll need to use extended partition(s) with logical partitions. The first drive mostly shows as /dev/sda. As said before at least one partition is created when installing Linux, this partion is used as a Linux LVM physical partition where other logical partitions can be created. 
 ```bash
 student@linux-ess:~$ sudo fdisk -l /dev/sda
 [sudo] password for student:
@@ -101,7 +101,7 @@ Number  Start (sector)    End (sector)  Size       Code  Name
    3         3719168        41940991   18.2 GiB    8300
 ```
 Looking at our sda drive we see it partitioned into /boot of +- 1GB. The * indicates this partition is bootable. The rest of the drive is a physical LVM partition. This one is used to create logical volumes. 
-With lsblk we see all available drives and its partitiones. 
+With lsblk we see all available drives and their partitions. 
 ```bash
 student@linux-ess:~$ lsblk
 $NAME                      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
@@ -121,8 +121,8 @@ sr0                        11:0    1  1.4G  0 rom
 ```
 
 ## Adding a disk with one partition
-Next up, we’ll partition the new drive and install a file system afterwards we’ll be able to mount our drive to a folder in Linux. The easiest method is to use the full drive for one partition. It is possible to add multiple partitions, you’ll need to add a file system to each partition afterwards and each partition need to be mounted separately. If a drive is mounted, like a USB stick, and you want to repartition it, you’ll need to unmount it first. 
-We’ll now start with creating a partition and installing a file system on our extra drive. If a mistake is made while working with the fdisk/gdisk command, finish the current operation and press q to stop.  
+Next up, we’ll partition the new drive and install a file system. Afterwards we’ll be able to mount the new partition to a folder in Linux. The easiest method is to use the full drive space for one partition. It is possible to add multiple partitions, you’ll need to add a file system to each partition afterwards and each partition needs to be mounted separately. If a partition of a drive is mounted, like a USB stick, and you want to repartition it, you’ll need to unmount it first. 
+We’ll now start with creating a partition and installing a file system on our extra drive. If a mistake is made while working with the fdisk/gdisk command, finish the current operation and press q to quit without saving.  
 First up, check the device name of our newly added drive by using the lsblk command
 ```bash
 student@linux-ess:~$ lsblk
