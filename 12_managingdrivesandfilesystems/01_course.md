@@ -271,7 +271,7 @@ If this should fail its probably because the drive was still mounted. Unmount th
 ```bash
 student@linux-ess:~$ sudo partprobe /dev/sdb
 ```
-The new partition still is not ready for use. We need to install a file system on it as mentioned before. Use the mkfs command to accomplish this. The standard mkfs command creates a ext2 file system, normally you would like a journaling system or ext3/ ext4. Change the mkfs command with parameter -t to get this. Another option is to use the mkfs.ext4 command, this is a shorter option. We could also use a xfs-file system.
+The new partition still is not ready for use. We need to install a file system on it as mentioned before. Use the mkfs command to accomplish this. The standard mkfs command creates a ext2 file system, normally you would like a journaling system like ext3/ ext4. Change the mkfs command with parameter -t to get this. Another option is to use the mkfs.ext4 command, this is a shorter option. We could also use a xfs-file system.
 ```bash
 student@linux-ess:~$ sudo mkfs -t ext4 /dev/sdb1
 mke2fs 1.46.5 (30-Dec-2021)
@@ -321,7 +321,7 @@ log      =internal log           bsize=4096   blocks=2560, version=2
          =                       sectsz=512   sunit=0 blks, lazy-count=1
 realtime =none                   extsz=4096   blocks=0, rtextents=0
 ```
-Now that we created a partition and installed a file system, its time to mount our newly created drive to a mount point. Use the mount command to do this. 
+Now that we created a partition and installed a file system, it's time to mount our newly created drive to a mount point. Use the mount command to do this. 
 ```bash
 student@linux-ess:~$ sudo mkdir /mnt/test
 student@linux-ess:~$ sudo mount /dev/sdb1 /mnt/test
@@ -331,12 +331,12 @@ Filesystem      Size  Used Avail Use% Mounted on
 student@linux-ess:~$ sudo mount | grep sdb1
 /dev/sdb1 on /mnt/test type ext4 (rw,relatime)
 ```
-With the df command we see that /dev/sdb1 is mounted to the folder /mnt/test. We can also see it provides 7.8GB of memory. The mount command shows all mounted drives, with grep we filter to see our drive. 
-When the drive is no longer in use, we can unmount is with the unmount command
+With the df command we see that /dev/sdb1 is mounted to the folder /mnt/test. We can also see it provides 7.8GB of memory. The mount command shows all mounted partitions, with grep we filter to see only our new partition. 
+When the drive is no longer in use, we can unmount it with the umount command
 ```bash
 student@linux-ess:~$ sudo umount /dev/sdb1
 ```
-With the mount command, the drive gets unmounted when the pc shuts down or is restarted. When we want the drive to be mounted on startup we’ll need to add a entry in the /etc/fstab file. 
+With the mount command, the partition gets unmounted when the pc shuts down or is restarted. When we want the partition to be mounted on startup we’ll need to add an entry for it in the /etc/fstab file. 
 ```bash
 student@linux-ess:~$ sudo nano /etc/fstab
 # /etc/fstab: static file system information.
