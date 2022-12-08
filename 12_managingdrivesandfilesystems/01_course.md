@@ -361,10 +361,13 @@ We’ll now start again with our drive and try to create multiple partitions. Th
 *	sdb5: 350 MB
 *	sdb6: 400 MB  
 
-Sdb4, which is missing in our list, is an extended partition when using fdisk, which takes all remaining disk space (after sdb1, sdb2 and sdb3). sdb5 and sdb6 will use disk space from this extended partition. When using gdisk this is not needed, but we will use the same numbers to keep consistency.   
-First, unmount the drive if you have mounted it or if it mounted automatically with an entry in the /etc/fstab file. You also need to remove this entry from /etc/fstab. 
+Sdb4, which is missing in our list, is an extended partition when using fdisk, which takes all remaining disk space (after sdb1, sdb2 and sdb3).  
+sdb5 and sdb6 are logical partitions within the extended partition (sdb4).  
+When using gdisk this is not needed, but we will use the same numbers to keep consistency.   
+First, unmount all mounted partitions of this drive. And if they were mounted automatically with an entry in the /etc/fstab file, you'll also need to remove those entries from /etc/fstab. 
 ```bash
 student@linux-ess:~$ sudo umount /dev/sdb1
+student@linux-ess:~$ sudo nano /etc/fstab     #to remove the sdb1 entry
 ```
  Now we go back to our fdisk or gdisk command.
 ```bash
