@@ -578,7 +578,7 @@ Changed type of partition to 'Linux filesystem'
 
 Command (? for help):
 ```
-Check all the configurations by entering p. If we want to check if there is any free space on our drive we can do so by entering F in fdisk, gdisk shows this when pressing p. 
+Check the partition table by entering p. If we want to check if there is any free space on our drive we can do so by entering F in fdisk, gdisk shows this when pressing p. 
 ```bash
 # FDISK
 Command (m for help): p
@@ -863,7 +863,7 @@ Changed type of partition to 'Linux LVM'
 
 Command (? for help):
 ```
-Check all configurations again by entering p. If everything is as expected we can save by entering w. Again if this fails, use the partprobe command to save all changes. 
+Check all configurations again by entering p. If everything is as expected we can save it by entering w. Again, if this fails, use the partprobe command to save all changes. 
 ```bash
 # FDISK
 Command (m for help): p
