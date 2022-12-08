@@ -1156,7 +1156,7 @@ In the folder /dev/mapper you’ll find the file ubuntu--vg-ubuntu--lv, this nam
 student@linux-ess:~$ ls /dev/mapper/
 control  ubuntu--vg-ubuntu--lv
 ```
-In the fstab file we see that these 3 volumes are automatically mounted with their filesystems. The root- and home-directory are formatted as xfs, the swap volume is formatted as swap. We’ll now check the connection between all these groups and volumes.
+In the fstab file we see that, while booting, these 3 volumes are automatically mounted with their filesystems. The root- and home-directory are formatted as xfs, the swap volume is formatted as swap. We’ll now check the connection between all these groups and volumes.
 ```bash
 student@linux-ess:~$ cat /etc/fstab
 # /etc/fstab: static file system information.
@@ -1171,16 +1171,12 @@ student@linux-ess:~$ cat /etc/fstab
 
 student@linux-ess:~$ ls -l /dev/ubuntu-vg/*
 lrwxrwxrwx 1 root root 7 Sep 15 12:43 /dev/ubuntu-vg/ubuntu-lv -> ../dm-0
-student@linux-ess:~$ ls -l /dev/dm*
+student@linux-ess:~$ ls -l /dev/dm-*
 brw-rw----  1 root disk  253, 0 Sep 15 12:43 /dev/dm-0
-crw-rw----+ 1 root audio  14, 9 Sep 15 12:43 /dev/dmmidi
 
-/dev/dma_heap:
-total 0
-crw------- 1 root root 249, 0 Sep 15 12:43 system
-student@linux-ess:~$ ls -l /dev/mapper/* | awk '{print $1" "$3" "$4" "$9,$10,$11}'
-crw------- root root 12:43 /dev/mapper/control
-lrwxrwxrwx root root /dev/mapper/ubuntu--vg-ubuntu--lv -> ../dm-0
+student@linux-ess:~$ ls -l /dev/mapper/*
+crw------- 1 root root 10, 236 Sep  15 21:08 /dev/mapper/control
+lrwxrwxrwx 1 root root       7 Sep  15 21:08 /dev/mapper/ubuntu--vg-ubuntu--lv -> ../dm-0
 ```
 ![ubuntulvm](../images/12/ubuntuLVMblackarrows.PNG)
 
