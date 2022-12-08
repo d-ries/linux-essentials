@@ -518,7 +518,7 @@ Changed type of partition to 'Linux filesystem'
 
 Command (? for help):
 ```
-For the fourth partition, we change the partition type to extended when using fdisk as mentioned before.
+For the fourth partition, we change the partition type to extended when using fdisk as mentioned before. With this extended partition we will claim all the free space that is left, so we can create multiple logical partitions within this extended partition (space).
 ```bash
 # FDISK
 Command (m for help): n
