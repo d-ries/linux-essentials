@@ -1130,7 +1130,7 @@ student@linux-ess:~$ sudo vgdisplay
   Free  PE / Size       2105 / 8.22 GiB
   VG UUID               cPT0cP-GoZh-K91H-rSeQ-2ByY-SCtW-dNqE7C
 ```
-With the lvdisplay command, we can check where this volumegroup is allocated to. 
+With the lvdisplay command, we can check from which volumegroup it is a member, the total size, etc. 
 ```bash
 student@linux-ess:~$ sudo lvdisplay
   --- Logical volume ---
