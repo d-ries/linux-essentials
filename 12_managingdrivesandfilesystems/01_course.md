@@ -557,7 +557,7 @@ Created a new partition 6 of type 'Linux' and of size 400 MiB.
 
 Command (m for help):
 ```
-To keep the same numbers as with fdisk, we skip partition 4.
+With gdisk we will skip partition 4 to keep the same numbers as with the fdisk demo. Otherwise we wouldn't do that.
 ```bash
 # GDISK
 Command (? for help): n
