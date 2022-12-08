@@ -632,7 +632,7 @@ Number  Start (sector)    End (sector)  Size       Code  Name
 
 Command (? for help):
 ```
-We can see that all partition types are Linux at the moment, we’ll change some to swap, FAT32 and Linux LVM. Do this by entering t and the number of the file system we want. To get a list of all file systems enter l, we need to check the number of swap (82), FAT32 (c) and Linux LVM (8e).
+We can see that all partition types are Linux at the moment, we’ll change some to swap, FAT32 and Linux LVM. Do this by entering t and the number of the file system we want. To get a list of all file systems enter l, we need to check the number of swap (82), FAT32 (0c) and Linux LVM (8e).
 ```bash
 # FDISK
 Command (m for help): l
@@ -1001,7 +1001,7 @@ student@linux-ess:~$ sudo pvs
   /dev/sda3  ubuntu-vg lvm2 a--   18.22g   8.22g
   /dev/sdb6            lvm2 ---  400.00m 400.00m
 ```
-We can also chack all the block devices with partitions with the parted command.
+We can also check all the block devices with partitions with the parted command.
 ```bash
 student@linux-ess:~$ sudo parted -l
 Model: VMware, VMware Virtual S (scsi)
