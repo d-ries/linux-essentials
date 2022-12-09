@@ -50,7 +50,7 @@ Start with the ls command of the root-folder (/) and try to end with a list of f
 Go to your homefolder. Paste all shown files and folders (not the hidden ones) from the directory one after the other and count the number of words. The result is only a number 
 
 ## Task 10
-Show all installed packages, but online show the name and version in alphabetical order.
+Show all installed packages, but only show the name and version in alphabetical order.
 
 ?> <i class="fa-solid fa-circle-info"></i> Hint: You need to use tr to make it easier.   
   
