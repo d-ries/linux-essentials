@@ -817,7 +817,7 @@ Type search string, or <Enter> to show all codes: Linux
 830b Linux x86 root verity               830c Linux x86-64 root verity
 830d Linux ARM32 root verity             830e Linux ARM64 root verity
 830f Linux IA-64 root verity             8310 Linux /var  
-8311 Linux /var/tmp                      8312 Linux user's home
+8311 Linux /var/tmp                      8312 Linux user´s home
 8313 Linux x86 /usr                      8314 Linux x86-64 /usr
 8315 Linux ARM32 /usr                    8316 Linux ARM64 /usr
 8317 Linux IA-64 /usr                    8318 Linux x86 /usr verity
@@ -830,7 +830,7 @@ Hex code or GUID (L to show codes, Enter = 8300): 8200
 Changed type of partition to 'Linux swap'
 
 Command (? for help): t
-Partition number (1-6): 2
+Partition number (1-6): 5
 Current type is 8300 (Linux filesystem)
 Hex code or GUID (L to show codes, Enter = 8300): EF00
 Changed type of partition to 'EFI system partition'
@@ -849,7 +849,7 @@ Type search string, or <Enter> to show all codes: Linux
 830b Linux x86 root verity               830c Linux x86-64 root verity
 830d Linux ARM32 root verity             830e Linux ARM64 root verity
 830f Linux IA-64 root verity             8310 Linux /var  
-8311 Linux /var/tmp                      8312 Linux user's home
+8311 Linux /var/tmp                      8312 Linux user`s home
 8313 Linux x86 /usr                      8314 Linux x86-64 /usr
 8315 Linux ARM32 /usr                    8316 Linux ARM64 /usr
 8317 Linux IA-64 /usr                    8318 Linux x86 /usr verity
