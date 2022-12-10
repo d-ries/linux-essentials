@@ -1064,6 +1064,8 @@ __LVM OVERVIEW__
 ![LVM overview](../images/12/LVM.png)  
 
   
+__LVM COMMANDS__
+  
 Use the command vgs to check for volume groups, pvs to check for physical volumes and lvs to check for logical volumes. 
 ```bash
 student@linux-ess:~$ sudo vgs
