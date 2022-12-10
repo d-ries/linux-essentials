@@ -1061,7 +1061,8 @@ LVM gives us more flexibility to add new physical volumes to a volume group. Thi
   
 __LVM OVERVIEW__
 
-![LVM overview](../images/12/LVM.PNG)  
+![LVM overview](../images/12/LVM.png)  
+
   
 Use the command vgs to check for volume groups, pvs to check for physical volumes and lvs to check for logical volumes. 
 ```bash
