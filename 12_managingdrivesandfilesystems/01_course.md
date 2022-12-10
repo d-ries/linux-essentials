@@ -1058,7 +1058,11 @@ LVM gives us more flexibility to add new physical volumes to a volume group. Thi
 *	It’s possible to move data from one physical volume to another, this way we can replace smaller drives with larger ones without any downtime 
 *	Even downsizing a logical volume is possible if its file system supports it. 
 *	LVM also supports advanced possibilities like mirroring and working with clusters.  
+  
+__LVM OVERVIEW__
 
+![LVM overview](../images/12/LVM.PNG)  
+  
 Use the command vgs to check for volume groups, pvs to check for physical volumes and lvs to check for logical volumes. 
 ```bash
 student@linux-ess:~$ sudo vgs
