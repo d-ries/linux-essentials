@@ -8,7 +8,7 @@ Most Linux systems, including Ubuntu, choose a mix of both systems with journald
 
 ## Journald
 
-Journald is a service, a process that runs in the background to collect logging events and process them. Like any deamon you can check it's current status by using `systemctl status systemd-journald`.
+Journald is a service, a process that runs in the background to collect logging events and process them. Like any daemon you can check it's current status by using `systemctl status systemd-journald`.
  
 ```bash
  student@linux-ess:~$ systemctl status systemd-journald
