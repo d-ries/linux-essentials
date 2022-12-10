@@ -1051,11 +1051,12 @@ Number  Start  End     Size    File system  Flags
  ```
 
 ## LVMs
-Now that we created a physical volume on our Linux LVM, we’ll go a little further into this. Back in the day, when LVM wasn’t available, when a drive ran out of memory, we needed to replace it by a larger one and copy everything from the old drive. This took time and was very inefficient. LVM gives us more flexibility to add new physical volumes to a volume group. This brings a few advantages:
+Now that we created a physical volume on our Linux LVM, we’ll go a little further into this. Back in the days, when LVM wasn’t available, when a drive ran out of free space, we needed to replace it by a larger one and copy everything over from the old drive. This was time consuming and very inefficient.   
+LVM gives us more flexibility to add new physical volumes to a volume group. This brings a few advantages:
 *	Adding drive space is possible even when the logical volume is in use
-*	You can add physical volume whenever needed to a volume group
-*	It’s possible to change data from one physical volume to another, this way we can replace smaller drives with larger ones without downtime. 
-*	Even downsizing a file system is possible, you’ll need to unmount the logical volume for this to work and the file systems allows for this to happen. 
+*	You can add physical volumes to a volume group whenever needed
+*	It’s possible to move data from one physical volume to another, this way we can replace smaller drives with larger ones without any downtime 
+*	Even downsizing a logical volume is possible if its file system supports it. 
 *	LVM also supports advanced possibilities like mirroring and working with clusters.  
 
 Use the command vgs to check for volume groups, pvs to check for physical volumes and lvs to check for logical volumes. 
