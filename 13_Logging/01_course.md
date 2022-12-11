@@ -172,7 +172,7 @@ You can filter by priority level using the `-p` option in combination with the l
 
 Rsyslogd is the service that logs events in the traditional way. While journald is easier to manipulate so it only shows the events you are interested, there are still use cases where a syslog-based logging system will be more practical. One example is a non-booting system: because of the text-based files you can just grab them off the hard drive and read them, which is harder to do with journald's binary files. A competent Linux administrator will need at least some knowledge of both systems to pick the system apropriate for the current job.
 
-###Using rsyslog files
+### Using rsyslog files
 
 As mentioned in the introduction, rsyslogd takes the events passed down from the journald-service. It processes them and stores the events in text-files. You'll find these files in the `/var/log` folder. Outside of the rsyslog-logs, you'll find a number of other logs created by different programs that implement their own logging. You can get an overview of the different logs by using `ls` or `tree` on this folder.
 
