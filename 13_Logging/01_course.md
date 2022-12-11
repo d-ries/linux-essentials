@@ -167,3 +167,115 @@ dec 10 01:54:59 linux-ess sudo[5753]:    jacob : user NOT in sudoers ; TTY=pts/0
 You can filter by priority level using the `-p` option in combination with the levels mentioned above. You will see all the events with at least that priority. 
 
 ?> <i class="fa-solid fa-circle-info"></i> The options given here are just some of the more common options to filter the journal. See the manpage for `journalctl` to see the complete list.  
+
+## rsyslogd
+
+Rsyslogd is the service that logs events in the traditional way. While journald is easier to manipulate so it only shows the events you are interested, there are still use cases where a syslog-based logging system will be more practical. One example is a non-booting system: because of the text-based files you can just grab them off the hard drive and read them, which is harder to do with journald's binary files. A competent Linux administrator will need at least some knowledge of both systems to pick the system apropriate for the current job.
+
+###Using rsyslog files
+
+As mentioned in the introduction, rsyslogd takes the events passed down from the journald-service. It processes them and stores the events in text-files. You'll find these files in the `/var/log` folder. Outside of the rsyslog-logs, you'll find a number of other logs created by different programs that implement their own logging. You can get an overview of the different logs by using `ls` or `tree` on this folder.
+
+```bash
+student@linux-ess:~$ ls -l /var/log
+total 1600
+-rw-r--r--  1 root              root                 0 nov  5 00:27 alternatives.log
+-rw-r--r--  1 root              root             25743 okt  2 19:40 alternatives.log.1
+-rw-r-----  1 root              adm                  0 okt  4 02:23 apport.log
+-rw-r-----  1 root              adm                918 okt  2 23:10 apport.log.1
+drwxr-xr-x  2 root              root              4096 dec 10 18:36 apt
+-rw-r-----  1 syslog            adm              16996 dec 10 18:36 auth.log
+-rw-r-----  1 syslog            adm              31316 dec  9 22:43 auth.log.1
+...
+```
+There are a few files here that you should be aware of: `/var/log/syslog` is the file that captures most rsyslog-events, it is basically the default file, when another file is not specified. `auth.log` is another important one as it contains all security related events (like a failed sing-on attempt, a user using sudo,...). As you can probably guess, boot.log contains events generated during a system boot and kern.log has all the messages the kernel generates. These files are owned by root and the `adm`-group, and the rsyslog-logs are not world readable. This means that just like with journald, you'll need to be a member of the `adm`-group to read them.
+
+To find events in the files you can use the tools you use on any other text-file. As those are explained in Chapter 8, I won't go very deep here.
+
+```bash
+student@linux-ess:/var/log$ cat auth.log | grep sudo | tail -n 5 #search for the lines containing sudo, and show the last 5 
+Dec 10 00:32:20 linux-ess sudo: pam_unix(sudo:session): session closed for user root
+Dec 10 01:54:59 linux-ess sudo:    jacob : user NOT in sudoers ; TTY=pts/0 ; PWD=/home/student ; USER=root ; COMMAND=/usr/sbin/useradd jef
+Dec 10 18:36:26 linux-ess sudo:  student : TTY=pts/0 ; PWD=/home/student ; USER=root ; COMMAND=/usr/bin/apt install tree
+Dec 10 18:36:26 linux-ess sudo: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)
+Dec 10 18:36:38 linux-ess sudo: pam_unix(sudo:session): session closed for user root
+
+student@linux-ess:/var/log$ cat syslog | grep error | tail -n 5
+Dec  9 22:43:37 linux-ess gnome-session[1106]: gnome-session-binary[1106]: GLib-GIO-CRITICAL: g_bus_get_sync: assertion 'error == NULL || *error == NULL' failed
+Dec  9 22:43:37 linux-ess gnome-session[1106]: gnome-session-binary[1106]: GLib-GIO-CRITICAL: g_bus_get_sync: assertion 'error == NULL || *error == NULL' failed
+Dec  9 22:43:37 linux-ess gnome-session-binary[1106]: GLib-GIO-CRITICAL: g_bus_get_sync: assertion 'error == NULL || *error == NULL' failed
+Dec  9 22:43:37 linux-ess gnome-session-binary[1106]: GLib-GIO-CRITICAL: g_bus_get_sync: assertion 'error == NULL || *error == NULL' failed
+```
+
+As you can see, to use this effectively it helps that you have some idea what you are searching for. If you don't know the keywords the message you are looking for contains it is hard to use `grep` effectively. Journald advanced filtering makes it easier to find relevant events when you don't.
+
+?> <i class="fa-solid fa-circle-info"></i>The specific name for the log files is determined by the Linux distribution. On a lot distributions the /var/log/syslog log will for example be called /var/log/messages
+
+### Rsyslog configuration
+
+ In `/etc/rsyslog.conf` you'll find the default configuration of the rsyslog-service. Among other settings it includes the default file permissions for the log-files. But the part I want to draw attention to are the last few lines.
+ 
+ ```bash
+#
+# Include all config files in /etc/rsyslog.d/
+#
+
+$IncludeConfig /etc/rsyslog.d/*.conf
+
+student@linux-ess:/var/log$ ls /etc/rsyslog.d/
+20-ufw.conf  50-default.conf
+```
+
+This line says that every file in the rsyslog.d folder should be added at the end of the config-file. A configuration folder ending in '.d' is called a drop-in folder. It allows different programs to add their own configuration by dropping it in this folder. The setting that decides which log-file is used for different types of events is `50-default.conf` (the number decides the order in which the extra config files are added). 
+
+```bash
+# First some standard log files.  Log by facility.
+#
+
+auth,authpriv.*                 /var/log/auth.log
+*.*;auth,authpriv.none          -/var/log/syslog
+#cron.*                         /var/log/cron.log
+#daemon.*                       -/var/log/daemon.log
+kern.*                          -/var/log/kern.log
+#lpr.*                          -/var/log/lpr.log
+mail.*                          -/var/log/mail.log
+#user.*                         -/var/log/user.log
+...
+mail.err                        /var/log/mail.err
+...
+*.emerg                         :omusrmsg:*
+```
+
+Events are categorised by the "facility" that produces the events. For example, auth and authpriv are any event related to security. This is followed by a . and a priority level. None means these events will not be logged in this file. In the above example everything related to security is logged into /var/log/auth.log. Everything else (*.*) is added to the syslog file. To stop security messages from ending up in the general syslog, auth.none and authpriv.none are added. Events of the mail subsystem with a priority of at least error are added to mail.err. Events of the emergency type (the highest level) are displayed in every logged in user's terminal. If you want these messages to only go to the root-user, replace the line with :omusrmsg:root. You can use @ to send the messages to another networked computer. For example the line
+
+`*.err 			@logger.pxl.be`
+
+would send all events with a priority of error to a computer with the hostname logger.pxl.be
+
+### logrotate
+
+A log-file where no events are ever removed would eventually fill up the file system. It is logrotate's job to cycle the logs and remove the old ones. You'll find the configuration for this in `/etc/logrotate.conf`
+
+```bash
+# rotate log files weekly
+weekly
+# use the adm group by default, since this is the owning group
+# of /var/log/syslog.
+su root adm
+# keep 4 weeks worth of backlogs
+rotate 4
+# create new (empty) log files after rotating old ones
+create
+```
+This specifies that every week a new log file is started, and four old log-files should be kept. This means that after five weeks the oldest back-up log file will be removed.
+
+### logger
+
+logger is a command that allows you to generate log events yourself. This can be used to record actions that should be kept as part of the log-file. Just use logger and the message you want recorded. With the option -p you can set the priority level of the event.
+
+```bash
+student@linux-ess:/var/log$ logger -p crit "system going down for maintenance"
+student@linux-ess:/var/log$ journalctl -xe -n 2 --no-pager 
+dec 11 09:45:33 linux-ess sudo[33617]: pam_unix(sudo:session): session closed for user root
+dec 11 09:45:47 linux-ess student[34023]: system going down for maintenance
+```
