@@ -1111,7 +1111,7 @@ student@linux-ess:~$ sudo pvdisplay /dev/sda3
 ```
 We see that /dev/sda3 has a physical size of 18.23GiB. This volume is added to the volume group: ubuntu-vg. The smallest unit storage that can be granted is 4 MiB.  
 
-?> <i class="fa-solid fa-circle-info"> Extra info: 1 MB = 1000000 bytes = 10^6^ bytes  
+?> <i class="fa-solid fa-circle-info"> Extra info\: 1 MB = 1000000 bytes = 10^6^ bytes  
 1 MiB = 1048576 bytes = 2^20^ bytes</i>  
 
 To check the information about this volume group use the command vgdisplay.
