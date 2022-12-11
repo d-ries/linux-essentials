@@ -1260,7 +1260,7 @@ student@linux-ess:~$ sudo lvextend -L +100M /dev/mapper/myvg0-music
   Size of logical volume myvg0/music changed from 100.00 MiB (25 extents) to 200.00 MiB (50 extents).
   Logical volume myvg0/music successfully resized.
 ```
-Afterwards the file system needs to be enlarged as well, this is possible with the resize2fs command for ext filesystems and xfs_growfs for xfs filesystems. 
+Afterwards the file system needs to be enlarged as well, this is possible with the resize2fs command for ext filesystems and xfs_growfs for xfs filesystems. To do it in just one step you could have given the -r option within the previous lvextend command. 
 ```bash
 student@linux-ess:~$ sudo resize2fs /dev/mapper/myvg0-music
 resize2fs 1.46.5 (30-Dec-2021)
