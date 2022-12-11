@@ -1164,7 +1164,7 @@ In the folder /dev/mapper you’ll find the file ubuntu--vg-ubuntu--lv, this nam
 student@linux-ess:~$ ls /dev/mapper/
 control  ubuntu--vg-ubuntu--lv
 ```
-In the fstab file we see that, while booting, these 3 volumes are automatically mounted with their filesystems. The root- and home-directory are formatted as xfs, the swap volume is formatted as swap. We’ll now check the connection between all these groups and volumes.
+In the fstab file we see that, while booting, the following 2 volumes are automatically mounted with their filesystems. The root- and home-directory are formatted as ext4. We’ll now check the connection between all these groups and volumes.
 ```bash
 student@linux-ess:~$ cat /etc/fstab
 # /etc/fstab: static file system information.
@@ -1175,7 +1175,9 @@ student@linux-ess:~$ cat /etc/fstab
 #
 # <file system> <mount point>   <type>  <options>       <dump>  <pass>
 # / was on /dev/ubuntu-vg/ubuntu-lv during curtin installation
-/dev/disk/by-id/dm-uuid-LVM-cPT0cPGoZhK91HrSeQ2ByYSCtWdNqE7Co7jRC0O2XWz9dWt2g7CQ0oEtCcVhxL8v / ext4 defaults 0 1
+/dev/disk/by-id/dm-uuid-LVM-0Iw7F1aOuszZbXwuRqub1PoLZIvWxbIGsWuIcTAED0HcQiP47zTF6nqLMhgD0kKF / ext4 defaults 0 1
+# /boot was on /dev/sda2 during curtin installation
+/dev/disk/by-uuid/c23d07d6-5019-4858-8c46-4b31cc88e159 /boot ext4 defaults 0 1
 
 student@linux-ess:~$ ls -l /dev/ubuntu-vg/*
 lrwxrwxrwx 1 root root 7 Sep 15 12:43 /dev/ubuntu-vg/ubuntu-lv -> ../dm-0
