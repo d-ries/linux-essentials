@@ -1164,7 +1164,7 @@ In the folder /dev/mapper you’ll find the file ubuntu--vg-ubuntu--lv, this nam
 student@linux-ess:~$ ls /dev/mapper/
 control  ubuntu--vg-ubuntu--lv
 ```
-In the fstab file we see that, while booting, the following 2 volumes are automatically mounted with their filesystems. The root- and home-directory are formatted as ext4. We’ll now check the connection between all these groups and volumes.
+In the fstab file we see that, while booting, the following 2 volumes are automatically mounted with their filesystems. The root- and boot-directory are formatted as ext4. We’ll now check the connection between all these groups and volumes.
 ```bash
 student@linux-ess:~$ cat /etc/fstab
 # /etc/fstab: static file system information.
