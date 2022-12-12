@@ -1389,8 +1389,8 @@ Again we can add this to the /etc/fstab file to make this extra swapspace perman
 student@linux-ess:~$ sudo nano /etc/fstab
 /var/opt/myswap swap swap defaults 0 0
 ```
-We use swap in the second field as there is no mounting point for swapspace. To turn on any swapspace immediately we can use the swapon -a command. 
-If we want to remove swapspace we fist need to check that it isn’t in use. If this is the case we can remove it by the swapoff command. 
+We use swap in the second field as there is no mounting point for swapspace. To turn on any swapspace that is mentioned in the /etc/fstab file, for example with the option noauto, immediately we can use the swapon -a command. 
+If we want to remove swapspace we fist need to check that it isn’t in use. If this is the case we can unmount it by the swapoff command. 
 ```bash
 student@linux-ess:~$ swapon
 NAME            TYPE  SIZE USED PRIO
