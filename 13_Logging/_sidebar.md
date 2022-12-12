@@ -13,4 +13,4 @@
 * [11 Managing running processes](./11_managingrunningprocesses/01_course.md)
 * [12 Managing drives and filesystems](./12_managingdrivesandfilesystems/01_course.md)
 * [13 Logging](./13_Logging/01_course.md)
-** [Assignment](./12_Logging/99_assignments.md)
+** [Assignment](./13_Logging/99_assignments.md)
