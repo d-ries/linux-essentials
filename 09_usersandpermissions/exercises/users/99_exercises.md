@@ -30,7 +30,7 @@ Shell:		    /bin/bash<br />
    
 ## Task 4
 Check the changed files:
-Wat is changed in the file /etc/passwd?
+What is changed in the file /etc/passwd?
 
 ## Task 5
 What is changed in the file /etc/shadow?
@@ -38,10 +38,10 @@ What is changed in the file /etc/shadow?
 ?> <i class="fa-solid fa-circle-info"></i> After a user is created, its password is set to "!", which means that this name cannot be used to log in. To make this possible you need to give John a password. Set John’s password to "January".
   
 ## Task 6
-Wat is changed in the file /etc/group?
+What is changed in the file /etc/group?
 
 ## Task 7
-Wat is changed in the directory /home? 
+What is changed in the directory /home? 
 
 ## Task 8
 The user John is now created on your system. Now John should be able to ask information about himself.<br /> 
