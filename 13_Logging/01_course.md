@@ -67,7 +67,7 @@ A log line contains the following information:
 dec 10 18:12:05 linux-ess gnome-shell[1784]: DING: Detected async api for thumbnails
 ```
 
-**dec  10  18 : 12 : 05**: A timestamp signalling when the event occured.    
+**dec  10  18 : 12 : 05**  : A timestamp signalling when the event occured.    
 **linux-ess**: The hostname of the computer where the event was generated.     
 **gnome-shell[1784]**: The name of the process generating the event, and its process ID.     
 **DING: Detected async api for thumbnails**: The actual message.     
