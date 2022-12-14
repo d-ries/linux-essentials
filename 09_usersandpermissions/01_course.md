@@ -90,7 +90,7 @@ student@linux-ess:~$ sudo ls -a /home/teacher/
 #### Default profile files
 __.bashrc__: executed everytime a new shell (bash) is started
 
-__.bash\_history__: holds the history (new commands get added to this file on closing of a shell)
+__.bash\_logout__: clears the screen when the user logs out
 
 __.profile__: executed when user logs in
 
