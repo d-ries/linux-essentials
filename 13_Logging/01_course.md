@@ -72,7 +72,7 @@ dec 10 18:12:05 linux-ess gnome-shell[1784]: DING: Detected async api for thumbn
 **gnome-shell[1784]**: The name of the process generating the event, and its process ID.     
 **DING: Detected async api for thumbnails**: The actual message.     
 
-?> <i class="fa-solid fa-circle-info"></i> Because journalctl default behaviour is to open the journal with the less viewer, you can use the keys you learned in chapter 5 to navigate or search inside the journal.
+?> <i class="fa-solid fa-circle-info"></i> Because journalctl default behaviour is to open the journal with the pager less, you can use the keys you learned in chapter 5 to navigate or search inside the journal.
 
 The first `journalctl` option you should know, is `-e` or `--pager-end`. This will jump straight to the last page of the journal. As this is usually the part of the log you care about, you'll almost always use this option when using `journalctl`. Another practical option is `-x` or `--catalog`. This will add explanation to log lines when available. 
 
