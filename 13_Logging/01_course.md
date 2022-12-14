@@ -151,7 +151,7 @@ nov 27 13:49:04 linux-ess kernel: Command line: BOOT_IMAGE=/boot/vmlinuz-5.15.0-
 
 ### Priority levels
 
-As you have probably noticed, not everything that is logged is necesarrily important or useful information. This is why every event that is logged also has a priority level. These are, from not important to very important:
+As you have probably noticed, not everything that is logged is necessarily important or useful information. This is why every event that is logged also has a priority level. These are, from not important to very important:
 
 Displayed in white in the journal:
 - **debug**: The most verbose setting. Everything that a process can log is logged. This is only useful when debugging a specific problem as you will be able to follow every step a process takes. These messages are usually discarded. If you want to see debug events, you'll have to enable it in the journald configuration.
