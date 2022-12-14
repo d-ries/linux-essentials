@@ -67,7 +67,7 @@ A log line contains the following information:
 dec 10 18:12:05 linux-ess gnome-shell[1784]: DING: Detected async api for thumbnails
 ```
 
-**dec  10  18 : 12 : 05**  : A timestamp signalling when the event occured.    
+**dec  10  18&#58;12&#58;05**  : A timestamp signalling when the event occured.    
 **linux-ess**: The hostname of the computer where the event was generated.     
 **gnome-shell[1784]**: The name of the process generating the event, and its process ID.     
 **DING: Detected async api for thumbnails**: The actual message.     
@@ -147,7 +147,7 @@ student@linux-ess:~$ journalctl --since '20 day ago' --until '5 day ago' -n 2 --
 nov 27 13:49:04 linux-ess kernel: Linux version 5.15.0-50-generic (buildd@lcy02-amd64-086) (gcc (Ubuntu 11.2.0-19ubuntu1) 11.2.0, GNU ld (GNU Binutils for Ubuntu) 2.38)
 nov 27 13:49:04 linux-ess kernel: Command line: BOOT_IMAGE=/boot/vmlinuz-5.15.0-50-generic root=UUID=069b1392-a138-4de1-9146-42f6c7cbbcf7 ro quiet splash
 ```
-?> <i class="fa-solid fa-circle-info"></i> Examples of valid timestamps are "2022-11-23  23&#58;02 : 15", "2022-09-01", "12:00", now, today, yesterday, "5 hour ago" (min, hour, day, week, month, year), "-5 min"
+?> <i class="fa-solid fa-circle-info"></i> Examples of valid timestamps are "2022-11-23  23&#58;02&#58;15", "2022-09-01", "12:00", now, today, yesterday, "5 hour ago" (min, hour, day, week, month, year), "-5 min"
 
 ### Priority levels
 
