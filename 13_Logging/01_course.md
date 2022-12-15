@@ -183,7 +183,7 @@ You can filter by priority level using the `-p` option in combination with the l
 
 ## rsyslogd
 
-Rsyslogd is the service that logs events in the traditional way. While journald is easier to manipulate so it only shows the events you are interested, there are still use cases where a syslog-based logging system will be more practical. One example is a non-booting system: because of the text-based files you can just grab them off the hard drive and read them, which is harder to do with journald's binary files. A competent Linux administrator will need at least some knowledge of both systems to pick the system apropriate for the current job.
+Rsyslogd is the service that logs events in the traditional way. While journald-output is easier to filter for only showing the events you are interested in, there are still use cases where a syslog-based logging system will be more practical. One example is a non-booting system: because of the text-based files you can just grab them off the hard drive and read them, which is harder to do with journald's binary files. A competent Linux administrator will need at least some knowledge of both systems to pick the system apropriate for the current job.
 
 ### Using rsyslog files
 
@@ -203,10 +203,10 @@ drwxr-xr-x  2 root              root              4096 dec 10 18:36 apt
 ```
 There are a few files here that you should be aware of: `/var/log/syslog` is the file that captures most rsyslog-events, it is basically the default file, when another file is not specified. `auth.log` is another important one as it contains all security related events (like a failed sing-on attempt, a user using sudo,...). As you can probably guess, boot.log contains events generated during a system boot and kern.log has all the messages the kernel generates. These files are owned by root and the `adm`-group, and the rsyslog-logs are not world readable. This means that just like with journald, you'll need to be a member of the `adm`-group to read them.
 
-To find events in the files you can use the tools you use on any other text-file. As those are explained in Chapter 8, I won't go very deep here.
+To find events in the files you can use the filters you use on any text-file. As those are explained in Chapter 8, we won't go very deep here.
 
 ```bash
-student@linux-ess:/var/log$ cat auth.log | grep sudo | tail -n 5 #search for the lines containing sudo, and show the last 5 
+student@linux-ess:/var/log$ cat auth.log | grep sudo | tail -n 5   #search for the lines containing sudo, and show the last 5 
 Dec 10 00:32:20 linux-ess sudo: pam_unix(sudo:session): session closed for user root
 Dec 10 01:54:59 linux-ess sudo:    jacob : user NOT in sudoers ; TTY=pts/0 ; PWD=/home/student ; USER=root ; COMMAND=/usr/sbin/useradd jef
 Dec 10 18:36:26 linux-ess sudo:  student : TTY=pts/0 ; PWD=/home/student ; USER=root ; COMMAND=/usr/bin/apt install tree
@@ -220,13 +220,13 @@ Dec  9 22:43:37 linux-ess gnome-session-binary[1106]: GLib-GIO-CRITICAL: g_bus_g
 Dec  9 22:43:37 linux-ess gnome-session-binary[1106]: GLib-GIO-CRITICAL: g_bus_get_sync: assertion 'error == NULL || *error == NULL' failed
 ```
 
-As you can see, to use this effectively it helps that you have some idea what you are searching for. If you don't know the keywords the message you are looking for contains it is hard to use `grep` effectively. Journald advanced filtering makes it easier to find relevant events when you don't.
+As you can see, to use this effectively it helps that you have some idea what you are searching for. If you don't know what to search for it is hard to use `grep` effectively. Journald advanced filtering makes it easier to find relevant events when you don't know the right keywords to search for.
 
-?> <i class="fa-solid fa-circle-info"></i> The specific name for the log files is determined by the Linux distribution. On a lot distributions the /var/log/syslog log will for example be called /var/log/messages
+?> <i class="fa-solid fa-circle-info"></i> The specific names of the log files are determined by the Linux distribution. On a lot of distributions (of the redhat family) the /var/log/syslog file will for example be called /var/log/messages
 
 ### Rsyslog configuration
 
- In `/etc/rsyslog.conf` you'll find the default configuration of the rsyslog-service. Among other settings it includes the default file permissions for the log-files. But the part I want to draw attention to are the last few lines.
+ In `/etc/rsyslog.conf` you'll find the default configuration of the rsyslog-service. Among other settings it includes the default file permissions for the log-files. But the part we want to draw attention to are the last few lines.
  
  ```bash
 #
@@ -259,7 +259,7 @@ mail.err                        /var/log/mail.err
 *.emerg                         :omusrmsg:*
 ```
 
-Events are categorised by the "facility" that produces the events. For example, auth and authpriv are any event related to security. This is followed by a . and a priority level. None means these events will not be logged in this file. In the above example everything related to security is logged into /var/log/auth.log. Everything else (*.*) is added to the syslog file. To stop security messages from ending up in the general syslog, auth.none and authpriv.none are added. Events of the mail subsystem with a priority of at least error are added to mail.err. Events of the emergency type (the highest level) are displayed in every logged in user's terminal. If you want these messages to only go to the root-user, replace the line with \:omusrmsg:root. You can use @ to send the messages to another networked computer. For example the line
+Events are categorised by the __"facility"__ that produces the events. For example, auth and authpriv are any event related to security. This is followed by a . and a __priority__ level. None means these events will not be logged in the specified file. In the above example everything related to security is logged into the __file__  /var/log/auth.log. Everything else (*.*) is added to the syslog file. To stop security messages from ending up in the general syslog, auth.none and authpriv.none are added. Events of the mail subsystem with a _priority of at least_ error are added to mail.err. Events of the emergency type (the highest level) are displayed in every logged in user's terminal. If you want these messages to only go to the root-user, replace the line with \:omusrmsg:root. You can use @ to send the messages to another networked computer. For example the line
 
 `*.err 			@logger.pxl.be`
 
