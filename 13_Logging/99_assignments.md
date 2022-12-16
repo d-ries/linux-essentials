@@ -7,7 +7,7 @@ View the system log using journalctl
 Use less to find the first occurance of the term 'filesystem' in your journal
 
 ## Task 3
-Find all log events related to networking (NetworkManager-service is the service that handles all network-related tasks on your system.
+Find all log events related to networking (systemd-networkd.service is the service that handles all network-related tasks on your system.)
 
 ## Task 4
 Find all log events with a priority of 'critical' or higher.
