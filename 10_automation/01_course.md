@@ -276,7 +276,7 @@ For more info check the manpage of `at`.
     
 ## Crontab
   
-With the cron command it is possible to plan to run your scripts/commands to run on a regular basis. Cron works different, it uses a file where we put the commands/scripts we want to run and specify when the runs have to happen. To open your crontab-file you give the command `crontab -e`.   
+With the cron command it is possible to plan your scripts/commands to run on a regular basis. Cron works different, it uses a file where we put the commands/scripts we want to run and specify when the runs have to happen. To open your crontab-file you give the command `crontab -e`.   
   
 In the example below we are going to echo some text to a file every minute.  
 ```bash  
