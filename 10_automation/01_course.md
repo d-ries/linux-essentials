@@ -200,7 +200,7 @@ student@linux-ess:~$ echo $PATH
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 ```
   
-?> Mind that every path is seperated with a semicolon
+?> Mind that every path is seperated with a colon
   
 ```bash
 student@linux-ess:~$ echo $PATH | tr ':' '\n'
