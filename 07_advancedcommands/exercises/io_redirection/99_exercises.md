@@ -7,7 +7,7 @@ Create a new file named "userinfo" in your homefolder. Do this by redirecting th
 Add the output of an echo of the variable $UID to this file  
 
 ## Task 3
-Copy, without using sudo, the directory /etc to the directory /tmp recursively (= all subfolders and files included). Use the manpage of the copy command to search for a solution  
+Copy, without using sudo, the directory /etc to the directory /tmp recursively (= all subfolders and files included). It's normal to get a few error messages! Use the manpage of the copy command to search for a solution to copy recursively  
 
 ## Task 4
 Do the last exercise again, but send the error messages to the black hole
