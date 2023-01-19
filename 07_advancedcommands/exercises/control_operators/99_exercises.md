@@ -18,7 +18,7 @@ Imagine you need to create a backup of all home folders to the folder /backup. A
 
 
 ## Task 4
-Create a directory source and a directory destination in your home folder. Also create a text file named "important.txt" in the folder source. You need to copy this file to the folder destination. If the copy was successful, you can delete the folder source with the command rmdir. How are you able to do this with only one commandline? Try this..
+Create a directory source and a directory destination in your home folder. Also create a text file named "important.txt" in the folder source. You need to copy this file to the folder destination. If the copy was successful, you can delete the folder source with the command rm -rf. How are you able to do this with only one commandline? Try this..
 
 ## Task 5
 What is the output of: (Try to answer without typing it in the terminal first) 
