@@ -205,6 +205,8 @@ logout
 
 We want to be mindful of commands that we run as the `root` user. This user can have permissions on all the files, folders and services on our system. This means that running commands as `root` can have a huge impact when being exploited.
 
+?> <i class="fa-solid fa-circle-info"></i> Notice that if you use the minus (-) with the su command, that the profile of the new user will be loaded and you will be put in the homedirectory of that user. If you do not use the minus (-) you will become the new user, but you will remain in the current folder.
+
 ## Group management
 
 ### View groupinfo of a user (id, groups)
