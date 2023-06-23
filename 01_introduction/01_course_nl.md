@@ -38,8 +38,6 @@ Linux-distributies (kortweg distro's) vereenvoudigen het proces van het installe
 
 <i class="fa-solid fa-film"></i> [Unix vs Linux (Eerste 10:30 minuten)](https://www.youtube.com/watch?v=jowCUo_UGts)  
 
-<i class="fa-solid fa-film"></i> [Linux-voordelen ten opzichte van andere besturingssystemen](https://youtu.be/0FDQko4BXBI)   
-
 <i class="fa-solid fa-film"></i>  [Wat is linux?](https://www.youtube.com/watch?v=zA3vmx0GaO8)
 
 <i class="fa-solid fa-earth-europe"></i> [High level overview Linux](https://www.linux.com/what-is-linux/)
