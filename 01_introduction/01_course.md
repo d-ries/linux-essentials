@@ -36,9 +36,7 @@ Linux distributions (distros in short) simplify the process of installing gnu/li
 ![distros](../images/01/distros.png)
 
 
-<i class="fa-solid fa-film"></i> [Unix vs Linux (first 10:30 minutes)](https://www.youtube.com/watch?v=jowCUo_UGts)  
-
-<i class="fa-solid fa-film"></i> [Linux Advantages Over Other Operating Systems](https://youtu.be/0FDQko4BXBI)   
+<i class="fa-solid fa-film"></i> [Unix vs Linux (first 10:30 minutes)](https://www.youtube.com/watch?v=jowCUo_UGts)   
 
 <i class="fa-solid fa-film"></i>  [What is linux?](https://www.youtube.com/watch?v=zA3vmx0GaO8)
 
