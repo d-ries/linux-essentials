@@ -1,0 +1,129 @@
+# Installatie
+
+## Virtualisatie
+Om servers te installeren die diensten aanbieden (zoals een minecraft server!) heb je een server nodig met een openbaar IP-adres. Meestal zou je naar een cloudprovider gaan waar je voor een vast bedrag/maand een server kunt huren. Voor deze cursus zullen we dit proces simuleren met behulp van een virtuele machine. 
+
+Virtualisatie is een concept waarbij je een computersysteem met een besturingssysteem virtueel op een ander systeem kunt laten draaien. Dit maakt het mogelijk om meerdere _gast besturingssystemen_ met hun eigen virtuele hardware op één _host system_ te hebben. 
+
+![Virtualisatie](../images/02/Virtualization.png)
+
+Voor deze cursus willen we het besturingssysteem [Ubuntu-server](https://ubuntu.com/download/server) gebruiken en installeren in een virtuele omgeving. Voor deze cursus zullen we een op Debian gebaseerde distro gebruiken. 
+
+?> :fa-solid fa-list-check: _Download het `.iso` bestand voor Ubuntu server met behulp van [deze link](https://ubuntu.com/download/server). Een `.iso` bestand is een exacte kopie van een CD/DVD. Je gebruikt dit later om het besturingssysteem in de virtuele machine te installeren._
+
+![Download Ubuntu Server](../images/02/GetUbuntuServer_Download_Ubuntu.png)
+
+## Virtualisatie software 
+Om virtualisatie te gebruiken zijn er verschillende opties. De meest voorkomende virtualisatiesoftware is: 
+- VMware Workstation
+- Virtualbox 
+- Hyper-V 
+
+In deze cursus zullen we VMware Workstation gebruiken en ondersteunen, maar de andere softwarepakketten hebben hetzelfde doel. Studenten van Hogeschool PXL krijgen een gratis educatie licentie om VMware Workstation pro te gebruiken via [BrightSpace](https://itacademy.brightspace.com/). 
+
+## Een nieuwe VM maken 
+Om een nieuwe virtuele machine (VM) aan te maken in VMWare ga je naar het menu `file`>`New virtual machine`. De wizard voor het maken van een nieuwe VM wordt weergegeven. 
+
+![VMwarebestand nieuwe VM](../images/02/VMware_File_New_VM.png) 
+
+In het eerste scherm selecteren we de optie `Typical`: 
+
+![VMware Installatie Standaard](../images/02/VMware_Typical.png) 
+
+Vervolgens kiezen we voor `install the operating system later`: 
+
+![VMware installeert besturingssysteem later](../images/02/VMware_Operating_System_Later.png) 
+
+Vervolgens kiezen we voor het besturingssysteem `Linux`. In de versie dropdown selecteren we `Ubuntu 64 bit`. Dit is de Linux-distributie die we tijdens deze cursus zullen gebruiken. 
+
+![VMware Ubuntu 64bit](../images/02/VMware_Ubuntu_64bit.png) 
+
+In het volgende scherm geven we de virtuele machine een naam. Je kunt ook een andere map opgeven om de virtuele machine op je computer op te slaan. 
+
+![VMware noemt de VM](../images/02/VMware_Name_The_VM.png) 
+
+In het volgende scherm configureren we de grootte van de virtuele harde schijf voor de VM. We zullen een schijf maken met 20 GB opslag. We kunnen dit later uitbreiden als dat nodig is: 
+
+![VMware-schijfgrootte](../images/02/VMware_Disk_Size.png) 
+
+We moeten op `Customize Hardware` klikken om de virtuele machine iets meer te configureren: 
+
+![VMware past hardware aan](../images/02/VMware_Customize_Hardware.png) 
+
+We moeten nog steeds het ISO-bestand van de Ubuntu-server koppelen aan het virtuele cd-rom-station. Dit doen we door `New CD/DVD` te selecteren en naar het gedownloade `iso` bestand te bladeren: 
+
+![VMware Selecteer ISO](../images/02/VMware_Select_ISO.png) 
+
+Klik op `Finish` en de virtuele machine wordt gemaakt. 
+
+![VMware-afwerking](../images/02/VMware_Finish.png) 
+
+Je kunt de VM nu opstarten door op het groene pijltje te klikken. Hiermee wordt de virtuele machine opgestart en wordt het installatieproces uitgevoerd. 
+
+![VMware-afwerking](../images/02/VMware_Start_VM.png) 
+
+## Installatie Ubuntu-server 
+Zoals eerder beschreven zullen we de distro Ubuntu gebruiken. Na het maken en opstarten van de virtuele machine is er een installatieproces dat we moeten doorlopen. Je zal merken dat er geen muisaanwijzer beschikbaar is. We gebruiken de pijltjestoetsen en enter om door de stappen te navigeren. 
+
+?> <i class="fa-solid fa-circle-info"></i> Resulteert het opstarten van de VM in de fout `This host supports Intel VT-x, but Intel VT-x is diabled`? Dan moet je de VT-X-optie activeren in de BIOS van je laptop. Meer informatie is te vinden in [dit artikel](https://www.qtithow.com/2020/12/fix-error-this-host-supports-Intel-VT-x.html). 
+
+?> <i class="fa-solid fa-circle-info"></i> Als je je VM wilt verlaten en je muis terug wilt krijgen in het besturingssysteem van je laptop (=Windows), moet je op `CTRL + ALT` drukken! 
+
+We maken de keuze om te proberen of te installeren: 
+
+![Ubuntu_Server_Try_Or_Install](../images/02/Ubuntu_Server_Try_Or_Install.png)
+
+We starten het installatieproces door een taal te selecteren. We kiezen voor Engels: 
+
+![Ubuntu_Server_Language](../images/02/Ubuntu_Server_Language.png)
+
+We slaan de update van het installatieprogramma over: 
+
+![Ubuntu_Server_No_Installer_Update](../images/02/Ubuntu_Server_No_Installer_Update.png)
+
+Kies de juiste toetsenbordindeling. Voor `azerty` selecteert je `Belgian`: 
+
+![Ubuntu_Server_Keyboard_Belgian](../images/02/Ubuntu_Server_Keyboard_Belgian.png)
+
+In de volgende 7 stappen brengen we geen wijzigingen aan. We drukken gewoon op `Done` of `Continue` : 
+
+![Ubuntu_Server_Base_For_The_Installation](../images/02/Ubuntu_Server_Base_For_The_Installation.png)
+
+![Ubuntu_Server_Network_Connections](../images/02/Ubuntu_Server_Network_Connections.png)
+
+![Ubuntu_Server_Proxy_Settings](../images/02/Ubuntu_Server_Proxy_Settings.png)
+
+![Ubuntu_Server_Archive_Mirror](../images/02/Ubuntu_Server_Archive_Mirror.png)
+
+![Ubuntu_Server_Storage_Config](../images/02/Ubuntu_Server_Storage_Config.png)
+
+![Ubuntu_Server_Storage_Config_Overview](../images/02/Ubuntu_Server_Storage_Config_Overview.png)
+
+![Ubuntu_Server_Storage_Config_Overview_Confirmation](../images/02/Ubuntu_Server_Storage_Config_Overview_Confirmation.png)
+
+Vervolgens maken we een gebruikersaccount aan dat we gebruiken om in te loggen op het besturingssysteem. We gebruiken de volgende inloggegevens: 
+``` 
+Gebruikersnaam: student 
+Servernaam: linux-ess 
+wachtwoord: pxl 
+``` 
+
+![Ubuntu_Server_Storage_Username_student_Servername_linux-ess](../images/02/Ubuntu_Server_Storage_Username_student_Servername_linux-ess.png)
+
+Voor extra pakketten kiezen we er alleen voor om `SSH server` te installeren: 
+
+![Ubuntu_Server_Storage_SSH](../images/02/Ubuntu_Server_Storage_SSH_WEL.png)
+
+![Ubuntu_Server_Storage_Featured_Server_Snaps](../images/02/Ubuntu_Server_Storage_Featured_Server_Snaps.png)
+
+Het besturingssysteem wordt geïnstalleerd en geconfigureerd. Na een tijdje verschijnt de optie `Reboot now`. Dit geeft aan dat de installatie is voltooid: 
+
+![Ubuntu_Server_Reboot](../images/02/Ubuntu_Server_Reboot.png)
+
+Tijdens het herstartproces moet je op de `entertoets` op je toetsenbord drukken: 
+
+![Ubuntu_Server_Press_Enter_To_Reboot](../images/02/Ubuntu_Server_Press_Enter_To_Reboot.png)
+
+Zodra de server opnieuw is opgestart, moet je nogmaals op de `entertoets` drukken om de inlogprompt te zien. 
+
+![Ubuntu_Server_Press_Enter_To_See_Login](../images/02/Ubuntu_Server_Press_Enter_To_See_Login.png)
