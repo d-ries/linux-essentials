@@ -40,7 +40,7 @@ student@linux-ess:~$ ls -a
 ..  .bash_logout   .profile     .sudo_as_admin_successful
 student@linux-ess:~$
 ```
-Note that the output of the `ls -a` command may be different on your system. The man goal is that we get a list of hidden files (files starting with `.`). Linus wants to check if these files (or folders) actually contain contents. To do this he uses the `man ls` command to search for options to view file sizes:
+Note that the output of the `ls -a` command may be different on your system. The main goal is that we get a list of hidden files (files starting with `.`). Linus wants to check if these files (or folders) actually contain contents. To do this he uses the `man ls` command to search for options to view file sizes:
 ```bash
 student@linux-ess:~$ ls -alh
 total 52K

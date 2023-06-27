@@ -1,6 +1,6 @@
 # Assignment on working with files and folders
 
-`Connect over ssh to you server to do the exercises'
+`Connect over ssh to you server to do the exercises`
 
 ## Task 1
 Navigate to your home directory with the least number of keystrokes (three to be exact)
@@ -76,7 +76,7 @@ Create a new folder "My Pictures" in your homefolder. Go into this folder and cr
   
 
 ## Task 13
-Use the command `rename` twice to rename all files so no capitals exist anymore in any of the filenames.
+Use the command `rename` twice to rename all files so no capitals exist anymore in any of the filenames from the previous exercise.
 
 ## Task 14
 Make sure you are located in your homedirectory (~). <br/>  
@@ -138,7 +138,7 @@ If you want to see your prompt again on the server itself, you just have to pres
 While in the homefolder:
 create an empty file, named _sourcefile_ in _~/school/semester/1/courses/ubuntuserver/exercises/chapter5_
 show a tree of the directory _school_
-a long listing of the directory _chapter5_
+show a long listing of the directory _chapter5_
 
 ## Task 28
 Search the manpage of touch to find out what this command is used for. Try to explain in own words
@@ -160,7 +160,7 @@ Copy the directory _school_ with all files and subdirectories to the directory _
 View a directorylisting of _/tmp_
 View the directory tree of _/tmp/school_
 Reboot the server
-See if the directorytree of _school_ is still present in _/tmp_
+See if the directory tree of _school_ is still present in _/tmp_
 Use `man hier` to search for _/tmp_ and find out why
 
 ## Task 34
