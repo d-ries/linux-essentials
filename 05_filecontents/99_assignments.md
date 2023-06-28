@@ -25,7 +25,7 @@ spaced over multiple lines
 inserted by echo.
 
  
-More difficult: It is also possible to do this with just one `echo` command. But you will need to search for the right option and escape characters in the manpage of `echo`  
+More difficult: It is also possible to do this with just one `echo` command. But you will need to search for the right option to escape characters in the manpage of `echo`  
 
 ## Task 7
 Use cat to copy the file .bashrc in your home folder to a new file named .bashrc.backup

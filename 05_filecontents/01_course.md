@@ -96,10 +96,10 @@ Oct  7 16:23:26 ubuntu-server systemd-logind[840]: New session 1 of user student
 Oct  7 16:23:26 ubuntu-server systemd: pam_unix(systemd-user:session): session opened for user student(uid=1000) by (uid=0)
 ```
 
-?> <i class="fa-solid fa-circle-info"></i> We can even view log files realtime by using `tail -f` (`-f` stands for _follow_). This will start an active process that at first will show the last 10 lines of a file. When something gets added to this file, it will be added realtime in the command output. To terminate this active process use `ctrl+c`.
+?> <i class="fa-solid fa-circle-info"></i> We can even view log files in realtime by using `tail -f` (`-f` stands for _follow_). This will start an active process that at first will show the last 10 lines of a file. When something gets added to this file, it will be added in realtime in the command output. To terminate this active process use `ctrl+c`.
 
 ## Scrolling through several screens of the contents of a file (less)
-When viewing big files with `cat` you might have noticed that the terminal will only show the last bit of the content. We can use commands such as `more` and `less` to view (and scroll through) the entire content. With `more` you can only scroll down and this one screen at a time by pressing the _spacebar_ or _page down_. With less you can also scroll up by pressing _page up_.  With less scrolling only one line can also be done by using the _up arrow_ or _down arrow_. To exit `more`or `less` you can simply press _q_ or _ctrl+c_.
+When viewing big files with `cat` you might have noticed that the terminal will only show the last bit of the content. We can use commands such as `more` and `less` to view (and scroll through) the entire content. With `more` you can only scroll down and this one screen at a time by pressing the _spacebar_ or _page down_. With `less` you can also scroll up by pressing _page up_.  With `less` scrolling only one line can also be done by using the _up arrow_ or _down arrow_. To exit `more`or `less` you can simply press _q_ or _ctrl+c_.
 ```bash
 student@linux-ess:~$ less /var/log/dpkg.log
 2022-09-19 21:52:34 startup packages remove
@@ -133,7 +133,7 @@ demofile
 student@linux-ess:~$ cat demofile
 hello world
 ```
-If you want to add to a file instead of overwriting it, you can do this with `>>`
+By default a file get overwritten by using the `>` sign. If you want to add to a file instead of overwriting it, you can do this with `>>`
 ```bash
 student@linux-ess:~$ cat demofile
 hello world
@@ -146,7 +146,7 @@ The concept we use here is called _output redirection_ which we will talk about 
 
 ### Using cat
 We can also use the cat command in combination with the _output redirection (`>`)_ as shown in the example below. After typing the command we can type one or more lines. When you are done typing the file contents you can use the keyboard combination `ctrl` and `d` (ctrl+d) to tell the shell you are done (this will send an _end of file_ (EOF) signal to the running process):
-```
+```bash
 student@linux-ess:~$ cat > jokes.txt    
 What is a Linux user's favorite game?
 sudo ku
@@ -154,11 +154,11 @@ student@linux-ess:~$ cat jokes.txt
 What is a Linux user's favorite game?
 sudo ku
 ```
- We pressed __ctrl+d__ after the line 'sudo ku'
+We pressed __ctrl+d__ after the line 'sudo ku'
  
 #### Copy files using cat
 Knowing what we learnt about using _output redirection_ (`>`) we can actually use this to copy file contents to another file as follows:
-```
+```bash
 student@linux-ess:~$ cat jokes.txt > jokes2.0.txt
 student@linux-ess:~$ cat jokes2.0.txt
 What is a Linux user's favorite game?
@@ -218,5 +218,5 @@ At the bottom of the screen it shows some of the shortcuts you can use. Some of 
 
 ?> <i class="fa-solid fa-circle-info"></i> The fastest way to 'save and quit nano' is to type _ctrl+s_ (to save the changes) followed by _ctrl+x_ (to exit nano). 
 
-?> Another very popular text editor in Linux systems is `vi`. This editor is really powerfull but also has a steep learning curve. In this course we will not cover `vi` But feel free to experiment on your own. `vim`, an easier option of `vi` is also installed on your system. To learn more about this, a tutor is available with the command: `vimtutor` .   
+?> Another very popular text editor in Linux systems is `vi`. This editor is really powerfull but also has a steep learning curve. In this course we will not cover `vi`, but feel free to experiment on your own. `vim`, an easier option of `vi` is also installed on your system. To learn more about this, a tutor is available with the command: `vimtutor`.   
 

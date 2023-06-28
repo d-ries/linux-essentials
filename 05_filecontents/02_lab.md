@@ -20,7 +20,7 @@ We can save the file using the keyboard combination `ctrl + o`. It will prompt t
 
 Make sure to check if the content is correctly saved by using the command `cat linuscraft/todo`. If we only want to check the last couple of lines we could also use the `tail linuscraft/todo` command.
 
-<i class="fa-solid fa-pencil"></i> Wan't a challenge? Try using the editor `vi` or `vim` to insert the text. This is a special and popular text editor which has a command and insert mode. More information about this editor which you have to read first can be found [here](https://linuxfoundation.org/blog/classic-sysadmin-vim-101-a-beginners-guide-to-vim/).
+<i class="fa-solid fa-pencil"></i> Want a challenge? Try using the editor `vi` or `vim` to insert the text. This is a special and popular text editor which has a command and insert mode. More information about this editor which you have to read first can be found [here](https://linuxfoundation.org/blog/classic-sysadmin-vim-101-a-beginners-guide-to-vim/).
 
 The command above uses a relative path to the existing `todo` file.   
   
