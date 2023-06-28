@@ -7,7 +7,7 @@ Ze hebben allemaal naar Twitch gekeken, waar ze merkten dat streamers vaak samen
 
 Dit is *precies* wat Linus zoekt. Na wat onderzoek komt hij erachter dat het opzetten van zo'n server geen gemakkelijke taak is. Hij leest over allerlei concepten zoals Linux, Unix, chmod, apt, ... waar hij nog nooit van gehoord had. Hoe vastberaden Linus ook is, hij zal niet rusten voordat hij een minecraft-server genaamd *LinusCraft* heeft opgezet, zodat hij met zijn vrienden kan spelen. 
 
-! [Linuscraft] (.. /images/linuxcraft.png) 
+![Linuscraft](../images/linuxcraft.png) 
 
 Hier begint ons verhaal. In deze cursus volgen we Linus in een reeks labs waar we nieuwe concepten zullen gebruiken en leren met als doel het opzetten en onderhouden van een minecraft-server.  
 

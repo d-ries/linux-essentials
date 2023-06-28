@@ -19,10 +19,10 @@ Om virtualisatie te gebruiken zijn er verschillende opties. De meest voorkomende
 - Virtualbox 
 - Hyper-V 
 
-In deze cursus zullen we VMware Workstation gebruiken en ondersteunen, maar de andere softwarepakketten hebben hetzelfde doel. Studenten van Hogeschool PXL krijgen een gratis educatie licentie om VMware Workstation pro te gebruiken via [BrightSpace](https://itacademy.brightspace.com/). 
+In deze cursus zullen we VMware Workstation gebruiken en ondersteunen, maar de andere softwarepakketten hebben hetzelfde doel. Studenten van Hogeschool PXL krijgen een gratis educatieve licentie om VMware Workstation pro te gebruiken via [BrightSpace](https://itacademy.brightspace.com/). 
 
 ## Een nieuwe VM maken 
-Om een nieuwe virtuele machine (VM) aan te maken in VMWare ga je naar het menu `file`>`New virtual machine`. De wizard voor het maken van een nieuwe VM wordt weergegeven. 
+Om een nieuwe virtuele machine (VM) aan te maken in VMWare ga je naar het menu `File`>`New Virtual Machine`. De wizard om een nieuwe VM te maken wordt weergegeven. 
 
 ![VMwarebestand nieuwe VM](../images/02/VMware_File_New_VM.png) 
 
@@ -30,7 +30,7 @@ In het eerste scherm selecteren we de optie `Typical`:
 
 ![VMware Installatie Standaard](../images/02/VMware_Typical.png) 
 
-Vervolgens kiezen we voor `install the operating system later`: 
+Vervolgens kiezen we voor `I will install the operating system later`: 
 
 ![VMware installeert besturingssysteem later](../images/02/VMware_Operating_System_Later.png) 
 
@@ -39,6 +39,7 @@ Vervolgens kiezen we voor het besturingssysteem `Linux`. In de versie dropdown s
 ![VMware Ubuntu 64bit](../images/02/VMware_Ubuntu_64bit.png) 
 
 In het volgende scherm geven we de virtuele machine een naam. Je kunt ook een andere map opgeven om de virtuele machine op je computer op te slaan. 
+?> <i class="fa fa-exclamation-circle" style="font-size:48px;color:red"></i> Let op dat je de bestanden van de VM niet opslaat in een map die gesynced wordt met de cloud (OneDrive, Dropbox, Google Drive)?. Je VM zal crashed en je zal alles in de VM kwijt zijn!
 
 ![VMware noemt de VM](../images/02/VMware_Name_The_VM.png) 
 
@@ -46,7 +47,7 @@ In het volgende scherm configureren we de grootte van de virtuele harde schijf v
 
 ![VMware-schijfgrootte](../images/02/VMware_Disk_Size.png) 
 
-We moeten op `Customize Hardware` klikken om de virtuele machine iets meer te configureren: 
+We moeten op `Customize Hardware` klikken om de virtuele machine verder te configureren: 
 
 ![VMware past hardware aan](../images/02/VMware_Customize_Hardware.png) 
 
@@ -69,7 +70,7 @@ Zoals eerder beschreven zullen we de distro Ubuntu gebruiken. Na het maken en op
 
 ?> <i class="fa-solid fa-circle-info"></i> Als je je VM wilt verlaten en je muis terug wilt krijgen in het besturingssysteem van je laptop (=Windows), moet je op `CTRL + ALT` drukken! 
 
-We maken de keuze om te proberen of te installeren: 
+We maken de keuze om Ubuntu te proberen of te installeren: 
 
 ![Ubuntu_Server_Try_Or_Install](../images/02/Ubuntu_Server_Try_Or_Install.png)
 
@@ -110,7 +111,7 @@ wachtwoord: pxl
 
 ![Ubuntu_Server_Storage_Username_student_Servername_linux-ess](../images/02/Ubuntu_Server_Storage_Username_student_Servername_linux-ess.png)
 
-Voor extra pakketten kiezen we er alleen voor om `SSH server` te installeren: 
+Als extra pakket kiezen we er voor om enkel `OpenSSH server` te installeren: 
 
 ![Ubuntu_Server_Storage_SSH](../images/02/Ubuntu_Server_Storage_SSH_WEL.png)
 
