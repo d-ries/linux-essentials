@@ -9,7 +9,9 @@ Virtualisatie is een concept waarbij je een computersysteem met een besturingssy
 
 Voor deze cursus willen we het besturingssysteem [Ubuntu-server](https://ubuntu.com/download/server) gebruiken en installeren in een virtuele omgeving. Voor deze cursus zullen we een op Debian gebaseerde distro gebruiken. 
 
-?>:fa-solid fa-list-check: _Download het `.iso` bestand voor Ubuntu server met behulp van [deze link](https://ubuntu.com/download/server). Een `.iso` bestand is een exacte kopie van een CD/DVD. Je gebruikt dit later om het besturingssysteem in de virtuele machine te installeren._
+? <i class="fa-solid fa-list-check"></i>_Download het `.iso` bestand voor Ubuntu server met behulp van [deze link](https://ubuntu.com/download/server). Een `.iso` bestand is een exacte kopie van een CD/DVD. Je gebruikt dit later om het besturingssysteem in de virtuele machine te installeren._
+
+
 
 ![Download Ubuntu Server](../images/02/GetUbuntuServer_Download_Ubuntu.png)
 
