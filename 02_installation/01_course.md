@@ -22,7 +22,7 @@ To use virtualisation there are several options. The most common virtualisation 
 In this course we will use and support VMware Workstation but the other software packages have the same purpose. Students of PXL University College will get a free educational license to use VMware Workstation pro through [BrightSpace](https://itacademy.brightspace.com/).
 
 ## Create a new VM
-To create a new virtual machine (VM) in VMWare you go to the menu `file`>`New virtual machine`. The wizard to create a new VM will appear.
+To create a new virtual machine (VM) in VMWare you go to the menu `File`>`New Virtual Machine`. The wizard to create a new VM will appear.
 
 ![VMware File New Vm](../images/02/VMware_File_New_VM.png)
 
@@ -30,7 +30,7 @@ In the first screen we select the option `Typical`:
 
 ![VMware Install Typical](../images/02/VMware_Typical.png)
 
-Next we choose to `install the operating system later`:
+Next we choose to `I will install the operating system later`:
 
 ![VMware Install Operating System Later](../images/02/VMware_Operating_System_Later.png)
 
@@ -39,6 +39,7 @@ Next we choose the operating system `Linux`. In the version dropdown we select `
 ![VMware Ubuntu 64bit](../images/02/VMware_Ubuntu_64bit.png)
 
 In the next screen we give the virtual machine a name. You can also specify a different folder to store the virtual machine on your computer.
+?> <i class="fa fa-exclamation-circle" style="font-size:48px;color:red"></i> Caution! Do not save your VM files to a directory on your host that is synced with the cloud (OneDrive, Dropbox, Google Drive)?. Your VM will crash and you will lose everything from within this VM!
 
 ![VMware Name The VM](../images/02/VMware_Name_The_VM.png)
 
