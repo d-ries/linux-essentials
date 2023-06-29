@@ -3,10 +3,10 @@ In Windows we have several options to install software. We usually use installer
 
 Remember that latest hyped video game that you preordered and turned out to be a total bust? When installing that game it might prompt you saying/asking that you need to install the lastest version of DirectX or Visual C++ Redistributable? These are other pieces of software that are needed to run the initial application or game. We call these pieces of software _dependencies_. Most of the times the original installer installs these for us but sometimes we have to manually find and install these dependencies ourselves.
 
-Installing software on Linux systems hasn't always been easy. Back in the days we had to download source code and compile applications ourselves, put them in the right folders and make sure we have all the needed dependencies to run the application.  We might come across this process in the present day, but most of the time we are gonna install software using _package managers_. These are tools that run through a database to find the application that we want to install. If it finds an application matching the specified name it will install the application as well as all the required dependencies. If we remove an application it will also remove all dependencies that are no loger required. Another benefit is that the package manager will also manage updates of all our applications and dependencies.
+Installing software on Linux systems hasn't always been easy. Back in the days we had to download source code and compile applications ourselves, put them in the right folders and make sure we have all the needed dependencies to run the application.  We might come across this process in the present day, but most of the time we are gonna install software using _package managers_. These are tools that run through a database to find the application that we want to install. If it finds an application matching the specified name it will install the application as well as all the required dependencies. If we remove an application it will also remove all dependencies that are no longer required. Another benefit is that the package manager will also manage updates of all our applications and dependencies.
 
 ## installing, removing and updating software (apt)
-When installing software packages in Ubuntu we often use the `apt` (advanced package system) command. The man page gives us all the info we need to use the command:
+When installing software packages in Ubuntu we often use the `apt` (advanced package system) command. The manpage gives us all the info we need to use the command:
 ```bash
 student@linux-ess:~$ man apt
 APT(8)                                                   APT                                                   APT(8)
@@ -25,7 +25,7 @@ DESCRIPTION
        specialized APT tools like apt-get(8) and apt-cache(8).
 ```
 
-As described above `apt` (or it's predecessor `apt-get`) is a package manager. We can use this tool to install packages (read: software) on our Linux machine. Note that `apt` is the specific package manager for Ubuntu. There are several alternatives available such as `dpkg`, `pacman`, `rpm`, `yum`, `dnf` ... which might come pre-installed with a specific linux distribution.
+As described above `apt` (or it's predecessor `apt-get`) is a package manager. We can use this tool to install packages (read: software) on our Linux machine. Note that `apt` is the specific package manager for Ubuntu. There are several alternatives available such as `dpkg`, `pacman`, `rpm`, `yum`, `dnf`, ... which might come pre-installed with a specific linux distribution.
 
 ### Repositories
 An important thing to note about `apt` is that it uses a database of available packages. We can update this list of packages by running the command below:
@@ -89,7 +89,7 @@ Setting up unzip (6.0-25ubuntu1) ...
 Setting up zip (3.0-11build1) ...
 Processing triggers for man-db (2.9.1-1) ...
 ```
-If we analyse the output of the command we can see a couple of this happening:
+If we analyse the output of the command we can see a couple of things happening:
 * It reads the package list to find the `zip` package. After this is done it builds a dependency tree to see what dependencies the `zip` package needs.
 * It points out that it will install an additional package called `unzip`. This is a dependency of the `zip` command.
 * It points out what new packages will be installed and if any packages will be updated.
@@ -296,7 +296,7 @@ The options we use can be found in the manpage, but below you can find a small s
 `dpkg` was the first package manager for Debian-based systems. Where Ubuntu nowadays uses `apt` as the default package manager, we can also use `dpkg`. `dpkg` was the predecessor of `apt-get` and `apt`. `dpkg` doesn't make use of repositories, so we have to have the installer file before using the command. It also doesn't download dependencies automatically. That's why they used to call it *the dependancy hell*  We can use `dpkg` to install / remove / ... `.deb` files. The example below installs the package `yourpackage`:
 ```bash
 student@linux-ess:~$ sudo dpkg -i yourpackage.deb
-```` 
+```
 
 `dpkg` can also be used to (re)configure particular packages. We can use this for example to change the keyboard layout on our server by running:
 ```bash
@@ -311,7 +311,7 @@ The commands for working with snap are almost similar as apt. We have:
 snap search  
 snap list (installed apps)  
 snap list --all (shows all the installed versions)  
-snap revert <snapname> --revision <revnumber>      (go back to a previous version of the snap)  
+snap revert <snapname> --revision <revnumber> (go back to a previous version of the snap)  
 snap info   
 snap install  
 snap remove   
@@ -319,7 +319,7 @@ snap refresh (upgrades the snaps, happens every day automatically)
 snap changes (history of changes)  
 snap version  
 
-snap update does not exist. the snap daemon checks for updates 4 times a day.
+snap update does not exist. The snap daemon checks for updates 4 times a day.
 
 You can install from different channels (like stable, beta,...) but the standard is stable and we keep it that way.
 
@@ -380,7 +380,7 @@ Archive:  myzipfile.zip
   inflating: .profile
 student@linux-ess:~$ ls -a
 .   ..   .bash_history   .bash_logout   .bashrc   .profile   .ssh  
-```` 
+```
 
 So why do we use `tar` and `gzip` if we can use `zip` instead? This is because `tar` will also keep the ownerships and the rights on each file. We will compare the two with an example (if you don't really understand the ownership in the example, mind that it will be explained in a later lesson):  
 
@@ -402,5 +402,4 @@ student@ulinux-ess:/tmp$ sudo rm .bashrc
 student@ulinux-ess:/tmp$ sudo tar -xzf tardemo.tgz            # sudo -> do as root user  -> just to demo the rights
 student@ulinux-ess:/tmp$ ls -lh .bashrc
 -rw-r--r-- 1 student student 3.7K Jan  6  2022 .bashrc       # student is still the owner even though the files are created by root (sudo) while untarring
-```` 
-
+```

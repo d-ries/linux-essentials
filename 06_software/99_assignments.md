@@ -1,9 +1,9 @@
 # Assignment on software
 
-In this assignment we will use `apt` instead of `apt-get` and `apt-cache`which are older commands
+In this assignment we will use `apt` instead of `apt-get` and `apt-cache` which are older commands
 
 ## Task 1
-Update the local APT cache. This will get the latest info from the repositories  
+Update the local apt cache. This will get the latest info from the repositories  
 
 ## Task 2
 Upgrade all packages installed with _apt_ to the latest available version  
@@ -12,7 +12,7 @@ Upgrade all packages installed with _apt_ to the latest available version
 Search with apt for a package that has something to do with 'usage and stats'. You will see `btop` as one of the results. Install the package and run the app  
 
 ## Task 4
-Search with apt for a package that has something to do with colorful cat. You will see `lolcat` as one of the results. Install the package and run the following commands:  
+Search with apt for a package that has something to do with 'colorful cat'. You will see `lolcat` as one of the results. Install the package and run the following commands:  
 cd  
 cat .bash_history  
 lolcat .bash_history  
