@@ -1,4 +1,4 @@
-# Assignment on Users, Groups, Permissions - Extra Exercises
+# Assignment on Users, Groups, Permissions - Extra exercises
 
 ## Task 1
 Create a group named pxl and a user itstudent. This user's primary group is pxl. Set the password for the user to test123. The home directory for this user is /home/itstudent and for the shell the user uses /bin/bash.
@@ -14,7 +14,7 @@ r-x for others, rw- for group and no permissions (---) for the file owner. Check
 - Can he delete the file? 
 
 ## Task 4
-Create the directory sturcture with the necessary users, groups and ACLs as shown in the image below.
+Create the directory structure with the necessary users, groups and ACLs as shown in the image below.
 ![foldersecurity](../../../images/09/folderSecurity.PNG)
   
 Test where the users Ava and Oliver have read and write permissions.
