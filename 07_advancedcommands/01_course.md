@@ -51,26 +51,34 @@ student@linux-ess:~$ echo \ \  I \ \ \ \ \ \ \ like \ \ to \ \ \ \ \ \ \ \ \ \ \
 When specifying filenames, we can get the shell to generate the filenames dynamically by giving a certain pattern. For example: we might want to find all the files starting with `temp` followed by whatever text or extention. The concept where we generate file names dynamically is called _file globbing_. There are a couple of special characters that we can use as seen in the example below:
 ```bash
 student@linux-ess:~/globbing$ ls
-afilea  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec 
+a  afilea  file  File  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec 
 student@linux-ess:~/globbing$ ls file*
-file1  file2  file3  filea  fileabc  fileb  filebc
+file  file1  file2  file3  filea  fileabc  fileb  filebc
 student@linux-ess:~/globbing$ ls *a
-afilea  filea
+a  afilea  filea
 student@linux-ess:~/globbing$ ls *a*
-afilea  filea fileabc
+a  afilea  filea  fileabc
 student@linux-ess:~/globbing$ ls F*
-File4  File5  FileABC  Filec
+File  File4  File5  FileABC  Filec
+student@linux-ess:~/globbing$ ls f*c
+fileabc  filebc
 student@linux-ess:~/globbing$ ls F*ile*
-File4  File5  FileABC  Filec
+File  File4  File5  FileABC  Filec
 ```
 an asterisk (`*`) in _file globbing_ means zero, one or more characters can be whatever they want. This is often called a wildcard that we can use one or multiple times in a filename. Another option would be a question mark (`?`) which is interpreted as exactly _one character_ can be what they want as seen in the following example:
 ```bash
 student@linux-ess:~/globbing$ ls
-afilea  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec
-student@linux-ess:~/globbing$ ls File?
-File4  File5  Filec
+a  afilea  file  File  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec
+student@linux-ess:~/globbing$ ls ?
+a
+student@linux-ess:~/globbing$ ls ????
+file  File
+student@linux-ess:~/globbing$ ls file?
+file1  file2  file3  filea  fileb
 student@linux-ess:~/globbing$ ls file??
 filebc
+student@linux-ess:~/globbing$ ls File??
+ls: cannot access 'File??': No such file or directory
 student@linux-ess:~/globbing$ ls ?fi*
 afilea
 ```
@@ -78,7 +86,7 @@ afilea
 Lastly we can also use square brackets (`[ ]`) which usually contain one or more characters in between the brackets. The brackets define one character that matches one of the characters between the brackets:
 ```bash
 student@linux-ess:~/globbing$ ls
-afilea  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec
+a  afilea  file  File  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec
 student@linux-ess:~/globbing$ ls file[12]
 file1  file2
 student@linux-ess:~/globbing$ ls file[a]
@@ -89,7 +97,7 @@ file1  filea
 When using brackets we also can define ranges:
 ```bash
 student@linux-ess:~/globbing$ ls
-afilea  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec
+a  afilea  file  File  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec
 student@linux-ess:~/globbing$ ls file[a-z]
 filea  fileb
 student@linux-ess:~/globbing$ ls File[A-Z]*
@@ -102,7 +110,7 @@ file1  file2  file3
 When using brackets we also can exclude the specified range by specifying a caret (^) or an exclamation mark (!) at the beginning:
 ```bash
 student@linux-ess:~/globbing$ ls
-afilea  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec
+a  afilea  file  File  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec
 student@linux-ess:~/globbing$ ls file[a-z]*
 filea  fileabc  fileb  filebc
 student@linux-ess:~/globbing$ ls file[^a-z]*
