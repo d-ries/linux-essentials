@@ -9,7 +9,7 @@ Linux heeft ook een desktopversie. Download [Ubuntu Desktop](https://ubuntu.com/
 Installeer [Ubuntu Desktop](https://ubuntu.com/download/desktop) in een nieuwe virtuele machine en verken de interface. 
 
 ### De nieuwe VM maken 
-Om een nieuwe virtuele machine (VM) aan te maken in VMWare ga je naar het menu `file`>`New virtual machine`. De wizard voor het maken van een nieuwe VM wordt weergegeven. 
+Om een nieuwe virtuele machine (VM) aan te maken in VMWare ga je naar het menu `File`>`New Virtual Machine`. De wizard voor het maken van een nieuwe VM wordt weergegeven. 
 
 ![VMware-bestand nieuwe VM](../images/02/VMware_File_New_VM.png) 
 
@@ -17,23 +17,24 @@ In het eerste scherm selecteren we de optie `Typical`:
 
 ![VMware Installatie Standaard](../images/02/VMware_Typical.png) 
 
-Vervolgens kiezen we voor `install the operating system later`:
+Vervolgens kiezen we voor `I will install the operating system later`:
 
 ![VMware installeert besturingssysteem later](../images/02/VMware_Operating_System_Later.png) 
 
-Vervolgens kiezen we voor het besturingssysteem `Linux`. In de versie dropdown selecteren we `Ubuntu 64 bit`. Dit is de Linux-distributie die we tijdens deze cursus zullen gebruiken. 
+Vervolgens kiezen we voor het besturingssysteem `Linux`. In de versie dropdown selecteren we `Ubuntu 64-bit`. Dit is de Linux-distributie die we tijdens de labs zullen gebruiken. 
 
 ![VMware Ubuntu 64bit](../images/02/VMware_Ubuntu_64bit.png) 
 
 In het volgende scherm geven we de virtuele machine een naam. Je kunt ook een andere map opgeven om de virtuele machine op je computer op te slaan. 
+?> <i class="fa fa-exclamation-circle" style="font-size:48px;color:red"></i> Let op dat je de bestanden van de VM niet opslaat in een map die gesynced wordt met de cloud (OneDrive, Dropbox, Google Drive)?. Je VM zal crashed en je zal alles in de VM kwijt zijn!
 
 ![VMware noemt de VM](../images/02/LAB_VMware_Name_The_VM.png) 
 
-In het volgende scherm configureren we de grootte van de virtuele harde schijf voor de VM. We zullen een schijf maken met 30 GB opslagruimte. Houd er rekening mee dat de schijfruimte wordt toegewezen tijdens het opslaan van bestanden (max. 30 GB): 
+In het volgende scherm configureren we de grootte van de virtuele harde schijf voor de VM. We zullen een schijf maken met 30 GB opslagruimte. Houd er rekening mee dat de schijfruimte enkel wordt ingenomen door het opslaan van bestanden (dus groeiend tot maximum 30 GB): 
 
 ![VMware-schijfgrootte](../images/02/LAB_VMware_Disk_Size.png) 
 
-We moeten op `Customize Hardware` klikken om de virtuele machine iets meer te configureren: 
+We moeten op `Customize Hardware` klikken om de virtuele machine verder te configureren: 
 
 ![VMware past hardware aan](../images/02/LAB_VMware_Customize_Hardware.png) 
 
@@ -84,7 +85,7 @@ We kiezen ervoor om de wijzigingen toe te passen door de wijzigingen naar de sch
 
 ![Ubuntu_Desktop_Write_Changes_To_Disk](../images/02/LAB_Ubuntu_Desktop_Write_Changes_To_Disk.png) 
 
-?> <i class="fa-solid fa-circle-info"></i> Houd er rekening mee dat je de virtuele schijf van je VM wist. `De harde schijf van je computer/laptop wordt niet gewist!` 
+?> <i class="fa-solid fa-circle-info"></i> Houd er rekening mee dat je de virtuele schijf van je VM wist, maar het is een nieuwe/lege disk waarop we gaan installeren. `De harde schijf van je computer/laptop wordt niet gewist!` 
 
 Voor de tijdzone wijzen we Brussel aan op de kaart of schrijven we het in het tekstvak: 
 
