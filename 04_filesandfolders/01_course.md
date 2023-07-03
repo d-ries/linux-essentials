@@ -52,7 +52,33 @@ student@linux-ess:~$ pwd
 student@linux-ess:~$ ls
 emptyfile
 ```
-  
+
+
+?> <i class="fa-solid fa-circle-info"></i> We can also use the commando `cd -`. This navigates back to the folder where you were working, before coming to this folder: 
+```bash
+student@linux-ess:~$ cd /etc/netplan
+student@linux-ess:/etc/netplan$ ls
+00-installer-config.yaml
+student@linux-ess:/etc/netplan$ cd /var/log
+student@linux-ess:/var/log$ ls
+alternatives.log                dmesg                           syslog
+apport.log                      dpkg.log                        ubuntu-advantage.log
+apt                             faillog                         ubuntu-advantage-timer.log
+auth.log                        installer                       unattended-upgrades
+bootstrap.log                   journal                         vmware-network.log
+btmp                            kern.log                        vmware-vmsvc-root.log
+cloud-init.log                  landscape                       vmware-vmtoolsd-root.log
+cloud-init-output.log           lastlog                         wtmp
+dist-upgrade                    private
+student@linux-ess:/var/log$ cd -
+student@linux-ess:/etc/netplan$ pwd
+/etc/netplan
+student@linux-ess:/etc/netplan$ ls
+00-installer-config.yaml
+```
+
+
+     
 ![DirectoryEmptyFile](../images/04/Ch4_Emptyfile.png)
   
 ?> <i class="fa-solid fa-circle-info"></i> The command `touch` is used to create an empty file named `emptyfile`. The command is explained later on in this chapter.
