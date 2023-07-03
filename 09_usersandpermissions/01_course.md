@@ -798,6 +798,16 @@ text from liam
 
 
 ?> As you may have noticed there is a third bit we haven't talked about. setuid, the first bit in the field. This allows executable files to run with the permissions of the owner of the file, not the one executing it. This is used by the _passwd_ command to allow users to change their own password for example, as a normal user has no access to the /etc/shadow-file. Setting the setuid bit can have serious security risks, and is almost always a very bad idea. So you should probably ignore this knowledge
+
+```bash
+student@linux-ess:~$ ls -l /etc/shadow
+-rw-r----- 1 root shadow 2456 Nov 28  2022 /etc/shadow
+student@linux-ess:~$ ls -l /bin/passwd
+-rwsr-xr-x 1 root root 59976 Nov 24  2022 /bin/passwd
+student@linux-ess:~$ stat -c '%a %n' /bin/passwd
+4755 /bin/passwd 
+```
+
           
 ### Access control lists
 The ACL feature was created to give users the ability to selectively share files and folders with other users and groups. 
