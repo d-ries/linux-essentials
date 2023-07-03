@@ -85,7 +85,7 @@ We choose to apply the changes by writing the changes to disk:
 
 ![Ubuntu_Desktop_Write_Changes_To_Disk](../images/02/LAB_Ubuntu_Desktop_Write_Changes_To_Disk.png)
 
-?> <i class="fa-solid fa-circle-info"></i> Mind that you erase the Virtual Disk of your VM. `The hard disk of your computer/laptop will not be erased!`
+?> <i class="fa-solid fa-circle-info"></i> Mind that you erase the Virtual Disk of your VM, but it's a clean disk on which we are installing. `The hard disk of your computer/laptop will not be erased!`
   
 For the TimeZone we pinpoint Brussels on the map or write it in the textbox:
 
