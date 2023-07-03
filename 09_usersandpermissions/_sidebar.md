@@ -13,7 +13,7 @@
 ** [Assignments: users](./09_usersandpermissions/exercises/users/99_exercises.md)
 ** [Assignments: groups](./09_usersandpermissions/exercises/groups/99_exercises.md)
 ** [Assignments: standard file permissions](./09_usersandpermissions/exercises/standard_file_permissions/99_exercises.md)
-** [Assignments: extra assignments](./09_usersandpermissions/exercises/users_groups_permissions_extra_exercises/99_exercises.md)
+** [Assignments: extra exercises](./09_usersandpermissions/exercises/users_groups_permissions_extra_exercises/99_exercises.md)
 * [10 Automation](./10_automation/01_course.md)
 * [11 Managing running processes](./11_managingrunningprocesses/01_course.md)
 * [12 Managing drives and filesystems](./12_managingdrivesandfilesystems/01_course.md)
