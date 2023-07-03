@@ -205,7 +205,29 @@ logout
 
 We want to be mindful of commands that we run as the `root` user. This user can have permissions on all the files, folders and services on our system. This means that running commands as `root` can have a huge impact when being exploited.
 
-?> <i class="fa-solid fa-circle-info"></i> Notice that if you use the minus (-) with the su command, that the profile of the new user will be loaded and you will be put in the homedirectory of that user. If you do not use the minus (-) you will become the new user, but you will remain in the current folder.
+?> <i class="fa-solid fa-circle-info"></i> Notice that if you use the minus (-) with the su command, that the profile of the new user will also be loaded and you will be put in the homedirectory of that user. If you do not use the minus (-) the profile of the user will not be loaded. You will still become the new user with his privileges, but you will remain in the current folder because his profile won't be loaded.
+
+```bash
+student@linux-ess:~$ whoami; pwd
+student
+/home/student
+student@linux-ess:~$ sudo su root
+root@linux-ess:/home/student# whoami; pwd
+root
+/home/student
+root@linux-ess:/home/student# exit
+exit
+student@linux-ess:~$ whoami; pwd
+student
+/home/student
+student@linux-ess:~$ sudo su - root        
+root@linux-ess:~# whoami; pwd
+root
+/root
+root@linux-ess:~# exit
+logout
+student@linux-ess:~$
+```
 
 ## Group management
 
@@ -314,7 +336,7 @@ drwx------ 5 student it      4096 Oct 19 15:07 snap
 student@linux-ess:~$ exit
 ```
 
-Notice in the example above that when we changed the primary group, all the user student's files were also edited to the new primary group of this user. But because we didn't update the groups by loggin out and in again, our old primary group is used for the new file. In the Permissions part of this chapter we'll learn how to change the groupowner to correct this mistake. If we log in again, we see that our groups are updated.
+Notice in the example above that when we changed the primary group, all the user student's files were also edited to the new primary group of this user. But because we didn't update the groups by logging out and in again, our old primary group is used for the new file. In the Permissions part of this chapter we'll learn how to change the groupowner to correct this mistake. If we log in again, we see that our groups are updated.
 
 ```bash
 ssh student@ip-address # Log in again
