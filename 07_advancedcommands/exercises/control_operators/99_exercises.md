@@ -1,7 +1,6 @@
 # Assignment on Control operators
 
 ## Task 1
-
 If you've made aliases for the commands rm, cp and mv in the past, you 'll have to remove them. You might find them in the files ~/.bashrc or ~/.bash_aliases. Delete these lines from those files and start a new shell by opening a new terminal window, ssh session, relogin or typing ‘bash’.
 
 
@@ -15,7 +14,6 @@ Create a command that while deleting the file "test":
 Imagine you need to create a backup of all home folders to the folder /backup. After the backup is done copying, the pc needs to shut down. Unfortunately, you need to go. How are you able to do this so you can leave now. Try this.  
 
 ?>  <i class="fa-solid fa-circle-info"></i> A good backup also keeps the timestamps and ownerships of the file in tact!  
-
 
 ## Task 4
 Create a directory source and a directory destination in your home folder. Also create a text file named "important.txt" in the folder source. You need to copy this file to the folder destination. If the copy was successful, you can delete the folder source with the command rm -rf. How are you able to do this with only one commandline? Try this..

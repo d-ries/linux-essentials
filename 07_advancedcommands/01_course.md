@@ -168,7 +168,7 @@ If we want to remove an alias we can use the unalias command:
 student@linux-ess:~$ unalias rm
 ```
 
-?> If you want to keep an aliase for future use (open a new shell, reboot, ...) you can add it to a (new) hidden file in your homefolder named `.bash_aliases`
+?> If you want to keep an alias for future use (open a new shell, reboot, ...) you can add it to a (new) hidden file in your homefolder named `.bash_aliases`
 
 ```bash
 student@linux-ess:~$ cat .bash_aliases
@@ -274,7 +274,7 @@ pxl
 
 ### Logical operators
 Next up are some control operators that we can use that you might know from other use cases or environments:
-* logical _AND_ operator (`&&`): The second command will only execute if the first command scuceeds
+* logical _AND_ operator (`&&`): The second command will only execute if the first command succeeds
 ```bash
 student@linux-ess:~$ echo first && echo second
 first
