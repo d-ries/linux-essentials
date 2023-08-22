@@ -131,7 +131,7 @@ route (8) - show / manipulate the IP routing table
 Om de locatie van de manpage zelf te bekijken kunnen we het commando `whereis` gebruiken: 
 ```bash
 student@linux-ess:~$ whereis -m ls
-whois: /usr/share/man/man1/ls.1.gz
+ls: /usr/share/man/man1/ls.1.gz
 ```
 De manpages worden opgeslagen in archieven met een `.gz` extentie. Dit is vergelijkbaar met een `zip` bestand met tekstbestanden. Bij het typen van het commando `man ls` opent het eigenlijk het tekstbestand in het archief `/usr/share/man/man1/ls.1.gz`. 
 
