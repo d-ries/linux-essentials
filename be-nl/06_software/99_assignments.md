@@ -1,99 +1,99 @@
-# Assignment on software
+# Oefeningen op software 
 
-In this assignment we will use `apt` instead of `apt-get` and `apt-cache` which are older commands
+In deze oefeningen gebruiken we `apt` in plaats van `apt-get` en `apt-cache`, wat oudere commando's zijn 
 
-## Task 1
-Update the local apt cache. This will get the latest info from the repositories  
+## Oefening 1 
+Werk de lokale apt-cache bij. zo krijgt je de laatste informatie van de repositories  
 
-## Task 2
-Upgrade all packages installed with _apt_ to the latest available version  
+## Oefening 2 
+Upgrade alle pakketten die zijn geïnstalleerd met _apt_ naar de nieuwste beschikbare versie  
 
-## Task 3
-Search with apt for a package that has something to do with 'usage and stats'. You will see `btop` as one of the results. Install the package and run the app  
+## Oefening 3 
+Zoek met apt naar een pakket dat iets te maken heeft met 'usage and stats'. Je ziet `btop` als een van de resultaten. Installeer het pakket en voer de app uit  
 
-## Task 4
-Search with apt for a package that has something to do with 'colorful cat'. You will see `lolcat` as one of the results. Install the package and run the following commands:  
+## Oefening 4 
+Zoek met apt naar een pakket dat iets te maken heeft met 'colorful cat''. Je ziet `lolcat` als een van de resultaten. Installeer het pakket en voer de volgende opdrachten uit:  
 cd  
-cat .bash_history  
-lolcat .bash_history  
-  
-## Task 5
-Install with apt the package 'neofetch' and run the app  
+Cat .bash_history  
+lolcat .bash_history 
 
-## Task 6
-Search with apt for "the matrix" and install the package which resembles the display of the matrix movie. Run the app  
+## Oefening 5 
+Installeer met apt het pakket 'neofetch' en voer de app uit  
 
-## Task 7
-Remove the package btop from the system. You shouldn't be able to run it anymore  
+## Oefening 6 
+Zoek met apt naar "the matrix" en installeer het pakket dat lijkt op de weergave van de matrixfilm. Voer deze app uit 
 
-## Task 8
-List all the packages that are installed with apt. In the list you will see one entry for `caca-utils`. If not, install this package and check again. Search in the manpage of 'apt' how you can see some info of this packages. You will see that this package holds several utilities. Try the last two. Tip: You can push 'enter' to try and see different things. Use `ctrl+c` to quit a utility.  
+## Oefening 7 
+Verwijder het pakket btop van het systeem. Je zou het niet meer moeten kunnen uitvoeren  
 
-## Task 9
-Search for a snap package via the description "resource monitor"    
+## Oefening 8 
+Toon een lijst van alle pakketten die zijn geïnstalleerd met apt. In de lijst ziet je één vermelding voor `caca-utils`. Zo niet, installeer dit pakket en controleer opnieuw. Zoek in de manpage van `apt` hoe je wat info van deze pakketten kunt zien. Je zal zien dat dit pakket verschillende hulpprogramma's bevat. Probeer de laatste twee. Tip: Je kunt op 'enter' drukken om verschillende dingen te zien. Gebruik `ctrl+c` om een hulpprogramma af te sluiten. 
 
-## Task 10
-Install the snap `bashtop`  
+## Oefening 9 
+Zoek naar een snap pakket via de omschrijving "resource monitor"  
 
-## Task 11
-Run bashtop    
+## Oefening 10 
+Installeer de snap `bashtop`  
 
-## Task 12
-We don't get any info about the disks. This is because the snap needs permissions to be connected with the mount-plug.  
-Read the information about the snap `bashtop` to find a solution.  
-Run the command to solve the problem    
-Run bashtop again  
-  
-## Task 13
-Show a list of installed snaps  
+## Oefening 11 
+voer bashtop uit 
 
-## Task 14
-Remove the snap bashtop  
+## Oefening 12 
+We krijgen geen info over de schijven. Dit komt omdat de snap machtigingen nodig heeft om verbonden te zijn met de mount-plug.  
+Lees de informatie over de snap `bashtop` om een oplossing te vinden.  
+Voer de opdracht uit om het probleem op te lossen  
+Voer bashtop opnieuw uit 
 
-## Task 15
-Show a list of installed snaps  
+## Oefening 13 
+Toon een lijst met geïnstalleerde snaps  
 
-## Task 16
-Show the history of changes in snap  
+## Oefening 14 
+Verwijder de snap bashtop  
 
-## Task 17
-Check if the snap 'asciiquarium' exists. Read some info about the snap, install it and run it  
-    
-## Task 18
-Zip the _homedirectory_ of the user student (with all files and folders) into a file called _/tmp/myhomefolder.zip_.  
-View the contents of the zipfile to check the result.  
+## Oefening 15 
+Toon een lijst met geïnstalleerde snaps  
 
-## Task 19
-Search the manpage of zip to find out how you can delete a file from your zipfile.  
-Delete the file .bash_history from the zipfile _/tmp/myhomefolder.zip_  
-Check the contents of the zipfile.  
+## Oefening 16 
+Toon de geschiedenis van wijzigingen in snap 
 
-## Task 20
-Make a directory called _zipdemo_ in the temporary folder (_/tmp_).  
-Unzip the zipfile _myhomefolder.zip_ in the directory _/tmp/zipdemo_ 
-Use `tree` to check if the process completed successfully.
-  
-## Task 21
-Make a tarball called _/tmp/myhomefolder.tar.gz_ with the files and folders of the _homedirectory_ of the user student.  
-View the contents of the tarfile to check the result.  
-Make a directory called _tardemo_ in the temporary folder (_/tmp_).  
-Extract the tarball _myhomfolder.tar.gz_ in the directory _/tmp/tardemo_  
-  
-## Task 22
-Extra Challenge: Try to remove the file _.bashrc_ from the tarball (task 21)  
-Search the manpage of tar to find a solution.  
-Check the contents of the tarball at the end of the exercise.   
+## Oefening 17 
+Controleer of de snap 'asciiquarium' bestaat. Lees wat informatie over de snap, installeer deze en voer deze uit  
 
-## Task 23
-Try and install google chrome on your ubuntu Desktop with the command line interface.  
-As you can see when you search for a download, you'll only find a .deb package to download. Use this package with dpkg to install google chrome.   
+## Oefening 18 
+Zip de _homedirectory_ van de gebruiker student (met alle bestanden en mappen) in een bestand genaamd _/tmp/myhomefolder.zip_.  
+Bekijk de inhoud van het zipbestand om het resultaat te controleren.  
 
-More difficult: Try to download this .deb package with wget to accomplish the full installation in your CLI.
+## Oefening 19 
+Zoek in de manpage van zip om erachter te komen hoe je een bestand uit je zipbestand kunt verwijderen.  
+Verwijder het bestand .bash_history uit het zipbestand _/tmp/myhomefolder.zip_  
+Controleer de inhoud van het zipbestand.  
 
-## Task 24
-Try to install the minetest client on your Ubuntu Desktop and connect with the server to play the game. After installation you will find minetest between your applicataions in the GUI.  Make sure that your minetest server is running. If not, use ctrl+r and search for minetest untill you see the following command: minetest --server --world ~/linuscraft/serverfiles/pxl-world --logfile ~/linuscraft/serverfiles/logfile.txt    
-   
-If your mouse interaction isn't working, you have to change it to play games:  
+## Oefening 20 
+Maak een map met de naam _zipdemo_ in de tijdelijke map (_/tmp_).  
+Pak het zipbestand _myhomefolder.zip_ uit in de map _/tmp/zipdemo_  
+Gebruik `tree` om te controleren of het proces met succes is voltooid. 
+ 
+## Oefening 21 
+Maak een tarball genaamd _/tmp/myhomefolder.tar.gz_ met de bestanden en mappen van de _homedirectory_ van de gebruiker student.  
+Bekijk de inhoud van de tarfile om het resultaat te controleren.  
+Maak een map met de naam _tardemo_ in de tijdelijke map (_/tmp_).  
+Pak de tarball _myhomfolder.tar.gz_ uit in de directory _/tmp/tardemo_  
+
+## Oefening 22 
+Extra uitdaging: Probeer het bestand _.bashrc_ uit de tarball te verwijderen (oefening 21)  
+Doorzoek de manpage van tar om een oplossing te vinden.  
+Controleer de inhoud van de tarball aan het einde van de oefening. 
+
+## Oefening 23 
+Probeer google chrome te installeren op je ubuntu Desktop met de command line interface.  
+Zoals je kunt zien wanneer je naar een download zoekt, vindt je alleen een .deb pakket om te downloaden. Gebruik dit pakket met dpkg om google chrome te installeren.  
+
+Moeilijker: Probeer dit .deb pakket te downloaden met wget om de volledige installatie in je CLI te voltooien. 
+
+## Oefening 24 
+Probeer de minetest client op je Ubuntu Desktop te installeren en maak verbinding met de server om het spel te spelen. Na installatie vind je minetest tussen je applicaties in de GUI. Zorg ervoor dat je minetest server actief is. Zo niet, gebruik dan ctrl+r en zoek naar minetest totdat je het volgende commando ziet: minetest --server --world ~/linuscraft/serverfiles/pxl-world --logfile ~/linuscraft/serverfiles/logfile.txt
+
+Als je muisinteractie niet werkt, moet je deze wijzigen om games te spelen: 
 
 ![PlayGamesInWorkstation](../images/06/PlayGamesInVMwareWorkstation01.png)  
 

@@ -1,9 +1,9 @@
-# Lab <!-- {docsify-ignore} -->
-In the previous chapter Linus installed a package called `minetest` but he is confused as to where this package is located! In this lab we will find out how we can view and navigate through folders and how we can use some basic commands to work with files. With this knowledge we might be able to actually locate the `minetest` package and actually run the server.
+# Lab <!-- {docsify-ignore} --> 
+In het vorige hoofdstuk installeerde Linus een pakket genaamd `minetest` maar hij is in de war over waar dit pakket zich bevindt! In dit lab zullen we ontdekken hoe we mappen kunnen bekijken en navigeren en hoe we enkele basisopdrachten kunnen gebruiken om met bestanden te werken. Met deze kennis kunnen we misschien het `minetest`-pakket lokaliseren en de server daadwerkelijk starten. 
 
-## Listing directory contents
+## Inhoud van mappen weergeven 
 
-Before doing anything else, Linus really wants to find out how he can list contents of folders. He already figured out that he is using a prompt that runs commands in a specific directory as seen in the previous chapters. Using the `apropos directory` command he finds out that there are all kinds of commands available to work with directories. The first command that Linus checks out is the `pwd` command:
+Voordat hij iets anders doet, wil Linus echt weten hoe hij de inhoud van mappen kan weergeven. Hij kwam er al achter dat hij een prompt gebruikt die opdrachten uitvoert in een specifieke map, zoals te zien is in de vorige hoofdstukken. Met behulp van het commando `apropos directory` komt hij erachter dat er allerlei commando's beschikbaar zijn om met mappen te werken. Het eerste commando dat Linus bekijkt is het `pwd` commando: 
 
 ```bash
 student@linux-ess:~$ apropos directory
@@ -14,33 +14,33 @@ pwd (1) - print name of current/working directory
 ...
 ```
 
-After running this command, Linus indeed sees the working directory that he is in:
+Na het uitvoeren van dit commando ziet Linus inderdaad de werkmap waarin hij zich bevindt: 
 
 ```bash
 student@linux-ess:~$ pwd
 /home/student
 ```
 
-Using the manpages he learns about the `ls` command which should list the contents of a directory:
+Met behulp van de manpages leert hij over het `ls` commando dat de inhoud van een map moet tonen: 
 
 ```bash
 student@linux-ess:~$ ls
 ```
 
-We don't see any output. This is because, by default, our homefolder (`/home/student`) appears to be empty. There might be some hidden files that are not shown. Using the  `man ls` command he tries to look for an _option_ that allows him to view hidden files:
+We zien geen output. Dit komt omdat onze thuismap (`/home/student`) standaard leeg lijkt te zijn. Er zijn mogelijks enkele verborgen bestanden die niet worden weergegeven. Met behulp van het `man ls` commando probeert hij te zoeken naar een _optie_ waarmee hij verborgen bestanden kan bekijken: 
 
 ```bash
 student@linux-ess:~$ man ls
 ```
 
-To view hidden files (files that start with a `.` sign), he uses the option `-a` as follows:
+Om verborgen bestanden (bestanden die beginnen met een `.` teken) te bekijken, gebruikt hij de optie `-a` als volgt: 
 ```bash
 student@linux-ess:~$ ls -a
 .   .bash_history  .bashrc      .ssh
 ..  .bash_logout   .profile     .sudo_as_admin_successful
 student@linux-ess:~$
 ```
-Note that the output of the `ls -a` command may be different on your system. The main goal is that we get a list of hidden files (files starting with `.`). Linus wants to check if these files (or folders) actually contain contents. To do this he uses the `man ls` command to search for options to view file sizes:
+Merk op dat de uitvoer van het commando `ls -a` op jouw systeem anders kan zijn. Het belangrijkste doel is dat we een lijst met verborgen bestanden krijgen (bestanden die beginnen met `.`). Linus wil controleren of deze bestanden (of mappen) daadwerkelijk inhoud bevatten. Om dit te doen, gebruikt hij het commando `man ls` om te zoeken naar opties om bestandsgroottes te bekijken: 
 ```bash
 student@linux-ess:~$ ls -alh
 total 52K
@@ -54,53 +54,49 @@ drwx------ 2 dries dries 4.0K Mar 10 09:15 .ssh
 -rw-r--r-- 1 dries dries    0 Oct  6  2021 .sudo_as_admin_successful
 ```
 
-To find out the file size of the file he combines the options `-a`, `-l` and `-h`.  Now Linus knows that the file  `.bashrc` for example is 3,5Kb in size and was last changed on 31 May at 14:59.
+Om de bestandsgrootte van het bestand te achterhalen combineert hij de opties `-a`, `-l` en `-h`. Nu weet Linus dat het bestand `.bashrc` bijvoorbeeld 3,5Kb groot is en voor het laatst is gewijzigd op 31 mei om 14:59. 
 
-## Create a folder structure 
-Linus wants a clean folder structure for his _LinusCraft_ project. In his homefolder he would like to create a folder with the name `linuscraft`. To do this he found the `mkdir` command using the manpages.
+## Maak een mappenstructuur  
+Linus wil een schone mappenstructuur voor zijn _LinusCraft_-project. In zijn homefolder wil hij graag een map aanmaken met de naam `linuscraft`. Om dit te doen vond hij het `mkdir` commando met behulp van de manpages. 
 
 ```bash
 student@linux-ess:~$ mkdir linuscraft
 ```
 
-After creating the `linuscraft` folder he wants to create a folder `playerinfo` inside that folder. To do this he can use one of the 2 options below:
+Na het aanmaken van de map `linuscraft` wil hij een map `playerinfo` in deze map aanmaken. Om dit te doen kan hij een van de 2 onderstaande opties gebruiken: 
 
-1. By using the `cd` command:
+1. Door het commando `cd` te gebruiken: 
 ```bash
 student@linux-ess:~$ cd linuscraft
 student@linux-ess:~/linuscraft$ mkdir playerinfo
 ```
 
-2. By using the mkdir command directly from his homefolder (`/home/student`) using a relative path:
+2. Door het mkdir commando direct vanuit zijn homefolder (`/home/student`) te gebruiken met behulp van een relatief pad: 
 ```bash
 student@linux-essentials:~$ mkdir linuscraft/playerinfo
 ```
 
-He checks if the folder is created correctly by navigating to that folder using an absolute path:
+Hij controleert of de map correct is gemaakt door naar die map te navigeren met behulp van een absoluut pad: 
 ```bash
 student@linux-ess:~/linuscraft$ cd /home/student/linuscraft/playerinfo
 student@linux-ess:~/linuscraft/playerinfo$ pwd
 /home/student/linuscraft/playerinfo
 ```
 
-?> Exercise: Can you navigate to the playerinfo folder using a relative path starting from your homefolder?
+?> Oefening: Kun je naar de map playerinfo navigeren met behulp van een relatief pad dat begint vanuit je homefolder? 
 
-
-He would also like a folder `administration` inside the `linuscraft` folder. While using the folder `playerinfo` as the working directory (`cd /home/student/linuscraft/playerinfo`), he creates this folder using a relative path:
-
+Ook wil hij graag een map `administration` in de map `linuscraft`. Terwijl hij de map `playerinfo` als werkmap gebruikt (`cd /home/student/linuscraft/playerinfo`), maakt hij deze map aan met behulp van een relatief pad: 
 ```bash
 student@linux-ess:~/linuscraft/playerinfo$ mkdir ../administration
 ```
 
-To finish up he creates the folders named `backups`, `secrets` and `serverfiles` inside the `linuscraft` folder using an absolute path:
-
+Om af te sluiten maakt hij de mappen met de naam `backups`, `secrets` en `serverfiles` in de map `linuscraft` met behulp van een absoluut pad: 
 ```bash
 student@linux-ess:~/linuscraft$ mkdir /home/student/linuscraft/backups /home/student/linuscraft/secrets /home/student/linuscraft/serverfiles
 ```
-Notice how we can use multiple arguments with the `mkdir` command to create multiple folders with just one command.
+Merk op hoe we meerdere argumenten kunnen gebruiken met het commando `mkdir` om meerdere mappen te maken met slechts één commando. 
 
-Linus decides to navigate back to his homefolder by using the `cd` command without any arguments. Afterwards he checks the contents of his created folder `linuscraft`: 
-
+Linus besluit terug te navigeren naar zijn homefolder door het commando `cd` zonder argumenten te gebruiken. Daarna controleert hij de inhoud van zijn aangemaakte map `linuscraft`: 
 ```bash
 student@linux-ess:~/linuscraft$ cd
 student@linux-ess:~$ ls -lh linuscraft
@@ -112,28 +108,28 @@ drwxr-xr-x 2 student student 4.0K May  4 21:48 secrets
 drwxr-xr-x 2 student student 4.0K May  4 21:48 serverfiles
 ```
 
-## Create files 
-Linus would like to create a file, named `todo.txt` to list any outstanding tasks. He creates this file in the folder `linuscraft` using the `touch` command:
+## Bestanden maken  
+Linus wil graag een bestand maken, genaamd `todo.txt` om eventuele openstaande taken op te sommen. Hij maakt dit bestand aan in de map `linuscraft` met behulp van het `touch` commando: 
 
 ```bash
 student@linux-ess:~$ touch linuscraft/todo.txt
 ```
 
-This command creates an empty file. We will find out how to insert data into the file in the next chapter's lab.
+Met deze opdracht wordt een leeg bestand gemaakt. We zullen ontdekken hoe we gegevens in het bestand kunnen invoegen in het lab van het volgende hoofdstuk. 
 
-Next up he creates some additional files with the following command:
+Vervolgens maakt hij enkele extra bestanden met het volgende commando: 
 
 ```bash
 student@linux-ess:~$  touch linuscraft/contact.txt linuscraft/backuplog.txt linus.txt
 ```
-Notice how we can provide multiple arguments to the touch command to create multiple files using just one command.
+Merk op hoe we meerdere argumenten kunnen geven aan het touch commando om meerdere bestanden te maken met slechts één commando. 
 
-He wants to create a hidden file in the secrets folder to store private information as well using an absolute path:
+Hij wil een verborgen bestand in de map secrets maken om ook privé-informatie op te slaan met behulp van een absoluut pad: 
 
 ```bash
 student@linux-ess:~$ touch /home/student/linuscraft/secrets/.private
 ```
-He checks if all files have been created succesfully using the following set of commands:
+Hij controleert of alle bestanden met succes zijn gemaakt met behulp van de volgende reeks commando's: 
 ```bash
 student@linux-ess:~$ ls ~
 linus.txt  linuscraft
@@ -143,15 +139,15 @@ student@linux-ess:~$ ls -a /home/student/linuscraft/secrets/
 .  ..  .private
 ```
 
-## Finetune the file and folder structure 
+## Verfijn de bestands- en mapstructuur  
 
-There are some problems with the files and folders that we just created. The `linus.txt` file for instance is created in the homefolder of the user `student`. We have to move this file to the `playerinfo` folder:
+Er zijn enkele problemen met de bestanden en mappen die we zojuist hebben gemaakt. Het `linus.txt` bestand wordt bijvoorbeeld aangemaakt in de homefolder van de gebruiker `student`. We moeten dit bestand verplaatsen naar de map `playerinfo`: 
 
 ```bash
 student@linux-ess:~$ mv linus.txt linuscraft/playerinfo/
 ```
 
-There are 3 `txt` files present in the `linuscraft` folder. Linus learnt that in Linux files do do not need file extentions so he wants to remove them using only one command. To achieve this goal, he uses the `rename` command:
+Er zijn 3 `txt` bestanden aanwezig in de map `linuscraft`. Linus leerde dat in Linux bestanden geen bestandsuitbreidingen nodig hebben, dus hij wil ze verwijderen met slechts één commando. Om dit doel te bereiken, gebruikt hij het commando `rename`: 
 
 ```bash
 student@linux-ess:~$ cd linuscraft
@@ -162,10 +158,10 @@ student@linux-ess:~/linuscraft$ ls
 administration  backuplog  backups  contact  playerinfo  secrets  todo
 ```
 
-The `secrets` folder and its contents are no longer needed so Linus decides to delete it while having `~/linuscraft` as his working directory (`cd ~/linuscraft`):
+De map `secrets` en de inhoud ervan zijn niet langer nodig, dus Linus besluit deze te verwijderen terwijl hij `~/linuscraft` als werkmap heeft (`cd ~/linuscraft`): 
 
 ```bash
 student@linux-ess:~/linuscraft$ rm -rf secrets
 ```
 
-In the next chapter's lab we will learn how we can add file contents to the files we just created.
+In het lab van het volgende hoofdstuk zullen we leren hoe we bestandsinhoud kunnen toevoegen aan de bestanden die we zojuist hebben gemaakt.

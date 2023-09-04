@@ -1,187 +1,183 @@
-# Assignment on working with files and folders
+# Oefeningen op het werken met bestanden en mappen 
 
-`Connect over ssh to you server to do the exercises`
+`Maak via ssh verbinding met je server om de oefeningen te doen`
 
-## Task 1
-Navigate to your home directory with the least number of keystrokes (three to be exact)
-What is the command to show the full path of where you are in the filetree?
-What is the full path of your homefolder?
+## Oefening 1 
+Navigeer naar je homefolder met het minste aantal toetsaanslagen mogelijk (drie om precies te zijn) 
+Wat is het commando om het volledige pad weer te geven van waar je je in de bestandsstructuur bevindt? 
+Wat is het volledige pad van je homefolder? 
 
-
-## Task 2
-In your homedirectory, create the following structure:
+## Oefening 2 
+Maak in je homedirectory de volgende structuur: 
 `
-PXL/Courses/S1/LinuxEss
+PXL/Courses/S1/LinuxEss 
 `  
-Do this by going into each created directory to create the next one.
-![Task](../images/04/Ch4_Task2.png)  
+Doe dit door naar elke gemaakte map te gaan om de volgende te maken. 
+![Taak](../images/04/Ch4_Task2.png)  
 
-?> <i class="fa-solid fa-circle-info"></i> You'll need this structure in a next Task
+?> <i class="fa-solid fa-circle-info"></i> Je hebt deze structuur nodig in een volgende oefening 
 
-## Task 3
-Go back to your homefolder.
-While staying in your homefolder create the directory _S2_ as a subdirectory of _Courses_. Do this by using an _absolute path_.
-While staying in your homefolder create the directory _NetworksEss_ as a subdirectory of _S2_. Do this also by using an _absolute path_.
+## Oefening 3 
+Ga terug naar je homefolder. 
+Terwijl je in je homefolder blijft, maak je de map _S2_ als een submap van _Courses_. Doe dit met behulp van een _absoluut pad_. 
+Terwijl je in je homefolder blijft, maak je de map _NetworksEss_ als een submap van _S2_. Doe dit ook met behulp van een _absoluut pad_. 
 
-Please use tab-completion whenever you can!  
-![Task](../images/04/Ch4_Task3.png)  
+Gebruik tab-completion wanneer je maar kunt!  
+![Taak](../images/04/Ch4_Task3.png)  
 
-## Task 4
-While in your homefolder create the directory _WindowsEss_ as a subdirectory of _S1_. Do this by using an _relative path_.
+## Oefening 4 
+Maak de map _WindowsEss_ als een submap van _S1_ terwijl je in je homefolder bent. Doe dit met behulp van een _relatief pad_. 
 
-Please use tab-completion whenever you can!  
-![Task](../images/04/Ch4_Task4.png)  
+Gebruik tab-completion wanneer je maar kunt!  
+![Taak](../images/04/Ch4_Task4.png) 
 
-## Task 5
-While in your homedirectory, create the following structure with _just one command_:
+## Oefening 5 
+Maak in je homedirectory de volgende structuur met _slechts één commando_: 
 `
-PXL/Software/Virtualization/VMware Workstation
+PXL/Software/Virtualization/VMware Workstation 
 `  
-Mind the space in the filename!   
-You will have to search the manpage for the option to use. It will make all parent directories that are needed. Here it means that to create the directory _VMware Workstation_ the server will create all the other directories first if they do not yet exist (PXL, Software and Virtualization)
-![Task](../images/04/Ch4_Task5.png)   
+Let op de spatie in de bestandsnaam!  
+Je moet in de manpage zoeken naar de optie om te gebruiken. Het maakt alle bovenliggende mappen die nodig zijn. Hier betekent het dat om de map _VMware Workstation_ te maken, de server eerst alle andere mappen zal maken als ze nog niet bestaan (PXL, Software en Virtualization) 
+![Taak](../images/04/Ch4_Task5.png)  
 
-## Task 6
-Install the command `tree` on your ubuntu machine. You can use this command to get an overview of directorystructures on your system. Search the manpage of tree to show the contents of the root directory and one extra level.
+## Oefening 6 
+Installeer het commando `tree` op je ubuntu machine. Je kan dit commando gebruiken om een overzicht te krijgen van directorystructuren op je systeem. Doorzoek de manpage van tree om de inhoud van de root directory en een extra level te tonen. 
 
-## Task 7
-Why doesn't tab-completion work when executing the following command to open .bashrc?:
+## Oefening 7 
+Waarom werkt het aanvullen met tab niet bij het uitvoeren van de volgende opdracht om .bashrc te openen?: 
 `cat /home/student/.bash<tab>`
 
-## Task 8
-Go to the directory _/etc_.
-Use an absolute path to go to the directory PXL/Software/Virtualization/VMware Workstation
+## Oefening 8 
+Ga naar de map _/etc_. 
+Gebruik een __absoluut pad__ om naar de directory PXL/Software/Virtualization/VMware Workstation te gaan 
 
-## Task 9
-You are in the directory _VMware Workstation_.
-Use a __relative path__ to go to the directory _LinuxEss_
+## Oefening 9 
+Je bevindt je in de map _VMware Workstation_. 
+Gebruik een __relative path__ om naar de directory _LinuxEss_ te gaan 
 
-## Task 10
-You are in the directory _LinuxEss_.
-Use  __the ~__ to go to the directory _.ssh_ in your homefolder.
+## Oefening 10 
+Je bevindt je in de directory _LinuxEss_. 
+Gebruik __de ~__ om naar de map _.ssh_ in je homefolder te gaan. 
 
-## Task 11
-Go to your homefolder  
-list the files and folders  
-list the files and folders in a long listing  
-also list the hidden files  
-list the files of the directory _/etc_ in a long listing with the filesizes in a _human readable_ format  
- 
-## Task 12
-Create a new folder "My Pictures" in your homefolder. Go into this folder and create, with just one command, these following files (notice the capitalization):
+## Oefening 11 
+Ga naar je homefolder 
+Toon een lijst van de bestanden en mappen  
+Toon een lijst van de bestanden en mappen in een lange lijst  
+Toon ook de verborgen bestanden  
+Toon de bestanden van de map _/etc_ in een lange lijst met de bestandsgrootten in een _human readable_-indeling 
+
+## Oefening 12 
+Maak een nieuwe map "My Pictures" in je homefolder. Ga naar deze map en maak, met slechts één commando, de volgende bestanden (let op het hoofdlettergebruik): 
 - Picture1.JPG
 - picture2.JPG
 - Picture3.jpg
 - picture4.jpg
-  
 
-## Task 13
-Use the command `rename` twice to rename all files so no capitals exist anymore in any of the filenames from the previous exercise.
+## Oefening 13 
+Gebruik twee keer het commando `rename` om alle bestanden te hernoemen, zodat er geen hoofdletters meer staan in de bestandsnamen van de vorige oefening. 
 
-## Task 14
-Make sure you are located in your homedirectory (~). <br/>  
-Create a new directory named `backup` in your homefolder.  
-Copy all 'files' within your homedirectory into the subdirectory named `backup`. You don't need to copy the subdirectories, but you need to copy the hidden files too.
- 
+## Oefening 14 
+Zorg ervoor dat je je in je homedirectory bevindt (~). <br/>  
+Maak een nieuwe map met de naam `backup` in je homefolder.  
+Kopieer alle `bestanden` in je homedirectory naar de submap met de naam `backup`. Je hoeft de submappen niet te kopiëren, maar je moet wel de verborgen bestanden kopiëren. 
 
-## Task 15
-Remove, with just one command, the folder `PXL` with all contents created in Task 5
+## Oefening 15 
+Verwijder, met slechts één commando, de map `PXL` met alle inhoud die is gemaakt in Oefening 5 
 
-## Task 16
-Create this directorystructure with just 1 command:
+## Oefening 16 
+Maak deze directorystructuur met slechts 1 commando: 
 `/home/student/school/semester/1/courses/ubuntuserver/exercises/chapter5`
 
-## Task 17
-Create, in the folder named 'exercises', a folder named 'chapter6'
+## Oefening 17 
+Maak in de map met de naam 'exercises' een map met de naam 'chapter6'
 
-## Task 18
-Remove the folder named 'chapter5' without using the `rm` command
+## Oefening 18 
+Verwijder de map met de naam 'chapter5' zonder het commando `rm` te gebruiken 
 
-## Task 19
-Recreate the directory 'chapter5'   
+## Oefening 19 
+Maak de directory 'chapter5' opnieuw aan  
 
-## Task 20
-Navigate using absolute-path into the directory log which is a subdirectory of the directory var
+## Oefening 20 
+Navigeer met behulp van het absolute-pad naar de  map log dat een submap is van de directory var 
 
-## Task 21
-Navigate to your own home directory
+## Oefening 21 
+Navigeer naar je homefolder 
 
-## Task 22
-use cat to print the contents of the .bashrc file that is located in root's homefolder. Use a relative-path syntax. Use bang bang (!!) if you need more privileges!
+## Oefening 22 
+Gebruik cat om de inhoud af te drukken van het .bashrc-bestand dat zich in de thuismap van root bevindt. Gebruik de syntaxis van een relatief pad. Gebruik bang bang (!!) als je meer privileges nodig hebt! 
 
-## Task 23
-Try to navigate to the directory /etc/dhcp with a maximum of 9 keystrokes
+## Oefening 23 
+Probeer naar de directory /etc/dhcp te navigeren met een maximum van 9 toetsaanslagen 
 
-## Task 24
-Clear the screen
+## Oefening 24 
+maak het scherm leeg
 
-## Task 25
-Multiple people can have a ssh connection to the same server and meanwhile a person can be working on the server itself. Each person will have it's own screen (terminal window). 
-Make sure you are logged in on the server itself and are also logged in over ssh. Make sure you see both screens at the same time.  
+## Oefening 25 
+Meerdere mensen kunnen een ssh-verbinding hebben met dezelfde server en ondertussen kan een persoon op de server zelf werken. Elke persoon heeft zijn eigen scherm (terminalvenster).  
+Zorg ervoor dat je bent ingelogd op de server zelf en ook bent ingelogd via ssh. Zorg ervoor dat je beide schermen tegelijkertijd ziet.  
 
-Search for commands that have the text "logged on" in their short description of the manpage
-  
-## Task 26
-In the shell of your ssh session type one of the two commands you found in the previous task.
-You will see two screens, tty1 and .
-  
-Everything is a file in linux. This is also true for the screen/window you're working in. When you are connected over _ssh_, your screen name is _pts/0_. When you are working _on the server_ itself, your screen name is _tty1_.  
-  
-In the shell of your ssh session type `echo hello there > /dev/tty1`. The greater than sign will redirect the output of the text _hello there_ to the tty1 device. The text appears on the screen on the server.
-  
-Try the following command in the shell of you ssh connection: `sl > /dev/tty1`.
-  
-If you want to see your prompt again on the server itself, you just have to press _enter_
+Zoek naar commando's met de tekst "logged on" in hun korte beschrijving van de manpage 
 
+## Oefening 26 
+Typ in de shell van je ssh-sessie een van de twee commando's die je in de vorige oefening hebt gevonden. 
+Je ziet twee schermen, tty1 en . 
 
-## Task 27
-While in the homefolder:
-create an empty file, named _sourcefile_ in _~/school/semester/1/courses/ubuntuserver/exercises/chapter5_
-show a tree of the directory _school_
-show a long listing of the directory _chapter5_
+Alles is een bestand in Linux. Dit geldt ook voor het scherm/venster waarin je werkt. Wanneer je verbonden bent via _ssh_, is je schermnaam _pts/0_. Wanneer je _op de server_ zelf werkt, wordt je schermnaam _tty1_.  
 
-## Task 28
-Search the manpage of touch to find out what this command is used for. Try to explain in own words
+Typ in de shell van je ssh-sessie `echo hello there > /dev/tty1`. Het groter-dan-teken leidt de uitvoer van de tekst _hello there_ om naar het tty1-apparaat. De tekst verschijnt op het scherm op de server. 
 
-## Task 29
-Move the file _sourcefile_ from the directory _chapter5_ to the directory _chapter6_
+Probeer het volgende commando in de shell van je ssh-verbinding: `sl > /dev/tty1`. 
 
-## Task 30
-Move the file _sourcefile_ back from the directory _chapter6_ to the directory _chapter5_, but also rename it to _SourceFile_ while moving. Mind the capitals
+Als je je prompt opnieuw op de server zelf wilt zien, hoeft je alleen maar op _enter_ te drukken 
 
-## Task 31
-Copy the file _SourceFile_ to _chapter6_
+## Oefening 27 
+In de homefolder: 
+Maak een leeg bestand met de naam _sourcefile_ in _~/school/semester/1/courses/ubuntuserver/exercises/chapter5_ 
+toon een boomstructuur van de map _school_ 
+toon een lange lijst van de map _chapter5_ 
 
-## Task 32
-Copy the file _SourceFile_ from _chapter6_ to your homefolder, but also rename it to _SourceFile.backup_ while copying
+## Oefening 28 
+Zoek in de manpage van touch waarvoor dit commando wordt gebruikt. Probeer het in eigen woorden uit te leggen 
 
-## Task 33
-Copy the directory _school_ with all files and subdirectories to the directory _/tmp_.
-View a directorylisting of _/tmp_
-View the directory tree of _/tmp/school_
-Reboot the server
-See if the directory tree of _school_ is still present in _/tmp_
-Use `man hier` to search for _/tmp_ and find out why
+## Oefening 29 
+Verplaats het bestand _sourcefile_ van de map _chapter5_ naar de map _chapter6_ 
 
-## Task 34
-Find out what type of files _/etc/passwd_ , _/dev/tty1_ and _/dev/sda_ are
+## Oefening 30 
+Verplaats het bestand _sourcefile_ terug van de map _chapter6_ naar de map _chapter5_, maar wijzig ook de naam naar _SourceFile_ tijdens het verplaatsen. Let op de hoofdletters 
 
-## Task 35
-Use `sudo` to `find` all files on the filesystem which have 'SourceFile' as the __exact name__
+## Oefening 31 
+Kopieer het bestand _SourceFile_ naar _chapter6_ 
 
-## Task 36
-`find` all files in your homefolder which have 'file' __in the name__, but this time do it __case insensitive__
+## Oefening 32 
+Kopieer het bestand _SourceFile_ van _chapter6_ naar je homefolder, maar wijzig de naam ook naar _SourceFile.backup_ tijdens het kopiëren 
 
-## Task 37
-Use `sudo` to `locate` all files that have 'SourceFile' in their name
-If you can't find any files, search in the manpage of `locate` to the string __update__ to see which command you have to give to update the database. View the manpage of this command if necessary and then run this command to update the database. Then try the `locate` command again.
+## Taak 33 
+Kopieer de map _school_ met alle bestanden en submappen naar de map _/tmp_. 
+Bekijk een directorylijst van _/tmp_ 
+Bekijk de directory tree van _/tmp/school_ 
+Start de server opnieuw op 
+Kijk of de directory tree van _school_ nog aanwezig is in _/tmp_ 
+Gebruik `man hier` om te zoeken naar _/tmp_ en ontdek waarom 
 
-## Task 38
-`locate` all files that have 'sourcefile' __in the name__, but this time do it __case insensitive__
-Search the manpage of `locate` and search for 'case'
+## Taak 34 
+Zoek uit wat voor type bestanden _/etc/passwd_, _/dev/tty1_ en _/dev/sda_ zijn 
 
-## Task 39
-Delete the file _SourceFile.backup_ from your homefolder
+## Taak 35 
+Gebruik `sudo` om alle bestanden op het bestandssysteem te `vinden` die 'SourceFile' als __exacte naam__ hebben 
 
- ## Task 40
-`Shutdown` the server via the ssh session
+## Taak 36 
+`vind` alle bestanden in je homefolder die 'file' hebben __in hun naam__, maar doe het deze keer __hoofdletterongevoelig__ 
+
+## Taak 37 
+Gebruik `sudo` om alle bestanden te `lokaliseren` die `SourceFile` in hun naam hebben 
+Als je geen bestanden kunt vinden, zoekt je in de manpage van `locate` naar de string __update__ om te zien welk commando je moet geven om de database bij te werken. Bekijk indien nodig de manpage van dit commando en voer dit commando uit om de database bij te werken. Probeer vervolgens het commando `locate` opnieuw. 
+
+## Taak 38 
+`Lokaliseer` alle bestanden die 'sourcefile' __in de naam__ hebben, maar doe het deze keer __hoofdletterongevoelig__
+Zoek in de manpage van `locate` en zoek op 'case' 
+
+## Taak 39 
+Verwijder het bestand _SourceFile.backup_ uit je homefolder
+
+## Taak 40 
+sluit de server via de ssh-sessie af

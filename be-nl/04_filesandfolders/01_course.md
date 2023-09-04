@@ -1,28 +1,28 @@
-# Files and Directories
-## Working with directories
-### Print working directory (pwd)
-The first command we will look at is the `pwd` command. The manpages gives an accurate description of what the command does:
-```
+# Bestanden en mappen 
+## Werken met mappen 
+
+### huidige map tonen (pwd) 
+Het eerste commando waar we naar zullen kijken is het `pwd` commando. De manpages geven een nauwkeurige beschrijving van wat het commando doet: 
+```bash
 student@linux-ess:~$ whatis pwd
 pwd - print name of current/working directory
 ```
 
-This command prints the current working directory. The working directory refers to the directory where the prompt is active in. 
-
+Met deze opdracht wordt de huidige werkmap afgedrukt. De werkmap verwijst naar de map waarin de prompt actief is.  
 ```bash
 student@linux-ess:~$ pwd
 /home/student
 ```
-In Windows, an _absolute path_ starts with `C:\...`. In Linux we do not use Drive letters. The C:\ drive in Windows is called the _root directory_ in Linux. This directory is reffered to as a `/` at the beginning of a path. More about _absolute_ and _relative_ paths later in this chapter.
+In Windows begint een _absoluut pad_ met `C:\...`. In Linux gebruiken we geen schijfletters. De C:\ schijf in Windows wordt in Linux de _root directory_ genoemd. Deze map wordt aan het begin van een pad aangeduid als een `/`. Meer over _absolute_ en _relatieve_ paden komt verderop in dit hoofdstuk. 
 
-The folder `student` is our current working directory. This folder is a subfolder of the folder `home` which on his turn is a subfolder of the _root directory_ `/`.
+De map `student` is onze huidige werkmap. Deze map is een submap van de map `home` die op zijn beurt een submap is van de _root directory_ `/`. 
 
 ![DirectoryHierarchy](../images/04/Ch4_CleanInstall.png)
 
-?> <i class="fa-solid fa-circle-info"></i> Remember the prompt which contained an active path? The `~` sign was an abbreviation for the folder `/home/student`. This is called the _homefolder_. Every user on the operating system will get their own _homefolder_ in the folder `/home` just like in Windows, where every user has his own folder under `C:\Users`. A user has all permissions (read, write, execute) in his own homefolder. Outside of that folder he often only has _read_ permissions.
+?> <i class="fa-solid fa-circle-info"></i> Herinner je je de prompt die een actief pad bevatte? Het '~' teken was een afkorting voor de map `/home/student`. Dit wordt de _homefolder_ genoemd. Elke gebruiker op het besturingssysteem krijgt zijn eigen _homefolder_ in de map `/home` net als in Windows, waar elke gebruiker zijn eigen map heeft onder `C:\Users`. Een gebruiker heeft alle machtigingen (lezen, schrijven, uitvoeren) in zijn eigen homefolder. Buiten die map heeft hij vaak alleen _lees_ permissions. 
 
-### Change working directory (cd)
-You can change the current working directory with the `cd` command (change directory):
+### Werkmap wijzigen (cd) 
+Je kan de huidige werkmap wijzigen met het commando `cd` (change directory): 
 ```bash
 student@linux-ess:~$ pwd
 /home/student
@@ -33,9 +33,9 @@ student@linux-ess:/etc$ cd ~
 student@linux-ess:~$ pwd
 /home/student
 ```
-The command takes a path as an argument. In the example above we will navigate to the folder `etc` on the root directory `/`. We can see this in the output of the `pwd` command and in the prompt definition. As shown in the second part of the example above we can also use the `~` sign to quickly navigate to the user's homefolder.
+Dit commando neemt een pad als argument. In het bovenstaande voorbeeld navigeren we naar de map `etc` in de hoofdmap/root `/`. We kunnen dit zien in de uitvoer van het `pwd`-commando en in de promptdefinitie. Zoals getoond in het tweede deel van het bovenstaande voorbeeld kunnen we ook het `~` teken gebruiken om snel naar de homefolder van de gebruiker te navigeren. 
 
-?> <i class="fa-solid fa-circle-info"></i> We could also use the `cd` command without any argument. This will navigate back to the users homefolder as well:
+?> <i class="fa-solid fa-circle-info"></i> We zouden ook het commando `cd` zonder enig argument kunnen gebruiken. Dit navigeert ook terug naar de homefolder van de gebruiker: 
 ```bash
 student@linux-ess:~$ cd /home/student
 student@linux-ess:~$ pwd
@@ -53,8 +53,7 @@ student@linux-ess:~$ ls
 emptyfile
 ```
 
-
-?> <i class="fa-solid fa-circle-info"></i> We can also use the commando `cd -`. This navigates back to the folder where you were working, before coming to this folder: 
+?> <i class="fa-solid fa-circle-info"></i> We zouden ook het commando `cd -` kunnen gebruiken. Dit navigeert terug naar de folder waar je je bevond vooraleer je naar deze folder kwam: 
 ```bash
 student@linux-ess:~$ cd /etc/netplan
 student@linux-ess:/etc/netplan$ ls
@@ -76,15 +75,14 @@ student@linux-ess:/etc/netplan$ pwd
 student@linux-ess:/etc/netplan$ ls
 00-installer-config.yaml
 ```
-
-
-     
+  
 ![DirectoryEmptyFile](../images/04/Ch4_Emptyfile.png)
   
-?> <i class="fa-solid fa-circle-info"></i> The command `touch` is used to create an empty file named `emptyfile`. The command is explained later on in this chapter.
+?> <i class="fa-solid fa-circle-info"></i> Het commando `touch` wordt gebruikt om een leeg bestand aan te maken met de naam `emptyfile`. Het commando wordt verderop in dit hoofdstuk nog uitgelegd. 
 
-### Display a tree view in the shell (tree)
-You can display a tree view of a directory with its subdirectories with the `tree` command:
+### Een boomstructuur weergeven in de shell (tree) 
+
+Je kan een boomstructuur van een map met zijn submappen weergeven met het commando `tree`: 
 ```bash
 student@linux-ess:~$ tree
 .
@@ -93,10 +91,9 @@ student@linux-ess:~$ tree
 0 directories, 1 file
 ```
 
-?> <i class="fa-solid fa-circle-info"></i> If you are prompted that tree isn't yet installed just run the command he is proposing.
+?> <i class="fa-solid fa-circle-info"></i> Als je wordt gezegd dat tree nog niet is geïnstalleerd, voer je gewoon de opdracht uit die hij voorstelt. 
 
-
-We could also use the `-a` option to view the hidden files (files starting with a dot):
+We kunnen ook de optie '-a' gebruiken om de verborgen bestanden te bekijken (bestanden die beginnen met een punt): 
 ```bash
 student@linux-ess:~$ tree -a
 .
@@ -119,7 +116,7 @@ student@linux-ess:~$ tree -a
 5 directories, 10 files
 ```
 
-We can also specify a path as a parameter to get a view of a certain directory:
+We kunnen ook een pad opgeven als parameter om een weergave van die bepaalde map te krijgen: 
 
 ```bash
 student@linux-ess:~$ tree /etc/dhcp
@@ -138,15 +135,16 @@ student@linux-ess:~$ tree /etc/dhcp
 2 directories, 8 files
 ```
 
-### Absolute & relative paths
-When using commands we often have to use paths to certain folders or files. The `cd` command for example requires a path to navigate to.
+### Absolute & relatieve paden 
+Bij het gebruik van commando's moeten we vaak paden naar bepaalde mappen of bestanden gebruiken. Het commando `cd` vereist bijvoorbeeld een pad om naartoe te navigeren. 
 
-Paths are used to point towards files and folders on the filesystem. We can use two types of paths: _relative_ and _absolute_ paths. 
+Paden worden gebruikt om naar bestanden en mappen op het bestandssysteem te wijzen. We kunnen twee soorten paden gebruiken: _relatieve_ en _absolute_ paden. 
 
 ![Directories_Downloads_Steam_games_teacher](../images/04/Ch4_Downloads_Steam_games_teacher.png)
 
-#### Absolute path
-Absolute paths must start with a `/` sign. This means that an absolute path will start from the _root_ (`/`) directory (the highest level on the filesystem) and will work its way down. For example:
+#### Absoluut pad 
+
+Absolute paden moeten beginnen met een `/` teken. Dit betekent dat een absoluut pad begint vanuit de _rootmap_ (`/`) (het hoogste niveau op het bestandssysteem) en zich een weg naar beneden baant. Bijvoorbeeld: 
 ```bash
 student@linux-ess:/etc$ pwd
 /etc
@@ -155,16 +153,15 @@ student@linux-ess:~/$ pwd
 /home/student
 ```
 
-?> <i class="fa-solid fa-circle-info"></i> In Windows an absolute path will start with `C:\` rather than `/`!
+?> <i class="fa-solid fa-circle-info"></i> In Windows begint een absoluut pad met `C:\` in plaats van `/`! 
 
+?> <i class="fa-solid fa-circle-info"></i> Wist je dat de Linux CLI commando en pathcompletion heeft? Probeer eens op de `tab`-toets te drukken wanneer je een deel van een commando, bestands- of mapnaam typt. Als een commando, bestand of map overeenkomt met het eerste deel van de tekst die je hebt getypt, wordt het woord automatisch voor je voltooid! 
 
-?> <i class="fa-solid fa-circle-info"></i> Did you know the Linux CLI has command and pathcompletion? Try pressing the `tab` key when typing part of a command, file or folder name. If any command, file or folder matches the first part of the text you typed it will automatically complete the word for you!
+?> <i class="fa-solid fa-circle-info"></i> Wanneer je tabcompletion op een directory gebruikt, eindigt deze met een schuine streep (/), bijvoorbeeld `cd /home/student/`. De laatste schuine streep (/) is optioneel, dus is het precies hetzelfde als `cd /home/student`  
 
-?> <i class="fa-solid fa-circle-info"></i> When using tab completion on a directory it will end with a slash (/), e.g. `cd /home/student/`. The last slash (/) is optional, so it is exactly the same as `cd /home/student`  
+#### Relatief pad 
 
-
-#### Relative path
-A relative path will always start from _the current working directory_ and will point to another file or folder from there. For example:
+Een relatief pad begint altijd vanaf _de huidige directory_ en verwijst van daaruit naar een ander bestand of een andere map. Bijvoorbeeld: 
 ```bash
 student@linux-ess:~$ pwd
 /home/student
@@ -172,13 +169,13 @@ student@linux-ess:~$ cd Downloads/Steam/games
 student@linux-ess:~/Downloads/Steam/games$ pwd
 /home/student/Downloads/Steam/games
 ```
-When using relative paths, we can use some shortcuts:
+Wanneer je relatieve paden gebruikt, kunnen we enkele afkortingen gebruiken: 
 ```
-.(one dot): Refers to the current directory
-..(two dots): Refers to the parent directory 
-~ (tilde): Refers to the current user's homefolder
-```
-This means that, when in the folder `/home/student/Downloads`, we could use `..` to navigate to the parent directory `/home/student`
+. (één punt): verwijst naar de huidige map 
+.. (twee puntjes): Verwijst naar de bovenliggende map  
+~ (tilde): Verwijst naar de thuismap van de huidige gebruiker 
+``` 
+Dit betekent dat we, wanneer we in de map `/home/student/Downloads` staan, `..` kunnen gebruiken om naar de bovenliggende directory `/home/student` te navigeren 
 ```bash
 student@linux-ess:~/Downloads$ pwd
 /home/student/Downloads
@@ -186,28 +183,28 @@ student@linux-ess:~/Downloads$ cd ..
 student@linux-ess:~$ pwd
 /home/student
 ```
-We could integrate these shortcuts in relative paths as well:
+We kunnen deze afkortingen ook integreren in relatieve paden: 
 ```bash
 student@linux-ess:/etc$ pwd
 /etc
-student@linux-ess:/etc$ cd /home/student/Downloads # Absolute path
+student@linux-ess:/etc$ cd /home/student/Downloads # Absoluut pad
 student@linux-ess:~/Downloads$ pwd
 /home/student/Downloads
-student@linux-ess:~/Downloads$ cd ../../teacher # Relative path
+student@linux-ess:~/Downloads$ cd ../../teacher # Relatief pad
 student@linux-ess:/home/teacher$ pwd
 /home/teacher
 ```
-?> <i class="fa-solid fa-circle-info"></i> A number sign `# ` tells the shell that everything behind it is considered a comment and will not be interpreted as a command or argument!
+?> <i class="fa-solid fa-circle-info"></i> Een hekje `# ` vertelt de shell dat alles erachter als een opmerking wordt beschouwd en niet als een commando of argument zal worden geïnterpreteerd! 
 
-### Listing directory contents (ls)
+### mapinhoud tonen (ls) 
 
-To list the contents of a directory, we can use the `ls` command. Using the command without any options or arguments will list de contents of the current working directory:
+Om de inhoud van een map weer te geven, kunnen we het commando `ls` gebruiken. Als je dit commando zonder opties of argumenten gebruikt, wordt de inhoud van de huidige werkmap weergegeven: 
 ```bash
 student@linux-ess:~$ ls
 emptyfile  Downloads
 ```
 
-We can also go in a certain directory to list its contents:
+We kunnen ook in een bepaalde map gaan om de inhoud ervan te tonen: 
 ```bash
 student@linux-ess:~$ cd /
 student@linux-ess:/$ ls     
@@ -215,8 +212,7 @@ bin   dev  home  lib32  libx32      media  opt   root  sbin  srv  tmp  var
 boot  etc  lib   lib64  lost+found  mnt    proc  run   snap  sys  usr
 ```
 
-
-The `ls` command can also take one argument. This argument is a path which can be absolute or relative. The `ls` command will then show the contents of that folder.
+Het commando `ls` kan ook één argument gebruiken. Dit argument is een pad dat absoluut of relatief kan zijn. Het commando `ls` toont dan de inhoud van die map. 
 ```bash
 student@linux-essentials:~$ ls
 emptyfile  Downloads
@@ -226,9 +222,9 @@ boot  etc  lib   lib64  lost+found  mnt    proc  run   snap  sys  usr
 student@linux-essentials:~$ 
 ```
 
-The `ls` command has different options as well. The options can be found in the manpage using `man ls`. For example:
+Het commando `ls` heeft ook verschillende opties. Deze opties zijn te vinden in de manpage met `man ls`. Bijvoorbeeld: 
 ```bash
-student@linux-ess:~$ ls -alh .       # The dot sign refers to the current directory, which in this case would be optional
+student@linux-ess:~$ ls -alh .       # Het puntje verwijst naar de huidige map, die in dit geval optioneel zou zijn 
 total 45M
 drwxr-xr-x 5 student student 4.0K Mar 27 16:36 .
 drwxr-xr-x 3 root    root    4.0K Oct  5 13:40 ..
@@ -241,34 +237,34 @@ drwxrwxr-x 2 student student 4.0K Oct  1 14:31 Downloads
 drwxr-xr-x 2 student student 4.0K Oct  5 13:40 .ssh
 -rw-r--r-- 1 student student    0 Oct  6 08:20 .sudo_as_admin_successful
 ```
-Notice how we combined 3 options in the command above. Both `ls -a -l -h` and `ls -alh` will function exactly the same and will use all 3 options. The options can be put in any order, so `ls -hal` is also correct. These 3 options are used most often when it comes to the `ls` command. You could search for them in the manpage but we will give an overview:
-* the `-a` option will _also show hidden files and folders_. **In Linux, hidden files and folders start with a dot (.). e.g. the `.bashrc` file.**
-* the `-l` option will show a _long listing_. This means that it will show all the extra output\* and not just the file and folder names.
-* the `-h` option refers to _human readable_ and will make filesizes appear with the proper measuring unit rather than showing all sizes in bytes.
+Merk op hoe we 3 opties hebben gecombineerd in het bovenstaande commando. Zowel `ls -a -l -h` als `ls -alh` werken precies hetzelfde en gebruiken alle 3 de opties. De opties kunnen in elke volgorde gezet worden, dus `ls -hal` is ook correct. Deze 3 opties worden het vaakst gebruikt als het gaat om het `ls` commando. Je zou ze kunnen zoeken in de manpage, maar we zullen een overzicht geven: 
+* De optie '-a' toont _ook verborgen bestanden en folders_. **In Linux beginnen verborgen bestanden en mappen met een punt (.). bijvoorbeeld het `.bashrc`-bestand.** 
+* De optie '-l' toont een _long listing_. Dit betekent dat het alle extra uitvoer toont\* en niet alleen de bestands- en mapnamen. 
+* De optie '-h' verwijst naar _human readable_ en zorgt ervoor dat bestandsgroottes worden weergegeven met de juiste maateenheid in plaats van alle groottes in bytes weer te geven. 
 
-\* The `-rw-r--r--` column refers to permissions on that specific file/folder. We will explain this in the chapter `users & permissions`. The columns containing `student  student` refer to the owner and groupowner of that specific file/folder and are linked to the permissions column. The `3.7K` on the line of the file .bashrc refers to the file size and `Oct 5 13:40` refers to the timestamp of the last modification of the file.
+\* De kolom `-rw-r--r--` verwijst naar machtigingen voor dat specifieke bestand/map. We zullen dit uitleggen in het hoofdstuk `gebruikers & machtigingen`. De kolommen met `student  student` verwijzen naar de eigenaar en groepseigenaar van dat specifieke bestand/die specifieke map en zijn gekoppeld aan de kolom met machtigingen. De `3.7K` op de regel van het bestand .bashrc verwijst naar de bestandsgrootte en `Oct 5 13:40` verwijst naar de tijdstempel van de laatste wijziging van het bestand. 
 
-?> <i class="fa-solid fa-circle-info"></i> Everything in Linux is a file. Not just the files, but folders too! They are just defined as _special_ files. Your hard disk? A file. A USB drive? A File. Hardware such as your keyboard? You guessed it, a file!
+?> <i class="fa-solid fa-circle-info"></i> Alles in Linux is een bestand. Niet alleen de bestanden, maar ook de mappen! Ze zijn gewoon gedefinieerd als _speciale_ bestanden. Je harde schijf? Een bestand. Een USB-stick? Een bestand. Hardware zoals je toetsenbord? Je raadt het al, een bestand! 
 
-### Create directories (mkdir)
+### Mappen maken (mkdir) 
 
-![Directories_Downloads_Steam_games_teacher_backups](../images/04/Ch4_Downloads_Steam_games_teacher_backups.png)
+![Directories_Downloads_Steam_games_teacher_backups](../images/04/Ch4_Downloads_Steam_games_teacher_backups.png) 
 
-To create new directories we can use the `mkdir` (make directory) command. The command takes a path as an argument:
+Om nieuwe mappen aan te maken kunnen we het commando `mkdir` (make directory) gebruiken. Dit commando neemt een pad als argument: 
 ```bash
 student@linux-ess:~$ mkdir backups
 student@linux-ess:~$ ls
 backups  Downloads  emptyfile
 ```
-In the example above the `mkdir` command will create a folder named `backups` in the current working directory (`~` or `/home/student`). The folder name here is a _relative path_. 
+In het bovenstaande voorbeeld maakt het commando `mkdir` een map met de naam `backups` aan in de huidige werkmap (`~` of `/home/student`). De mapnaam hier is een _relatief path_. 
 
-#### paths with subdirectories
-When using _relative_ or _absolute_ paths we could do the following:
+#### paden met submappen 
+Bij het gebruik van _relatieve_ of _absolute_ paden kunnen we het volgende doen: 
 ```bash
 student@linux-ess:~$ mkdir backups/Steam/games/PayDay2
 mkdir: cannot create directory ‘backups/Steam/games/PayDay2’: No such file or directory
 ```
-The command tries to make a folder named `PayDay2` in the folder `games` which is located in the folder `Steam` which is located in the folder `Backups`. However we get an error because the folders `games` or `Steam` do not exist. We can tell to create any missing subfolders in the path by using the `-p` option:
+Het commando probeert een map met de naam `PayDay2` te maken in de map `games` die zich in de map `Steam` bevindt die zich in de map `Backups` bevindt. We krijgen echter een foutmelding omdat de mappen `games` of `Steam` niet bestaan. We kunnen zeggen dat ontbrekende submappen in het pad gemaakt moeten worden met behulp van de optie `-p`: 
 ```
 student@linux-ess:~$ mkdir -p backups/Steam/games/PayDay2
 student@linux-ess:~$ tree backups
@@ -279,17 +275,16 @@ backups
 
 3 directories, 0 files
 ```
-This will create the folders `Steam` and `games` if they don't exist.
+Hiermee worden de mappen `Steam` en `games` gemaakt als deze niet bestaan. 
 
-?> <i class="fa-solid fa-circle-info"></i> As mentioned earlier everything in Linux is case sensitive. This is also applicable when creating files and folders. Try running the command `mkdir walkthroughs Walkthroughs`. This will create 2 folders: one with the name `walkthroughs` and one with the name `Walkthroughs`.
+?> <i class="fa-solid fa-circle-info"></i> Zoals eerder vermeld is alles in Linux hoofdlettergevoelig. Dit is ook van toepassing bij het maken van bestanden en mappen. Probeer het commando `mkdir walkthroughs Walkthroughs` uit te voeren. Hiermee worden 2 mappen gemaakt: één met de naam `walkthroughs` en één met de naam `Walkthroughs`. 
 
-## Working with files
-### Create an empty file (touch)
+## Werken met bestanden 
 
-![Directories_fileOne_fileTwo](../images/04/Ch4_fileOne_fileTwo.png)
+### Een leeg bestand maken (touch) 
 
-One easy way to create an empty file is with touch. The example starts with an empty directory, creates two files with touch and then lists
-those files:
+![Directories_fileOne_fileTwo](../images/04/Ch4_fileOne_fileTwo.png) 
+Een eenvoudige manier om een leeg bestand te maken is met het touch commando. Het voorbeeld begint met een lege map, maakt twee bestanden met touch en vervolgens toont deze bestanden: 
 ```bash
 student@linux-ess:~$ ls -l
 total 8
@@ -306,14 +301,12 @@ drwxrwxr-x 2 student student 4096 Oct  1 14:31 Downloads
 -rw-r--r-- 1 student student 0 Feb 12 09:50 fileOne
 -rw-r--r-- 1 student student 0 Feb 12 09:50 fileTwo
 ```
-?> <i class="fa-solid fa-circle-info"></i> Note that both of these files are empty as seen by the file size. In the next chapter we will look into ways to create files with contents.
+?> <i class="fa-solid fa-circle-info"></i> Merk op dat beide bestanden leeg zijn, zoals te zien is aan de bestandsgrootte. In het volgende hoofdstuk zullen we kijken naar manieren om bestanden met inhoud te maken. 
 
+### Bestanden met spaties in de naam 
+![Directories_Ch4_filenameWithSpaces](../images/04/Ch4_filenameWithSpaces.png) 
 
-### Files with spaces in the name
-
-![Directories_Ch4_filenameWithSpaces](../images/04/Ch4_filenameWithSpaces.png)
-
-If we want to work with files with spaces in the name we can put the name between double quotes:
+Als we willen werken met bestanden met spaties in de naam, kunnen we de naam tussen dubbele aanhalingstekens plaatsen: 
 ```bash
 student@linux-ess:~$ ls -l
 total 0
@@ -344,15 +337,13 @@ drwxrwxr-x 2 student student 4096 Oct  1 14:31 Downloads
 -rw-r--r-- 1 student student 0 Feb 12 09:50 'File Two'
 -rw-r--r-- 1 student student 0 Feb 12 09:50 One
 ```  
-?> <i class="fa-solid fa-circle-info"></i> Note that we could also use single quotes `touch 'File Two'` or a backslash to escape the space `touch File\ Two`.
+?> <i class="fa-solid fa-circle-info"></i> Merk op dat we ook enkele aanhalingstekens kunnen gebruiken `touch 'File Two'` of een backslash om de spatie als string te lezen `touch File\ Two`. 
 
-
-
-### Move files (mv)
+### Bestanden verplaatsen (mv) 
 
 ![Directories_Ch4_MoveAFile](../images/04/Ch4_MoveAFile.png)  
 
-To move a file to another folder we can use the `mv` (move) command. This command takes two arguments: the source file/folder and the destination file/folder:
+Om een bestand naar een andere map te verplaatsen kunnen we het commando `mv` (move) gebruiken. Deze opdracht heeft twee argumenten: het bronbestand/de bronmap en het doelbestand/de doelmap: 
 ```bash
 student@linux-ess:~$ ls
 aFile  aFolder  backups  Downloads  emptyfile  File  fileOne  fileTwo  'File Two'  One
@@ -367,7 +358,7 @@ aFile
 ![Directories_Ch4_MoveAndRenameFile](../images/04/Ch4_MoveAndRenameFile.png)  
   
 
-Since the second argument is a destination file or folder, we could use this command to rename a file as well. In the example below we use the `mv` command to move the file back to the homefolder but also renaming it:
+Aangezien het tweede argument een doelbestand of -map is, kunnen we deze opdracht ook gebruiken om een bestand te hernoemen. In het onderstaande voorbeeld gebruiken we het commando `mv` om het bestand terug te verplaatsen naar de homefolder, maar ook om het te hernoemen: 
 ```bash
 student@linux-ess:~/aFolder$ ls 
 aFile
@@ -381,8 +372,7 @@ aFolder  backups  Downloads  emptyfile  File  fileOne  fileTwo  'File Two'  newF
 ![Directories_Ch4_RenameFileWithMV.png](../images/04/Ch4_RenameFileWithMV.png) 
   
   
-
-When renaming only one file or folder, `mv` is the prefered command to use. The examples both used files, but the same logic works for renaming and moving folders.
+Bij het hernoemen van slechts één bestand of map is `mv` het voorkeurscommando dat je wilt gebruiken. De voorbeelden gebruikten beide bestanden, maar dezelfde logica werkt ook voor het hernoemen en verplaatsen van mappen. 
 ```bash
 student@linux-ess:~$ ls 
 aFolder  backups  Downloads  emptyfile  File  fileOne  fileTwo  'File Two'  newFileName  One
@@ -392,11 +382,11 @@ student@linux-ess:~$ ls
 backups  Downloads  emptyfile  File  fileOne  fileTwo  'File Two'  myFile  myFolder  One
 ```
 
-### Copy files (cp)
+### Bestanden kopiëren (cp) 
 
 ![copy_emptyfile_emptyfilebackup](../images/04/Ch4_copy_emptyfile_emptyfilebackup.png)  
 
-To make a copy of a file we can use the `cp` (copy) command as follows:
+Om een kopie van een bestand te maken kunnen we het commando `cp` (copy) als volgt gebruiken: 
 ```bash
 student@linux-ess:~$ ls
 backups  Downloads  emptyfile  File  fileOne  fileTwo  'File Two'  myFile  myFolder  One
@@ -404,13 +394,13 @@ student@linux-ess:~$ cp emptyfile emptyfile.backup
 student@linux-ess:~$ ls
 backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File Two'  myFile  myFolder  One
 ```
-Both arguments are paths. The first path is the original file/folder. The second path is a path to the new location and (optional) filename/foldername. We can use the cp command to copy both files and folders to the same directory or a different directory.
+Beide argumenten zijn paden. Het eerste pad is het oorspronkelijke bestand/map. Het tweede pad is een pad naar de nieuwe locatie en (optionele) bestandsnaam/mapnaam. We kunnen het cp-commando gebruiken om zowel bestanden als mappen naar dezelfde map of een andere map te kopiëren. 
 
-#### Copy to another directory
+#### Kopiëren naar een andere map 
 
 ![Ch4_copy_myfile_emptyfilebkp](../images/04/Ch4_copy_myfile_emptyfilebkp.png)  
 
-The example below shows us how we can use the arguments in the `cp` command to copy files or folders to another directory. In this example we copy the file named _myFile_ into the directory called _myFolder_ using a _relative_ path. We also copy the file named _emptyfile_ into the directory called _myFolder_ and give it the new name _emptyFile.bkp_. We do this by using an absolute path. 
+Het onderstaande voorbeeld laat ons zien hoe we de argumenten in het commando `cp` kunnen gebruiken om bestanden of mappen naar een andere map te kopiëren. In dit voorbeeld kopiëren we het bestand met de naam _myFile_ naar de map _myFolder_ met behulp van een _relatief_ pad. We kopiëren ook het bestand met de naam _emptyfile_ naar de map met de naam _myFolder_ en geven het de nieuwe naam _emptyFile.bkp_. Dit doen we met behulp van een absoluut pad. 
 ```bash
 student@linux-ess:~$ ls
 backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File Two'  myFile  myFolder  One
@@ -425,13 +415,13 @@ myFile  emptyFile.bkp
 student@linux-ess:~$ ls
 backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File Two'  myFile  myFolder  One
 ```
-?> <i class="fa-solid fa-circle-info"></i> Note that we can use both _relative_ and _absolute_ paths in the copy command for both the original file/folder and the destination file/folder.
+?> <i class="fa-solid fa-circle-info"></i> Merk op dat we zowel _relatieve_ als _absolute_ paden kunnen gebruiken in het commando cp voor zowel het oorspronkelijke bestand/de oorspronkelijke map als het doelbestand/de doelmap. 
 
-#### Copy recursive
+#### Recursief kopiëren 
 
 ![Ch4_copy_recursive_myfolderbackup](../images/04/Ch4_copy_recursive_myfolderbackup.png) 
 
-To copy complete directories (meaning all subfolders and files inside the directory) we will have to use the `-r` (recursive) option:
+Om volledige mappen (met alle submappen en files in deze map) te kopiëren moeten we de optie `-r` (recursief) gebruiken:
 ```bash
 student@linux-ess:~$ ls
 backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File Two'  myFile  myFolder  One
@@ -444,26 +434,25 @@ student@linux-ess:~$ ls myFolder.backup
 myFile  emptyFile.bkp
 ```
 
-#### Overwrite files
-We have to be aware that the `cp` command will overwrite existing files by default. We can use the `-i` (interactive) option to get a prompt where we have to confirm if we want to overwrite the file as seen in the example below:
+#### Bestanden overschrijven 
+We moeten ons ervan bewust zijn dat het `cp`-commando standaard bestaande bestanden overschrijft. We kunnen de optie `-i` (interactief) gebruiken om een prompt te krijgen waarbij we moeten bevestigen of we het bestand willen overschrijven, zoals te zien is in het onderstaande voorbeeld: 
 ```bash
 student@linux-ess:~$ ls
 backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File Two'  myFile  myFolder  myFolder.backup  One
 student@linux-ess:~$ ls myFolder
 myFile  emptyFile.bkp
-student@linux-ess:~$ cp myFile myFolder/emptyFile.bkp     # No error, the file gets overwritten
+student@linux-ess:~$ cp myFile myFolder/emptyFile.bkp     # Geen error, de file wordt overschreven
 student@linux-ess:~$ ls myFolder
 myFile  emptyFile.bkp
-student@linux-ess:~$ cp -i myFile myFolder/emptyFile.bkp     # you will be asked to overwrite or not
+student@linux-ess:~$ cp -i myFile myFolder/emptyFile.bkp     # Je wordt gevraagd of je wil overschijven of niet
 cp: overwrite `emptyFile.bkp'? y
 ```
 
-### Rename files (rename)
-
+### Bestanden hernoemen (rename) 
+ 
 ![Ch4_Rename](../images/04/Ch4_Rename.png) 
 
-
-We saw that we could use the `mv` command to rename files and folders. This works and is often very easy but when you have to rename files in bulk you might want to consider another approach. The `rename` command is designed specifically to rename multiple files and folders with one command. To do this it uses a _regular expression_ (Regex). A Regex is a sequence of characters that define a search pattern. We will learn more about regular expressions later in this course. It uses this search pattern to make certain changes to the filenames:
+We zagen dat we het commando `mv` konden gebruiken om bestanden en mappen te hernoemen. Dit werkt en is vaak heel eenvoudig, maar wanneer je bestanden in bulk moet hernoemen, wil je misschien een andere aanpak overwegen. Het commando `rename` is speciaal ontworpen om meerdere bestanden en mappen met één commando te hernoemen. Om dit te doen gebruikt het een _reguliere expressie/regular expression_ (Regex). Een Regex is een reeks tekens die een zoekpatroon definiëren. We zullen later in deze cursus meer leren over reguliere expressies. Het gebruikt dit zoekpatroon om bepaalde wijzigingen aan te brengen in de bestandsnamen: 
 ```bash
 student@linux-ess:~$ mkdir renamedir 
 student@linux-ess:~$ cd renamedir
@@ -475,16 +464,16 @@ student@linux-ess:~/renamedir$ ls
 aFile  aFile.backup  adocument.txt  anotherdocument.txt  backup.txt  prodocuments.txt  profiles.backup  profiles2.ODT  yaay.txt
 ```
 
-?> <i class="fa-solid fa-circle-info"></i> If rename is not yet installed you can do this with the command `sudo apt -y install rename`.   
+?> <i class="fa-solid fa-circle-info"></i> Als rename nog niet is geïnstalleerd, kan je dit doen met het commando `sudo apt -y install rename`.  
 
-A lot is going on in the example above, let's summarize what is present:
-* The folder we are in contains some `txt` files, some `backup` files and files with `no extension`. Some of the files contain the word `file` that we want to replace with `document`. Remember that by default Linux is case-sensitive, so `file`is not the same as `File`.
-* the `rename` command takes a _string_ with the value `s/file/document/`. This is the _regex_ that is being used by the command to search (`s`)for names containing the word `file` and replace it with the word `document`.
-* the last argument is `*.txt`. We use this to tell the `rename` command to only run the replacement regex on files ending in `.txt`
+Er gebeurt veel in het bovenstaande voorbeeld, laten we samenvatten wat er aanwezig is: 
+* De map waarin we ons bevinden bevat enkele `txt`-bestanden, enkele `backup`-bestanden en bestanden met `geen extensie`. Sommige bestanden bevatten het woord `file` dat we willen vervangen door `document`. Vergeet niet dat Linux standaard hoofdlettergevoelig is, dus `file` is niet hetzelfde als `File`. 
+* het `rename` commando neemt een _string_ met de waarde `s/file/document/`. Dit is de _regex_ die door de opdracht wordt gebruikt om (`s`) te zoeken naar namen die het woord `file` bevatten en deze te vervangen door het woord `document`. 
+* Het laatste argument is `*.txt`. We gebruiken dit om het commando `rename` te vertellen om alleen de vervangende regex uit te voeren op bestanden die eindigen op `.txt` 
 
-?> <i class="fa-solid fa-circle-info"></i> a `*` (asterisk) is considered a wildcard character in bash. It refers to _zero, one or more characters_. So in the example above this translates to: "run this replacement regex on all files containing zero,one or more characters of any kind, following and ending with the string `.txt`.
+?> <i class="fa-solid fa-circle-info"></i> een `*` (sterretje) wordt beschouwd als een joker-/wildcardteken in bash. Het verwijst naar _nul, een of meer karakters_. Dus in het bovenstaande voorbeeld vertaalt dit zich naar: "voer deze vervangende regex uit op alle bestanden die nul, een of meer tekens van welke aard dan ook bevatten, opgevolgd door en eindigend met de tekenreeks `.txt`. 
 
-We could also use the `rename` command to change the file extentions of all files and folders:
+We kunnen ook het commando `rename` gebruiken om de bestandsextentie van alle bestanden en mappen te wijzigen: 
 
 ![Ch4_Rename_Extentions](../images/04/Ch4_Rename_Extentions.png) 
 
@@ -495,10 +484,9 @@ student@linux-ess:~/renamedir$ rename 's/\.txt/.odt/' *
 student@linux-ess:~/renamedir$ ls
 aFile  aFile.backup  adocument.odt  anotherdocument.odt  backup.odt  prodocuments.odt  profiles.backup  profiles2.ODT  yaay.odt
 ```
-?> <i class="fa-solid fa-circle-info"></i> Notice how we put a `\` (backslash) in front of the `.` sign in the search-string? Some characters have special meanings in regular expressions (for example: `* . $ [ ] ( ) / { }`). If we want the bash shell to see this character as a string we have to use _escaping_. This is the concept of using the `\` to indicate that the character that follows is interpreted as a string rather than a special character.
+?> <i class="fa-solid fa-circle-info"></i> Merk je op hoe we een `\` (backslash) voor het `.` -teken in de zoekreeks plaatsen? Sommige tekens hebben een speciale betekenissen in reguliere expressies (bijvoorbeeld: `* . $ [ ] ( ) / { }`). Als we willen dat de bash shell dit teken als een string ziet, moeten we _escaping_ gebruiken. Dit is het concept van het gebruik van de `\` om aan te geven dat het teken dat volgt wordt geïnterpreteerd als een string in plaats van een speciaal teken. 
 
-
-We could also use the `rename` command to change multiple file extentions at once:
+We kunnen ook het commando `rename` gebruiken om meerdere bestandsextensies tegelijk te wijzigen: 
 
 ![Ch4_Rename_Extentions_Case_Insensitive](../images/04/Ch4_Rename_Extentions_Case_Insensitive.png) 
 
@@ -510,11 +498,10 @@ student@linux-ess:~/renamedir$ ls
 aFile  aFile.doc  adocument.doc  anotherdocument.doc  backup.doc  prodocuments.doc  profiles.doc  profiles2.doc  yaay.doc
 ```
 
-?> <i class="fa-solid fa-circle-info"></i> Notice how we put an `i` at the end of the perl expression to search case-insensitive. So the ` rename -E 's/\.odt/.doc/i' ` renames the odt extensions to doc regardless of the casing.
+?> <i class="fa-solid fa-circle-info"></i> Merk op hoe we een `i` aan het einde van de perl-expressie plaatsen om hoofdletterongevoelig te zoeken. Dus het `rename -E' 's/\.odt/.doc/i` commando hernoemt de odt-extensies naar doc, ongeacht of het hoofdletters heeft of niet. 
 
-
-### Identifying files (file)
-In Linux we don't have to use file extentions. This means we don't always know the file type. We can use the `file` command to identify the type of a file:
+### Bestanden identificeren (file) 
+In Linux hoeven we geen bestandsextenties te gebruiken. Dit betekent dat we het bestandstype niet altijd kennen. We kunnen het commando `file` gebruiken om het type van een bestand te identificeren: 
 ```bash
 student@linux-ess:~$ wget --cipher 'DEFAULT:!DH' http://www.pxl.be/img/logo.png
 student@linux-ess:~$ file logo.png
@@ -523,12 +510,12 @@ student@linux-ess:~$ file /etc/passwd
 /etc/passwd: ASCII text
 ```
 
-## Delete files & folders (rm)
-For deleting folders we could use the `rmdir` command but keep in mind that it wont delete folders containing other files or folders.
+## Verwijder bestanden & mappen (rm) 
+Voor het verwijderen van mappen kunnen we het commando `rmdir` gebruiken, maar houd er rekening mee dat het geen mappen met andere bestanden of mappen in verwijdert. 
 
 ![Ch4_rm_file](../images/04/Ch4_rm_file.png)
 
-For deleting both files and folders we mostly use the `rm` command:
+Voor het verwijderen van zowel bestanden als mappen gebruiken we meestal het commando `rm`: 
 ```bash
 student@linux-ess:~/renamedir$ ls
 aFile  aFile.doc  adocument.doc  anotherdocument.doc  backup.doc  prodocuments.doc  profiles.doc  profiles2.doc  yaay.doc
@@ -539,9 +526,9 @@ aFile  aFile.doc  adocument.doc  anotherdocument.doc  backup.doc  prodocuments.d
 
 ![Ch4_rm_rf](../images/04/Ch4_rm_rf.png)
 
-The `rm` command has different options as well, the most used combination is `rm -rf`:
-* `-r` will mean it will remove files & folders recursive
-* `-f` will force the command to remove non-empty directories as well. Something that wont happen out of the box.
+Het `rm` commando heeft ook verschillende opties, de meest gebruikte combinatie is `rm -rf`: 
+* `-r` betekent dat het bestanden en mappen recursief zal verwijderen 
+* `-f` dwingt (force) het commando om ook niet-lege mappen te verwijderen. Iets wat niet standaard zal gebeuren. 
 ```bash
 student@linux-ess:~$ ls
 backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File Two'  myFile  myFolder  myFolder.backup  One renamedir
@@ -552,16 +539,15 @@ student@linux-ess:~$ ls
 backups  Downloads  emptyfile  emptyfile.backup  File  fileOne  fileTwo  'File Two'  myFile  myFolder  myFolder.backup  One
 ```
 
-Be mindfull when using the `rm -rf` command as the root user!
+Wees bedachtzaam bij het gebruik van het `rm -rf` commando als root gebruiker! 
 
-?> <i class="fa-solid fa-circle-info"></i> There is no garbage bin in linux. Removing a file means its gone forever!
+?> <i class="fa-solid fa-circle-info"></i> Er is geen vuilnisbak in linux. Het verwijderen van een bestand betekent dat het voor altijd verdwenen is! 
 
+## Zoeken naar bestanden 
+### Zoeken op het bestandssysteem (find) 
+Het eerste commando om naar bestanden te zoeken is `find`. Het doorzoekt het bestandssysteem om bestanden te vinden waarnaar we zoeken. We kunnen aangeven in welke directory de zoekopdracht begint (onderaan de boom) en hoe de bestandsnaam eruit moet zien (met fileglobbing): 
 
-## Searching for files
-### Searching on the filesystem (find)
-The first command to search for files is `find`. It searches through the filesystem to locate files that we search for. We can specify in which directory the search starts (down the tree) and what the filename has to look like (with fileglobbing):
-
-?> <i class="fa-solid fa-circle-info"></i> If you do not specify a directory the search begins in the current working directory. By default the search always continues down the tree into the subdirectories.
+?> <i class="fa-solid fa-circle-info"></i> Als je geen map opgeeft, begint het zoeken in de huidige werkmap. Standaard gaat de zoekopdracht altijd verder in de boomstructuur naar de submappen. 
 
 ```bash
 student@linux-ess:~$ find -name "*sh*"
@@ -573,7 +559,7 @@ student@linux-ess:~$ find -name "*sh*"
 ./.bash_history
 ```
 
-We can also specify a directory from where to start the search:
+We kunnen ook een directory opgeven van waaruit de zoekopdracht moet worden gestart: 
 ```bash
 student@linux-ess:~$ find / -name "*networkmanager*"
 find: ‘/boot/lost+found’: Permission denied
@@ -603,8 +589,8 @@ find: ‘/etc/ssl/private’: Permission denied
 ...
 ```
 
-We see too many error messages. It clutters the view and we don't get any results back from the directories where we have no privileges to view their contents.
-The solution is to use the `sudo` command:
+We zien te veel foutmeldingen. Het rommelt de weergave en we krijgen geen resultaten terug van de mappen waar we geen rechten hebben om de inhoud weer te geven. 
+De oplossing is om het commando `sudo` te gebruiken: 
 ```bash
 student@linux-ess:~$ sudo find / -name "*networkmanager*"
 /usr/lib/python3/dist-packages/cloudinit/distros/parsers/networkmanager_conf.py
@@ -617,7 +603,7 @@ student@linux-ess:~$ sudo find / -name "*networkmanager*"
 /snap/core20/1518/usr/lib/python3/dist-packages/cloudinit/distros/parsers/networkmanager_conf.py
 ```
 
-If we want our search to be case insensitive we can use `-iname` instead of `-name`:
+Als we willen dat onze zoekopdracht hoofdletterongevoelig is, kunnen we `-iname` gebruiken in plaats van `-name`: 
 ```bash
 student@linux-ess:~$ sudo find / -iname "*networkmanager*"
 /run/NetworkManager
@@ -636,14 +622,13 @@ student@linux-ess:~$ sudo find / -iname "*networkmanager*"
 /snap/core20/1518/usr/lib/python3/dist-packages/cloudinit/distros/parsers/networkmanager_conf.py
 ```
 
+### Zoeken in een bestandssysteemdatabase (locate) 
+Een andere manier om naar bestanden te zoeken, is door het commando `locate` te gebruiken. Het doorzoekt een database die informatie bevat over de bestanden in het bestandssysteem.  
 
-### Searching through a filesystem database (locate)
-Another way to search for files is to use the `locate` command. It searches through a database that holds information about the files in the filesystem. 
+?> <i class="fa-solid fa-circle-info"></i> Voordat we het commando gebruiken om naar de bestanden te zoeken, is het altijd een goede gewoonte om de database bij te werken. 
 
-?> <i class="fa-solid fa-circle-info"></i> Before we use the command to search for the file(s) it is always good practice to update the database.
-
-It's noticable that searching a database with `locate` is much faster than searching through the filesystem itself with `find`.
-Make note that we do not specify a directory here. The search will always be done through all the files of the filesystem:
+Het valt op dat het doorzoeken van een database met `locate` veel sneller gaat dan het doorzoeken van het bestandssysteem zelf met `find`. 
+Houd er rekening mee dat we hier geen directory specificeren. Het zoeken zal altijd worden gedaan door alle bestanden van het bestandssysteem: 
 ```bash
 student@linux-ess:~$ touch testfile
 student@linux-ess:~$ ls
@@ -670,7 +655,7 @@ student@linux-ess:~$ locate .profile
 ...
 ```
 
-If we also want to see files that we do not have the privileges for, then we have to use `sudo`:
+Als we ook bestanden willen zien waar we de privileges niet voor hebben, dan moeten we `sudo` gebruiken: 
 ```bash
 student@linux-ess:~$ sudo locate .profile
 /etc/lvm/profile/cache-mq.profile
@@ -689,7 +674,7 @@ student@linux-ess:~$ sudo locate .profile
 ...
 ```
 
-If we also want to search case insensitive, then we have to use the `-i` option:
+Als we ook hoofdletterongevoelig willen zoeken, dan moeten we de optie `-i` gebruiken: 
 ```bash
 student@linux-ess:~$ sudo locate -i networkmanager
 /etc/NetworkManager
@@ -706,7 +691,7 @@ student@linux-ess:~$ sudo locate -i networkmanager
 ...
 ```
 
-If we only want to search in filenames and not in directorynames we have to use the `-b` option:
+Als we alleen in bestandsnamen willen zoeken en niet in mapnamen, moeten we de optie `-b` gebruiken: 
 ```bash
 student@linux-ess:~$ sudo locate -b -i networkmanager
 /etc/NetworkManager
@@ -724,8 +709,8 @@ student@linux-ess:~$ sudo locate -b -i networkmanager
 /usr/lib/python3/dist-packages/sos/report/plugins/__pycache__/networkmanager.cpython-310.pyc
 ```
 
-## Extra course material <!-- {docsify-ignore} -->
+## Extra cursusmateriaal <!-- {docsify-ignore} --> 
 
-<i class="fa-solid fa-film"></i> [[Pluralsight] Linux command syntax patterns](https://app.pluralsight.com/course-player?clipId=5c3b8432-e324-4b4b-adfd-2615298a7aba)
+<i class="fa-solid fa-film"></i> [[Pluralsight] Linux command syntax patterns](https://app.pluralsight.com/course-player?clipId=5c3b8432-e324-4b4b-adfd-2615298a7aba) 
 
-<i class="fa-solid fa-film"></i> [[Pluralsight] Working with files & directories](https://app.pluralsight.com/course-player?clipId=f98f5110-6ee4-43c4-af00-4de294c17bc9)
+<i class="fa-solid fa-film"></i> [[Pluralsight] Working with files & directories](https://app.pluralsight.com/course-player?clipId=f98f5110-6ee4-43c4-af00-4de294c17bc9) 

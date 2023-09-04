@@ -1,64 +1,63 @@
-# Assignment on file contents
+# Oefeningen op bestandsinhoud 
 
-## Task 1
-Find out why you should use ‘less’ instead of ‘more’
+## Oefening 1 
+Ontdek waarom je `less` zou moeten gebruiken in plaats van `more` 
 
-## Task 2
-Show the first line of the file /proc/meminfo to find out how much memory you’ve given to your Ubuntu Virtual machine.
+## Oefening 2 
+Toon de eerste regel van het bestand /proc/meminfo om erachter te komen hoeveel geheugen je aan je Ubuntu Virtual-machine hebt gegeven. 
 
-## Task 3
-Show the last line of the file passwd located in the folder etc of the root folder
+## Oefening 3 
+Toon de laatste regel van het bestand passwd in de map etc van de hoofdmap 
 
-## Task 4
-Show the first 4 characters (=bytes) of the file /etc/passwd. Search the manpage of head to find out how to do it. You should see the name of a certain user. Who is this user? 
+## Oefening 4 
+Toon de eerste 4 tekens (=bytes) van het bestand /etc/passwd. Doorzoek de manpage van head om erachter te komen hoe dit moet. Je zou de naam van een bepaalde gebruiker moeten zien. Wie is deze gebruiker? 
 
-## Task 5
-Use cat to put the following text in a new file "mytextfile" in your home folder:  
-This is my text  
-spaced over multiple lines  
-inserted by cat.
+## Oefening 5 
+Gebruik cat om de volgende tekst in een nieuw bestand "mytextfile" in je homefolder te plaatsen:  
+Dit is mijn tekst  
+verdeeld over meerdere lijnen  
+ingevoegd door cat. 
 
-## Task 6
-Use the `echo` command three times to put the following text in a new file "myechotextfile" in your home folder:  
-This is my text  
-spaced over multiple lines  
-inserted by echo.
+## Oefening 6 
+Gebruik het commando `echo` drie keer om de volgende tekst in een nieuw bestand "myechotextfile" in je homefolder te plaatsen:  
+Dit is mijn tekst  
+verdeeld over meerdere lijnen  
+ingevoegd door echo. 
 
- 
-More difficult: It is also possible to do this with just one `echo` command. But you will need to search for the right option to escape characters in the manpage of `echo`  
+Moeilijker: Het is ook mogelijk om dit te doen met slechts één `echo` commando. Maar je zal moeten zoeken naar de juiste optie om te ontsnappen aan karakters in de manpage van 'echo' 
 
-## Task 7
-Use cat to copy the file .bashrc in your home folder to a new file named .bashrc.backup
+## Oefening 7 
+Gebruik cat om het bestand .bashrc in je homefolder te kopiëren naar een nieuw bestand met de naam .bashrc.backup 
 
-## Task 8
-When you add a new user, a new line is added to the file /etc/passwd. Show the contents of the file but in order from newest user to oldest user (other way around than normal) 
+## Oefening 8 
+Wanneer je een nieuwe gebruiker toevoegt, wordt een nieuwe regel toegevoegd aan het bestand /etc/passwd. Toon de inhoud van dit bestand, maar in de volgorde van nieuwste gebruiker naar oudste gebruiker (andersom dan normaal)  
 
-## Task 9
-Use the tail command to keep the file /var/log/auth.log open, so that you see all new log entries appear when they happen. (You can press enter a few times to seperate the new coming lines) In a new Powershell window start a new ssh session and log in. Then log out again. Wat did you see in the logs?
+## Oefening 9 
+Gebruik het commando tail om het bestand /var/log/auth.log open te houden, zodat je alle nieuwe logboekvermeldingen ziet verschijnen wanneer ze zich voordoen. (Je kan een paar keer op enter drukken om de nieuwe komende regels te scheiden) Start in een nieuw Powershell-venster een nieuwe ssh-sessie en meld je aan. Log vervolgens opnieuw uit. Wat zag je in de logboeken? 
 
-## Task 10
-Open the configuration file of ssh, `/etc/ssh/sshd_config`, with the _less_ command and try the search function to search for X11. This is something we'll use later on to enable screens to open over SSH.
+## Oefening 10 
+Open het configuratiebestand van ssh, `/etc/ssh/sshd_config`, met het _less_ commando en probeer met de zoekfunctie om te zoeken naar X11. Dit is iets dat we later zullen gebruiken om schermen via SSH te openen. 
 
-## Task 11
-Use nano to edit the text in the file "myechotextfile" you created earlier in your home folder:  
-This is my text, edited,  
-still spaced over multiple lines  
-inserted by echo and edited by nano.  
+## Oefening 11 
+Gebruik nano om de tekst te bewerken in het bestand "myechotextfile" dat je eerder in je homefolder hebt gemaakt:  
+Dit is mijn tekst, bewerkt,  
+nog steeds verdeeld over meerdere lijnen  
+Ingevoegd door Echo en bewerkt door Nano.  
 
-## Task 12
-Use cat with the end marker "LinuxIsFun" to overwrite the text in the file "myechotextfile" you created earlier in your home folder:  
-This text is way more interesting.  
-I still use multiple lines d'oh,  
-just because I can.  
+## Oefening 12 
+Gebruik cat met de eindmarkering "LinuxIsFun" om de tekst te overschrijven in het bestand "myechotextfile" dat je eerder in je homefolder hebt gemaakt:  
+Deze tekst is veel interessanter.  
+Ik gebruik nog steeds meerdere lijnen d'oh,  
+gewoon omdat het kan.  
 
-## Task 13
-Print the full contents of the previously made files "mytextfile" and "myechotextfile" with only one command.
+## Oefening 13 
+Druk de volledige inhoud van de eerder gemaakte bestanden "mytextfile" en "myechotextfile" af met slechts één commando. 
 
-## Task 14
-Get the last 10 created users and put them in the file "newestUsers" with only one command.
+## Oefening 14 
+Haal de laatste 10 aangemaakte gebruikers op en zet ze in het bestand "nieuwsteUsers" met slechts één commando. 
 
-## Task 15
-a. Open a new file, named _Linus Torvalds_ with `nano`. Copy the folowing text into the nano editor.  
+## Oefening 15 
+a. Open een nieuw bestand, genaamd _Linus Torvalds_ met `nano`. Kopieer de volgende tekst naar de nano-editor. 
 
 ```
 linus Benedict torvalds, * , is a Finnish-American software engineer who is the creator and, historically, the main developer of the Linux kernel, used by Linux distributions and other operating systems such as Android. 
@@ -86,26 +85,26 @@ Torvalds first encountered the GNU Project in 1991 when another Swedish-speaking
 The history of Linux 
 Linus was born 28 December 1969 in Finland
 ```
-  
-b. Save the changes and exit nano  
-c. Open the file again with nano  
-d. Search for the text "1981" to know what happened that year  
-e. The second paragraph holds two of the same lines. Use a shortcut to delete one of the two lines  
-f. Search for 'linus' and replace with 'Linus'  
-g. Select only the text 'born 28 December 1969' of the last line. Cut it and paste it on the first line where the asterisk is (\*)  
-h. Search for 'torvalds' and replace with 'Torvalds'  
-i. Goto line 9, column 80. Replace the dot (.) with an exclamation mark (!)  
-j. Goto the last line of text. Cut the whole line. Undo the cut. Redo the cut  
-k. Use Cut and Paste to move the last line of text to the top of the document  
-l. Search the help within nano to find out how to show the 'total number of lines, words and characters'.   
-m. Use two times a shortcut (ctrl+...) to save and quit nano   
 
-## Task 16
-Use the _head_ command to print everything in the _/etc/passwd_ file, without knowing the amount of lines in the file. You will have to search the manpage for a solution. Now try this with the _tail_ command.
+b. Sla de wijzigingen op en sluit nano af  
+c. Open het bestand opnieuw met nano  
+d. Zoek naar de tekst "1981" om te weten wat er dat jaar is gebeurd  
+e. De tweede alinea bevat twee van dezelfde regels. Gebruik een sneltoets om een van de twee regels te verwijderen  
+f. Zoek naar 'linus' en vervang dit door 'Linus'  
+g. Selecteer alleen de tekst "born 28 December 1969" van de laatste regel. Knip het en plak het op de eerste regel waar het sterretje staat (\*)  
+h. Zoek naar 'torvalds' en vervang dit door 'Torvalds'  
+i. Ga naar regel 9, kolom 80. Vervang de punt (.) door een uitroepteken (!)  
+j. Ga naar de laatste regel tekst. Knip de hele lijn weg. Maak de knip ongedaan. Voer de knip opnieuw uit.  
+k. Gebruik Knippen en plakken om de laatste regel tekst naar de bovenkant van het document te verplaatsen  
+l. Zoek in de help binnen nano om erachter te komen hoe je het 'totale aantal regels, woorden en tekens' kunt weergeven.  
+m. Gebruik twee keer een sneltoets (ctrl+...) om nano op te slaan en af te sluiten 
 
-## Task 17
-We can use cat to print the contents of multiple files underneath eachother, but it is hard to figure out which part comes from which file. 
-For example check:
+## Oefening 16 
+Gebruik het commando _head_ om alles in het bestand _/etc/passwd_ af te drukken, zonder het aantal regels in het bestand te kennen. Je zal in de manpage moeten zoeken naar een oplossing. Probeer dit nu met het commando _tail_. 
+
+## Oefening 17 
+We kunnen cat gebruiken om de inhoud van meerdere bestanden onder elkaar af te drukken, maar het is moeilijk om erachter te komen welk deel uit welk bestand komt.  
+Controleer bijvoorbeeld: 
 ```bash
 student@linux-ess:~$ cat mytextfile myechotextfile
 This is my text
@@ -115,7 +114,7 @@ This text is way more interesting.
 I still use multiple lines d'oh,
 just because I can.
 ```
-We have seen 2 commands in this chapter where we can specify to print the filename aswell, check the man pages of the seen commands and find out which 2 commands can be used. Try them out and print the full contents of the files with the filenames.
+We hebben in dit hoofdstuk 2 commando's gezien waar we kunnen opgeven om ook de bestandsnaam af te drukken, controleer de manpages van de geziene commando's om erachter te komen welke 2 commando's kunnen worden gebruikt. Probeer ze uit en druk de volledige inhoud van de bestanden af met de bestandsnamen. 
 
-## Optional Task
-use the command `vimtutor` to learn how to use vim. What is so different with this editor? 
+## Optionele Oefening 
+Gebruik het commando `vimtutor` om te leren hoe je vim gebruikt. Wat is er zo anders aan deze editor?  

@@ -1,54 +1,53 @@
-# Advanced command structures
+# Geavanceerde commandostructuren 
 
-## shell expansion
+## shell uitbreiding 
 
-All the words you type after the prompt to form a command are interpreted by the shell. The command line interpretor or shell in ubuntu is `bash`, which stands for `Bourne Again SHell`.
+Alle woorden die je typt na de prompt om een commando te vormen, worden geïnterpreteerd door de shell. De command line interpretor of shell in ubuntu is `bash`, wat staat voor `Bourne Again SHell`. 
 
-The command line will be cut in pieces everytime the interpreter sees one or more `consecutive spaces` or `tabs` and this forms arguments (the spaces and tabs will be removed). The first argument is the `command` and all the other arguments are given as values to this command. This mechanism is called `shell expansion`. This is the reason that consecutive spaces will be trimmed with the echo command: 
+De opdrachtregel wordt in stukken gesneden telkens wanneer de interpreter een of meer `opeenvolgende spaties` of `tabs` ziet en dit argumenten vormt (de spaties en tabs worden verwijderd). Het eerste argument is het `commando` en alle andere argumenten worden als waarden aan dit commando gegeven. Dit mechanisme wordt `shell expansion/shell uitbreiding` genoemd. Dit is de reden dat opeenvolgende spaties worden bijgesneden met het echo-commando:  
 ```bash
-student@linux-ess:~$ echo I like to game                                                # one space between the words
+student@linux-ess:~$ echo I like to game                                                # één spatie tussen de woorden 
 I like to game
-student@linux-ess:~$ echo     I    like            to                   game            # multiple spaces between the words
+student@linux-ess:~$ echo     I    like            to                   game            # meerdere spaties tussen de woorden
 I like to game
-student@linux-ess:~$ echo I    like     to     game                                     # one tab between the words
+student@linux-ess:~$ echo I    like     to     game                                     # één tab tussen de woorden
 I like to game
-student@linux-ess:~$ echo     I              like        to                     game    # multiple tabs between the words
+student@linux-ess:~$ echo     I              like        to                     game    # meerdere tabs tussen de woorden
 I like to game
-student@linux-ess:~$ echo   I             like          to                      game    # multiple spaces & tabs between the words
+student@linux-ess:~$ echo   I             like          to                      game    # meerdere spaties & tabs tussen de woorden
 I like to game
 ```
 
-### Single and double quotes
+### Enkele en dubbele aanhalingstekens 
 
-If we want to retain the spaces we have three options.
-The `first option` is to use `double quotes`. With this option the spaces will be retained and variables will still be interpreted.
+Als we de ruimtes willen behouden, hebben we drie opties. 
+De `eerste optie` is het gebruik van `dubbele aanhalingstekens`. Met deze optie blijven de spaties behouden en worden variabelen nog steeds geïnterpreteerd. 
 ```bash
 student@linux-ess:~$ action="play       games"
-student@linux-ess:~$ echo    I             like      to                  $action    # multiple spaces and tabs between the words
+student@linux-ess:~$ echo    I             like      to                  $action    # meerdere spaties & tabs tussen de woorden
 I like to play games
-student@linux-ess:~$ echo "    I             like      to                  $action"    # multiple spaces and tabs between the words
+student@linux-ess:~$ echo "    I             like      to                  $action"    # meerdere spaties & tabs tussen de woorden
     I             like      to                  play       games
 ```
 
-The `second option` is to use `single quotes`. With this option the spaces will be retained but the text will not be interpreted. So variables won't be changed to their value.
+De `tweede optie` is het gebruik van `enkele aanhalingstekens`. Met deze optie blijven de spaties behouden, maar wordt de tekst niet geïnterpreteerd. Variabelen worden dus niet gewijzigd in hun waarde. 
 ```bash
 student@linux-ess:~$ action='play       games'
-student@linux-ess:~$ echo    I             like      to                  $action    # multiple spaces and tabs between the words
+student@linux-ess:~$ echo    I             like      to                  $action    # meerdere spaties & tabs tussen de woorden
 I like to play games
-student@linux-ess:~$ echo '    I             like      to                  $action'    # multiple spaces and tabs between the words
+student@linux-ess:~$ echo '    I             like      to                  $action'    # meerdere spaties & tabs tussen de woorden
     I             like      to                  $action
 ```
 
-The `third option` is to escape every space. Don't use this mechanism within the value of a variable because it won't work.
+De `derde optie` is om aan elke ruimte te ontsnappen. Gebruik dit mechanisme niet binnen de waarde van een variabele omdat het niet werkt. 
 ```bash
 student@linux-ess:~$ action='play       games'  
 student@linux-ess:~$ echo \ \  I \ \ \ \ \ \ \ like \ \ to \ \ \ \ \ \ \ \ \ \ \ \ \ \ $action
     I       like   to              play       games
 ```
 
-
-## File globbing
-When specifying filenames, we can get the shell to generate the filenames dynamically by giving a certain pattern. For example: we might want to find all the files starting with `temp` followed by whatever text or extention. The concept where we generate file names dynamically is called _file globbing_. There are a couple of special characters that we can use as seen in the example below:
+## Bestand globbing 
+Bij het opgeven van bestandsnamen kunnen we de shell de bestandsnamen dynamisch laten genereren door een bepaald patroon te geven. Bijvoorbeeld: we willen misschien alle bestanden vinden die beginnen met `temp` gevolgd door welke tekst of extensie dan ook. Het concept waarbij we dynamisch bestandsnamen genereren, wordt _file globbing/bestand globbing_ genoemd. Er zijn een paar speciale tekens die we kunnen gebruiken, zoals te zien is in het onderstaande voorbeeld: 
 ```bash
 student@linux-ess:~/globbing$ ls
 a  afilea  file  File  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec 
@@ -65,7 +64,7 @@ fileabc  filebc
 student@linux-ess:~/globbing$ ls F*ile*
 File  File4  File5  FileABC  Filec
 ```
-an asterisk (`*`) in _file globbing_ means zero, one or more characters can be whatever they want. This is often called a wildcard that we can use one or multiple times in a filename. Another option would be a question mark (`?`) which is interpreted as exactly _one character_ can be what they want as seen in the following example:
+Een sterretje (`*`) in _file globbing_ betekent nul, een of meer tekens kunnen zijn wat ze willen. Dit wordt vaak een wildcard genoemd dat we één of meerdere keren in een bestandsnaam kunnen gebruiken. Een andere optie is een vraagteken (`?`) dat wordt geïnterpreteerd als precies _één karakter_ kan zijn wat het wil, zoals te zien is in het volgende voorbeeld: 
 ```bash
 student@linux-ess:~/globbing$ ls
 a  afilea  file  File  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec
@@ -83,7 +82,7 @@ student@linux-ess:~/globbing$ ls ?fi*
 afilea
 ```
 
-Lastly we can also use square brackets (`[ ]`) which usually contain one or more characters in between the brackets. The brackets define one character that matches one of the characters between the brackets:
+Ten slotte kunnen we ook vierkante haken (`[ ]`) gebruiken die meestal een of meer tekens tussen de haakjes bevatten. De haakjes definiëren één teken dat overeenkomt met een van de tekens tussen de haakjes: 
 ```bash
 student@linux-ess:~/globbing$ ls
 a  afilea  file  File  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec
@@ -94,7 +93,7 @@ filea
 student@linux-ess:~/globbing$ ls file[1ac]
 file1  filea  
 ```
-When using brackets we also can define ranges:
+Bij het gebruik van haakjes kunnen we ook bereiken definiëren: 
 ```bash
 student@linux-ess:~/globbing$ ls
 a  afilea  file  File  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec
@@ -107,7 +106,7 @@ FileABC  Filec
 student@linux-ess:~/globbing$ ls file[0-9]
 file1  file2  file3
 ```
-When using brackets we also can exclude the specified range by specifying a caret (^) or an exclamation mark (!) at the beginning:
+Bij het gebruik van haakjes kunnen we ook het opgegeven bereik uitsluiten door aan het begin een hoedje (^) of een uitroepteken (!) op te geven: 
 ```bash
 student@linux-ess:~/globbing$ ls
 a  afilea  file  File  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec
@@ -118,8 +117,10 @@ file1  file2  file3
 student@linux-ess:~/globbing$ ls file[!a-z]*
 file1  file2  file3
 ```
-### Prevent file globbing
-We can prevent file globbing by _escaping_ the special characters in our command. Escaping can be done by placing a `\` in front of the character. This tells the shell to interpret the next character as a regular symbol rather than the special operation:
+
+### Voorkom bestand globbing
+
+We kunnen het globben van bestanden voorkomen door aan de speciale tekens in onze opdracht te _ontsnappen_. Ontsnappen kan door een `\` voor het karakter te plaatsen. Dit vertelt de shell om het volgende teken te interpreteren als een regulier symbool in plaats van de speciale betekenis: 
 ```bash
 student@linux-ess:~/globbing$ ls
  File4   File5   FileABC   Filec   afilea  'file*'   file1   file2   file3   filea   fileb   filebc
@@ -133,11 +134,10 @@ student@linux-ess:~/globbing$ echo \*\*\*\* TITLE \*\*\*\*
 **** TITLE ****
 ```
 
-?> You can imagine what would happen if we would delete the file _file*_ without using the escaping.
+?> Je kan je voorstellen wat er zou gebeuren als we het bestand _file*_ zouden verwijderen zonder de ontsnapping te gebruiken. 
 
-
-## Aliases
-Aliases are a way to give a simple name to a rather complex command as seen below:
+## Aliassen 
+Aliassen zijn een manier om een eenvoudige naam te geven aan een vrij complex commando, zoals hieronder te zien is: 
 ```bash
 student@linux-ess:~$ alias show='ls -lah'
 student@linux-ess:~$ show
@@ -150,25 +150,25 @@ drwxr-xr-x 1 root  root       512 Mar  7 17:09 ..
 ...
 ```
 
-Aliases are often used for implementing an extra layer of security:
+Aliassen worden vaak gebruikt voor het implementeren van een extra beveiligingslaag: 
 ```bash
 student@linux-ess:~$ alias rm='rm -i'
 student@linux-ess:~$ rm jokes.txt
 rm: remove regular file 'jokes.txt'? y
 ```
 
-You already used aliases. For example the ls command we use prints colored text in its output. This is because we use the alias. If we put a `\` in front of a command it will use the command instead of the alias.
+Je hebt al aliassen gebruikt. Bijvoorbeeld het ls commando dat we gebruiken drukt gekleurde tekst af in de uitvoer. Dit komt omdat we de alias gebruiken. Als we een `\` voor een commando plaatsen, wordt het commando gebruikt in plaats van de alias. 
 ```bash
 student@linux-ess:~$ alias ls
 alias ls='ls --color=auto'
 ```
 
-If we want to remove an alias we can use the unalias command:
+Als we een alias willen verwijderen, kunnen we het unalias commando gebruiken: 
 ```bash
 student@linux-ess:~$ unalias rm
 ```
 
-?> If you want to keep an alias for future use (open a new shell, reboot, ...) you can add it to a (new) hidden file in your homefolder named `.bash_aliases`
+?> Als je een alias wilt behouden voor toekomstig gebruik (open een nieuwe shell, herstart, ...) kan je deze toevoegen aan een (nieuw) verborgen bestand in je homefolder met de naam `.bash_aliases` 
 
 ```bash
 student@linux-ess:~$ cat .bash_aliases
@@ -190,28 +190,27 @@ Swap:             0B          0B          0B
 student@linux-ess:~$
 ```
 
-The order in which the shell checks for commands in the shell: 
-* Aliases. Names set by the alias command that represent a particular command and a set of options. 
-* Built-in command. This is a command built into the shell.
-* Filesystem command. This command is stored in and executed from the computer’s filesystem. (These are the commands that are indicated by the value of the PATH variable).
+De volgorde waarin de shell controleert op opdrachten in de shell:  
+* Aliassen. Namen die door de aliasopdracht zijn ingesteld en die een bepaald commando en een reeks opties vertegenwoordigen.  
+* Ingebouwde commando's. Dit is een commando dat in de shell is ingebouwd. 
+* Bestandssysteem commando's. Deze commando's worden opgeslagen in en uitgevoerd vanuit het bestandssysteem van de computer. (Dit zijn de commando's die worden aangegeven door de waarde van de variabele PATH). 
 
-
-## I/O redirection
-### I/O Streams
-When working with the shell we actually work with something called streams. There are 3 basic streams available when using a shell:
+## I/O-omleiding 
+### I/O-streams 
+Bij het werken met de shell werken we eigenlijk met iets dat streams wordt genoemd. Er zijn 3 basisstreams beschikbaar bij het gebruik van een shell: 
 ![iostreams](./../images/07/ioredirect.png)
 
-The most basic example is called `stdin`. This is the stream that we use to input data into the shell using our keyboard.
+Het meest basale voorbeeld heet `stdin`. Dit is de stream die we gebruiken om gegevens in de shell in te voeren met behulp van ons toetsenbord. 
 
-The output that gets generated from running commands is split up in two seperate streams:
-* `stdout` gives us all the regular command output. By default this output gets printed on our screen.
-* `stderr` gives us all the error messages a command generates. By default these error messages get printed on our screen.
-Because both `stdout` and `stderr` get printed on our screen, we don't notice the difference between the two.
+De uitvoer die wordt gegenereerd door commando's uit te voeren, wordt opgesplitst in twee afzonderlijke streams: 
+* `stdout` geeft ons alle reguliere commando-uitvoer. Standaard wordt deze uitvoer op ons scherm afgedrukt. 
+* `stderr` geeft ons alle foutmeldingen die een commando genereert. Standaard worden deze foutmeldingen op ons scherm afgedrukt. 
+Omdat zowel `stdout` als `stderr` op ons scherm worden afgedrukt, merken we het verschil tussen de twee niet. 
 
-Every stream has its own identifier (=number) as seen in the image above. These identifiers are important in the next paragraphs.
+Elke stream heeft zijn eigen identifier (=nummer) zoals te zien is in de afbeelding hierboven. Deze id's zijn belangrijk in de volgende paragrafen. 
 
-### Stream redirection
-We can redirect any of these streams to make the output go _somewhere else_. Often 'somewhere else' means to a file. This means we can seperate regular output (stdout) and errors (stderr) to get saved into seperate files. Below we begin with an example on how you can save the regular output of a command to a file:
+### Stream omleiding 
+We kunnen elk van deze streams omleiden om de uitvoer _ergens anders_ te laten gaan. Vaak betekent 'ergens anders' naar een bestand. Dit betekent dat we reguliere uitvoer (stdout) en fouten (stderr) kunnen scheiden om in afzonderlijke bestanden te worden opgeslagen. Hieronder beginnen we met een voorbeeld van hoe je de normale uitvoer van een commando in een bestand kan opslaan: 
 ```bash
 student@linux-ess:~$ ls / 1> listrootfolder
 student@linux-ess:~$ head -6 listrootfolder
@@ -222,32 +221,33 @@ etc
 home
 lib
 ```
-The `1>` means we redirect stream `1` to the file `listrootfolder`. Stream `1` refers to the `stdout` stream. Note that in this case the number `1` is optional, so the command below will work as well:
+De `1>` betekent dat we stream `1` omleiden naar het bestand `listrootfolder`. Stream `1` verwijst naar de `stdout` stream. Merk op dat in dit geval het nummer `1` optioneel is, dus het onderstaande commando werkt ook: 
 ```bash
 student@linux-ess:~$ ls / > listrootfolder
 ```
-If the command also generates errors than these will still be printed on our screen.
+Als de opdracht ook fouten genereert, worden deze nog steeds op ons scherm afgedrukt. 
 
-?> You might recognize this syntax as we've used it before in chapter 5. We used the command `echo hello world > ourfile` to write the string `hello world` to the file `ourfile`.
+?> Misschien herken je deze syntaxis zoals we hem eerder in hoofdstuk 5 hebben gebruikt. We gebruikten het commando `echo hello world > ourfile` om de string `hello world` naar het bestand `ourfile` te schrijven. 
 
-If we want to redirect `stderr` we can use the same concept as follows:
+Als we `stderr` willen omleiden, kunnen we hetzelfde concept als volgt gebruiken: 
 ```bash
 student@linux-ess:~$ find / 2> /dev/null
 ```
-In this example every file that's found (which is regular output) will be printed on our screen. The errors that are generated (eg. not able to dive in a certain directory to look for files because of lack of privileges) will not be shown on the screen because they are redirected to the black hole.
-This path `/dev/null` is often referred to as `the void` or `the black hole` because we can throw in as much "garbage" as we want.
+In dit voorbeeld wordt elk bestand dat wordt gevonden (wat normale uitvoer is) op ons scherm afgedrukt. De fouten die worden gegenereerd (bijvoorbeeld niet in staat om in een bepaalde map te duiken om naar bestanden te zoeken vanwege gebrek aan privileges) worden niet op het scherm weergegeven omdat ze worden omgeleid naar het zwarte gat. 
 
-And we could even combine redirecting both streams to seperate files in one command:
+Dit pad `/dev/null` wordt vaak `the void` of `the black hole/het zwarte gat` genoemd omdat we er zoveel "afval" in kunnen gooien als we willen. 
+
+En we kunnen zelfs het omleiden van beide streams naar afzonderlijke bestanden in één opdracht combineren: 
 ```bash
 student@linux-ess:~$ find / > results.txt 2> errors.txt
 ```
 
-If we want to redirect both `stderr` and `stdout` to the same file we can use the `&>` operator as follows:
+Als we zowel `stderr` als `stdout` naar hetzelfde bestand willen omleiden, kunnen we de operator `&>` als volgt gebruiken: 
 ```bash
 student@linux-ess:~$ find / &> results_and_errors.txt
 ```
 
-If you want to redirect to a file and add the contents to that file you need to use two `>>`. This is because one `>` will always empty the file before adding the content:
+Als je naar een bestand wilt omleiden en de inhoud aan dat bestand wilt toevoegen, moet je twee `>>` gebruiken. Dit komt omdat een `>` het bestand altijd leegmaakt voordat de inhoud wordt toegevoegd: 
 ```bash
 student@linux-ess:~$ echo "text 1" > testfile
 student@linux-ess:~$ cat testfile
@@ -262,9 +262,9 @@ text 3
 student@linux-ess:~$
 ```
 
-## Control operators
-### Seperating commands
-We can use a `;` (semicolon) character to seperate multiple commands on one line. Each command can have its own options and arguments and they will be ran sequentially. The shell will wait for a command to finish before starting the next one:
+## Besturingsoperators 
+### Opdrachten scheiden 
+We kunnen een `;` (puntkomma) teken gebruiken om meerdere commando's op één regel te scheiden. Elke opdracht kan zijn eigen opties en argumenten hebben en deze worden sequentieel uitgevoerd. De shell wacht tot een opdracht is voltooid voordat de volgende wordt gestart: 
 ```bash
 student@linux-ess:~$ echo hello ; echo pxl ; pwd
 hello
@@ -272,9 +272,9 @@ pxl
 /home/student
 ```
 
-### Logical operators
-Next up are some control operators that we can use that you might know from other use cases or environments:
-* logical _AND_ operator (`&&`): The second command will only execute if the first command succeeds
+### Logische operatoren 
+De volgende zijn enkele besturingsoperators die we kunnen gebruiken die je misschien kent van andere gebruiksscenario's of omgevingen: 
+* logische _AND/EN_ operator (`&&`): Het tweede commando wordt alleen uitgevoerd als het eerste commando gelukt is 
 ```bash
 student@linux-ess:~$ echo first && echo second
 first
@@ -285,7 +285,7 @@ Command 'zecho' not found, did you mean:
 Try: sudo apt install <deb name>
 ```
 
-* logical _OR_ operator (`||`): The second command is only executed when the first command fails
+* logische _OR/OF_ operator (`||`): Het tweede commando wordt alleen uitgevoerd als het eerste commando mislukt 
 ```bash
 student@linux-ess:~$ echo first || echo second
 first
@@ -296,7 +296,7 @@ Try: sudo apt install <deb name>
 second
 ```
 
-We can combine both operators as well to simulate an _if-then-else_ like structure as follows:
+We kunnen beide operatoren ook combineren om een _if-then-else_-achtige structuur als volgt te simuleren: 
 ```bash
 student@linux-ess:~$ touch testfile
 student@linux-ess:~$ ls test*
@@ -310,7 +310,7 @@ rm: cannot remove 'testfile': No such file or directory
 failed to delete
 ```
 
-In this example it would be best to redirect our errors to the _void_ as well, because we generate our own fault message now. Use `/dev/null` as seen earlier to do this in combination with the redirection of the stderr as follows:
+In dit voorbeeld is het het beste om onze fouten ook om te leiden naar de _void_, omdat we nu onze eigen foutmelding genereren. Gebruik hiervoor `/dev/null` zoals eerder gezien in combinatie met de omleiding van de stderr als volgt: 
 ```bash
 student@linux-ess:~$ touch testfile
 student@linux-ess:~$ ls test*

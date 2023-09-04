@@ -1,2 +1,2 @@
 # Lab <!-- {docsify-ignore} -->
-There is no lab for this chapter.
+Er is geen lab voor dit hoofdstuk. 
