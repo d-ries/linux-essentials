@@ -1,5 +1,5 @@
 <!-- docs/_sidebar.md -->
-* [Home](./)
+* [Home](./be-nl/)
 * [1 Introductie](./be-nl/01_introduction/01_course.md)
 * [2 Installatie](./be-nl/02_installation/01_course.md)
 * [3 Command line interface](./be-nl/03_commandline/01_course.md)
