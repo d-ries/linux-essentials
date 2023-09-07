@@ -472,84 +472,7 @@ student@linux-ess:~/course$ ls -l config
 -rwxr--r-- 1 teacher    it        0 okt  2 19:36 config
 ```
 
-### Default permissions (umask)
 
-A last thing we need to look at are the default permissions. What permissions are applied when you create new files and folders? 
-
-The maximum permissions for new files is 666, so -rw-rw-rw-. New files are never created with execute permissions. This is enforced by the kernel. It is of course possible to add the execute bit after file creation using `chmod`, but it always requires a conscious decission for security reasons. Folders don't have this limitation as a folder without an execute bit set is quite useless. 
-
-```bash
-student@linux-ess:~/course$ touch file
-student@linux-ess:~/course$ mkdir folder
-student@linux-ess:~/course$ ls -l
-total 4
--rw-rw-r-- 1 student student    0 okt 15 15:56 file
-drwxrwxr-x 2 student student 4096 okt 15 15:56 folder
-```
-As you can see, we don't get the expected -rw-rw-rw- for the file, nor drwxrwxrwx for the folder. This is because most distributions are more strict than the Linux kernel allows. Using the kernel default would mean created files and folders are writable by every user on the system. They are however readable by `other` so beware of this with sensitive files.
-
-The exact configuration of permissions for new files and folders is set by the `umask`. This is a value that defines the 'mask' that is applied for all newly created files and folders. To see the current mask, use the command `umask`.
-
-```bash
-student@linux-ess:~/course$ umask
-0002 #ignore the first 0 for now
-```
-So how does this work? We know the default is 666: if you substract the umask from that you get 664 or rw-rw-r-- (for folders we start with 777, so end with 775). A umask of 000 allows everything, a umask of 777 will make a new file have no permissions. The numbers still work the same (4 for read, 2 for write, 1 for execute) but this time you are using them to **mask** certain permission bits, or put more simply: deny certain permissions on new files and folders.
-
-You can change the umask by using the same umask command.
-
-```bash
-student@linux-ess:~/course$ umask 000
-student@linux-ess:~/course$ touch newfile1
-student@linux-ess:~/course$ ls -l newfile1
--rw-rw-rw- 1 student student 0 okt 15 16:23 newfile1
-student@linux-ess:~/course$ umask 026 #if you want to mask multiple bits, add them together
-student@linux-ess:~/course$ touch newfile2
-student@linux-ess:~/course$ ls -l newfile2
--rw-r----- 1 student student 0 okt 15 16:24 newfile2
-student@linux-ess:~/course$ umask 077 
-student@linux-ess:~/course$ mkdir newfolder1
-student@linux-ess:~/course$ ls -ld newfolder1
-drwx------ 2 student student 4096 okt 15 16:25 newfolder1
-```
-?> <i class="fa-solid fa-circle-info"></i> Setting the umask using the command changes the umask for your current terminal session. Exiting the terminal will reset it to the default value. To make it permanent add `umask <your umask>` to your user's `.bashrc` file in your home directory.
-
-```bash
-student@linux-ess:~/course$ touch file
-student@linux-ess:~/course$ sudo touch file2
-student@linux-ess:~/course$ ls -l
--rw-rw-r-- 1 student student 0 okt 15 16:44 file
--rw-r--r-- 1 root    root    0 okt 15 16:44 file2
-```
-One last thing to be aware of: If you look at the above files, you'll see that files created by the root user have a different umask set. This is explained by looking at the system-wide umask setting, found in the `/etc/login.defs` file.
-
-```bash
-student@linux-ess:~/course$ nano /etc/login.defs
-UMASK           022 #line 151
-...
-USERGROUPS_ENAB yes #line 230
-```
-To change the setting system-wide you can change the value for umask here. The default umask specified is the one the root user uses (no write for anybody but the owner). The reason files created by regular users get an extra w for the group, is the option on line 230. This option specifies that for any non-root user that has the same user-id as group-id (so the primary group is unchanged) the group umask-bits gets changed to the user umask-bits, explaining the 002 umask seen above.
-  
-  
-?> <i class="fa-solid fa-circle-info"></i> You can also use the letter notation with umask:
-```bash
-student@linux-ess:~$ umask
-0002
-student@linux-ess:~$ umask -S
-u=rwx,g=rwx,o=rx
-student@linux-ess:~$ touch file3
-student@linux-ess:~$ ls -l file3
--rw-rw-r-- 1 student student 0 Nov 11 14:01 file3
-student@linux-ess:~$ umask u=rwx,g=rx,o=
-student@linux-ess:~$ umask
-0027
-student@linux-ess:~$ umask -S
-u=rwx,g=rx,o=
-student@linux-ess:~$ touch file4
-student@linux-ess:~$ ls -l file4
--rw-r----- 1 student student 0 Nov 11 14:03 file4
-```  
   
   
 ### Working together in a team (setgid)
@@ -797,7 +720,10 @@ text from liam
 
 
 
-?> As you may have noticed there is a third bit we haven't talked about. setuid, the first bit in the field. This allows executable files to run with the permissions of the owner of the file, not the one executing it. This is used by the _passwd_ command to allow users to change their own password for example, as a normal user has no access to the /etc/shadow-file. Setting the setuid bit can have serious security risks, and is almost always a very bad idea. So you should probably ignore this knowledge
+### Running a binary as the fileowner (setuid)
+
+
+As you may have noticed there is a third bit we haven't talked about. setuid, the first bit in the field. This allows executable files to run with the permissions of the owner of the file, not the one executing it. This is used by the _passwd_ command to allow users to change their own password for example, as a normal user has no access to the /etc/shadow-file. Setting the setuid bit can have serious security risks, and is almost always a very bad idea. So you should probably ignore this knowledge
 
 ```bash
 student@linux-ess:~$ ls -l /etc/shadow
@@ -807,6 +733,88 @@ student@linux-ess:~$ ls -l /bin/passwd
 student@linux-ess:~$ stat -c '%a %n' /bin/passwd
 4755 /bin/passwd 
 ```
+
+
+### Default permissions (umask)
+
+A last thing we need to look at are the default permissions. What permissions are applied when you create new files and folders? 
+
+The maximum permissions for new files is 666, so -rw-rw-rw-. New files are never created with execute permissions. This is enforced by the kernel. It is of course possible to add the execute bit after file creation using `chmod`, but it always requires a conscious decission for security reasons. Folders don't have this limitation as a folder without an execute bit set is quite useless. 
+
+```bash
+student@linux-ess:~/course$ touch file
+student@linux-ess:~/course$ mkdir folder
+student@linux-ess:~/course$ ls -l
+total 4
+-rw-rw-r-- 1 student student    0 okt 15 15:56 file
+drwxrwxr-x 2 student student 4096 okt 15 15:56 folder
+```
+As you can see, we don't get the expected -rw-rw-rw- for the file, nor drwxrwxrwx for the folder. This is because most distributions are more strict than the Linux kernel allows. Using the kernel default would mean created files and folders are writable by every user on the system. They are however readable by `other` so beware of this with sensitive files.
+
+The exact configuration of permissions for new files and folders is set by the `umask`. This is a value that defines the 'mask' that is applied for all newly created files and folders. To see the current mask, use the command `umask`.
+
+```bash
+student@linux-ess:~/course$ umask
+0002 #ignore the first 0 for now
+```
+So how does this work? We know the default is 666: if you substract the umask from that you get 664 or rw-rw-r-- (for folders we start with 777, so end with 775). A umask of 000 allows everything, a umask of 777 will make a new file have no permissions. The numbers still work the same (4 for read, 2 for write, 1 for execute) but this time you are using them to **mask** certain permission bits, or put more simply: deny certain permissions on new files and folders.
+
+You can change the umask by using the same umask command.
+
+```bash
+student@linux-ess:~/course$ umask 000
+student@linux-ess:~/course$ touch newfile1
+student@linux-ess:~/course$ ls -l newfile1
+-rw-rw-rw- 1 student student 0 okt 15 16:23 newfile1
+student@linux-ess:~/course$ umask 026 #if you want to mask multiple bits, add them together
+student@linux-ess:~/course$ touch newfile2
+student@linux-ess:~/course$ ls -l newfile2
+-rw-r----- 1 student student 0 okt 15 16:24 newfile2
+student@linux-ess:~/course$ umask 077 
+student@linux-ess:~/course$ mkdir newfolder1
+student@linux-ess:~/course$ ls -ld newfolder1
+drwx------ 2 student student 4096 okt 15 16:25 newfolder1
+```
+?> <i class="fa-solid fa-circle-info"></i> Setting the umask using the command changes the umask for your current terminal session. Exiting the terminal will reset it to the default value. To make it permanent add `umask <your umask>` to your user's `.bashrc` file in your home directory.
+
+```bash
+student@linux-ess:~/course$ touch file
+student@linux-ess:~/course$ sudo touch file2
+student@linux-ess:~/course$ ls -l
+-rw-rw-r-- 1 student student 0 okt 15 16:44 file
+-rw-r--r-- 1 root    root    0 okt 15 16:44 file2
+```
+One last thing to be aware of: If you look at the above files, you'll see that files created by the root user have a different umask set. This is explained by looking at the system-wide umask setting, found in the `/etc/login.defs` file.
+
+```bash
+student@linux-ess:~/course$ nano /etc/login.defs
+UMASK           022 #line 151
+...
+USERGROUPS_ENAB yes #line 230
+```
+To change the setting system-wide you can change the value for umask here. The default umask specified is the one the root user uses (no write for anybody but the owner). The reason files created by regular users get an extra w for the group, is the option on line 230. This option specifies that for any non-root user that has the same user-id as group-id (so the primary group is unchanged) the group umask-bits gets changed to the user umask-bits, explaining the 002 umask seen above.
+  
+  
+?> <i class="fa-solid fa-circle-info"></i> You can also use the letter notation with umask:
+```bash
+student@linux-ess:~$ umask
+0002
+student@linux-ess:~$ umask -S
+u=rwx,g=rwx,o=rx
+student@linux-ess:~$ touch file3
+student@linux-ess:~$ ls -l file3
+-rw-rw-r-- 1 student student 0 Nov 11 14:01 file3
+student@linux-ess:~$ umask u=rwx,g=rx,o=
+student@linux-ess:~$ umask
+0027
+student@linux-ess:~$ umask -S
+u=rwx,g=rx,o=
+student@linux-ess:~$ touch file4
+student@linux-ess:~$ ls -l file4
+-rw-r----- 1 student student 0 Nov 11 14:03 file4
+```
+
+
 
           
 ### Access control lists
