@@ -10,5 +10,6 @@
 ** [Lab](./be-nl/07_advancedcommands/02_lab.md)
 ** [Oefeningen](./be-nl/07_advancedcommands/99_assignments.md)
 * [8 Filters & bestandspermissies ](./be-nl/08_filters/01_course.md)
-* [9 Gebruikers & permissies](./be-nl/09_usersandpermissions/01_course.md)
-* [10 Automatisatie](./be-nl/10_automation/01_course.md)
+* [9 Gebruikers & groepen](./be-nl/09_usersandgroups/01_course.md)
+* [10 Rechten](./be-nl/10_permissions/01_course.md)
+* [11 Automatisatie](./be-nl/11_automation/01_course.md)
