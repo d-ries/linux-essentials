@@ -480,6 +480,7 @@ student@linux-ess:~/course$ ls -l config
 If we want to be able to work together it is key that all users are able to change each others files. The solution to give all users the same primary group is a security issue because this also changes the rights on their homefolders:
 
 ```bash
+student@linux-ess:~$ sudo groupadd ict 
 student@linux-ess:~$ sudo useradd -m -g it -s /bin/bash liam
 student@linux-ess:~$ sudo passwd liam
 student@linux-ess:~$ sudo useradd -m -g it -s /bin/bash jacob
@@ -500,7 +501,7 @@ jacob@linux-ess:~$ exit
   
 ?> As you can see the user Jacob can view the files from the homefolder of the user Liam.
   
-We will give the users their default primary group:
+We will now give both users their own primary group:
 ```bash
 student@linux-ess:~$ sudo groupadd liam
 student@linux-ess:~$ sudo groupadd jacob
@@ -509,9 +510,13 @@ student@linux-ess:~$ sudo usermod -g jacob jacob
 student@linux-ess:~$ ls -ld /home/liam  /home/jacob
 drwxr-x--- 2 jacob jacob 4096 Nov 26 15:39 /home/jacob
 drwxr-x--- 2 liam  liam  4096 Nov 26 15:32 /home/liam
+student@linux-ess:~$ sudo ls -l /home/jacob/.profile
+-rw-r--r-- 1 jacob jacob 807 Jan  6  2022 /home/jacob/.profile
 ```
+
+?> Note that changing the primary group of a user also changes the groupowner of every file in his homefolder.
   
-We will create a group for the two users to give them rights on a shared folder that we will create in a few. We'll also apply the users to the group:
+We will create a group for the two users to give them rights on a shared folder that we will create in the next step. We'll also apply the users to this new group:
 ```bash
 student@linux-ess:~$ sudo groupadd ict
 student@linux-ess:~$ sudo usermod -aG ict liam
@@ -520,18 +525,20 @@ student@linux-ess:~$ grep ict /etc/group
 ict:x:1005:liam,jacob
 ```
     
-We will make a directory that will be shared between the two users, and we will give it the necessary permissions:
+We will make the directory that will be shared between the two users, and we will give it the necessary permissions:
 ```bash
 student@linux-ess:~$ sudo mkdir -p /shares/ict
 student@linux-ess:~$ ls -ld /shares/ict
 drwxr-xr-x 2 root root 4096 Nov 26 15:58 /shares/ict
 student@linux-ess:~$ sudo chgrp ict /shares/ict
+student@linux-ess:~$ ls -ld /shares/ict
+drwxr-xr-x 2 root ict 4096 Nov 26 15:58 /shares/ict
 student@linux-ess:~$ sudo chmod g+w /shares/ict
 student@linux-ess:~$ ls -ld /shares/ict
 drwxrwxr-x 2 root ict 4096 Nov 26 15:58 /shares/ict
 ```
 
-?> As you can see members of the group ict have the permission to enter the share and to create/delete files and folders within the share
+?> As you can see members of the group ict have the permission to enter the shared folder ict and to create/delete files and folders within that folder
 
 But there's a problem when the users create a file within the share:
 ```bash
@@ -561,10 +568,10 @@ touch: cannot touch 'testfile2': Permission denied
 liam@linux-ess:/shares/ict$ exit
 ```
 
-?> As you can see they cannot work together on the same files
+?> As you can see they cannot work together on the same files or in the same directories
 
 A solution is the use of the special bit, named setgid.
-We can give it to the share with the command chmod g+s (to remove we would use g-s):
+We can give it to the shared folder ict with the command chmod g+s (to remove we would use g-s):
 ```bash
 student@linux-ess:~$ ls -ld /shares/ict/
 drwxrwxr-x 3 root ict 4096 Nov 26 16:12 /shares/ict/
@@ -573,9 +580,9 @@ student@linux-ess:~$ ls -ld /shares/ict/
 drwxrwsr-x 3 root ict 4096 Nov 26 16:12 /shares/ict/
 ```
   
-?> As you can see in the permissions of the groupowner it now ends with a letter _s_. A lowercase _s_ means that there is an _x_ underneath, an uppercase _s_ means that there is no _x_ underneath.
+?> As you can see in the permissions of the groupowner it now ends with a letter _s_. A lowercase _s_ means that there is an _x_ underneath, an uppercase _S_ means that there is no _x_ underneath.
 
-The special bit setgid says that files and folders that will be created in this folder will have the same groupowner as this folder has:
+The special bit setgid means that files and folders that will be created in this folder will have the same groupowner as this folder itself:
 ```bash
 student@linux-ess:~$ ls -l /shares/ict/ 
 total 4
@@ -604,11 +611,11 @@ This is Liam's text
 liam@linux-ess:/shares/ict$ exit
 ```
 
-?> As you can see now both users can work together with eachother's files.
+?> As you can see the groupowner of the new folder and file is ict and that's why both users can now work together with eachother's files.
 
 ### The sticky bit
 
-The setgid bit solves the main problem of making files in a shared folder created by one user accessible to other users in the same non-primary group. However this opens up another problem: Every user with access to the share can now delete or rename the files other users place in this folder. In some cases, like a shared project people are working on, this is fine. But in cases you don't want to allow this, another special permission bit is used: the **sticky bit**. Setting this bit on a folder will disallow any user (except the root user) from renaming or removing files or subfolders he does not own inside that folder.
+The setgid bit solves the main problem of making files in a shared folder created by one user accessible to other users in the same non-primary group. However this opens up another problem: Every user with access to the share can now delete or rename the files of other users in this folder. In some cases, like a shared project people are working on, this is fine. But in cases you don't want to allow this, another special permission bit is used: the **sticky bit**. Setting this bit on a folder will disallow any user (except the user root) from renaming or removing files or subfolders he does not own inside that folder.
 
 This principle is also used in the system's ´/tmp´ folder, disallowing users to remove another user's temporary files.
 
@@ -664,25 +671,29 @@ drwxr-xr-x 2 root ict 4096 nov 27 15:16 ict2/
 student@linux-ess:/shares$ sudo chmod 1775 ict2/
 student@linux-ess:/shares$ ls -ld ict2/
 drwxrwxr-t 2 root ict 4096 nov 27 15:16 ict2/
-
-student@linux-ess:/shares$ sudo mkdir ict3
-student@linux-ess:/shares$ sudo chown :ict ict3/
-student@linux-ess:/shares$ ls -ld
-drwxr-xr-x 5 root root 4096 nov 27 15:20 .
-student@linux-ess:/shares$ sudo chmod 3770 ict3/
-student@linux-ess:/shares$ ls -ld
-drwxr-xr-x 5 root root 4096 nov 27 15:20 .
-student@linux-ess:/shares$ ls -ld ict3/
-drwxrws--T 2 root ict 4096 nov 27 15:20 ict3/ #both setgid and sticky bit are set, when the x for other is not set t changes to T
 ```
-As you can see above: To combine it with the setgid bit, the second bit in the triplet with a value of two, you add both values together.
 
-To unset the sticky bit use a zero. A three-digit mode will also remove the sticky bit. Notice that the setgid bit is kept. To remove all special permissions add another zero in front.
+It's also possible to combine the special bits. In the example below we will combine the sticky bit with the setgid bit, the second bit in the triplet with a value of two. To become the final value you just add both values together (setgid+sticky=2+1=3) and put it in front of the octal permissions (eg.3750) to become a four-digit-mode.
+
+```bash
+student@linux-ess:/shares$ sudo mkdir ict3
+student@linux-ess:/shares$ sudo chown :ict ict3
+student@linux-ess:/shares$ ls -ld ict3
+drwxr-xr-x 5 root ict 4096 nov 27 15:20 ict3
+student@linux-ess:/shares$ sudo chmod o-rx ict3
+student@linux-ess:/shares$ ls -ld ict3
+drwxr-x--- 5 root ict 4096 nov 27 15:20 ict3
+student@linux-ess:/shares$ sudo chmod 3770 ict3
+student@linux-ess:/shares$ ls -ld ict3
+drwxrws--T 2 root ict 4096 nov 27 15:20 ict3 #both setgid and sticky bit are set, when the x for other is not set it displays a capital T
+```
+
+To unset the sticky bit use a zero. A three-digit mode will also remove the sticky bit. Notice that the setgid bit is kept. To remove all special permissions add another zero in front (00xxx)!
 
 ```bash
 student@linux-ess:/shares$ ls -ld ict3/
 drwxrws--T 2 root ict 4096 nov 27 15:20 ict3/
-student@linux-ess:/shares$ sudo chmod 0777 ict3/
+student@linux-ess:/shares$ sudo chmod 0777 ict3/        # or chmod 777
 student@linux-ess:/shares$ ls -ld ict3/
 drwxrwsrwx 2 root ict 4096 nov 27 15:20 ict3/
 student@linux-ess:/shares$ sudo chmod 00775 ict3/
@@ -690,8 +701,10 @@ student@linux-ess:/shares$ ls -ld ict3/
 drwxrwxr-x 2 root ict 4096 nov 27 15:20 ict3/
 ```
 
-If you want the users of the group ict to work together on each others files and you want that they can't remove each other files you have to set the kernel parameter fs.protected_regular=1.
+If you want the users of the group ict to work together on each others files and at the same time you want that they can't remove each other's files, you have to set the kernel parameter fs.protected_regular=1.
 ```bash
+student@linux-ess:~$ ls -ld /shares/ict/
+drwxrwsr-t 3 root ict 4096 nov 27 15:05 /shares/ict/
 student@linux-ess:~$ su - liam
 Password: 
 liam@linux-ess:~$ cd /shares/ict/
@@ -723,7 +736,9 @@ text from liam
 ### Running a binary as the fileowner (setuid)
 
 
-As you may have noticed there is a third bit we haven't talked about. setuid, the first bit in the field. This allows executable files to run with the permissions of the owner of the file, not the one executing it. This is used by the _passwd_ command to allow users to change their own password for example, as a normal user has no access to the /etc/shadow-file. Setting the setuid bit can have serious security risks, and is almost always a very bad idea. So you should probably ignore this knowledge
+As you may have noticed there is a third bit we haven't talked about. setuid, the leftmost bit in the field. This allows executable files to run with the permissions of the owner of the file, not the one executing it. This is used by the _passwd_ command to allow users to change their own password for example, as a normal user has no access to the /etc/shadow-file. Setting the setuid bit can have serious security risks, and is almost always a very bad idea.  
+
+In the following example we will show why a normal user (with no privileges) is allowed to change his password in the shadow file which is only accessible for the root user.
 
 ```bash
 student@linux-ess:~$ ls -l /etc/shadow
