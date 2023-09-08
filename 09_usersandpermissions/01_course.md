@@ -770,18 +770,18 @@ The exact configuration of permissions for new files and folders is set by the `
 
 ```bash
 student@linux-ess:~/course$ umask
-0002 #ignore the first 0 for now
+0002
 ```
-So how does this work? We know the default is 666: if you substract the umask from that you get 664 or rw-rw-r-- (for folders we start with 777, so end with 775). A umask of 000 allows everything, a umask of 777 will make a new file have no permissions. The numbers still work the same (4 for read, 2 for write, 1 for execute) but this time you are using them to **mask** certain permission bits, or put more simply: deny certain permissions on new files and folders.
+So how does this work? We subtract the umask from 777 and never give execute rights to a new file. So for a file you get 775 (rwxrwxr-x), but because you never set the execute bit this results in 644 or rw-rw-r-- . For folders we also subtract the umask (here 002) from 777, this results in 775 and here we keep the execution-bits. A umask of 000 allows everything, a umask of 777 will make a new file and folder have no permissions. The numbers still work the same (4 for read, 2 for write, 1 for execute) but this time you are using them to **mask** certain permission bits, or put more simply: deny certain permissions on new files and folders.
 
-You can change the umask by using the same umask command.
+You can set (=change) the umask by using the same umask command.
 
 ```bash
-student@linux-ess:~/course$ umask 000
+student@linux-ess:~/course$ umask 000       # 777-000=777 and the x is never applied to new files
 student@linux-ess:~/course$ touch newfile1
 student@linux-ess:~/course$ ls -l newfile1
 -rw-rw-rw- 1 student student 0 okt 15 16:23 newfile1
-student@linux-ess:~/course$ umask 026 #if you want to mask multiple bits, add them together
+student@linux-ess:~/course$ umask 027 #if you want to mask multiple bits, add them together  (777-027=750)
 student@linux-ess:~/course$ touch newfile2
 student@linux-ess:~/course$ ls -l newfile2
 -rw-r----- 1 student student 0 okt 15 16:24 newfile2
@@ -791,7 +791,10 @@ student@linux-ess:~/course$ ls -ld newfolder1
 drwx------ 2 student student 4096 okt 15 16:25 newfolder1
 ```
 ?> <i class="fa-solid fa-circle-info"></i> Setting the umask using the command changes the umask for your current terminal session. Exiting the terminal will reset it to the default value. To make it permanent add `umask <your umask>` to your user's `.bashrc` file in your home directory.
-
+  
+  
+One last thing to be aware of: If you look at the following example, you'll see that files created by the root user have a different umask set.
+  
 ```bash
 student@linux-ess:~/course$ touch file
 student@linux-ess:~/course$ sudo touch file2
@@ -799,7 +802,7 @@ student@linux-ess:~/course$ ls -l
 -rw-rw-r-- 1 student student 0 okt 15 16:44 file
 -rw-r--r-- 1 root    root    0 okt 15 16:44 file2
 ```
-One last thing to be aware of: If you look at the above files, you'll see that files created by the root user have a different umask set. This is explained by looking at the system-wide umask setting, found in the `/etc/login.defs` file.
+This is explained by looking at the system-wide umask setting, found in the `/etc/login.defs` file.
 
 ```bash
 student@linux-ess:~/course$ nano /etc/login.defs
@@ -807,7 +810,7 @@ UMASK           022 #line 151
 ...
 USERGROUPS_ENAB yes #line 230
 ```
-To change the setting system-wide you can change the value for umask here. The default umask specified is the one the root user uses (no write for anybody but the owner). The reason files created by regular users get an extra w for the group, is the option on line 230. This option specifies that for any non-root user that has the same user-id as group-id (so the primary group is unchanged) the group umask-bits gets changed to the user umask-bits, explaining the 002 umask seen above.
+To change the setting system-wide you can change the value for umask there. The default umask specified is the one the root user uses (no write for anybody but the owner). The reason files created by regular users get an extra w for the group, is the option on line 230. This option specifies that for any non-root user that has the same user-id as group-id (so the primary group is unchanged) the group umask-bits gets changed to the user umask-bits, explaining the 002 umask seen earlier.
   
   
 ?> <i class="fa-solid fa-circle-info"></i> You can also use the letter notation with umask:
@@ -834,15 +837,15 @@ student@linux-ess:~$ ls -l file4
           
 ### Access control lists
 The ACL feature was created to give users the ability to selectively share files and folders with other users and groups. 
-Before ACL’s are usable we need to install the needed package:
+Before ACL’s can be implemented we need to install the package:
 ```bash
 student@linux-ess:~$ sudo apt install acl
 ```
-When installed, it needs to be turned on when the filesystem is mounted. In our Ubuntu installation ACL’s are loaded  by default. To add ACL’s to a file or folder, use the `setfacl` command. ACL’s can be viewed with the `getfacl` command.  
+When installed, it needs to be turned on when the filesystem is mounted. In our Ubuntu installation ACL’s are loaded by default. To add ACL’s to a file or folder, use the `setfacl` command. ACL’s can be viewed with the `getfacl` command.  
   
-To add ACL’s you need to be the owner of the file or folder, if you are added by an ACL you will not be able to add ACL’s yourself.   
-ACL permissions have precedence over the regular file permissions.   
-All ACL permissions are cumulative, this means if we are in 2 groups that are added to a file with ACL’s. One with r-- rights and one with rwx rights, we will have rwx rights.   
+?> To add ACL’s you need to be the owner of the file or folder, if you are added by an ACL you will not be able to modify the ACL’s yourself.   
+?> ACL permissions have precedence over the regular file permissions.   
+?> All ACL permissions are cumulative, this means if we are in 2 groups that are added to a file with ACL’s. One with r-- rights and one with rwx rights, we will have rwx rights.   
   
 With the `setfacl` command, we’ll be able to modify (-m) or delete (-x) ACL’s. 
  
@@ -863,7 +866,9 @@ student@linux-ess:~$ setfacl -m g:it:rw memo
 student@linux-ess:~$ ls -l memo
 -rw-rw-r--+ 1 student student 0 Nov 11 14:15 memo
 ```
-With `getfacl` we can check the existing ACL’s on a file or folder. Note that we can also see that ACL’s are set by a __+__ in the `ls -l` command
+?> <i class="fa-solid fa-circle-info"></i> Note that we can also see that ACL’s are set by a __+__ in the output of the `ls -l` command
+
+With `getfacl` we can check the existing ACL’s on a file or folder. 
 ```bash
 student@linux-ess:~$ getfacl memo
 # file: memo
@@ -880,7 +885,7 @@ other::r--
 ?> <i class="fa-solid fa-circle-info"></i> For teacher to be able to access the student's file memo in it's homefolder we need to edit some permissions. A possible solution would be: `setfacl -m u:teacher:rx /home/student`. Now, teacher can enter and look in the homefolder of student.   
   
   
-?> <i class="fa-solid fa-circle-info"></i> In previous example, we also see a mask option, this option decides the maximum permission and also has precedence over the regular file permissions except for the user owner. We can also add this parameter as follows:
+?> <i class="fa-solid fa-circle-info"></i> In the previous example, we also see a mask option, this option decides the maximum permission and also has precedence over the regular file permissions except for the user owner. We can also add this parameter as follows:
 ```bash
 student@linux-ess:~$ setfacl -m m:r memo 
 student@linux-ess:~$ getfacl memo 
@@ -926,7 +931,7 @@ other::r--
 
 ```
 
-We can also add default ACL’s by adding the d: parameter or adding the -d option. The default part makes sure new files and folders get the same ACL’s as their parent directory. Note that this only applies if the user creating the file or folder has the permissions to do so! 
+We can also add default ACL’s by adding the d: parameter or adding the -d option. The default part makes sure new subfiles and subfolders get the same ACL’s as the specified directory. Note that this only applies if the user creating the file or folder has the permissions to do so! 
   
 ```bash
 student@linux-ess:~$ mkdir memos
