@@ -1,9 +1,10 @@
-# Users and groups
-As with any operating system we will be working with different users on the system. We've been using the user `student`. We can confirm this by running the command `whoami`. Other commands we can run are `who` or `w`. These will show us all of the users that are logged in on the system (mind that both commands have a different output!).
+# Gebruikers en groepen 
 
-## User management
-### /etc/passwd
-As we've seen before all system configuration is done using config files. The same is true for user management. User configuration is stored in the file `/etc/passwd`. It contains a list of user accounts together with some metadata seperated by colons:
+Zoals met elk besturingssysteem zullen we met verschillende gebruikers op het systeem werken. We gebruiken momenteel de gebruiker 'student'. We kunnen dit bevestigen door het commando `whoami` uit te voeren. Andere commando's die we kunnen uitvoeren zijn `who` of `w`. Deze laten ons alle gebruikers zien die zijn ingelogd op het systeem (let op dat beide commando's een andere uitvoer hebben!). 
+
+## Gebruikersbeheer 
+### /etc/passwd 
+Zoals we eerder hebben gezien, wordt alle systeemconfiguratie gedaan met behulp van configuratiebestanden. Hetzelfde geldt voor gebruikersbeheer. De gebruikersconfiguratie wordt opgeslagen in het bestand `/etc/passwd`. Het bevat een lijst met gebruikersaccounts samen met enkele metagegevens gescheiden door dubbele punten: 
 ```bash
 student@linux-ess:~$ tail /etc/passwd
 pollinate:x:105:1::/var/cache/pollinate:/bin/false
@@ -17,18 +18,18 @@ usbmux:x:112:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
 student:x:1000:1000:student:/home/student:/bin/bash
 lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false
 ```
-The first account in this file is the `root` account:
+Het eerste account in dit bestand is het `root` account: 
 ```bash
 student@linux-ess:~$ head -1 /etc/passwd
 root:x:0:0:root:/root:/bin/bash
 ```
 
-We can see more info than just usernames. These lines contain the user identifier (`1000` for `student`), home folder location, default shell, ... 
+We kunnen meer informatie zien dan alleen gebruikersnamen. Deze regels bevatten de gebruikersidentificatie (`1000` voor `student`), de locatie van de home folder, de standaardshell, ...  
 
-?> <i class="fa-solid fa-circle-info"></i> You can find more information about this file, the columns and the contents by running the command `man 5 passwd`.
+?> <i class="fa-solid fa-circle-info"></i> Meer informatie over dit bestand, de kolommen en de inhoud vind je door het commando `man 5 passwd` uit te voeren. 
 
-### Adding users (useradd)
-To add users we can simply use the `useradd` command. Its important to note that we have to run this command with `sudo` rights. This is because it is a system command that affects the entire system. To add a new user with the username `teacher` we could run the following command:
+### Gebruikers toevoegen (useradd) 
+Om gebruikers toe te voegen kunnen we eenvoudig het commando `useradd` gebruiken. Het is belangrijk op te merken dat we dit commando moeten uitvoeren met `sudo`-rechten. Dit komt omdat het een systeemopdracht is die het hele systeem beïnvloedt. Om een nieuwe gebruiker met de gebruikersnaam `teacher` toe te voegen, kunnen we het volgende commando uitvoeren: 
 ```bash
 student@linux-ess:~$ sudo useradd -m -d /home/teacher -c "Teacher Account" teacher
 [sudo] password for student:
@@ -37,15 +38,14 @@ student:x:1000:1000:student:/home/student:/bin/bash
 lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false
 teacher:x:1001:1001:Teacher Account:/home/teacher:/bin/sh
 ```
-The `-d` takes in an argument and uses this argument as a path to where the homefolder has to be created. The `m` option (`create home`) will make sure the home folder actually gets created with the correct permissions. Lastly the `-c` (`comment`) option sets extra metadata to the user. 
 
+De `-d` neemt een argument op en gebruikt dit argument als een pad naar waar de home folder moet worden gemaakt. De optie `m` (`create home`) zorgt ervoor dat de thuismap daadwerkelijk met de juiste machtigingen wordt gemaakt. Ten slotte stelt de optie `-c` (`comment`) extra metadata in voor de gebruiker.  
 
-?> <i class="fa-solid fa-circle-info"></i> Mind that the option -d is optional and if not specified it defaults to a directory with the same name as the username within the directory /home.
+?> <i class="fa-solid fa-circle-info"></i> Houd er rekening mee dat de optie -d optioneel is en als deze niet is opgegeven, standaard een map is met dezelfde naam als de gebruikersnaam in de map /home. 
 
+?> <i class="fa-solid fa-circle-info"></i> We kunnen gebruikers verwijderen door het commando `userdel -r teacher` uit te voeren. De optie `-r` verwijdert ook de thuismap van die gebruiker. 
 
-?> <i class="fa-solid fa-circle-info"></i> We can delete users by running the command `userdel -r teacher`. The option `-r` will also remove that user's homefolder.
-
-As seen in the folder `/home` or in the file `/etc/passwd` the new user has been created:
+Zoals te zien is in de map `/home` of in het bestand `/etc/passwd` is de nieuwe gebruiker aangemaakt: 
 ```bash
 student@linux-ess:~$ tail -1 /etc/passwd
 teacher:x:1001:1001:Teacher Account:/home/teacher:/bin/sh
@@ -55,15 +55,15 @@ drwxr-x--- 5 student student 4096 Nov  4 16:04 student
 drwxr-x--- 2 teacher teacher 4096 Nov  7 20:28 teacher
 ```
 
-Every user has a userid (the third field in `/etc/passwd`). To view the userid of a user you can use the `id` command:
+Elke gebruiker heeft een userid (het derde veld in `/etc/passwd`). Om de userid van een gebruiker te bekijken kun je het commando `id` gebruiken: 
 ```bash
 student@linux-ess:~$ id teacher
 uid=1001(teacher) gid=1001(teacher) groups=1001(teacher)
 ```
 
-#### Default values
-The `useradd` command uses quite some default values. We can check these default values by running the following command:
-```
+#### Standaardwaarden 
+Het commando `useradd` gebruikt nogal wat standaardwaarden. We kunnen deze standaardwaarden controleren door het volgende commando uit te voeren: 
+```bash
 student@linux-ess:~$ sudo useradd -D
 GROUP=100
 HOME=/home
@@ -73,13 +73,12 @@ SHELL=/bin/sh
 SKEL=/etc/skel
 CREATE_MAIL_SPOOL=no
 ```
-These settings are kept in the file `/etc/default/useradd` and can be changed at any time by altering the file or using `useradd -D [option]`.
+Deze instellingen worden bewaard in het bestand `/etc/default/useradd` en kunnen op elk moment worden gewijzigd door het bestand te wijzigen of `useradd -D [optie]` te gebruiken. 
 
-?> <i class="fa-solid fa-circle-info"></i> Notice that the default value for the shell is `/bin/sh`. It is good practice to alter this to `/bin/bash` so that every new user that will be created in the future gets the `bourne again shell` as default (eg. sudo useradd -D --shell /bin/bash).
+?> <i class="fa-solid fa-circle-info"></i> Merk op dat de standaardwaarde voor de shell `/bin/sh` is. Het is een goede gewoonte om dit te wijzigen in `/bin/bash` zodat elke nieuwe gebruiker die in de toekomst wordt aangemaakt de `bourne again shell` als standaard krijgt (bijv. sudo useradd -D --shell /bin/bash). 
 
-#### /etc/skel
-By default homefolders are created as a subdirectory of the `/home` directory. These folders aren't created from scratch. The contents of the folder `/etc/skel` are copied within each newly created homefolder. This means that if we alter any contents in this `skel` folder, this wil actually be copied to any new user that will be created in the future:
-
+#### /etc/skel 
+Standaard worden homefolders aangemaakt als een submap van de map `/home`. Deze mappen worden niet uit het niets gemaakt. De inhoud van de map `/etc/skel` wordt gekopieerd binnen elke nieuw aangemaakte homefolder. Dit betekent dat als we inhoud in deze `skel`map wijzigen, deze daadwerkelijk wordt gekopieerd naar elke nieuwe gebruiker die in de toekomst zal worden gemaakt: 
 ```bash
 student@linux-ess:~$ ls -a /etc/skel
 .  ..  .bash_logout  .bashrc  .profile
@@ -87,15 +86,15 @@ student@linux-ess:~$ sudo ls -a /home/teacher/
 .  ..  .bash_logout  .bashrc  .profile
 ```
 
-#### Default profile files
-__.bashrc__: executed everytime a new shell (bash) is started
+#### Standaard profielbestanden 
+__.bashrc__: uitgevoerd telkens wanneer een nieuwe shell (bash) wordt gestart 
 
-__.bash\_logout__: clears the screen when the user logs out
+__.bash\_logout__: wist het scherm wanneer de gebruiker uitlogt 
 
-__.profile__: executed when user logs in
+__.profile__: uitgevoerd wanneer de gebruiker inlogt 
 
-### Editing users (usermod & userdel)
-To edit a user's account configuration, we can use the `usermod` command. This command has several options that we can use to edit specific settings. For example to edit the comment field of a user we can run the following command:
+### Gebruikers bewerken (usermod & userdel) 
+Om de accountconfiguratie van een gebruiker te bewerken, kunnen we het commando `usermod` gebruiken. Dit commando heeft verschillende opties die we kunnen gebruiken om specifieke instellingen te bewerken. Om bijvoorbeeld het commentaarveld van een gebruiker te bewerken, kunnen we het volgende commando uitvoeren: 
 ```bash
 student@linux-ess:~$ grep student /etc/passwd
 student:x:1000:1000:student:/home/student:/bin/bash
@@ -104,7 +103,7 @@ student@linux-ess:~$ grep student /etc/passwd
 student:x:1000:1000:Student Account:/home/student:/bin/bash
 ```
 
-To edit the default shell for a specific user we could do the following:
+Om de standaard shell voor een specifieke gebruiker te bewerken, kunnen we het volgende doen: 
 ```bash
 student@linux-ess:~$ tail -3 /etc/passwd
 student:x:1000:1000:Student Account:/home/student:/bin/bash
@@ -117,13 +116,13 @@ lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false
 teacher:x:1001:1001:Teacher Account:/home/teacher:/bin/bash
 ```
 
-?> View the manpage of `usermod` for all possible options. 
+?> Bekijk de manpage van `usermod` voor alle mogelijke opties. 
   
-  
-?> If we want to create a user that cannot be logged into, we can change his shell to `/bin/false` or `/sbin/nologin`. The difference between these two is that `/sbin/nologin` gives a polite message that you cannot log in to this account before exiting. The option `/bin/false` directly exits without prompting anything. 
+?> Als we een gebruiker willen maken waarop niet kan worden ingelogd, kunnen we zijn shell wijzigen naar `/bin/false` of `/sbin/nologin`. Het verschil tussen deze twee is dat `/sbin/nologin` een beleefd bericht geeft dat je niet kunt inloggen op dit account voordat het afsluit. De optie `/bin/false` sluit direct af zonder iets te zeggen. 
 
-#### Setting user passwords
-If we want to change our own password we can use the `passwd` command (without sudo!):
+#### Gebruikerswachtwoorden instellen 
+Als we ons eigen wachtwoord willen wijzigen, kunnen we het commando `passwd` gebruiken (zonder sudo!): 
+
 ```bash
 student@linux-ess:~$ passwd
 Changing password for student.
@@ -132,15 +131,11 @@ New password:
 Retype new password:
 passwd: password updated successfully
 ```
-  
-?> <i class="fa-solid fa-circle-info"></i> Note that your password has to be long and difficult enough, otherwise the new password will not be accepted.
-  
-  
-?> <i class="fa-solid fa-circle-info"></i> Note that if we use `sudo passwd` that we are changing the password of the user root and not our own password!
+?> <i class="fa-solid fa-circle-info"></i> Houd er rekening mee dat je wachtwoord lang en moeilijk genoeg moet zijn, anders wordt het nieuwe wachtwoord niet geaccepteerd. 
 
-    
-  
-As seen in the previous commands we created a new user with the username `teacher` but we never gave it a password. To do this we can run the `passwd` command with `sudo` rights and with a username as argument. This forces setting a new password for that specific user:
+?> <i class="fa-solid fa-circle-info"></i> Merk op dat als we `sudo passwd` gebruiken, we het wachtwoord van de root gebruiker wijzigen en niet ons eigen wachtwoord! 
+
+Zoals te zien is in de vorige commando's hebben we een nieuwe gebruiker aangemaakt met de gebruikersnaam `teacher` maar we hebben deze nooit een wachtwoord gegeven. Om dit te doen kunnen we het `passwd` commando uitvoeren met `sudo` rechten en met een gebruikersnaam als argument. Dit dwingt het instellen van een nieuw wachtwoord voor die specifieke gebruiker: 
 ```bash
 student@linux-ess:~$ sudo passwd teacher
 New password:
@@ -148,18 +143,17 @@ Retype new password:
 passwd: password updated successfully
 ```
 
-The password gets stored in the file `/etc/shadow` for security reasons. Regular users cannot view the contents of this file:
+Het wachtwoord wordt om veiligheidsredenen opgeslagen in het bestand `/etc/shadow`. Gewone gebruikers kunnen de inhoud van dit bestand niet bekijken: 
 ```bash
 student@linux-ess:~$ tail -1 /etc/shadow
 tail: cannot open '/etc/shadow' for reading: Permission denied
 student@linux-ess:~$ sudo tail -1 /etc/shadow
 teacher:$y$j9T$Vtf.U//c4/N/CB8LzHfnl0$5iCgijrpqXfaA3v18w/nAL2rl8BmiBYX5rn5rf.j6B7:19171:0:99999:7:::
 ```
-As seen in the example above the password isn't shown in plaintext. This is because Linux systems use hashing algoritms to encrypt the passwords. The algoritm used here is called _sha512_.
+Zoals te zien is in het bovenstaande voorbeeld, wordt het wachtwoord niet weergegeven in leesbare tekst. Dit komt omdat Linux-systemen hashing-algoritmes gebruiken om de wachtwoorden te versleutelen. Het algoritm dat hier wordt gebruikt, wordt _sha512_ genoemd. 
 
-
-## Substitute user (su)
-You can log out a user using `logout` or `exit`. Of course you can log back in as a different user after logging out. With the command su (substitute user) you can temporarily work as another user:
+## Veranderen van gebruiker (su) 
+Je kan een gebruiker uitloggen met `logout` of `exit`. Natuurlijk kun je na het uitloggen weer inloggen als een andere gebruiker. Met het commando su (substitute user) kan je tijdelijk als een andere gebruiker werken: 
 ```bash
 student@linux-ess:~$ whoami; pwd
 student
@@ -176,7 +170,7 @@ student
 /home/student
 ```
 
-Note that root can become whoever he wants without the need to know that user's password:
+Merk op dat root kan worden wie hij wil zonder dat hij het wachtwoord van die gebruiker hoeft te kennen: 
 ```bash
 student@linux-ess:~$ whoami; pwd
 student
@@ -189,7 +183,7 @@ teacher@linux-ess:~$ exit
 logout
 ```
 
-Note that to become root (without knowing his password) we can also use the `sudo su` command:
+Merk op dat om root te worden (zonder zijn wachtwoord te kennen) we ook het commando `sudo su` kunnen gebruiken: 
 ```bash
 student@linux-ess:~$ whoami; pwd
 student
@@ -203,9 +197,9 @@ root@linux-ess:~# exit
 logout
 ```
 
-We want to be mindful of commands that we run as the `root` user. This user can have permissions on all the files, folders and services on our system. This means that running commands as `root` can have a huge impact when being exploited.
+Je moet voorzichtig zijn met commando's die je als `root`-gebruiker uitvoert. Deze gebruiker kan machtigingen hebben voor alle bestanden, mappen en services op ons systeem. Dit betekent dat het uitvoeren van commando's als `root` een enorme impact kan hebben wanneer ze worden misbruikt. 
 
-?> <i class="fa-solid fa-circle-info"></i> Notice that if you use the minus (-) with the su command, that the profile of the new user will also be loaded and you will be put in the homedirectory of that user. If you do not use the minus (-) the profile of the user will not be loaded. You will still become the new user with his privileges, but you will remain in the current folder because his profile won't be loaded.
+?> <i class="fa-solid fa-circle-info"></i> Merk op dat als je de min (-) gebruikt met het su commando, dat het profiel van de nieuwe gebruiker ook geladen wordt en je in de homedirectory van die gebruiker wordt gezet. Als je de min (-) niet gebruikt, wordt het profiel van de gebruiker niet geladen. Je wordt nog steeds de nieuwe gebruiker met zijn rechten, maar je blijft in de huidige map omdat zijn profiel niet wordt geladen. 
 
 ```bash
 student@linux-ess:~$ whoami; pwd
@@ -229,10 +223,11 @@ logout
 student@linux-ess:~$
 ```
 
-## Group management
+## Groepsmanagement 
 
-### View groupinfo of a user (id, groups)
-To view the groups a user is member of we can use the commands `id` and `groups`:
+### Groepsinfo van een gebruiker bekijken (id, groups) 
+
+Om de groepen te bekijken waarvan een gebruiker lid is, kunnen we de commando's `id` en `groups` gebruiken: 
 ```bash
 student@linux-ess:~$ id student
 uid=1000(student) gid=1000(student) groups=1000(student),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),110(lxd)
@@ -240,8 +235,8 @@ student@linux-ess:~$ groups student
 student : student adm cdrom sudo dip plugdev lxd
 ```
 
-### /etc/group
-The file where the group info of the users is stored is `/etc/group`. We could also make changes to this file instead of using commands.
+### /etc/group 
+Het bestand waarin de groepsinformatie van de gebruikers is opgeslagen is `/etc/group`. We kunnen ook wijzigingen aanbrengen in dit bestand in plaats van commando's te gebruiken. 
 ```bash
 student@linux-ess:~$ grep student /etc/group
 adm:x:4:syslog,student
@@ -253,9 +248,8 @@ lxd:x:110:student
 student:x:1000:
 ```
 
-
-### Adding groups (groupadd)
-If there's a need for new groups we can do it with the `groupadd` command:
+### Groepen toevoegen (groupadd) 
+Als er behoefte is aan nieuwe groepen, kunnen we dit doen met het commando `groupadd`: 
 ```bash
 student@linux-ess:~$ sudo groupadd ict
 student@linux-ess:~$ tail -3 /etc/group
@@ -264,10 +258,10 @@ teacher:x:1001:
 ict:x:1002:
 ```
 
-?> We can delete groups using the command `groupdel`.
+?> We kunnen groepen verwijderen met het commando `groupdel`. 
 
-### Editing groups (groupmod)
-If we need to change a group we can use `groupmod`:
+### Groepen bewerken (groupmod) 
+Als we een groep moeten wijzigen, kunnen we `groupmod` gebruiken: 
 ```bash
 student@linux-ess:~$ sudo groupmod -n it ict
 student@linux-ess:~$ tail -3 /etc/group
@@ -276,8 +270,8 @@ teacher:x:1001:
 it:x:1002:
 ```
 
-### Edit group memberships (usermod)
-If we want to add a user to a supplementary group we can also use the `usermod` command:
+### Groepslidmaatschappen bewerken (usermod) 
+Als we een gebruiker aan een extra groep willen toevoegen, kunnen we ook het commando `usermod` gebruiken: 
 ```bash
 student@linux-ess:~$ sudo usermod -a -G it teacher
 student@linux-ess:~$ id teacher
@@ -288,16 +282,15 @@ student@linux-ess:~$ grep it /etc/group
 it:x:1002:teacher
 ```
 
-?> <i class="fa-solid fa-circle-exclamation"></i> If we forget the `-a` (__add__) option the user will only be in the specified supplementary group and will be removed from all the groups he was in. This can be a serious problem if the user was the only one in the sudo group!
+?> <i class="fa-solid fa-circle-exclamation"></i> Als we de optie `-a` (__add__) vergeten, bevindt de gebruiker zich alleen in de opgegeven aanvullende groep en wordt deze verwijderd uit alle groepen waarin hij zich bevond. Dit kan een ernstig probleem zijn als de gebruiker de enige in de sudo-groep was! 
 
-?> <i class="fa-solid fa-circle-info"></i> If we want to __remove__ a user from a specific supplementary group we have to specify all the supplementary groups he must remain in (and don't use the -a option). In that case it will be easier to edit the group file `/etc/group` by hand. 
+?> <i class="fa-solid fa-circle-info"></i> Als we een gebruiker uit een specifieke aanvullende groep willen __verwijderen__, moeten we alle aanvullende groepen specificeren waarin hij moet blijven (en niet de optie -a gebruiken). In dat geval is het makkelijker om het groepsbestand `/etc/group` met de hand te bewerken.  
 
-?> <i class="fa-solid fa-circle-info"></i> The primary group of a user is specified in `/etc/passwd` and is the default group set on a new file or directory created by that user.
+?> <i class="fa-solid fa-circle-info"></i> De primaire groep van een gebruiker wordt opgegeven in `/etc/passwd` en is de standaardgroep die is ingesteld op een nieuw bestand of een nieuwe map die door die gebruiker is gemaakt. 
 
-?> <i class="fa-solid fa-circle-info"></i> A user knows a change in group membership only when he logs in. So after a change a user has to login again to notice the difference.
+?> <i class="fa-solid fa-circle-info"></i> Een gebruiker weet een wijziging in het groepslidmaatschap alleen wanneer hij zich aanmeldt. Dus na een wijziging moet een gebruiker opnieuw inloggen om het verschil te merken. 
 
-
-In the example below we see that user student's `primary` group is changed to 'it' and this is shown by the id and grep of the passwd-file. However the groups-command does not show the change of group, also when we create a new file, the old primary group is still used. As explaned before, we need to log out and in again to get the changes to happen. This is also shown in the example.
+In het onderstaande voorbeeld zien we dat de `primaire` groep van de gebruiker student is gewijzigd in 'it' en dit wordt weergegeven door de id en grep van het passwd-bestand. Het groups-commando toont echter niet de verandering van groep, ook wanneer we een nieuw bestand maken, wordt de oude primaire groep nog steeds gebruikt. Zoals eerder vermeld, moeten we uitloggen en opnieuw inloggen om de wijzigingen te laten plaatsvinden. Dit is ook te zien in het voorbeeld. 
 ```bash
 student@linux-ess:~$ grep student /etc/passwd
 student:x:1000:1000:Student Account:/home/student:/bin/bash
@@ -336,8 +329,7 @@ drwx------ 5 student it      4096 Oct 19 15:07 snap
 student@linux-ess:~$ exit
 ```
 
-Notice in the example above that when we changed the primary group, all the user student's files were also edited to the new primary group of this user. But because we didn't update the groups by logging out and in again, our old primary group is used for the new file. In the Permissions part of this chapter we'll learn how to change the groupowner to correct this mistake. If we log in again, we see that our groups are updated.
-
+Merk in het bovenstaande voorbeeld op dat toen we de primaire groep wijzigden, alle bestanden van de gebruiker student ook werden bewerkt naar de nieuwe primaire groep van deze gebruiker. Maar omdat we de groepen niet hebben bijgewerkt door uit te loggen en opnieuw in te loggen, wordt onze oude primaire groep gebruikt voor het nieuwe bestand. In het hoofdstuk over rechten leren we hoe je de groepseigenaar kunt wijzigen om deze fout te corrigeren. Als we opnieuw inloggen, zien we dat onze groepen zijn bijgewerkt. 
 ```bash
 ssh student@ip-address # Log in again
 student@linux-ess:~$ touch test2

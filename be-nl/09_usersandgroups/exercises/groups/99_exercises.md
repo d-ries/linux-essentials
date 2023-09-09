@@ -1,53 +1,55 @@
-# Assignment on Groups
+# Oefeningen op Groepen
 
-## Task 1
-Each linux (UNIX) system is a multi-user system. The different users are divided into groups.
-In which file are all groups defined? /etc/group
-Give the id of the following groups:
+## Oefening 1
+Elk Linux (UNIX) systeem is een multi-user systeem. De verschillende gebruikers zijn verdeeld in groepen. 
 
-Group | Group-ID
+In welk bestand zijn alle groepen gedefinieerd? /etc/groep 
+
+Geef de id van de volgende groepen op: 
+
+Groep | Groep-ID
 --- | ---
 root | 
 adm | 
 lp | 
 users| 
-Your primary group | 
+jouw primare groep | 
 
-## Task 2
-Create a group named "ict" with group-ID 1200.
+## Oefening 2 
+Maak een groep met de naam "ict" met groep-id 1200. 
 
-## Task 3
-Change the name of the group "ict" to "helpdesk".
+## Oefening 3
+Wijzig de naam van de groep "ict" in "helpdesk". 
 
-## Task 4
-Add your user to the group helpdesk as a secondary group.
+## Oefening 4 
+Voeg je gebruiker toe aan de groep helpdesk als secundaire groep. 
 
-## Task 5
-Check if the system knows you have been added to this group.
+## Oefening 5 
+Controleer of het systeem weet dat je aan deze groep bent toegevoegd. 
 
-## Task 6
-Log out and in again with your user. 
+## Oefening 6 
+Log uit en weer in met je gebruiker.  
 
-## Task 7
-Check if the system now knows you have been added to the group
+## Oefening 7 
+Controleer of het systeem nu weet dat je aan de groep bent toegevoegd 
 
-## Task 8
-Delete your user from the group helpdesk 
+## Oefening 8 
+verwijder je gebruiker uit de groep helpdesk
 
-## Task 9
-Add your user to the group helpdesk as the primary group 
+## Oefening 9 
+Voeg je gebruiker toe aan de groep helpdesk als de primaire groep  
 
-## Task 10
-Make sure the system knows that this is your new primary group
+## Oefening 10 
+Zorg ervoor dat het systeem weet dat dit je nieuwe primaire groep is 
 
-## Task 11
-Create an empty folder and file in your home folder
+## Oefening 11 
+Maak een lege map en een leeg bestand in je home folder
 
-## Task 12
-Execute the ls -l command in your home folder. What do you notice about the two new items? 
+## Oefening 12 
+Voer de opdracht ls -l uit in je home folder. Wat valt je op aan de twee nieuwe items?  
 
-## Task 13
-Give your user back its own primary group
+## Oefening 13 
+Geef je gebruiker zijn eigen primaire groep terug 
 
-## Task 14
-Remove the group "helpdesk"
+## Oefening 14 
+Verwijder de groep "helpdesk" 

@@ -1,7 +1,7 @@
 # Assignment on Users
 
 ## Task 1
-The definition of users is kept in the file /etc/passwd. This file have 1 line for each user. Each of these lines is divided into 7 fields, separated by a ":". Give a description of each of these fields:
+The definition of users is kept in the file /etc/passwd. This file has 1 line for each user. Each of these lines is divided into 7 fields, separated by a ":". Give a description of each of these fields:
 
 Field 1: ________<br />
 Field 2: ________<br />

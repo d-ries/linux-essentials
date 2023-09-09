@@ -1,7 +1,7 @@
-# Assignment on Users
+# Oefeningen op Gebruikers
 
-## Task 1
-The definition of users is kept in the file /etc/passwd. This file have 1 line for each user. Each of these lines is divided into 7 fields, separated by a ":". Give a description of each of these fields:
+## Oefening 1
+De definitie van gebruikers wordt bewaard in het bestand /etc/passwd. Dit bestand heeft 1 regel voor elke gebruiker. Elk van deze lijnen is verdeeld in 7 velden, gescheiden door een ":". Geef een beschrijving van elk van deze velden: 
 
 Field 1: ________<br />
 Field 2: ________<br />
@@ -12,84 +12,96 @@ Field 6: ________<br />
 Field 7: ________<br />
 
 
-## Task 2
-Back in the early days of Unix, the file /etc/passwd didn’t only keep user-information, it also contained a coded version of the password. This was a weak point in the security of the Unix system of course, because everyone can read the /etc/passwd file and thus could see the coded passwords. For a hacker the next step would be to create a tool to decode these passwords, for example: cracker. After this problem was recognized, it was decided that the passwords were to be kept in a different file. This file would only be accessible by the user root, who’s ID is used to run the passwd and login programs. 
-What is the name of the file with the coded passwords? 
+## Oefening 2
+In de begindagen van Unix bevatte het bestand /etc/passwd niet alleen gebruikersinformatie, het bevatte ook een gecodeerde versie van het wachtwoord. Dit was natuurlijk een zwak punt in de beveiliging van het Unix-systeem, omdat iedereen het /etc/passwd-bestand kan lezen en dus de gecodeerde wachtwoorden kan zien. Voor een hacker zou de volgende stap zijn om een tool te maken om deze wachtwoorden te decoderen, bijvoorbeeld: cracker. Nadat dit probleem was herkend, werd besloten dat de wachtwoorden in een ander bestand moesten worden bewaard. Dit bestand zou alleen toegankelijk zijn voor de root gebruiker, wiens ID wordt gebruikt om de passwd- en inlogprogramma's uit te voeren.  
+Wat is de naam van het bestand met de gecodeerde wachtwoorden? 
 
 
-
-## Task 3
-Create a user with following characteristics:  
-User-name:	    john<br />
-User-ID:	    1111<br />
-Group-ID:	    100 (=users)<br />
-Description:	John Doe<br />
-Home-dir:	    /home/john<br />
-Shell:		    /bin/bash<br />
+## Oefening 3
+Maak een gebruiker met de volgende kenmerken: 
+gebruikersnaam:	    john<br />
+gebruikers-ID:      1111<br />
+Groep-ID:	        100 (=users)<br />
+Beschrijving:	    John Doe<br />
+Home-dir:	        /home/john<br />
+Shell:		        /bin/bash<br />
   
    
-## Task 4
-Check the changed files:
-What is changed in the file /etc/passwd?
+## Oefening 4
+Controleer de gewijzigde bestanden: 
+Wat is er gewijzigd in het bestand /etc/passwd? 
 
-## Task 5
-What is changed in the file /etc/shadow?
+
+## Oefening 5
+Wat is er veranderd in het bestand /etc/shadow? 
   
-?> <i class="fa-solid fa-circle-info"></i> After a user is created, its password is set to "!", which means that this name cannot be used to log in. To make this possible you need to give John a password. Set John’s password to "January".
+?> <i class="fa-solid fa-circle-info"></i> Nadat een gebruiker is aangemaakt, wordt het wachtwoord ingesteld op "!", wat betekent dat deze naam niet kan worden gebruikt om in te loggen. Om dit mogelijk te maken moet je John een wachtwoord geven. Stel het wachtwoord van John in op "Januari". 
+
   
-## Task 6
-What is changed in the file /etc/group?
+## Oefening 6
+Wat is er gewijzigd in het bestand /etc/group? 
 
-## Task 7
-What is changed in the directory /home? 
 
-## Task 8
-The user John is now created on your system. Now John should be able to ask information about himself.<br /> 
-Log in as John and execute the following command: 
+## Oefening 7
+Wat is er veranderd in de directory /home? 
+
+
+## Oefening 8
+De gebruiker John is nu aangemaakt op je systeem. Nu zou John informatie over zichzelf moeten kunnen vragen.<br />  
+Log in als John en voer de volgende opdracht uit: 
 ```bash
 id
 ```
 
-## Task 9
-Remove the user John from your system using the command:  userdel –r john<br />
-What is changed in the file /etc/passwd?
-
-## Task 10
-What is changed in the file /etc/shadow?
+## Oefening 9
+Verwijder de gebruiker John van je systeem met behulp van de opdracht: userdel –r john<br /> 
+Wat is er gewijzigd in het bestand /etc/passwd? 
 
 
-## Task 11
-What is changed in the file /etc/group?
-
-## Task 12
-Does the directory /home/john still exist? 
+## Oefening 10
+Wat is er veranderd in het bestand /etc/shadow? 
 
 
-## Task 13
-Create a user Sarah, by only specifying the username and that she must have a home folder. 
-
-## Task 14
-Examine the files that have been modified<br />
-What is changed in the file /etc/passwd?
-
-## Task 15
-What is changed in the file /etc/shadow?
-
-## Task 16
-What is changed in the file /etc/group?
+## Oefening 11
+Wat is er veranderd in het bestand /etc/group?
 
 
-## Task 17
-What is changed in the directory /home?
+## Oefening 12
+Bestaat de directory /home/john nog? 
 
-## Task 18
-Give the user Sarah a password
 
-## Task 19
-Try to log in as Sarah
+## Oefening 13
+Maak een gebruiker Sarah, door alleen de gebruikersnaam op te geven en dat ze een thuismap moet hebben. 
 
-## Task 20
-Remove the user Sarah, but keep her home folder
 
-## Task 21
-Delete Sarah’s home folder
+## Oefening 14
+Bekijk de bestanden die zijn gewijzigd<br /> 
+Wat is er gewijzigd in het bestand /etc/passwd? 
+
+
+## Oefening 15
+Wat is er veranderd in het bestand /etc/shadow? 
+
+
+## Oefening 16
+Wat is er veranderd in het bestand /etc/group?
+
+
+## Oefening 17
+Wat is er veranderd in de directory /home? 
+
+
+## Oefening 18
+Geef de gebruiker Sarah een wachtwoord 
+
+
+## Oefening 19
+Probeer in te loggen als Sarah 
+
+
+## Oefening 20
+Verwijder de gebruiker Sarah, maar behoud haar thuismap 
+
+
+## Oefening 21
+Verwijder de thuismap van Sarah 

@@ -63,7 +63,7 @@ uid=1001(teacher) gid=1001(teacher) groups=1001(teacher)
 
 #### Default values
 The `useradd` command uses quite some default values. We can check these default values by running the following command:
-```
+```bash
 student@linux-ess:~$ sudo useradd -D
 GROUP=100
 HOME=/home
@@ -336,7 +336,7 @@ drwx------ 5 student it      4096 Oct 19 15:07 snap
 student@linux-ess:~$ exit
 ```
 
-Notice in the example above that when we changed the primary group, all the user student's files were also edited to the new primary group of this user. But because we didn't update the groups by logging out and in again, our old primary group is used for the new file. In the Permissions part of this chapter we'll learn how to change the groupowner to correct this mistake. If we log in again, we see that our groups are updated.
+Notice in the example above that when we changed the primary group, all the user student's files were also edited to the new primary group of this user. But because we didn't update the groups by logging out and in again, our old primary group is used for the new file. In the Permissions chapter of this course we'll learn how to change the groupowner to correct this mistake. If we log in again, we see that our groups are updated.
 
 ```bash
 ssh student@ip-address # Log in again
