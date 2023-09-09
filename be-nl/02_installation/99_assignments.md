@@ -25,8 +25,10 @@ Vervolgens kiezen we voor het besturingssysteem `Linux`. In de versie dropdown s
 
 ![VMware Ubuntu 64bit](../images/02/VMware_Ubuntu_64bit.png) 
 
-In het volgende scherm geven we de virtuele machine een naam. Je kunt ook een andere map opgeven om de virtuele machine op je computer op te slaan. 
-?> <i class="fa fa-exclamation-circle" style="font-size:48px;color:red"></i> Let op dat je de bestanden van de VM niet opslaat in een map die gesynced wordt met de cloud (OneDrive, Dropbox, Google Drive)?. Je VM zal crashed en je zal alles in de VM kwijt zijn!
+In het volgende scherm geven we de virtuele machine een naam. Je kunt ook een andere map opgeven om de virtuele machine op je computer op te slaan.  
+  
+?> <i class="fa fa-exclamation-circle" style="font-size:48px;color:red"></i> Let op dat je de bestanden van de VM niet opslaat in een map die gesynced wordt met de cloud (OneDrive, Dropbox, Google Drive)?. Je VM zal crashen en je zal alles in de VM kwijt zijn!  
+  
 
 ![VMware noemt de VM](../images/02/LAB_VMware_Name_The_VM.png) 
 

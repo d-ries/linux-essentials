@@ -24,7 +24,10 @@ Next we choose the operating system `Linux`. In the version dropdown we select `
 
 ![VMware Ubuntu 64bit](../images/02/VMware_Ubuntu_64bit.png)
 
-In the next screen we give the virtual machine a name. You can also specify a different folder to store the virtual machine on your computer.
+In the next screen we give the virtual machine a name. You can also specify a different folder to store the virtual machine on your computer.  
+  
+?> <i class="fa fa-exclamation-circle" style="font-size:48px;color:red"></i> Let op dat je de bestanden van de VM niet opslaat in een map die gesynced wordt met de cloud (OneDrive, Dropbox, Google Drive)?. Je VM zal crashen en je zal alles in de VM kwijt zijn!  
+  
 
 ![VMware Name The VM](../images/02/LAB_VMware_Name_The_VM.png)
 
