@@ -121,6 +121,10 @@ password: pxl
 
 ![Ubuntu_Server_Storage_Username_student_Servername_linux-ess](../images/02/Ubuntu_Server_Storage_Username_student_Servername_linux-ess.png)
 
+We answer the question to upgrade to Ubuntu Pro with `Skip for now`
+
+![Ubuntu_Server_Upgrade_To_Ubuntu_Pro](../images/02/Ubuntu_Server_Upgrade_To_Ubuntu_Pro.png)  
+
 For Extra Packages we will only opt to install `SSH server`:
 
 ![Ubuntu_Server_Storage_SSH](../images/02/Ubuntu_Server_Storage_SSH_WEL.png)

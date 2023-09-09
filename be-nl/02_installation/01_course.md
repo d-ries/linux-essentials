@@ -118,7 +118,12 @@ Servernaam: linux-ess
 wachtwoord: pxl 
 ``` 
 
-![Ubuntu_Server_Storage_Username_student_Servername_linux-ess](../images/02/Ubuntu_Server_Storage_Username_student_Servername_linux-ess.png)
+![Ubuntu_Server_Storage_Username_student_Servername_linux-ess](../images/02/Ubuntu_Server_Storage_Username_student_Servername_linux-ess.png)  
+
+Op de vraag om te upgraden naar Ubuntu Pro behouden we het antwoord `Skip for now`
+
+![Ubuntu_Server_Upgrade_To_Ubuntu_Pro](../images/02/Ubuntu_Server_Upgrade_To_Ubuntu_Pro.png)  
+
 
 Als extra pakket kiezen we er voor om enkel `OpenSSH server` te installeren: 
 
