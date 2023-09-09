@@ -60,6 +60,15 @@ Click on `Finish` and the virtual machine will be created.
 
 ![VMware Finish](../images/02/VMware_Finish.png)
 
+  
+At this point we only need to change the bios to UEFI. To do this we click on `Edit virtual machine settings`. 
+  
+![VMware-afwerking](../images/02/VMware_UEFI_1.png) 
+
+Go to the tab `Options`, click on `Advanced` and select the option `UEFI`. Note that you'll also find the setting `Side channel mitigations` here in case you get a warning later on when starting your Virtual Machine. 
+  
+![VMware-afwerking](../images/02/VMware_UEFI_2.png) 
+  
 You can now boot the VM by clicking the green arrow icon. This will boot the virtual machine and run the installation process.
 
 ![VMware Finish](../images/02/VMware_Start_VM.png)
