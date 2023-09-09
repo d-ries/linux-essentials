@@ -38,7 +38,8 @@ Next we choose the operating system `Linux`. In the version dropdown we select `
 
 ![VMware Ubuntu 64bit](../images/02/VMware_Ubuntu_64bit.png)
 
-In the next screen we give the virtual machine a name. You can also specify a different folder to store the virtual machine on your computer.
+In the next screen we give the virtual machine a name. You can also specify a different folder to store the virtual machine on your computer.  
+
 ?> <i class="fa fa-exclamation-circle" style="font-size:48px;color:red"></i> Caution! Do not save your VM files to a directory on your host that is synced with the cloud (OneDrive, Dropbox, Google Drive)?. Your VM will crash and you will lose everything from within this VM!
 
 ![VMware Name The VM](../images/02/VMware_Name_The_VM.png)
@@ -59,6 +60,15 @@ Click on `Finish` and the virtual machine will be created.
 
 ![VMware Finish](../images/02/VMware_Finish.png)
 
+  
+At this point we only need to change the bios to UEFI. To do this we click on `Edit virtual machine settings`. 
+  
+![VMware-afwerking](../images/02/VMware_UEFI_1.png) 
+
+Go to the tab `Options`, click on `Advanced` and select the option `UEFI`. Note that you'll also find the setting `Side channel mitigations` here in case you get a warning later on when starting your Virtual Machine. 
+  
+![VMware-afwerking](../images/02/VMware_UEFI_2.png) 
+  
 You can now boot the VM by clicking the green arrow icon. This will boot the virtual machine and run the installation process.
 
 ![VMware Finish](../images/02/VMware_Start_VM.png)
@@ -78,7 +88,7 @@ We start the installation process by selecting the language. We choose English:
 
 ![Ubuntu_Server_Language](../images/02/Ubuntu_Server_Language.png)
 
-We skip the installer update:
+We skip the installer update if you see this screen:
 
 ![Ubuntu_Server_No_Installer_Update](../images/02/Ubuntu_Server_No_Installer_Update.png)
 
@@ -111,6 +121,10 @@ password: pxl
 
 ![Ubuntu_Server_Storage_Username_student_Servername_linux-ess](../images/02/Ubuntu_Server_Storage_Username_student_Servername_linux-ess.png)
 
+We answer the question to upgrade to Ubuntu Pro with `Skip for now`
+
+![Ubuntu_Server_Upgrade_To_Ubuntu_Pro](../images/02/Ubuntu_Server_Upgrade_To_Ubuntu_Pro.png)  
+
 For Extra Packages we will only opt to install `SSH server`:
 
 ![Ubuntu_Server_Storage_SSH](../images/02/Ubuntu_Server_Storage_SSH_WEL.png)
@@ -128,3 +142,6 @@ Once the server is rebooted, you will have to press the `enter` key again to see
 
 ![Ubuntu_Server_Press_Enter_To_See_Login](../images/02/Ubuntu_Server_Press_Enter_To_See_Login.png)
   
+Now you can log in and start working on your server. After the text login you can type `student` and push enter. Then you have to type your password (you don't see what you are typing) and push enter.
+
+![Ubuntu_Server_Ready_To_Login](../images/02/Ubuntu_Server_Ready_To_Login.png)

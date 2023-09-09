@@ -25,8 +25,10 @@ Vervolgens kiezen we voor het besturingssysteem `Linux`. In de versie dropdown s
 
 ![VMware Ubuntu 64bit](../images/02/VMware_Ubuntu_64bit.png) 
 
-In het volgende scherm geven we de virtuele machine een naam. Je kunt ook een andere map opgeven om de virtuele machine op je computer op te slaan. 
-?> <i class="fa fa-exclamation-circle" style="font-size:48px;color:red"></i> Let op dat je de bestanden van de VM niet opslaat in een map die gesynced wordt met de cloud (OneDrive, Dropbox, Google Drive)?. Je VM zal crashed en je zal alles in de VM kwijt zijn!
+In het volgende scherm geven we de virtuele machine een naam. Je kunt ook een andere map opgeven om de virtuele machine op je computer op te slaan.  
+  
+?> <i class="fa fa-exclamation-circle" style="font-size:48px;color:red"></i> Let op dat je de bestanden van de VM niet opslaat in een map die gesynced wordt met de cloud (OneDrive, Dropbox, Google Drive)?. Je VM zal crashen en je zal alles in de VM kwijt zijn!  
+  
 
 ![VMware noemt de VM](../images/02/LAB_VMware_Name_The_VM.png) 
 
@@ -46,6 +48,14 @@ Klik op `Finish` en de virtuele machine wordt gemaakt.
 
 ![VMware-afwerking](../images/02/LAB_VMware_Finish.png) 
 
+We kunnen nu de UEFI bios nog instellen. Klik hiervoor op `Edit virtual machine settings`. 
+  
+![VMware-afwerking](../images/02/LAB_VMware_UEFI_1.png) 
+
+Ga naar het tabblad `Options`, klik op `Advanced` en selecteer de optie `UEFI`. Hier vind je ook de instelling omtrent `Side channel mitigations` zou je daar straks een waarschuwing van krijgen tijdens het starten van de Virtuele Machine. 
+  
+![VMware-afwerking](../images/02/LAB_VMware_UEFI_2.png) 
+  
 Je kan de VM nu opstarten door op het groene pijltje te klikken. Hiermee wordt de virtuele machine opgestart en wordt het installatieproces uitgevoerd. 
 
 ![VMware-afwerking](../images/02/LAB_VMware_Start_VM.png) 
@@ -120,6 +130,8 @@ De allereerste keer dat we inloggen, moeten we enkele configuratieschermen doorl
 
 ![Ubuntu_Desktop_First_Login_Online_Accounts](../images/02/LAB_Ubuntu_Desktop_First_Login_Online_Accounts.png)
 
+![Ubuntu_Desktop_First_Login_Online_Accounts](../images/02/LAB_Ubuntu_Desktop_First_Login_Ubuntu_Pro.png)  
+
 ![Ubuntu_Desktop_First_Login_LivePatch](../images/02/LAB_Ubuntu_Desktop_First_Boot_Livepatch.png)
 
 ![Ubuntu_Desktop_First_Login_Help_Improve](../images/02/LAB_Ubuntu_Desktop_First_Login_Help_Improve.png)
@@ -136,6 +148,10 @@ Nu zijn we klaar om Ubuntu Desktop te verkennen:
 
 Voordat je iets anders doet, is het een goede gewoonte om een momentopname, oftewel snapshot, te maken. Als op een later tijdstip onze Ubuntu Desktop breekt, kunnen we altijd terugkeren naar deze momentopname. 
 Het is een tijdsbesparing om terug te kunnen keren naar dit punt, omdat we anders het Linux-systeem opnieuw moeten installeren. 
+
+Indien er nog updates wachtende zijn, kunnen we die nog eerst even doen.
+
+![Ubuntu_Desktop_First_Login_Software_Updater](../images/02/LAB_Ubuntu_Desktop_First_Login_Software_Updater.png)
 
 `Maak een momentopname van de Ubuntu Desktop VM, genaamd "Clean Install"` als volgt: 
 

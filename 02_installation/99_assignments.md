@@ -24,7 +24,10 @@ Next we choose the operating system `Linux`. In the version dropdown we select `
 
 ![VMware Ubuntu 64bit](../images/02/VMware_Ubuntu_64bit.png)
 
-In the next screen we give the virtual machine a name. You can also specify a different folder to store the virtual machine on your computer.
+In the next screen we give the virtual machine a name. You can also specify a different folder to store the virtual machine on your computer.  
+  
+?> <i class="fa fa-exclamation-circle" style="font-size:48px;color:red"></i> Let op dat je de bestanden van de VM niet opslaat in een map die gesynced wordt met de cloud (OneDrive, Dropbox, Google Drive)?. Je VM zal crashen en je zal alles in de VM kwijt zijn!  
+  
 
 ![VMware Name The VM](../images/02/LAB_VMware_Name_The_VM.png)
 
@@ -43,6 +46,14 @@ We still have to link the Ubuntu-server ISO file to the virtual CD-rom drive. We
 Click on `Finish` and the virtual machine will be created.
 
 ![VMware Finish](../images/02/LAB_VMware_Finish.png)
+
+All that's left to set is the UEFI bios. Click on `Edit virtual machine settings`. 
+  
+![VMware-afwerking](../images/02/LAB_VMware_UEFI_1.png) 
+
+Go to the tab `Options`, click on `Advanced` and select the option `UEFI`. Note that you'll also find the setting `Side channel mitigations` here if you should see a warning when you start this Virtual Machine later on. 
+  
+![VMware-afwerking](../images/02/LAB_VMware_UEFI_2.png) 
 
 You can now boot the VM by clicking the green arrow icon. This will boot the virtual machine and run the installation process.
 
@@ -118,6 +129,8 @@ The very first time we log`in we have to go through some configuration screens:
 
 ![Ubuntu_Desktop_First_Login_Online_Accounts](../images/02/LAB_Ubuntu_Desktop_First_Login_Online_Accounts.png)
 
+![Ubuntu_Desktop_First_Login_Online_Accounts](../images/02/LAB_Ubuntu_Desktop_First_Login_Ubuntu_Pro.png)  
+
 ![Ubuntu_Desktop_First_Login_LivePatch](../images/02/LAB_Ubuntu_Desktop_First_Boot_Livepatch.png)
 
 ![Ubuntu_Desktop_First_Login_Help_Improve](../images/02/LAB_Ubuntu_Desktop_First_Login_Help_Improve.png)
@@ -135,6 +148,11 @@ Now we are ready to explore Ubuntu Desktop:
 ## Task 4 - Take a snapshot of the VM
 Before doing anything else, it's good practice to take a snapshot. If, at a later time, our Ubuntu Desktop breaks, we can allways return to this snapshot.
 Being able to roll back to this point is a time saver, because otherwise we have to reinstall the Linux system again from scratch.
+
+When there are some updates waiting it is always nice to do these first.
+
+![Ubuntu_Desktop_First_Login_Software_Updater](../images/02/LAB_Ubuntu_Desktop_First_Login_Software_Updater.png)
+
 
 `Take a snapshot of the Ubuntu Desktop VM, named "Clean Install"` as follows:
 
