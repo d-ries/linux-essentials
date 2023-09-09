@@ -146,6 +146,11 @@ Now we are ready to explore Ubuntu Desktop:
 Before doing anything else, it's good practice to take a snapshot. If, at a later time, our Ubuntu Desktop breaks, we can allways return to this snapshot.
 Being able to roll back to this point is a time saver, because otherwise we have to reinstall the Linux system again from scratch.
 
+When there are some updates waiting it is always nice to do these first.
+
+![Ubuntu_Desktop_First_Login_Software_Updater](../images/02/LAB_Ubuntu_Desktop_First_Login_Software_Updater.png)
+
+
 `Take a snapshot of the Ubuntu Desktop VM, named "Clean Install"` as follows:
 
 _First shutdown the VM..._

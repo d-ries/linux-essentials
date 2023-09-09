@@ -147,6 +147,10 @@ Nu zijn we klaar om Ubuntu Desktop te verkennen:
 Voordat je iets anders doet, is het een goede gewoonte om een momentopname, oftewel snapshot, te maken. Als op een later tijdstip onze Ubuntu Desktop breekt, kunnen we altijd terugkeren naar deze momentopname. 
 Het is een tijdsbesparing om terug te kunnen keren naar dit punt, omdat we anders het Linux-systeem opnieuw moeten installeren. 
 
+Indien er nog updates wachtende zijn, kunnen we die nog eerst even doen.
+
+![Ubuntu_Desktop_First_Login_Software_Updater](../images/02/LAB_Ubuntu_Desktop_First_Login_Software_Updater.png)
+
 `Maak een momentopname van de Ubuntu Desktop VM, genaamd "Clean Install"` als volgt: 
 
 _Sluit eerst de VM af..._
