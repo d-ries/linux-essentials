@@ -44,6 +44,14 @@ Click on `Finish` and the virtual machine will be created.
 
 ![VMware Finish](../images/02/LAB_VMware_Finish.png)
 
+All that's left to set is the UEFI bios. Click on `Edit virtual machine settings`. 
+  
+![VMware-afwerking](../images/02/LAB_VMware_UEFI_1.png) 
+
+Go to the tab `Options`, click on `Advanced` and select the option `UEFI`. Note that you'll also find the setting `Side channel mitigations` here if you should see a warning when you start this Virtual Machine later on. 
+  
+![VMware-afwerking](../images/02/LAB_VMware_UEFI_2.png) 
+
 You can now boot the VM by clicking the green arrow icon. This will boot the virtual machine and run the installation process.
 
 ![VMware Finish](../images/02/LAB_VMware_Start_VM.png)
