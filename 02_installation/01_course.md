@@ -38,7 +38,8 @@ Next we choose the operating system `Linux`. In the version dropdown we select `
 
 ![VMware Ubuntu 64bit](../images/02/VMware_Ubuntu_64bit.png)
 
-In the next screen we give the virtual machine a name. You can also specify a different folder to store the virtual machine on your computer.
+In the next screen we give the virtual machine a name. You can also specify a different folder to store the virtual machine on your computer.  
+
 ?> <i class="fa fa-exclamation-circle" style="font-size:48px;color:red"></i> Caution! Do not save your VM files to a directory on your host that is synced with the cloud (OneDrive, Dropbox, Google Drive)?. Your VM will crash and you will lose everything from within this VM!
 
 ![VMware Name The VM](../images/02/VMware_Name_The_VM.png)
@@ -59,6 +60,15 @@ Click on `Finish` and the virtual machine will be created.
 
 ![VMware Finish](../images/02/VMware_Finish.png)
 
+  
+At this point we only need to change the bios to UEFI. To do this we click on `Edit virtual machine settings`. 
+  
+![VMware-afwerking](../images/02/VMware_UEFI_1.png) 
+
+Go to the tab `Options`, click on `Advanced` and select the option `UEFI`. Note that you'll also find the setting `Side channel mitigations` here in case you get a warning later on when starting your Virtual Machine. 
+  
+![VMware-afwerking](../images/02/VMware_UEFI_2.png) 
+  
 You can now boot the VM by clicking the green arrow icon. This will boot the virtual machine and run the installation process.
 
 ![VMware Finish](../images/02/VMware_Start_VM.png)
