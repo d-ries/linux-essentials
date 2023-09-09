@@ -143,6 +143,6 @@ Zodra de server opnieuw is opgestart, moet je nogmaals op de `entertoets` drukke
 
 ![Ubuntu_Server_Press_Enter_To_See_Login](../images/02/Ubuntu_Server_Press_Enter_To_See_Login.png)
 
-Je kan nu inloggen en beginnen werken op de server. 
+Je kan nu inloggen en beginnen werken op de server. Achter login type je `student` en druk je enter. Vervolgens type je je wachtwoord (je ziet niet wat je intypt) en drukt op enter.
 
 ![Ubuntu_Server_Ready_To_Login](../images/02/Ubuntu_Server_Ready_To_Login.png)
