@@ -142,3 +142,7 @@ Tijdens het herstartproces moet je op de `entertoets` op je toetsenbord drukken:
 Zodra de server opnieuw is opgestart, moet je nogmaals op de `entertoets` drukken om de inlogprompt te zien. 
 
 ![Ubuntu_Server_Press_Enter_To_See_Login](../images/02/Ubuntu_Server_Press_Enter_To_See_Login.png)
+
+Je kan nu inloggen en beginnen werken op de server. 
+
+![Ubuntu_Server_Ready_To_Login](../images/02/Ubuntu_Server_Ready_To_Login.png)

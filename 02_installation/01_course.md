@@ -142,3 +142,6 @@ Once the server is rebooted, you will have to press the `enter` key again to see
 
 ![Ubuntu_Server_Press_Enter_To_See_Login](../images/02/Ubuntu_Server_Press_Enter_To_See_Login.png)
   
+Now you can log in and start working on your server. 
+
+![Ubuntu_Server_Ready_To_Login](../images/02/Ubuntu_Server_Ready_To_Login.png)
