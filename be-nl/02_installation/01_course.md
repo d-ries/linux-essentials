@@ -87,7 +87,7 @@ We starten het installatieproces door een taal te selecteren. We kiezen voor Eng
 
 ![Ubuntu_Server_Language](../images/02/Ubuntu_Server_Language.png)
 
-We slaan de update van het installatieprogramma over: 
+We slaan de update van het installatieprogramma over indien je dit schermpje krijgt: 
 
 ![Ubuntu_Server_No_Installer_Update](../images/02/Ubuntu_Server_No_Installer_Update.png)
 

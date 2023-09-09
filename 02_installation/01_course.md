@@ -88,7 +88,7 @@ We start the installation process by selecting the language. We choose English:
 
 ![Ubuntu_Server_Language](../images/02/Ubuntu_Server_Language.png)
 
-We skip the installer update:
+We skip the installer update if you see this screen:
 
 ![Ubuntu_Server_No_Installer_Update](../images/02/Ubuntu_Server_No_Installer_Update.png)
 
