@@ -35,7 +35,7 @@ Show all lines from the file linux.txt that start with a capital.
 
 ?> <i class="fa-solid fa-circle-info"></i> Capital letters can be matched using [A-Z]  
   
-?> <i class="fa-solid fa-circle-info"></i> The start of a line can be match using ^
+?> <i class="fa-solid fa-circle-info"></i> The start of a line can be matched using ^
 
 
 ## Task 7

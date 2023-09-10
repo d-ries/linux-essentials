@@ -1,9 +1,9 @@
-# Filters and file operations
-When working with (text) files we often want to perform operations to manipulate the file contents to get a specific output. 
+# Filters en bestandsbewerkingen 
+Bij het werken met (tekst)bestanden willen we vaak bewerkingen uitvoeren om de inhoud van het bestand te manipuleren om een specifieke uitvoer te krijgen.  
 
-For example: We have a huge logfile that logs all login attemps for our application where it logs usernames, ip adresses, timestamps, location, ISP info, metadata, ... We might want to quickly lookup all incorrect login attemps by user X and see what IP addresses he was connecting from. We could manually go through the file line by line to check it but often that process is long and tedious. What we want to do is use commands to filter, manipulate and structure the data to the desired result. To do this we can use a wide set of filter and structure commands that we can link together using _pipes_.
+Bijvoorbeeld: We hebben een enorm logbestand dat alle login pogingen voor onze applicatie registreert waaronder de gebruikersnamen, ip-adressen, tijdstempels, locatie, ISP-info, metadata, ... Misschien willen we snel alle onjuiste aanmeldingsadressen van gebruiker X opzoeken en zien vanaf welke IP-adressen hij verbinding maakte. We zouden het bestand regel voor regel handmatig kunnen doorlopen om het te controleren, maar vaak is dat proces lang en vervelend. Wat we willen doen, is commando's gebruiken om de gegevens te filteren, manipuleren en structureren tot het gewenste resultaat. Om dit te doen, kunnen we een brede set filter- en structuurcommando's gebruiken die we aan elkaar kunnen koppelen met behulp van _pipes_. 
 
-For the examples in this chapter we will use a log file filled with data. To download this file you can run the following command:
+Voor de voorbeelden in dit hoofdstuk gebruiken we een logbestand gevuld met gegevens. Om dit bestand te downloaden, kan je het volgende commando uitvoeren: 
 ```bash
 student@linux-ess:~$ wget https://d-ries.github.io/linux-essentials/data/auth.log
 --2022-06-19 18:15:24--  https://d-ries.github.io/linux-essentials/data/auth.log
@@ -38,23 +38,23 @@ Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 7789
 Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
 ```
 
-## Using pipes
-A pipe (`|`) is a specific symbol that we can use to link commands together. The pipe symbol will take the `stdout` from the previous command and fowards it to the `stdin` of the next command:
+## Pipes gebruiken 
+Een pipe (`|`) is een specifiek symbool dat we kunnen gebruiken om commando's aan elkaar te koppelen. Het pipesymbool neemt de `stdout` van het vorige commando en stuurt deze door naar de `stdin` van het volgende commando: 
  ```bash
 student@linux-ess:~$ head -3 auth.log | tail -2
 Jun 09 11:11:11 linux-ess: Server listening on :: port 22.
 Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g
 ```
-The example above will run the `head -3` command which will take the first 3 lines of the file `auth.log`. The output containing the first 3 lines of the file will then be used as input for the `tail -2` command which results in taking the bottom 2 lines of the first 3 lines of the file `auth.log`. This means that the result is the second and third line of the file.
+In het bovenstaande voorbeeld wordt het commando `head -3` uitgevoerd dat de eerste 3 regels van het bestand `auth.log` neemt. De uitvoer met de eerste 3 regels van het bestand wordt vervolgens gebruikt als invoer voor het commando `tail -2`, wat resulteert in het nemen van de onderste 2 regels van de eerste 3 regels van het bestand `auth.log`. Dit betekent dat het resultaat de tweede en derde regel van het bestand is. 
 
-You can use as many pipes as you want in a command line. It will just keep passing the output of a command to the input of the next command and so on:
+Je kan zoveel pipes gebruiken als je wil in een opdrachtregel. Het zal gewoon de uitvoer van een opdracht blijven doorgeven aan de invoer van de volgende opdracht, enzovoort: 
 ```bash
 student@linux-ess:~$ cat auth.log | head | tail -3 | head -2 | tail -1
 Jun 15 17:42:18 linux-ess: Failed password for: janedoe from 192.168.0.10 port 48239 ssh2
 ```
 
-### Write to file (tee)
-Sometimes you want to temporarily write the results to a seperate file while continuing to work with pipes to get a certain end result. This command will forward the `stdin` to the `stdout` but will also store the `stdin` in a file provided as an argument:
+### Schrijf naar bestand (tee) 
+Soms wil je de resultaten tijdelijk naar een apart bestand schrijven terwijl je met pipes blijft werken om een bepaald eindresultaat te krijgen. Dit commando stuurt de `stdin` door naar de `stdout` maar slaat de `stdin` ook op in een bestand dat als argument wordt geleverd: 
 ```bash
 student@linux-ess:~$ tail -3 auth.log | tee temp_log | tail -1
 Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
@@ -64,7 +64,7 @@ Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 7789
 Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
 ```
 
-tee is also often used to put results in a file where you don't have the right privileges and need to use `sudo`:
+Tee wordt ook vaak gebruikt om resultaten in een bestand te plaatsen waar je niet de juiste privileges hebt en `sudo` moet gebruiken: 
 ```bash
 student@linux-ess:~$ tail -3 auth.log | head -1 > /filteredlogfile
 -bash: /filteredlogfile: Permission denied
@@ -81,7 +81,7 @@ student@linux-ess:~$ cat /filteredlogfile
 Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
 ```
 
-?> If you want to add to the output file instead of overwriting it you can specify the option `-a`
+?> Als je aan het uitvoerbestand wilt toevoegen in plaats van het te overschrijven, kan je de optie `-a` gebruiken 
 ```bash
 student@linux-ess:~$ head -1 auth.log | sudo tee -a /filteredlogfile
 Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
@@ -90,28 +90,28 @@ Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 8756
 Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
 ```
 
-## Filtering output
-### Using content filters (grep)
-We often want to browse the contents of a file and retaining the lines containing a certain string or pattern. This is where the `grep` command comes in. `grep` is one of the most used filter commands in Linux systems. We can use it as a standalone command as follows:
+## Filteren van uitvoer 
+### Inhoudsfilters gebruiken (grep) 
+We willen vaak door de inhoud van een bestand bladeren en de regels behouden die een bepaalde tekenreeks of patroon bevatten. Dit is waar het `grep`commando om de hoek komt kijken. `grep`` is een van de meest gebruikte filtercommando's in Linux-systemen. We kunnen het als volgt als zelfstandig commando gebruiken: 
 ```bash
 student@linux-ess:~$ grep jane auth.log
 Jun 15 17:42:18 linux-ess: Failed password for: janedoe from 192.168.0.10 port 48239 ssh2
 Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
 ```
-Or we can use it as a _pipe_:
+Of we kunnen het gebruiken als een _pipe_:
 ```bash
 student@linux-ess:~$ cat auth.log | grep jane
 Jun 15 17:42:18 linux-ess: Failed password for: janedoe from 192.168.0.10 port 48239 ssh2
 Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
 ```
-Both commands give the same result and work the same. What we can see is that the `grep` command will filter the file contents based on a string or pattern (in this case the string `jane`). 
+Beide commando's geven hetzelfde resultaat en werken hetzelfde. Wat we kunnen zien is dat het `grep` commando de inhoud van het bestand filtert op basis van een string of patroon (in dit geval de string `jane`).  
 
-?> An important note to make is that, by default, `grep` is a case sensitive command. It will only show the lines in the file containing that specific keyword. Note that searching for the string _failed_ in all lower case will result in 0 lines being returned:
+?> Een belangrijke opmerking om te maken is dat `grep` standaard een hoofdlettergevoelig commando is. Het toont alleen de regels in het bestand met dat specifieke trefwoord. Merk op dat het zoeken naar de tekenreeks _failed_ in enkel kleine letters ertoe zal leiden dat 0 regels worden geretourneerd: 
 ```bash
 student@linux-ess:~$ cat auth.log | grep failed
 student@linux-ess:~$
 ```
-However there is an option `-i` to make grep work case insensitive: 
+Er is echter de optie `-i` om grep hoofdletterongevoelig te maken: 
 ```bash
 student@linux-ess:~$ cat auth.log | grep -i failed
 Jun 10 21:38:01 linux-ess: Failed password for: student from 192.168.0.1 port 37362 ssh2
@@ -126,7 +126,7 @@ Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 8756
 Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
 ```
 
-Another interesting option is `-v` which will return all lines _not_ containing the string/pattern:
+Een andere interessante optie is `-v` die alle lijnen _zonder_ de string/patroon retourneert: 
 ```bash
 student@linux-ess:~$ cat auth.log | grep -i -v failed
 Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
@@ -140,20 +140,20 @@ Jun 22 08:04:00 linux-ess: Accepted password for: johndoe from 192.168.0.99 port
 Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
 ```
 
-Knowing that we can use multiple pipes (`|`) in a command, we can combine multiple grep commands as well. Imagine the scenario where we want to find only successful login attemps made by the user `janedoe`. We could do this as follows:
+Wetende dat we meerdere pipes (`|`) in een commando kunnen gebruiken, kunnen we ook meerdere grep-commando's combineren. Stel je het scenario voor waarin we alleen succesvolle inlogmomenten willen vinden die door de gebruiker `janedoe` zijn gemaakt. We zouden dit als volgt kunnen doen: 
 ```bash
 student@linux-ess:~$ cat auth.log | grep -vi failed | grep janedoe
 Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
 ```  
   
-or (there are multiple correct answers here)  
+of (er zijn hier meerdere juiste antwoorden) 
   
 ```bash
 student@linux-ess:~$ cat auth.log | grep janedoe | grep Accepted
 Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
 ```
 
-Sometimes we might want to see more than just the line that contains the string/pattern. Imagine we want to see some more context as to where the file is located. We can customize the grep command to show lines `before` and/or `after` the result as follows:
+Soms willen we misschien meer zien dan alleen de lijn die de tekenreeks/het patroon bevat. Stel je voor dat we wat meer context willen zien over waar het bestand zich bevindt. We kunnen het grep-commando aanpassen om regels `voor` en/of `na` het resultaat als volgt weer te geven: 
 ```bash
 student@linux-ess:~$ cat example.log
 this is line one
@@ -174,7 +174,7 @@ this is line three
 this is line four
 ```
 
-?> Another important note to make is that filters only work on the output stream and not on the error stream. So if we want to search through the errors as well we have to combine the two streams:
+?> Een andere belangrijke opmerking om te maken is dat filters alleen werken op de uitvoerstroom en niet op de foutstroom. Dus als we ook door de fouten heen willen zoeken, moeten we de twee stromen combineren: 
 ```bash
 student@linux-ess:~$ find /etc/ssl -name "*.c??"
 /etc/ssl/openssl.cnf
@@ -190,7 +190,7 @@ student@linux-ess:~$ find /etc/ssl -name "*.c??" |& tr 'abcde' 'ABCDE'
 finD: ‘/EtC/ssl/privAtE’: PErmission DEniED
 ```
 
-Or another example where we only want to see the debug files from the sys folder that have _kernel_ in the name. We see here that it prints all the error lines because the grep filter does not work on the error stream
+Of een ander voorbeeld waarbij we alleen de foutopsporingsbestanden uit de sys-map willen zien die _kernel_ in de naam hebben. We zien hier dat het alle foutregels afdrukt omdat de grep-filter niet werkt op de foutstroom 
 ```bash
 student@linux-ess:~$ find /sys -iname "*kernel*" | grep debug
 find: '/sys/kernel/tracing': Permission denied
@@ -200,21 +200,21 @@ find: '/sys/fs/bpf': Permission denied
 /sys/fs/cgroup/sys-kernel-debug.mount
 ```
 
-The solution is again to merge the two streams together:
+De oplossing is opnieuw om de twee stromen samen te voegen: 
 ```bash
 student@linux-ess:~$ find /sys -iname "*kernel*" |& grep debug
 find: '/sys/kernel/debug': Permission denied
 /sys/fs/cgroup/sys-kernel-debug.mount
 ```
 
-### Regular expressions
-In the examples above we only used simple strings to find certain lines in a file. Sometimes we want to filter on dynamic content. Imagine finding all logins from an ip address containing '192' followed by other characters, or finding users that have "doe" as a lastname. In these case we will search for strings via a certain pattern. To achieve this we have to use a dynamic syntax called a regular expression.
+### Reguliere expressies (Regular expressions)
+In de bovenstaande voorbeelden hebben we alleen eenvoudige tekenreeksen gebruikt om bepaalde lijnen in een bestand te vinden. Soms willen we filteren op dynamische content. Stel je voor dat je alle logins vindt vanaf een ip-adres met '192' gevolgd door andere tekens, of gebruikers wil die 'doe' als achternaam hebben. In deze gevallen zullen we zoeken naar tekenreeksen via een bepaald patroon. Om dit te bereiken moeten we een dynamische syntaxis gebruiken die een reguliere expressie wordt genoemd. 
 
-Regular expressions can turn into a real rabbit hole. We will only focus on the most used cases and a couple of practical examples but know that there is a whole _regex_ world to be explored that is beyond the scope of this course!
+Reguliere expressies kunnen veranderen in een echt konijnenhol. We zullen ons alleen richten op de meest gebruikte cases en een paar praktische voorbeelden, maar weet dat er een hele _regex_ wereld te verkennen is die buiten deze cursus valt! 
 
-The `grep` command can use different kinds of _regex_ patterns. By default it uses _basic regular expressions (BRE)_ but for a lot of cases we want to extend this to _extended regular expressions (ERE)_. To do this we have to use the `-E` option in the  `grep` command. This gives us a lot more functionality when it comes to building dynamic search queries. **A lot of the commands explained below won't work without the `-E` option!**
+Het commando `grep` kan verschillende soorten _regex_ patronen gebruiken. Standaard gebruikt het _basis reguliere expressies (BRE)_ maar voor veel gevallen willen we dit uitbreiden naar _extended reguliere expressies (ERE)_. Om dit te doen, moeten we de optie `-E` gebruiken in het commando `grep`. Dit geeft ons veel meer functionaliteit als het gaat om het bouwen van dynamische zoekopdrachten. **Veel van de onderstaande commando's werken niet zonder de optie `-E`!**
 
-For the examples used in this (sub)chapter we will use a seperate file that you can download using the command below:
+Voor de voorbeelden die in dit (sub)hoofdstuk worden gebruikt, gebruiken we een apart bestand dat je kan downloaden met behulp van het onderstaande commando: 
 ```bash
 student@linux-ess:~$ wget https://d-ries.github.io/linux-essentials/data/regexlist.txt
 --2022-11-03 19:49:29--  https://d-ries.github.io/linux-essentials/data/regexlist.txt
@@ -269,12 +269,12 @@ This is a test.
 This has been tested
 ```
 
-To start of we will use some special symbols that we've used before. We've seen the impact of an asterisk (`*`) in the chapter about _file globbing_. An asterisk has a similar functionality in a regex but there are some important key differences:
-- In file globbing a `*` sign means 0, one or more of any type of character
-- In a regex, a `*` sign means 0, one or more **of the previous character**
+Om te beginnen zullen we een aantal speciale symbolen gebruiken die we eerder hebben gebruikt. We hebben de impact van een sterretje (`*`) gezien in het hoofdstuk over _file globbing_. Een sterretje heeft een vergelijkbare functionaliteit in een regex, maar er zijn enkele belangrijke belangrijke verschillen: 
+- In file globbing betekent een `*`-teken 0, een of meer van elk type teken 
+- In een regex betekent een `*`-teken 0, een of meer **van het vorige teken** 
 
-Take the example below. We expect only the `pxl` variants to show up, but as we can see in the output all of the file contents show. This is because every line matches the regex `zero, one or more of the letter p`:
- ```
+Neem het voorbeeld hieronder. We verwachten dat alleen de 'pxl'-varianten verschijnen, maar zoals we in de uitvoer kunnen zien, wordt alle bestandsinhoud weergegeven. Dit komt omdat elke regel overeenkomt met de regex `nul, een of meer van de letter p`: 
+```bash
 student@linux-ess:~$ cat regexlist.txt | grep "p*"
 Charlotte
 Lawrence
@@ -317,7 +317,7 @@ This is a test.
 This has been tested
 ``` 
 
-If we want to filter the lines with a `p` and the following character might be an `x` this is done by using the following syntax:
+Als we de regels willen filteren met een `p` en het volgende teken kan een `x` zijn, wordt dit gedaan met behulp van de volgende syntaxis: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep "px*"
 john.doe@pxl.b
@@ -335,9 +335,9 @@ https://www.pxl.be
 pxe
 pxe boot
 ```
-Notice that the line doesn't have to start with the pattern.
+Merk op dat de lijn niet met het patroon hoeft te beginnen. 
 
-Because of the fact that we do not put any characters behind the x we could also not specify this character:
+Vanwege het feit dat we geen tekens achter de x plaatsen, konden we dit teken ook niet specificeren: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep "p"
 john.doe@pxl.b
@@ -356,7 +356,7 @@ pxe
 pxe boot
 ```
 
-Now we tell the regex to find lines that contain a `p` followed by zero, one or more `x` characters. This is exactly why `pl` shows up (it contains zero of the character x):
+Nu vertellen we de regex om regels te vinden die een `p` bevatten, gevolgd door nul, een of meer 'x'-tekens. Dit is precies waarom `pl` verschijnt (het bevat nul van het teken x): 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep "px*l"
 john.doe@pxl.b
@@ -371,7 +371,8 @@ http://www.pxl.be
 https://www.pxl.be
 ```
 
-Imagine if we wanted to use a regex that contains one or more of a character rather than zero, one or more. We can do this using the `+` sign. If we use this we will see that the line with the text `pl` isn't in the results anymore:
+Stel je voor dat we een regex zouden willen gebruiken die een of meer van een teken bevat in plaats van nul, een of meer. Dit kunnen we doen met het `+`-teken. Als we dit gebruiken zullen we zien dat de regel met de tekst '
+`pl` niet meer in de resultaten staat: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -E "px+l"
 john.doe@pxl.b
@@ -384,18 +385,18 @@ htp://www.pxl.be
 http://www.pxl.be
 https://www.pxl.be
 ```
-?> Note that if we don't use the -E option here we have to escape the plus sign (+).   ... | grep "px\\+l"
+?> Merk op dat als we hier de optie -E niet gebruiken, we aan het plusteken (+) moeten ontsnappen. ... | grep "px\\+l" 
 
-To take it even a step further, what about exactly 3 occurences? Easy, we can do this as follows:
+Om nog een stap verder te gaan, hoe zit het met precies 3 voorvallen? We kunnen dit eenvoudig als volgt doen: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -E "px{3}l"
 pxxxl
 ```
-The `{3}` is linked to the character before that.  
+De `{3}` is gekoppeld aan het karakter daarvoor.  
 
-?> Note that if we don't use the -E option here we have to escape the curly braces ({}).   ... | grep "px\\{3\\}l"
+?> Merk op dat als we hier de optie -E niet gebruiken, we moeten ontsnappen aan de accolades ({}). ... | grep "px\\{3\\}l" 
 
-Imagine now we wanted to check for lines that start or end with a specific character or character set. We'll start of with lines starting with a specific character:
+Stel je nu voor dat we willen controleren op regels die beginnen of eindigen met een specifiek teken of tekenset. We beginnen met regels die beginnen met een specifiek teken: 
 ```bash
 student@linux-ess:~$  cat regexlist.txt | grep -i "^[smc]"
 Charlotte
@@ -405,7 +406,7 @@ Sara
 Caroline
 Michael
 ```
-The example above uses a `^` sign that indicates the start of a line. Next up we use square brackets `[ ]` that we can use to specify characters that can be used as the start of the line. In this case the letters `S`, `M`, and `C`. We could also use ranges:
+In het bovenstaande voorbeeld wordt een `^`-teken gebruikt dat het begin van een regel aangeeft. Vervolgens gebruiken we vierkante haken `[ ]` die we kunnen gebruiken om tekens op te geven die als het begin van de regel kunnen worden gebruikt. In dit geval de letters `S`, `M` en `C`. We kunnen ook bereiken gebruiken: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep "^[0-9]"
 128
@@ -431,9 +432,9 @@ https://www.pxl.be
 pxe
 pxe boot
 ```
-?> The square brackets are not linked to the beginning and end of a line, so you can use them wherever in the regex. Be aware that these are case sensitive!
+?> De vierkante haakjes zijn niet gekoppeld aan het begin en einde van een lijn, dus je kan ze overal in de regex gebruiken. Houd er rekening mee dat deze hoofdlettergevoelig zijn! 
 
-To check for lines ending with a specific character we can use a `$` sign:
+Om te controleren op regels die eindigen op een specifiek teken kunnen we een `$`-teken gebruiken: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep "e$"
 Charlotte
@@ -454,13 +455,13 @@ student@linux-ess:~$ cat regexlist.txt | grep "[0-9]$"
 127.0.0.1
 ```
 
-So what about matching exactly 1 character? A `.` translates to exactly one character of any type:
+Dus hoe zit het met het matchen van precies 1 karakter? Een `.` vertaalt zich naar precies één teken van elk type: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -i "t.m"
 Tim
 Tom
 ```
-We can combine this with starts & endings as well: 
+We kunnen dit ook combineren met de begin- & eindregex: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep "^...\."
 192.168.1.19
@@ -468,9 +469,9 @@ student@linux-ess:~$ cat regexlist.txt | grep "^...\."
 172.16.0.4
 127.0.0.1
 ```
-This translates to `start with any type of character` (`^.`) followed by 2 more characters of any type (`..`), followed by a regular dot (`\.`). Notice how we escaped the last dot so it doesn't get interpreted as a special regex character!  
+Dit vertaalt zich naar `begin met elk type teken` (`^.`) gevolgd door nog 2 tekens van elk type (`..`), gevolgd door een gewone punt (`\.`). Merk op hoe we aan de laatste punt zijn ontsnapt, zodat deze niet wordt geïnterpreteerd als een speciaal regex-karakter!  
 
-If we want to filter the lines that have one or another pattern we could use the character `|`:  
+Als we de lijnen met een of een ander patroon willen filteren, kunnen we het teken `|`-gebruiken: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -E "^M|n$"
 Max
@@ -481,9 +482,9 @@ Ellen
 Robin
 Michael
 ```
-Here we search for lines beginning with an `M` or ending with an `n`
+Hier zoeken we naar lijnen die beginnen met een `M` of eindigen met een `n` 
 
-We could do the same with using the option -E multiple times:
+We zouden hetzelfde kunnen doen door de optie -e meerdere keren te gebruiken: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -e "^M" -e "n$"
 Max
@@ -494,25 +495,24 @@ Ellen
 Robin
 Michael
 ```  
-  
-If we want to filter lines that comply with multiple patterns we could use the command grep multiple times:
+
+Als we regels willen filteren die aan meerdere patronen voldoen, kunnen we het commando grep meerdere keren gebruiken: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep "^E" | grep "a$" 
 Emma
 ```  
-Here we search for lines ending with an `e` and beginning with a `C`   
-  
-  
-If we want to filter lines that only have the searchstring as a whole word we use the option `-w`:
+Hier zoeken we naar lijnen die eindigen op een `e` en beginnen met een `C`  
+
+Als we regels willen filteren die alleen de zoekstring als een volledig woord hebben, gebruiken we de optie `-w`: 
 ```bash
 student@ubuntu-server:~$ cat regexlist.txt | grep -w "test"
 This is a test.
 ```  
-Here we search for lines with `test` as a single word   
+Hier zoeken we naar regels met `test` als één woord 
   
 
-#### Pattern examples
-Creating a regex that checks for a IPv4 address:
+#### Patroonvoorbeelden 
+Een regex maken die controleert op een IPv4-adres: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -E "^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$"
 192.168.1.19
@@ -520,31 +520,32 @@ student@linux-ess:~$ cat regexlist.txt | grep -E "^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]
 172.16.0.4
 127.0.0.1
 ```
-Note that this does not validate a valid IPv4 address, whether or not it is public or private or if the number ranges are in the `1-255` range.
+Houd er rekening mee dat hiermee geen geldig IPv4-adres wordt gevalideerd, ongeacht of het openbaar of privé adres is of als de nummerbereiken zich in het bereik `1-255` bevinden. 
 
-?> The `{1,3}` syntax means that the previous characters need to appear between 1 and 3 times!
+?> De syntaxis `{1,3}` betekent dat de vorige tekens tussen de 1 en 3 keer moeten verschijnen! 
 
-?> The `^` at the beginning and `$` at the end means that nothing else is allowed on the same line!
+?> De `^` aan het begin en `$` aan het einde betekent dat niets anders op dezelfde regel is toegestaan! 
 
-Creating a regex that checks for a valid e-mail address format:
+Een regex maken die controleert op een geldige e-mailadresindeling: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -E "^.+\@[a-zA-Z0-9]+\.[a-zA-Z]{2,}"
 john.doe@pxl.be
 ```
 
-Creating a regex that checks for a valid url format:
+Een regex maken die controleert op een geldige URL-indeling: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -E "https?://.+\."
 http://www.pxl.be
 https://www.pxl.be
 ```
-Note that this example does not check for valid domain names.  
+Houd er rekening mee dat in dit voorbeeld niet wordt gecontroleerd op geldige domeinnamen.  
 
-?> The questionmark (`?`) in a regex means the previous character is _optional_!
+?> Het vraagteken (`?`) in een regex betekent dat het vorige teken _optioneel_ is! 
 
-### Using content structure (cut,sort,uniq)
-#### Using columns (cut)
-Using the `cut` command we can split lines in a file into columns. To do this we have to define a delimiter (this is a character that defines the start of a new column) for example a `space` or `:` sign. Then we can select which columns the command should display:
+
+### Inhoudsstructuur gebruiken (cut, sort, uniq) 
+#### Kolommen gebruiken (cut) 
+Met behulp van het commando `cut` kunnen we lijnen in een bestand splitsen in kolommen. Om dit te doen, moeten we een scheidingsteken definiëren (dit is een teken dat het begin van een nieuwe kolom definieert), bijvoorbeeld een `spatie`- of `:`-teken. Vervolgens kunnen we selecteren welke kolommen de opdracht moet weergeven: 
 ```bash
 student@linux-ess:~$ cat auth.log
 Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
@@ -569,11 +570,12 @@ Jun 09 11
 Jun 09 11
 Jun 09 12
 ```
-As you can see in the example above we used the `:` sign as the delimiter. We then used the `-f` option to only display the first column. A full line in this log file looks like this:
-```
+Zoals je in het bovenstaande voorbeeld kunt zien, hebben we het `:`teken als scheidingsteken gebruikt. Vervolgens gebruikten we de optie `-f` om alleen de eerste kolom weer te geven. Een volledige regel in dit logboekbestand ziet er als volgt uit: 
+```bash
+student@linux-ess:~$ head -1 auth.log
 Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
 ```
-This means that the first column ends on the `:` sign in the time notation (after the hour). The second column exists out of the minutes part of the time notation, the third column the seconds of the time notation and the hostname and so on. We can also tell the command to display multiple columns:
+Dit betekent dat de eerste kolom eindigt op het `:`-teken in de tijdnotatie (na het uur). De tweede kolom bestaat uit het minutendeel van de tijdnotatie, de derde kolom uit de seconden van de tijdnotatie en de hostnaam enzovoort. We kunnen de opdracht ook vertellen om meerdere kolommen weer te geven: 
 ```bash
 student@linux-ess:~$ head -3 auth.log | cut -d":" -f1,2,3
 Jun 09 11:11:11 linux-ess
@@ -581,7 +583,7 @@ Jun 09 11:11:11 linux-ess
 Jun 09 12:32:24 linux-ess
 ```
 
-Another nice example of where we can use this is the `/etc/passwd` file where we can easily filter all the usernames and there homefolder locations:
+Een ander mooi voorbeeld van waar we dit kunnen gebruiken is het `/etc/passwd` bestand waar we eenvoudig alle gebruikersnamen en hun homefolder locaties kunnen filteren: 
 ```bash
 student@linux-ess:~$ cat /etc/passwd | grep bash$
 root:x:0:0:root:/root:/bin/bash
@@ -590,10 +592,11 @@ student@linux-ess:~$ cat /etc/passwd | grep bash$  | cut -d":" -f1,6
 root:/root
 student:/home/student
 ```
-?> Note that the homefolder of the user root isn't in the folder /home, but within the root of the filesystem (/)
+?> Merk op dat de homemap van de gebruiker root zich niet in de map /home bevindt, maar in de root van het bestandssysteem (/) 
 
-#### Using sorting (sort & uniq)
-If we want to sort the lines of a file we can use the `sort` command. With the `uniq` command only the unique values will be shown.
+
+#### Sorteren (sort & uniq) 
+Als we de regels van een bestand willen sorteren, kunnen we het commando `sort` gebruiken. Met het commando `uniq` worden alleen de unieke waarden getoond. 
 ```bash
 student@linux-ess:~$ cat auth.log | grep -E "Accepted|Failed"
 Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g>
@@ -618,10 +621,9 @@ johndoe
 student
 ```
 
-?> Note that to use `uniq` you must allways first `sort` the data!
+?> Merk op dat om `uniq` te gebruiken je altijd eerst de gegevens moet sorteren (`sort`)! 
 
-?> Note that the pipe sign (|) can be used as the `OR` operator. If we want to apply the `AND` operator we can pipe two greps after each other or use a regex:
-
+?> Merk op dat het pijpteken (|) kan worden gebruikt als de `OR`-operator. Als we de `AND`-operator willen toepassen kunnen we twee greps achter elkaar pipen of een regex gebruiken: 
 ```bash
 cat auth.log | grep "port 44293"
 Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 44293 ssh2
@@ -632,15 +634,15 @@ student@linux-ess:~$ cat auth.log | grep -i "accepted.*port 44293"
 Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
 ```
 
-#### Using counts (wc)
-If we want to count the lines, words or bytes of a document we can use the command `wc`:
+#### Tellingen gebruiken (wc) 
+Als we de regels, woorden of bytes van een document willen tellen, kunnen we het commando `wc` gebruiken: 
 ```bash
 student@linux-ess:~$ wc auth.log
   17  245 1731 auth.log
 ```
-The first number is the number of lines, the second number the number of words and the third number the number of bytes of the file content.
+Het eerste getal is het aantal regels, het tweede getal het aantal woorden en het derde getal het aantal bytes van de bestandsinhoud. 
 
-We can also output only one of those: 
+We kunnen ook maar één van de opties opvragen: 
 ```bash
 student@linux-ess:~$ wc -l auth.log # numer of lines
 17 auth.log
@@ -650,20 +652,21 @@ student@linux-ess:~$ wc -c auth.log # number of bytes
 1731 auth.log
 ```
 
-## Manipulating output
-### Translate (tr)
-The `tr` command allows us to _translate_ certain characters to other characters. It takes in 2 arguments:
-* The character (or set of characters) that needs to be replaced
-* The character (or set of characters) the previous set needs to be replaced by
 
-We can see a simple example below:
+## Output manipuleren 
+### Vertalen (tr) 
+Met het commando `tr` kunnen we bepaalde tekens _vertalen_ naar andere tekens. Er zijn 2 argumenten voor nodig: 
+* Het teken (of een reeks tekens) dat moet worden vervangen 
+* Het teken (of de reeks tekens) die de vorige set moet vervangen 
+
+We kunnen hieronder een eenvoudig voorbeeld zien: 
 ```bash
 student@linux-ess:~$ head -3 auth.log | tr 'e' 'E'
 Jun 09 11:11:11 linux-Ess: SErvEr listEning on 0.0.0.0 port 22.
 Jun 09 11:11:11 linux-Ess: SErvEr listEning on :: port 22.
 Jun 09 12:32:24 linux-Ess: AccEptEd publickEy for: johndoE from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g>
 ```
-all of the letters `e` in the output will be translated to the capital `E`. As said in the explanation above we can use ranges or sets of characters as well:
+alle letters `e` in de uitvoer worden vertaald naar de hoofdletter `E`. Zoals gezegd in de bovenstaande uitleg kunnen we ook bereiken of sets van tekens gebruiken: 
 ```bash
 student@linux-ess:~$ head -3 auth.log | tr 'abcdklmn' 'ABCDKLMN'
 JuN 09 11:11:11 LiNux-ess: Server ListeNiNg oN 0.0.0.0 port 22.
@@ -674,7 +677,7 @@ JUN 09 11:11:11 LINUX-ESS: SERVER LISTENING ON 0.0.0.0 PORT 22.
 JUN 09 11:11:11 LINUX-ESS: SERVER LISTENING ON :: PORT 22.
 JUN 09 12:32:24 LINUX-ESS: ACCEPTED PUBLICKEY FOR: JOHNDOE FROM 85.245.107.42 PORT 54259 SSH2: RSA SHA256:K18KPGZRTIZ7G>
 ```
-It's not just regular characters we can replace. We can use special characters such as newlines or tabs as follows:
+Het zijn niet alleen gewone karakters die we kunnen vervangen. We kunnen speciale tekens zoals newlines of tabs als volgt gebruiken: 
 ```bash
 student@linux-ess:~$ head -3 auth.log | od -c
 0000000   J   u   n       0   9       1   1   :   1   1   :   1   1
@@ -697,9 +700,9 @@ student@linux-ess:~$ head -3 auth.log | od -c
 student@linux-ess:~$ head -3 auth.log | tr '\n' ' '
 Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22. Jun 09 11:11:11 linux-ess: Server listening on :: port 22. Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz
 ```
-?> The example above changes all the _newlines_ to _spaces_.
+?> In het bovenstaande voorbeeld worden alle _newlines_ gewijzigd in _spaties_. 
 
-Imagine we have some data that has multiple occurances of a specific character and we only want it to display one (=squeeze). We can use the `-s` option to delete any recurring characters:
+Stel je voor dat we een aantal gegevens hebben die meerdere voorkomens van een specifiek karakter hebben en we willen dat er maar één wordt weergegeven (= squeeze). We kunnen de optie `-s` gebruiken om terugkerende tekens te verwijderen: 
 ```bash
 student@linux-ess:~$ head -3 auth.log | tr -s '1'
 Jun 09 1:1:1 linux-ess: Server listening on 0.0.0.0 port 22.
@@ -707,7 +710,7 @@ Jun 09 1:1:1 linux-ess: Server listening on :: port 22.
 Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g>
 ```
 
-lastly we have the option `-d` that will _delete_ any of the character(s) we define in the text:
+Ten slotte hebben we de optie `-d` die elk van de tekens die we in de tekst definiëren _verwijdert_: 
 ```bash
 student@linux-ess:~$ head -3 auth.log | tr -d ':'
 Jun 09 111111 linux-ess Server listening on 0.0.0.0 port 22.
@@ -715,8 +718,9 @@ Jun 09 111111 linux-ess Server listening on  port 22.
 Jun 09 123224 linux-ess Accepted publickey for johndoe from 85.245.107.42 port 54259 ssh2 RSA SHA256K18kPGZrTiz7g>
 ```
 
-### Stream editor (sed)
-`sed` is an advanced stream editor that can perform editing functions using regular expressions. Remember the `rename` command? We can use the same syntax of regular expressions here:
+
+### Stream editor (sed) 
+`sed` is een geavanceerde stream-editor die bewerkingsfuncties kan uitvoeren met behulp van reguliere expressies. Herinnert je je het commando `rename` nog? We kunnen hier dezelfde syntaxis van reguliere expressies gebruiken: 
 ```bash
 student@linux-ess:~$ tail -4 auth.log | sed 's/Failed/Incorrect/'
 Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 34598 ssh2
@@ -724,9 +728,9 @@ Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 8
 Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 77898 ssh2
 Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
 ```
-The example above will change the string `Failed` to `Incorrect` once for every line.
+In het bovenstaande voorbeeld wordt de tekenreeks `Failed` voor elke regel één keer gewijzigd in `Incorrect`. 
 
-?> Note that only in the output the changes are applied. The file itself isn't altered. If you want to apply it on the file itself you can add the option `-i`:
+?> Merk op dat alleen in de uitvoer de wijzigingen worden toegepast. Het bestand zelf wordt niet gewijzigd. Als je het op het bestand zelf wilt toepassen, kan je de optie `-i` toevoegen: 
 ```bash
 student@linux-ess:~$ tail -4 auth.log > lastfourlines
 student@linux-ess:~$ cat lastfourlines
@@ -742,18 +746,18 @@ Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 7
 Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
 ```
 
- Mind that by default sed will only change the string once per line. This is something we need to be aware of as we can see in the example below:
- ```bash
+Houd er rekening mee dat sed standaard de string slechts één keer per regel zal veranderen. Dit is iets waar we ons bewust van moeten zijn, zoals we kunnen zien in het onderstaande voorbeeld: 
+```bash
 student@linux-ess:~$ echo "example this is an example" | sed 's/example/test/'
 test this is an example
 ```
-Only the first occurence of `example` is changed to `test`. If we want the `sed` command to change every occurence in a line, we have to use the `g` (global) flag as seen below:
+Alleen het eerste voorkomen van `example` wordt gewijzigd in `test`. Als we willen dat het `sed`-commando elk voorkomen in een regel verandert, moeten we de `g` (global) flag gebruiken zoals hieronder te zien is: 
 ```bash
 student@linux-ess:~$ echo "example this is an example" | sed 's/example/test/g'
 test this is an test
 ```
 
-?> There is also an `i` flag that will make the regex (=search string) case insensitive:
+?> Er is ook een `i`-flag die de regex (=zoekstring) hoofdletterongevoelig maakt:
 ```bash
 student@linux-ess:~$ echo "example this is an Example" | sed 's/example/test/g'
 test this is an Example
@@ -761,7 +765,7 @@ student@linux-ess:~$ echo "example this is an Example" | sed 's/example/test/gi'
 test this is an test
 ```
 
-We're also able to use sed to mask certain text:
+We kunnen sed ook gebruiken om bepaalde tekst te maskeren: 
 ```bash
 student@ubuntu-server:~$ head -2 auth.log
 Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
@@ -774,7 +778,7 @@ Jun 09  linux-ess: Server listening on 0.0.0.0 port 22.
 Jun 09  linux-ess: Server listening on :: port 22.
 ```
 
-Lastly we will look at the `d` flag which will remove any line containing the string:
+Ten slotte zullen we kijken naar de `d`-flag die elke lijn met de tekenreeks verwijdert: 
 ```bash
 student@linux-ess:~$ tail -4 auth.log
 Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 34598 ssh2
@@ -785,7 +789,7 @@ student@linux-ess:~$ tail -4 auth.log | sed '/Failed/d'
 Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
 ```
 
-Offcourse we can use our knowledge of regular expressions with sed, but if you want to use extended regular expressions you need to specify the option `-r`:
+Natuurlijk kunnen we onze kennis van reguliere expressies gebruiken met sed, maar als je uitgebreide reguliere expressies wilt gebruiken, moet je de optie `-r` opgeven: 
 ```bash
 student@ubuntu-server:~$ grep -C2 www regexlist.txt
 32
@@ -804,5 +808,5 @@ url masked
 192.168.1.19
 192.168.5.117
 ```
-  
-?> Because we use slashes (`/`) in our regex we can opt to use underscores (`_`) as seperator
+
+?> Omdat we slashes (`/`) gebruiken in onze regex kunnen we ervoor kiezen om underscores (`_`) als seperator te gebruiken 

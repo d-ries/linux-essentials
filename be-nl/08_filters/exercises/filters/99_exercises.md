@@ -1,17 +1,18 @@
-# Assignment on Filters
+# Oefeningen op Filters
 
-## Task 1
-Show the last five users created on the system, from newest to oldest. Show only the usernames
+## Oefening 1
+Toon de laatste vijf gebruikers die op het systeem zijn gemaakt, van de nieuwste naar de oudste. Toon alleen de gebruikersnamen.
 
-## Task 2
-What is the option to use grep case insensitive?
 
-## Task 3
-Show the lines and line numbers from the file linux.txt that contain the word unix or Unix. Search the manpage of grep to find a solution.
-Try to find two solutions. One with the use of square brackets and one without.
+## Oefening 2
+Wat is de optie om grep hoofdletterongevoelig te gebruiken? 
 
-Example of linux.txt:
 
+## Oefening 3
+Toon de regels en regelnummers uit het bestand linux.txt die het woord unix of Unix bevatten. Doorzoek de manpage van grep om een oplossing te vinden. 
+Probeer twee oplossingen te vinden. Eén met het gebruik van vierkante haken en één zonder. 
+
+Voorbeeld van linux.txt: 
 ```
 I'm working with Linux
 It know something about Minix
@@ -24,37 +25,41 @@ Test
 Test
 ```
 
-## Task 4
-Show the lines from linux.txt that contain the word Linux, Minix or Unix. Use the option _-e_ multiple times to search for each string.
-
-## Task 5
-Count the number of lines that contain the word Unix in the file linux.txt. The result is a number that reflects the number of lines. Search the manpage to find a solution  
-
-## Task 6
-Show all lines from the file linux.txt that start with a capital. 
-
-?> <i class="fa-solid fa-circle-info"></i> Capital letters can be matched using [A-Z]  
-  
-?> <i class="fa-solid fa-circle-info"></i> The start of a line can be match using ^
+## Oefening 4
+Toon de regels uit linux.txt die het woord Linux, Minix of Unix bevatten. Gebruik de optie _-e_ meerdere keren om naar elke tekenreeks te zoeken. 
 
 
-## Task 7
-Print the password file, ordered by userid. Search for this option in the manpage. Search section 5 of the manpage of passwd to find out which field holds the userid. Search the manpage of sort to find out how to sort numeric fields. In the result the user `nobody` must be the last one  
+## Oefening 5
+Tel het aantal regels dat het woord Unix bevat in het bestand linux.txt. Het resultaat is een getal dat het aantal regels weergeeft. Doorzoek de manpage om een oplossing te vinden 
 
 
-## Task 8
-Start with the ls command of the root-folder (/) and try to end with a list of files and folders separated by spaces. Use the tr command to translate all new line characters to spaces.
+## Oefening 6
+Toon alle regels uit het bestand linux.txt die beginnen met een hoofdletter.  
+
+?> <i class="fa-solid fa-circle-info"></i> Hoofdletters kunnen worden gematcht met [A-Z]  
+
+?> <i class="fa-solid fa-circle-info"></i> Het begin van een regel kan worden gematcht met ^ 
 
 
-## Task 9
-Go to your homefolder. Paste all shown files and folders (not the hidden ones) from the directory one after the other and count the number of words. The result is only a number 
+## Oefening 7
+Druk het passwd bestand af, geordend op gebruikers-ID. Zoek naar deze optie in de manpage. Zoek in sectie 5 van de manpage van passwd om erachter te komen welk veld de userid bevat. Zoek in de manpage van sort om erachter te komen hoe je numerieke velden kunt sorteren. In het resultaat moet de gebruiker `nobody` de laatste zijn 
 
-## Task 10
-Show all installed packages, but only show the name and version in alphabetical order.
 
-?> <i class="fa-solid fa-circle-info"></i> Hint: You need to use tr to make it easier.   
-  
-?> <i class="fa-solid fa-circle-info"></i> Hint: You only need to use tr and cut once. 
+## Oefening 8
+Begin met het ls commando van de root-map (/) en probeer te eindigen met een lijst van bestanden en mappen gescheiden door spaties. Gebruik het commando tr om alle new lines naar spaties te vertalen. 
 
-## Task 11
-How many installed packages are there on your system?
+
+## Oefening 9
+Ga naar je homefolder. Plak alle weergegeven bestanden en mappen (niet de verborgen) uit de map achter elkaar en tel het aantal woorden. Het resultaat is slechts een getal 
+
+
+## Oefening 10
+Toon alle geïnstalleerde pakketten, maar toon alleen de naam en versie in alfabetische volgorde. 
+
+?> <i class="fa-solid fa-circle-info"></i> Tip: Je moet tr gebruiken om het gemakkelijker te maken.  
+
+?> <i class="fa-solid fa-circle-info"></i> Tip: Je hoeft maar één keer tr en cut te gebruiken.
+
+
+## Oefening 11
+Hoeveel geïnstalleerde pakketten zijn er op uw systeem? 

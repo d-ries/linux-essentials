@@ -1,10 +1,9 @@
-# Assignment on Regular Expressoins
+# Oefeningen op Reguliere Expressies
 
 ?> <i class="fa-solid fa-circle-info"></i> http://www.regular-expressions.info/
 
-## Task 1
-Create the file regtest.txt with the following content:
-
+## Oefening 1
+Maak het bestand regtest.txt met de volgende inhoud: 
 ```
 apple
 banana
@@ -29,46 +28,49 @@ abc123
 atsiiiiiiiiiiiign
 ```
 
-## Task 2
-Use regular expressions to filter the lines that:
+## Oefening 2
+Gebruik reguliere expressies om de regels te filteren die: 
 
-1.	Contain the letter a
-2.	Contain the letter a or s
-3.	Contain the letter a and s
-4.	Contain a @
-5.	Start with the letter p
-6.	End with the letter t 
-7.	Start with a number 
-8.	Start with a number and end with a letter 
-9.	Contains 2 or more consecutive letters i
-10.	Only contains numbers
-11.	Only contains letters
-12.	Contains one or more numbers, followed by one or more letters
-13.	Contains one or more numbers, followed by one or more letters and ending with a number. 
-
-
-## Task 3
-Use sed to: 
-
-1.	create a file regtest_5.txt from the file regtest.txt where all numbers 5 are replaced with "five"
-2.	create a file regtest_7.txt from the file regtest.txt where the text ‘seven’ is replaced by the number 7
-3.	create a file regtest_at.txt from the file regtest.txt where all the @ symbols are replaced by _at_
+1. De letter a bevatten
+2. De letter a of s bevatten
+3. De letter a en s bevatten
+4. Een @ bevatten
+5. Beginnen met de letter p 
+6. Eindigen met de letter t  
+7. Beginnen met een getal  
+8. Beginnen met een cijfer en eindigen met een letter  
+9. 2 of meer opeenvolgende letters i bevatten
+10. Alleen nummers bevatten
+11. Alleen letters bevatten
+12. Een of meer cijfers bevatten, gevolgd door een of meer letters 
+13. Een of meer cijfers bevatten, gevolgd door een of meer letters en eindigend op een cijfer. 
 
 
-## Task 4
-Count the amount of time 5 can be found in regtest.txt
-search the manpage of grep for a solution
+## Oefening 3
+Gebruik sed om:  
 
-## Task 5
-Search in the bash manpage to the header named "REDIRECTION" (The text starts at the left-side line) . Is this search-function case sensitive? 
+1. Maak een bestand regtest_5.txt van het bestand regtest.txt waarbij alle cijfers 5 worden vervangen door "vijf" 
+2. Maak een bestand regtest_7.txt van het bestand regtest.txt waarbij de tekst 'seven' wordt vervangen door het getal 7 
+3. Maak een bestand regtest_at.txt van het bestand regtest.txt waarbij alle @-symbolen worden vervangen door _at_ 
 
-## Task 6
-Try with the same regular expression to only show hidden files from your home folder. 
+
+## Oefening 4
+Tel het aantal keer dat 5 kan worden gevonden in regtest.txt 
+Zoek in de manpage van grep naar een oplossing 
+
+
+## Oefening 5
+Zoek in de bash manpage naar de header met de naam "REDIRECTION" (De tekst begint bij de linker regel). Is deze zoekfunctie hoofdlettergevoelig? 
+
+
+## Oefening 6
+Probeer met dezelfde reguliere expressie alleen verborgen bestanden uit uw thuismap weer te geven. 
+
   
-## Task 7
-Use the command `ls -la ~` and change in the output: 
+## Oefening 7
+Gebruik het commando `ls -la ~` en verander in de uitvoer:  
 
-?> <i class="fa-solid fa-circle-info"></i> The reference "." To ". (this folder)" and ".." to ".. (parent folder)". Also remove the line that shows the amount of files and folders in the directory   
-  
-?> <i class="fa-solid fa-circle-info"></i> Hint: if you use the $ sign at the end of a string to search, it means the line needs to end with that string.   
-To complete this task you will have to use the `sed` command multiple times
+?> <i class="fa-solid fa-circle-info"></i> De referentie "." Naar ". (deze map)" en ".." tot ".. (bovenliggende map)". Verwijder ook de regel die het aantal bestanden en mappen in de map weergeeft  
+
+?> <i class="fa-solid fa-circle-info"></i> Hint: als je het $-teken aan het einde van een tekenreeks gebruikt om te zoeken, betekent dit dat de regel met die tekenreeks moet eindigen.  
+Om deze taak te voltooien, moet je het commando `sed` meerdere keren gebruiken 

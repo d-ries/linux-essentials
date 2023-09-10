@@ -1,4 +1,4 @@
-# Assignment on Regular Expressoins
+# Assignment on Regular Expressions
 
 ?> <i class="fa-solid fa-circle-info"></i> http://www.regular-expressions.info/
 
@@ -60,7 +60,7 @@ Count the amount of time 5 can be found in regtest.txt
 search the manpage of grep for a solution
 
 ## Task 5
-Search in the bash manpage to the header named "REDIRECTION" (The text starts at the left-side line) . Is this search-function case sensitive? 
+Search in the bash manpage to the header named "REDIRECTION" (The text starts at the left-side line). Is this search-function case sensitive? 
 
 ## Task 6
 Try with the same regular expression to only show hidden files from your home folder. 

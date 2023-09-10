@@ -274,7 +274,7 @@ To start of we will use some special symbols that we've used before. We've seen 
 - In a regex, a `*` sign means 0, one or more **of the previous character**
 
 Take the example below. We expect only the `pxl` variants to show up, but as we can see in the output all of the file contents show. This is because every line matches the regex `zero, one or more of the letter p`:
- ```
+```bash
 student@linux-ess:~$ cat regexlist.txt | grep "p*"
 Charlotte
 Lawrence
@@ -483,7 +483,7 @@ Michael
 ```
 Here we search for lines beginning with an `M` or ending with an `n`
 
-We could do the same with using the option -E multiple times:
+We could do the same with using the option -e multiple times:
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -e "^M" -e "n$"
 Max
@@ -570,7 +570,8 @@ Jun 09 11
 Jun 09 12
 ```
 As you can see in the example above we used the `:` sign as the delimiter. We then used the `-f` option to only display the first column. A full line in this log file looks like this:
-```
+```bash
+student@linux-ess:~$ head -1 auth.log
 Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
 ```
 This means that the first column ends on the `:` sign in the time notation (after the hour). The second column exists out of the minutes part of the time notation, the third column the seconds of the time notation and the hostname and so on. We can also tell the command to display multiple columns:
