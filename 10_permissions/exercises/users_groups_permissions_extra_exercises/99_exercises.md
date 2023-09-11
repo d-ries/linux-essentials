@@ -49,7 +49,7 @@ The special groups for the shared directories: <br />
 | /home/shared/design | engineers | 
 | /home/shared/info | sales, engineers | 
 
-The userowner of the shared directories is the ‘root’ user
+The userowner of the shared directories is the `root` user
 
 
 ### Task 7.1
@@ -75,7 +75,7 @@ Alle users have their home directory in _/home/username_.<br />
 There are 3 extra directories, which can be found in _/home_:<br />
 _/home/planning_: contains the planning, customizable for all members of planning. <br />
 _/home/sales_: contains information about sales, customizable for all members of sales<br />
-_/home/general_: contains general information for everyone? (James is responsible for this folder and therefore only James has writing permissions on this directory and its content.   
+_/home/general_: contains general information for everyone? James is responsible for this folder and therefore only James has writing permissions on this directory and its content.   
   
 Make sure that the users who need to work together can also change eachoter's files. Make use of setgid and do not use ACLs.
 

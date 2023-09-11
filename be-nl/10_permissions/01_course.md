@@ -1,17 +1,17 @@
-# Permissions
+# Rechten 
 
-From the very start, Unix (and thus Linux) was built as a multiuser operating system. Having multiple users on the same system means you need a way to keep users from accessing files from other users, and keep regular users from accessing files and programs that are intended to be used only by the system administrator. On the other hand users also need to be able to share files with others so they can collaborate effectively. As a system administrator being able to lock down or grant access to files is one the most important steps in keeping a system secure. 
+Vanaf het begin werd Unix (en dus Linux) gebouwd als een multiuser besturingssysteem. Als je meerdere gebruikers op hetzelfde systeem hebt, heb je een manier nodig om te voorkomen dat gebruikers toegang krijgen tot bestanden van andere gebruikers en om te voorkomen dat gewone gebruikers toegang krijgen tot bestanden en programma's die alleen voor de systeembeheerder zijn bedoeld. Aan de andere kant moeten gebruikers ook bestanden met anderen kunnen delen, zodat ze effectief kunnen samenwerken. Als systeembeheerder is het kunnen blokkeren of verlenen van toegang tot bestanden een van de belangrijkste stappen om een systeem veilig te houden.  
 
-As you have seen in the previous section, your system already comes with a sensible set of file permissions. As a regular user you have full control in your own homefolder. You can create, edit and remove files and folders within your own home-directory `/home/student`. If you try to create or alter a file outside your homefolder you will get an error (permission denied). The only exception is the directory _/tmp_. Eg: You are able to see the user database in `/etc/passwd` but cannot edit it as a regular user. Sometimes a regular user isn't even allowed to see the contents of a certain file or directory. Eg: `/etc/shadow` holds the passwords of users, that is why you are not even allowed to read it. 
+Zoals je in het vorige hoofdstuk hebt gezien, wordt je systeem al geleverd met een verstandige set bestandsmachtigingen. Als gewone gebruiker heb je volledige controle in je eigen homefolder. Je kan bestanden en mappen maken, bewerken en verwijderen in je eigen home-directory `/home/student`. Als je een bestand buiten je home-directory probeert te maken of te wijzigen, krijg je een foutmelding (toestemming geweigerd). De enige uitzondering is de directory _/tmp_. Bijvoorbeeld: Je kan de gebruikersdatabase zien in `/etc/passwd` maar niet bewerken als een gewone gebruiker. Soms mag een gewone gebruiker de inhoud van een bepaald bestand of een bepaalde map niet eens zien. Bv: `/etc/shadow` bevat de wachtwoorden van gebruikers, daarom mag je het niet eens lezen.  
 
-Permission errors are a common source of problem. Understanding and manipulating file permissions is a crucial step in becoming a competent Linux admin.
+Machtigingsfouten zijn een veelvoorkomende bron van problemen. Het begrijpen en manipuleren van bestandsmachtigingen is een cruciale stap om een competente Linux-beheerder te worden. 
 
-?> <i class="fa-solid fa-circle-info"></i> Just because you can, doesn't mean you should. When troubleshooting permission errors always remember that permissions are your first line of defense against malicious actors. Always ask yourself why a program or a user should have access, and handle with caution. Don't just grant permissions to get rid of the error!
+?> <i class="fa-solid fa-circle-info"></i> Alleen omdat je het kunt, betekent niet dat je het moet doen. Houd er bij het oplossen van toestemmingsfouten altijd rekening mee dat machtigingen je eerste verdedigingslinie zijn tegen kwaadwillende actoren. Vraag jezelf altijd af waarom een programma of een gebruiker toegang moet hebben en ga voorzichtig te werk. Verleen niet alleen machtigingen om van de fout af te komen! 
 
 
-## Octal notations
+## Octale notaties 
 
-When looking at the extended info for a file using `ls` with the `-l` option (=long listing), you'll see three sets of three permissions applied to the file. The possible permissions are: **r**ead, **w**rite and e**x**ecute. Permission to read a file's content, permission to change a file's content and permission to execute a file as a script or program. When a permission is not granted, you'll find a - in the position of the permission denied. 
+Wanneer je de uitgebreide informatie voor een bestand bekijkt met `ls` met de optie `-l` (= lange lijst), zie je drie sets van drie machtigingen die op het bestand zijn toegepast. De mogelijke machtigingen zijn: **r**ead, **w**rite en e**x**ecute. Toestemming om de inhoud van een bestand te lezen, toestemming om de inhoud van een bestand te wijzigen en toestemming om een bestand uit te voeren als een script of programma. Wanneer een toestemming niet wordt verleend, vind je een - in de positie van de geweigerde toestemming. 
 
 ```bash
 student@linux-ess:~/course$ ls -l
@@ -21,15 +21,15 @@ drwxrwxr-x 2 student student 4096 okt  2 19:36 folder
 -rw-rw-r-- 1 student student    0 okt  2 19:36 rights.jpg
 -rw-rw-r-- 1 student student    0 okt  2 19:36 test.txt
 ```
-   
-?> <i class="fa-solid fa-circle-info"></i> The first character is a _-_ (minus) for a regular file and a _d_ for a directory. 
+
+?> <i class="fa-solid fa-circle-info"></i> Het eerste teken is een _-_ (min) voor een regulier bestand en een _d_ voor een map.  
+
+?> <i class="fa-solid fa-circle-info"></i> Mappen in Linux hebben dezelfde set machtigingen. Maar omdat je moet uitvoeren om toegang te krijgen tot bestanden in de map, kan je weinig zonder. De algemene machtigingen zijn rwx voor een map waar je alles kunt doen, r-x voor een alleen-lezen directory en natuurlijk --- wanneer je de toegang volledig wilt blokkeren.  
+
+Er zijn drie sets omdat er drie verschillende sets mensen zijn waarop machtigingen kunnen worden toegepast. De eerste set beschrijft de machtigingen voor de eigenaar van het bestand (de eerste naam achter de machtigingen), de tweede is van toepassing op iedereen die lid is van de groep die eigenaar is van het bestand (de tweede naam). De laatste set is voor iedereen die niet onder een van de eerste twee categorieën valt. Dus in het kort: De drie sets zijn van toepassing op **gebruikers eigenaar (userowner)**, **groep eigenaar (groupowner)** en **andere (others)**, in die volgorde. 
+
+Wanneer een gebruiker een bestand maakt, wordt hij automatisch de eigenaar van dat bestand. De groep die eigenaar is van het bestand wordt bepaald door de **primaire groep** van de gebruiker. Standaard is de primaire groep van een gebruiker een groep met dezelfde naam als de gebruikersnaam, daarom zie je vaak dat eigenaar en groepseigenaar dezelfde naam hebben (zoals _student student_ in het bovenstaande voorbeeld). De map `/dev`, die de bestanden bevat die je hardware vertegenwoordigen, is een van de plaatsen waar je bestanden vindt die eigendom zijn van de root-gebruiker met een andere groep als eigenaar. 
   
-
-?> <i class="fa-solid fa-circle-info"></i> Directories in Linux have the same set of permissions. But because you need execute to access files in the directory, there is little you can do without it. The common permissions are rwx for a directory where you can do everything, r-x for a read-only directory, and ofcourse --- when you want to block access completely. 
-
-There are three sets because there are three different sets of people that permissions can be applied to. The first set describes the permissions for the owner of the file (the first name behind the permissions), the second applies to everyone that is a member of the group that owns the file (the second name). The last set is for everyone who doesn't fall under one of the first two categories. So in short: The three sets apply to **userowner**, **groupowner** and **others**, in that order.
-
-When a user creates a file he automatically becomes the owner of that file. The group that owns the file is determined by the user's **primary group**. By default a user's primary group is a group with the same name as the username, which is why you'll often see owner and group owner have the same name (like _student student_ in the above example). The `/dev` folder, that contains the files representing your hardware, is one of the places where you'll find files owned by the root-user with a different group as owner.
 
 ```bash
 student@linux-ess:~$ ls -l /dev/s[dr]?
@@ -37,14 +37,14 @@ brw-rw---- 1 root disk   8, 0 Nov 11 10:44 /dev/sda
 brw-rw---- 1 root cdrom 11, 0 Nov 11 10:43 /dev/sr0
 ```   
 
-File permissions are written on disk as a field of bits in the file's properties. A bit is set to 1 when a permission is granted, 0 when it's not. So rwxrw-r-- becomes 111110100. Because humans are not very good at parsing binary sequences, they are represented as as octal numbers, numbers from 0 to 7 (000 to 111 in binary). To calculate the octal number remember that read is worth 4, write 2 and execute 1. Add those you need and you'll get the octal notation. The example above becomes 764 (rwx, 4+2+1=7,      rw-, 4+2+0=6,        r--, 4+0+0=4).
+Bestandsmachtigingen worden op schijf geschreven als een veld met bits in de eigenschappen van het bestand. Een bit is ingesteld op 1 wanneer een toestemming wordt verleend, 0 wanneer dat niet het geval is. Dus rwxrw-r-- wordt 111110100. Omdat mensen niet erg goed zijn in het ontleden van binaire sequenties, worden ze weergegeven als octale getallen, getallen van 0 tot 7 (000 tot 111 in binair). Om het octale getal te berekenen, onthoud dat lezen 4 waard is, bewerken 2 en uitvoeren 1. Voeg die toe die je nodig hebt en je krijgt de octale notatie. Het bovenstaande voorbeeld wordt 764 (rwx, 4+2+1=7,      rw-, 4+2+0=6,      r--, 4+0+0=4). 
 
-## Changing permissions (chmod)
 
-To change the permissions on a file you can use the `chmod` command.
+## Rechten wijzigen (chmod) 
 
-To add or substract permissions of a file you can use the following method, where _rwx_ stands for the rights you want to add or substract, and _ugo_ stands for userowner, groupowner and others respectively. If you don't specify for who you want the change, it is changed on all three:
+Om de machtigingen op een bestand te wijzigen, kan je het commando `chmod` gebruiken. 
 
+Om machtigingen van een bestand toe te voegen of weg te halen, kan je de volgende methode gebruiken, waarbij _rwx_ staat voor de rechten die je wilt toevoegen of weghalen, en _ugo_ staat voor respectievelijk userowner (gebrukerseigenaar), groupowner (groepseigenaar) en others (andere). Als je niet opgeeft voor wie je de rechten wil wijzigen, wordt deze op alle drie gewijzigd: 
 ```bash
 student@linux-ess:~$ touch test  
 student@linux-ess:~$ ls -l test
@@ -60,8 +60,7 @@ student@linux-ess:~$ ls -l test
 -rwx------ 1 student student 0 okt  2 19:36 test
 ```
 
-When completely rewrite permissions you can also use chmod with an octal notation: 
-
+Wanneer je de machtigingen volledig herschrijft, kan je chmod ook gebruiken met de octale notatie: 
 ```bash
 student@linux-ess:~$ touch config  
 student@linux-ess:~$ ls -l config  
@@ -74,13 +73,14 @@ student@linux-ess:~$ ls -l config
 -rwxr--r-- 1 student student    0 okt  2 19:36 config
 ```
 
-The latter option is faster when you have to completely rewrite permissions (since you don't need to check the existing permissions, just overwrite). The former can be practical for making quick changes like making a file executable.
+De laatste optie is sneller wanneer je machtigingen volledig moet herschrijven (omdat je de bestaande machtigingen niet hoeft te controleren, maar gewoon overschrijven). De eerste kan praktisch zijn voor het aanbrengen van snelle wijzigingen, zoals het uitvoerbaar maken van een bestand. 
 
-## Changing ownership (chgrp, chown)
 
-Besides changing the permissions of a file, you'll also need to change to whom these permissions apply to, by changing the user or group that owns the file. You will need sudo to assign files to different users/groups.
+## Van eigenaar veranderen (chgrp, chown) 
 
-To change the group owner of a file or directory, you can use the `chgrp` command. To change this recursively use the `-R` option
+Naast het wijzigen van de machtigingen van een bestand, moet je ook wijzigen op wie deze machtigingen van toepassing zijn, door de gebruiker of groep te wijzigen die eigenaar is van het bestand. Je hebt sudo nodig om bestanden toe te wijzen aan verschillende gebruikers/groepen. 
+
+Om de groepseigenaar van een bestand of map te wijzigen, kan je het commando `chgrp` gebruiken. Om dit recursief te wijzigen, gebruik je de optie `-R` 
 
 ```bash
 student@linux-ess:~$ ls -l course/
@@ -99,31 +99,28 @@ drwxrwxr-x 2 student it 4096 okt  2 19:36 folder
 student@linux-ess:~$ ls -ld course/
 drwxrwxr-x 3 student it 4096 okt  2 19:36 course/
 ```
-The `chown` command is more versatile, it allows you to change owner and/or group. It has the same -R option to change an entire file-tree.
+Het `chown` commando is veelzijdiger, hiermee kun je van eigenaar en/of groep veranderen. Het heeft dezelfde -R optie om een hele file-tree te wijzigen. 
 
 ```bash
-student@linux-ess:~/course$ sudo chown teacher rights.jpg #changes the owner
+student@linux-ess:~/course$ sudo chown teacher rights.jpg #verander de eigenaar
 student@linux-ess:~/course$ ls -l rights.jpg
 -rw-rw-r-- 1 teacher it    0 okt  2 19:36 rights.jpg
-student@linux-ess:~/course$ sudo chown teacher:root config folder #changes owner and group
+student@linux-ess:~/course$ sudo chown teacher:root config folder #verander de eigenaar en de groep
 student@linux-ess:~/course$ ls -l 
 total 4
 -rwxr--r-- 1 teacher root    0 okt  2 19:36 config
 drwxrwxr-x 2 teacher root 4096 okt  2 19:36 folder
 -rw-rw-r-- 1 teacher it        0 okt  2 19:36 rights.jpg
 -rw-rw-rw- 1 student it        0 okt  2 19:36 test.txt
-student@linux-ess:~/course$ sudo chown :it config #changes the group
+student@linux-ess:~/course$ sudo chown :it config #verander de groep
 student@linux-ess:~/course$ ls -l config
 -rwxr--r-- 1 teacher    it        0 okt  2 19:36 config
 ```
 
 
-  
-  
-## Working together in a team (setgid)
+## Samenwerken in een team (setgid) 
 
-If we want to be able to work together it is key that all users are able to change each others files. The solution to give all users the same primary group is a security issue because this also changes the rights on their homefolders:
-
+Als we willen samenwerken, is het belangrijk dat alle gebruikers elkaars bestanden kunnen wijzigen. De oplossing om alle gebruikers dezelfde primaire groep te geven, is een beveiligingsprobleem omdat dit ook de rechten op hun thuismappen verandert: 
 ```bash
 student@linux-ess:~$ sudo groupadd ict 
 student@linux-ess:~$ sudo useradd -m -g it -s /bin/bash liam
@@ -143,10 +140,10 @@ jacob@linux-ess:~$ head -3 /home/liam/.profile
 # exists.  
 jacob@linux-ess:~$ exit
 ```
-  
-?> As you can see the user Jacob can view the files from the homefolder of the user Liam.
-  
-We will now give both users their own primary group:
+ 
+?> Zoals je kan zien, kan de gebruiker Jacob de bestanden bekijken van de thuismap van de gebruiker Liam. 
+
+We geven beide gebruikers nu hun eigen primaire groep: 
 ```bash
 student@linux-ess:~$ sudo groupadd liam
 student@linux-ess:~$ sudo groupadd jacob
@@ -159,9 +156,9 @@ student@linux-ess:~$ sudo ls -l /home/jacob/.profile
 -rw-r--r-- 1 jacob jacob 807 Jan  6  2022 /home/jacob/.profile
 ```
 
-?> Note that changing the primary group of a user also changes the groupowner of every file in his homefolder.
-  
-We will create a group for the two users to give them rights on a shared folder that we will create in the next step. We'll also apply the users to this new group:
+?> Merk op dat het wijzigen van de primaire groep van een gebruiker ook de groepseigenaar van elk bestand in zijn thuismap verandert. 
+
+We maken een groep voor de twee gebruikers om hen rechten te geven op een gedeelde map die we in de volgende stap zullen maken. We voegen de gebruikers ook toe aan deze nieuwe groep: 
 ```bash
 student@linux-ess:~$ sudo groupadd ict
 student@linux-ess:~$ sudo usermod -aG ict liam
@@ -169,8 +166,8 @@ student@linux-ess:~$ sudo usermod -aG ict jacob
 student@linux-ess:~$ grep ict /etc/group
 ict:x:1005:liam,jacob
 ```
-    
-We will make the directory that will be shared between the two users, and we will give it the necessary permissions:
+
+We zullen de map maken die wordt gedeeld tussen de twee gebruikers en geven deze de nodige machtigingen: 
 ```bash
 student@linux-ess:~$ sudo mkdir -p /shares/ict
 student@linux-ess:~$ ls -ld /shares/ict
@@ -183,9 +180,9 @@ student@linux-ess:~$ ls -ld /shares/ict
 drwxrwxr-x 2 root ict 4096 Nov 26 15:58 /shares/ict
 ```
 
-?> As you can see members of the group ict have the permission to enter the shared folder ict and to create/delete files and folders within that folder
+?> Zoals je kan zien, hebben leden van de groep ict de toestemming om in de gedeelde map ict te kijken en om bestanden en mappen in deze map te maken/verwijderen 
 
-But there's a problem when the users create a file within the share:
+Maar er is een probleem wanneer de gebruikers een bestand maken in de share: 
 ```bash
 student@linux-ess:~$ su - jacob
 Password:
@@ -213,10 +210,10 @@ touch: cannot touch 'testfile2': Permission denied
 liam@linux-ess:/shares/ict$ exit
 ```
 
-?> As you can see they cannot work together on the same files or in the same directories
+?> Zoals je kan zien, kunnen ze niet samenwerken aan dezelfde bestanden of in dezelfde mappen 
 
-A solution is the use of the special bit, named setgid.
-We can give it to the shared folder ict with the command chmod g+s (to remove we would use g-s):
+Een oplossing is het gebruik van de speciale bit, genaamd setgid. 
+We kunnen het aan de gedeelde map ict geven met het commando chmod g+s (om te verwijderen zouden we g-s gebruiken): 
 ```bash
 student@linux-ess:~$ ls -ld /shares/ict/
 drwxrwxr-x 3 root ict 4096 Nov 26 16:12 /shares/ict/
@@ -224,10 +221,10 @@ student@linux-ess:~$ sudo chmod g+s /shares/ict
 student@linux-ess:~$ ls -ld /shares/ict/
 drwxrwsr-x 3 root ict 4096 Nov 26 16:12 /shares/ict/
 ```
-  
-?> As you can see in the permissions of the groupowner it now ends with a letter _s_. A lowercase _s_ means that there is an _x_ underneath, an uppercase _S_ means that there is no _x_ underneath.
 
-The special bit setgid means that files and folders that will be created in this folder will have the same groupowner as this folder itself:
+?> Zoals je kunt zien in de machtigingen van de groepseigenaar eindigt het nu met een letter _s_. Een kleine letter _s_ betekent dat er een _x_ onder zit, een hoofdletter _S_ betekent dat er geen _x_ onder zit. 
+
+De speciale bit setgid betekent dat bestanden en mappen die in deze map worden gemaakt, dezelfde groepseigenaar krijgen als deze map zelf: 
 ```bash
 student@linux-ess:~$ ls -l /shares/ict/ 
 total 4
@@ -256,21 +253,22 @@ This is Liam's text
 liam@linux-ess:/shares/ict$ exit
 ```
 
-?> As you can see the groupowner of the new folder and file is ict and that's why both users can now work together with eachother's files.
+?> Zoals je ziet is de groepseigenaar van de nieuwe map en het nieuwe bestand ict en daarom kunnen beide gebruikers nu samenwerken met elkaars bestanden. 
 
-## The sticky bit
 
-The setgid bit solves the main problem of making files in a shared folder created by one user accessible to other users in the same non-primary group. However this opens up another problem: Every user with access to the share can now delete or rename the files of other users in this folder. In some cases, like a shared project people are working on, this is fine. But in cases you don't want to allow this, another special permission bit is used: the **sticky bit**. Setting this bit on a folder will disallow any user (except the user root) from renaming or removing files or subfolders he does not own inside that folder.
+## De sticky bit
 
-This principle is also used in the system's ´/tmp´ folder, disallowing users to remove another user's temporary files.
+De setgid-bit lost het belangrijkste probleem op van het toegankelijk maken van bestanden in een gedeelde map die door één gebruiker is gemaakt voor andere gebruikers in dezelfde niet-primaire groep. Dit opent echter een ander probleem: elke gebruiker met toegang tot de share kan nu de bestanden van andere gebruikers in deze map verwijderen of hernoemen. In sommige gevallen, zoals een gedeeld project waar mensen aan werken, is dit prima. Maar in gevallen dat je dit niet wilt toestaan, wordt een andere speciale toestemmingsbit gebruikt: de **sticky bit**. Als je deze bit op een map instelt, kan geen enkele gebruiker (behalve de gebruiker root) bestanden of submappen hernoemen of verwijderen waarvan hij niet de eigenaar is in die map. 
+
+Dit principe wordt ook gebruikt in de map `/tmp` van het systeem, waardoor gebruikers de tijdelijke bestanden van een andere gebruikers niet kunnen verwijderen. 
 
 ```bash
 student@linux-ess:~$ ls -ld /tmp/
 drwxrwxrwt 24 root root 4096 nov 27 13:50 /tmp/
 ``` 
-?> Notice the t that replaced the x in the 'other' set of permissions when the sticky bit is set.
+?> Let op de t die de x in de 'andere' set machtigingen heeft vervangen wanneer de sticky bit is ingesteld. 
 
-Just like with other permission bits you use **chmod** to add or remove the sticky bit.
+Net als bij andere machtigingsbits gebruik je **chmod** om de sticky bit toe te voegen of te verwijderen. 
 
 ```bash
 student@linux-ess:~$ su - liam
@@ -282,7 +280,7 @@ total 8
 drwxrwsr-x 2 jacob ict   4096 nov 27 15:03 testdir2
 -rw-rw-r-- 1 jacob jacob    0 nov 27 14:59 testfile
 -rw-rw-r-- 1 jacob ict      4 nov 27 15:03 testfile2
-liam@linux-ess:/shares/ict$ rm testfile2 	#Liam can remove Jacob's file.
+liam@linux-ess:/shares/ict$ rm testfile2 	#Liam kan Jacob's bestanden verwijderen.
 liam@linux-ess:/shares/ict$ ls -l
 total 4
 -rw-rw-r-- 1 jacob jacob    0 nov 27 14:59 testdir
@@ -296,7 +294,7 @@ drwxrwsr-t 3 root ict 4096 nov 27 15:05 /shares/ict/
 student@linux-ess:~$ su - liam
 Password: 
 liam@linux-ess:~$ cd /shares/ict
-liam@linux-ess:/shares/ict$ rm -rf testdir2/  #Liam can no longer delete Jacob's files or folders
+liam@linux-ess:/shares/ict$ rm -rf testdir2/  #Liam kan Jacob's bestanden of mappen niet langer verwijderen
 rm: cannot remove 'testdir2/': Operation not permitted	
 liam@linux-ess:/shares/ict$ exit
 logout
@@ -305,7 +303,7 @@ student@linux-ess:~$ ls -ld /shares/ict/
 drwxrwsr-x 3 root ict 4096 nov 27 15:05 /shares/ict/
 ```
 
-Within the special permissions field, the sticky bit is the rightmost bit, with a value of one. You can use this if you want to completely rewrite the permissions of a folder using octal notation. Just add a one before the standard mode.
+Binnen het veld met speciale machtigingen is de sticky bit de meest rechtse bit, met een waarde van één. Je kan dit gebruiken als je de machtigingen van een map volledig wilt herschrijven met behulp van de octale notatie. Voeg er gewoon een één toe voor de standaardmodus. 
 
 ```bash
 student@linux-ess:~$ cd /shares/
@@ -318,7 +316,7 @@ student@linux-ess:/shares$ ls -ld ict2/
 drwxrwxr-t 2 root ict 4096 nov 27 15:16 ict2/
 ```
 
-It's also possible to combine the special bits. In the example below we will combine the sticky bit with the setgid bit, the second bit in the triplet with a value of two. To become the final value you just add both values together (setgid+sticky=2+1=3) and put it in front of the octal permissions (eg.3750) to become a four-digit-mode.
+Het is ook mogelijk om de speciale bits te combineren. In het onderstaande voorbeeld combineren we de sticky bit met de setgid bit, de tweede bit in de triplet met een waarde van twee. Om de uiteindelijke waarde te krijgen, tel je beide waarden bij elkaar op (setgid+sticky=2+1=3) en plaats je deze voor de octale machtigingen (bijv. 3750) om een viercijferige modus te worden. 
 
 ```bash
 student@linux-ess:/shares$ sudo mkdir ict3
@@ -330,15 +328,15 @@ student@linux-ess:/shares$ ls -ld ict3
 drwxr-x--- 5 root ict 4096 nov 27 15:20 ict3
 student@linux-ess:/shares$ sudo chmod 3770 ict3
 student@linux-ess:/shares$ ls -ld ict3
-drwxrws--T 2 root ict 4096 nov 27 15:20 ict3 #both setgid and sticky bit are set, when the x for other is not set it displays a capital T
+drwxrws--T 2 root ict 4096 nov 27 15:20 ict3 #zowel setgid en sticky bit staan aan, wanneer de x voor andere niet aan staat, wordt er een hoofdletter T getoont
 ```
 
-To unset the sticky bit use a zero. A three-digit mode will also remove the sticky bit. Notice that the setgid bit is kept. To remove all special permissions add another zero in front (00xxx)!
+Om de sticky bit uit te zetten, gebruik je een nul. Een driecijferige modus verwijdert ook de sticky bit. Merk op dat de setgid bit behouden blijft. Om alle speciale machtigingen te verwijderen, voeg je nog een nul toe aan de voorkant (00xxx)!
 
 ```bash
 student@linux-ess:/shares$ ls -ld ict3/
 drwxrws--T 2 root ict 4096 nov 27 15:20 ict3/
-student@linux-ess:/shares$ sudo chmod 0777 ict3/        # or chmod 777
+student@linux-ess:/shares$ sudo chmod 0777 ict3/        # of chmod 777
 student@linux-ess:/shares$ ls -ld ict3/
 drwxrwsrwx 2 root ict 4096 nov 27 15:20 ict3/
 student@linux-ess:/shares$ sudo chmod 00775 ict3/
@@ -346,7 +344,7 @@ student@linux-ess:/shares$ ls -ld ict3/
 drwxrwxr-x 2 root ict 4096 nov 27 15:20 ict3/
 ```
 
-If you want the users of the group ict to work together on each others files and at the same time you want that they can't remove each other's files, you have to set the kernel parameter fs.protected_regular=1.
+Als je wilt dat de gebruikers van de groep ict samenwerken aan elkaars bestanden en je tegelijkertijd wilt dat ze elkaars bestanden niet kunnen verwijderen, moet je de kernelparameter fs.protected_regular=1 instellen. 
 ```bash
 student@linux-ess:~$ ls -ld /shares/ict/
 drwxrwsr-t 3 root ict 4096 nov 27 15:05 /shares/ict/
@@ -359,7 +357,7 @@ total 8
 drwxrwsr-x 2 jacob ict   4096 nov 27 15:03 testdir2
 -rw-rw-r-- 1 jacob jacob    0 nov 27 14:59 testfile
 -rw-rw-r-- 1 jacob ict      4 nov 27 15:03 testfile2
-liam@linux-ess:/shares/ict$ echo text from liam > testfile2 	#Liam cannot change Jacob's files.
+liam@linux-ess:/shares/ict$ echo text from liam > testfile2 	#Liam kan Jacob's bestanden niet veranderen.
 -bash: testfile2 Permission denied
 liam@linux-ess:/shares/ict$ exit
 student@linux-ess:~$ sudo sysctl -a | grep regular
@@ -369,21 +367,19 @@ fs.protected_regular = 1
 student@linux-ess:~$ su - liam
 Password: 
 liam@linux-ess:~$ cd /shares/ict/
-liam@linux-ess:/shares/ict$ echo text from liam > testfile2 	#Liam can change Jacob's files.
+liam@linux-ess:/shares/ict$ echo text from liam > testfile2 	#Liam kan Jacob's bestanden veranderen.
 liam@linux-ess:~$ cat testfile2
 text from liam
 ```
 
-?> If we want to keep the kernel parameter in the future we have to change this parameter in the file _/usr/lib/sysctl.d/99-protect-links.conf
+?> Als we de kernelparameter in de toekomst willen behouden, moeten we deze parameter wijzigen in het bestand _/usr/lib/sysctl.d/99-protect-links.conf 
 
 
+## Een binair bestand uitvoeren als de bestandseigenaar (setuid) 
 
-## Running a binary as the fileowner (setuid)
+Zoals je misschien hebt gemerkt, is er een derde bit waar we het niet over hebben gehad. Setuid, de meest linkse bit in het veld. Hierdoor kunnen uitvoerbare bestanden worden uitgevoerd met de machtigingen van de eigenaar van het bestand, niet degene die het uitvoert. Dit wordt bijvoorbeeld gebruikt door het _passwd_ commando om gebruikers in staat te stellen hun eigen wachtwoord te wijzigen, omdat een normale gebruiker geen toegang heeft tot het /etc/shadow-bestand. Het instellen van de setuid bit kan ernstige beveiligingsrisico's met zich meebrengen en is bijna altijd een zeer slecht idee.  
 
-
-As you may have noticed there is a third bit we haven't talked about. setuid, the leftmost bit in the field. This allows executable files to run with the permissions of the owner of the file, not the one executing it. This is used by the _passwd_ command to allow users to change their own password for example, as a normal user has no access to the /etc/shadow-file. Setting the setuid bit can have serious security risks, and is almost always a very bad idea.  
-
-In the following example we will show why a normal user (with no privileges) is allowed to change his password in the shadow file which is only accessible for the root user.
+In het volgende voorbeeld laten we zien waarom een normale gebruiker (zonder rechten) zijn wachtwoord mag wijzigen in het schaduw-bestand dat alleen toegankelijk is voor de rootgebruiker. 
 
 ```bash
 student@linux-ess:~$ ls -l /etc/shadow
@@ -395,11 +391,11 @@ student@linux-ess:~$ stat -c '%a %n' /bin/passwd
 ```
 
 
-## Default permissions (umask)
+## Standaard rechten (umask) 
 
-A last thing we need to look at are the default permissions. What permissions are applied when you create new files and folders? 
+Een laatste ding waar we naar moeten kijken, zijn de standaard rechten. Welke rechten worden toegepast wanneer je nieuwe bestanden en mappen maakt?  
 
-The maximum permissions for new files is 666, so -rw-rw-rw-. New files are never created with execute permissions. This is enforced by the kernel. It is of course possible to add the execute bit after file creation using `chmod`, but it always requires a conscious decission for security reasons. Folders don't have this limitation as a folder without an execute bit set is quite useless. 
+De maximale rechten voor nieuwe bestanden is 666, dus -rw-rw-rw-. Nieuwe bestanden worden nooit gemaakt met uitvoerrechten. Dit wordt afgedwongen door de kernel. Het is natuurlijk mogelijk om de execute bit toe te voegen na het maken van bestanden met behulp van `chmod`, maar het vereist altijd een bewuste beslissing om veiligheidsredenen. Mappen hebben deze beperking niet, omdat een map zonder een execute bit vrij nutteloos is. 
 
 ```bash
 student@linux-ess:~/course$ touch file
@@ -409,24 +405,24 @@ total 4
 -rw-rw-r-- 1 student student    0 okt 15 15:56 file
 drwxrwxr-x 2 student student 4096 okt 15 15:56 folder
 ```
-As you can see, we don't get the expected -rw-rw-rw- for the file, nor drwxrwxrwx for the folder. This is because most distributions are more strict than the Linux kernel allows. Using the kernel default would mean created files and folders are writable by every user on the system. They are however readable by `other` so beware of this with sensitive files.
+Zoals je kan zien, krijgen we niet de verwachte -rw-rw-rw- voor het bestand, noch drwxrwxrwx voor de map. Dit komt omdat de meeste distributies strenger zijn dan de Linux-kernel toestaat. Het gebruik van de kernel-standaard zou betekenen dat gemaakte bestanden en mappen bewerkbaar zijn door elke gebruiker op het systeem. Ze zijn echter leesbaar voor `andere` dus pas op met gevoelige bestanden. 
 
-The exact configuration of permissions for new files and folders is set by the `umask`. This is a value that defines the 'mask' that is applied for all newly created files and folders. To see the current mask, use the command `umask`.
+De exacte configuratie van machtigingen voor nieuwe bestanden en mappen wordt ingesteld door de `umask`. Dit is een waarde die het `masker` definieert dat wordt toegepast op alle nieuw gemaakte bestanden en mappen. Om het huidige masker te zien, gebruik je het commando `umask`. 
 
 ```bash
 student@linux-ess:~/course$ umask
 0002
 ```
-So how does this work? We subtract the umask from 777 and never give execute rights to a new file. So for a file you get 775 (rwxrwxr-x), but because you never set the execute bit this results in 644 or rw-rw-r-- . For folders we also subtract the umask (here 002) from 777, this results in 775 and here we keep the execution-bits. A umask of 000 allows everything, a umask of 777 will make a new file and folder have no permissions. The numbers still work the same (4 for read, 2 for write, 1 for execute) but this time you are using them to **mask** certain permission bits, or put more simply: deny certain permissions on new files and folders.
+Hoe werkt dit dan? We trekken de umask af van 777 en geven nooit uitvoeringsrechten op een nieuw bestand. Voor een bestand krijg je dus 775 (rwxrwxr-x), maar omdat je nooit de execute bit instelt resulteert dit in 644 of rw-rw-r-- . Voor mappen trekken we ook de umask (hier 002) af van 777, dit resulteert in 775 en hier houden we de uitvoer-bits. Een umask van 000 staat alles toe, een umask van 777 maakt dat een nieuw bestand of map geen rechten heeft. De getallen werken nog steeds hetzelfde (4 voor lezen, 2 voor bewerken, 1 voor uitvoeren), maar deze keer gebruik je ze om bepaalde machtigingsbits te **maskeren**, of eenvoudiger gezegd: bepaalde machtigingen voor nieuwe bestanden en mappen te weigeren. 
 
-You can set (=change) the umask by using the same umask command.
+Je kan de umask instellen (=wijzigen) met hetzelfde umask commando. 
 
 ```bash
-student@linux-ess:~/course$ umask 000       # 777-000=777 and the x is never applied to new files
+student@linux-ess:~/course$ umask 000       # 777-000=777 en de x wordt nooit toegepast op nieuwe bestanden
 student@linux-ess:~/course$ touch newfile1
 student@linux-ess:~/course$ ls -l newfile1
 -rw-rw-rw- 1 student student 0 okt 15 16:23 newfile1
-student@linux-ess:~/course$ umask 027 #if you want to mask multiple bits, add them together  (777-027=750)
+student@linux-ess:~/course$ umask 027 #Als je meerdere bits wil maskeren, tel ze dan op  (777-027=750)
 student@linux-ess:~/course$ touch newfile2
 student@linux-ess:~/course$ ls -l newfile2
 -rw-r----- 1 student student 0 okt 15 16:24 newfile2
@@ -435,10 +431,9 @@ student@linux-ess:~/course$ mkdir newfolder1
 student@linux-ess:~/course$ ls -ld newfolder1
 drwx------ 2 student student 4096 okt 15 16:25 newfolder1
 ```
-?> <i class="fa-solid fa-circle-info"></i> Setting the umask using the command changes the umask for your current terminal session. Exiting the terminal will reset it to the default value. To make it permanent add `umask <your umask>` to your user's `.bashrc` file in your home directory.
-  
-  
-One last thing to be aware of: If you look at the following example, you'll see that files created by the root user have a different umask set.
+?> <i class="fa-solid fa-circle-info"></i> Als je de umask instelt met het commando, wordt de umask voor uw huidige terminalsessie gewijzigd. Als je de terminal verlaat, wordt deze opnieuw ingesteld op de standaardwaarde. Om het permanent te maken, voeg je `umask <uw umask>` toe aan het `.bashrc`-bestand van je gebruiker in je thuismap. 
+
+Nog een laatste ding om op te letten: als je naar het volgende voorbeeld kijkt, zie je dat bestanden die door de rootgebruiker zijn gemaakt een andere umask-set hebben. 
   
 ```bash
 student@linux-ess:~/course$ touch file
@@ -447,18 +442,17 @@ student@linux-ess:~/course$ ls -l
 -rw-rw-r-- 1 student student 0 okt 15 16:44 file
 -rw-r--r-- 1 root    root    0 okt 15 16:44 file2
 ```
-This is explained by looking at the system-wide umask setting, found in the `/etc/login.defs` file.
+Dit wordt uitgelegd door te kijken naar de systeembrede umask-instelling, te vinden in het bestand `/etc/login.defs`. 
 
 ```bash
 student@linux-ess:~/course$ nano /etc/login.defs
-UMASK           022 #line 151
+UMASK           022 #lijn 151
 ...
-USERGROUPS_ENAB yes #line 230
+USERGROUPS_ENAB yes #lijn 230
 ```
-To change the setting system-wide you can change the value for umask there. The default umask specified is the one the root user uses (no write for anybody but the owner). The reason files created by regular users get an extra w for the group, is the option on line 230. This option specifies that for any non-root user that has the same user-id as group-id (so the primary group is unchanged) the group umask-bits gets changed to the user umask-bits, explaining the 002 umask seen earlier.
-  
-  
-?> <i class="fa-solid fa-circle-info"></i> You can also use the letter notation with umask:
+Als je de instelling voor het hele systeem wilt wijzigen, kan je daar de waarde voor umask wijzigen. De standaard umask die is opgegeven is degene die de rootgebruiker gebruikt (geen bewerkingsrechten voor iemand anders dan de eigenaar). De reden dat bestanden die door reguliere gebruikers worden gemaakt een extra w krijgen voor de groep, is de optie op lijn 230. Deze optie geeft aan dat voor elke niet-rootgebruiker die dezelfde gebruikers-id heeft als groeps-id (dus de primaire groep is ongewijzigd) de groep umask-bits wordt gewijzigd in de gebruiker umask-bits, wat het eerder geziene 002 umask verklaart. 
+
+?> <i class="fa-solid fa-circle-info"></i> Je kan de letternotatie ook gebruiken met umask: 
 ```bash
 student@linux-ess:~$ umask
 0002
@@ -478,21 +472,19 @@ student@linux-ess:~$ ls -l file4
 ```
 
 
-
-          
-## Access control lists
-The ACL feature was created to give users the ability to selectively share files and folders with other users and groups. 
-Before ACL’s can be implemented we need to install the package:
+## Toegangscontrolelijsten (Access control lists)
+De ACL-functie is gemaakt om gebruikers de mogelijkheid te bieden om selectief bestanden en mappen te delen met andere gebruikers en groepen.  
+Voordat ACL's kunnen worden geïmplementeerd, moeten we het pakket installeren: 
 ```bash
 student@linux-ess:~$ sudo apt install acl
 ```
-When installed, it needs to be turned on when the filesystem is mounted. In our Ubuntu installation ACL’s are loaded by default. To add ACL’s to a file or folder, use the `setfacl` command. ACL’s can be viewed with the `getfacl` command.  
-  
-?> To add ACL’s you need to be the owner of the file or folder, if you are added by an ACL you will not be able to modify the ACL’s yourself.   
-?> ACL permissions have precedence over the regular file permissions.   
-?> All ACL permissions are cumulative, this means if we are in 2 groups that are added to a file with ACL’s. One with r-- rights and one with rwx rights, we will have rwx rights.   
-  
-With the `setfacl` command, we’ll be able to modify (-m) or delete (-x) ACL’s. 
+Wanneer het is geïnstalleerd, moet het worden ingeschakeld wanneer het bestandssysteem wordt aangekoppeld. In onze Ubuntu installatie worden ACL's standaard geladen. Om ACL's toe te voegen aan een bestand of map, gebruik je het `setfacl` commando. ACL's kunnen worden bekeken met het `getfacl` commando.  
+
+?> Om ACL's toe te voegen moet je de eigenaar zijn van het bestand of de map, als je wordt toegevoegd door een ACL kun je de ACL's niet zelf wijzigen.  
+?> ACL-machtigingen hebben voorrang op de reguliere bestandsmachtigingen.  
+?> Alle ACL-machtigingen zijn cumulatief, dit betekent dat als we in 2 groepen zitten die worden toegevoegd aan een bestand met ACL's. Eén met r-- rechten en één met rwx-rechten, we rwx-rechten hebben.  
+
+Met het commando `setfacl` kunnen we ACL's wijzigen (-m) of verwijderen (-x). 
  
 ```bash
 student@linux-ess:~$ touch memo
@@ -511,9 +503,9 @@ student@linux-ess:~$ setfacl -m g:it:rw memo
 student@linux-ess:~$ ls -l memo
 -rw-rw-r--+ 1 student student 0 Nov 11 14:15 memo
 ```
-?> <i class="fa-solid fa-circle-info"></i> Note that we can also see that ACL’s are set by a __+__ in the output of the `ls -l` command
+?> <i class="fa-solid fa-circle-info"></i> Merk op dat we ook kunnen zien dat ACL's worden aangegeven door een __+__ in de uitvoer van het `ls -l` commando 
 
-With `getfacl` we can check the existing ACL’s on a file or folder. 
+Met `getfacl` kunnen we de bestaande ACL's op een bestand of map controleren.  
 ```bash
 student@linux-ess:~$ getfacl memo
 # file: memo
@@ -527,10 +519,9 @@ mask::rw-
 other::r--
 
 ```
-?> <i class="fa-solid fa-circle-info"></i> For teacher to be able to access the student's file memo in it's homefolder we need to edit some permissions. A possible solution would be: `setfacl -m u:teacher:rx /home/student`. Now, teacher can enter and look in the homefolder of student.   
-  
-  
-?> <i class="fa-solid fa-circle-info"></i> In the previous example, we also see a mask option, this option decides the maximum permission and also has precedence over the regular file permissions except for the user owner. We can also add this parameter as follows:
+?> <i class="fa-solid fa-circle-info"></i> Om de gebruiker 'teacher' toegang te geven tot het bestand memo van de student in zijn thuismap, moeten we enkele machtigingen bewerken. Een mogelijke oplossing zou zijn: `setfacl -m u:teacher:rx /home/student`. Nu kan de leraar de thuismap van de student openen en bekijken.  
+
+?> <i class="fa-solid fa-circle-info"></i> In het vorige voorbeeld zien we ook een maskeroptie, deze optie bepaalt de maximale machtiging en heeft ook voorrang op de reguliere bestandsmachtigingen, behalve voor de eigenaar van het bestand. We kunnen deze parameter ook als volgt toevoegen: 
 ```bash
 student@linux-ess:~$ setfacl -m m:r memo 
 student@linux-ess:~$ getfacl memo 
@@ -548,7 +539,7 @@ student@linux-ess:~$ ls -l memo
 -rw-r--r--+ 1 student student 0 Nov 11 14:15 memo
 ```
 
-If we want to remove an ACL entry from the file we can use the -x option:
+Als we een ACL-vermelding uit het bestand willen verwijderen, kunnen we de optie -x gebruiken: 
 ```bash
 student@linux-ess:~$ setfacl -x g:it memo
 student@linux-ess:~$ getfacl memo 
@@ -562,8 +553,8 @@ mask::r--
 other::r--
   
 ```
-  
-If we want to remove all ACL entries from the file we can use the -b option:
+
+Als we alle ACL-vermeldingen uit een bestand willen verwijderen, kunnen we de optie -b gebruiken: 
 ```bash
 student@linux-ess:~$ setfacl -b memo
 student@linux-ess:~$ getfacl memo 
@@ -576,7 +567,7 @@ other::r--
 
 ```
 
-We can also add default ACL’s by adding the d: parameter or adding the -d option. The default part makes sure new subfiles and subfolders get the same ACL’s as the specified directory. Note that this only applies if the user creating the file or folder has the permissions to do so! 
+We kunnen ook standaard ACL's toevoegen door de parameter d: toe te voegen of de optie -d toe te voegen. Het standaardgedeelte zorgt ervoor dat nieuwe subbestanden en submappen dezelfde ACL's krijgen als de opgegeven map. Houd er rekening mee dat dit alleen van toepassing is als de gebruiker die het bestand of de map maakt, de machtigingen heeft om dit te doen! 
   
 ```bash
 student@linux-ess:~$ mkdir memos
@@ -589,8 +580,8 @@ student@linux-ess:~$ getfacl memos
 user::rwx
 group::rwx
 other::r-x
-student@linux-ess:~$ setfacl -m g:it:rwx memos         # we need to add the group to the folder directly as well, otherwise the group wont be able to enter this folder.
-student@linux-ess:~$ setfacl -m d:g:it:rwx memos       # or setfacl -d -m g:it:rwx memos
+student@linux-ess:~$ setfacl -m g:it:rwx memos         # We moeten de groep ook rechtstreeks toevoegen aan de map, anders kan de groep niet in de folder geraken
+student@linux-ess:~$ setfacl -m d:g:it:rwx memos       # of setfacl -d -m g:it:rwx memos
 student@linux-ess:~$ getfacl memos
 # file: memos
 # owner: student

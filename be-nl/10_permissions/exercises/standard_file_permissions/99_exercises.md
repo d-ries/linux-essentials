@@ -1,62 +1,69 @@
-# Assignment on Standard File Permissions
+# Oefeningen op Standaard bestandsrechten
 
-## Task 1
-Execute the following command: <br />
+## Oefening 1
+voer het volgende commando uit: <br />
 ```bash
 ls /root
 ```
 
 
-## Task 2
-This output is shown because the directory /root is property of the user ‘root’ and because the security is set so that no one except for the ‘root’ (and maybe users who are member of the group ‘root’) have access. You can see this using the command ls -ld /root
-Now let’s say you are the system administrator and you need access to the directories of the group ‘root’. In this case we need to add our user to the group ‘root’. <br />
-What command can be used to accomplish this?
+## Oefening 2
+Deze uitvoer wordt getoond omdat de directory /root eigendom is van de gebruiker `root` en omdat de beveiliging zo is ingesteld dat niemand behalve de `root` (en misschien gebruikers die lid zijn van de groep `root`) toegang heeft. Je kunt dit zien met het commando ls -ld /root 
+Laten we nu zeggen dat jij de systeembeheerder bent en dat je toegang nodig hebt tot de mappen van de groep `root`. In dit geval moeten we onze gebruiker toevoegen aan de groep `root`. <br /> 
+
+Welk commando kan worden gebruikt om dit te bereiken? 
 
 
-## Task 3
-What is changed in the file /etc/group?
+## Oefening 3
+Wat is er gewijzigd in het bestand /etc/group? 
 
 
-## Task 4
-Are you able to use the ls command in the directory /root? YES / NO
+## Oefening 4
+Kan je het ls commando in de directory /root gebruiken? JA / NEE 
 
 
-## Task 5
-If not, resolve this problem
-
-## Task 6
-Change your umask to 0037.
-
-## Task 7
-Test on your system if the following is correct: <br />
-‘If someone has write permissions in a directory, it is automatically added to all the files in this directory, which means this person can change all these files?’
-
-## Task 8
-
-Copy the file .bashrc from the root’s home folder to /tmp
-
-## Task 9
-
-Change the groupowner of /tmp/.bashrc file to the group users
-
-## Task 10
-Change the userowner of the file /tmp/.bashrc to your user
-
-## Task 11
-Change the permissions of the file /tmp/.bashrc to: <br />
-- The userowner:	    read, write and execute
-- The groupowner: 	    read only
-- Others:		        Nothing
-
-## Task 12
-
-Show the command that ensures that all newly created files get the following permission: <br />
-rw-r-----
-
-## Task 13
-Copy someone else's home folder (not the one from root) with all its contents to the /tmp folder. Check the ownership and permissions of the copied files. What do you notice?
+## Oefening 5
+Zo niet, los dit probleem dan op 
 
 
-## Task 14
-Copy someone else's home folder (not the one from root) with all its contents to the /tmp folder, ensure that all permissions and ownerships are preserved. Check the ownership and permissions of the copied files. <br />
-What do you notice?
+## Oefening 6
+Verander je umask in 0037. 
+
+
+## Oefening 7
+Test op je systeem of het volgende correct is: <br /> 
+'Als iemand schrijfrechten heeft in een map, wordt deze automatisch toegevoegd aan alle bestanden in deze map, wat betekent dat deze persoon al deze bestanden kan wijzigen?' 
+
+
+## Oefening 8
+Kopieer het bestand .bashrc van de thuismap van de root naar /tmp 
+
+
+## Oefening 9
+Wijzig de groepseigenaar van het bestand /tmp/.bashrc naar de groep users
+
+
+## Oefening 10
+Wijzig de gebruikerseigenaar van het bestand /tmp/.bashrc naar jouw gebruiker 
+
+
+## Oefening 11
+Wijzig de machtigingen van het bestand /tmp/.bashrc naar: <br /> 
+- De gebruikerseigenaar:    lezen, bewerken en uitvoeren 
+- De groepseigenaar:        alleen-lezen 
+- Anderen:                  Niets 
+
+
+## Oefening 12
+Toon de opdracht die ervoor zorgt dat alle nieuw gemaakte bestanden de volgende machtiging krijgen: <br /> 
+rw-r----- 
+
+
+## Oefening 13
+Kopieer de thuismap van iemand anders (niet die van root) met alle inhoud naar de map /tmp. Controleer de eigenaars en de rechten van de gekopieerde bestanden. <br /> 
+Wat valt je op? 
+
+
+## Oefening 14
+Kopieer de thuismap van iemand anders (niet die van root) met alle inhoud naar de map /tmp, zorg ervoor dat alle rechten en eigenaars behouden blijven. Controleer de eigenaars en de rechten van de gekopieerde bestanden. <br /> 
+Wat valt je op? 

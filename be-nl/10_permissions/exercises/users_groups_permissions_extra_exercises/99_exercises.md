@@ -1,83 +1,86 @@
-# Assignment on Users, Groups, Permissions - Extra exercises
+# Oefeningen op Users, Groups, Permissions - Extra oefeningen
 
-## Task 1
-Create a group named pxl and a user itstudent. This user's primary group is pxl. Set the password for the user to test123. The home directory for this user is /home/itstudent and for the shell the user uses /bin/bash.
+## Oefening 1
+Maak een groep met de naam pxl en een gebruiker itstudent. De primaire groep van deze gebruiker is pxl. Stel het wachtwoord voor de gebruiker in op test123. De home directory voor deze gebruiker is /home/itstudent en voor de shell gebruikt de gebruiker /bin/bash. 
 
-## Task 2
-Make sure the user itstudent becomes a sudoer. Test if this works. 
 
-## Task 3
-Copy the file /etc/hosts to your home directory (do not do this as root!). Set the permissions with the chmod command as follows: 
-r-x for others, rw- for group and no permissions (---) for the file owner. Check with the ls -l command if everything is changed. 
-- Can the file owner check the file contents? Why / Why not?
-- Can he change permissions?
-- Can he delete the file? 
+## Oefening 2
+Zorg ervoor dat de gebruiker itstudent een sudoer wordt. Test of dit werkt. 
 
-## Task 4
-Create the directory structure with the necessary users, groups and ACLs as shown in the image below.
-![foldersecurity](../../../images/09/folderSecurity.PNG)
+
+## Oefening 3
+Kopieer het bestand /etc/hosts naar je home directory (doe dit niet als root!). Stel de rechten met de opdracht chmod als volgt in:  
+r-x voor anderen, rw- voor groep en geen rechten (---) voor de eigenaar van het bestand. Controleer met het ls -l commando of alles is gewijzigd.  
+- Kan de eigenaar van het bestand de inhoud van het bestand controleren? Waarom / Waarom niet? 
+- Kan hij de rechten wijzigen? 
+- Kan hij het bestand verwijderen? 
+
+
+## Oefening 4
+Maak de directorystructuur met de benodigde gebruikers, groepen en ACL's zoals weergegeven in de onderstaande afbeelding. 
+
+![mapbeveiliging](../../../images/09/folderSecurity.PNG) 
+
+Test waar de gebruikers Ava en Oliver lees- en bewerkingsrechten hebben. 
+
+
+## Oefening 5
+Zoek hoe je de ACL-configuraties van de ene map naar de andere kopieert. 
+
+
+## Oefening 6
+Zoek hoe je een back-up maakt van de ACL-configuraties die in een directory zijn ingesteld. 
+
   
-Test where the users Ava and Oliver have read and write permissions.
+## Oefening 7
+Stel dat je in een bedrijf werkt waar apparaten worden ontworpen, gemaakt, gerepareerd en verkocht. Ingenieurs worden aangesteld om de apparaten te ontwerpen. Technici worden aangesteld om deze apparaten te maken en te repareren en voor de verkoop ervan worden verkopers aangesteld. Alle medewerkers van dit bedrijf werken binnen een centraal Linux-systeem. De gebruikers van dit systeem moeten zo worden gedefinieerd dat de __ingenieurs hun eigen thuismap hebben en een gedeelde map /home/shared/design hebben (waar ze alle rechten hebben)__. Alle __technici delen één thuismap /home/technicians__ en al het __sales personeel hebben hun eigen thuismap en delen een map /home/shared/info (waar ze alle rechten hebben)__ waar alle technische/marketinggegevens over de apparaten worden opgeslagen. De __ingenieurs hebben ook toegang nodig tot de map /home/shared/info (alle rechten)__. <br /> 
 
-## Task 5
-Find out how to copy the ACL-configurations of one folder to another one. 
+De groepen voor de verschillende banen zijn: 
 
-## Task 6
-Find out how to create a backup of the ACL-configurations set on a directory.
-  
-## Task 7
-
-Suppose you work in a company where devices are designed, created, repaired and sold. Engineers are appointed to design the devices. Technicians are appointed to create and repair these devices and for selling them, sellers are appointed. Alle employees of this company work on a central Linux system. The users of this system should be defined so the __engineers have their own home directory and have a shared directory /home/shared/design (where they have all permissions)__. All __technicians share one home directory /home/technicians__ and all __Sales personnel have their own home directory but share a directory /home/shared/info (where they have all permissions)__ where all technical/marketing data is stored about the devices. The __engineers also need access to the directory /home/shared/info (all permissions)__. <br />
-  
-  
-The groups for the different employments are:
-
-| Employment | Linux group | User | Password |
+| Job | Linux groep | Gebruiker | Wachtwoord |
 | --- | --- | --- | --- |
-| Engineers | engineers | George | summer1 |
+| Ingenieurs | ingenieurs | George | summer1 |
 | | | Isla | summer2 |
-| Technicians | technicians (primary group) | Leo | winter1 |
+| Technici | technici (primary group) | Leo | winter1 |
 | | | Amelia | winter2 |
 | Sales | sales | Jack | spring1 |
 | | | Grace | spring2 |
 
 
-The special groups for the shared directories: <br />
+De speciale groepen voor de gedeelde mappen: <br /> 
 
-| Directory | Linux group with all permissions | 
+| folder | Linux groep met alle rechten | 
 | --- | --- |
-| /home/shared/design | engineers | 
-| /home/shared/info | sales, engineers | 
+| /home/shared/design | ingenieurs | 
+| /home/shared/info | sales, ingenieurs | 
 
-The userowner of the shared directories is the ‘root’ user
+De userowner van de gedeelde directories is de `root` gebruiker 
 
+### Oefening 7.1
+Maak de mappen, groepen en gebruikers zoals vermeld in bovenstaande situatie. 
 
-### Task 7.1
-Create the folders, groups and users as mentioned in the situation above. 
+### Oefening 7.2
+Geef alle gebruikers de juiste groepen zoals vermeld in bovenstaande situatie. 
 
-### Task 7.2
-Give all users the correct groups as mentioned in the situation above.
-
-### Task 7.3
-Set all the permissions and ACL's for the scenario mentioned above. Do not use the special bit setgid.  
+### Oefening 7.3
+Stel alle machtigingen en ACL's in voor het hierboven genoemde scenario. Gebruik de speciale bit setgid niet. 
   
     
-    
-## Task 8
-Create 7 users named: <br />
-Walter, Michael, Ben, James, Mia, Emma and Charlotte<br />
-<br />
-Emma, Charlotte and Mia have the group _users_ as their primary group, their secondary group should be _Sales_.<br />
-Walter and Michael are member of the group _Planning_ <br />
-Ben and James are part of both the departments and are because of this member of both groups<br />
-<br />
-Alle users have their home directory in _/home/username_.<br />
-There are 3 extra directories, which can be found in _/home_:<br />
-_/home/planning_: contains the planning, customizable for all members of planning. <br />
-_/home/sales_: contains information about sales, customizable for all members of sales<br />
-_/home/general_: contains general information for everyone? (James is responsible for this folder and therefore only James has writing permissions on this directory and its content.   
-  
-Make sure that the users who need to work together can also change eachoter's files. Make use of setgid and do not use ACLs.
+## Oefening 8
+Maak 7 gebruikers aan met de naam: <br /> 
+Walter, Michael, Ben, James, Mia, Emma en Charlotte<br /> 
+<br /> 
+Emma, Charlotte en Mia hebben de groep _users_ als primaire groep, hun secundaire groep moet _Sales_ zijn. <br />
+Walter en Michael zijn lid van de groep _Planning_ <br /> 
+Ben en James maken deel uit van beide afdelingen en zijn daarom lid van beide groepen<br /> 
+<br /> 
+Alle gebruikers hebben hun home directory in _/home/gebruikersnaam_.<br /> 
+Er zijn 3 extra mappen, die te vinden zijn in _/home_:<br /> 
+_/home/planning_: bevat de planning, aanpasbaar voor alle leden van de planning. <br /> 
+_/home/sales_: bevat informatie over de verkoop, aanpasbaar voor alle leden van sales<br /> 
+_/home/general_: bevat algemene informatie voor iedereen? James is verantwoordelijk voor deze map en daarom heeft alleen James bewerkingsrechten voor deze map en de inhoud ervan.  
 
-All users (members of the group users) have reading permissions for these directories.   
-Test the scenario!
+Zorg ervoor dat de gebruikers die moeten samenwerken ook de bestanden van elk van hen kunnen wijzigen. Maak gebruik van setgid en gebruik geen ACL's. 
+
+Alle gebruikers (leden van de groep users) hebben leesrechten voor deze mappen.  
+Test het scenario! 

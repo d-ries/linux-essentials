@@ -4,7 +4,7 @@ From the very start, Unix (and thus Linux) was built as a multiuser operating sy
 
 As you have seen in the previous section, your system already comes with a sensible set of file permissions. As a regular user you have full control in your own homefolder. You can create, edit and remove files and folders within your own home-directory `/home/student`. If you try to create or alter a file outside your homefolder you will get an error (permission denied). The only exception is the directory _/tmp_. Eg: You are able to see the user database in `/etc/passwd` but cannot edit it as a regular user. Sometimes a regular user isn't even allowed to see the contents of a certain file or directory. Eg: `/etc/shadow` holds the passwords of users, that is why you are not even allowed to read it. 
 
-Permission errors are a common source of problem. Understanding and manipulating file permissions is a crucial step in becoming a competent Linux admin.
+Permission errors are a common source of problems. Understanding and manipulating file permissions is a crucial step in becoming a competent Linux admin.
 
 ?> <i class="fa-solid fa-circle-info"></i> Just because you can, doesn't mean you should. When troubleshooting permission errors always remember that permissions are your first line of defense against malicious actors. Always ask yourself why a program or a user should have access, and handle with caution. Don't just grant permissions to get rid of the error!
 
@@ -161,7 +161,7 @@ student@linux-ess:~$ sudo ls -l /home/jacob/.profile
 
 ?> Note that changing the primary group of a user also changes the groupowner of every file in his homefolder.
   
-We will create a group for the two users to give them rights on a shared folder that we will create in the next step. We'll also apply the users to this new group:
+We will create a group for the two users to give them rights on a shared folder that we will create in the next step. We'll also add the users to this new group:
 ```bash
 student@linux-ess:~$ sudo groupadd ict
 student@linux-ess:~$ sudo usermod -aG ict liam
@@ -227,7 +227,7 @@ drwxrwsr-x 3 root ict 4096 Nov 26 16:12 /shares/ict/
   
 ?> As you can see in the permissions of the groupowner it now ends with a letter _s_. A lowercase _s_ means that there is an _x_ underneath, an uppercase _S_ means that there is no _x_ underneath.
 
-The special bit setgid means that files and folders that will be created in this folder will have the same groupowner as this folder itself:
+The special bit setgid means that files and folders that will be created in this folder will get the same groupowner as this folder itself:
 ```bash
 student@linux-ess:~$ ls -l /shares/ict/ 
 total 4
@@ -262,7 +262,7 @@ liam@linux-ess:/shares/ict$ exit
 
 The setgid bit solves the main problem of making files in a shared folder created by one user accessible to other users in the same non-primary group. However this opens up another problem: Every user with access to the share can now delete or rename the files of other users in this folder. In some cases, like a shared project people are working on, this is fine. But in cases you don't want to allow this, another special permission bit is used: the **sticky bit**. Setting this bit on a folder will disallow any user (except the user root) from renaming or removing files or subfolders he does not own inside that folder.
 
-This principle is also used in the system's ´/tmp´ folder, disallowing users to remove another user's temporary files.
+This principle is also used in the system's `/tmp` folder, disallowing users to remove another user's temporary files.
 
 ```bash
 student@linux-ess:~$ ls -ld /tmp/
@@ -511,7 +511,7 @@ student@linux-ess:~$ setfacl -m g:it:rw memo
 student@linux-ess:~$ ls -l memo
 -rw-rw-r--+ 1 student student 0 Nov 11 14:15 memo
 ```
-?> <i class="fa-solid fa-circle-info"></i> Note that we can also see that ACL’s are set by a __+__ in the output of the `ls -l` command
+?> <i class="fa-solid fa-circle-info"></i> Note that we can also see that ACL’s are applied by a __+__ in the output of the `ls -l` command
 
 With `getfacl` we can check the existing ACL’s on a file or folder. 
 ```bash
