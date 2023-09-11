@@ -70,7 +70,7 @@ The concept we've used here is called _shell embedding_. The `$(...)` syntax ope
   
   
 ### Variables
-We also can make use of variables to reuse data:  
+We can also make use of variables to reuse data:  
 _nano vars.sh_  
 ```bash
 #!/bin/bash
@@ -81,7 +81,7 @@ touch ~/$CUSTOMDIR/testfile
 ls -l ~/$CUSTOMDIR/*
 ```
 
-?> We can run the script without setting the execute script (chmod u+x) first, but then we have to specify the interpreter (here bash) to define in which language the script is written
+?> We can run the script without setting the execute bit (chmod u+x) first, but then we have to specify the interpreter (here bash) to define in which language the script is written
 
 ```bash
 student@linux-ess:~$ bash vars.sh
@@ -138,7 +138,7 @@ When we execute it, we get the following result:
 student@linux-ess:~$ bash datefile.sh
 File 2022-11-11-superfile created/touched in homedir.
 ```
-?> Mind that if we ask for the value of a variable by putting a dollar sign in front (eg. `echo $createdate`). But when we put text right after the variable without a space in between, we almost always have to put the variable within boundaries with the curly brackets (eg. `echo ${createdate}superfile` )  
+?> Mind that if we ask for the value of a variable we put a dollar sign in front of its name (eg. `echo $createdate`). When we put text right after the variable without a space in between, we almost always have to put the variable within boundaries with the curly brackets (eg. `echo ${createdate}superfile` )  
     
 #### Reading user input
 Sometimes it can be helpful to ask for user input. We place the answer of the user in a variable, so that we can reuse it later on in the script:
@@ -193,7 +193,7 @@ Param two was: 2nd
 ## The PATH variable
   
 Linux has multiple places where binaries are stored. These are often bundled in the PATH variable.  
-If we run a command without specifying the path where the command is saved, there will be searched for within every path of the PATH variable.
+If we run a command without specifying the path where the command is saved, there will be searched for within every path of the PATH variable for the command.
 
 ```bash
 student@linux-ess:~$ echo $PATH
@@ -291,7 +291,7 @@ In the example below we are going to echo some text to a file every minute.
   
 Simply remove the line from the crontab to stop this from happening. For more info check the manpage of `cron`.  
   
-?> Mind that the first time we open cron we have to specify which editor we want to use. If you choose '1' you will have the editor `nano`.  
+?> Mind that the first time we open cron we have to specify which editor we want to use. If you choose `1` you will have the editor `nano`.  
   
 
 ```bash

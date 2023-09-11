@@ -5,7 +5,7 @@ Make a directory called _bin_ in your homefolder.
     
   
 ## Task 2
-Log out and log back in. Make sure your _bin_ folder is added to the path. Do you know why the folder is added to the path? (Hint: .profile)
+Log out and log back in. Make sure your _bin_ folder is added to the variable PATH. Do you know why the folder is added to the variable PATH? (Hint: .profile)
 
 ```bash
 student@linux-ess:~$ echo $PATH
@@ -40,7 +40,7 @@ certs  openssl.cnf  private
   
 ## Task 5
 Alter the previous script. Catch three parameters in the script and add these to the `ls` command within the script.
-Test the script with the parameters '-l', '-a' and '-h'
+Test the script with the parameters `-l`, `-a` and `-h`
 
 Example:
 ```bash
@@ -82,7 +82,7 @@ boot  etc  lib   lib64  lost+found  mnt    proc  run   snap  swap.img  tmp  var
    
 ## Task 8
 Create a job to run once in about five minutes. The job has to place an overview of all logged in users into the file _/tmp/userlist_.
-Besides the current ssh connection to the server, login on the server itself.
+Besides the current ssh connection to the server, also login on the server itself.
 After 5 minutes take a look at the file _/tmp/userlist_.
   
 Example:
@@ -106,5 +106,3 @@ Create the script and place it in _/scripts_.
 Create the cronjob.
 
 PS: To test the cronjob change the time and day-of-the-week to within exactly 1 minute. Wait a minute and check if the tarball exists.
-   
-  

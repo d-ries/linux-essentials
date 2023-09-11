@@ -1,11 +1,11 @@
-# Assignment on automation
+# Oefeningen op automatisatie
 
-## Task 1
-Make a directory called _bin_ in your homefolder.
-    
+## Oefening 1
+Maak een map met de naam _bin_ in je thuismap.     
   
-## Task 2
-Log out and log back in. Make sure your _bin_ folder is added to the path. Do you know why the folder is added to the path? (Hint: .profile)
+
+## Oefening 2
+Log uit en log weer in. Zorg ervoor dat de map _bin_ is toegevoegd aan de variabele PATH. Weet je ook waarom de map aan de variabele PATH is toegevoegd? (Hint: .profile) 
 
 ```bash
 student@linux-ess:~$ echo $PATH
@@ -13,39 +13,39 @@ student@linux-ess:~$ echo $PATH
 ```
   
   
-## Task 3
-Make a script, called _show.sh_, that asks for a path to a directory. Try to involve the username in the question (see the example). Use the `env` command to search for the right System variable to use.   
-Show a listing of all the files within the given directory.  
-Make the script executable and check if it works.  
-  
-Example:
+## Oefening 3
+Maak een script, genaamd _show.sh_, dat vraagt om een pad naar een map. Probeer de gebruikersnaam bij de vraag te betrekken (zie het voorbeeld). Gebruik het commando `env` om te zoeken naar de juiste systeemvariabele om te gebruiken.  
+Toon een lijst met alle bestanden in de gegeven map.  
+Maak het script uitvoerbaar en controleer of het werkt.  
+
+Voorbeeld: 
 ```bash
 student@linux-ess:~/bin$ show.sh
-Dear student, please specify the dir:
+Beste student, geef aub een map op:
 /etc/ssl
 certs  openssl.cnf  private
 ```
   
   
-## Task 4
-Alter the previous script. Search in the manpage of echo how you can keep the cursor behind the question: Please specify the dir: _
-  
-Example:
+## Oefening 4
+Wijzig het vorige script. Zoek in de manpage van echo hoe je de cursor achter de vraag kunt houden: Geef de dir op: _ 
+
+Voorbeeld: 
 ```bash
 student@linux-ess:~/bin$ show.sh
-Dear student, please specify the dir: /etc/ssl
+Beste student, geef aub een map op: /etc/ssl
 certs  openssl.cnf  private
 ```
   
   
-## Task 5
-Alter the previous script. Catch three parameters in the script and add these to the `ls` command within the script.
-Test the script with the parameters '-l', '-a' and '-h'
+## Oefening 5
+Wijzig het vorige script. Vang drie parameters op in het script en voeg deze toe aan het commando `ls` in het script. 
+Test het script met de parameters `-l`, `-a` en `-h` 
 
-Example:
+Voorbeeld: 
 ```bash
 student@linux-ess:~/bin$ show.sh -l -a -h
-Dear student, please specify the dir: /etc/ssl
+Beste student, geef aub een map op: /etc/ssl
 total 44K
 drwxr-xr-x  4 root root 4.0K Nov  4 14:19 .
 drwxr-xr-x 97 root root 4.0K Nov 12 13:41 ..
@@ -54,23 +54,22 @@ drwxr-xr-x  2 root root  16K Aug  9 11:58 certs
 drwx------  2 root root 4.0K Jul  4 11:20 private
 ```
 
-Also try to start the script with only 1 parameter (-l) or a contraction (-lah)
+Probeer ook het script te starten met slechts 1 parameter (-l) of een samentrekking (-lah) 
   
   
-## Task 6
+## Oefening 6
+Probeer het script uit te voeren terwijl je je in een andere map bevindt dan de bin-map. Werkt het door alleen de naam op te geven (geen pad)?  
+Maak een nieuwe map in je thuismap, genaamd _myscripts_. 
+Verplaats het script _show.sh_ naar de map _myscripts_. 
+Probeer het script uit te voeren terwijl je je in een andere map bevindt dan de map myscripts. Werkt het door alleen de naam op te geven (geen pad)? 
+Los dit op door het pad toe te voegen aan de juiste variabele. Zorg er ook voor dat dit pad in de toekomst gekend is. Om dit te testen moet je uitloggen en opnieuw inloggen. 
+Gebruik ook het commando `which` om te controleren of het werkt. 
+  
+  
+## Oefening 7
+Wijzig het vorige script. Druk eerst de huidige datum af in de notatie zoals in het voorbeeld. Zoek in de manpage van `date` om het juiste formaat te vinden. 
 
-Try to run the script while being in another folder than the bin folder. Does it work by specifying only the name (no path)?  
-Make a new directory in your homefolder, named _myscripts_.
-Move the script _show.sh_ to the folder _myscripts_.
-Try to run the script while being in another folder than the myscripts folder. Does it work by specifying only the name (no path)?
-Fix this by adding the path to the right variable. Also make sure this path is known in the future. To test this you need to logout and login again.
-Also use the `which` command to check if it works.
-  
-  
-## Task 7
-Alter the previous script. Firstly print the current date in the format as in the example. Search the manpage of `date` to find the right format.
-  
-Example:   
+Voorbeeld:  
 ```bash
 student@linux-ess:~/myscripts$ show.sh
 Saturday, 12 November 2022
@@ -80,12 +79,12 @@ boot  etc  lib   lib64  lost+found  mnt    proc  run   snap  swap.img  tmp  var
 ```
    
    
-## Task 8
-Create a job to run once in about five minutes. The job has to place an overview of all logged in users into the file _/tmp/userlist_.
-Besides the current ssh connection to the server, login on the server itself.
-After 5 minutes take a look at the file _/tmp/userlist_.
-  
-Example:
+## Oefening 8
+Maak een taak die je eenmaal in ongeveer vijf minuten uitvoert. De taak moet een overzicht van alle ingelogde gebruikers in het bestand _/tmp/userlist_ plaatsen. 
+Naast de huidige ssh-verbinding met de server, log ook in op de server zelf. 
+Bekijk na 5 minuten het bestand _/tmp/userlist_. 
+
+Voorbeeld:
 ```bash  
 student@linux-ess:~/myscripts$ cat /tmp/userlist
  17:10:15 up 14:42,  2 users,  load average: 0.20, 0.16, 0.10
@@ -95,16 +94,14 @@ student  pts/0    192.168.75.1     15:04    7.00s  0.25s  0.02s w
 ``` 
     
    
-## Task 9
-Create a personal cronjob which saves the text _Rebooted at_ and then the _date_ and _time_ to the file _~/rebootlog_.
-Search the manpage of the crontab file, more precisely the _File Format_ section. Search for the text _reboot_. 
+## Oefening 9
+Maak een persoonlijke cronjob die de tekst _Herstart om_ opslaat en vervolgens de _datum_ en _tijd_ in het bestand _~/rebootlog_. 
+Doorzoek de manpage van het crontab-bestand, meer bepaald de sectie _File Format_. Zoek naar de tekst _reboot_.  
       
   
-## Task 10 
-Create a Cronjob that makes a backup of all the homefolders (regular users and root) every sunday at 23:59 to the dir _/backups_. Put the backup in a tarball named homefolders.tar.gz.
-Create the script and place it in _/scripts_.  
-Create the cronjob.
+## Oefening 10 
+Maak een Cronjob die elke zondag om 23:59 uur een back-up maakt van alle homefolders (reguliere gebruikers en root) naar de map _/backups_. Plaats de back-up in een tarball met de naam homefolders.tar.gz. 
+Maak het script en plaats het in _/scripts_.  
+Maak de cronjob. 
 
-PS: To test the cronjob change the time and day-of-the-week to within exactly 1 minute. Wait a minute and check if the tarball exists.
-   
-  
+PS: Om de cronjob te testen verander je de tijd en dag-van-de-week naar binnen precies 1 minuut. Wacht een minuut en controleer of de tarball bestaat.

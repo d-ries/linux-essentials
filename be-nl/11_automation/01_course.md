@@ -1,33 +1,32 @@
-# Automation
+# Automatisering 
 
-## Bash scripts
-Scripting is a great way to automate simple tasks or chains of commands. Imagine you want to take a backup. Usually this means creating a `zip` archive of certain files and folders, giving this `zip` file the appropriate name and then move the `zip` file to a certain folder. Running these commands manually is prone to errors and time consuming. A better way would be to bundle these commands in a script, so we can instead run one command that will trigger running all of the steps described above.
+## Bash scripts 
+Scripting is een geweldige manier om eenvoudige taken of commandoreeksen te automatiseren. Stel je voor dat je een back-up wilt maken. Meestal betekent dit het maken van een 'zip'-archief van bepaalde bestanden en mappen, daarna dit 'zip'-bestand de juiste naam geven en vervolgens het 'zip'-bestand naar een bepaalde map wordt verplaatsen. Het handmatig uitvoeren van deze commando's is gevoelig voor fouten en tijdrovend. Een betere manier zou zijn om deze commando's in een script te bundelen, zodat we in plaats daarvan één commando kunnen uitvoeren die alle hierboven beschreven stappen activeert. 
 
-In Ubuntu we often use _bash_ scripts. _bash_ refers to the default shell that we use as a user in Ubuntu. There are different kinds of _shells_ but this is out of scope for this course. Most syntax seen in this chapter will work in most shell environments.
+In Ubuntu gebruiken we vaak _bash_ scripts. _bash_ verwijst naar de standaard shell die we gebruiken als gebruiker in Ubuntu. Er zijn verschillende soorten _shells_ maar dit valt buiten het bereik van deze cursus. De meeste syntaxis die in dit hoofdstuk wordt gezien, werkt in de meeste shell-omgevingen. 
 
-?> Note that we will focus on the basic syntax of a shell script. You can always learn more about if statements, loops, custom options and arguments, tests, ... in scripts but this is out of scope for this course.
+?> Merk op dat we ons zullen concentreren op de basissyntaxis van een shellscript. Je kan altijd meer te weten komen over of instructies, loops, aangepaste opties en argumenten, tests, ... in scripts, maar dit valt buiten het bereik van deze cursus. 
 
 ### Hello world
-To start of with our first bash script we'll create a new file called `helloworld.sh` and add some contents using `nano`.  
+Om te beginnen met ons eerste bash-script maken we een nieuw bestand met de naam `helloworld.sh` en voegen we wat inhoud toe met 'nano'. 
 
 ```bash
 student@linux-ess:~$ nano helloworld.sh
 ```
 
-We give the file the following contents:
+We geven het bestand de volgende inhoud: 
 ```bash
 #!/bin/bash
 echo "hello world"
 echo "this is our first bash script"
 ```
-The first line in this script is named in the shebang and is a special line that will make sure the script will be ran in a `bash` shell. After that we can have different lines of all kinds of commands that will be run in sequential order.
+De eerste regel in dit script wordt shebang genoemd en is een speciale regel die ervoor zorgt dat het script in een `bash`-shell wordt uitgevoerd. Daarna kunnen we verschillende regels van allerlei commando's hebben die in opeenvolgende volgorde worden uitgevoerd. 
 
-?> using `#` signs are interpreted as comments. Any code after those signs will not be executed.
+?> het gebruik van `#` tekens worden geïnterpreteerd als opmerkingen. Code na deze tekens wordt niet uitgevoerd. 
 
-In the example above we will run 2 `echo` commands. 
-  
-To run this bash script, we will have to add _execute_ rights:
+In het bovenstaande voorbeeld zullen we 2 `echo`-commando's uitvoeren.  
 
+Om dit bash-script uit te voeren, moeten we _uitvoerings_-rechten toevoegen: 
 ```bash
 student@linux-ess:~$ ls -l helloworld.sh
 -rw-rw-r-- 1 student student 371 Nov 11 15:55 helloworld.sh
@@ -35,30 +34,28 @@ student@linux-ess:~$ chmod u+x helloworld.sh
 student@linux-ess:~$ ls -l helloworld.sh
 -rwxrw-r-- 1 student student 371 Nov 11 15:55 helloworld.sh
 ```
-After doing this we can execute the script:
+
+Hierna kunnen we het script uitvoeren: 
 ```bash
 student@linux-ess:~$ ./helloworld.sh
 hello world
 this is our first bash script
-```
-  
+``` 
 
-?> Although the script is in the working directory, we have to specify it with: ./helloworld.sh  Another way to run it, is to specify the full path: /home/student/helloworld.sh
+?> Hoewel het script zich in de huidige werkmap bevindt, moeten we het specificeren met: ./helloworld.sh Een andere manier om het uit te voeren, is door het volledige pad op te geven: /home/student/helloworld.sh 
+
+?> Alleen scripts die uitvoerbaar zijn en zijn opgeslagen in een map die is opgegeven in de variabele $PATH, kunnen worden uitgevoerd zonder het volledige pad op te geven. 
   
-  
-?> Only scripts that are executable and saved in a directory which is specified in the $PATH variable can be executed without specifying the full path.
-  
-  
-### date with shell embedding
-Lets extend our script with some nifty logic to use to output of a certain command in another command. We edit the script contents as follows:  
-_nano showdate.sh_  
+### datum met shell embedding 
+Laten we ons script uitbreiden met wat handige logica om te gebruiken om een bepaald commando in een ander commando uit te voeren. We bewerken de inhoud van het script als volgt:  
+_nano showdate.sh_ 
 ```bash
 #!/bin/bash
 echo "hello world"
 echo "this is our first bash script"
 echo "the date of today is $(date)"
 ```
-When we run this script, we get the following output:
+Wanneer we dit script uitvoeren, krijgen we de volgende uitvoer: 
 ```bash
 student@linux-ess:~$ chmod u+x showdate.sh
 student@linux-ess:~$ ./showdate.sh
@@ -66,12 +63,11 @@ hello world
 this is our first bash script
 the date of today is Tue Jun 28 22:04:09 CEST 2022
 ```
-The concept we've used here is called _shell embedding_. The `$(...)` syntax opens up a new (sub)shell and runs a command. The output of the `date` command is then directly used in the echo command.
+Het concept dat we hier hebben gebruikt, heet _shell embedding_. De `$(...)` syntaxis opent een nieuwe (sub)shell en voert een commando uit. De uitvoer van het `date`-commando wordt dan direct gebruikt in het echo commando. 
   
-  
-### Variables
-We also can make use of variables to reuse data:  
-_nano vars.sh_  
+### Variabelen 
+We kunnen ook gebruik maken van variabelen om data te hergebruiken:  
+_nano vars.sh_ 
 ```bash
 #!/bin/bash
 CUSTOMDIR=testdir
@@ -81,16 +77,15 @@ touch ~/$CUSTOMDIR/testfile
 ls -l ~/$CUSTOMDIR/*
 ```
 
-?> We can run the script without setting the execute script (chmod u+x) first, but then we have to specify the interpreter (here bash) to define in which language the script is written
-
+?> We kunnen het script uitvoeren zonder eerst de uitvoerbit (chmod u+x) in te stellen, maar dan moeten we de interpreter (hier bash) specificeren om te definiëren in welke taal het script is geschreven 
 ```bash
 student@linux-ess:~$ bash vars.sh
 customdir is set to testdir
 -rw-r----- 1 student student 0 Nov 11 15:52 /home/student/testdir/testfile
 ```
 
-#### System variables
-We also can make use of variables that are set on the system:  
+#### Systeemvariabelen 
+We kunnen ook gebruik maken van variabelen die op het systeem zijn ingesteld: 
 _nano sysvars.sh_  
 ```bash
 #!/bin/bash
@@ -105,11 +100,10 @@ student@linux-ess:~$ ./sysvars.sh
 hello student
 your homefolder is /home/student
 ```
-  
-Lets combine some of the stuff we learned so far.   
-  
-Lets create a new script called `countfiles.sh`:
-  
+
+Laten we enkele van de dingen combineren die we tot nu toe hebben geleerd.  
+
+Laten we een nieuw script maken met de naam `countfiles.sh`:  
 _nano countfiles.sh_  
 ```bash
 #!/bin/bash
@@ -117,57 +111,55 @@ echo "hello $USER"
 echo "your homefolder has $(ls -A1 ~ | wc -l) files/folders."
 ```
   
-When we execute it, we get the following result:
+Wanneer we het uitvoeren, krijgen we het volgende resultaat: 
 ```bash
 student@linux-ess:~$ bash countfiles.sh
 hello student
 your homefolder has 12 files/folders.
 ```
-  
-Another example creates a file with the current date in the filename:
-  
+
+In een ander voorbeeld wordt een bestand gemaakt met de huidige datum in de bestandsnaam:   
 _nano datefile.sh_  
 ```bash
 #!/bin/bash
-# This will create a variable with the current date as value
+# Dit zal een variabele maken met de huidige datum als waarde
 createdate=$(date +"%Y-%m-%d")
 touch ~/${createdate}-superfile && echo "File ${createdate}-superfile created/touched in homedir."
 ```
-When we execute it, we get the following result:
+Wanneer we het uitvoeren, krijgen we het volgende resultaat: 
 ```bash
 student@linux-ess:~$ bash datefile.sh
 File 2022-11-11-superfile created/touched in homedir.
 ```
-?> Mind that if we ask for the value of a variable by putting a dollar sign in front (eg. `echo $createdate`). But when we put text right after the variable without a space in between, we almost always have to put the variable within boundaries with the curly brackets (eg. `echo ${createdate}superfile` )  
+?> Let op dat als we naar de waarde van een variabele vragen we een dollarteken voor de naam zetten (bijv. `echo $createdate`). Wanneer we tekst direct achter de variabele plaatsen zonder een spatie ertussen, moeten we de variabele bijna altijd binnen grenzen plaatsen met de gekrulde haakjes (bijv. `echo ${createdate}superfile` ) 
     
-#### Reading user input
-Sometimes it can be helpful to ask for user input. We place the answer of the user in a variable, so that we can reuse it later on in the script:
-  
+#### Gebruikersinvoer lezen 
+Soms kan het nuttig zijn om gebruikersinput te vragen. We plaatsen het antwoord van de gebruiker in een variabele, zodat we het later in het script kunnen hergebruiken: 
 _nano list5.sh_
 ```bash
 #!/bin/bash
-echo "Enter the absolute path of a folder you want to check:"
+echo "Geef het absolute pad van de map die je wil controleren:"
 read folder
-echo "The selected folder is $folder." 
+echo "De geselecteerde map is $folder." 
 ```
 
-Let's extend this script to give it some more functionality and combine some of the concepts we've learned before:
+Laten we dit script uitbreiden om het wat meer functionaliteit te geven en enkele van de concepten te combineren die we eerder hebben geleerd: 
 ```bash
 #!/bin/bash
-echo "Enter the absolute path of a folder you want to check:"
+echo "Geef het absolute pad van de map die je wil controleren:"
 read folder
-echo "The selected folder is $folder. This folder contains $(ls -A1 $folder | wc -l) files/folders." 
-echo "Showing the first 5:"
+echo "De geselecteerde map is $folder. De map bevat $(ls -A1 $folder | wc -l) bestanden/mappen." 
+echo "De eerste 5 worden getoond:"
 ls -A1 $folder | head -5
 ```
 
-Let's see what it does:  
+Laten we eens kijken wat het doet: 
 ```bash
 student@linux-ess:~$ ./list5.sh
-Enter the absolute path of a folder you want to check:
+Enter Geef het absolute pad van de map die je wil controleren:
 /home/student
-the selected folder is /home/student. This folder contains 23 files/folders.
-Showing the first 5:
+De geselecteerde map is /home/student. De map bevat 23 bestanden/mappen.
+De eerste 5 worden getoond:
 2022-11-11-superfile
 auth.log
 .bash_history
@@ -175,10 +167,8 @@ auth.log
 .bashrc
 ```
 
-### Using a parameter
-  
-We are going to keep it simple, so we will not use more than nine parameters. In our example we will only use two ($1 and $2), but know that method stays the same for all nine ($1-$9). As a sidenote I can tell you that $0 also exists and holds the command with which the script was run.
-
+### Een parameter gebruiken 
+We gaan het simpel houden, dus we zullen niet meer dan negen parameters gebruiken. In ons voorbeeld zullen we er slechts twee gebruiken ($1 en $2), maar weet dat de methode hetzelfde blijft voor alle negen ($1 - $9). Als kanttekening kan ik je vertellen dat $0 ook bestaat en het commando bevat waarmee het script is uitgevoerd. 
 ```bash
 student@linux-ess:~$ nano params.sh
 student@linux-ess:~$ cat params.sh
@@ -190,17 +180,16 @@ Param one was: first
 Param two was: 2nd
 ```
 
-## The PATH variable
-  
-Linux has multiple places where binaries are stored. These are often bundled in the PATH variable.  
-If we run a command without specifying the path where the command is saved, there will be searched for within every path of the PATH variable.
+## De variabele PATH 
+Linux heeft meerdere plaatsen waar binaire bestanden worden opgeslagen. Deze worden vaak gebundeld in de PATH-variabele.  
+Als we een opdracht uitvoeren zonder het pad op te geven waar de opdracht is opgeslagen, wordt er binnen elk pad van de variabele PATH gezocht naar deze opdracht. 
 
 ```bash
 student@linux-ess:~$ echo $PATH
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 ```
-  
-?> Mind that every path is seperated with a colon
+
+?> Merk op dat elk pad gescheiden is met een dubbele punt 
   
 ```bash
 student@linux-ess:~$ echo $PATH | tr ':' '\n'
@@ -215,39 +204,35 @@ student@linux-ess:~$ echo $PATH | tr ':' '\n'
 /snap/bin
 ```
 
-The PATH variable gets set and altered in multiple scripts. It starts with a system wide setting in /etc/environment :  
-  
+De variabele PATH wordt ingesteld en gewijzigd in meerdere scripts. Het begint met een systeembrede instelling in /etc/environment: 
 ```bash
 student@linux-ess:~$ cat /etc/environment
 PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"  
 student@linux-ess:~$ echo $PATH
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 ```
-So we can alter this file if we want to change the PATH variable for every user on the system. The change will be visible for a user when he logs in.
+We kunnen dit bestand dus wijzigen als we de PATH-variabele voor elke gebruiker op het systeem willen wijzigen. De wijziging is zichtbaar voor een gebruiker wanneer hij zich aanmeldt. 
 
-But if we want to alter the PATH variable for one user, we can do this from within the file ~/.profile. The change will be visible for a user when he logs in: 
-  
+Maar als we de PATH-variabele voor één gebruiker willen wijzigen, kunnen we dit doen vanuit het bestand ~/.profile. De wijziging is zichtbaar voor een gebruiker wanneer hij zich aanmeldt: 
 ```bash
 student@linux-ess:~$ grep -C1 "HOME/bin" .profile
-# set PATH so it includes user's private bin if it exists
+# Verander PATH zodat hij de privé bin folder toevoegd, als deze bestaat
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 ```
+
+?> Let op dat dit al bestaat, dus het is het beste om je scripts op te slaan in een (nieuwe) map met de naam _bin_ in je homefolder. Houd er ook rekening mee dat je na het maken van de map _bin_ opnieuw moet inloggen, zodat de map _bin_ wordt toegevoegd aan de variabele PATH. 
   
-?> Mind that this already exists, so it is best to save your scripts in a (new) folder named _bin_ in your homefolder. Also mind that after creating the _bin_ directory you have to login again so the _bin_ folder gets added to the PATH variable.
-  
-  
-As we have seen already you can use the command `which` to find out if the command gets found and where precisely.
+Zoals we al hebben gezien kun je het commando `which` gebruiken om erachter te komen of het commando gevonden wordt en waar precies. 
 ```bash
 student@linux-ess:~$ which reboot
 /usr/sbin/reboot
 ```
-    
-## At
-  
-You can use the at command to run a script/command at a specific time.  
-For the at command we echo an output into the at command as shown by an example below:  
+
+## At 
+Je kan het commando at gebruiken om een script/commando op een bepaald tijdstip uit te voeren.  
+Voor het at-commando echoën we een uitvoer in het at-commando zoals getoond in onderstaand voorbeeld:
 ```bash
 student@linux-ess:~$ echo ./datefile.sh | at 14:00
 warning: commands will be executed using /bin/sh
@@ -259,9 +244,8 @@ student@linux-ess:~$ at -l
 2       Mon Nov 14 10:36:00 2022 a student
 1       Sat Nov 12 14:00:00 2022 a student
 ```  
-  
-you can check what is scheduled with the `atq` or `at -l` commands and remove when necesarry with the `atrm`, `at -d` or `at -r` commands:  
-  
+
+Je kan controleren wat er is gepland met de commando's `atq` of `at -l` en verwijderen wanneer dat nodig is met de commando's `atrm`, `at -d` of `at -r`: 
 ```bash
 student@linux-ess:~$ at -l
 2       Mon Nov 14 10:36:00 2022 a student
@@ -271,28 +255,25 @@ student@linux-ess:~$ at -l
 1       Sat Nov 12 14:00:00 2022 a student
 ```  
   
-For more info check the manpage of `at`.
-  
+Kijk voor meer info in de manpage van 'at'.   
     
 ## Crontab
-  
-With the cron command it is possible to plan your scripts/commands to run on a regular basis. Cron works different, it uses a file where we put the commands/scripts we want to run and specify when the runs have to happen. To open your crontab-file you give the command `crontab -e`.   
-  
-In the example below we are going to echo some text to a file every minute.  
+Met het cron commando is het mogelijk om je scripts/commando's te plannen om op regelmatige basis te draaien. Cron werkt anders, het maakt gebruik van een bestand waarin we de commando's/scripts plaatsen die we willen uitvoeren en specificeren wanneer de runs moeten gebeuren. Om je crontab-bestand te openen geef je het commando `crontab -e`.  
+
+In het onderstaande voorbeeld gaan we elke minuut wat tekst naar een bestand echoën. 
 ```bash  
 .---------------- minute (0 - 59)  
 |  .------------- hour (0 - 23)  
 |  |  .---------- day of month (1 - 31)  
-|  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...  
-|  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat  
+|  |  |  .------- month (1 - 12) OF jan,feb,mar,apr ...  
+|  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OF sun,mon,tue,wed,thu,fri,sat  
 |  |  |  |  |  
 *  *  *  *  *   echo Command run at $(date) >> /tmp/crontest  
 ```  
-  
-Simply remove the line from the crontab to stop this from happening. For more info check the manpage of `cron`.  
-  
-?> Mind that the first time we open cron we have to specify which editor we want to use. If you choose '1' you will have the editor `nano`.  
-  
+
+Verwijder gewoon de lijn van de crontab-file om dit te stoppen. Kijk voor meer info in de manpage van `cron`.  
+
+?> Let op dat de eerste keer dat we cron openen, we moeten specificeren welke editor we willen gebruiken. Kies je voor `1` dan heb je de editor `nano`. 
 
 ```bash
 @linux-ess:~$ crontab -e
@@ -319,13 +300,10 @@ Command run at Sat Nov 12 11:02:01 AM UTC 2022
 Command run at Sat Nov 12 11:03:01 AM UTC 2022
 Command run at Sat Nov 12 11:04:01 AM UTC 2022
 ```  
-  
-  
-If we have to run a script as another user or with elevated privileges (as root), we can make use of the general _crontab_ file in _/etc_. In this file there is an additional column to specify the user under which the script has to run.  
-You will need elevated privileges to edit this file (sudo).  
-In the following example we will run a backup script every friday at 23\:30 :  
-    
-    
+
+Als we een script moeten uitvoeren als een andere gebruiker of met verhoogde rechten (als root), kunnen we gebruik maken van het algemene _crontab_ bestand in _/etc_. In dit bestand is er een extra kolom om de gebruiker aan te geven waaronder het script moet worden uitgevoerd.  
+Je hebt verhoogde rechten nodig om dit bestand te bewerken (sudo).  
+In het volgende voorbeeld zullen we elke vrijdag om 23\:30 een back-up script uitvoeren:  
 ```bash
 student@linux-ess:~$ sudo nano /etc/crontab
 # /etc/crontab: system-wide crontab
@@ -353,12 +331,11 @@ SHELL=/bin/sh
 30 23  *  *  5   root    /scripts/backuphomefolders.sh
 ```
 
-?> Notice that there are some folders (cron.daily, cron.weekly, cron.monthly) that can hold scripts that will be executed by cron regularly.
- 
+?> Merk op dat er enkele mappen zijn (cron.daily, cron.weekly, cron.monthly) die scripts kunnen bevatten die regelmatig door cron worden uitgevoerd. 
   
 ```bash
 student@linux-ess:~$ ls /etc/cron.daily/
 apport  apt-compat  dpkg  logrotate  man-db
 ```
 
-?> In Linux the system is managed with __systemd__. And systemd also has an implementation for repeating jobs, namely _timers_. But that's out of scope for this course.
+?> In Linux wordt het systeem beheerd met __systemd__. En systemd heeft ook een implementatie voor het herhalen van taken, namelijk _timers_. Maar dat valt buiten het bestek van deze cursus.
