@@ -1,7 +1,7 @@
 ![pxl right](./images/pxl.png)
 # Linux Essentials
 ## Informatie <!-- {docsify-ignore} -->
-Deze cursus legt de nadruk op het gebruik van de command line interface in Linux-omgevingen. Deze cursus richt zich op basisbewerkingen zoals het werken met harde schijven, bestandssystemen, bestanden en mappen, werken met bestandsinhoud, linux-bestandsstructuur, bestandsmachtigingen, ... 
+Deze cursus legt de nadruk op het gebruik van de command line interface in Linux-omgevingen. Deze cursus richt zich op basisbewerkingen zoals het werken met harde schijven, bestandssystemen, bestanden en mappen, werken met bestandsinhoud, linux-bestandsstructuur, bestandsmachtigingen, software installaties, filters, ... 
 
 ## Structuur <!-- {docsify-ignore} -->
 Deze cursus leert je hoe je een Linux CLI gebruikt. Om dit te bereiken gebruiken we praktische labs & oefeningen, evenals een handleiding met enkele van de meest essentiële commando's en use cases. De praktische labs volgen een authentiek geval van een informaticastudent genaamd Linus die zijn eigen Minecraft-server wil opzetten. 
