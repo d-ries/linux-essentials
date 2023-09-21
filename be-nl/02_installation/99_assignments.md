@@ -122,7 +122,7 @@ Op het laatste scherm druk je gewoon op `enter`. De computer wordt opnieuw opges
 De allereerste keer dat we inloggen, moeten we enkele configuratieschermen doorlopen: 
 
 ?> <i class="fa-solid fa-circle-info"></i> Als er een venster met de naam `Software Updater` verschijnt, kunnen we op `Install Now` klikken! 
-[Ubuntu_Desktop_First_Login_Click_Updates](../images/02/LAB_Ubuntu_Desktop_First_Boot_Updates.png)
+![Ubuntu_Desktop_First_Login_Click_Updates](../images/02/LAB_Ubuntu_Desktop_First_Boot_Updates.png)
 
 ![Ubuntu_Desktop_First_Login_Click_Student](../images/02/LAB_Ubuntu_Desktop_First_Login_Click_Student.png)
 
