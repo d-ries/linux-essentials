@@ -114,7 +114,15 @@ Once the installation is finished we have to click on `Restart Now` to reboot th
 
 ![Ubuntu_Desktop_Reboot_After_Install](../images/02/LAB_Ubuntu_Desktop_Reboot_After_Install.png)
 
-On the last screen just press `enter`. The computer will reboot and the installation will be finished:
+hen we see the screen where they ask to push the 'enter'-key, we first go into the settings of the Virtual Machine :
+
+![Ubuntu_Server_VM_Settings](../images/02/Ubuntu_Server_VM_Settings.png)
+
+There we uncheck that the CD/DVD has to be connected at boot time (otherwise the installation will load again each time we boot)
+
+![Ubuntu_Server_Disable_CDROM](../images/02/Ubuntu_Server_Disable_CDROM.png)
+
+And then we push the 'enter'-key to finilize the installation with rebooting the Virtual Machine
 
 ![Ubuntu_Desktop_Enter_to_Restart](../images/02/LAB_Ubuntu_Desktop_Enter_to_Restart.png)
 
