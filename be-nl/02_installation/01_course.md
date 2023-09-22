@@ -133,6 +133,16 @@ Als extra pakket kiezen we er voor om enkel `OpenSSH server` te installeren:
 
 Het besturingssysteem wordt geïnstalleerd en geconfigureerd. Na een tijdje verschijnt de optie `Reboot now`. Dit geeft aan dat de installatie is voltooid: 
 
+Vervolgens zien we een venster dat vraagt om de 'enter'-toets te drukken, maar eerst gaan we in de settings van de Virtuele Machine :
+
+![Ubuntu_Server_VM_Settings](../images/02/Ubuntu_Server_VM_Settings.png)
+
+Daar vinken we uit dat de CD/DVD moet geconnecteerd worden bij het opstarten (anders blijft de installatie laden telkens we de Virtuele Machine opstarten)
+
+![Ubuntu_Server_Disable_CDROM](../images/02/Ubuntu_Server_Disable_CDROM.png)
+
+En dan drukken we op de 'enter'-toets
+
 ![Ubuntu_Server_Reboot](../images/02/Ubuntu_Server_Reboot.png)
 
 Tijdens het herstartproces moet je op de `entertoets` op je toetsenbord drukken: 
