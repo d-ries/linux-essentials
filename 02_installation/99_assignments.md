@@ -114,7 +114,7 @@ Once the installation is finished we have to click on `Restart Now` to reboot th
 
 ![Ubuntu_Desktop_Reboot_After_Install](../images/02/LAB_Ubuntu_Desktop_Reboot_After_Install.png)
 
-hen we see the screen where they ask to push the 'enter'-key, we first go into the settings of the Virtual Machine :
+When we see the screen where they ask to push the 'enter'-key, we first go into the settings of the Virtual Machine :
 
 ![Ubuntu_Server_VM_Settings](../images/02/Ubuntu_Server_VM_Settings.png)
 
