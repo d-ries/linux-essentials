@@ -134,7 +134,15 @@ For Extra Packages we will only opt to install `SSH server`:
 The operating system will be installed and configured. After a while the `Reboot now` option will appear. This indicates that the installation is complete:
 ![Ubuntu_Server_Reboot](../images/02/Ubuntu_Server_Reboot.png)
 
-During the Reboot process you will have to press the `enter` key on your keyboard :
+When we see the screen where they ask to push the 'enter'-key, we first go into the settings of the Virtual Machine :
+
+![Ubuntu_Server_VM_Settings](../images/02/Ubuntu_Server_VM_Settings.png)
+
+There we uncheck that the CD/DVD has to be connected at boot time (otherwise the installation will load again each time we boot)
+
+![Ubuntu_Server_Disable_CDROM](../images/02/Ubuntu_Server_Disable_CDROM.png)
+
+And then we push the 'enter'-key
 
 ![Ubuntu_Server_Press_Enter_To_Reboot](../images/02/Ubuntu_Server_Press_Enter_To_Reboot.png)
 
