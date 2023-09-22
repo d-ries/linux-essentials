@@ -113,7 +113,15 @@ Zodra de installatie is voltooid, moeten we op `Restart Now` klikken om de VM op
 
 ![Ubuntu_Desktop_Reboot_After_Install](../images/02/LAB_Ubuntu_Desktop_Reboot_After_Install.png) 
 
-Op het laatste scherm druk je gewoon op `enter`. De computer wordt opnieuw opgestart en de installatie is voltooid: 
+Vervolgens zien we een venster dat vraagt om de 'enter'-toets te drukken, maar eerst gaan we in de settings van de Virtuele Machine :
+
+![Ubuntu_Server_VM_Settings](../images/02/Ubuntu_Server_VM_Settings.png)
+
+Daar vinken we uit dat de CD/DVD moet geconnecteerd worden bij het opstarten (anders blijft de installatie laden telkens we de Virtuele Machine opstarten)
+
+![Ubuntu_Server_Disable_CDROM](../images/02/Ubuntu_Server_Disable_CDROM.png)
+
+Om de installatie af te ronden drukken we dan nu op `enter`
 
 ![Ubuntu_Desktop_Enter_to_Restart](../images/02/LAB_Ubuntu_Desktop_Enter_to_Restart.png) 
 
