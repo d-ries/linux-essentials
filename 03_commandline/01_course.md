@@ -21,7 +21,7 @@ The `~` symbol is an abbreviation of the homefolder of the logged in user (in ou
 
 ![sudo right](../images/03/sandwich.png)
 
-## commands and options
+## commands, arguments and options
 Whenever you type something using the keyboard the input will apear after the `$` sign. The `$` sign indicates the end of the prompt and the start of the user's input (= a command). To use the operating system using a CLI, we will have to use commands. The first command we will use is the `echo` command:
 ```bash
 echo hello world
@@ -69,7 +69,13 @@ OPTIONS
            argument that is not "+0" or "now".
 ```
 
-As you can see the `shutdown` command has a lot of options that we can use to extend the basic functionality of the command. Every command has his own set of unique options.
+As you can see the `shutdown` command has a lot of options that we can use to extend the basic functionality of the command. 
+
+If we would like to restart our Linux, for example, we could use an option with the command, which results in `shutdown -r`.
+
+Er zijn veel commando's met opties en ieder commando heeft zijn eigen set unieke opties. 
+
+There are many commands with options and every command has his own set of unique options.
 
 ?> <i class="fa-solid fa-circle-info"></i> Everything in Linux is case sensitive: commands, options, arguments, file- and foldernames, ...
 
