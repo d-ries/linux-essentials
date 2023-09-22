@@ -21,7 +21,7 @@ Het `~` symbool is een afkorting van de homefolder van de ingelogde gebruiker (i
 
 ![sudo rechts](../images/03/sandwich.png) 
 
-## commando's en opties 
+## commando's, argumenten en opties 
 Wanneer je iets typt met behulp van het toetsenbord, verschijnt de invoer na het `$`-teken. Het `$`-teken geeft het einde van de prompt en het begin van de invoer van de gebruiker (= een commando/opdracht) aan. Om het besturingssysteem te gebruiken met behulp van een CLI, zullen we commando's moeten gebruiken. Het eerste commando dat we zullen gebruiken is het `echo` commando: 
 ```bash 
 echo hello world 
@@ -69,7 +69,10 @@ OPTIONS
            argument that is not "+0" or "now".
 ```
 
-Zoals je kan zien, heeft het commando `shutdown` veel opties die we kunnen gebruiken om de basisfunctionaliteit van het commando uit te breiden. Elk commando heeft zijn eigen set unieke opties. 
+Zoals je kan zien, heeft het commando `shutdown` veel opties die we kunnen gebruiken om de basisfunctionaliteit van het commando uit te breiden. 
+Zo kunnen we bijvoorbeeld de optie meegeven om te herstarten met het commando `shutdown -r`.
+
+Er zijn veel commando's met opties en ieder commando heeft zijn eigen set unieke opties. 
 
 ?> <i class="fa-solid fa-circle-info"></i> Alles in Linux is hoofdlettergevoelig: commando's, opties, argumenten, bestands- en mapnamen, ... <i class="fa-solid fa-earth-europe"></i>  
 [Linux commandostructuur](https://uofabioinformaticshub.github.io/BASH-Intro/notes/extra_command_syntax.html) 
