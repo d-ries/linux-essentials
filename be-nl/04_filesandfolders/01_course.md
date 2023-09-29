@@ -19,7 +19,7 @@ De map `student` is onze huidige werkmap. Deze map is een submap van de map `hom
 
 ![DirectoryHierarchy](../images/04/Ch4_CleanInstall.png)
 
-?> <i class="fa-solid fa-circle-info"></i> Herinner je je de prompt die een actief pad bevatte? Het '~' teken was een afkorting voor de map `/home/student`. Dit wordt de _homefolder_ genoemd. Elke gebruiker op het besturingssysteem krijgt zijn eigen _homefolder_ in de map `/home` net als in Windows, waar elke gebruiker zijn eigen map heeft onder `C:\Users`. Een gebruiker heeft alle machtigingen (lezen, schrijven, uitvoeren) in zijn eigen homefolder. Buiten die map heeft hij vaak alleen _lees_ permissions. 
+?> <i class="fa-solid fa-circle-info"></i> Herinner je je de prompt die een actief pad bevatte? Het '~' teken was een afkorting voor de map `/home/student`. Dit wordt de _homefolder_ genoemd. Elke gebruiker op het besturingssysteem krijgt zijn eigen _homefolder_ in de map `/home` net als in Windows, waar elke gebruiker zijn eigen map heeft onder `C:\Users`. Een gebruiker heeft alle machtigingen (lezen, schrijven, uitvoeren) in zijn eigen homefolder. Buiten die map heeft hij vaak alleen _lees_ rechten. 
 
 ### Werkmap wijzigen (cd) 
 Je kan de huidige werkmap wijzigen met het commando `cd` (change directory): 
@@ -33,7 +33,7 @@ student@linux-ess:/etc$ cd ~
 student@linux-ess:~$ pwd
 /home/student
 ```
-Dit commando neemt een pad als argument. In het bovenstaande voorbeeld navigeren we naar de map `etc` in de hoofdmap/root `/`. We kunnen dit zien in de uitvoer van het `pwd`-commando en in de promptdefinitie. Zoals getoond in het tweede deel van het bovenstaande voorbeeld kunnen we ook het `~` teken gebruiken om snel naar de homefolder van de gebruiker te navigeren. 
+Dit commando neemt een pad als argument. In het bovenstaande voorbeeld navigeren we naar de map `etc` in de hoofdmap (ook root-directory genoemd) `/`. We kunnen dit zien in de uitvoer van het `pwd`-commando en aan de prompt. Zoals getoond in het tweede deel van het bovenstaande voorbeeld kunnen we ook het `~` teken gebruiken om snel naar de homefolder van de gebruiker te navigeren. 
 
 ?> <i class="fa-solid fa-circle-info"></i> We zouden ook het commando `cd` zonder enig argument kunnen gebruiken. Dit navigeert ook terug naar de homefolder van de gebruiker: 
 ```bash
@@ -52,6 +52,11 @@ student@linux-ess:~$ pwd
 student@linux-ess:~$ ls
 emptyfile
 ```
+  
+?> <i class="fa-solid fa-circle-info"></i> Het commando `touch` wordt hier gebruikt om een leeg bestand aan te maken met de naam `emptyfile`. Het commando wordt verderop in dit hoofdstuk nog uitgelegd. 
+  
+![DirectoryEmptyFile](../images/04/Ch4_Emptyfile.png)
+  
 
 ?> <i class="fa-solid fa-circle-info"></i> We zouden ook het commando `cd -` kunnen gebruiken. Dit navigeert terug naar de folder waar je je bevond vooraleer je naar deze folder kwam: 
 ```bash
@@ -76,9 +81,6 @@ student@linux-ess:/etc/netplan$ ls
 00-installer-config.yaml
 ```
   
-![DirectoryEmptyFile](../images/04/Ch4_Emptyfile.png)
-  
-?> <i class="fa-solid fa-circle-info"></i> Het commando `touch` wordt gebruikt om een leeg bestand aan te maken met de naam `emptyfile`. Het commando wordt verderop in dit hoofdstuk nog uitgelegd. 
 
 ### Een boomstructuur weergeven in de shell (tree) 
 
@@ -155,7 +157,7 @@ student@linux-ess:~/$ pwd
 
 ?> <i class="fa-solid fa-circle-info"></i> In Windows begint een absoluut pad met `C:\` in plaats van `/`! 
 
-?> <i class="fa-solid fa-circle-info"></i> Wist je dat de Linux CLI commando en pathcompletion heeft? Probeer eens op de `tab`-toets te drukken wanneer je een deel van een commando, bestands- of mapnaam typt. Als een commando, bestand of map overeenkomt met het eerste deel van de tekst die je hebt getypt, wordt het woord automatisch voor je voltooid! 
+?> <i class="fa-solid fa-circle-info"></i> Wist je dat de Linux CLI commando- en pathcompletion heeft? Probeer eens op de `tab`-toets te drukken wanneer je een deel van een commando, bestands- of mapnaam typt. Als een commando, bestand of map overeenkomt met het eerste deel van de tekst die je hebt getypt, wordt het woord automatisch voor je voltooid! 
 
 ?> <i class="fa-solid fa-circle-info"></i> Wanneer je tabcompletion op een directory gebruikt, eindigt deze met een schuine streep (/), bijvoorbeeld `cd /home/student/`. De laatste schuine streep (/) is optioneel, dus is het precies hetzelfde als `cd /home/student`  
 
