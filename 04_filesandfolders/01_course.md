@@ -52,7 +52,11 @@ student@linux-ess:~$ pwd
 student@linux-ess:~$ ls
 emptyfile
 ```
-
+         
+?> <i class="fa-solid fa-circle-info"></i> The command `touch` is used here to create an empty file named `emptyfile`. The command is explained later on in this chapter.
+  
+![DirectoryEmptyFile](../images/04/Ch4_Emptyfile.png)
+  
 
 ?> <i class="fa-solid fa-circle-info"></i> We can also use the commando `cd -`. This navigates back to the folder where you were working, before coming to this folder: 
 ```bash
@@ -78,10 +82,7 @@ student@linux-ess:/etc/netplan$ ls
 ```
 
 
-     
-![DirectoryEmptyFile](../images/04/Ch4_Emptyfile.png)
-  
-?> <i class="fa-solid fa-circle-info"></i> The command `touch` is used to create an empty file named `emptyfile`. The command is explained later on in this chapter.
+
 
 ### Display a tree view in the shell (tree)
 You can display a tree view of a directory with its subdirectories with the `tree` command:
@@ -158,7 +159,7 @@ student@linux-ess:~/$ pwd
 ?> <i class="fa-solid fa-circle-info"></i> In Windows an absolute path will start with `C:\` rather than `/`!
 
 
-?> <i class="fa-solid fa-circle-info"></i> Did you know the Linux CLI has command and pathcompletion? Try pressing the `tab` key when typing part of a command, file or folder name. If any command, file or folder matches the first part of the text you typed it will automatically complete the word for you!
+?> <i class="fa-solid fa-circle-info"></i> Did you know the Linux CLI has command- and pathcompletion? Try pressing the `tab` key when typing part of a command, file or folder name. If any command, file or folder matches the first part of the text you typed it will automatically complete the word for you!
 
 ?> <i class="fa-solid fa-circle-info"></i> When using tab completion on a directory it will end with a slash (/), e.g. `cd /home/student/`. The last slash (/) is optional, so it is exactly the same as `cd /home/student`  
 
