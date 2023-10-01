@@ -148,9 +148,9 @@ Paden worden gebruikt om naar bestanden en mappen op het bestandssysteem te wijz
 
 Absolute paden moeten beginnen met een `/` teken. Dit betekent dat een absoluut pad begint vanuit de _rootmap_ (`/`) (het hoogste niveau op het bestandssysteem) en zich een weg naar beneden baant. Bijvoorbeeld: 
 ```bash
-student@linux-ess:/etc$ pwd
-/etc
-student@linux-ess:/etc$ cd /home/student/
+student@linux-ess:/tmp$ pwd
+/tmp
+student@linux-ess:/tmp$ cd /home/student/
 student@linux-ess:~/$ pwd
 /home/student
 ```
