@@ -149,9 +149,9 @@ Paths are used to point towards files and folders on the filesystem. We can use 
 #### Absolute path
 Absolute paths must start with a `/` sign. This means that an absolute path will start from the _root_ (`/`) directory (the highest level on the filesystem) and will work its way down. For example:
 ```bash
-student@linux-ess:/etc$ pwd
-/etc
-student@linux-ess:/etc$ cd /home/student/
+student@linux-ess:/tmp$ pwd
+/tmp
+student@linux-ess:/tmp$ cd /home/student/
 student@linux-ess:~/$ pwd
 /home/student
 ```
