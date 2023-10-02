@@ -163,7 +163,7 @@ usbmux:*:19150:0:99999:7:::
 student:$6$2YcjTQ1OiAVeexi5$MgKJ3MAZBx5P2ZfGIkIjbYYLtcPjxKBVAJx.RnuzPn.EJk/rQgQqAXiiR3jMfq4sDn31e9k5HkuwwR5vKy/D.0:19150:0:99999:7:::
 lxd:!:19150::::::
 ```
-
+?> Note that we use the command `cat` to view the contents of a file!
 ?> Note that the shadow file holds the passwords of the users and is only viewable by root for security reasons!
 
 To view the history of our last used commands we can use the `history` command:
