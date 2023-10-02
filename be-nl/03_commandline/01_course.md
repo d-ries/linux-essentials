@@ -158,7 +158,9 @@ usbmux:*:19150:0:99999:7:::
 student:$6$2YcjTQ1OiAVeexi5$MgKJ3MAZBx5P2ZfGIkIjbYYLtcPjxKBVAJx.RnuzPn.EJk/rQgQqAXiiR3jMfq4sDn31e9k5HkuwwR5vKy/D.0:19150:0:99999:7:::
 lxd:!:19150::::::
 ```
-
+  
+?> We zien in het voorbeeld hierboven dat we het commando `cat` kunnen gebruiken om de inhoud van een bestand te tonen!
+  
 ?> Merk op dat het shadow bestand de wachtwoorden van de gebruikers bevat en alleen door root kan worden bekeken om veiligheidsredenen! 
 
 Om de geschiedenis van onze laatst gebruikte commando's te bekijken kunnen we het commando  `history` gebruiken: 
