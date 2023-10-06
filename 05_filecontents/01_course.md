@@ -3,10 +3,10 @@
 To view file contents we can use the `cat` command. This command takes in a path to a file as an argument:
 ```bash
 student@linux-ess:~$ cat /etc/os-release
-PRETTY_NAME="Ubuntu 22.04.1 LTS"
+PRETTY_NAME="Ubuntu 22.04.3 LTS"
 NAME="Ubuntu"
 VERSION_ID="22.04"
-VERSION="22.04.1 LTS (Jammy Jellyfish)"
+VERSION="22.04.3 LTS (Jammy Jellyfish)"
 VERSION_CODENAME=jammy
 ID=ubuntu
 ID_LIKE=debian
@@ -31,10 +31,10 @@ HOME_URL="https://www.ubuntu.com/"
 ID_LIKE=debian
 ID=ubuntu
 VERSION_CODENAME=jammy
-VERSION="22.04.1 LTS (Jammy Jellyfish)"
+VERSION="22.04.3 LTS (Jammy Jellyfish)"
 VERSION_ID="22.04"
 NAME="Ubuntu"
-PRETTY_NAME="Ubuntu 22.04.1 LTS"
+PRETTY_NAME="Ubuntu 22.04.3 LTS"
 ```
 
 The `cat` and `tac` commands can take multiple files as arguments and will concatenate the contents in the terminal as follows:
@@ -108,7 +108,7 @@ student@linux-ess:~$ less /var/log/dpkg.log
 2022-09-19 21:52:34 status half-configured linux-headers-5.4.0-81:all 5.4.0-81.91
 2022-09-19 21:52:34 status half-installed linux-headers-5.4.0-81:all 5.4.0-81.91
 ```
-?> <i class="fa-solid fa-circle-info"></i> Did you know that by default manpages are also opened with `less`. So you can also search within files opened with `less` by using _/_ and _n_ for next, _N_ for previous and even _p_ to go back to the first occurence of you searchstring. If you want to search case insensitive you can type _-i_. You can also go to the first line by pressing _g_ and to the last line by pressing _G_.
+?> <i class="fa-solid fa-circle-info"></i> Did you know that by default manpages are also opened with `less`. So you can also search within files opened with `less` by using _/_ and _n_ for next, _N_ for previous. If you want to search case insensitive you can type _-i_. You can also go to the first line by pressing _g_ and to the last line by pressing _G_.
 
 ## Create files with contents
 ### Using echo
