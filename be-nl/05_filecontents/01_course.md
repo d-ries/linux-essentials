@@ -3,10 +3,10 @@
 Om de inhoud van bestanden te bekijken, kunnen we het commando `cat` gebruiken. Met dit commando wordt een pad naar een bestand als argument gebruikt: 
 ```bash
 student@linux-ess:~$ cat /etc/os-release
-PRETTY_NAME="Ubuntu 22.04.1 LTS"
+PRETTY_NAME="Ubuntu 22.04.3 LTS"
 NAME="Ubuntu"
 VERSION_ID="22.04"
-VERSION="22.04.1 LTS (Jammy Jellyfish)"
+VERSION="22.04. LTS (Jammy Jellyfish)"
 VERSION_CODENAME=jammy
 ID=ubuntu
 ID_LIKE=debian
@@ -20,7 +20,7 @@ Hiermee wordt de volledige bestandsinhoud in de terminal afgedrukt.
 
 ?> <i class="fa-solid fa-circle-info"></i> Houd er rekening mee dat je niet kan scrollen in een CLI-serveromgeving. Als de inhoud van het bestand te groot is voor de terminalgrootte, scrolt het over het scherm en kan je alleen de laatste 30 tot 40 regels zien! Je kan overschakelen naar commando's zoals `more` of `less` (zie verder) om dit probleem op te lossen. 
 
-Het `tac` commando is het `cat` commando geschreven in omgekeerde volgorde. Dit is ook precies wat dit commando doet, het toont de bestandsinhoud in omgekeerde volgorde uit (van onder naar boven): 
+Het `tac` commando is het `cat` commando geschreven in omgekeerde volgorde. Dit is ook precies wat dit commando doet, het toont de bestandsinhoud in omgekeerde volgorde (van onder naar boven): 
 ```bash
 student@linux-ess:~$ tac /etc/os-release
 UBUNTU_CODENAME=jammy
@@ -31,10 +31,10 @@ HOME_URL="https://www.ubuntu.com/"
 ID_LIKE=debian
 ID=ubuntu
 VERSION_CODENAME=jammy
-VERSION="22.04.1 LTS (Jammy Jellyfish)"
+VERSION="22.04.3 LTS (Jammy Jellyfish)"
 VERSION_ID="22.04"
 NAME="Ubuntu"
-PRETTY_NAME="Ubuntu 22.04.1 LTS"
+PRETTY_NAME="Ubuntu 22.04.3 LTS"
 ```
 
 De commando's `cat` en `tac` kunnen meerdere bestanden als argumenten gebruiken en zullen de inhoud in de terminal als volgt samenvoegen: 
@@ -110,7 +110,7 @@ student@linux-ess:~$ less /var/log/dpkg.log
 2022-09-19 21:52:34 status half-configured linux-headers-5.4.0-81:all 5.4.0-81.91
 2022-09-19 21:52:34 status half-installed linux-headers-5.4.0-81:all 5.4.0-81.91
 ```
-?> <i class="fa-solid fa-circle-info"></i> Wist je dat manpages standaard ook geopend worden met `less`. Je kan dus ook zoeken in bestanden die zijn geopend met `less` door _/_ en _n_ te gebruiken voor volgende, _N_ voor vorige en zelfs _p_ om terug te gaan naar het eerste exemplaar van je zoekstring. Als je hoofdletterongevoelig wilt zoeken, kan je _-i_ typen. Je kan ook naar de eerste regel gaan door op _g_ te drukken en naar de laatste regel door op _G_ te drukken. 
+?> <i class="fa-solid fa-circle-info"></i> Wist je dat manpages standaard ook geopend worden met `less`. Je kan dus ook zoeken in bestanden die zijn geopend met `less` door _/_ en _n_ te gebruiken voor volgende, _N_ voor vorige. Als je hoofdletterongevoelig wilt zoeken, kan je _-i_ typen. Je kan ook naar de eerste regel gaan door op _g_ te drukken en naar de laatste regel door op _G_ te drukken. 
 
 ## Maak bestanden met inhoud 
 ### Echo gebruiken 
