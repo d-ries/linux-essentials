@@ -120,7 +120,7 @@ Zoek naar commando's met de tekst "logged on" in hun korte beschrijving van de m
 
 ## Oefening 26 
 Typ in de shell van je ssh-sessie een van de twee commando's die je in de vorige oefening hebt gevonden. 
-Je ziet twee schermen, tty1 en . 
+Je ziet twee schermen, tty1 en pts/0. 
 
 Alles is een bestand in Linux. Dit geldt ook voor het scherm/venster waarin je werkt. Wanneer je verbonden bent via _ssh_, is je schermnaam _pts/0_. Wanneer je _op de server_ zelf werkt, wordt je schermnaam _tty1_.  
 

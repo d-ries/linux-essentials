@@ -123,7 +123,7 @@ Search for commands that have the text "logged on" in their short description of
   
 ## Task 26
 In the shell of your ssh session type one of the two commands you found in the previous task.
-You will see two screens, tty1 and .
+You will see two screens, tty1 and pts/0.
   
 Everything is a file in linux. This is also true for the screen/window you're working in. When you are connected over _ssh_, your screen name is _pts/0_. When you are working _on the server_ itself, your screen name is _tty1_.  
   
