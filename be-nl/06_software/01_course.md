@@ -374,6 +374,9 @@ mapscii 0.3.1 from Nathan Haines (nhaines) installed
 student@linux-ess:~$ mapscii 
 ```  
 ![mapscii](../images/06/mapscii.png)   
+
+?> Om te navigeren en in te zoomen gebruik je de *pijltjes* en *a* en *z* 
+
   
 ## zip vs gzip
 `gzip` comprimeert slechts één bestand en wordt daarom gebruikt met `tar` dat meerdere bestanden in één bestand brengt.  
