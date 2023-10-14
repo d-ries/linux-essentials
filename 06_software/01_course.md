@@ -383,6 +383,9 @@ student@linux-ess:~$ mapscii
 ```  
 ![mapscii](../images/06/mapscii.png)   
   
+?> To navigate and zoom you can use the *arrow keys* and *a* and *z* 
+
+  
 ## zip vs gzip
 `gzip` compresses only one file and therefore is used with `tar` which brings multiple files into one file.  
 `zip`is used when you want to compress a bunch of files into one file in one step. 
