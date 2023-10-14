@@ -373,7 +373,7 @@ student@linux-ess:~$ sudo snap install mapscii
 mapscii 0.3.1 from Nathan Haines (nhaines) installed
 student@linux-ess:~$ mapscii 
 ```  
-  
+![mapscii](../images/06/mapscii.png)   
   
 ## zip vs gzip
 `gzip` comprimeert slechts één bestand en wordt daarom gebruikt met `tar` dat meerdere bestanden in één bestand brengt.  
