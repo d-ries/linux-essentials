@@ -35,7 +35,9 @@ The `second option` is to use `single quotes`. With this option the spaces will 
 student@linux-ess:~$ action='play       games'
 student@linux-ess:~$ echo    I             like      to                  $action    # multiple spaces and tabs between the words
 I like to play games
-student@linux-ess:~$ echo '    I             like      to                  $action'    # multiple spaces and tabs between the words
+student@linux-ess:~$ echo "    I             like      to                  $action"    # multiple spaces and tabs between the words within double quotes
+    I             like      to                  play       games
+student@linux-ess:~$ echo '    I             like      to                  $action'    # within single quotes everything is interpreted litteraly
     I             like      to                  $action
 ```
 
