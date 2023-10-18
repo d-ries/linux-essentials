@@ -20,7 +20,7 @@ I like to game
 
 ### Enkele en dubbele aanhalingstekens 
 
-Als we de ruimtes willen behouden, hebben we drie opties. 
+Als we de spaties willen behouden, hebben we drie opties. 
 De `eerste optie` is het gebruik van `dubbele aanhalingstekens`. Met deze optie blijven de spaties behouden en worden variabelen nog steeds geïnterpreteerd. 
 ```bash
 student@linux-ess:~$ action="play       games"
@@ -41,7 +41,7 @@ student@linux-ess:~$ echo '    I             like      to                  $acti
     I             like      to                  $action
 ```
 
-De `derde optie` is om aan elke ruimte te ontsnappen. Gebruik dit mechanisme niet binnen de waarde van een variabele omdat het niet werkt. 
+De `derde optie` is om  elke spatie te escapen. Gebruik dit mechanisme niet binnen de waarde van een variabele omdat het niet werkt. 
 ```bash
 student@linux-ess:~$ action='play       games'  
 student@linux-ess:~$ echo \ \  I \ \ \ \ \ \ \ like \ \ to \ \ \ \ \ \ \ \ \ \ \ \ \ \ $action
@@ -122,7 +122,7 @@ file1  file2  file3
 
 ### Voorkom file globbing
 
-We kunnen het globben van bestanden voorkomen door aan de speciale tekens in onze opdracht te _ontsnappen_. Ontsnappen kan door een `\` voor het karakter te plaatsen. Dit vertelt de shell om het volgende teken te interpreteren als een regulier symbool in plaats van de speciale betekenis: 
+We kunnen het globben van bestanden voorkomen door de speciale tekens in onze opdracht te _escapen_. Escapen kan door een `\` voor het karakter te plaatsen. Dit vertelt de shell om het volgende teken te interpreteren als een regulier symbool in plaats van de speciale betekenis: 
 ```bash
 student@linux-ess:~/globbing$ ls
  File4   File5   FileABC   Filec   afilea  'file*'   file1   file2   file3   filea   fileb   filebc
@@ -136,7 +136,7 @@ student@linux-ess:~/globbing$ echo \*\*\*\* TITLE \*\*\*\*
 **** TITLE ****
 ```
 
-?> Je kan je voorstellen wat er zou gebeuren als we het bestand _file*_ zouden verwijderen zonder de ontsnapping te gebruiken. 
+?> Je kan je voorstellen wat er zou gebeuren als we het bestand _file*_ zouden verwijderen zonder escaping te gebruiken. 
 
 ## Aliassen 
 Aliassen zijn een manier om een eenvoudige naam te geven aan een vrij complex commando, zoals hieronder te zien is: 
