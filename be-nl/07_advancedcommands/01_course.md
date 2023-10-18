@@ -35,7 +35,9 @@ De `tweede optie` is het gebruik van `enkele aanhalingstekens`. Met deze optie b
 student@linux-ess:~$ action='play       games'
 student@linux-ess:~$ echo    I             like      to                  $action    # meerdere spaties & tabs tussen de woorden
 I like to play games
-student@linux-ess:~$ echo '    I             like      to                  $action'    # meerdere spaties & tabs tussen de woorden
+student@linux-ess:~$ echo "    I             like      to                  $action"    # meerdere spaties & tabs tussen de woorden ingesloten door dubbele quotes
+    I             like      to                  play       games
+student@linux-ess:~$ echo '    I             like      to                  $action'    # tussen single quotes wordt alles letterlijk geïnterpreteerd
     I             like      to                  $action
 ```
 
@@ -46,8 +48,8 @@ student@linux-ess:~$ echo \ \  I \ \ \ \ \ \ \ like \ \ to \ \ \ \ \ \ \ \ \ \ \
     I       like   to              play       games
 ```
 
-## Bestand globbing 
-Bij het opgeven van bestandsnamen kunnen we de shell de bestandsnamen dynamisch laten genereren door een bepaald patroon te geven. Bijvoorbeeld: we willen misschien alle bestanden vinden die beginnen met `temp` gevolgd door welke tekst of extensie dan ook. Het concept waarbij we dynamisch bestandsnamen genereren, wordt _file globbing/bestand globbing_ genoemd. Er zijn een paar speciale tekens die we kunnen gebruiken, zoals te zien is in het onderstaande voorbeeld: 
+## File globbing 
+Bij het opgeven van bestandsnamen kunnen we de shell de bestandsnamen dynamisch laten genereren door een bepaald patroon te geven. Bijvoorbeeld: we willen misschien alle bestanden vinden die beginnen met `temp` gevolgd door welke tekst of extensie dan ook. Het concept waarbij we dynamisch bestandsnamen genereren, wordt _file globbing_ genoemd. Er zijn een paar speciale tekens die we kunnen gebruiken, zoals te zien is in het onderstaande voorbeeld: 
 ```bash
 student@linux-ess:~/globbing$ ls
 a  afilea  file  File  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec 
@@ -118,7 +120,7 @@ student@linux-ess:~/globbing$ ls file[!a-z]*
 file1  file2  file3
 ```
 
-### Voorkom bestand globbing
+### Voorkom file globbing
 
 We kunnen het globben van bestanden voorkomen door aan de speciale tekens in onze opdracht te _ontsnappen_. Ontsnappen kan door een `\` voor het karakter te plaatsen. Dit vertelt de shell om het volgende teken te interpreteren als een regulier symbool in plaats van de speciale betekenis: 
 ```bash
