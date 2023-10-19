@@ -21,7 +21,7 @@ lolcat .bash_history
 Installeer met apt het pakket 'neofetch' en voer de app uit  
 
 ## Oefening 6 
-Zoek met apt naar "the matrix" en installeer het pakket dat lijkt op de weergave van de matrixfilm. Voer deze app uit 
+Zoek met apt naar "the matrix" en zoek in de eerste 5 gepresenteerd packages naar het pakket dat lijkt op de weergave van de matrixfilm en installeer dit. Voer deze app uit 
 
 ## Oefening 7 
 Verwijder het pakket btop van het systeem. Je zou het niet meer moeten kunnen uitvoeren  
@@ -54,7 +54,7 @@ Verwijder de snap bashtop
 Toon een lijst met geïnstalleerde snaps  
 
 ## Oefening 16 
-Toon de geschiedenis van wijzigingen in snap 
+Toon de geschiedenis van wijzigingen in snap en controleer of de snap verwijderd is
 
 ## Oefening 17 
 Controleer of de snap 'asciiquarium' bestaat. Lees wat informatie over de snap, installeer deze en voer deze uit  
