@@ -1,4 +1,4 @@
-# Oefeningen op Besturingsoperators
+# Oefeningen op Control operators
 
 ## Oefening 1 
 Als je in het verleden aliassen hebt gemaakt voor de commando's rm, cp en mv, moet je ze verwijderen. Je kan ze vinden in de bestanden ~/.bashrc of ~/.bash_aliases. Verwijder deze regels uit die bestanden en start een nieuwe shell door een nieuw terminalvenster te openen, ssh-sessie, opnieuw in te loggen of 'bash' te typen. 
