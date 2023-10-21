@@ -1,10 +1,10 @@
 # Geavanceerde commandostructuren 
 
-## shell uitbreiding 
+## shell expansion 
 
-Alle woorden die je typt na de prompt om een commando te vormen, worden geïnterpreteerd door de shell. De command line interpretor of shell in ubuntu is `bash`, wat staat voor `Bourne Again SHell`. 
+Alle woorden die je typt na de prompt om een commando te vormen, worden geïnterpreteerd door de shell. De command line interpreter, beter gekend als de shell, in ubuntu is `bash`, wat staat voor `Bourne Again SHell`. 
 
-De opdrachtregel wordt in stukken gesneden telkens wanneer de interpreter een of meer `opeenvolgende spaties` of `tabs` ziet en dit argumenten vormt (de spaties en tabs worden verwijderd). Het eerste argument is het `commando` en alle andere argumenten worden als waarden aan dit commando gegeven. Dit mechanisme wordt `shell expansion/shell uitbreiding` genoemd. Dit is de reden dat opeenvolgende spaties worden bijgesneden met het echo-commando:  
+De opdrachtregel wordt in stukken gesneden telkens de interpreter een of meer `opeenvolgende spaties` of `tabs` ziet en dit argumenten vormt (de spaties en tabs worden verwijderd). Het eerste argument is het `commando` en alle andere argumenten worden als waarden aan dit commando gegeven. Dit mechanisme wordt `shell expansion` genoemd. Dit is de reden dat opeenvolgende spaties worden samengevoegd met het echo-commando:  
 ```bash
 student@linux-ess:~$ echo I like to game                                                # één spatie tussen de woorden 
 I like to game
@@ -45,7 +45,9 @@ De `derde optie` is om  elke spatie te escapen. Gebruik dit mechanisme niet binn
 ```bash
 student@linux-ess:~$ action='play       games'  
 student@linux-ess:~$ echo \ \  I \ \ \ \ \ \ \ like \ \ to \ \ \ \ \ \ \ \ \ \ \ \ \ \ $action
-    I       like   to              play       games
+    I       like   to              play games
+student@linux-ess:~$ echo \ \  I \ \ \ \ \ \ \ like \ \ to \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$action
+    I       like   to              $action
 ```
 
 ## File globbing 
