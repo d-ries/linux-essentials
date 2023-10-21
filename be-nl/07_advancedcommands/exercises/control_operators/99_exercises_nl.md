@@ -26,7 +26,7 @@ echo Hello#world
 ## Oefening 6 
 Wat is de uitvoer van: (Probeer te antwoorden zonder het eerst in de terminal te typen) 
 ```bash 
-echo Hallo #world 
+echo Hello #world 
 ``` 
 
 ## Oefening 7 
