@@ -51,8 +51,8 @@ student@linux-ess:~$ echo \ \  I \ \ \ \ \ \ \ like \ \ to \ \ \ \ \ \ \ \ \ \ \
 ```
 
 ## File globbing 
-Bij het opgeven van bestandsnamen kunnen we de shell de bestandsnamen dynamisch laten genereren door een bepaald patroon te geven. Bijvoorbeeld: we willen misschien alle bestanden vinden die beginnen met `temp` gevolgd door welke tekst of extensie dan ook. Het concept waarbij we dynamisch bestandsnamen genereren, wordt _file globbing_ genoemd. Er zijn een paar speciale tekens die we kunnen gebruiken, zoals te zien is in het onderstaande voorbeeld: 
-```bash
+Bij het zoeken naar bestanden kunnen we de shell de bestandsnamen dynamisch laten genereren door een bepaald patroon te geven. Bijvoorbeeld: we willen alle bestanden vinden die beginnen met `temp` gevolgd door welke tekst of extensie dan ook. Het concept waarbij we dynamisch bestandsnamen genereren, wordt _file globbing_ genoemd. Er zijn een paar speciale tekens die we kunnen gebruiken, zoals te zien is in het onderstaande voorbeeld: 
+```text
 student@linux-ess:~/globbing$ ls
 a  afilea  file  File  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec 
 student@linux-ess:~/globbing$ ls file*
@@ -68,8 +68,8 @@ fileabc  filebc
 student@linux-ess:~/globbing$ ls F*ile*
 File  File4  File5  FileABC  Filec
 ```
-Een sterretje (`*`) in _file globbing_ betekent nul, een of meer tekens kunnen zijn wat ze willen. Dit wordt vaak een wildcard genoemd dat we één of meerdere keren in een bestandsnaam kunnen gebruiken. Een andere optie is een vraagteken (`?`) dat wordt geïnterpreteerd als precies _één karakter_ kan zijn wat het wil, zoals te zien is in het volgende voorbeeld: 
-```bash
+Een sterretje (`*`) in _file globbing_ betekent dat nul, één of meer tekens kunnen zijn wat ze willen. Dit wordt vaak een wildcard genoemd dat we één of meerdere keren in een bestandsnaam kunnen gebruiken. Een andere optie is een vraagteken (`?`) dat wordt geïnterpreteerd als precies _één karakter_ kan zijn wat het wil, zoals te zien is in het volgende voorbeeld: 
+```text
 student@linux-ess:~/globbing$ ls
 a  afilea  file  File  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec
 student@linux-ess:~/globbing$ ls ?
@@ -87,7 +87,7 @@ afilea
 ```
 
 Ten slotte kunnen we ook vierkante haken (`[ ]`) gebruiken die meestal een of meer tekens tussen de haakjes bevatten. De haakjes definiëren één teken dat overeenkomt met een van de tekens tussen de haakjes: 
-```bash
+```text
 student@linux-ess:~/globbing$ ls
 a  afilea  file  File  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec
 student@linux-ess:~/globbing$ ls file[12]
@@ -98,7 +98,7 @@ student@linux-ess:~/globbing$ ls file[1ac]
 file1  filea  
 ```
 Bij het gebruik van haakjes kunnen we ook bereiken definiëren: 
-```bash
+```text
 student@linux-ess:~/globbing$ ls
 a  afilea  file  File  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec
 student@linux-ess:~/globbing$ ls file[a-z]
@@ -111,7 +111,7 @@ student@linux-ess:~/globbing$ ls file[0-9]
 file1  file2  file3
 ```
 Bij het gebruik van haakjes kunnen we ook het opgegeven bereik uitsluiten door aan het begin een hoedje (^) of een uitroepteken (!) op te geven: 
-```bash
+```text
 student@linux-ess:~/globbing$ ls
 a  afilea  file  File  file1  file2  file3  File4  File5  filea  fileabc  FileABC  fileb  filebc  Filec
 student@linux-ess:~/globbing$ ls file[a-z]*
