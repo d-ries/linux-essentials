@@ -172,7 +172,7 @@ Als we een alias willen verwijderen, kunnen we het unalias commando gebruiken:
 student@linux-ess:~$ unalias rm
 ```
 
-?> Als je een alias wilt behouden voor toekomstig gebruik (open een nieuwe shell, herstart, ...) kan je deze toevoegen aan een (nieuw) verborgen bestand in je homefolder met de naam `.bash_aliases` 
+?> Als je een alias wilt behouden voor toekomstig gebruik (telkens opnieuw bij het openen van een nieuwe shell, na een herstart, ...) kan je deze toevoegen aan een (nieuw) verborgen bestand in je homefolder met de naam `.bash_aliases` 
 
 ```bash
 student@linux-ess:~$ cat .bash_aliases
@@ -195,16 +195,16 @@ student@linux-ess:~$
 ```
 
 De volgorde waarin de shell controleert op opdrachten in de shell:  
-* Aliassen. Namen die door de aliasopdracht zijn ingesteld en die een bepaald commando en een reeks opties vertegenwoordigen.  
+* Aliassen. Namen die door de aliasopdracht zijn ingesteld en die een bepaald commando met een reeks opties vertegenwoordigen.  
 * Ingebouwde commando's. Dit is een commando dat in de shell is ingebouwd. 
-* Bestandssysteem commando's. Deze commando's worden opgeslagen in en uitgevoerd vanuit het bestandssysteem van de computer. (Dit zijn de commando's die worden aangegeven door de waarde van de variabele PATH). 
+* Bestandssysteem commando's. Deze commando's worden opgeslagen in en uitgevoerd vanuit het bestandssysteem van de computer. (Dit zijn de commando's uit directories die worden aangegeven door de waarde van de variabele PATH). 
 
-## I/O-omleiding 
+## I/O-redirection 
 ### I/O-streams 
 Bij het werken met de shell werken we eigenlijk met iets dat streams wordt genoemd. Er zijn 3 basisstreams beschikbaar bij het gebruik van een shell: 
 ![iostreams](./../images/07/ioredirect.png)
 
-Het meest basale voorbeeld heet `stdin`. Dit is de stream die we gebruiken om gegevens in de shell in te voeren met behulp van ons toetsenbord. 
+Het meest basic voorbeeld heet `stdin`. Dit is de stream die we gebruiken om gegevens in de shell in te voeren met behulp van ons toetsenbord. 
 
 De uitvoer die wordt gegenereerd door commando's uit te voeren, wordt opgesplitst in twee afzonderlijke streams: 
 * `stdout` geeft ons alle reguliere commando-uitvoer. Standaard wordt deze uitvoer op ons scherm afgedrukt. 
@@ -213,8 +213,8 @@ Omdat zowel `stdout` als `stderr` op ons scherm worden afgedrukt, merken we het 
 
 Elke stream heeft zijn eigen identifier (=nummer) zoals te zien is in de afbeelding hierboven. Deze id's zijn belangrijk in de volgende paragrafen. 
 
-### Stream omleiding 
-We kunnen elk van deze streams omleiden om de uitvoer _ergens anders_ te laten gaan. Vaak betekent 'ergens anders' naar een bestand. Dit betekent dat we reguliere uitvoer (stdout) en fouten (stderr) kunnen scheiden om in afzonderlijke bestanden te worden opgeslagen. Hieronder beginnen we met een voorbeeld van hoe je de normale uitvoer van een commando in een bestand kan opslaan: 
+### Stream redirection 
+We kunnen elk van deze streams omleiden om de uitvoer _ergens anders_ te laten gaan. Vaak betekent 'ergens anders' naar een bestand. Dit betekent dat we reguliere uitvoer (stdout) en fouten (stderr) kunnen scheiden om in afzonderlijke bestanden te worden opgeslagen. Hieronder beginnen we met een voorbeeld van hoe je de standard output van een commando in een bestand kan opslaan: 
 ```bash
 student@linux-ess:~$ ls / 1> listrootfolder
 student@linux-ess:~$ head -6 listrootfolder
@@ -251,7 +251,7 @@ Als we zowel `stderr` als `stdout` naar hetzelfde bestand willen omleiden, kunne
 student@linux-ess:~$ find / &> results_and_errors.txt
 ```
 
-Als je naar een bestand wilt omleiden en de inhoud aan dat bestand wilt toevoegen, moet je twee `>>` gebruiken. Dit komt omdat een `>` het bestand altijd leegmaakt voordat de inhoud wordt toegevoegd: 
+Als je naar een bestand wilt omleiden en de inhoud aan dat bestand wilt toevoegen, moet je twee `>>` gebruiken. Dit komt omdat slechts één `>` het bestand altijd leegmaakt voordat de inhoud wordt toegevoegd: 
 ```bash
 student@linux-ess:~$ echo "text 1" > testfile
 student@linux-ess:~$ cat testfile
@@ -266,9 +266,9 @@ text 3
 student@linux-ess:~$
 ```
 
-## Besturingsoperators 
+## Control operators 
 ### Opdrachten scheiden 
-We kunnen een `;` (puntkomma) teken gebruiken om meerdere commando's op één regel te scheiden. Elke opdracht kan zijn eigen opties en argumenten hebben en deze worden sequentieel uitgevoerd. De shell wacht tot een opdracht is voltooid voordat de volgende wordt gestart: 
+We kunnen een `;` (puntkomma) gebruiken om meerdere commando's op één regel te scheiden. Elke opdracht kan zijn eigen opties en argumenten hebben en deze worden sequentieel uitgevoerd. De shell wacht tot een opdracht is voltooid voordat de volgende wordt gestart: 
 ```bash
 student@linux-ess:~$ echo hello ; echo pxl ; pwd
 hello
@@ -277,8 +277,8 @@ pxl
 ```
 
 ### Logische operatoren 
-De volgende zijn enkele besturingsoperators die we kunnen gebruiken die je misschien kent van andere gebruiksscenario's of omgevingen: 
-* logische _AND/EN_ operator (`&&`): Het tweede commando wordt alleen uitgevoerd als het eerste commando gelukt is 
+De volgende zijn enkele control operators die we kunnen gebruiken die je misschien kent van andere gebruiksscenario's of omgevingen: 
+* logische _AND_ operator (`&&`): Het tweede commando wordt alleen uitgevoerd als het eerste commando gelukt is 
 ```bash
 student@linux-ess:~$ echo first && echo second
 first
@@ -289,7 +289,7 @@ Command 'zecho' not found, did you mean:
 Try: sudo apt install <deb name>
 ```
 
-* logische _OR/OF_ operator (`||`): Het tweede commando wordt alleen uitgevoerd als het eerste commando mislukt 
+* logische _OR_ operator (`||`): Het tweede commando wordt alleen uitgevoerd als het eerste commando mislukt 
 ```bash
 student@linux-ess:~$ echo first || echo second
 first
@@ -314,7 +314,7 @@ rm: cannot remove 'testfile': No such file or directory
 failed to delete
 ```
 
-In dit voorbeeld is het het beste om onze fouten ook om te leiden naar de _void_, omdat we nu onze eigen foutmelding genereren. Gebruik hiervoor `/dev/null` zoals eerder gezien in combinatie met de omleiding van de stderr als volgt: 
+In dit voorbeeld is het het beste om onze fouten te redirecten naar de _void/black hole_, omdat we nu onze eigen foutmelding genereren. Gebruik hiervoor `/dev/null` zoals eerder gezien in combinatie met de redirection van stderr als volgt: 
 ```bash
 student@linux-ess:~$ touch testfile
 student@linux-ess:~$ ls test*
