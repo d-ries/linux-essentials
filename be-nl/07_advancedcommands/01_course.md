@@ -141,7 +141,7 @@ student@linux-ess:~/globbing$ echo \*\*\*\* TITLE \*\*\*\*
 ?> Je kan je voorstellen wat er zou gebeuren als we het bestand _file*_ zouden verwijderen zonder escaping te gebruiken. 
  
 
-Je kan het file globbing ook voorkomen door de tekst te omsluiten met dubbele- of enkele quotes:
+Je kan file globbing ook voorkomen door de tekst te omsluiten met dubbele- of enkele quotes:
 ```bash
 student@linux-ess:~/globbing$ ls
  File4   File5   FileABC   Filec   afilea  'file*'   file1   file2   file3   filea   fileb   filebc
