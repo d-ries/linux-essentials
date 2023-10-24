@@ -139,7 +139,23 @@ student@linux-ess:~/globbing$ echo \*\*\*\* TITLE \*\*\*\*
 ```
 
 ?> Je kan je voorstellen wat er zou gebeuren als we het bestand _file*_ zouden verwijderen zonder escaping te gebruiken. 
+```bash
+student@linux-ess:~/globbing$ ls
+ File4   File5   FileABC   Filec   afilea  'file*'   file1   file2   file3   filea   fileb   filebc
+student@linux-ess:~/globbing$ echo **** TITLE ****
+File4   File5   FileABC   Filec   afilea  'file*'   file1   file2   file3   filea   fileb   filebc TITLE  File4   File5   FileABC   Filec   afilea  'file*'   file1   file2   file3   filea   fileb   filebc
+student@linux-ess:~/globbing$ echo "**** TITLE ****"
+**** TITLE ****
+student@linux-ess:~/globbing$ echo '**** TITLE ****'
+**** TITLE ****
+```
 
+
+Je kan het file globbing ook voorkomen door de tekst te omsluiten met dubbele- of single quotes:
+
+
+
+  
 ## Aliassen 
 Aliassen zijn een manier om een eenvoudige naam te geven aan een vrij complex commando, zoals hieronder te zien is: 
 ```bash
