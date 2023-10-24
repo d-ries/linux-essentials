@@ -124,7 +124,7 @@ file1  file2  file3
 
 ### Voorkom file globbing
 
-We kunnen het globben van bestanden voorkomen door de speciale tekens in onze opdracht te _escapen_. Escapen kan door een `\` voor het karakter te plaatsen. Dit vertelt de shell om het volgende teken te interpreteren als een regulier symbool in plaats van de speciale betekenis: 
+We kunnen file globbing van bestanden voorkomen door de speciale tekens in onze opdracht te _escapen_. Escapen kan door een `\` voor het karakter te plaatsen. Dit vertelt de shell om het volgende teken te interpreteren als een regulier symbool in plaats van de speciale betekenis: 
 ```bash
 student@linux-ess:~/globbing$ ls
  File4   File5   FileABC   Filec   afilea  'file*'   file1   file2   file3   filea   fileb   filebc
@@ -141,7 +141,7 @@ student@linux-ess:~/globbing$ echo \*\*\*\* TITLE \*\*\*\*
 ?> Je kan je voorstellen wat er zou gebeuren als we het bestand _file*_ zouden verwijderen zonder escaping te gebruiken. 
  
 
-Je kan het file globbing ook voorkomen door de tekst te omsluiten met dubbele- of single quotes:
+Je kan het file globbing ook voorkomen door de tekst te omsluiten met dubbele- of enkele quotes:
 ```bash
 student@linux-ess:~/globbing$ ls
  File4   File5   FileABC   Filec   afilea  'file*'   file1   file2   file3   filea   fileb   filebc
