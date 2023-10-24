@@ -138,6 +138,22 @@ student@linux-ess:~/globbing$ echo \*\*\*\* TITLE \*\*\*\*
 ?> You can imagine what would happen if we would delete the file _file*_ without using the escaping.
 
 
+
+you can also prevent file globbing by putting the text within double- or single quotes:
+```bash
+student@linux-ess:~/globbing$ ls
+ File4   File5   FileABC   Filec   afilea  'file*'   file1   file2   file3   filea   fileb   filebc
+student@linux-ess:~/globbing$ echo **** TITLE ****
+File4   File5   FileABC   Filec   afilea  'file*'   file1   file2   file3   filea   fileb   filebc TITLE  File4   File5   FileABC   Filec   afilea  'file*'   file1   file2   file3   filea   fileb   filebc
+student@linux-ess:~/globbing$ echo "**** TITLE ****"
+**** TITLE ****
+student@linux-ess:~/globbing$ echo '**** TITLE ****'
+**** TITLE ****
+```
+
+
+  
+
 ## Aliases
 Aliases are a way to give a simple name to a rather complex command as seen below:
 ```bash
