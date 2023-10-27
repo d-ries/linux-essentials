@@ -14,7 +14,7 @@ Zoek met apt naar een pakket dat iets te maken heeft met 'usage and stats'. Je z
 ## Oefening 4 
 Zoek met apt naar een pakket dat iets te maken heeft met 'colorful cat''. Je ziet `lolcat` als een van de resultaten. Installeer het pakket en voer de volgende opdrachten uit:  
 cd  
-Cat .bash_history  
+cat .bash_history  
 lolcat .bash_history 
 
 ## Oefening 5 
