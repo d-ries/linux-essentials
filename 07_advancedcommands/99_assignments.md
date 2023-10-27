@@ -1,5 +1,5 @@
 # Assignments on advanced commands
-* [Assignments: control operators](/./be-nl/07_advancedcommands/exercises/control_operators/99_exercises.md)
-* [Oefeningen: File globbing](/./be-nl/07_advancedcommands/exercises/file_globbing/99_exercises_nl.md) 
-* [Oefeningen: Aliasses](/./be-nl/07_advancedcommands/exercises/aliases/99_exercises_nl.md) 
-* [Oefeningen: I/O-redirection](/./be-nl/07_advancedcommands/exercises/io_redirection/99_exercises_nl.md) 
+* [Assignments: control operators](./exercises/control_operators/99_exercises.md)
+* [Assignments: file globbing](./exercises/file_globbing/99_exercises.md)
+* [Assignments: aliases](./exercises/aliases/99_exercises.md)
+* [Assignments: I/O redirection](./exercises/io_redirection/99_exercises.md)
