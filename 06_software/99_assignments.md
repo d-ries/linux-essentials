@@ -21,7 +21,7 @@ lolcat .bash_history
 Install with apt the package 'neofetch' and run the app  
 
 ## Task 6
-Search with apt for "the matrix" and install the package which resembles the display of the matrix movie. Run the app  
+Search with apt for "the matrix" and search within the first 5 presented packages and install the package which resembles the display of the matrix movie. Run the app  
 
 ## Task 7
 Remove the package btop from the system. You shouldn't be able to run it anymore  
@@ -51,7 +51,7 @@ Show a list of installed snaps
 Remove the snap bashtop  
 
 ## Task 15
-Show a list of installed snaps  
+Show a list of installed snaps to check if the snap is removed  
 
 ## Task 16
 Show the history of changes in snap  

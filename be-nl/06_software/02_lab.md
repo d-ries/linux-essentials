@@ -3,7 +3,7 @@
 Linus voelt zich eindelijk comfortabel genoeg bij het navigeren door het besturingssysteem met behulp van opdrachten en het werken met bestanden en mappen. Het is tijd om terug te gaan naar de kern van deze labopstelling: een mintest server aan de praat krijgen. 
 
 ## Herhaling - een pakket installeren 
-Denk eraan in [hoofdstuk 3 - lab](.. /03_commandline/02_lab_nl.md) waar we de volgende opdracht hebben uitgevoerd: 
+Denk eraan in [hoofdstuk 3 - lab](/./be-nl/03_commandline/02_lab.md) waar we de volgende opdracht hebben uitgevoerd: 
 ```bash
 student@linux-ess:~$ sudo apt-get install minetest
 [sudo] password for student:

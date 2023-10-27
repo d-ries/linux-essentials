@@ -56,9 +56,42 @@ Fetched 8672 kB in 2s (3651 kB/s)
 ```
 ?> <i class="fa-solid fa-circle-info"></i> Note that we used the `sudo` command. This is needed because `apt` is a system wide command that impacts the entire system (installing/removing/updating software). Therefore we cannot run it as a user with default permissions.
 
-We can see that this command gets data from a bunch of servers. These servers are called _repositories_ (servers with a collection of packages). When we install software later, it will use the database based on the repositories to check if the package that we want to install is available.
+We can see that this command gets data from a bunch of lists. These lists are called _repositories_ (lists with a collection of packages for certain purposes). When we install software later, it will use the database based on these repositories to check if the package that we want to install is available.
 
 The list of repositories that `apt` uses can be found in the file `/etc/apt/sources.list`. We can manually add more repositories to this file or use the command `add-apt-repository` but we will not go into this for now.
+
+
+### Software zoeken (apt search) 
+Imagine that we downloaded a file that ends with `.zip` and we have to find a program that can deal with this kind of file. We could use the following command, making use of a regular expression in the search term: 
+```bash
+student@linux-ess:~$ apt search "\.zip file"       # \.  to make clear that we are searching for a dot
+Sorting... Done
+Full Text Search... Done
+goldendict/jammy 1.5.0~rc2+git20210630+ds-2 amd64
+  feature-rich dictionary lookup program
+
+node-jszip/jammy 3.7.1+dfsg-1 all
+  Create, read and edit .zip files with Javascript
+
+node-jszip-utils/jammy 0.1.0+dfsg-1 all
+  collection of cross-browser utilities to go along with JSZip
+
+unicode-cldr-core/jammy 32.0.1-1.1 all
+  Common data from Unicode CLDR (core)
+
+unzip/jammy-updates,jammy-security 6.0-26ubuntu3.1 amd64
+  De-archiver for .zip files
+
+zip/jammy 3.0-12build2 amd64
+  Archiver for .zip files
+
+student@linux-ess:~$
+```
+The last entry in the list shows us a package that can archive .zip files. The procedure to find it was as follows: 
+* It searches all repositories that we have downloaded from the Internet (/etc/apt/sources.list) to find a package that meets the search term. 
+* Packages are found, like the `zip`-package or `unzip`-package. 
+
+?> <i class="fa-solid fa-circle-info"></i> Mind that it's best practice to do an `apt update` to download the latest versions of the repositories, right before you search for a package. This way you will find all available packages and latest version of every package.
 
 ### Installing software (apt install)
 Imagine we would like to install the `zip` package. We could simply run the command below:
@@ -219,7 +252,7 @@ student@ubuntu-server:~$ tree
 │       └── games
 │           └── pacman
 ├── emptyfile
-student@ubuntu-server:~$ tar -czf Downloads.tar.gz  Downloads             # create tar 
+student@ubuntu-server:~$ tar -czf Downloads.tar.gz  Downloads             # create tarball 
 student@ubuntu-server:~$ tar -tzf Downloads.tar.gz                        # view contents of tarball
 Downloads/
 Downloads/logo.png
@@ -348,7 +381,10 @@ student@linux-ess:~$ sudo snap install mapscii
 mapscii 0.3.1 from Nathan Haines (nhaines) installed
 student@linux-ess:~$ mapscii 
 ```  
+![mapscii](../images/06/mapscii.png)   
   
+?> To navigate and zoom you can use the *arrow keys* and *a* and *z* 
+
   
 ## zip vs gzip
 `gzip` compresses only one file and therefore is used with `tar` which brings multiple files into one file.  

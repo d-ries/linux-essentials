@@ -28,7 +28,7 @@ DESCRIPTION
 Zoals hierboven beschreven is `apt` (of zijn voorganger `apt-get`) een pakketbeheerder. We kunnen deze tool gebruiken om pakketten (lees: software) op onze Linux-machine te installeren. Merk op dat `apt` de specifieke pakketbeheerder voor Ubuntu is. Er zijn verschillende alternatieven beschikbaar zoals `dpkg`, `pacman`, `rpm`, `yum`, `dnf`, ... die vooraf geïnstalleerd met een specifieke Linux-distributie kunnen worden geleverd. 
 
 ### Opslagplaatsen 
-Een belangrijk ding om op te merken over `apt` is dat het een database van beschikbare pakketten gebruikt. We kunnen deze lijst met pakketten bijwerken door het onderstaande commando uit te voeren: 
+Belangrijk om op te merken over `apt` is dat het databases van beschikbare pakketten gebruikt. Deze databases, genaamd repositories, dienen eerst gedownload naar de computer. Dit doen we door het onderstaand commando uit te voeren: 
 ```bash
 student@linux-ess:~/globbing$ sudo apt update
 [sudo] password for student:
@@ -56,9 +56,42 @@ Fetched 8672 kB in 2s (3651 kB/s)
 ```
 ?> <i class="fa-solid fa-circle-info"></i> Merk op dat we het commando `sudo` hebben gebruikt. Dit is nodig omdat `apt` een systeembreed commando is die van invloed is op het hele systeem (software installeren/verwijderen/bijwerken). Daarom kunnen we het niet uitvoeren als een gebruiker met standaardmachtigingen. 
 
-We kunnen zien dat dit commando gegevens van een heleboel servers krijgt. Deze servers worden _repositories/opslagplaatsen_ genoemd (servers met een verzameling pakketten). Wanneer we later software installeren, wordt de database op basis van de repositories gebruikt om te controleren of het pakket dat we willen installeren beschikbaar is. 
+We kunnen zien dat dit commando een heleboel lijsten download. Deze lijsten worden _repositories_ genoemd (lijsten met welbepaalde verzamelingen van pakketten). Wanneer we later software installeren, wordt de database op basis van deze repositories gebruikt om te controleren of het pakket dat we willen installeren beschikbaar is. 
 
 De lijst van repositories die `apt` gebruikt is te vinden in het bestand `/etc/apt/sources.list`. We kunnen handmatig meer repositories aan dit bestand toevoegen of het commando `add-apt-repository` gebruiken, maar we zullen hier voorlopig niet op ingaan. 
+
+### Software zoeken (apt search) 
+Stel je voor dat we een bestand hebben gedownload dat eindigt om `.zip`. Dan kunnen we op zoek gaan naar een programma dat hiermee overweg kan. We kunnen het onderstaande commando uitvoeren gebruik makend van regular expressions in de zoekterm: 
+```bash
+student@linux-ess:~$ apt search "\.zip file"       # \.  om aan te duiden dat hier letterlijk naar een punt moet gezocht worden
+Sorting... Done
+Full Text Search... Done
+goldendict/jammy 1.5.0~rc2+git20210630+ds-2 amd64
+  feature-rich dictionary lookup program
+
+node-jszip/jammy 3.7.1+dfsg-1 all
+  Create, read and edit .zip files with Javascript
+
+node-jszip-utils/jammy 0.1.0+dfsg-1 all
+  collection of cross-browser utilities to go along with JSZip
+
+unicode-cldr-core/jammy 32.0.1-1.1 all
+  Common data from Unicode CLDR (core)
+
+unzip/jammy-updates,jammy-security 6.0-26ubuntu3.1 amd64
+  De-archiver for .zip files
+
+zip/jammy 3.0-12build2 amd64
+  Archiver for .zip files
+
+student@linux-ess:~$
+```
+Als laatste in de lijst zien we een pakket dat .zip files kan archiveren. De procedure om dit te vinden was:
+* Het doorzoekt alle repositories die we gedownload hebben van het Internet (/etc/apt/sources.list) om een pakket te vinden dat voldoet aan onze zoekterm. 
+* Er worden pakketten gevonden, zoals het `zip`-pakket en `unzip`-pakket. 
+
+?> <i class="fa-solid fa-circle-info"></i> Merk op dat je best eerst een `apt update` uitvoert om de laatste versie van de repositories te downloaden, want er wordt in deze gedownloade repositories gezocht naar de pakketten. Een verouderde repository bevat een pakket misschien nog niet, of download een verouderde versie van een pakket. 
+
 
 ### Software installeren (apt install) 
 Stel je voor dat we het `zip`-pakket willen installeren. We kunnen eenvoudig het onderstaande commando uitvoeren: 
@@ -90,7 +123,7 @@ Setting up zip (3.0-11build1) ...
 Processing triggers for man-db (2.9.1-1) ...
 ```
 Als we de uitvoer van het commando analyseren, zien we een paar dingen gebeuren: 
-* Het leest de pakketlijst om het `zip`-pakket te vinden. Nadat dit is gebeurd, bouwt het een afhankelijkheidsboom om te zien welke afhankelijkheden het `zip`-pakket nodig heeft. 
+* Het leest de repositories om het `zip`-pakket te vinden. Nadat dit is gebeurd, bouwt het een afhankelijkheidsboom om te zien welke afhankelijkheden het `zip`-pakket nodig heeft. 
 * Het wijst erop dat het een extra pakket met de naam `unzip` zal installeren. Dit is een afhankelijkheid van het `zip` commando. 
 * Het geeft aan welke nieuwe pakketten zullen worden geïnstalleerd en of er pakketten zullen worden bijgewerkt. 
 * Het vraagt om een bevestiging of we zeker weten dat we door willen gaan. Na deze bevestiging zal het alle pakketten installeren / bijwerken die in de bovenstaande uitvoer worden genoemd. 
@@ -194,7 +227,7 @@ student@ubuntu-server:~$ tree
 │       └── games
 │           └── pacman
 ├── emptyfile
-student@ubuntu-server:~$ tar -cf Downloads.tar Downloads     # creër tar
+student@ubuntu-server:~$ tar -cf Downloads.tar Downloads     # creëer tar
 student@ubuntu-server:~$ tar -tf Downloads.tar               # bekijk de inhoud van de tar
 Downloads/
 Downloads/logo.png
@@ -216,8 +249,8 @@ student@ubuntu-server:~$ tree
 │       └── games
 │           └── pacman
 ├── emptyfile
-student@ubuntu-server:~$ tar -czf Downloads.tar.gz  Downloads             # create tar 
-student@ubuntu-server:~$ tar -tzf Downloads.tar.gz                        # view contents of tarball
+student@ubuntu-server:~$ tar -czf Downloads.tar.gz  Downloads             # creëer tarball 
+student@ubuntu-server:~$ tar -tzf Downloads.tar.gz                        # bekijk de inhoud van de tarball
 Downloads/
 Downloads/logo.png
 Downloads/Steam/
@@ -340,7 +373,10 @@ student@linux-ess:~$ sudo snap install mapscii
 mapscii 0.3.1 from Nathan Haines (nhaines) installed
 student@linux-ess:~$ mapscii 
 ```  
-  
+![mapscii](../images/06/mapscii.png)   
+
+?> Om te navigeren en in te zoomen gebruik je de *pijltjes* en *a* en *z* 
+
   
 ## zip vs gzip
 `gzip` comprimeert slechts één bestand en wordt daarom gebruikt met `tar` dat meerdere bestanden in één bestand brengt.  
