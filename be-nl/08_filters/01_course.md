@@ -92,7 +92,7 @@ Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
 
 ## Filteren van uitvoer 
 ### Inhoudsfilters gebruiken (grep) 
-We willen vaak door de inhoud van een bestand bladeren en de regels behouden die een bepaalde karakterreeks of patroon bevatten. Dit is waar het `grep`commando om de hoek komt kijken. `grep`` is een van de meest gebruikte filtercommando's in Linux-systemen. We kunnen het als volgt als zelfstandig commando gebruiken: 
+We willen vaak door de inhoud van een bestand bladeren en de regels behouden die een bepaalde string of patroon bevatten. Dit is waar het `grep`commando om de hoek komt kijken. `grep`` is een van de meest gebruikte filtercommando's in Linux-systemen. We kunnen het als volgt als zelfstandig commando gebruiken: 
 ```bash
 student@linux-ess:~$ grep jane auth.log
 Jun 15 17:42:18 linux-ess: Failed password for: janedoe from 192.168.0.10 port 48239 ssh2
@@ -106,7 +106,7 @@ Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port
 ```
 Beide commando's geven hetzelfde resultaat en werken hetzelfde. Wat we kunnen zien is dat het `grep` commando de inhoud van het bestand filtert op basis van een string of patroon (in dit geval de string `jane`).  
 
-?> Een belangrijke opmerking om te maken is dat `grep` standaard een hoofdlettergevoelig commando is. Het toont alleen de regels in het bestand met dat specifieke trefwoord. Merk op dat het zoeken naar de karakterreeks _failed_ in enkel kleine letters ertoe zal leiden dat 0 regels worden geretourneerd: 
+?> Een belangrijke opmerking om te maken is dat `grep` standaard een hoofdlettergevoelig commando is. Het toont alleen de regels in het bestand met dat specifieke trefwoord. Merk op dat het zoeken naar de string _failed_ in enkel kleine letters ertoe zal leiden dat 0 regels worden geretourneerd: 
 ```bash
 student@linux-ess:~$ cat auth.log | grep failed
 student@linux-ess:~$
@@ -126,7 +126,7 @@ Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 8756
 Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
 ```
 
-Een andere interessante optie is `-v` die alle lijnen _zonder_ de string/patroon retourneert: 
+Een andere interessante optie is `-v` die alle regels _zonder_ de string/patroon retourneert: 
 ```bash
 student@linux-ess:~$ cat auth.log | grep -i -v failed
 Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
@@ -153,7 +153,7 @@ student@linux-ess:~$ cat auth.log | grep janedoe | grep Accepted
 Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
 ```
 
-Soms willen we misschien meer zien dan alleen de lijn die de karakterreeks/het patroon bevat. Stel je voor dat we wat meer context willen zien over waar het bestand zich bevindt. We kunnen het grep-commando aanpassen om regels `voor` en/of `na` het resultaat als volgt weer te geven: 
+Soms willen we misschien meer zien dan alleen de lijn die de string/het patroon bevat. Stel je voor dat we wat meer context willen zien over waar het bestand zich bevindt. We kunnen het grep-commando aanpassen om regels `voor` en/of `na` het resultaat als volgt weer te geven: 
 ```bash
 student@linux-ess:~$ cat example.log
 this is line one
@@ -208,9 +208,9 @@ find: '/sys/kernel/debug': Permission denied
 ```
 
 ### Regular expressions
-In de bovenstaande voorbeelden hebben we alleen eenvoudige karakterreeksen gebruikt om bepaalde lijnen in een bestand te vinden. Soms willen we filteren op dynamische content. Stel je voor dat je alle logins vindt vanaf een ip-adres met '192' gevolgd door andere tekens, of gebruikers wil die 'doe' als achternaam hebben. In deze gevallen zullen we zoeken naar tekenreeksen via een bepaald patroon. Om dit te bereiken moeten we een dynamische syntax gebruiken die een reguliere expressie wordt genoemd. 
+In de bovenstaande voorbeelden hebben we alleen eenvoudige strings gebruikt om bepaalde regels in een bestand te vinden. Soms willen we filteren op dynamische content. Stel je voor dat je alle logins vindt vanaf een ip-adres met '192' gevolgd door andere tekens, of gebruikers wil die 'doe' als achternaam hebben. In deze gevallen zullen we zoeken naar tekenreeksen via een bepaald patroon. Om dit te bereiken moeten we een dynamische syntax gebruiken die een reguliere expressie wordt genoemd. 
 
-Reguliere expressies kunnen veranderen in een echt konijnenhol. We zullen ons alleen richten op de meest gebruikte cases en een paar praktische voorbeelden, maar weet dat er een hele _regex_ wereld te verkennen is die buiten deze cursus valt! 
+regular expressions kunnen veranderen in een echt konijnenhol. We zullen ons alleen richten op de meest gebruikte cases en een paar praktische voorbeelden, maar weet dat er een hele _regex_ wereld te verkennen is die buiten deze cursus valt! 
 
 Het commando `grep` kan verschillende soorten _regex_ patronen gebruiken. Standaard gebruikt het _basic regular expressions (BRE)_ maar voor veel gevallen willen we dit uitbreiden naar _extended regular expressions (ERE)_. Om dit te doen, moeten we de optie `-E` gebruiken in het commando `grep`. Dit geeft ons veel meer functionaliteit als het gaat om het bouwen van dynamische zoekopdrachten. **Veel van de onderstaande commando's werken niet zonder de optie `-E`!**
 
@@ -335,7 +335,7 @@ https://www.pxl.be
 pxe
 pxe boot
 ```
-Merk op dat de gefilterde lijnen niet met het patroon moeten beginnen. 
+Merk op dat de gefilterde regels niet met het patroon moeten beginnen. 
 
 Vanwege het feit dat we geen karakters achter de x plaatsen, konden we dit karakter ook gewoon weglaten: 
 ```bash
@@ -387,16 +387,16 @@ https://www.pxl.be
 ```
 ?> Merk op dat als we hier de optie -E niet gebruiken, we het plusteken (+) moeten escapen. ... | grep "px\\+l" 
 
-Om nog een stap verder te gaan, hoe zit het met precies 3 voorvallen? We kunnen dit eenvoudig als volgt doen: 
+Om nog een stap verder te gaan, hoe zit het met precies 3 voorkomens? We kunnen dit eenvoudig als volgt doen: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -E "px{3}l"
 pxxxl
 ```
-De `{3}` is gekoppeld aan het karakter daarvoor.  
+De `{3}` betekent hier ook het aantal keer dat het voorafgaand karakter moet voorkomen.  
 
 ?> Merk op dat als we hier de optie -E niet gebruiken, we de accolades ({}) moeten escapen. ... | grep "px\\{3\\}l" 
 
-Stel je nu voor dat we willen controleren op regels die beginnen of eindigen met een specifiek karakter of string. We beginnen met regels die beginnen met een specifiek teken: 
+Stel je nu voor dat we willen controleren op regels die beginnen of eindigen met een specifiek karakter of string. We beginnen met regels die beginnen met een specifiek karakter: 
 ```bash
 student@linux-ess:~$  cat regexlist.txt | grep -i "^[smc]"
 Charlotte
@@ -406,7 +406,7 @@ Sara
 Caroline
 Michael
 ```
-In het bovenstaande voorbeeld wordt een `^`-teken gebruikt dat het begin van een regel aangeeft. Vervolgens gebruiken we vierkante haken `[ ]` die we kunnen gebruiken om karakters op te geven die als het begin van de regel kunnen worden gebruikt. In dit geval de letters `S`, `M` en `C`. We kunnen ook bereiken gebruiken: 
+In het bovenstaande voorbeeld wordt een `^`-teken gebruikt dat het begin van een regel aangeeft. Vervolgens gebruiken we vierkante haken `[ ]` die we kunnen gebruiken om karakters op te geven die als het begin van de regel kunnen worden gebruikt. In dit geval de letters `S`, `M` en `C`. We kunnen ook een bereik gebruiken: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep "^[0-9]"
 128
@@ -432,7 +432,7 @@ https://www.pxl.be
 pxe
 pxe boot
 ```
-?> De vierkante haakjes zijn niet gekoppeld aan het begin en einde van een lijn, dus je kan ze overal in de regex gebruiken. Houd er rekening mee dat deze hoofdlettergevoelig zijn! 
+?> Houd er rekening mee dat een bereik hoofdlettergevoelig is! 
 
 Om te controleren op regels die eindigen op een specifiek karakter kunnen we een `$`-teken gebruiken: 
 ```bash
@@ -455,7 +455,7 @@ student@linux-ess:~$ cat regexlist.txt | grep "[0-9]$"
 127.0.0.1
 ```
 
-Dus hoe zit het met het matchen van precies 1 karakter? Een `.` vertaalt zich naar precies één karakter van elk type: 
+En hoe zit het met het matchen van precies 1 willekeurig karakter? Een `.` vertaalt zich naar precies één willekeurig karakter: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -i "t.m"
 Tim
@@ -469,9 +469,9 @@ student@linux-ess:~$ cat regexlist.txt | grep "^...\."
 172.16.0.4
 127.0.0.1
 ```
-Dit vertaalt zich naar `begin met elk willekeurig karakter` (`^.`) gevolgd door nog 2 karakters van elk type (`..`), gevolgd door een gewone punt (`\.`). Merk op hoe we aan de laatste punt zijn ontsnapt, zodat deze niet wordt geïnterpreteerd als een speciaal regex-karakter!  
+Dit vertaalt zich naar `begin met drie willekeurige karakters` (`^...`), gevolgd door een gewoon punt (`\.`). Merk op hoe we het laatste punt hebben escaped, zodat deze niet wordt geïnterpreteerd als een speciaal regex-karakter!  
 
-Als we de lijnen met één of een ander patroon willen filteren, kunnen we het teken `|`-gebruiken: 
+Als we de regels willen filteren met ofwel één patroon ofwel een ander patroon, kunnen we het teken `|`-gebruiken: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -E "^M|n$"
 Max
@@ -482,7 +482,7 @@ Ellen
 Robin
 Michael
 ```
-Hier zoeken we naar lijnen die beginnen met een `M` of eindigen met een `n` 
+Hier zoeken we naar regels die beginnen met een hoofdletter `M` of eindigen met een kleine letter `n` 
 
 We zouden hetzelfde kunnen doen door de optie -e meerdere keren te gebruiken: 
 ```bash
@@ -496,12 +496,12 @@ Robin
 Michael
 ```  
 
-Als we regels willen filteren die aan meerdere patronen voldoen, kunnen we het commando grep meerdere keren gebruiken: 
+Als we regels willen filteren die ineens aan meerdere patronen voldoen, kunnen we het commando grep meerdere keren gebruiken: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep "^E" | grep "a$" 
 Emma
 ```  
-Hier zoeken we naar lijnen die eindigen op een `e` en beginnen met een `C`  
+Hier zoeken we naar regels die eindigen op een `e` en ook beginnen met een `C`  
 
 Als we regels willen filteren die alleen de zoekstring als een volledig woord hebben, gebruiken we de optie `-w`: 
 ```bash
@@ -511,7 +511,7 @@ This is a test.
 Hier zoeken we naar regels met `test` als één woord 
   
 
-#### Patroonvoorbeelden 
+#### Nog enkele patroonvoorbeelden 
 Een regex maken die controleert op een IPv4-adres: 
 ```bash
 student@linux-ess:~$ cat regexlist.txt | grep -E "^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$"
@@ -545,7 +545,7 @@ Houd er rekening mee dat in dit voorbeeld niet wordt gecontroleerd op geldige do
 
 ### Inhoudsstructuur gebruiken (cut, sort, uniq) 
 #### Kolommen gebruiken (cut) 
-Met behulp van het commando `cut` kunnen we lijnen in een bestand splitsen in kolommen. Om dit te doen, moeten we een scheidingsteken definiëren (dit is een karakter dat het begin van een nieuwe kolom definieert), bijvoorbeeld een `spatie`- of `:`-teken. Vervolgens kunnen we selecteren welke kolommen de opdracht moet weergeven: 
+Met behulp van het commando `cut` kunnen we regels in een bestand splitsen in kolommen. Om dit te doen, moeten we een scheidingsteken definiëren (dit is een karakter dat het begin van een nieuwe kolom definieert), bijvoorbeeld een `spatie`- of `:`-teken. Vervolgens kunnen we selecteren welke kolommen de opdracht moet weergeven: 
 ```bash
 student@linux-ess:~$ cat auth.log
 Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
@@ -570,7 +570,7 @@ Jun 09 11
 Jun 09 11
 Jun 09 12
 ```
-Zoals je in het bovenstaande voorbeeld kunt zien, hebben we het `:`-teken als scheidingsteken gebruikt. Vervolgens gebruikten we de optie `-f` om alleen de eerste kolom weer te geven. Een volledige regel in dit logboekbestand ziet er als volgt uit: 
+Zoals je in het bovenstaande voorbeeld kunt zien, hebben we het `:`-teken als scheidingsteken gebruikt. Vervolgens gebruikten we de optie `-f` om enkel de eerste kolom weer te geven. Een volledige regel in dit logboekbestand ziet er als volgt uit: 
 ```bash
 student@linux-ess:~$ head -1 auth.log
 Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
@@ -592,7 +592,7 @@ student@linux-ess:~$ cat /etc/passwd | grep bash$  | cut -d":" -f1,6
 root:/root
 student:/home/student
 ```
-?> Merk op dat de homemap van de gebruiker root zich niet in de map /home bevindt, maar in de root van het bestandssysteem (/) 
+?> Merk op dat de homefolder van de gebruiker root geen subfolder is van /home, maar van de root van het bestandssysteem (/) 
 
 
 #### Sorteren (sort & uniq) 
@@ -621,7 +621,7 @@ johndoe
 student
 ```
 
-?> Merk op dat om `uniq` te gebruiken je altijd eerst de gegevens moet sorteren (`sort`)! 
+?> Weet dat om `uniq` te gebruiken je altijd eerst de gegevens moet sorteren (`sort`)! 
 
 ?> Merk op dat de pipe (|) kan worden gebruikt als de `OR`-operator. Als we de `AND`-operator willen toepassen kunnen we twee greps achter elkaar pipen of een regex gebruiken: 
 ```bash
@@ -640,7 +640,7 @@ Als we de regels, woorden of bytes van een document willen tellen, kunnen we het
 student@linux-ess:~$ wc auth.log
   17  245 1731 auth.log
 ```
-Het eerste getal is het aantal regels, het tweede getal het aantal woorden en het derde getal het aantal bytes van de bestandsinhoud. 
+Het eerste getal is het aantal regels, het tweede getal het aantal woorden en het derde getal het aantal bytes(karakters) van de bestandsinhoud. 
 
 We kunnen ook maar één van de opties opvragen: 
 ```bash
@@ -649,6 +649,8 @@ student@linux-ess:~$ wc -l auth.log # numer of lines
 student@linux-ess:~$ wc -w auth.log # number of words
 245 auth.log
 student@linux-ess:~$ wc -c auth.log # number of bytes
+1731 auth.log
+student@linux-ess:~$ wc -m auth.log # number of characters
 1731 auth.log
 ```
 
@@ -720,7 +722,7 @@ Jun 09 123224 linux-ess Accepted publickey for johndoe from 85.245.107.42 port 5
 
 
 ### Stream editor (sed) 
-`sed` is een geavanceerde stream-editor die bewerkingsfuncties kan uitvoeren met behulp van reguliere expressies. Herinnert je je het commando `rename` nog? We kunnen hier dezelfde syntaxis van reguliere expressies gebruiken: 
+`sed` is een geavanceerde stream-editor die bewerkingsfuncties kan uitvoeren met behulp van regular expressions. Herinner je je het commando `rename` nog? We kunnen hier dezelfde syntax als bij regular expressions gebruiken: 
 ```bash
 student@linux-ess:~$ tail -4 auth.log | sed 's/Failed/Incorrect/'
 Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 34598 ssh2
@@ -728,7 +730,7 @@ Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 8
 Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 77898 ssh2
 Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
 ```
-In het bovenstaande voorbeeld wordt de karakterreeks `Failed` voor elke regel één keer gewijzigd in `Incorrect`. 
+In het bovenstaande voorbeeld wordt de string `Failed` voor elke regel één keer gewijzigd in `Incorrect`. 
 
 ?> Merk op dat alleen in de uitvoer de wijzigingen worden toegepast. Het bestand zelf wordt niet gewijzigd. Als je het op het bestand zelf wilt toepassen, kan je de optie `-i` toevoegen: 
 ```bash
@@ -778,7 +780,7 @@ Jun 09  linux-ess: Server listening on 0.0.0.0 port 22.
 Jun 09  linux-ess: Server listening on :: port 22.
 ```
 
-Ten slotte zullen we kijken naar de `d`-flag die elke lijn met de karakterreeks verwijdert: 
+Ten slotte zullen we kijken naar de `d`-flag die elke lijn met de string verwijdert: 
 ```bash
 student@linux-ess:~$ tail -4 auth.log
 Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 34598 ssh2
@@ -789,7 +791,7 @@ student@linux-ess:~$ tail -4 auth.log | sed '/Failed/d'
 Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
 ```
 
-Natuurlijk kunnen we onze kennis van reguliere expressies gebruiken met sed, maar als je uitgebreide reguliere expressies wilt gebruiken, moet je de optie `-r` opgeven: 
+Natuurlijk kunnen we onze kennis van regular expressions gebruiken met sed, maar als je uitgebreide regular expressions wilt gebruiken, moet je de optie `-r` opgeven: 
 ```bash
 student@ubuntu-server:~$ grep -C2 www regexlist.txt
 32
@@ -809,4 +811,16 @@ url masked
 192.168.5.117
 ```
 
-?> Omdat we slashes (`/`) gebruiken in onze regex kunnen we ervoor kiezen om underscores (`_`) als seperator te gebruiken 
+?> Omdat we slashes (`/`) gebruiken in onze regex zelf, moeten we een ander teken kiezen als seperator, zoals hier de underscores (`_`) 
+
+?> zonder de '-r'-optie zouden we het '?'-teken moeten escapen
+```bash
+student@ubuntu-server:~$ grep -C2 www regexlist.txt | sed -r 's_https\?://.*_url masked_'
+32
+64
+htp://www.pxl.be
+url masked
+url masked
+192.168.1.19
+192.168.5.117
+```
