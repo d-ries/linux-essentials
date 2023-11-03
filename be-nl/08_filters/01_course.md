@@ -385,7 +385,7 @@ htp://www.pxl.be
 http://www.pxl.be
 https://www.pxl.be
 ```
-?> Merk op dat als we hier de optie -E niet gebruiken, we aan het plusteken (+) moeten ontsnappen. ... | grep "px\\+l" 
+?> Merk op dat als we hier de optie -E niet gebruiken, we het plusteken (+) moeten escapen. ... | grep "px\\+l" 
 
 Om nog een stap verder te gaan, hoe zit het met precies 3 voorvallen? We kunnen dit eenvoudig als volgt doen: 
 ```bash
@@ -394,7 +394,7 @@ pxxxl
 ```
 De `{3}` is gekoppeld aan het karakter daarvoor.  
 
-?> Merk op dat als we hier de optie -E niet gebruiken, we moeten ontsnappen aan de accolades ({}). ... | grep "px\\{3\\}l" 
+?> Merk op dat als we hier de optie -E niet gebruiken, we de accolades ({}) moeten escapen. ... | grep "px\\{3\\}l" 
 
 Stel je nu voor dat we willen controleren op regels die beginnen of eindigen met een specifiek karakter of string. We beginnen met regels die beginnen met een specifiek teken: 
 ```bash
