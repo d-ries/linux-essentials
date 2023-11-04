@@ -9,7 +9,7 @@
 * [7 Geavanceerde commandostructuren](./be-nl/07_advancedcommands/01_course.md)
 ** [Lab](./be-nl/07_advancedcommands/02_lab.md)
 ** [Oefeningen](./be-nl/07_advancedcommands/99_assignments.md)
-* [8 Filters & bestandspermissies ](./be-nl/08_filters/01_course.md)
+* [8 Filters & bestandsbewerkingen ](./be-nl/08_filters/01_course.md)
 * [9 Gebruikers & groepen](./be-nl/09_usersandgroups/01_course.md)
 * [10 Rechten](./be-nl/10_permissions/01_course.md)
 * [11 Automatisatie](./be-nl/11_automation/01_course.md)
