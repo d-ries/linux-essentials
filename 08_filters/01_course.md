@@ -474,9 +474,22 @@ url masked
   
 ?> Because we use slashes (`/`) in our regex we can opt to use underscores (`_`) as seperator
 
+     
+?> Without the '-r'-option we'd have to escape the '?'-character
+```bash
+student@ubuntu-server:~$ grep -C2 www regexlist.txt | sed -r 's_https\?://.*_url masked_'
+32
+64
+htp://www.pxl.be
+url masked
+url masked
+192.168.1.19
+192.168.5.117
+```
+
 
 ## Regular expressions
-In the examples above we only used simple strings to find certain lines in a file. Sometimes we want to filter on dynamic content. Imagine finding all logins from an ip address containing '192' followed by other characters, or finding users that have "doe" as a lastname. In these case we will search for strings via a certain pattern. To achieve this we have to use a dynamic syntax called a regular expression.
+In the examples of grep at the top of this page we only used simple strings to find certain lines in a file. Sometimes we want to filter on dynamic content. Imagine finding all logins from an ip address containing '192' followed by other characters, or finding users that have "doe" as a lastname. In these case we will search for strings via a certain pattern. To achieve this we have to use a dynamic syntax called a regular expression.
 
 Regular expressions can turn into a real rabbit hole. We will only focus on the most used cases and a couple of practical examples but know that there is a whole _regex_ world to be explored that is beyond the scope of this course!
 
