@@ -206,8 +206,276 @@ student@linux-ess:~$ find /sys -iname "*kernel*" |& grep debug
 find: '/sys/kernel/debug': Permission denied
 /sys/fs/cgroup/sys-kernel-debug.mount
 ```
+  
+  
+### Using content structure (cut,sort,uniq)
+#### Using columns (cut)
+Using the `cut` command we can split lines in a file into columns. To do this we have to define a delimiter (this is a character that defines the start of a new column) for example a `space` or `:` sign. Then we can select which columns the command should display:
+```bash
+student@linux-ess:~$ cat auth.log
+Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
+Jun 09 11:11:11 linux-ess: Server listening on :: port 22.
+Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g>
+Jun 10 21:38:01 linux-ess: Failed password for: student from 192.168.0.1 port 37362 ssh2
+Jun 10 21:39:01 linux-ess: Failed password for: johndoe from 192.168.0.2 port 37849 ssh2
+Jun 10 21:42:01 linux-ess: Accepted password for: student from 84.298.138.41 port 48785 ssh2
+Jun 14 14:12:33 linux-ess: Accepted password for: johndoe from 192.168.0.3 port 38654 ssh2
+Jun 14 14:14:12 linux-ess: Accepted publickey for: student from 85.245.107.42 port 48298 ssh2: RSA SHA256:Keo89erjOEkmo>Jun 15 17:42:18 linux-ess: Failed password for: janedoe from 192.168.0.10 port 48239 ssh2
+Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
+Jun 19 22:43:23 linux-ess: Failed password for: johndoe from 85.245.107.42 port 22834 ssh2: RSA SHA256:eoKmezlE3iOp38Dj>Jun 22 08:04:00 linux-ess: Accepted password for: johndoe from 192.168.0.99 port 38299 ssh2
+Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 44293 ssh2
+Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 48987 ssh2
+Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 22658 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 34598 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
+student@linux-ess:~$ head -3 auth.log | cut -d":" -f1
+Jun 09 11
+Jun 09 11
+Jun 09 12
+```
+As you can see in the example above we used the `:` sign as the delimiter. We then used the `-f` option to only display the first column. A full line in this log file looks like this:
+```bash
+student@linux-ess:~$ head -1 auth.log
+Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
+```
+This means that the first column ends on the `:` sign in the time notation (after the hour). The second column exists out of the minutes part of the time notation, the third column the seconds of the time notation and the hostname and so on. We can also tell the command to display multiple columns:
+```bash
+student@linux-ess:~$ head -3 auth.log | cut -d":" -f1,2,3
+Jun 09 11:11:11 linux-ess
+Jun 09 11:11:11 linux-ess
+Jun 09 12:32:24 linux-ess
+```
 
-### Regular expressions
+Another nice example of where we can use this is the `/etc/passwd` file where we can easily filter all the usernames and there homefolder locations:
+```bash
+student@linux-ess:~$ cat /etc/passwd | grep bash$
+root:x:0:0:root:/root:/bin/bash
+student:x:1000:1000:student:/home/student:/bin/bash
+student@linux-ess:~$ cat /etc/passwd | grep bash$  | cut -d":" -f1,6
+root:/root
+student:/home/student
+```
+?> Note that the homefolder of the user root isn't in the folder /home, but within the root of the filesystem (/)
+
+#### Using sorting (sort & uniq)
+If we want to sort the lines of a file we can use the `sort` command. With the `uniq` command only the unique values will be shown.
+```bash
+student@linux-ess:~$ cat auth.log | grep -E "Accepted|Failed"
+Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g>
+Jun 10 21:38:01 linux-ess: Failed password for: student from 192.168.0.1 port 37362 ssh2
+Jun 10 21:39:01 linux-ess: Failed password for: johndoe from 192.168.0.2 port 37849 ssh2
+Jun 10 21:42:01 linux-ess: Accepted password for: student from 84.298.138.41 port 48785 ssh2
+Jun 14 14:12:33 linux-ess: Accepted password for: johndoe from 192.168.0.3 port 38654 ssh2
+Jun 14 14:14:12 linux-ess: Accepted publickey for: student from 85.245.107.42 port 48298 ssh2: RSA SHA256:Keo89erjOEkmo>Jun 15 17:42:18 linux-ess: Failed password for: janedoe from 192.168.0.10 port 48239 ssh2
+Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
+Jun 19 22:43:23 linux-ess: Failed password for: johndoe from 85.245.107.42 port 22834 ssh2: RSA SHA256:eoKmezlE3iOp38Dj>Jun 22 08:04:00 linux-ess: Accepted password for: johndoe from 192.168.0.99 port 38299 ssh2
+Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 44293 ssh2
+Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 48987 ssh2
+Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 22658 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 34598 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
+student@linux-ess:~$ cat auth.log | grep -E "Accepted|Failed" | cut -d ':' -f5 | cut -d' ' -f2 | sort | uniq
+doeg
+janedoe
+johndoe
+student
+```
+
+?> Note that to use `uniq` you must allways first `sort` the data!
+
+?> Note that the pipe sign (|) can be used as the `OR` operator. If we want to apply the `AND` operator we can pipe two greps after each other or use a regex:
+
+```bash
+cat auth.log | grep "port 44293"
+Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 44293 ssh2
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
+student@linux-ess:~$ cat auth.log | grep -i "accepted" | grep "port 44293"
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
+student@linux-ess:~$ cat auth.log | grep -i "accepted.*port 44293"
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
+```
+
+#### Using counts (wc)
+If we want to count the lines, words or bytes of a document we can use the command `wc`:
+```bash
+student@linux-ess:~$ wc auth.log
+  17  245 1731 auth.log
+```
+The first number is the number of lines, the second number the number of words and the third number the number of bytes of the file content.
+
+We can also output only one of those: 
+```bash
+student@linux-ess:~$ wc -l auth.log # numer of lines
+17 auth.log
+student@linux-ess:~$ wc -w auth.log # number of words
+245 auth.log
+student@linux-ess:~$ wc -c auth.log # number of bytes
+1731 auth.log
+```
+
+## Manipulating output
+### Translate (tr)
+The `tr` command allows us to _translate_ certain characters to other characters. It takes in 2 arguments:
+* The character (or set of characters) that needs to be replaced
+* The character (or set of characters) the previous set needs to be replaced by
+
+We can see a simple example below:
+```bash
+student@linux-ess:~$ head -3 auth.log | tr 'e' 'E'
+Jun 09 11:11:11 linux-Ess: SErvEr listEning on 0.0.0.0 port 22.
+Jun 09 11:11:11 linux-Ess: SErvEr listEning on :: port 22.
+Jun 09 12:32:24 linux-Ess: AccEptEd publickEy for: johndoE from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g>
+```
+all of the letters `e` in the output will be translated to the capital `E`. As said in the explanation above we can use ranges or sets of characters as well:
+```bash
+student@linux-ess:~$ head -3 auth.log | tr 'abcdklmn' 'ABCDKLMN'
+JuN 09 11:11:11 LiNux-ess: Server ListeNiNg oN 0.0.0.0 port 22.
+JuN 09 11:11:11 LiNux-ess: Server ListeNiNg oN :: port 22.
+JuN 09 12:32:24 LiNux-ess: ACCepteD puBLiCKey for: johNDoe froM 85.245.107.42 port 54259 ssh2: RSA SHA256:K18KPGZrTiz7g>
+student@linux-ess:~$ head -3 auth.log | tr 'a-z' 'A-Z'
+JUN 09 11:11:11 LINUX-ESS: SERVER LISTENING ON 0.0.0.0 PORT 22.
+JUN 09 11:11:11 LINUX-ESS: SERVER LISTENING ON :: PORT 22.
+JUN 09 12:32:24 LINUX-ESS: ACCEPTED PUBLICKEY FOR: JOHNDOE FROM 85.245.107.42 PORT 54259 SSH2: RSA SHA256:K18KPGZRTIZ7G>
+```
+It's not just regular characters we can replace. We can use special characters such as newlines or tabs as follows:
+```bash
+student@linux-ess:~$ head -3 auth.log | od -c
+0000000   J   u   n       0   9       1   1   :   1   1   :   1   1
+0000020   l   i   n   u   x   -   e   s   s   :       S   e   r   v   e
+0000040   r       l   i   s   t   e   n   i   n   g       o   n       0
+0000060   .   0   .   0   .   0       p   o   r   t       2   2   .  \n
+0000100   J   u   n       0   9       1   1   :   1   1   :   1   1
+0000120   l   i   n   u   x   -   e   s   s   :       S   e   r   v   e
+0000140   r       l   i   s   t   e   n   i   n   g       o   n       :
+0000160   :       p   o   r   t       2   2   .  \n   J   u   n       0
+0000200   9       1   2   :   3   2   :   2   4       l   i   n   u   x
+0000220   -   e   s   s   :       A   c   c   e   p   t   e   d       p
+0000240   u   b   l   i   c   k   e   y       f   o   r   :       j   o
+0000260   h   n   d   o   e       f   r   o   m       8   5   .   2   4
+0000300   5   .   1   0   7   .   4   2       p   o   r   t       5   4
+0000320   2   5   9       s   s   h   2   :       R   S   A       S   H
+0000340   A   2   5   6   :   K   1   8   k   P   G   Z   r   T   i   z
+0000360   7   g   >  \n
+0000364
+student@linux-ess:~$ head -3 auth.log | tr '\n' ' '
+Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22. Jun 09 11:11:11 linux-ess: Server listening on :: port 22. Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz
+```
+?> The example above changes all the _newlines_ to _spaces_.
+
+Imagine we have some data that has multiple occurances of a specific character and we only want it to display one (=squeeze). We can use the `-s` option to delete any recurring characters:
+```bash
+student@linux-ess:~$ head -3 auth.log | tr -s '1'
+Jun 09 1:1:1 linux-ess: Server listening on 0.0.0.0 port 22.
+Jun 09 1:1:1 linux-ess: Server listening on :: port 22.
+Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g>
+```
+
+lastly we have the option `-d` that will _delete_ any of the character(s) we define in the text:
+```bash
+student@linux-ess:~$ head -3 auth.log | tr -d ':'
+Jun 09 111111 linux-ess Server listening on 0.0.0.0 port 22.
+Jun 09 111111 linux-ess Server listening on  port 22.
+Jun 09 123224 linux-ess Accepted publickey for johndoe from 85.245.107.42 port 54259 ssh2 RSA SHA256K18kPGZrTiz7g>
+```
+
+### Stream editor (sed)
+`sed` is an advanced stream editor that can perform editing functions using regular expressions. Remember the `rename` command? We can use the same syntax of regular expressions here:
+```bash
+student@linux-ess:~$ tail -4 auth.log | sed 's/Failed/Incorrect/'
+Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 34598 ssh2
+Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 87568 ssh2
+Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 77898 ssh2
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
+```
+The example above will change the string `Failed` to `Incorrect` once for every line.
+
+?> Note that only in the output the changes are applied. The file itself isn't altered. If you want to apply it on the file itself you can add the option `-i`:
+```bash
+student@linux-ess:~$ tail -4 auth.log > lastfourlines
+student@linux-ess:~$ cat lastfourlines
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 34598 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2 
+student@linux-ess:~$ sed -i 's/Failed/Incorrect/' lastfourlines
+student@linux-ess:~$ cat lastfourlines
+Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 34598 ssh2
+Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 87568 ssh2
+Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 77898 ssh2
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
+```
+
+ Mind that by default sed will only change the string once per line. This is something we need to be aware of as we can see in the example below:
+ ```bash
+student@linux-ess:~$ echo "example this is an example" | sed 's/example/test/'
+test this is an example
+```
+Only the first occurence of `example` is changed to `test`. If we want the `sed` command to change every occurence in a line, we have to use the `g` (global) flag as seen below:
+```bash
+student@linux-ess:~$ echo "example this is an example" | sed 's/example/test/g'
+test this is an test
+```
+
+?> There is also an `i` flag that will make the regex (=search string) case insensitive:
+```bash
+student@linux-ess:~$ echo "example this is an Example" | sed 's/example/test/g'
+test this is an Example
+student@linux-ess:~$ echo "example this is an Example" | sed 's/example/test/gi'
+test this is an test
+```
+
+We're also able to use sed to mask certain text:
+```bash
+student@ubuntu-server:~$ head -2 auth.log
+Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
+Jun 09 11:11:11 linux-ess: Server listening on :: port 22.
+student@ubuntu-server:~$ head -2 auth.log | sed 's/..:..:../00:00:00/'
+Jun 09 00:00:00 linux-ess: Server listening on 0.0.0.0 port 22.
+Jun 09 00:00:00 linux-ess: Server listening on :: port 22.
+student@ubuntu-server:~$ head -2 auth.log | sed 's/..:..:..//'
+Jun 09  linux-ess: Server listening on 0.0.0.0 port 22.
+Jun 09  linux-ess: Server listening on :: port 22.
+```
+
+Lastly we will look at the `d` flag which will remove any line containing the string:
+```bash
+student@linux-ess:~$ tail -4 auth.log
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 34598 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
+Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
+student@linux-ess:~$ tail -4 auth.log | sed '/Failed/d'
+Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
+```
+
+Offcourse we can use our knowledge of regular expressions with sed, but if you want to use extended regular expressions you need to specify the option `-r`:
+```bash
+student@ubuntu-server:~$ grep -C2 www regexlist.txt
+32
+64
+htp://www.pxl.be
+http://www.pxl.be
+https://www.pxl.be
+192.168.1.19
+192.168.5.117
+student@ubuntu-server:~$ grep -C2 www regexlist.txt | sed -r 's_https?://.*_url masked_'
+32
+64
+htp://www.pxl.be
+url masked
+url masked
+192.168.1.19
+192.168.5.117
+```
+  
+?> Because we use slashes (`/`) in our regex we can opt to use underscores (`_`) as seperator
+
+
+## Regular expressions
 In the examples above we only used simple strings to find certain lines in a file. Sometimes we want to filter on dynamic content. Imagine finding all logins from an ip address containing '192' followed by other characters, or finding users that have "doe" as a lastname. In these case we will search for strings via a certain pattern. To achieve this we have to use a dynamic syntax called a regular expression.
 
 Regular expressions can turn into a real rabbit hole. We will only focus on the most used cases and a couple of practical examples but know that there is a whole _regex_ world to be explored that is beyond the scope of this course!
@@ -542,268 +810,4 @@ Note that this example does not check for valid domain names.
 
 ?> The questionmark (`?`) in a regex means the previous character is _optional_!
 
-### Using content structure (cut,sort,uniq)
-#### Using columns (cut)
-Using the `cut` command we can split lines in a file into columns. To do this we have to define a delimiter (this is a character that defines the start of a new column) for example a `space` or `:` sign. Then we can select which columns the command should display:
-```bash
-student@linux-ess:~$ cat auth.log
-Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
-Jun 09 11:11:11 linux-ess: Server listening on :: port 22.
-Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g>
-Jun 10 21:38:01 linux-ess: Failed password for: student from 192.168.0.1 port 37362 ssh2
-Jun 10 21:39:01 linux-ess: Failed password for: johndoe from 192.168.0.2 port 37849 ssh2
-Jun 10 21:42:01 linux-ess: Accepted password for: student from 84.298.138.41 port 48785 ssh2
-Jun 14 14:12:33 linux-ess: Accepted password for: johndoe from 192.168.0.3 port 38654 ssh2
-Jun 14 14:14:12 linux-ess: Accepted publickey for: student from 85.245.107.42 port 48298 ssh2: RSA SHA256:Keo89erjOEkmo>Jun 15 17:42:18 linux-ess: Failed password for: janedoe from 192.168.0.10 port 48239 ssh2
-Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
-Jun 19 22:43:23 linux-ess: Failed password for: johndoe from 85.245.107.42 port 22834 ssh2: RSA SHA256:eoKmezlE3iOp38Dj>Jun 22 08:04:00 linux-ess: Accepted password for: johndoe from 192.168.0.99 port 38299 ssh2
-Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 44293 ssh2
-Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 48987 ssh2
-Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 22658 ssh2
-Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 34598 ssh2
-Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
-Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
-Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
-student@linux-ess:~$ head -3 auth.log | cut -d":" -f1
-Jun 09 11
-Jun 09 11
-Jun 09 12
-```
-As you can see in the example above we used the `:` sign as the delimiter. We then used the `-f` option to only display the first column. A full line in this log file looks like this:
-```bash
-student@linux-ess:~$ head -1 auth.log
-Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
-```
-This means that the first column ends on the `:` sign in the time notation (after the hour). The second column exists out of the minutes part of the time notation, the third column the seconds of the time notation and the hostname and so on. We can also tell the command to display multiple columns:
-```bash
-student@linux-ess:~$ head -3 auth.log | cut -d":" -f1,2,3
-Jun 09 11:11:11 linux-ess
-Jun 09 11:11:11 linux-ess
-Jun 09 12:32:24 linux-ess
-```
 
-Another nice example of where we can use this is the `/etc/passwd` file where we can easily filter all the usernames and there homefolder locations:
-```bash
-student@linux-ess:~$ cat /etc/passwd | grep bash$
-root:x:0:0:root:/root:/bin/bash
-student:x:1000:1000:student:/home/student:/bin/bash
-student@linux-ess:~$ cat /etc/passwd | grep bash$  | cut -d":" -f1,6
-root:/root
-student:/home/student
-```
-?> Note that the homefolder of the user root isn't in the folder /home, but within the root of the filesystem (/)
-
-#### Using sorting (sort & uniq)
-If we want to sort the lines of a file we can use the `sort` command. With the `uniq` command only the unique values will be shown.
-```bash
-student@linux-ess:~$ cat auth.log | grep -E "Accepted|Failed"
-Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g>
-Jun 10 21:38:01 linux-ess: Failed password for: student from 192.168.0.1 port 37362 ssh2
-Jun 10 21:39:01 linux-ess: Failed password for: johndoe from 192.168.0.2 port 37849 ssh2
-Jun 10 21:42:01 linux-ess: Accepted password for: student from 84.298.138.41 port 48785 ssh2
-Jun 14 14:12:33 linux-ess: Accepted password for: johndoe from 192.168.0.3 port 38654 ssh2
-Jun 14 14:14:12 linux-ess: Accepted publickey for: student from 85.245.107.42 port 48298 ssh2: RSA SHA256:Keo89erjOEkmo>Jun 15 17:42:18 linux-ess: Failed password for: janedoe from 192.168.0.10 port 48239 ssh2
-Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
-Jun 19 22:43:23 linux-ess: Failed password for: johndoe from 85.245.107.42 port 22834 ssh2: RSA SHA256:eoKmezlE3iOp38Dj>Jun 22 08:04:00 linux-ess: Accepted password for: johndoe from 192.168.0.99 port 38299 ssh2
-Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 44293 ssh2
-Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 48987 ssh2
-Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 22658 ssh2
-Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 34598 ssh2
-Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
-Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
-Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
-student@linux-ess:~$ cat auth.log | grep -E "Accepted|Failed" | cut -d ':' -f5 | cut -d' ' -f2 | sort | uniq
-doeg
-janedoe
-johndoe
-student
-```
-
-?> Note that to use `uniq` you must allways first `sort` the data!
-
-?> Note that the pipe sign (|) can be used as the `OR` operator. If we want to apply the `AND` operator we can pipe two greps after each other or use a regex:
-
-```bash
-cat auth.log | grep "port 44293"
-Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 44293 ssh2
-Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
-student@linux-ess:~$ cat auth.log | grep -i "accepted" | grep "port 44293"
-Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
-student@linux-ess:~$ cat auth.log | grep -i "accepted.*port 44293"
-Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
-```
-
-#### Using counts (wc)
-If we want to count the lines, words or bytes of a document we can use the command `wc`:
-```bash
-student@linux-ess:~$ wc auth.log
-  17  245 1731 auth.log
-```
-The first number is the number of lines, the second number the number of words and the third number the number of bytes of the file content.
-
-We can also output only one of those: 
-```bash
-student@linux-ess:~$ wc -l auth.log # numer of lines
-17 auth.log
-student@linux-ess:~$ wc -w auth.log # number of words
-245 auth.log
-student@linux-ess:~$ wc -c auth.log # number of bytes
-1731 auth.log
-```
-
-## Manipulating output
-### Translate (tr)
-The `tr` command allows us to _translate_ certain characters to other characters. It takes in 2 arguments:
-* The character (or set of characters) that needs to be replaced
-* The character (or set of characters) the previous set needs to be replaced by
-
-We can see a simple example below:
-```bash
-student@linux-ess:~$ head -3 auth.log | tr 'e' 'E'
-Jun 09 11:11:11 linux-Ess: SErvEr listEning on 0.0.0.0 port 22.
-Jun 09 11:11:11 linux-Ess: SErvEr listEning on :: port 22.
-Jun 09 12:32:24 linux-Ess: AccEptEd publickEy for: johndoE from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g>
-```
-all of the letters `e` in the output will be translated to the capital `E`. As said in the explanation above we can use ranges or sets of characters as well:
-```bash
-student@linux-ess:~$ head -3 auth.log | tr 'abcdklmn' 'ABCDKLMN'
-JuN 09 11:11:11 LiNux-ess: Server ListeNiNg oN 0.0.0.0 port 22.
-JuN 09 11:11:11 LiNux-ess: Server ListeNiNg oN :: port 22.
-JuN 09 12:32:24 LiNux-ess: ACCepteD puBLiCKey for: johNDoe froM 85.245.107.42 port 54259 ssh2: RSA SHA256:K18KPGZrTiz7g>
-student@linux-ess:~$ head -3 auth.log | tr 'a-z' 'A-Z'
-JUN 09 11:11:11 LINUX-ESS: SERVER LISTENING ON 0.0.0.0 PORT 22.
-JUN 09 11:11:11 LINUX-ESS: SERVER LISTENING ON :: PORT 22.
-JUN 09 12:32:24 LINUX-ESS: ACCEPTED PUBLICKEY FOR: JOHNDOE FROM 85.245.107.42 PORT 54259 SSH2: RSA SHA256:K18KPGZRTIZ7G>
-```
-It's not just regular characters we can replace. We can use special characters such as newlines or tabs as follows:
-```bash
-student@linux-ess:~$ head -3 auth.log | od -c
-0000000   J   u   n       0   9       1   1   :   1   1   :   1   1
-0000020   l   i   n   u   x   -   e   s   s   :       S   e   r   v   e
-0000040   r       l   i   s   t   e   n   i   n   g       o   n       0
-0000060   .   0   .   0   .   0       p   o   r   t       2   2   .  \n
-0000100   J   u   n       0   9       1   1   :   1   1   :   1   1
-0000120   l   i   n   u   x   -   e   s   s   :       S   e   r   v   e
-0000140   r       l   i   s   t   e   n   i   n   g       o   n       :
-0000160   :       p   o   r   t       2   2   .  \n   J   u   n       0
-0000200   9       1   2   :   3   2   :   2   4       l   i   n   u   x
-0000220   -   e   s   s   :       A   c   c   e   p   t   e   d       p
-0000240   u   b   l   i   c   k   e   y       f   o   r   :       j   o
-0000260   h   n   d   o   e       f   r   o   m       8   5   .   2   4
-0000300   5   .   1   0   7   .   4   2       p   o   r   t       5   4
-0000320   2   5   9       s   s   h   2   :       R   S   A       S   H
-0000340   A   2   5   6   :   K   1   8   k   P   G   Z   r   T   i   z
-0000360   7   g   >  \n
-0000364
-student@linux-ess:~$ head -3 auth.log | tr '\n' ' '
-Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22. Jun 09 11:11:11 linux-ess: Server listening on :: port 22. Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz
-```
-?> The example above changes all the _newlines_ to _spaces_.
-
-Imagine we have some data that has multiple occurances of a specific character and we only want it to display one (=squeeze). We can use the `-s` option to delete any recurring characters:
-```bash
-student@linux-ess:~$ head -3 auth.log | tr -s '1'
-Jun 09 1:1:1 linux-ess: Server listening on 0.0.0.0 port 22.
-Jun 09 1:1:1 linux-ess: Server listening on :: port 22.
-Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g>
-```
-
-lastly we have the option `-d` that will _delete_ any of the character(s) we define in the text:
-```bash
-student@linux-ess:~$ head -3 auth.log | tr -d ':'
-Jun 09 111111 linux-ess Server listening on 0.0.0.0 port 22.
-Jun 09 111111 linux-ess Server listening on  port 22.
-Jun 09 123224 linux-ess Accepted publickey for johndoe from 85.245.107.42 port 54259 ssh2 RSA SHA256K18kPGZrTiz7g>
-```
-
-### Stream editor (sed)
-`sed` is an advanced stream editor that can perform editing functions using regular expressions. Remember the `rename` command? We can use the same syntax of regular expressions here:
-```bash
-student@linux-ess:~$ tail -4 auth.log | sed 's/Failed/Incorrect/'
-Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 34598 ssh2
-Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 87568 ssh2
-Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 77898 ssh2
-Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
-```
-The example above will change the string `Failed` to `Incorrect` once for every line.
-
-?> Note that only in the output the changes are applied. The file itself isn't altered. If you want to apply it on the file itself you can add the option `-i`:
-```bash
-student@linux-ess:~$ tail -4 auth.log > lastfourlines
-student@linux-ess:~$ cat lastfourlines
-Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 34598 ssh2
-Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
-Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
-Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2 
-student@linux-ess:~$ sed -i 's/Failed/Incorrect/' lastfourlines
-student@linux-ess:~$ cat lastfourlines
-Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 34598 ssh2
-Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 87568 ssh2
-Jun 22 21:11:12 linux-ess: Incorrect password for: doeg from 192.168.0.10 port 77898 ssh2
-Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
-```
-
- Mind that by default sed will only change the string once per line. This is something we need to be aware of as we can see in the example below:
- ```bash
-student@linux-ess:~$ echo "example this is an example" | sed 's/example/test/'
-test this is an example
-```
-Only the first occurence of `example` is changed to `test`. If we want the `sed` command to change every occurence in a line, we have to use the `g` (global) flag as seen below:
-```bash
-student@linux-ess:~$ echo "example this is an example" | sed 's/example/test/g'
-test this is an test
-```
-
-?> There is also an `i` flag that will make the regex (=search string) case insensitive:
-```bash
-student@linux-ess:~$ echo "example this is an Example" | sed 's/example/test/g'
-test this is an Example
-student@linux-ess:~$ echo "example this is an Example" | sed 's/example/test/gi'
-test this is an test
-```
-
-We're also able to use sed to mask certain text:
-```bash
-student@ubuntu-server:~$ head -2 auth.log
-Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
-Jun 09 11:11:11 linux-ess: Server listening on :: port 22.
-student@ubuntu-server:~$ head -2 auth.log | sed 's/..:..:../00:00:00/'
-Jun 09 00:00:00 linux-ess: Server listening on 0.0.0.0 port 22.
-Jun 09 00:00:00 linux-ess: Server listening on :: port 22.
-student@ubuntu-server:~$ head -2 auth.log | sed 's/..:..:..//'
-Jun 09  linux-ess: Server listening on 0.0.0.0 port 22.
-Jun 09  linux-ess: Server listening on :: port 22.
-```
-
-Lastly we will look at the `d` flag which will remove any line containing the string:
-```bash
-student@linux-ess:~$ tail -4 auth.log
-Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 34598 ssh2
-Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
-Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
-Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
-student@linux-ess:~$ tail -4 auth.log | sed '/Failed/d'
-Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
-```
-
-Offcourse we can use our knowledge of regular expressions with sed, but if you want to use extended regular expressions you need to specify the option `-r`:
-```bash
-student@ubuntu-server:~$ grep -C2 www regexlist.txt
-32
-64
-htp://www.pxl.be
-http://www.pxl.be
-https://www.pxl.be
-192.168.1.19
-192.168.5.117
-student@ubuntu-server:~$ grep -C2 www regexlist.txt | sed -r 's_https?://.*_url masked_'
-32
-64
-htp://www.pxl.be
-url masked
-url masked
-192.168.1.19
-192.168.5.117
-```
-  
-?> Because we use slashes (`/`) in our regex we can opt to use underscores (`_`) as seperator
