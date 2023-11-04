@@ -7,7 +7,7 @@
 * [5 Inhoud van een bestand](./be-nl/05_filecontents/01_course.md)
 * [6 Software & paketten](./be-nl/06_software/01_course.md)
 * [7 Geavanceerde commandostructuren](./be-nl/07_advancedcommands/01_course.md)
-* [8 Filters & bestandspermissies ](./be-nl/08_filters/01_course.md)
+* [8 Filters & bestandsbewerkingen ](./be-nl/08_filters/01_course.md)
 * [9 Gebruikers & groepen](./be-nl/09_usersandgroups/01_course.md)
 * [10 Rechten](./be-nl/10_permissions/01_course.md)
 ** [Lab](./be-nl/10_permissions/02_lab.md)
