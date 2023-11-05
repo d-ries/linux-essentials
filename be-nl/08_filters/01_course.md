@@ -288,7 +288,7 @@ student
 
 ?> Weet dat om `uniq` te gebruiken je altijd eerst de gegevens moet sorteren (`sort`)! 
 
-?> Merk op dat de pipe (|) kan worden gebruikt als de `OR`-operator. Als we de `AND`-operator willen toepassen kunnen we twee greps achter elkaar pipen of een regex gebruiken: 
+?> Merk op dat als we de `AND`-operator willen toepassen, we twee greps achter elkaar kunnen pipen of een regex gebruiken: 
 ```bash
 cat auth.log | grep "port 44293"
 Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 44293 ssh2
