@@ -287,7 +287,7 @@ student
 
 ?> Note that to use `uniq` you must allways first `sort` the data!
 
-?> Note that the pipe sign (|) can be used as the `OR` operator. If we want to apply the `AND` operator we can pipe two greps after each other or use a regex:
+?> Note that if we want to apply the `AND` operator we can pipe two greps after each other or use a regex:
 
 ```bash
 cat auth.log | grep "port 44293"
