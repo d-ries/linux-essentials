@@ -1,4 +1,4 @@
-# Oefeningen op aliassen 
+# Oefeningen op aliases 
 
 ## Oefening 1 
 Installeer het pakket lolcat en maak een alias om `lolcat` uit te voeren in plaats van `cat`. Bekijk het bestand ~/.bash_history met cat  
