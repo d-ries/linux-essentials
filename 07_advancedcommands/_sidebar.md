@@ -12,6 +12,6 @@
 ** [Assignment - I/O redirection](./07_advancedcommands/exercises/io_redirection/99_exercises.md)
 ** [Assignment - control operators](./07_advancedcommands/exercises/control_operators/99_exercises.md)
 * [8 Filters & file operations ](./08_filters/01_course.md)
-* [9 Users & groups](./09_usersandpermissions/01_course.md)
+* [9 Users & groups](./09_usersandgroups/01_course.md)
 * [10 Permissions](./10_permissions/01_course.md)
 * [11 Automation](./11_automation/01_course.md)

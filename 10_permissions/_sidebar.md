@@ -8,7 +8,7 @@
 * [6 Software & packages](./06_software/01_course.md)
 * [7 Advanced command structures](./07_advancedcommands/01_course.md)
 * [8 Filters & file operations ](./08_filters/01_course.md)
-* [9 Users & groups](./09_usersandpermissions/01_course.md)
+* [9 Users & groups](./09_usersandgroups/01_course.md)
 * [10 Permissions](./10_permissions/01_course.md)
 ** [Lab](./10_permissions/02_lab.md)
 ** [Assignments: standard file permissions](./10_permissions/exercises/standard_file_permissions/99_exercises.md)

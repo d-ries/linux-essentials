@@ -11,6 +11,6 @@
 ** [Lab](./08_filters/02_lab.md)
 ** [Assignments: filters](./08_filters/exercises/filters/99_exercises.md)
 ** [Assignments: regular expressions](./08_filters/exercises/regular_expressions/99_exercises.md)
-* [9 Users & groups](./09_usersandpermissions/01_course.md)
+* [9 Users & groups](./09_usersandgroups/01_course.md)
 * [10 Permissions](./10_permissions/01_course.md)
 * [11 Automation](./11_automation/01_course.md)
