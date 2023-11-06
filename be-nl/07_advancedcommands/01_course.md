@@ -334,7 +334,7 @@ In dit voorbeeld is het het beste om onze fouten te redirecten naar de _void/bla
 student@linux-ess:~$ touch testfile
 student@linux-ess:~$ ls test*
 testfile
-student@linux-ess:~$ rm 2> /dev/null testfile && echo file deleted || echo failed to delete
+student@linux-ess:~$ rm testfile 2> /dev/null && echo file deleted || echo failed to delete
 file deleted
 student@linux-ess:~$ ls test*
 ls: cannot access 'test*': No such file or directory
