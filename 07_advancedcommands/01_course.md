@@ -46,6 +46,8 @@ The `third option` is to escape every space. Don't use this mechanism within the
 student@linux-ess:~$ action='play       games'  
 student@linux-ess:~$ echo \ \  I \ \ \ \ \ \ \ like \ \ to \ \ \ \ \ \ \ \ \ \ \ \ \ \ $action
     I       like   to              play       games
+student@linux-ess:~$ echo \ \  I \ \ \ \ \ \ \ like \ \ to \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$action
+    I       like   to              $action
 ```
 
 
@@ -333,7 +335,7 @@ In this example it would be best to redirect our errors to the _void_ as well, b
 student@linux-ess:~$ touch testfile
 student@linux-ess:~$ ls test*
 testfile
-student@linux-ess:~$ rm 2> /dev/null testfile && echo file deleted || echo failed to delete
+student@linux-ess:~$ rm testfile 2> /dev/null && echo file deleted || echo failed to delete
 file deleted
 student@linux-ess:~$ ls test*
 ls: cannot access 'test*': No such file or directory

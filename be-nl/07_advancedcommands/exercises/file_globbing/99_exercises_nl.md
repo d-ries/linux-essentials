@@ -1,4 +1,4 @@
-# Oefeningen op Bestand globbing
+# Oefeningen op File globbing
 
 ## Oefening 1 
 Maak een nieuwe map met de naam FileGlobEx met de bestanden script.sh, scrupt.sh en scrApt.sh. Gebruik het commando touch om de bestanden te maken.  
