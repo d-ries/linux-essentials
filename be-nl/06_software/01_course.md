@@ -238,7 +238,7 @@ Downloads/Steam/games/pacman
 
 ### tarball
 
-We can also zip the tar file when we create it.
+We kunnen de tar ook ineens zippen als we hem aanmaken.
 
 ```bash
 student@ubuntu-server:~$ tree
