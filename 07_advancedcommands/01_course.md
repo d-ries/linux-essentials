@@ -46,6 +46,8 @@ The `third option` is to escape every space. Don't use this mechanism within the
 student@linux-ess:~$ action='play       games'  
 student@linux-ess:~$ echo \ \  I \ \ \ \ \ \ \ like \ \ to \ \ \ \ \ \ \ \ \ \ \ \ \ \ $action
     I       like   to              play       games
+student@linux-ess:~$ echo \ \  I \ \ \ \ \ \ \ like \ \ to \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$action
+    I       like   to              $action
 ```
 
 
