@@ -1,4 +1,4 @@
-# Oefeningen op I/O-omleiding
+# Oefeningen op I/O-redirection
 
 ## Oefening 1 
 Maak een nieuw bestand met de naam "userinfo" in je homefolder. Doe dit door de uitvoer van het echo-commando van de variabele $USER om te leiden naar dit bestand  
