@@ -155,7 +155,7 @@ student@linux-ess:~/globbing$ echo '**** TITLE ****'
   
 
     
-## Aliassen 
+## Aliases 
 Aliassen zijn een manier om een eenvoudige naam te geven aan een vrij complex commando, zoals hieronder te zien is: 
 ```bash
 student@linux-ess:~$ alias show='ls -lah'
