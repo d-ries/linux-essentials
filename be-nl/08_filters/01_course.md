@@ -480,7 +480,7 @@ url masked
 
 ?> zonder de '-r'-optie zouden we het '?'-teken moeten escapen
 ```bash
-student@ubuntu-server:~$ grep -C2 www regexlist.txt | sed -r 's_https\?://.*_url masked_'
+student@ubuntu-server:~$ grep -C2 www regexlist.txt | sed 's_https\?://.*_url masked_'
 32
 64
 htp://www.pxl.be
