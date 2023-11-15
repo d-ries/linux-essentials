@@ -23,6 +23,7 @@ jobs:
         cp 09_usersandgroups/01_course.md book/09.md
         cp 10_permissions/01_course.md book/10.md
         cp 11_automation/01_course.md book/11.md
+        cp -R images book/
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
