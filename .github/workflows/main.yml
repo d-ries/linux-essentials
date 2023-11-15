@@ -1,0 +1,34 @@
+name: kdp pipeline
+
+on:
+  workflow_dispatch: # Add manual trigger
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Create 'book' folder
+      run: |
+        mkdir book
+        cp 03_commandline/01_course.md book/03.md
+        cp 04_filesandfolders/01_course.md book/04.md
+        cp 05_filecontents/01_course.md book/05.md
+        cp 06_software/01_course.md book/06.md
+        cp 07_advancedcommands/01_course.md book/07.md
+        cp 08_filters/01_course.md book/08.md
+        cp 09_usersandgroups/01_course.md book/09.md
+        cp 10_permissions/01_course.md book/10.md
+        cp 11_automation/01_course.md book/11.md
+
+    - name: Zip folder
+      run: zip -r kdp.zip book
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: kdp-artifact
+        path: kdp.zip
