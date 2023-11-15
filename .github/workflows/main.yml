@@ -24,11 +24,8 @@ jobs:
         cp 10_permissions/01_course.md book/10.md
         cp 11_automation/01_course.md book/11.md
 
-    - name: Zip folder
-      run: zip -r kdp.zip book
-
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
         name: kdp-artifact
-        path: kdp.zip
+        path: book
