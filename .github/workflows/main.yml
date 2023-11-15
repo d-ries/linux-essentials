@@ -32,7 +32,9 @@ jobs:
       run: |
          find book -name "*.md" -print0 | xargs -0 sed -i 's/\!\[.*\](\.\.\/images\//\!\[.*\](images\//g'
     - name: Copy KDP assets to folder
-      run: cp -r assets/kdp/* book/
+      run: | 
+          cp -r assets/kdp/* book/
+          ls -alh book
 
     - name: Install Pandoc
       run: |
