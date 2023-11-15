@@ -44,3 +44,4 @@ While it is possible to install Ubuntu Server/Desktop directly as the main opera
 * Install virtualization software, such as VirtualBox, on your host machine.
 
 This book does not cover the installation of Ubuntu Desktop. Numerous online guides comprehensively address this topic. However, the digital version of our book does include a section on installing Ubuntu Server in VMWare ([https://d-ries.github.io/linux-essentials/#/./02_installation/01_course](https://d-ries.github.io/linux-essentials/#/./02_installation/01_course)). Please note that the steps may vary slightly for VirtualBox or any other virtualization platform. Alternatively, you can explore installing Ubuntu on the Windows Subsystem for Linux, abbreviated as WSL2 ([https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#1-overview](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#1-overview)).
+
