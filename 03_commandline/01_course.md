@@ -1,4 +1,5 @@
 # Command line interface
+
 When booting the virtual machine, all that will show is a black screen with some white text:
 ![CLI_Login_And_Welcome](../images/03/CLI_Login_And_Welcome.png)
 
