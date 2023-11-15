@@ -31,13 +31,10 @@ jobs:
     - name: Update image paths in Markdown files
       run: |
          find book -name "*.md" -print0 | xargs -0 sed -i 's/\!\[.*\](\.\.\/images\//\!\[.*\](images\//g'
-    - name: Remove specific HTML tag from Markdown files
-      run: |
-          find book -name "*.md" -print0 | xargs -0 sed -i 's/<i class="fa-solid fa-circle-info"><\/i>//g'
-          find book -name "*.md" -print0 | xargs -0 sed -i 's/<i class="fa-solid fa-earth-europe"></i>//g'
+    
     - name: Remove URLs from Markdown files
       run: |
-          find book -name "*.md" -print0 | xargs -0 sed -i '/!\[.*\](/!b;s/[^!]\[\([^]]*\)\](\([^)]*\))/[\1]/g'
+          find book -name "*.md" -print0 | xargs -0 sed -i ';/!\[.*\](/!b;s~[^!]\[\([^]]*\)\](\([^)]*\))~[\1]~g''
 
           
     - name: Copy KDP assets to folder
