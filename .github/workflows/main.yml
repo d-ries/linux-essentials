@@ -25,6 +25,10 @@ jobs:
         cp 11_automation/01_course.md book/11.md
         cp -R images book/
 
+    - name: Replace blocks in Markdown files
+      run: |
+        find book -name "*.md" -print0 | xargs -0 sed -i 's/\?> \(.*\)/<span class="highlight">\1<\/span>/g'
+        
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
