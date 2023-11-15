@@ -37,7 +37,7 @@ jobs:
         find book -name "*.md" -print0 | xargs -0 sed -i 's/\?> \(.*\)/<span class="highlight">\1<\/span>/g'
     - name: Update image paths in Markdown files
       run: |
-         find book -name "*.md" -print0 | xargs -0 sed -i 's/\!\[.*\](\.\.\/images\//\!\[.*\](images\//g'
+         find book -name "*.md" -print0 | xargs -0 sed -i 's/\!\[\(.*\)](\.\.\/images\//\!\[\1\](images\//g'
     - name: Remove specific HTML tag from Markdown files
       run: |
           find book -name "*.md" -print0 | xargs -0 sed -i 's_<i class="fa-solid fa-circle-info"><\/i>__g'
