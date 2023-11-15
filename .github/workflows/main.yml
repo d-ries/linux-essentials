@@ -42,7 +42,8 @@ jobs:
         sudo apt-get install -y pandoc
     - name: Convert Markdown
       run: |
-         pandoc --listings -o book.epub book/metadata.yml book/*.md -d book/config.yml  --css=book/stylesheet.css --no-highlight
+         cd book
+         pandoc --listings -o book.epub metadata.yml *.md -d config.yml  --css=stylesheet.css --no-highlight
         
     - name: Upload artifact
       uses: actions/upload-artifact@v2
