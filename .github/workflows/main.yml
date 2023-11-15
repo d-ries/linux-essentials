@@ -33,9 +33,17 @@ jobs:
          find book -name "*.md" -print0 | xargs -0 sed -i 's/\!\[.*\](\.\.\/images\//\!\[.*\](images\//g'
     - name: Copy KDP assets to book folder
       run: cp -r assets/kdp/* book/
-  
+
+    - name: Install Pandoc
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y pandoc
+    - name: Convert Markdown to Another Format
+      run: |
+         pandoc --listings -o book.epub metadata.yml book/*.md -d config.yml  --css=stylesheet.css --no-highlight
+        
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
         name: kdp-artifact
-        path: book
+        path: book.epub
