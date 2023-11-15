@@ -28,7 +28,10 @@ jobs:
     - name: Replace blocks in Markdown files
       run: |
         find book -name "*.md" -print0 | xargs -0 sed -i 's/\?> \(.*\)/<span class="highlight">\1<\/span>/g'
-        
+    - name: Update image paths in Markdown files
+      run: |
+        find book -name "*.md" -print0 | xargs -0 sed -i 's/\.\.\/images\//\.\/images\//g'
+    
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
