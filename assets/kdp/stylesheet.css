@@ -40,3 +40,10 @@ pre{
     background-color: #ededed;
     padding: 4px;
 }
+
+figcaption{
+    display: block;
+    margin: 0 auto;
+    font-style: italic;
+    font-size: 80%;
+}
