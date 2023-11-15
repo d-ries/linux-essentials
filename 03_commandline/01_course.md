@@ -1,7 +1,7 @@
 # Command line interface
 
 When booting the virtual machine, all that will show is a black screen with some white text:
-![CLI_Login_And_Welcome](../images/03/CLI_Login_And_Welcome.png)
+![The Ubuntu welcome screen](../images/03/CLI_Login_And_Welcome.png)
 
 You will notice that there is no mouse pointer available. We will only use our keyboard as input device. This environment is called a _command line interface (CLI)_. There is no _graphical user interface (GUI)_ present in Ubuntu server. One of the reasons why they chose this is because having no GUI present will save system resources and narrows the attack surface. A CLI is also proven to be a very efficient & trustworthy way of working & interacting with an operating system and its services.
 
@@ -11,14 +11,14 @@ CLIs will be a lot more intersting towards automation, something that is harder 
 
 ## The prompt
 After logging in, you are shown the following line in the CLI. This is called the _prompt_:
-![prompt](../images/03/prompt.png)
+![The prompt structure](../images/03/prompt.png)
 
 The prompt exists of multiple parts that give us more information about the system we are using. We see information about our user and the hostname of the server that we are logged into.
 
 The `~` symbol is an abbreviation of the homefolder of the logged in user (in our case the folder `/home/student`). We will learn about paths & folders in a later chapter. For now you can compare this to the path `C:\Users\student` in Windows. So what we actually see in between the `:` and the `$` sign is a path pointing to the folder we are currently working in.
 
 
-![sudo right](../images/03/sandwich.png)
+![A cartoon about the sudo command](../images/03/sandwich.png)
 
 ## commands, arguments and options
 Whenever you type something using the keyboard the input will apear after the `$` sign. The `$` sign indicates the end of the prompt and the start of the user's input (= a command). To use the operating system using a CLI, we will have to use commands. The first command we will use is the `echo` command:

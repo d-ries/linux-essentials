@@ -25,7 +25,7 @@ In the '80 there were different versions of Unix. Because Unix was commercialize
 ## Linux
 A student, named Linus Torvalds, created a post in a newsgroup about his own Operating System in the '90:
 
-![linux](../images/01/linus.PNG)
+![a post by Linux Torvalts](../images/01/linus.PNG)
 
 We are still using the Linux kernel today. The kernel is being further developed every day.  
 
@@ -33,8 +33,6 @@ We are still using the Linux kernel today. The kernel is being further developed
 
 ### Linux distributions
 Linux distributions (distros in short) simplify the process of installing gnu/linux and other apps on your computer. Well-known distros are Ubuntu, RedHat, Fedora, CentOS, Debian, Archlinux and Oracle Linux. Because linux is very scalable, there are also special distros for a certain purpose, for example clonezilla.
-
-![distros](../images/01/distros.png)
 
 For this book we will focus on Ubuntu ([https://ubuntu.com](https://ubuntu.com)), a very popular debian based distribution made by Canonical.
 
