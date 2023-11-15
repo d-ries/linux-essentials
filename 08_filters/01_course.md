@@ -21,18 +21,7 @@ Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
 Jun 09 11:11:11 linux-ess: Server listening on :: port 22.
 Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g
 Jun 10 21:38:01 linux-ess: Failed password for: student from 192.168.0.1 port 37362 ssh2
-Jun 10 21:39:01 linux-ess: Failed password for: johndoe from 192.168.0.2 port 37849 ssh2
-Jun 10 21:42:01 linux-ess: Accepted password for: student from 84.298.138.41 port 48785 ssh2
-Jun 14 14:12:33 linux-ess: Accepted password for: johndoe from 192.168.0.3 port 38654 ssh2
-Jun 14 14:14:12 linux-ess: Accepted publickey for: student from 85.245.107.42 port 48298 ssh2: RSA SHA256:Keo89erjOEkmo
-Jun 15 17:42:18 linux-ess: Failed password for: janedoe from 192.168.0.10 port 48239 ssh2
-Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
-Jun 19 22:43:23 linux-ess: Failed password for: johndoe from 85.245.107.42 port 22834 ssh2: RSA SHA256:eoKmezlE3iOp38Dj
-Jun 22 08:04:00 linux-ess: Accepted password for: johndoe from 192.168.0.99 port 38299 ssh2
-Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 44293 ssh2
-Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 48987 ssh2
-Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 22658 ssh2
-Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 34598 ssh2
+...
 Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
 Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
 Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
@@ -118,11 +107,7 @@ Jun 10 21:38:01 linux-ess: Failed password for: student from 192.168.0.1 port 37
 Jun 10 21:39:01 linux-ess: Failed password for: johndoe from 192.168.0.2 port 37849 ssh2
 Jun 15 17:42:18 linux-ess: Failed password for: janedoe from 192.168.0.10 port 48239 ssh2
 Jun 19 22:43:23 linux-ess: Failed password for: johndoe from 85.245.107.42 port 22834 ssh2: RSA SHA256:eoKmezlE3iOp38Dj
-Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 44293 ssh2
-Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 48987 ssh2
-Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 22658 ssh2
-Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 34598 ssh2
-Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
+...
 Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
 ```
 
@@ -133,9 +118,7 @@ Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
 Jun 09 11:11:11 linux-ess: Server listening on :: port 22.
 Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g
 Jun 10 21:42:01 linux-ess: Accepted password for: student from 84.298.138.41 port 48785 ssh2
-Jun 14 14:12:33 linux-ess: Accepted password for: johndoe from 192.168.0.3 port 38654 ssh2
-Jun 14 14:14:12 linux-ess: Accepted publickey for: student from 85.245.107.42 port 48298 ssh2: RSA SHA256:Keo89erjOEkmo
-Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
+...
 Jun 22 08:04:00 linux-ess: Accepted password for: johndoe from 192.168.0.99 port 38299 ssh2
 Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
 ```
@@ -216,19 +199,7 @@ student@linux-ess:~$ cat auth.log
 Jun 09 11:11:11 linux-ess: Server listening on 0.0.0.0 port 22.
 Jun 09 11:11:11 linux-ess: Server listening on :: port 22.
 Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g>
-Jun 10 21:38:01 linux-ess: Failed password for: student from 192.168.0.1 port 37362 ssh2
-Jun 10 21:39:01 linux-ess: Failed password for: johndoe from 192.168.0.2 port 37849 ssh2
-Jun 10 21:42:01 linux-ess: Accepted password for: student from 84.298.138.41 port 48785 ssh2
-Jun 14 14:12:33 linux-ess: Accepted password for: johndoe from 192.168.0.3 port 38654 ssh2
-Jun 14 14:14:12 linux-ess: Accepted publickey for: student from 85.245.107.42 port 48298 ssh2: RSA SHA256:Keo89erjOEkmo>Jun 15 17:42:18 linux-ess: Failed password for: janedoe from 192.168.0.10 port 48239 ssh2
-Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
-Jun 19 22:43:23 linux-ess: Failed password for: johndoe from 85.245.107.42 port 22834 ssh2: RSA SHA256:eoKmezlE3iOp38Dj>Jun 22 08:04:00 linux-ess: Accepted password for: johndoe from 192.168.0.99 port 38299 ssh2
-Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 44293 ssh2
-Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 48987 ssh2
-Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 22658 ssh2
-Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 34598 ssh2
-Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
-Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
+...
 Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
 student@linux-ess:~$ head -3 auth.log | cut -d":" -f1
 Jun 09 11
@@ -266,16 +237,7 @@ student@linux-ess:~$ cat auth.log | grep -E "Accepted|Failed"
 Jun 09 12:32:24 linux-ess: Accepted publickey for: johndoe from 85.245.107.42 port 54259 ssh2: RSA SHA256:K18kPGZrTiz7g>
 Jun 10 21:38:01 linux-ess: Failed password for: student from 192.168.0.1 port 37362 ssh2
 Jun 10 21:39:01 linux-ess: Failed password for: johndoe from 192.168.0.2 port 37849 ssh2
-Jun 10 21:42:01 linux-ess: Accepted password for: student from 84.298.138.41 port 48785 ssh2
-Jun 14 14:12:33 linux-ess: Accepted password for: johndoe from 192.168.0.3 port 38654 ssh2
-Jun 14 14:14:12 linux-ess: Accepted publickey for: student from 85.245.107.42 port 48298 ssh2: RSA SHA256:Keo89erjOEkmo>Jun 15 17:42:18 linux-ess: Failed password for: janedoe from 192.168.0.10 port 48239 ssh2
-Jun 17 18:22:22 linux-ess: Accepted password for: janedoe from 192.168.0.10 port 43448 ssh2
-Jun 19 22:43:23 linux-ess: Failed password for: johndoe from 85.245.107.42 port 22834 ssh2: RSA SHA256:eoKmezlE3iOp38Dj>Jun 22 08:04:00 linux-ess: Accepted password for: johndoe from 192.168.0.99 port 38299 ssh2
-Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 44293 ssh2
-Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 48987 ssh2
-Jun 22 21:11:11 linux-ess: Failed password for: doeg from 192.168.0.10 port 22658 ssh2
-Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 34598 ssh2
-Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 87568 ssh2
+... 
 Jun 22 21:11:12 linux-ess: Failed password for: doeg from 192.168.0.10 port 77898 ssh2
 Jun 22 21:11:12 linux-ess: Accepted password for: doeg from 192.168.0.10 port 44293 ssh2
 student@linux-ess:~$ cat auth.log | grep -E "Accepted|Failed" | cut -d ':' -f5 | cut -d' ' -f2 | sort | uniq
@@ -348,15 +310,7 @@ student@linux-ess:~$ head -3 auth.log | od -c
 0000020   l   i   n   u   x   -   e   s   s   :       S   e   r   v   e
 0000040   r       l   i   s   t   e   n   i   n   g       o   n       0
 0000060   .   0   .   0   .   0       p   o   r   t       2   2   .  \n
-0000100   J   u   n       0   9       1   1   :   1   1   :   1   1
-0000120   l   i   n   u   x   -   e   s   s   :       S   e   r   v   e
-0000140   r       l   i   s   t   e   n   i   n   g       o   n       :
-0000160   :       p   o   r   t       2   2   .  \n   J   u   n       0
-0000200   9       1   2   :   3   2   :   2   4       l   i   n   u   x
-0000220   -   e   s   s   :       A   c   c   e   p   t   e   d       p
-0000240   u   b   l   i   c   k   e   y       f   o   r   :       j   o
-0000260   h   n   d   o   e       f   r   o   m       8   5   .   2   4
-0000300   5   .   1   0   7   .   4   2       p   o   r   t       5   4
+...
 0000320   2   5   9       s   s   h   2   :       R   S   A       S   H
 0000340   A   2   5   6   :   K   1   8   k   P   G   Z   r   T   i   z
 0000360   7   g   >  \n
@@ -516,36 +470,7 @@ Stan
 Emma
 Sara
 John
-Kelly
-Ian
-Ellen
-Tim
-Robin
-Nora
-Tom
-Caroline
-Michael
-john.doe@pxl.b
-john.doe@pxl.be
-p
-pl
-px
-pxl
-pxxl
-pxxxl
-pxxxxl
-128
-32
-64
-htp://www.pxl.be
-http://www.pxl.be
-https://www.pxl.be
-192.168.1.19
-192.168.5.117
-172.16.0.4
-127.0.0.1
-pxe
-pxe boot
+...
 This is a test.
 This has been tested
 ```
@@ -563,35 +488,7 @@ Max
 Stan
 Emma
 Sara
-John
-Kelly
-Ian
-Ellen
-Tim
-Robin
-Nora
-Tom
-Caroline
-Michael
-john.doe@pxl.b
-john.doe@pxl.be
-p
-pl
-px
-pxl
-pxxl
-pxxxl
-pxxxxl
-128
-32
-64
-htp://www.pxl.be
-http://www.pxl.be
-https://www.pxl.be
-192.168.1.19
-192.168.5.117
-172.16.0.4
-127.0.0.1
+...
 pxe
 pxe boot
 This is a test.

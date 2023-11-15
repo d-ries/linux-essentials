@@ -16,8 +16,6 @@ The prompt exists of multiple parts that give us more information about the syst
 
 The `~` symbol is an abbreviation of the homefolder of the logged in user (in our case the folder `/home/student`). We will learn about paths & folders in a later chapter. For now you can compare this to the path `C:\Users\student` in Windows. So what we actually see in between the `:` and the `$` sign is a path pointing to the folder we are currently working in.
 
-<i class="fa-solid fa-earth-europe"></i> [Linux prompt definition](http://www.linfo.org/prompt.html#:~:text=A%20commd%20prompt%2C%20also%20referred,terminal%20window%20by%20a%20shell.)
-
 
 ![sudo right](../images/03/sandwich.png)
 
@@ -36,7 +34,7 @@ This command will shut down the Ubuntu server machine. This is also the propper 
 
 Commands often have all kinds of options (beginning with a hyphen (-)) and paramaters (separated with spaces) to extend the functionality of a command. The `shutdown` command will take an (optional) value that defines when the server needs to actually shutdown. If no value is given, it will plan the shutdown task 1 minute after running the command. Let's look at some other options with the command `man shutdown`:
 ```bash
-SHUTDOWN(8)                                            shutdown                                           SHUTDOWN(8)
+SHUTDOWN(8)
 
 NAME
        shutdown - Halt, power-off or reboot the machine
@@ -79,8 +77,6 @@ There are many commands with options and every command has his own set of unique
 
 ?> <i class="fa-solid fa-circle-info"></i> Everything in Linux is case sensitive: commands, options, arguments, file- and foldernames, ...
 
-<i class="fa-solid fa-earth-europe"></i> 
-[Linux command structure](https://uofabioinformaticshub.github.io/BASH-Intro/notes/extra_command_syntax.html)
 
 ## manpages
 ### man
@@ -202,9 +198,3 @@ student@linux-ess:~$ history 4
 ```
 
 ?> It's a good habbit to use `CTRL-R` to do a reverse search (newest to oldest) through your history. Just press `CTRL-R` and type your search string. Use `CTRL-R` again to search for the next command. Use the arrow keys to go into the command line and modify it. Use `CTRL-C`to quit and go back to an empty command line. Use `enter` to run the command.
-
-## Extra course material <!-- {docsify-ignore} -->
-
-<i class="fa-solid fa-earth-europe"></i> [Linux man pages guide](https://itsfoss.com/linux-man-page-guide/)
-
-<i class="fa-solid fa-film"></i> [[Pluralsight] Using linux help resources](https://app.pluralsight.com/course-player?clipId=45fc2a82-103b-4d44-83b8-641411aa9c58)

@@ -578,22 +578,6 @@ We can also specify a directory from where to start the search:
 student@linux-ess:~$ find / -name "*networkmanager*"
 find: ‘/boot/lost+found’: Permission denied
 find: ‘/tmp/systemd-private-630e73882a5f4981b6052d8443c96a61-systemd-resolved.service-NhxvQ2’: Permission denied
-find: ‘/tmp/systemd-private-630e73882a5f4981b6052d8443c96a61-systemd-logind.service-XPeDAD’: Permission denied
-find: ‘/tmp/vmware-root_698-2730496923’: Permission denied
-find: ‘/tmp/systemd-private-630e73882a5f4981b6052d8443c96a61-ModemManager.service-our0IA’: Permission denied
-find: ‘/tmp/systemd-private-630e73882a5f4981b6052d8443c96a61-systemd-timesyncd.service-LpOYjL’: Permission denied
-find: ‘/tmp/snap.lxd’: Permission denied
-find: ‘/run/udisks2’: Permission denied
-find: ‘/run/user/1000/systemd/inaccessible/dir’: Permission denied
-find: ‘/run/sudo’: Permission denied
-find: ‘/run/cryptsetup’: Permission denied
-find: ‘/run/credentials/systemd-sysusers.service’: Permission denied
-find: ‘/run/systemd/propagate’: Permission denied
-find: ‘/run/systemd/unit-root’: Permission denied
-find: ‘/run/systemd/inaccessible/dir’: Permission denied
-find: ‘/run/lvm’: Permission denied
-find: ‘/run/lock/lvm’: Permission denied
-find: ‘/run/initramfs’: Permission denied
 /usr/lib/python3/dist-packages/cloudinit/distros/parsers/networkmanager_conf.py
 /usr/lib/python3/dist-packages/cloudinit/distros/parsers/__pycache__/networkmanager_conf.cpython-310.pyc
 /usr/lib/python3/dist-packages/sos/report/plugins/__pycache__/networkmanager.cpython-310.pyc
@@ -611,10 +595,7 @@ student@linux-ess:~$ sudo find / -name "*networkmanager*"
 /usr/lib/python3/dist-packages/cloudinit/distros/parsers/__pycache__/networkmanager_conf.cpython-310.pyc
 /usr/lib/python3/dist-packages/sos/report/plugins/__pycache__/networkmanager.cpython-310.pyc
 /usr/lib/python3/dist-packages/sos/report/plugins/networkmanager.py
-/snap/core20/1405/usr/lib/python3/dist-packages/cloudinit/distros/parsers/__pycache__/networkmanager_conf.cpython-38.pyc
-/snap/core20/1405/usr/lib/python3/dist-packages/cloudinit/distros/parsers/networkmanager_conf.py
-/snap/core20/1518/usr/lib/python3/dist-packages/cloudinit/distros/parsers/__pycache__/networkmanager_conf.cpython-38.pyc
-/snap/core20/1518/usr/lib/python3/dist-packages/cloudinit/distros/parsers/networkmanager_conf.py
+...
 ```
 
 If we want our search to be case insensitive we can use `-iname` instead of `-name`:
@@ -626,14 +607,7 @@ student@linux-ess:~$ sudo find / -iname "*networkmanager*"
 /usr/lib/python3/dist-packages/sos/report/plugins/__pycache__/networkmanager.cpython-310.pyc
 /usr/lib/python3/dist-packages/sos/report/plugins/networkmanager.py
 /etc/NetworkManager
-/snap/core20/1405/etc/NetworkManager
-/snap/core20/1405/usr/lib/NetworkManager
-/snap/core20/1405/usr/lib/python3/dist-packages/cloudinit/distros/parsers/__pycache__/networkmanager_conf.cpython-38.pyc
-/snap/core20/1405/usr/lib/python3/dist-packages/cloudinit/distros/parsers/networkmanager_conf.py
-/snap/core20/1518/etc/NetworkManager
-/snap/core20/1518/usr/lib/NetworkManager
-/snap/core20/1518/usr/lib/python3/dist-packages/cloudinit/distros/parsers/__pycache__/networkmanager_conf.cpython-38.pyc
-/snap/core20/1518/usr/lib/python3/dist-packages/cloudinit/distros/parsers/networkmanager_conf.py
+...
 ```
 
 
@@ -655,16 +629,6 @@ student@linux-ess:~$ sudo updatedb
 student@linux-ess:~$ locate testfile
 /home/student/testfile
 student@linux-ess:~$ locate .profile
-/etc/lvm/profile/cache-mq.profile
-/etc/lvm/profile/cache-smq.profile
-/etc/lvm/profile/command_profile_template.profile
-/etc/lvm/profile/lvmdbusd.profile
-/etc/lvm/profile/metadata_profile_template.profile
-/etc/lvm/profile/thin-generic.profile
-/etc/lvm/profile/thin-performance.profile
-/etc/lvm/profile/vdo-small.profile
-/etc/skel/.profile
-/home/student/.profile
 /snap/core20/1405/etc/skel/.profile
 /snap/core20/1405/usr/share/base-files/dot.profile
 ...
@@ -673,15 +637,6 @@ student@linux-ess:~$ locate .profile
 If we also want to see files that we do not have the privileges for, then we have to use `sudo`:
 ```bash
 student@linux-ess:~$ sudo locate .profile
-/etc/lvm/profile/cache-mq.profile
-/etc/lvm/profile/cache-smq.profile
-/etc/lvm/profile/command_profile_template.profile
-/etc/lvm/profile/lvmdbusd.profile
-/etc/lvm/profile/metadata_profile_template.profile
-/etc/lvm/profile/thin-generic.profile
-/etc/lvm/profile/thin-performance.profile
-/etc/lvm/profile/vdo-small.profile
-/etc/skel/.profile
 /home/student/.profile
 /root/.profile
 /snap/core20/1405/etc/skel/.profile
@@ -699,10 +654,6 @@ student@linux-ess:~$ sudo locate -i networkmanager
 /snap/core20/1405/etc/NetworkManager/dispatcher.d
 /snap/core20/1405/etc/NetworkManager/dispatcher.d/hook-network-manager
 /snap/core20/1405/usr/lib/NetworkManager
-/snap/core20/1405/usr/lib/NetworkManager/conf.d
-/snap/core20/1405/usr/lib/NetworkManager/conf.d/no-mac-addr-change.conf
-/snap/core20/1405/usr/lib/python3/dist-packages/cloudinit/distros/parsers/networkmanager_conf.py
-/snap/core20/1405/usr/lib/python3/dist-packages/cloudinit/distros/parsers/__pycache__/networkmanager_conf.cpython-38.pyc
 ...
 ```
 
@@ -716,16 +667,5 @@ student@linux-ess:~$ sudo locate -b -i networkmanager
 /snap/core20/1405/usr/lib/python3/dist-packages/cloudinit/distros/parsers/__pycache__/networkmanager_conf.cpython-38.pyc
 /snap/core20/1518/etc/NetworkManager
 /snap/core20/1518/usr/lib/NetworkManager
-/snap/core20/1518/usr/lib/python3/dist-packages/cloudinit/distros/parsers/networkmanager_conf.py
-/snap/core20/1518/usr/lib/python3/dist-packages/cloudinit/distros/parsers/__pycache__/networkmanager_conf.cpython-38.pyc
-/usr/lib/python3/dist-packages/cloudinit/distros/parsers/networkmanager_conf.py
-/usr/lib/python3/dist-packages/cloudinit/distros/parsers/__pycache__/networkmanager_conf.cpython-310.pyc
-/usr/lib/python3/dist-packages/sos/report/plugins/networkmanager.py
-/usr/lib/python3/dist-packages/sos/report/plugins/__pycache__/networkmanager.cpython-310.pyc
+...
 ```
-
-## Extra course material <!-- {docsify-ignore} -->
-
-<i class="fa-solid fa-film"></i> [[Pluralsight] Linux command syntax patterns](https://app.pluralsight.com/course-player?clipId=5c3b8432-e324-4b4b-adfd-2615298a7aba)
-
-<i class="fa-solid fa-film"></i> [[Pluralsight] Working with files & directories](https://app.pluralsight.com/course-player?clipId=f98f5110-6ee4-43c4-af00-4de294c17bc9)

@@ -154,7 +154,8 @@ The output indicates that it cannot locate the package `zap`. This means that it
 
 ### Removing software (apt remove)
 To remove software we can simply use the command below:
- ```bash
+
+```bash
 student@linux-ess:~$ sudo apt remove zip
 Reading package lists... Done
 Building dependency tree... Done
@@ -170,7 +171,7 @@ Do you want to continue? [Y/n] y
 (Reading database ... 32291 files and directories currently installed.)
 Removing zip (3.0-11build1) ...
 Processing triggers for man-db (2.9.1-1) ...
- ```
+```
  Notice how it doesn't automatically remove the dependencies we talked about earlier. This is because there might be other packages that require this dependency. We can use the `sudo apt autoremove` command to remove unused dependencies.
 
  We also have a somewhat more agressive command to remove packages: `sudo apt purge <packagename>`. The difference between `remove` and `purge` is that when using `purge` it will remove any config files linked to that application as well. When using `remove` those config files will stay on the system.
@@ -230,8 +231,8 @@ student@ubuntu-server:~$ tree
 │       └── games
 │           └── pacman
 ├── emptyfile
-student@ubuntu-server:~$ tar -cf Downloads.tar Downloads     # create tar
-student@ubuntu-server:~$ tar -tf Downloads.tar               # view contents of tar
+student@ubuntu-server:~$ tar -cf Downloads.tar Downloads # create tar
+student@ubuntu-server:~$ tar -tf Downloads.tar # view contents of tar
 Downloads/
 Downloads/logo.png
 Downloads/Steam/
@@ -252,8 +253,8 @@ student@ubuntu-server:~$ tree
 │       └── games
 │           └── pacman
 ├── emptyfile
-student@ubuntu-server:~$ tar -czf Downloads.tar.gz  Downloads             # create tarball 
-student@ubuntu-server:~$ tar -tzf Downloads.tar.gz                        # view contents of tarball
+student@ubuntu-server:~$ tar -czf Downloads.tar.gz  Downloads # create tarball 
+student@ubuntu-server:~$ tar -tzf Downloads.tar.gz # view contents of tarball
 Downloads/
 Downloads/logo.png
 Downloads/Steam/
@@ -341,6 +342,7 @@ student@linux-ess:~$ sudo dpkg-reconfigure keyboard-configuration
 One of the relative new players is snap. A snap is a bundle of the software we want to install with all of its dependencies stored in one file and executed in its own bubble. This means that two snaps cannot interfere with eachother. This for example makes it possible to install two different versions of the same software at the same time and running them together. Snaps have their own filesystem but can work with files on your systems too. You can find snaps in the snap store on a Desktop or with `snap search` on a server. Snaps are used more and more because they are distro independant. If you can install the snap daemon on the distro it will run all snaps. 
 
 The commands for working with snap are almost similar as apt. We have:  
+```bash
 snap search  
 snap list (installed apps)  
 snap list --all (shows all the installed versions)  
@@ -350,7 +352,9 @@ snap install
 snap remove   
 snap refresh (upgrades the snaps, happens every day automatically)     
 snap changes (history of changes)  
-snap version  
+snap version 
+```
+ 
 
 snap update does not exist. The snap daemon checks for updates 4 times a day.
 
