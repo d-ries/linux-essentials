@@ -86,7 +86,7 @@ There are many commands with options and every command has his own set of unique
 ### man
 In Linux we use a CLI. Therefore we will have to work with various commands. Our Ubuntu installation has all kinds of commands built-in. To find commands that we can use we could use Google, but the operating system itself also has information about all installed commands. This info is bundled in _manpages_ (short for manual pages). You can access these manpages through the `man` command.
 
-Type man followed by a command (for which you want help) and start reading:
+Using `man` followed by a command we can view the manual page for that command:
 ```bash
 man shutdown
 ```
@@ -99,7 +99,7 @@ man sudo.conf
 
 You can search in the description of installed commands by using the `-k` option (or use the command apropos) as follows:
 ```bash
-man -k shutdown                        or                  apropos shutdown
+man -k shutdown
 ```
 
 ### manpage sections
@@ -132,8 +132,8 @@ To go to the next occurence you can push the letter _n_. To go to the previous o
 ### whereis & whatis
 We can quickly view the description of a command without opening the full manpage by using the `whatis` command:
 ```bash
-student@linux-ess:~$ whatis route
-route (8) - show / manipulate the IP routing table
+student@linux-ess:~$ whatis pwd
+pwd (1)              - print name of current/working directory
 ```
 
 To view the location of the manpage itself we can use the `whereis` command:

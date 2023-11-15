@@ -289,8 +289,7 @@ This will create the folders `Steam` and `games` if they don't exist.
 
 ![Directories_fileOne_fileTwo](../images/04/Ch4_fileOne_fileTwo.png)
 
-One easy way to create an empty file is with touch. The example starts with an empty directory, creates two files with touch and then lists
-those files:
+One way to create an empty file is with the `touch` command. In the example below we use this command to create 2 files:
 ```bash
 student@linux-ess:~$ ls -l
 total 8
@@ -383,7 +382,7 @@ aFolder  backups  Downloads  emptyfile  File  fileOne  fileTwo  'File Two'  newF
   
   
 
-When renaming only one file or folder, `mv` is the prefered command to use. The examples both used files, but the same logic works for renaming and moving folders.
+For renaming single files or folders we can use the `mv` (move) command:
 ```bash
 student@linux-ess:~$ ls 
 aFolder  backups  Downloads  emptyfile  File  fileOne  fileTwo  'File Two'  newFileName  One
