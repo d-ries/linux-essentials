@@ -11,7 +11,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Create 'book' folder
+    - name: Create folder
       run: |
         mkdir book
         cp 03_commandline/01_course.md book/03.md
@@ -31,19 +31,34 @@ jobs:
     - name: Update image paths in Markdown files
       run: |
          find book -name "*.md" -print0 | xargs -0 sed -i 's/\!\[.*\](\.\.\/images\//\!\[.*\](images\//g'
-    - name: Copy KDP assets to book folder
-      run: cp -r assets/kdp/* book/
+    - name: Remove specific HTML tag from Markdown files
+      run: |
+          find book -name "*.md" -print0 | xargs -0 sed -i 's_<i class="fa-solid fa-circle-info"><\/i>__g'
+          find book -name "*.md" -print0 | xargs -0 sed -i 's_<i class="fa-solid fa-earth-europe"></i>__g'
 
-    - name: Install Pandoc
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y pandoc
-    - name: Convert Markdown to Another Format
-      run: |
-         pandoc --listings -o book.epub metadata.yml book/*.md -d config.yml  --css=stylesheet.css --no-highlight
-        
+          
+    - name: Copy KDP assets to folder
+      run: | 
+          cp -r assets/kdp/* book/
+          ls -alh book
+      
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
         name: kdp-artifact
-        path: book.epub
+        path: book
+
+    #- name: Install Pandoc
+    #  run: |
+    #    sudo apt-get update
+    #    sudo apt-get install -y pandoc
+    #- name: Convert Markdown
+    #  run: |
+    #     cd book
+    #     pandoc --listings -o book.epub metadata.yml *.md -d config.yml  --css=stylesheet.css --no-highlight
+    #    
+    #- name: Upload artifact
+    #  uses: actions/upload-artifact@v2
+    #  with:
+    #    name: kdp-artifact
+    #    path: book/book.epub
