@@ -26,6 +26,10 @@ div.sourceCode {
     margin-left: 8px;
 }
 
+a,a:active{
+    color: #000;
+}
+
 pre{
     max-width: 100%; /* Set your desired max width */
     white-space: pre-wrap; 
