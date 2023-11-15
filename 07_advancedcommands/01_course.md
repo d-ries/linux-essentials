@@ -219,7 +219,7 @@ The order in which the shell checks for commands in the shell:
 ## I/O redirection
 ### I/O Streams
 When working with the shell we actually work with something called streams. There are 3 basic streams available when using a shell:
-![iostreams](./../images/07/ioredirect.png)
+![iostreams](../images/07/ioredirect.png)
 
 The most basic example is called `stdin`. This is the stream that we use to input data into the shell using our keyboard.
 
