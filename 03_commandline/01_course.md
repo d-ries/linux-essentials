@@ -104,7 +104,7 @@ man -k shutdown                        or                  apropos shutdown
 
 ### manpage sections
 Sometimes  `man <keyword>` is used to get help of a command, but it's also used to get the help of a (config)file, daemon, ... This is an issue because `man <keyword>` needs to open the manpage you are looking for. What if the keyword exists as a command and as a configuration file? A perfect example for this is `passwd`:
-```
+```bash
 student@linux-ess:~$ apropos passwd
 ...
 passwd (1)           - change user password
