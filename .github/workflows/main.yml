@@ -35,18 +35,24 @@ jobs:
       run: | 
           cp -r assets/kdp/* book/
           ls -alh book
-
-    - name: Install Pandoc
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y pandoc
-    - name: Convert Markdown
-      run: |
-         cd book
-         pandoc --listings -o book.epub metadata.yml *.md -d config.yml  --css=stylesheet.css --no-highlight
-        
+          
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
         name: kdp-artifact
-        path: book.epub
+        path: book
+
+    #- name: Install Pandoc
+    #  run: |
+    #    sudo apt-get update
+    #    sudo apt-get install -y pandoc
+    #- name: Convert Markdown
+    #  run: |
+    #     cd book
+    #     pandoc --listings -o book.epub metadata.yml *.md -d config.yml  --css=stylesheet.css --no-highlight
+    #    
+    #- name: Upload artifact
+    #  uses: actions/upload-artifact@v2
+    #  with:
+    #    name: kdp-artifact
+    #    path: book/book.epub
