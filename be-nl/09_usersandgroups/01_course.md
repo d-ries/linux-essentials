@@ -26,7 +26,7 @@ root:x:0:0:root:/root:/bin/bash
 
 We kunnen meer informatie zien dan alleen gebruikersnamen. Deze regels bevatten de gebruikersidentificatie (`1000` voor `student`), de locatie van de home folder, de standaardshell, ...  
 
-?> <i class="fa-solid fa-circle-info"></i> Meer informatie over dit bestand, de kolommen en de inhoud vind je door het commando `man 5 passwd` uit te voeren. 
+?> <i class="fa-solid fa-circle-info"></i> Meer informatie over dit bestand, de opmaak en de inhoud vind je door het commando `man 5 passwd` uit te voeren. 
 
 ### Gebruikers toevoegen (useradd) 
 Om gebruikers toe te voegen kunnen we eenvoudig het commando `useradd` gebruiken. Het is belangrijk op te merken dat we dit commando moeten uitvoeren met `sudo`-rechten. Dit komt omdat het een systeemopdracht is die het hele systeem beïnvloedt. Om een nieuwe gebruiker met de gebruikersnaam `teacher` toe te voegen, kunnen we het volgende commando uitvoeren: 
@@ -39,11 +39,11 @@ lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false
 teacher:x:1001:1001:Teacher Account:/home/teacher:/bin/sh
 ```
 
-De `-d` neemt een argument op en gebruikt dit argument als een pad naar waar de home folder moet worden gemaakt. De optie `m` (`create home`) zorgt ervoor dat de thuismap daadwerkelijk met de juiste machtigingen wordt gemaakt. Ten slotte stelt de optie `-c` (`comment`) extra metadata in voor de gebruiker.  
+De `-d` neemt een argument op en gebruikt dit argument als een pad naar waar de homefolder moet worden gemaakt. De optie `-m` (`create home`) zorgt ervoor dat de homefolder daadwerkelijk met de juiste machtigingen wordt aangemaakt. Ten slotte stelt de optie `-c` (`comment`) extra metadata in voor de gebruiker.  
 
 ?> <i class="fa-solid fa-circle-info"></i> Houd er rekening mee dat de optie -d optioneel is en als deze niet is opgegeven, standaard een map is met dezelfde naam als de gebruikersnaam in de map /home. 
 
-?> <i class="fa-solid fa-circle-info"></i> We kunnen gebruikers verwijderen door het commando `userdel -r teacher` uit te voeren. De optie `-r` verwijdert ook de thuismap van die gebruiker. 
+?> <i class="fa-solid fa-circle-info"></i> We kunnen gebruikers verwijderen door het commando `userdel -r teacher` uit te voeren. De optie `-r` verwijdert ook de homefolder van die gebruiker. 
 
 Zoals te zien is in de map `/home` of in het bestand `/etc/passwd` is de nieuwe gebruiker aangemaakt: 
 ```bash
