@@ -1,0 +1,33 @@
+img {
+    display: block;
+    margin: 0 auto;
+}
+
+code{
+    background-color: #ededed;
+}
+
+.sourceCode {
+    display: block;
+    background-color: #ededed;
+    padding: 4px;
+    overflow: visible;
+}
+
+div.sourceCode {
+    overflow: visible;
+    white-space: pre-wrap;
+}
+
+.highlight{
+    display: block;
+    background-color: #ededed;
+}
+
+pre{
+    max-width: 100%; /* Set your desired max width */
+    white-space: pre-wrap; 
+    word-wrap: break-word;
+    background-color: #ededed;
+    padding: 4px;
+}
