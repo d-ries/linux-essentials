@@ -28,6 +28,7 @@ jobs:
     - name: Copy KDP assets to folder
       run: | 
           cp -r assets/kdp/* book/
+          mv book/introduction.md book/01.md
           ls -alh book
           
     - name: Replace blocks in Markdown files
