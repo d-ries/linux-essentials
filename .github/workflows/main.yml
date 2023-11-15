@@ -40,12 +40,6 @@ jobs:
       run: |
           find book -name "*.md" -print0 | xargs -0 sed -i 's_<i class="fa-solid fa-circle-info"><\/i>__g'
           find book -name "*.md" -print0 | xargs -0 sed -i 's_<i class="fa-solid fa-earth-europe"></i>__g'
-      
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: kdp-artifact
-        path: book
 
     - name: Install Pandoc
       run: |
@@ -60,4 +54,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: kdp-artifact
-        path: book/book.epub
+        path: book
