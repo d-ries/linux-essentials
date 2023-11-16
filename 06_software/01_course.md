@@ -61,7 +61,7 @@ We can see that this command gets data from a bunch of lists. These lists are ca
 The list of repositories that `apt` uses can be found in the file `/etc/apt/sources.list`. We can manually add more repositories to this file or use the command `add-apt-repository` but we will not go into this for now.
 
 
-### Software zoeken (apt search) 
+### Finding software (apt search) 
 Imagine that we downloaded a file that ends with `.zip` and we have to find a program that can deal with this kind of file. We could use the following command, making use of a regular expression in the search term: 
 ```bash
 student@linux-ess:~$ apt search "\.zip file"       # \.  to make clear that we are searching for a dot
