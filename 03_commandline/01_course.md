@@ -11,7 +11,7 @@ CLIs will be a lot more intersting towards automation, something that is harder 
 
 ## The prompt
 After logging in, you are shown the following line in the CLI. This is called the _prompt_:
-![The prompt structure](../images/03/prompt.png)
+![The prompt structure](../images/03/prompt.png){#myimg}
 
 The prompt exists of multiple parts that give us more information about the system we are using. We see information about our user and the hostname of the server that we are logged into.
 

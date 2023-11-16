@@ -1,7 +1,8 @@
-img {
+#myimg {
     display: block;
     margin: 0 auto;
-    max-width: 100% !important;
+    width: 90% !important;
+    max-width: 90% !important;
 }
 
 code{
