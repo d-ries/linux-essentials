@@ -18,7 +18,7 @@ The prompt exists of multiple parts that give us more information about the syst
 The `~` symbol is an abbreviation of the homefolder of the logged in user (in our case the folder `/home/student`). We will learn about paths & folders in a later chapter. For now you can compare this to the path `C:\Users\student` in Windows. So what we actually see in between the `:` and the `$` sign is a path pointing to the folder we are currently working in.
 
 
-![A cartoon about the sudo command](../images/03/sandwich.png)
+![A cartoon about the sudo command BOOKREMOVE](../images/03/sandwich.png)
 
 ## commands, arguments and options
 Whenever you type something using the keyboard the input will apear after the `$` sign. The `$` sign indicates the end of the prompt and the start of the user's input (= a command). To use the operating system using a CLI, we will have to use commands. The first command we will use is the `echo` command:
