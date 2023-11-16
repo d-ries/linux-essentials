@@ -72,8 +72,6 @@ As you can see the `shutdown` command has a lot of options that we can use to ex
 
 If we would like to restart our Linux, for example, we could use an option with the command, which results in `shutdown -r`.
 
-Er zijn veel commando's met opties en ieder commando heeft zijn eigen set unieke opties. 
-
 There are many commands with options and every command has his own set of unique options.
 
 ?> <i class="fa-solid fa-circle-info"></i> Everything in Linux is case sensitive: commands, options, arguments, file- and foldernames, ...
