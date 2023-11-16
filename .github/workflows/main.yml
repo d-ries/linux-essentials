@@ -59,6 +59,16 @@ jobs:
       run: |
          cd book
          pandoc --listings -o book.epub metadata.yml *.md -d config.yml  --css=stylesheet.css --no-highlight
+
+    - name: Install Calibre
+      run: |
+        sudo apt-get update
+        sudo apt-get install calibre
+
+    - name: Convert EPUB to PDF
+      run: | 
+        cd book
+        ebook-convert book.epub book.pdf
         
     - name: Upload artifact
       uses: actions/upload-artifact@v2
