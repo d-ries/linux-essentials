@@ -22,7 +22,7 @@ In the '80 there were different versions of Unix. Because Unix was commercialize
 ### Linux
 A student, named Linus Torvalds, created a post in a newsgroup about his own Operating System in the '90:
 
-![linux](../images/01/linus.PNG)
+![linux](../images/01/linus.png)
 
 We are still using the Linux kernel today. The kernel is being further developed every day.  
 

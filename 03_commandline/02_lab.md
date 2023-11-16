@@ -4,7 +4,7 @@
 
 On the [downloads page of the Minetest website](https://www.minetest.net/downloads/) we see a link that points to a specific ubuntu url called `packages.ubuntu.com/...`. This means that you can install the `minetest` package using a CLI tool.
 
-![CLI_LAB_Download_Minetest](../images/03/lab_minetest_download.PNG)
+![CLI_LAB_Download_Minetest](../images/03/lab_minetest_download.png)
 
 ## Finding ways to install minetest
 

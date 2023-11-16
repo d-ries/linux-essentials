@@ -186,7 +186,7 @@ student@linux-ess:~$ nano jokes2.0.txt
 ```
 A text editor window will open as shown in the figure below where you can navigate using the arrow keys. You can add/edit/delete content by using your keyboard.
 
-![nano](../images/05/nano.PNG)
+![nano](../images/05/nano.png)
 
 At the bottom of the screen it shows some of the shortcuts you can use. Some of the most interesting ones are:
 * _ctrl+s_: this is used to save the changes to the same file.

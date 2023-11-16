@@ -84,7 +84,7 @@ Aborted
 
 We notice that we get an error message saying `cannot find card '0'`. Remember that we are trying to run the client version of the game. This client is an actual graphical user interface that would look something like this:
 
-![minetest client](../images/06/minetest-client.PNG)
+![minetest client](../images/06/minetest-client.png)
 
 We get this error because we are running an Ubuntu server using a command line interface. There is no graphical user interface present so the actual GUI of the client cannot be loaded. We will install the client version of the game later on in this lab on our laptop.
 
@@ -150,24 +150,24 @@ student@linux-ess:~$  minetest --server --world ~/linuscraft/serverfiles/myworld
 ### Download the client
 Next up we need to download the client on our Windows laptop. You can download the client on https://www.minetest.net/downloads/. Download and extract the `Minetest x.x.x - portable, 64-bit (recommended)`. After extracting the folder, you will find a file named `minetest.exe` in the subfolder `bin` which you can doubleclick:
 
-![minetest-client](../images/06/minetest-client-folder.PNG)
+![minetest-client](../images/06/minetest-client-folder.png)
 
 ### Connecting to our server
 When booting up the client on our Windows machine you will get a menu with several options. Since we want to join a server and not play locally we click the _join game_ tab.
 
-![minetest-client-menu](../images/06/minetest-client-menu.PNG)
+![minetest-client-menu](../images/06/minetest-client-menu.png)
 
 On the right side of the menu we can enter the ip address that we found earlier on the server by running the command `ip a`. The port should be set to the value `30000` by default. We also provide a username and password and click on the `register` button:
-![minetest-client-menu](../images/06/minetest-client-join-register.PNG)
+![minetest-client-menu](../images/06/minetest-client-join-register.png)
 
 ?> The next time you join, you will have to click the login button and provide the selected password!
 
 We set the password and click on the `Register` button:
-![minetest-client-menu](../images/06/minetest-client-join-register2.PNG)
+![minetest-client-menu](../images/06/minetest-client-join-register2.png)
 
 After this process, the client should connect you to the server and you will be able to run around and build stuff!
 
-![minetest-client-connected](../images/06/minetest-client-connected.PNG)
+![minetest-client-connected](../images/06/minetest-client-connected.png)
 
 ?> Be careful. Dangerous creatures roam around the world at night!
 
