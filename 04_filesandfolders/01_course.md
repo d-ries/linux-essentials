@@ -1,6 +1,9 @@
 # Files and Directories
+
 ## Working with directories
+
 ### Print working directory (pwd)
+
 The first command we will look at is the `pwd` command. The manpages gives an accurate description of what the command does:
 ```
 student@linux-ess:~$ whatis pwd
@@ -65,15 +68,7 @@ student@linux-ess:/etc/netplan$ ls
 00-installer-config.yaml
 student@linux-ess:/etc/netplan$ cd /var/log
 student@linux-ess:/var/log$ ls
-alternatives.log                dmesg                           syslog
-apport.log                      dpkg.log                        ubuntu-advantage.log
-apt                             faillog                         ubuntu-advantage-timer.log
-auth.log                        installer                       unattended-upgrades
-bootstrap.log                   journal                         vmware-network.log
-btmp                            kern.log                        vmware-vmsvc-root.log
-cloud-init.log                  landscape                       vmware-vmtoolsd-root.log
-cloud-init-output.log           lastlog                         wtmp
-dist-upgrade                    private
+alternatives.log  apt  btmp  dist-upgrade  dpkg.log  journal  landscape  lastlog  unattended-upgrades  wtmp
 student@linux-ess:/var/log$ cd -
 student@linux-ess:/etc/netplan$ pwd
 /etc/netplan
