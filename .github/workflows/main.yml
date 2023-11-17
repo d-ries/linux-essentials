@@ -38,7 +38,7 @@ jobs:
     - name: Update image paths in Markdown files
       run: |
          find book -name "*.md" -print0 | xargs -0 sed -i 's|(\.\./images/|(./images/|g'
-    - name: Update image paths in Markdown files
+    - name: Update image ids in Markdown files
       run: |
         find book -name "*.md" -exec sed -i 's|\(!\[.*\](\./images/[0-9]\+/\(.*\.png\))\)|\1{#myimg}|g' {} +
     - name: Remove specific images

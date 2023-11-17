@@ -1,7 +1,7 @@
 # Assignment Shell history
 
 ## Task 1
-Create the files sript.sh, scrupt.sh and scrApt.sh. Do this by using the touch commando three times. 
+Create the files sript.sh, scrupt.sh and scrApt.sh. Do this by using the touch command three times. 
 
 <br/>![](images/2022-08-15-15-02-23.png)
 

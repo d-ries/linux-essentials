@@ -154,7 +154,7 @@ student@linux-ess:~$ cat jokes.txt
 What is a Linux user's favorite game?
 sudo ku
 ```
-We pressed __ctrl+d__ after the line 'sudo ku'
+We pressed __ctrl+d__ after the line `sudo ku`
  
 #### Copy files using cat
 Knowing what we learnt about using _output redirection_ (`>`) we can actually use this to copy file contents to another file as follows:
@@ -189,6 +189,7 @@ A text editor window will open as shown in the figure below where you can naviga
 ![nano](../images/05/nano.png)
 
 At the bottom of the screen it shows some of the shortcuts you can use. Some of the most interesting ones are:
+
 * _ctrl+s_: this is used to save the changes to the same file.
 * _ctrl+o_: this is used to save the changes to another filename. This will prompt for a filename and will overwrite the file if a file with the same name already exists.
 * _ctrl+x_: quit the text editor and go back to the prompt. When you made changes to the file you will be asked if you want to save the changes and ifso you will have to enter a filename and press enter. It will overwrite the file if a file with the same name already exists.  

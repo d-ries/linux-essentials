@@ -1,7 +1,7 @@
 # Assignment Shell history
 
 ## Task 1
-Create the files sript.sh, scrupt.sh and scrApt.sh. Do this by using the touch commando three times. 
+Create the files sript.sh, scrupt.sh and scrApt.sh. Do this by using the touch command three times. 
 
 ## Task 2
 Type CTRL-R to search in the bash_history and type some letters scr. You will see the last command that has been used with these letters, normally this would be "touch scrApt.sh".

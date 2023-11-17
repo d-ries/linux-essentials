@@ -61,7 +61,7 @@ We can see that this command gets data from a bunch of lists. These lists are ca
 The list of repositories that `apt` uses can be found in the file `/etc/apt/sources.list`. We can manually add more repositories to this file or use the command `add-apt-repository` but we will not go into this for now.
 
 
-### Software zoeken (apt search) 
+### Find software (apt search) 
 Imagine that we downloaded a file that ends with `.zip` and we have to find a program that can deal with this kind of file. We could use the following command, making use of a regular expression in the search term: 
 ```bash
 student@linux-ess:~$ apt search "\.zip file"       # \.  to make clear that we are searching for a dot
@@ -88,6 +88,7 @@ zip/jammy 3.0-12build2 amd64
 student@linux-ess:~$
 ```
 The last entry in the list shows us a package that can archive .zip files. The procedure to find it was as follows: 
+
 * It searches all repositories that we have downloaded from the Internet (/etc/apt/sources.list) to find a package that meets the search term. 
 * Packages are found, like the `zip`-package or `unzip`-package. 
 
@@ -123,6 +124,7 @@ Setting up zip (3.0-11build1) ...
 Processing triggers for man-db (2.9.1-1) ...
 ```
 If we analyse the output of the command we can see a couple of things happening:
+
 * It reads the package list to find the `zip` package. After this is done it builds a dependency tree to see what dependencies the `zip` package needs.
 * It points out that it will install an additional package called `unzip`. This is a dependency of the `zip` command.
 * It points out what new packages will be installed and if any packages will be updated.
@@ -319,6 +321,7 @@ student@linux-ess:~/tarexample$ ls
 app  app.tar.gz  docs  docs.tar
 ```
 The options we use can be found in the manpage, but below you can find a small summary of the most important ones: 
+
 * `-x`: Stands for extract, this will unpack all the contents of the file.
 * `-f`: Stands for file. This uses the argument after the options as the path of the archive we want to extract.
 * `-z`: This makes sure we run the file through `gzip`, another archive tool. The extention `tar.gz` hints that it is processed through `gzip`.
