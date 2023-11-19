@@ -317,8 +317,12 @@ student@linux-ess:~$ grep student /etc/passwd
 student:x:1000:1999:Student Account:/home/student:/bin/bash
 student@linux-ess:~$ id student
 uid=1000(student) gid=1999(it) groups=1999(it),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),110(lxd)
+student@linux-ess:~$ id 
+uid=1000(student) gid=1000(student) groups=1999(it),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),110(lxd)
 student@linux-ess:~$ groups student
 student : it adm cdrom sudo dip plugdev lxd
+student@linux-ess:~$ groups 
+student : student adm cdrom sudo dip plugdev lxd
 student@linux-ess:~$ ls -l
 total 16
 drwxr-xr-x 5 student it 4096 Nov  9 15:04 Documents
@@ -349,6 +353,8 @@ drwxr-xr-x 6 student it      4096 Oct 23 12:22 linuscraft
 drwx------ 5 student it      4096 Oct 19 15:07 snap
 -rw-r--r-- 1 student student    0 Nov 18 14:02 test
 -rw-r--r-- 1 student it         0 Nov 18 14:04 test2
-student@linux-ess:~$ groups student
+student@linux-ess:~$ groups
 student : it adm cdrom sudo dip plugdev lxd
+student@linux-ess:~$ id
+uid=1000(student) gid=1999(it) groups=1999(it),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),110(lxd)
 ```
