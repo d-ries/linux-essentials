@@ -310,8 +310,12 @@ student@linux-ess:~$ grep student /etc/passwd
 student:x:1000:1999:Student Account:/home/student:/bin/bash
 student@linux-ess:~$ id student
 uid=1000(student) gid=1999(it) groups=1999(it),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),110(lxd)
+student@linux-ess:~$ id 
+uid=1000(student) gid=1000(student) groups=1999(it),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),110(lxd)
 student@linux-ess:~$ groups student
 student : it adm cdrom sudo dip plugdev lxd
+student@linux-ess:~$ groups 
+student : student adm cdrom sudo dip plugdev lxd
 student@linux-ess:~$ ls -l
 total 16
 drwxr-xr-x 5 student it 4096 Nov  9 15:04 Documents
@@ -326,7 +330,7 @@ drwxr-xr-x 2 student it      4096 Oct 28 14:54 Downloads
 drwxr-xr-x 6 student it      4096 Oct 23 12:22 linuscraft
 drwx------ 5 student it      4096 Oct 19 15:07 snap
 -rw-r--r-- 1 student student    0 Nov 18 14:02 test
-student@linux-ess:~$ exit
+student@linux-ess:~$ 
 ```
 
 Merk in het bovenstaande voorbeeld op dat toen we de primaire groep wijzigden, alle bestanden van de gebruiker student ook werden bewerkt naar de nieuwe primaire groep van deze gebruiker. Maar omdat we de groepen niet hebben bijgewerkt door uit te loggen en opnieuw in te loggen, wordt onze oude primaire groep gebruikt voor het nieuwe bestand. In het hoofdstuk over rechten leren we hoe je de groepseigenaar kunt wijzigen om deze fout te corrigeren. Als we opnieuw inloggen, zien we dat onze groepen zijn bijgewerkt. 
@@ -341,6 +345,8 @@ drwxr-xr-x 6 student it      4096 Oct 23 12:22 linuscraft
 drwx------ 5 student it      4096 Oct 19 15:07 snap
 -rw-r--r-- 1 student student    0 Nov 18 14:02 test
 -rw-r--r-- 1 student it         0 Nov 18 14:04 test2
-student@linux-ess:~$ groups student
+student@linux-ess:~$ groups
 student : it adm cdrom sudo dip plugdev lxd
+student@linux-ess:~$ id
+uid=1000(student) gid=1999(it) groups=1999(it),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),110(lxd)
 ```
