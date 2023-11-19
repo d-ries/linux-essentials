@@ -318,7 +318,7 @@ student:x:1000:1999:Student Account:/home/student:/bin/bash
 student@linux-ess:~$ id student
 uid=1000(student) gid=1999(it) groups=1999(it),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),110(lxd)
 student@linux-ess:~$ groups student
-student : student adm cdrom sudo dip plugdev lxd
+student : it adm cdrom sudo dip plugdev lxd
 student@linux-ess:~$ ls -l
 total 16
 drwxr-xr-x 5 student it 4096 Nov  9 15:04 Documents
