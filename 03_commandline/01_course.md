@@ -5,9 +5,9 @@ When booting the virtual machine, all that will show is a black screen with some
 
 You will notice that there is no mouse pointer available. We will only use our keyboard as input device. This environment is called a _command line interface (CLI)_. There is no _graphical user interface (GUI)_ present in Ubuntu server. One of the reasons why they chose this is because having no GUI present will save system resources and narrows the attack surface. A CLI is also proven to be a very efficient & trustworthy way of working & interacting with an operating system and its services.
 
-?> You can login with you username `student` and the password you have set `pxl`. Notice that you do not see what you are typing for the password. Just type the password and press `enter`.
+?> You can login with you username `student` and the password you have set (If you followed the online course installation guide, this password will be `pxl`). Notice that you do not see what you are typing for the password. Just type the password and press `enter`.
 
-CLIs will be a lot more intersting towards automation, something that is harder when using a GUI. We can see this trend in Windows systems as well, where _Powershell_ is becoming more and more popular to configure Windows servers and performing automation tasks.
+CLIs will be a lot more interesting towards automation, something that is harder when using a GUI. We can see this trend in Windows systems as well, where _Powershell_ is becoming more and more popular to configure Windows servers and performing automation tasks.
 
 ## The prompt
 After logging in, you are shown the following line in the CLI. This is called the _prompt_:
@@ -15,23 +15,23 @@ After logging in, you are shown the following line in the CLI. This is called th
 
 The prompt exists of multiple parts that give us more information about the system we are using. We see information about our user and the hostname of the server that we are logged into.
 
-The `~` symbol is an abbreviation of the homefolder of the logged in user (in our case the folder `/home/student`). We will learn about paths & folders in a later chapter. For now you can compare this to the path `C:\Users\student` in Windows. So what we actually see in between the `:` and the `$` sign is a path pointing to the folder we are currently working in.
+The `~` symbol is an abbreviation of the homefolder of the logged in user (in our case the folder `/home/student`). We will learn about paths & folders, in a later chapter. For now you can compare this to the path `C:\Users\student` in Windows. So what we actually see in between the `:` and the `$` sign is a path pointing to the folder we are currently working in.
 
 
 ![A cartoon about the sudo command BOOKREMOVE](../images/03/sandwich.png)
 
-## commands, arguments and options
+## Commands, arguments and options
 Whenever you type something using the keyboard the input will apear after the `$` sign. The `$` sign indicates the end of the prompt and the start of the user's input (= a command). To use the operating system using a CLI, we will have to use commands. The first command we will use is the `echo` command:
 ```bash
-echo hello world
+student@linux-ess:~$ echo hello world
 ```
 The string `hello world` is considered an _argument_ of the `echo` command. This command just prints out whatever argument we provide.
 
 The second command we will learn to use is the `shutdown` command:
 ```bash
-sudo shutdown now
+student@linux-ess:~$ sudo shutdown now
 ```
-This command will shut down the Ubuntu server machine. This is also the propper way of shutting down the virtual machine! The `sudo` command stands for _super user do_. Some commands require administrator rights. By adding the `sudo` command in front, you will run this command as the _super user_. This user, in Linux, is called _root_ (compared to the administrator user in Windows). The example actually exists out of 2 commands. The `sudo` command followed by the `shutdown command`. The `shutdown` command will use _the parameter_ `now`.
+This command will shut down the Ubuntu server machine. This is also the proper way of shutting down the virtual machine! The `sudo` command stands for _super user do_. Some commands require administrator rights. By adding the `sudo` command in front, you will run this command as the _super user_. This user, in Linux, is called _root_ (compared to the administrator user in Windows). The example actually exists out of 2 commands. The `sudo` command followed by the `shutdown command`. The `shutdown` command will use _the parameter_ `now`.
 
 Commands often have all kinds of options (beginning with a hyphen (-)) and paramaters (separated with spaces) to extend the functionality of a command. The `shutdown` command will take an (optional) value that defines when the server needs to actually shutdown. If no value is given, it will plan the shutdown task 1 minute after running the command. Let's look at some other options with the command `man shutdown`:
 ```bash
@@ -77,27 +77,27 @@ There are many commands with options and every command has his own set of unique
 ?> <i class="fa-solid fa-circle-info"></i> Everything in Linux is case sensitive: commands, options, arguments, file- and foldernames, ...
 
 
-## manpages
-### man
+## Manpages
+### Man
 In Linux we use a CLI. Therefore we will have to work with various commands. Our Ubuntu installation has all kinds of commands built-in. To find commands that we can use we could use Google, but the operating system itself also has information about all installed commands. This info is bundled in _manpages_ (short for manual pages). You can access these manpages through the `man` command.
 
 Using `man` followed by a command we can view the manual page for that command:
 ```bash
-man shutdown
+student@linux-ess:~$ man shutdown
 ```
 Not only commands have their own manpage, config/system files might have a manpage as well. The command below shows the manpage of the `sudo.conf` file:
 ```bash
-man sudo.conf
+student@linux-ess:~$ man sudo.conf
 ``` 
 
 ?> <i class="fa-solid fa-circle-info"></i> manpages are pretty big and exist out of multiple pages and/or sections. To view the next page in a manpage you can press the `spacebar` or you can use the `arrow keys`. Manpages are pretty easy to search. Just type `/` followed by a keyword. The manpage will highlight the first occurence of that keyword. You can use the key `n` (_next_) to go to the next occurence of the keyword. Exiting a manpage can be done by pressing the `q` (_quit_) key. Want to know more about manpages? type `man man`!
 
 You can search in the description of installed commands by using the `-k` option (or use the command apropos) as follows:
 ```bash
-man -k shutdown
+student@linux-ess:~$ man -k shutdown
 ```
 
-### manpage sections
+### Manpage sections
 Sometimes  `man <keyword>` is used to get help of a command, but it's also used to get the help of a (config)file, daemon, ... This is an issue because `man <keyword>` needs to open the manpage you are looking for. What if the keyword exists as a command and as a configuration file? A perfect example for this is `passwd`:
 ```bash
 student@linux-ess:~$ apropos passwd
@@ -108,7 +108,7 @@ passwd (5)           - the password file
 ```
 Looking at the output above we see 3 ```passwd``` entries containing different numbers between the round brackets. The numbers refer to the _sections_ of the manpage. By default, the `man` command will open the first section it finds. In this case _section 1_, which contains information about the command `passwd`. We can see that there is also a _section 5_ which contains information about the configuration file `/etc/passwd`. We can open this section by specifying it as follows:
 ```bash
-man 5 passwd
+student@linux-ess:~$ man 5 passwd
 ```
 This command will now show the manpage of the configuration file rather than the `passwd` command.
 
@@ -124,7 +124,7 @@ To go to the next occurence you can push the letter _n_. To go to the previous o
 
 ?> <i class="fa-solid fa-circle-info"></i>It's allways a good idea to first type _g_ to go to the first line before starting your search!
 
-### whereis & whatis
+### Whereis & whatis
 We can quickly view the description of a command without opening the full manpage by using the `whatis` command:
 ```bash
 student@linux-ess:~$ whatis pwd

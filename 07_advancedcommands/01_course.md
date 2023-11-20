@@ -211,6 +211,7 @@ student@linux-ess:~$
 ```
 
 The order in which the shell checks for commands in the shell: 
+
 * Aliases. Names set by the alias command that represent a particular command and a set of options. 
 * Built-in command. This is a command built into the shell.
 * Filesystem command. This command is stored in and executed from the computer’s filesystem. (These are the commands that are indicated by the value of the PATH variable).
@@ -224,6 +225,7 @@ When working with the shell we actually work with something called streams. Ther
 The most basic example is called `stdin`. This is the stream that we use to input data into the shell using our keyboard.
 
 The output that gets generated from running commands is split up in two seperate streams:
+
 * `stdout` gives us all the regular command output. By default this output gets printed on our screen.
 * `stderr` gives us all the error messages a command generates. By default these error messages get printed on our screen.
 Because both `stdout` and `stderr` get printed on our screen, we don't notice the difference between the two.
@@ -294,6 +296,7 @@ pxl
 
 ### Logical operators
 Next up are some control operators that we can use that you might know from other use cases or environments:
+
 * logical _AND_ operator (`&&`): The second command will only execute if the first command succeeds
 ```bash
 student@linux-ess:~$ echo first && echo second

@@ -156,7 +156,7 @@ student@linux-ess:~$ cat jokes.txt
 What is a Linux user's favorite game?
 sudo ku
 ```
-We drukten __ctrl+d__ na de regel 'sudo ku' 
+We drukten __ctrl+d__ na de regel `sudo ku`
  
 #### Bestanden kopiëren met cat 
 Wetende wat we hebben geleerd over het gebruik van _output redirection_ (`>`) kunnen we dit als volgt gebruiken om de inhoud van een bestand naar een ander bestand te kopiëren: 

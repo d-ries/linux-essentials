@@ -282,6 +282,7 @@ student@linux-ess:~$ wc -c auth.log # number of bytes
 ## Manipulating output
 ### Translate (tr)
 The `tr` command allows us to _translate_ certain characters to other characters. It takes in 2 arguments:
+
 * The character (or set of characters) that needs to be replaced
 * The character (or set of characters) the previous set needs to be replaced by
 

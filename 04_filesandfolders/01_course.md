@@ -4,7 +4,7 @@
 
 ### Print working directory (pwd)
 
-The first command we will look at is the `pwd` command. The manpages gives an accurate description of what the command does:
+The first command we will look at is the `pwd` command. The man pages gives an accurate description of what the command does:
 ```
 student@linux-ess:~$ whatis pwd
 pwd - print name of current/working directory
@@ -16,13 +16,13 @@ This command prints the current working directory. The working directory refers 
 student@linux-ess:~$ pwd
 /home/student
 ```
-In Windows, an _absolute path_ starts with `C:\...`. In Linux we do not use Drive letters. The C:\ drive in Windows is called the _root directory_ in Linux. This directory is reffered to as a `/` at the beginning of a path. More about _absolute_ and _relative_ paths later in this chapter.
+In Windows, an _absolute path_ starts with `C:\...`. In Linux we do not use Drive letters. The C:\ drive in Windows is called the _root directory_ in Linux. This directory is referred to as a `/` at the beginning of a path. More about _absolute_ and _relative_ paths later in this chapter.
 
 The folder `student` is our current working directory. This folder is a subfolder of the folder `home` which on his turn is a subfolder of the _root directory_ `/`.
 
 ![DirectoryHierarchy](../images/04/Ch4_CleanInstall.png)
 
-?> <i class="fa-solid fa-circle-info"></i> Remember the prompt which contained an active path? The `~` sign was an abbreviation for the folder `/home/student`. This is called the _homefolder_. Every user on the operating system will get their own _homefolder_ in the folder `/home` just like in Windows, where every user has his own folder under `C:\Users`. A user has all permissions (read, write, execute) in his own homefolder. Outside of that folder he often only has _read_ permissions.
+?> <i class="fa-solid fa-circle-info"></i> Remember the prompt which contained an active path? The `~` sign was an abbreviation for the folder `/home/student`. This is called the _home folder_. Every user on the operating system will get their own _home folder_ in the folder `/home` just like in Windows, where every user has his own folder under `C:\Users`. A user has all permissions (read, write, execute) in his own home folder. Outside of that folder he often only has _read_ permissions.
 
 ### Change working directory (cd)
 You can change the current working directory with the `cd` command (change directory):
@@ -36,9 +36,9 @@ student@linux-ess:/etc$ cd ~
 student@linux-ess:~$ pwd
 /home/student
 ```
-The command takes a path as an argument. In the example above we will navigate to the folder `etc` on the root directory `/`. We can see this in the output of the `pwd` command and in the prompt definition. As shown in the second part of the example above we can also use the `~` sign to quickly navigate to the user's homefolder.
+The command takes a path as an argument. In the example above we will navigate to the folder `etc` on the root directory `/`. We can see this in the output of the `pwd` command and in the prompt definition. As shown in the second part of the example above we can also use the `~` sign to quickly navigate to the user's home folder.
 
-?> <i class="fa-solid fa-circle-info"></i> We could also use the `cd` command without any argument. This will navigate back to the users homefolder as well:
+?> <i class="fa-solid fa-circle-info"></i> We could also use the `cd` command without any argument. This will navigate back to the users home folder as well:
 ```bash
 student@linux-ess:~$ cd /home/student
 student@linux-ess:~$ pwd
@@ -61,7 +61,7 @@ emptyfile
 ![DirectoryEmptyFile](../images/04/Ch4_Emptyfile.png)
   
 
-?> <i class="fa-solid fa-circle-info"></i> We can also use the commando `cd -`. This navigates back to the folder where you were working, before coming to this folder: 
+?> <i class="fa-solid fa-circle-info"></i> We can also use the command `cd -`. This navigates back to the folder where you were working, before coming to this folder: 
 ```bash
 student@linux-ess:~$ cd /etc/netplan
 student@linux-ess:/etc/netplan$ ls
@@ -139,7 +139,7 @@ When using commands we often have to use paths to certain folders or files. The 
 
 Paths are used to point towards files and folders on the filesystem. We can use two types of paths: _relative_ and _absolute_ paths. 
 
-![Directories_Downloads_Steam_games_teacher](../images/04/Ch4_Downloads_Steam_games_teacher.png)
+![Directories_Downloads_Steam_games_teacher BOOKREMOVE](../images/04/Ch4_Downloads_Steam_games_teacher.png)
 
 #### Absolute path
 Absolute paths must start with a `/` sign. This means that an absolute path will start from the _root_ (`/`) directory (the highest level on the filesystem) and will work its way down. For example:
@@ -172,7 +172,7 @@ When using relative paths, we can use some shortcuts:
 ```
 .(one dot): Refers to the current directory
 ..(two dots): Refers to the parent directory 
-~ (tilde): Refers to the current user's homefolder
+~ (tilde): Refers to the current user's home folder
 ```
 This means that, when in the folder `/home/student/Downloads`, we could use `..` to navigate to the parent directory `/home/student`
 ```bash
@@ -250,7 +250,7 @@ Notice how we combined 3 options in the command above. Both `ls -a -l -h` and `l
 
 ![Directories_Downloads_Steam_games_teacher_backups](../images/04/Ch4_Downloads_Steam_games_teacher_backups.png)
 
-To create new directories we can use the `mkdir` (make directory) command. The command takes a path as an argument:
+To create new directories we can use the `mkdir` (make directory) command, which takes a path as an argument:
 ```bash
 student@linux-ess:~$ mkdir backups
 student@linux-ess:~$ ls
@@ -362,7 +362,7 @@ aFile
 ![Directories_Ch4_MoveAndRenameFile](../images/04/Ch4_MoveAndRenameFile.png)  
   
 
-Since the second argument is a destination file or folder, we could use this command to rename a file as well. In the example below we use the `mv` command to move the file back to the homefolder but also renaming it:
+Since the second argument is a destination file or folder, we could use this command to rename a file as well. In the example below we use the `mv` command to move the file back to the home folder but also renaming it:
 ```bash
 student@linux-ess:~/aFolder$ ls 
 aFile
@@ -473,6 +473,7 @@ aFile  aFile.backup  adocument.txt  anotherdocument.txt  backup.txt  prodocument
 ?> <i class="fa-solid fa-circle-info"></i> If rename is not yet installed you can do this with the command `sudo apt -y install rename`.   
 
 A lot is going on in the example above, let's summarize what is present:
+
 * The folder we are in contains some `txt` files, some `backup` files and files with `no extension`. Some of the files contain the word `file` that we want to replace with `document`. Remember that by default Linux is case-sensitive, so `file`is not the same as `File`.
 * the `rename` command takes a _string_ with the value `s/file/document/`. This is the _regex_ that is being used by the command to search (`s`)for names containing the word `file` and replace it with the word `document`.
 * the last argument is `*.txt`. We use this to tell the `rename` command to only run the replacement regex on files ending in `.txt`
@@ -535,6 +536,7 @@ aFile  aFile.doc  adocument.doc  anotherdocument.doc  backup.doc  prodocuments.d
 ![Ch4_rm_rf](../images/04/Ch4_rm_rf.png)
 
 The `rm` command has different options as well, the most used combination is `rm -rf`:
+
 * `-r` will mean it will remove files & folders recursive
 * `-f` will force the command to remove non-empty directories as well. Something that wont happen out of the box.
 ```bash
