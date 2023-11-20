@@ -24,11 +24,11 @@ drwxrwxr-x 2 student student 4096 okt  2 19:36 folder
 
 ?> <i class="fa-solid fa-circle-info"></i> Het eerste teken is een _-_ (min) voor een regulier bestand en een _d_ voor een map.  
 
-?> <i class="fa-solid fa-circle-info"></i> Mappen in Linux hebben dezelfde set machtigingen. Maar omdat je moet uitvoeren om toegang te krijgen tot bestanden in de map, kan je weinig zonder. De algemene machtigingen zijn rwx voor een map waar je alles kunt doen, r-x voor een alleen-lezen directory en natuurlijk --- wanneer je de toegang volledig wilt blokkeren.  
+?> <i class="fa-solid fa-circle-info"></i> Mappen in Linux hebben dezelfde set van permissies. Maar omdat je execute-rechten nodig hebt om toegang te krijgen tot bestanden in de map, kan je weinig zonder. De algemene permissies zijn rwx voor een map waar je alles kunt doen, r-x voor een alleen-lezen directory en natuurlijk --- wanneer je de toegang volledig wilt blokkeren.  
 
-Er zijn drie sets omdat er drie verschillende sets mensen zijn waarop machtigingen kunnen worden toegepast. De eerste set beschrijft de machtigingen voor de eigenaar van het bestand (de eerste naam achter de machtigingen), de tweede is van toepassing op iedereen die lid is van de groep die eigenaar is van het bestand (de tweede naam). De laatste set is voor iedereen die niet onder een van de eerste twee categorieën valt. Dus in het kort: De drie sets zijn van toepassing op **gebruikers eigenaar (userowner)**, **groep eigenaar (groupowner)** en **andere (others)**, in die volgorde. 
+Er zijn drie sets omdat er drie verschillende sets mensen zijn waarop permissies kunnen worden toegepast. De eerste set beschrijft de machtigingen voor de eigenaar van het bestand (de eerste naam achter de permissies), de tweede is van toepassing op iedereen die lid is van de groep die eigenaar is van het bestand (de tweede naam). De laatste set is voor iedereen die niet onder één van de eerste twee categorieën valt. Dus in het kort: De drie sets zijn van toepassing op **userowner**, **groupowner** en **others**, in die volgorde. 
 
-Wanneer een gebruiker een bestand maakt, wordt hij automatisch de eigenaar van dat bestand. De groep die eigenaar is van het bestand wordt bepaald door de **primaire groep** van de gebruiker. Standaard is de primaire groep van een gebruiker een groep met dezelfde naam als de gebruikersnaam, daarom zie je vaak dat eigenaar en groepseigenaar dezelfde naam hebben (zoals _student student_ in het bovenstaande voorbeeld). De map `/dev`, die de bestanden bevat die je hardware vertegenwoordigen, is een van de plaatsen waar je bestanden vindt die eigendom zijn van de root-gebruiker met een andere groep als eigenaar. 
+Wanneer een gebruiker een bestand maakt, wordt hij automatisch de eigenaar van dat bestand. De groep die eigenaar is van het bestand wordt bepaald door de **primaire groep** van de gebruiker. Standaard is de primary group van een gebruiker een groep met dezelfde naam als de gebruikersnaam, daarom zie je vaak dat owner en groupowner dezelfde naam hebben (zoals _student student_ in het bovenstaande voorbeeld). De map `/dev`, die de bestanden bevat die je hardware vertegenwoordigen, is een van de plaatsen waar je bestanden vindt die eigendom zijn van de root-gebruiker met een andere groep als eigenaar. 
   
 
 ```bash
@@ -37,7 +37,7 @@ brw-rw---- 1 root disk   8, 0 Nov 11 10:44 /dev/sda
 brw-rw---- 1 root cdrom 11, 0 Nov 11 10:43 /dev/sr0
 ```   
 
-Bestandsmachtigingen worden op schijf geschreven als een veld met bits in de eigenschappen van het bestand. Een bit is ingesteld op 1 wanneer een toestemming wordt verleend, 0 wanneer dat niet het geval is. Dus rwxrw-r-- wordt 111110100. Omdat mensen niet erg goed zijn in het ontleden van binaire sequenties, worden ze weergegeven als octale getallen, getallen van 0 tot 7 (000 tot 111 in binair). Om het octale getal te berekenen, onthoud dat lezen 4 waard is, bewerken 2 en uitvoeren 1. Voeg die toe die je nodig hebt en je krijgt de octale notatie. Het bovenstaande voorbeeld wordt 764 (rwx, 4+2+1=7,      rw-, 4+2+0=6,      r--, 4+0+0=4). 
+File permissions worden op schijf geschreven als een veld met bits in de eigenschappen van het bestand. Een bit is ingesteld op 1 wanneer een toestemming wordt verleend, 0 wanneer dat niet het geval is. Dus rwxrw-r-- wordt 111110100. Omdat mensen niet erg goed zijn in het ontleden van binaire sequenties, worden ze weergegeven als octale getallen, getallen van 0 tot 7 (000 tot 111 in binair). Om het octale getal te berekenen, onthoud dat lezen 4 waard is, bewerken 2 en uitvoeren 1. Voeg die toe die je nodig hebt en je krijgt de octale notatie. Het bovenstaande voorbeeld wordt 764 (rwx, 4+2+1=7,      rw-, 4+2+0=6,      r--, 4+0+0=4). 
 
 
 ## Rechten wijzigen (chmod) 
