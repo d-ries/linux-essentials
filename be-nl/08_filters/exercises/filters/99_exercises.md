@@ -54,7 +54,7 @@ Ga naar je homefolder. Plak alle weergegeven bestanden en mappen (niet de verbor
 
 
 ## Oefening 10
-Toon alle geïnstalleerde pakketten, maar toon alleen de naam en versie in alfabetische volgorde. 
+Toon alle geïnstalleerde pakketten met apt, maar toon alleen de naam en versie in alfabetische volgorde. 
 
 ?> <i class="fa-solid fa-circle-info"></i> Tip: Je moet tr gebruiken om het gemakkelijker te maken.  
 
