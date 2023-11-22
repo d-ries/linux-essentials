@@ -11,5 +11,7 @@
 * [9 Gebruikers & groepen](./be-nl/09_usersandgroups/01_course.md)
 ** [Lab](./be-nl/09_usersandgroups/02_lab.md)
 ** [Oefeningen](./be-nl/09_usersandgroups/99_assignments.md)
+    * [Users](./be-nl/09_usersandgroups/exercises/users/99_exercises.md)
+    * [Groups](./be-nl/09_usersandgroups/exercises/groups/99_exercises.md)
 * [10 Rechten](./be-nl/10_permissions/01_course.md)
 * [11 Automatisatie](./be-nl/11_automation/01_course.md)

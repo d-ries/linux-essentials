@@ -12,4 +12,6 @@
 * [10 Rechten](./be-nl/10_permissions/01_course.md)
 ** [Lab](./be-nl/10_permissions/02_lab.md)
 ** [Oefeningen](./be-nl/10_permissions/99_assignments.md)
+    * [Standaard bestandsrechten](./be-nl/10_permissions/exercises/standard_file_permissions/99_exercises.md)
+    * [Extra oefeningen](./be-nl/10_permissions/exercises/users_groups_permissions_extra_exercises/99_exercises.md)
 * [11 Automatisatie](./be-nl/11_automation/01_course.md)
