@@ -118,6 +118,87 @@ student@linux-ess:~/course$ ls -l config
 ```
 
 
+## Default permissions (umask) 
+
+Een andere belangrijke instelling is de _default permissions_. Welke rechten worden toegepast wanneer je nieuwe bestanden en mappen maakt?  
+
+De maximale rechten voor nieuwe bestanden is 666, dus -rw-rw-rw-. Nieuwe bestanden worden nooit gemaakt met uitvoerrechten. Dit wordt afgedwongen door de kernel. Het is natuurlijk mogelijk om de execute bit toe te voegen na het maken van bestanden met behulp van `chmod`, maar het vereist altijd een bewuste beslissing om veiligheidsredenen. Mappen hebben deze beperking niet, omdat een map zonder een execute bit vrij nutteloos is. 
+
+```bash
+student@linux-ess:~/course$ touch file
+student@linux-ess:~/course$ mkdir folder
+student@linux-ess:~/course$ ls -l
+total 4
+-rw-rw-r-- 1 student student    0 okt 15 15:56 file
+drwxrwxr-x 2 student student 4096 okt 15 15:56 folder
+```
+Zoals je kan zien, krijgen we niet de verwachte -rw-rw-rw- voor het bestand, noch drwxrwxrwx voor de map. Dit komt omdat de meeste distributies strenger zijn dan de Linux-kernel toestaat. Het gebruik van de kernel-standaard zou betekenen dat gemaakte bestanden en mappen bewerkbaar zijn door elke gebruiker op het systeem. Ze zijn echter leesbaar voor `andere` dus pas op met gevoelige bestanden. 
+
+De exacte configuratie van machtigingen voor nieuwe bestanden en mappen wordt ingesteld door de `umask`. Dit is een waarde die het `masker` definieert dat wordt toegepast op alle nieuw gemaakte bestanden en mappen. Om het huidige masker te zien, gebruik je het commando `umask`. 
+
+```bash
+student@linux-ess:~/course$ umask
+0002
+```
+Hoe werkt dit dan? We trekken de umask af van 777 en geven nooit uitvoeringsrechten op een nieuw bestand. Voor een bestand krijg je dus 775 (rwxrwxr-x), maar omdat je nooit de execute bit instelt resulteert dit in 644 of rw-rw-r-- . Voor mappen trekken we ook de umask (hier 002) af van 777, dit resulteert in 775 en hier houden we de uitvoer-bits. Een umask van 000 staat alles toe, een umask van 777 maakt dat een nieuw bestand of map geen rechten heeft. De getallen werken nog steeds hetzelfde (4 voor lezen, 2 voor bewerken, 1 voor uitvoeren), maar deze keer gebruik je ze om bepaalde machtigingsbits te **maskeren**, of eenvoudiger gezegd: bepaalde machtigingen voor nieuwe bestanden en mappen te weigeren. 
+
+Je kan de umask instellen (=wijzigen) met hetzelfde umask commando. 
+
+```bash
+student@linux-ess:~/course$ umask 000       # 777-000=777 en de x wordt nooit toegepast op nieuwe bestanden
+student@linux-ess:~/course$ touch newfile1
+student@linux-ess:~/course$ ls -l newfile1
+-rw-rw-rw- 1 student student 0 okt 15 16:23 newfile1
+student@linux-ess:~/course$ umask 027 #Als je meerdere bits wil maskeren, tel ze dan op  (777-027=750)
+student@linux-ess:~/course$ touch newfile2
+student@linux-ess:~/course$ ls -l newfile2
+-rw-r----- 1 student student 0 okt 15 16:24 newfile2
+student@linux-ess:~/course$ umask 077 
+student@linux-ess:~/course$ mkdir newfolder1
+student@linux-ess:~/course$ ls -ld newfolder1
+drwx------ 2 student student 4096 okt 15 16:25 newfolder1
+```
+?> <i class="fa-solid fa-circle-info"></i> Als je de umask instelt met het commando, wordt de umask voor uw huidige terminalsessie gewijzigd. Als je de terminal verlaat, wordt deze opnieuw ingesteld op de standaardwaarde. Om het permanent te maken, voeg je `umask <uw umask>` toe aan het `.bashrc`-bestand van je gebruiker in je thuismap. 
+
+Nog een laatste ding om op te letten: als je naar het volgende voorbeeld kijkt, zie je dat bestanden die door de rootgebruiker zijn gemaakt een andere umask-set hebben. 
+  
+```bash
+student@linux-ess:~/course$ touch file
+student@linux-ess:~/course$ sudo touch file2
+student@linux-ess:~/course$ ls -l
+-rw-rw-r-- 1 student student 0 okt 15 16:44 file
+-rw-r--r-- 1 root    root    0 okt 15 16:44 file2
+```
+Dit wordt uitgelegd door te kijken naar de systeembrede umask-instelling, te vinden in het bestand `/etc/login.defs`. 
+
+```bash
+student@linux-ess:~/course$ nano /etc/login.defs
+UMASK           022 #lijn 151
+...
+USERGROUPS_ENAB yes #lijn 230
+```
+Als je de instelling voor het hele systeem wilt wijzigen, kan je daar de waarde voor umask wijzigen. De standaard umask die is opgegeven is degene die de rootgebruiker gebruikt (geen bewerkingsrechten voor iemand anders dan de eigenaar). De reden dat bestanden die door reguliere gebruikers worden gemaakt een extra w krijgen voor de groep, is de optie op lijn 230. Deze optie geeft aan dat voor elke niet-rootgebruiker die dezelfde gebruikers-id heeft als groeps-id (dus de primaire groep is ongewijzigd) de groep umask-bits wordt gewijzigd in de gebruiker umask-bits, wat het eerder geziene 002 umask verklaart. 
+
+?> <i class="fa-solid fa-circle-info"></i> Je kan de letternotatie ook gebruiken met umask: 
+```bash
+student@linux-ess:~$ umask
+0002
+student@linux-ess:~$ umask -S
+u=rwx,g=rwx,o=rx
+student@linux-ess:~$ touch file3
+student@linux-ess:~$ ls -l file3
+-rw-rw-r-- 1 student student 0 Nov 11 14:01 file3
+student@linux-ess:~$ umask u=rwx,g=rx,o=
+student@linux-ess:~$ umask
+0027
+student@linux-ess:~$ umask -S
+u=rwx,g=rx,o=
+student@linux-ess:~$ touch file4
+student@linux-ess:~$ ls -l file4
+-rw-r----- 1 student student 0 Nov 11 14:03 file4
+```
+
+
 ## Samenwerken in een team (setgid) 
 
 Als we willen samenwerken, is het belangrijk dat alle gebruikers elkaars bestanden kunnen wijzigen. De oplossing om alle gebruikers dezelfde primaire groep te geven, is een beveiligingsprobleem omdat dit ook de rechten op hun thuismappen verandert: 
@@ -389,88 +470,6 @@ student@linux-ess:~$ ls -l /bin/passwd
 student@linux-ess:~$ stat -c '%a %n' /bin/passwd
 4755 /bin/passwd 
 ```
-
-
-## Standaard rechten (umask) 
-
-Een laatste ding waar we naar moeten kijken, zijn de standaard rechten. Welke rechten worden toegepast wanneer je nieuwe bestanden en mappen maakt?  
-
-De maximale rechten voor nieuwe bestanden is 666, dus -rw-rw-rw-. Nieuwe bestanden worden nooit gemaakt met uitvoerrechten. Dit wordt afgedwongen door de kernel. Het is natuurlijk mogelijk om de execute bit toe te voegen na het maken van bestanden met behulp van `chmod`, maar het vereist altijd een bewuste beslissing om veiligheidsredenen. Mappen hebben deze beperking niet, omdat een map zonder een execute bit vrij nutteloos is. 
-
-```bash
-student@linux-ess:~/course$ touch file
-student@linux-ess:~/course$ mkdir folder
-student@linux-ess:~/course$ ls -l
-total 4
--rw-rw-r-- 1 student student    0 okt 15 15:56 file
-drwxrwxr-x 2 student student 4096 okt 15 15:56 folder
-```
-Zoals je kan zien, krijgen we niet de verwachte -rw-rw-rw- voor het bestand, noch drwxrwxrwx voor de map. Dit komt omdat de meeste distributies strenger zijn dan de Linux-kernel toestaat. Het gebruik van de kernel-standaard zou betekenen dat gemaakte bestanden en mappen bewerkbaar zijn door elke gebruiker op het systeem. Ze zijn echter leesbaar voor `andere` dus pas op met gevoelige bestanden. 
-
-De exacte configuratie van machtigingen voor nieuwe bestanden en mappen wordt ingesteld door de `umask`. Dit is een waarde die het `masker` definieert dat wordt toegepast op alle nieuw gemaakte bestanden en mappen. Om het huidige masker te zien, gebruik je het commando `umask`. 
-
-```bash
-student@linux-ess:~/course$ umask
-0002
-```
-Hoe werkt dit dan? We trekken de umask af van 777 en geven nooit uitvoeringsrechten op een nieuw bestand. Voor een bestand krijg je dus 775 (rwxrwxr-x), maar omdat je nooit de execute bit instelt resulteert dit in 644 of rw-rw-r-- . Voor mappen trekken we ook de umask (hier 002) af van 777, dit resulteert in 775 en hier houden we de uitvoer-bits. Een umask van 000 staat alles toe, een umask van 777 maakt dat een nieuw bestand of map geen rechten heeft. De getallen werken nog steeds hetzelfde (4 voor lezen, 2 voor bewerken, 1 voor uitvoeren), maar deze keer gebruik je ze om bepaalde machtigingsbits te **maskeren**, of eenvoudiger gezegd: bepaalde machtigingen voor nieuwe bestanden en mappen te weigeren. 
-
-Je kan de umask instellen (=wijzigen) met hetzelfde umask commando. 
-
-```bash
-student@linux-ess:~/course$ umask 000       # 777-000=777 en de x wordt nooit toegepast op nieuwe bestanden
-student@linux-ess:~/course$ touch newfile1
-student@linux-ess:~/course$ ls -l newfile1
--rw-rw-rw- 1 student student 0 okt 15 16:23 newfile1
-student@linux-ess:~/course$ umask 027 #Als je meerdere bits wil maskeren, tel ze dan op  (777-027=750)
-student@linux-ess:~/course$ touch newfile2
-student@linux-ess:~/course$ ls -l newfile2
--rw-r----- 1 student student 0 okt 15 16:24 newfile2
-student@linux-ess:~/course$ umask 077 
-student@linux-ess:~/course$ mkdir newfolder1
-student@linux-ess:~/course$ ls -ld newfolder1
-drwx------ 2 student student 4096 okt 15 16:25 newfolder1
-```
-?> <i class="fa-solid fa-circle-info"></i> Als je de umask instelt met het commando, wordt de umask voor uw huidige terminalsessie gewijzigd. Als je de terminal verlaat, wordt deze opnieuw ingesteld op de standaardwaarde. Om het permanent te maken, voeg je `umask <uw umask>` toe aan het `.bashrc`-bestand van je gebruiker in je thuismap. 
-
-Nog een laatste ding om op te letten: als je naar het volgende voorbeeld kijkt, zie je dat bestanden die door de rootgebruiker zijn gemaakt een andere umask-set hebben. 
-  
-```bash
-student@linux-ess:~/course$ touch file
-student@linux-ess:~/course$ sudo touch file2
-student@linux-ess:~/course$ ls -l
--rw-rw-r-- 1 student student 0 okt 15 16:44 file
--rw-r--r-- 1 root    root    0 okt 15 16:44 file2
-```
-Dit wordt uitgelegd door te kijken naar de systeembrede umask-instelling, te vinden in het bestand `/etc/login.defs`. 
-
-```bash
-student@linux-ess:~/course$ nano /etc/login.defs
-UMASK           022 #lijn 151
-...
-USERGROUPS_ENAB yes #lijn 230
-```
-Als je de instelling voor het hele systeem wilt wijzigen, kan je daar de waarde voor umask wijzigen. De standaard umask die is opgegeven is degene die de rootgebruiker gebruikt (geen bewerkingsrechten voor iemand anders dan de eigenaar). De reden dat bestanden die door reguliere gebruikers worden gemaakt een extra w krijgen voor de groep, is de optie op lijn 230. Deze optie geeft aan dat voor elke niet-rootgebruiker die dezelfde gebruikers-id heeft als groeps-id (dus de primaire groep is ongewijzigd) de groep umask-bits wordt gewijzigd in de gebruiker umask-bits, wat het eerder geziene 002 umask verklaart. 
-
-?> <i class="fa-solid fa-circle-info"></i> Je kan de letternotatie ook gebruiken met umask: 
-```bash
-student@linux-ess:~$ umask
-0002
-student@linux-ess:~$ umask -S
-u=rwx,g=rwx,o=rx
-student@linux-ess:~$ touch file3
-student@linux-ess:~$ ls -l file3
--rw-rw-r-- 1 student student 0 Nov 11 14:01 file3
-student@linux-ess:~$ umask u=rwx,g=rx,o=
-student@linux-ess:~$ umask
-0027
-student@linux-ess:~$ umask -S
-u=rwx,g=rx,o=
-student@linux-ess:~$ touch file4
-student@linux-ess:~$ ls -l file4
--rw-r----- 1 student student 0 Nov 11 14:03 file4
-```
-
 
 ## Toegangscontrolelijsten (Access control lists)
 De ACL-functie is gemaakt om gebruikers de mogelijkheid te bieden om selectief bestanden en mappen te delen met andere gebruikers en groepen.  
