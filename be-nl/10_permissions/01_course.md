@@ -222,9 +222,9 @@ jacob@linux-ess:~$ head -3 /home/liam/.profile
 jacob@linux-ess:~$ exit
 ```
  
-?> Zoals je kan zien, kan de gebruiker Jacob de bestanden bekijken van de homefolder van de gebruiker Liam. 
+?> Zoals je kan zien, kan de gebruiker Jacob de bestanden bekijken van de homefolder van de gebruiker Liam en dat kan de bedoeling niet zijn. 
 
-We geven beide gebruikers nu hun eigen primaire groep: 
+We geven eerst beide gebruikers hun eigen primaire groep groep terug: 
 ```bash
 student@linux-ess:~$ sudo groupadd liam
 student@linux-ess:~$ sudo groupadd jacob
