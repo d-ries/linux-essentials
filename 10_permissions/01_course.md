@@ -227,9 +227,9 @@ jacob@linux-ess:~$ head -3 /home/liam/.profile
 jacob@linux-ess:~$ exit
 ```
   
-?> As you can see the user Jacob can view the files from the homefolder of the user Liam.
+?> As you can see the user Jacob can view the files from the homefolder of the user Liam and this isn't what we want.
   
-We will now give both users their own primary group:
+First of all we will give both users their own primary group back:
 ```bash
 student@linux-ess:~$ sudo groupadd liam
 student@linux-ess:~$ sudo groupadd jacob
