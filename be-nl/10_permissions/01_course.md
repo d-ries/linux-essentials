@@ -158,7 +158,7 @@ student@linux-ess:~/course$ mkdir newfolder1
 student@linux-ess:~/course$ ls -ld newfolder1
 drwx------ 2 student student 4096 okt 15 16:25 newfolder1
 ```
-?> <i class="fa-solid fa-circle-info"></i> Als je de umask instelt met het commando, wordt de umask voor uw huidige terminalsessie gewijzigd. Als je de terminal verlaat, wordt deze opnieuw ingesteld op de standaardwaarde. Om het permanent te maken, voeg je `umask <uw umask>` toe aan het `.bashrc`-bestand van je gebruiker in je thuismap. 
+?> <i class="fa-solid fa-circle-info"></i> Als je de umask instelt met het commando, wordt de umask voor uw huidige terminalsessie gewijzigd. Als je de terminal verlaat, wordt deze opnieuw ingesteld op de standaardwaarde. Om het permanent te maken, voeg je `umask <uw umask>` toe aan het `.bashrc`-bestand van je gebruiker in je homefolder. 
 
 Nog een laatste ding om op te letten: als je naar het volgende voorbeeld kijkt, zie je dat bestanden die door de rootgebruiker zijn gemaakt een andere umask-set hebben. 
   
@@ -201,7 +201,7 @@ student@linux-ess:~$ ls -l file4
 
 ## Samenwerken in een team (setgid) 
 
-Als we willen samenwerken, is het belangrijk dat alle gebruikers elkaars bestanden kunnen wijzigen. De oplossing om alle gebruikers dezelfde primaire groep te geven, is een beveiligingsprobleem omdat dit ook de rechten op hun thuismappen verandert: 
+Als we willen samenwerken, is het belangrijk dat alle gebruikers elkaars bestanden kunnen wijzigen. De oplossing om alle gebruikers dezelfde primaire groep te geven, is een beveiligingsprobleem omdat dit ook de rechten op hun homefolders verandert: 
 ```bash
 student@linux-ess:~$ sudo groupadd ict 
 student@linux-ess:~$ sudo useradd -m -g it -s /bin/bash liam
@@ -222,7 +222,7 @@ jacob@linux-ess:~$ head -3 /home/liam/.profile
 jacob@linux-ess:~$ exit
 ```
  
-?> Zoals je kan zien, kan de gebruiker Jacob de bestanden bekijken van de thuismap van de gebruiker Liam. 
+?> Zoals je kan zien, kan de gebruiker Jacob de bestanden bekijken van de homefolder van de gebruiker Liam. 
 
 We geven beide gebruikers nu hun eigen primaire groep: 
 ```bash
@@ -237,7 +237,7 @@ student@linux-ess:~$ sudo ls -l /home/jacob/.profile
 -rw-r--r-- 1 jacob jacob 807 Jan  6  2022 /home/jacob/.profile
 ```
 
-?> Merk op dat het wijzigen van de primaire groep van een gebruiker ook de groepseigenaar van elk bestand in zijn thuismap verandert. 
+?> Merk op dat het wijzigen van de primaire groep van een gebruiker ook de groepseigenaar van elk bestand in zijn homefolder verandert. 
 
 We maken een groep voor de twee gebruikers om hen rechten te geven op een gedeelde map die we in de volgende stap zullen maken. We voegen de gebruikers ook toe aan deze nieuwe groep: 
 ```bash
@@ -518,7 +518,7 @@ mask::rw-
 other::r--
 
 ```
-?> <i class="fa-solid fa-circle-info"></i> Om de gebruiker 'teacher' toegang te geven tot het bestand memo van de student in zijn thuismap, moeten we enkele machtigingen bewerken. Een mogelijke oplossing zou zijn: `setfacl -m u:teacher:rx /home/student`. Nu kan de leraar de thuismap van de student openen en bekijken.  
+?> <i class="fa-solid fa-circle-info"></i> Om de gebruiker 'teacher' toegang te geven tot het bestand memo van de student in zijn homefolder, moeten we enkele machtigingen bewerken. Een mogelijke oplossing zou zijn: `setfacl -m u:teacher:rx /home/student`. Nu kan de leraar de homefolder van de student openen en bekijken.  
 
 ?> <i class="fa-solid fa-circle-info"></i> In het vorige voorbeeld zien we ook een maskeroptie, deze optie bepaalt de maximale machtiging en heeft ook voorrang op de reguliere bestandsmachtigingen, behalve voor de eigenaar van het bestand. We kunnen deze parameter ook als volgt toevoegen: 
 ```bash
