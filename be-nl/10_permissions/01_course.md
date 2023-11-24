@@ -369,7 +369,7 @@ drwxrwsr-x 2 jacob ict   4096 nov 27 15:03 testdir2
 -rw-rw-r-- 1 jacob jacob    0 nov 27 14:59 testfile
 liam@linux-ess:/shares/ict$ exit
 logout
-student@linux-ess:~$ sudo chmod +t /shares/ict/
+student@linux-ess:~$ sudo chmod o+t /shares/ict/         # or sudo chmod +t /shares/ict/
 student@linux-ess:~$ ls -ld /shares/ict/
 drwxrwsr-t 3 root ict 4096 nov 27 15:05 /shares/ict/
 student@linux-ess:~$ su - liam
@@ -379,7 +379,7 @@ liam@linux-ess:/shares/ict$ rm -rf testdir2/  #Liam kan Jacob's bestanden of map
 rm: cannot remove 'testdir2/': Operation not permitted	
 liam@linux-ess:/shares/ict$ exit
 logout
-student@linux-ess:~$ sudo chmod -t /shares/ict/
+student@linux-ess:~$ sudo chmod o-t /shares/ict/         # or sudo chmod -t /shares/ict/
 student@linux-ess:~$ ls -ld /shares/ict/
 drwxrwsr-x 3 root ict 4096 nov 27 15:05 /shares/ict/
 ```
@@ -389,7 +389,7 @@ Binnen het veld met speciale machtigingen is de sticky bit de meest rechtse bit,
 ```bash
 student@linux-ess:~$ cd /shares/
 student@linux-ess:/shares$ sudo mkdir ict2
-student@linux-ess:/shares$ sudo chown :ict ict2/
+student@linux-ess:/shares$ sudo chown :ict ict2/         # or sudo chgrp ict ict2/
 student@linux-ess:/shares$ ls -ld ict2/
 drwxr-xr-x 2 root ict 4096 nov 27 15:16 ict2/
 student@linux-ess:/shares$ sudo chmod 1775 ict2/
@@ -401,7 +401,7 @@ Het is ook mogelijk om de speciale bits te combineren. In het onderstaande voorb
 
 ```bash
 student@linux-ess:/shares$ sudo mkdir ict3
-student@linux-ess:/shares$ sudo chown :ict ict3
+student@linux-ess:/shares$ sudo chown :ict ict3         # or sudo chgrp ict ict3/
 student@linux-ess:/shares$ ls -ld ict3
 drwxr-xr-x 5 root ict 4096 nov 27 15:20 ict3
 student@linux-ess:/shares$ sudo chmod o-rx ict3
@@ -417,7 +417,7 @@ Om de sticky bit uit te zetten, gebruik je een nul. Een driecijferige modus verw
 ```bash
 student@linux-ess:/shares$ ls -ld ict3/
 drwxrws--T 2 root ict 4096 nov 27 15:20 ict3/
-student@linux-ess:/shares$ sudo chmod 0777 ict3/        # of chmod 777
+student@linux-ess:/shares$ sudo chmod 0777 ict3/        # or chmod 777
 student@linux-ess:/shares$ ls -ld ict3/
 drwxrwsrwx 2 root ict 4096 nov 27 15:20 ict3/
 student@linux-ess:/shares$ sudo chmod 00775 ict3/
