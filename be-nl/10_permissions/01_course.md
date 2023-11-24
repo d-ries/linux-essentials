@@ -224,7 +224,7 @@ jacob@linux-ess:~$ exit
  
 ?> Zoals je kan zien, kan de gebruiker Jacob de bestanden bekijken van de homefolder van de gebruiker Liam en dat kan de bedoeling niet zijn. 
 
-We geven eerst beide gebruikers hun eigen primaire groep groep terug: 
+We geven eerst beide gebruikers hun eigen primaire groep: 
 ```bash
 student@linux-ess:~$ sudo groupadd liam
 student@linux-ess:~$ sudo groupadd jacob
