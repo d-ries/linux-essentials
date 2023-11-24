@@ -201,7 +201,7 @@ student@linux-ess:~$ ls -l file4
 
 ## Samenwerken in een team (setgid) 
 
-Als we willen samenwerken, is het belangrijk dat alle gebruikers elkaars bestanden kunnen wijzigen. De oplossing om alle gebruikers dezelfde primaire groep te geven, is een beveiligingsprobleem omdat dit ook de rechten op hun homefolders verandert: 
+Als we willen samenwerken, is het belangrijk dat bepaalde gebruikers elkaars bestanden in een geshared mapje kunnen wijzigen. De oplossing om deze gebruikers dezelfde primaire groep te geven, is een beveiligingsprobleem omdat dit ook de rechten op hun homefolders verandert: 
 ```bash
 student@linux-ess:~$ sudo groupadd ict 
 student@linux-ess:~$ sudo useradd -m -g it -s /bin/bash liam
