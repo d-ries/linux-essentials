@@ -205,7 +205,7 @@ student@linux-ess:~$ ls -l file4
   
 ## Working together in a team (setgid)
 
-If we want to be able to work together it is key that all users are able to change each others files. The solution to give all users the same primary group is a security issue because this also changes the rights on their homefolders:
+If we want to be able to work together it is key that certain users are able to change each others files in a shared folder. The solution to give these users the same primary group is a security issue because this also changes the rights on their homefolders:
 
 ```bash
 student@linux-ess:~$ sudo groupadd ict 
