@@ -373,7 +373,7 @@ drwxrwsr-x 2 jacob ict   4096 nov 27 15:03 testdir2
 -rw-rw-r-- 1 jacob jacob    0 nov 27 14:59 testfile
 liam@linux-ess:/shares/ict$ exit
 logout
-student@linux-ess:~$ sudo chmod +t /shares/ict/
+student@linux-ess:~$ sudo chmod o+t /shares/ict/         # or sudo chmod +t /shares/ict/
 student@linux-ess:~$ ls -ld /shares/ict/
 drwxrwsr-t 3 root ict 4096 nov 27 15:05 /shares/ict/
 student@linux-ess:~$ su - liam
@@ -383,7 +383,7 @@ liam@linux-ess:/shares/ict$ rm -rf testdir2/  #Liam can no longer delete Jacob's
 rm: cannot remove 'testdir2/': Operation not permitted	
 liam@linux-ess:/shares/ict$ exit
 logout
-student@linux-ess:~$ sudo chmod -t /shares/ict/
+student@linux-ess:~$ sudo chmod o-t /shares/ict/         # or sudo chmod -t /shares/ict/
 student@linux-ess:~$ ls -ld /shares/ict/
 drwxrwsr-x 3 root ict 4096 nov 27 15:05 /shares/ict/
 ```
@@ -393,7 +393,7 @@ Within the special permissions field, the sticky bit is the rightmost bit, with 
 ```bash
 student@linux-ess:~$ cd /shares/
 student@linux-ess:/shares$ sudo mkdir ict2
-student@linux-ess:/shares$ sudo chown :ict ict2/
+student@linux-ess:/shares$ sudo chown :ict ict2/         # or sudo chgrp ict ict2/
 student@linux-ess:/shares$ ls -ld ict2/
 drwxr-xr-x 2 root ict 4096 nov 27 15:16 ict2/
 student@linux-ess:/shares$ sudo chmod 1775 ict2/
@@ -405,7 +405,7 @@ It's also possible to combine the special bits. In the example below we will com
 
 ```bash
 student@linux-ess:/shares$ sudo mkdir ict3
-student@linux-ess:/shares$ sudo chown :ict ict3
+student@linux-ess:/shares$ sudo chown :ict ict3         # or sudo chgrp ict ict3/
 student@linux-ess:/shares$ ls -ld ict3
 drwxr-xr-x 5 root ict 4096 nov 27 15:20 ict3
 student@linux-ess:/shares$ sudo chmod o-rx ict3
