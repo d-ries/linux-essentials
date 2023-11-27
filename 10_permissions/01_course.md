@@ -37,7 +37,7 @@ brw-rw---- 1 root disk   8, 0 Nov 11 10:44 /dev/sda
 brw-rw---- 1 root cdrom 11, 0 Nov 11 10:43 /dev/sr0
 ```   
 
-File permissions are written on disk as a field of bits in the file's properties. A bit is set to 1 when a permission is granted, 0 when it's not. So rwxrw-r-- becomes 111110100. Because humans are not very good at parsing binary sequences, they are represented as as octal numbers, numbers from 0 to 7 (000 to 111 in binary). To calculate the octal number remember that read is worth 4, write 2 and execute 1. Add those you need and you'll get the octal notation. The example above becomes 764 (rwx, 4+2+1=7,      rw-, 4+2+0=6,        r--, 4+0+0=4).
+File permissions are written on disk as a field of bits in the file's properties. A bit is set to 1 when a permission is granted, 0 when it's not. So rwxrw-r-- becomes 111110100. Because humans are not very good at parsing binary sequences, they are represented as as octal numbers, numbers from 0 to 7 (000 to 111 in binary). To calculate the octal number remember that read is worth 4, write 2 and execute 1. Add those you need and you'll get the octal notation. The example above becomes 764 (rwx = 4+2+1=7,      rw- = 4+2+0=6,        r-- = 4+0+0=4).
 
 ## Changing permissions (chmod)
 
