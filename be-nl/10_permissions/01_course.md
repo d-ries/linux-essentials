@@ -44,7 +44,7 @@ File permissions worden op schijf geschreven als een veld met bits in de eigensc
 
 Om de machtigingen op een bestand te wijzigen, kan je het commando `chmod` gebruiken. 
 
-Om machtigingen van een bestand toe te voegen of weg te halen, kan je de volgende methode gebruiken, waarbij _rwx_ staat voor de rechten die je wilt toevoegen of weghalen, en _ugo_ staat voor respectievelijk userowner (gebrukerseigenaar), groupowner (groepseigenaar) en others (andere). Als je niet opgeeft voor wie je de rechten wil wijzigen, wordt deze op alle drie gewijzigd: 
+Om machtigingen van een bestand toe te voegen of weg te halen, kan je de volgende methode gebruiken, waarbij _rwx_ staat voor de rechten die je wilt toevoegen of weghalen, en _ugo_ staat voor respectievelijk userowner (gebruikerseigenaar), groupowner (groepseigenaar) en others (andere). Als je niet opgeeft voor wie je de rechten wilt wijzigen, wordt deze voor alle drie gewijzigd: 
 ```bash
 student@linux-ess:~$ touch test  
 student@linux-ess:~$ ls -l test
