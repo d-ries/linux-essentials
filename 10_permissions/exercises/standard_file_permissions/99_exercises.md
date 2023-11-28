@@ -55,7 +55,7 @@ Change the permissions of the file /tmp/.bashrc to: <br />
 
 
 ## Task 12
-Show the command that ensures that all newly created files get the following permission: <br />
+What is the command that ensures that all newly created files get the following permission: <br />
 rw-r-----
 
 
