@@ -55,7 +55,7 @@ Wijzig de machtigingen van het bestand /tmp/.bashrc naar: <br />
 
 
 ## Oefening 12
-Toon de opdracht die ervoor zorgt dat alle nieuw gemaakte bestanden de volgende machtiging krijgen: <br /> 
+Wat is de opdracht die ervoor zorgt dat alle nieuw gemaakte bestanden de volgende machtiging krijgen: <br /> 
 rw-r----- 
 
 
