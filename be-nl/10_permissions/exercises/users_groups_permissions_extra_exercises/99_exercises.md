@@ -11,7 +11,7 @@ Zorg ervoor dat de gebruiker itstudent een sudoer wordt. Test of dit werkt.
 ## Oefening 3
 Kopieer het bestand /etc/hosts naar je home directory (doe dit niet als root!). Stel de rechten met de opdracht chmod als volgt in:  
 r-x voor anderen, rw- voor groep en geen rechten (---) voor de eigenaar van het bestand. Controleer met het ls -l commando of alles is gewijzigd.  
-- Kan de eigenaar van het bestand de inhoud van het bestand controleren? Waarom / Waarom niet? 
+- Kan de eigenaar van het bestand de inhoud van het bestand bekijken? Waarom / Waarom niet? 
 - Kan hij de rechten wijzigen? 
 - Kan hij het bestand verwijderen? 
 
