@@ -14,10 +14,24 @@ r-x for others, rw- for group and no permissions (---) for the file owner. Check
 - Can he delete the file? 
 
 ## Task 4
-Create the directory structure with the necessary users, groups and ACLs as shown in the image below.
-![foldersecurity](../../../images/09/folderSecurity.PNG)
+Create 7 users named: <br />
+Walter, Michael, Ben, James, Mia, Emma and Charlotte<br />
+<br />
+Emma, Charlotte and Mia have the group _users_ as their primary group, their secondary group should be _Sales_.<br />
+Walter and Michael are member of the group _Planning_ <br />
+Ben and James are part of both the departments and are because of this member of both groups<br />
+<br />
+Alle users have their home directory in _/home/username_.<br />
+There are 3 extra directories, which can be found in _/home_:<br />
+_/home/planning_: contains the planning, customizable for all members of planning. <br />
+_/home/sales_: contains information about sales, customizable for all members of sales<br />
+_/home/general_: contains general information for everyone? James is responsible for this folder and therefore only James has writing permissions on this directory and its content.   
   
-Test where the users Ava and Oliver have read and write permissions.
+Make sure that the users who need to work together can also change eachoter's files. Make use of setgid and do not use ACLs.
+
+All users (members of the group users) have reading permissions for these directories.   
+Test the scenario!
+
 
 ## Task 5
 Find out how to copy the ACL-configurations of one folder to another one. 
@@ -55,29 +69,18 @@ The userowner of the shared directories is the `root` user
 ### Task 7.1
 Create the folders, groups and users as mentioned in the situation above. 
 
+  
 ### Task 7.2
 Give all users the correct groups as mentioned in the situation above.
 
+  
 ### Task 7.3
 Set all the permissions and ACL's for the scenario mentioned above. Do not use the special bit setgid.  
-  
-    
+     
     
 ## Task 8
-Create 7 users named: <br />
-Walter, Michael, Ben, James, Mia, Emma and Charlotte<br />
-<br />
-Emma, Charlotte and Mia have the group _users_ as their primary group, their secondary group should be _Sales_.<br />
-Walter and Michael are member of the group _Planning_ <br />
-Ben and James are part of both the departments and are because of this member of both groups<br />
-<br />
-Alle users have their home directory in _/home/username_.<br />
-There are 3 extra directories, which can be found in _/home_:<br />
-_/home/planning_: contains the planning, customizable for all members of planning. <br />
-_/home/sales_: contains information about sales, customizable for all members of sales<br />
-_/home/general_: contains general information for everyone? James is responsible for this folder and therefore only James has writing permissions on this directory and its content.   
+Create the directory structure with the necessary users, groups and ACLs as shown in the image below.
+![foldersecurity](../../../images/09/folderSecurity.PNG)
   
-Make sure that the users who need to work together can also change eachoter's files. Make use of setgid and do not use ACLs.
+Test where the users Ava and Oliver have read and write permissions.
 
-All users (members of the group users) have reading permissions for these directories.   
-Test the scenario!
