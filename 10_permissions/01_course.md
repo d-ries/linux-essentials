@@ -218,13 +218,13 @@ drwxr-x--- 2 jacob it 4096 Nov 26 15:39 /home/jacob
 drwxr-x--- 2 liam  it 4096 Nov 26 15:32 /home/liam
 student@linux-ess:~$ sudo ls -l /home/jacob/.profile
 -rw-r--r-- 1 jacob it 807 Jan  6  2022 /home/jacob/.profile
-student@linux-ess:~$ su - jacob
+student@linux-ess:~$ su - liam
 Password:
-jacob@linux-ess:~$ head -3 /home/liam/.profile
+liam@linux-ess:~$ head -3 /home/jacob/.profile
 # ~/.profile: executed by the command interpreter for login shells.
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
 # exists.  
-jacob@linux-ess:~$ exit
+liam@linux-ess:~$ exit
 ```
   
 ?> As you can see the user Jacob can view the files from the homefolder of the user Liam and this isn't what we want.
