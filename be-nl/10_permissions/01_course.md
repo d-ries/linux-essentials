@@ -222,7 +222,7 @@ liam@linux-ess:~$ head -3 /home/jacob/.profile
 liam@linux-ess:~$ exit
 ```
  
-?> Zoals je kan zien, kan de gebruiker Jacob de bestanden bekijken van de homefolder van de gebruiker Liam en dat kan de bedoeling niet zijn. 
+?> Zoals je kan zien, kan de gebruiker Liam de bestanden bekijken van de homefolder van de gebruiker Jacob en dat kan de bedoeling niet zijn. 
 
 We geven eerst beide gebruikers hun eigen primaire groep: 
 ```bash
