@@ -227,7 +227,7 @@ liam@linux-ess:~$ head -3 /home/jacob/.profile
 liam@linux-ess:~$ exit
 ```
   
-?> As you can see the user Jacob can view the files from the homefolder of the user Liam and this isn't what we want.
+?> As you can see the user Liam can view the files from the homefolder of the user Jacob and this isn't what we want.
   
 First of all we will give both users their own primary group:
 ```bash
