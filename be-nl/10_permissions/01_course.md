@@ -213,13 +213,13 @@ drwxr-x--- 2 jacob it 4096 Nov 26 15:39 /home/jacob
 drwxr-x--- 2 liam  it 4096 Nov 26 15:32 /home/liam
 student@linux-ess:~$ sudo ls -l /home/jacob/.profile
 -rw-r--r-- 1 jacob it 807 Jan  6  2022 /home/jacob/.profile
-student@linux-ess:~$ su - jacob
+student@linux-ess:~$ su - liam
 Password:
-jacob@linux-ess:~$ head -3 /home/liam/.profile
+liam@linux-ess:~$ head -3 /home/jacob/.profile
 # ~/.profile: executed by the command interpreter for login shells.
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
 # exists.  
-jacob@linux-ess:~$ exit
+liam@linux-ess:~$ exit
 ```
  
 ?> Zoals je kan zien, kan de gebruiker Jacob de bestanden bekijken van de homefolder van de gebruiker Liam en dat kan de bedoeling niet zijn. 
