@@ -341,7 +341,7 @@ liam@linux-ess:/shares/ict$ exit
 
 ?> As you can see the groupowner of the new folder and file is ict and that's why both users can now work together with eachother's files.
 
-?> Also notice that de subdirectory which has been created also gets the setgid-bit set!
+?> Also notice that the subdirectory which has been created also gets the setgid-bit set!
 
 ## The sticky bit
 
