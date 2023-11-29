@@ -341,6 +341,8 @@ liam@linux-ess:/shares/ict$ exit
 
 ?> As you can see the groupowner of the new folder and file is ict and that's why both users can now work together with eachother's files.
 
+?> Also notice that de subdirectory which has been created also gets the setgid-bit set!
+
 ## The sticky bit
 
 The setgid bit solves the main problem of making files in a shared folder created by one user accessible to other users in the same non-primary group. However this opens up another problem: Every user with access to the share can now delete or rename the files of other users in this folder. In some cases, like a shared project people are working on, this is fine. But in cases you don't want to allow this, another special permission bit is used: the **sticky bit**. Setting this bit on a folder will disallow any user (except the user root) from renaming or removing files or subfolders he does not own inside that folder.
