@@ -17,11 +17,23 @@ r-x voor anderen, rw- voor groep en geen rechten (---) voor de eigenaar van het 
 
 
 ## Oefening 4
-Maak de directorystructuur met de benodigde gebruikers, groepen en ACL's zoals weergegeven in de onderstaande afbeelding. 
+Maak 7 gebruikers aan met de naam: <br /> 
+Walter, Michael, Ben, James, Mia, Emma en Charlotte<br /> 
+<br /> 
+Emma, Charlotte en Mia hebben de groep _users_ als primaire groep, hun secundaire groep moet _Sales_ zijn. <br />
+Walter en Michael zijn lid van de groep _Planning_ <br /> 
+Ben en James maken deel uit van beide afdelingen en zijn daarom lid van beide groepen<br /> 
+<br /> 
+Alle gebruikers hebben hun home directory in _/home/gebruikersnaam_.<br /> 
+Er zijn 3 extra mappen, die te vinden zijn in _/home_:<br /> 
+_/home/planning_: bevat de planning, aanpasbaar voor alle leden van de planning. <br /> 
+_/home/sales_: bevat informatie over de verkoop, aanpasbaar voor alle leden van sales<br /> 
+_/home/general_: bevat algemene informatie voor iedereen? James is verantwoordelijk voor deze map en daarom heeft alleen James bewerkingsrechten voor deze map en de inhoud ervan.  
 
-![mapbeveiliging](../../../images/09/folderSecurity.PNG) 
+Zorg ervoor dat de gebruikers die moeten samenwerken ook de bestanden van elk van hen kunnen wijzigen. Maak gebruik van setgid en gebruik geen ACL's. 
 
-Test waar de gebruikers Ava en Oliver lees- en bewerkingsrechten hebben. 
+Alle gebruikers (leden van de groep users) hebben leesrechten voor deze mappen.  
+Test het scenario! 
 
 
 ## Oefening 5
@@ -67,20 +79,10 @@ Stel alle machtigingen en ACL's in voor het hierboven genoemde scenario. Gebruik
   
     
 ## Oefening 8
-Maak 7 gebruikers aan met de naam: <br /> 
-Walter, Michael, Ben, James, Mia, Emma en Charlotte<br /> 
-<br /> 
-Emma, Charlotte en Mia hebben de groep _users_ als primaire groep, hun secundaire groep moet _Sales_ zijn. <br />
-Walter en Michael zijn lid van de groep _Planning_ <br /> 
-Ben en James maken deel uit van beide afdelingen en zijn daarom lid van beide groepen<br /> 
-<br /> 
-Alle gebruikers hebben hun home directory in _/home/gebruikersnaam_.<br /> 
-Er zijn 3 extra mappen, die te vinden zijn in _/home_:<br /> 
-_/home/planning_: bevat de planning, aanpasbaar voor alle leden van de planning. <br /> 
-_/home/sales_: bevat informatie over de verkoop, aanpasbaar voor alle leden van sales<br /> 
-_/home/general_: bevat algemene informatie voor iedereen? James is verantwoordelijk voor deze map en daarom heeft alleen James bewerkingsrechten voor deze map en de inhoud ervan.  
+Maak de directorystructuur met de benodigde gebruikers, groepen en ACL's zoals weergegeven in de onderstaande afbeelding. 
 
-Zorg ervoor dat de gebruikers die moeten samenwerken ook de bestanden van elk van hen kunnen wijzigen. Maak gebruik van setgid en gebruik geen ACL's. 
+![mapbeveiliging](../../../images/09/folderSecurity.PNG) 
 
-Alle gebruikers (leden van de groep users) hebben leesrechten voor deze mappen.  
-Test het scenario! 
+Test waar de gebruikers Ava en Oliver lees- en bewerkingsrechten hebben. 
+
+
