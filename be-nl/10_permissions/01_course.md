@@ -336,6 +336,9 @@ liam@linux-ess:/shares/ict$ exit
 
 ?> Zoals je ziet is de groepseigenaar van de nieuwe map en het nieuwe bestand ict en daarom kunnen beide gebruikers nu samenwerken met elkaars bestanden. 
 
+?> Merk ook op dat de subdirectory die wordt aangemaakt ook de setgid-bit ingesteld krijgt!
+
+
 
 ## De sticky bit
 
