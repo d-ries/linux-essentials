@@ -35,6 +35,8 @@ Zorg ervoor dat de gebruikers die moeten samenwerken ook de bestanden van elk va
 Alle gebruikers (leden van de groep users) hebben leesrechten voor deze mappen.  
 Test het scenario! 
 
+Extra Challenge!
+Zorg er voor dat de personen binnen de sales-share elkaars bestanden niet kunnen verwijderen!
 
 ## Oefening 5
 Zoek hoe je de ACL-configuraties van de ene map naar de andere kopieert. 
