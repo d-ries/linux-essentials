@@ -21,8 +21,8 @@ Maak 7 gebruikers aan met de naam: <br />
 Walter, Michael, Ben, James, Mia, Emma en Charlotte<br /> 
 <br /> 
 Emma, Charlotte en Mia hebben de groep _users_ als primaire groep, hun secundaire groep moet _Sales_ zijn. <br />
-Walter en Michael zijn lid van de groep _Planning_ <br /> 
-Ben en James maken deel uit van beide afdelingen en zijn daarom lid van beide groepen<br /> 
+Walter en Michael hebben hun eigen primaire groep en zijn bijkomstig lid van de groep _Planning_ <br /> 
+Ben en James maken deel uit van beide afdelingen en zijn daarom bijkomstig lid van beide groepen<br /> 
 <br /> 
 Alle gebruikers hebben hun home directory in _/home/gebruikersnaam_.<br /> 
 Er zijn 3 extra mappen, die te vinden zijn in _/home_:<br /> 
