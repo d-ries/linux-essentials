@@ -32,7 +32,7 @@ Verander je umask in 0037.
 
 ## Oefening 7
 Test op je systeem of het volgende correct is: <br /> 
-'Als iemand schrijfrechten heeft in een map, wordt deze automatisch toegevoegd aan alle bestanden in deze map, wat betekent dat deze persoon al deze bestanden kan wijzigen?' 
+'Als iemand schrijfrechten heeft in een map, worden deze schrijfrechten ook automatisch toegekend aan alle bestanden in deze map, wat betekent dat deze persoon al deze bestanden kan wijzigen?' 
 
 
 ## Oefening 8
