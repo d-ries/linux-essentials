@@ -159,7 +159,7 @@ student@linux-ess:~/course$ mkdir newfolder1
 student@linux-ess:~/course$ ls -ld newfolder1
 drwx------ 2 student student 4096 okt 15 16:25 newfolder1
 ```
-?> <i class="fa-solid fa-circle-info"></i> Setting the umask using the command changes the umask for your current terminal session. Exiting the terminal will reset it to the default value. To make it permanent add `umask <your umask>` to your user's `.bashrc` file in your home directory.
+?> <i class="fa-solid fa-circle-info"></i> Setting the umask using the command changes the umask for your current terminal session. Exiting the terminal will reset it to the default value. To make it permanent add `umask <your umask>` to your user's `.profile` file in your home directory.
   
   
 One last thing to be aware of: If you look at the following example, you'll see that files created by the root user have a different umask set.
