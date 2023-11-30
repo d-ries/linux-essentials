@@ -36,15 +36,15 @@ Test op je systeem of het volgende correct is: <br />
 
 
 ## Oefening 8
-Kopieer het bestand .bashrc van de thuismap van de root naar /tmp 
+Kopieer het bestand .bashrc van de homefolder van de gebruiker root naar /tmp 
 
 
 ## Oefening 9
-Wijzig de groepseigenaar van het bestand /tmp/.bashrc naar de groep users
+Wijzig de groupowner van het bestand /tmp/.bashrc naar de groep users
 
 
 ## Oefening 10
-Wijzig de gebruikerseigenaar van het bestand /tmp/.bashrc naar jouw gebruiker 
+Wijzig de userowner van het bestand /tmp/.bashrc naar jouw gebruiker 
 
 
 ## Oefening 11
@@ -60,10 +60,10 @@ rw-r-----
 
 
 ## Oefening 13
-Kopieer de thuismap van iemand anders (niet die van root) met alle inhoud naar de map /tmp. Controleer de eigenaars en de rechten van de gekopieerde bestanden. <br /> 
+Kopieer de thuismap van iemand anders (niet die van root) met alle inhoud naar de map /tmp. Controleer de ownerships en de permissions van de gekopieerde bestanden. <br /> 
 Wat valt je op? 
 
 
 ## Oefening 14
-Kopieer de thuismap van iemand anders (niet die van root) met alle inhoud naar de map /tmp, zorg ervoor dat alle rechten en eigenaars behouden blijven. Controleer de eigenaars en de rechten van de gekopieerde bestanden. <br /> 
+Kopieer de homefolder van iemand anders (niet die van root) met alle inhoud naar de map /tmp, zorg ervoor dat alle permissions en ownerships behouden blijven. Controleer de ownerships en de permissions van de gekopieerde bestanden. <br /> 
 Wat valt je op? 
