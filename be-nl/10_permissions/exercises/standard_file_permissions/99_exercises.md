@@ -1,4 +1,4 @@
-# Oefeningen op Standaard bestandsrechten
+# Oefeningen op Standard file permissions
 
 ## Oefening 1
 voer het volgende commando uit: <br />
