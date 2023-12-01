@@ -456,14 +456,14 @@ liam@linux-ess:~$ cat testfile2
 text from liam
 ```
 
-?> Als we de kernelparameter in de toekomst willen behouden, moeten we deze parameter wijzigen in het bestand _/usr/lib/sysctl.d/99-protect-links.conf 
+?> Als we de kernelparameter in de toekomst willen behouden, moeten we deze parameter wijzigen in het bestand _/usr/lib/sysctl.d/99-protect-links.conf_ 
 
 
 ## Een binair bestand uitvoeren als de bestandseigenaar (setuid) 
 
 Zoals je misschien hebt gemerkt, is er een derde bit waar we het niet over hebben gehad. Setuid, de meest linkse bit in het veld. Hierdoor kunnen uitvoerbare bestanden worden uitgevoerd met de machtigingen van de eigenaar van het bestand, niet degene die het uitvoert. Dit wordt bijvoorbeeld gebruikt door het _passwd_ commando om gebruikers in staat te stellen hun eigen wachtwoord te wijzigen, omdat een normale gebruiker geen toegang heeft tot het /etc/shadow-bestand. Het instellen van de setuid bit kan ernstige beveiligingsrisico's met zich meebrengen en is bijna altijd een zeer slecht idee.  
 
-In het volgende voorbeeld laten we zien waarom een normale gebruiker (zonder rechten) zijn wachtwoord mag wijzigen in het schaduw-bestand dat alleen toegankelijk is voor de rootgebruiker. 
+In het volgende voorbeeld laten we zien waarom een normale gebruiker (zonder rechten) zijn wachtwoord mag wijzigen in het schaduw-bestand dat enkel toegankelijk is voor de rootgebruiker. 
 
 ```bash
 student@linux-ess:~$ ls -l /etc/shadow
@@ -474,7 +474,7 @@ student@linux-ess:~$ stat -c '%a %n' /bin/passwd
 4755 /bin/passwd 
 ```
 
-## Toegangscontrolelijsten (Access control lists)
+## Access control lists
 De ACL-functie is gemaakt om gebruikers de mogelijkheid te bieden om selectief bestanden en mappen te delen met andere gebruikers en groepen.  
 Voordat ACL's kunnen worden geïmplementeerd, moeten we het pakket installeren: 
 ```bash
@@ -482,9 +482,12 @@ student@linux-ess:~$ sudo apt install acl
 ```
 Wanneer het is geïnstalleerd, moet het worden ingeschakeld wanneer het bestandssysteem wordt aangekoppeld. In onze Ubuntu installatie worden ACL's standaard geladen. Om ACL's toe te voegen aan een bestand of map, gebruik je het `setfacl` commando. ACL's kunnen worden bekeken met het `getfacl` commando.  
 
-?> Om ACL's toe te voegen moet je de eigenaar zijn van het bestand of de map, als je wordt toegevoegd door een ACL kun je de ACL's niet zelf wijzigen.  
-?> ACL-machtigingen hebben voorrang op de reguliere bestandsmachtigingen.  
-?> Alle ACL-machtigingen zijn cumulatief, dit betekent dat als we in 2 groepen zitten die worden toegevoegd aan een bestand met ACL's. Eén met r-- rechten en één met rwx-rechten, we rwx-rechten hebben.  
+?> Om ACL's toe te voegen moet je de __eigenaar__ zijn van het bestand of de map. Als je wordt toegevoegd aan een ACL wil dit dus niet zeggen dat je de ACL's ook zelf kunt wijzigen.  
+  
+?> ACL-machtigingen hebben __voorrang__ op de reguliere bestandsmachtigingen.  
+  
+?> Alle ACL-machtigingen zijn __cumulatief__. Dit betekent dat, als we in 2 groepen zitten die worden toegevoegd aan een bestand met ACL's, één met r-- rechten en één met rwx-rechten, we de rwx-rechten hebben.  
+  
 
 Met het commando `setfacl` kunnen we ACL's wijzigen (-m) of verwijderen (-x). 
  
