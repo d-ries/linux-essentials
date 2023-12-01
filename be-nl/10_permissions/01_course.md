@@ -459,11 +459,11 @@ text from liam
 ?> Als we de kernelparameter in de toekomst willen behouden, moeten we deze parameter wijzigen in het bestand _/usr/lib/sysctl.d/99-protect-links.conf_ 
 
 
-## Een binair bestand uitvoeren als de bestandseigenaar (setuid) 
+## Een binair bestand uitvoeren als de userowner (setuid) 
 
 Zoals je misschien hebt gemerkt, is er een derde bit waar we het niet over hebben gehad. Setuid, de meest linkse bit in het veld. Hierdoor kunnen uitvoerbare bestanden worden uitgevoerd met de machtigingen van de eigenaar van het bestand, niet degene die het uitvoert. Dit wordt bijvoorbeeld gebruikt door het _passwd_ commando om gebruikers in staat te stellen hun eigen wachtwoord te wijzigen, omdat een normale gebruiker geen toegang heeft tot het /etc/shadow-bestand. Het instellen van de setuid bit kan ernstige beveiligingsrisico's met zich meebrengen en is bijna altijd een zeer slecht idee.  
 
-In het volgende voorbeeld laten we zien waarom een normale gebruiker (zonder rechten) zijn wachtwoord mag wijzigen in het schaduw-bestand dat enkel toegankelijk is voor de rootgebruiker. 
+In het volgende voorbeeld laten we zien waarom een normale gebruiker (zonder rechten) zijn wachtwoord mag wijzigen in de shadow-file dat eigenlijk enkel toegankelijk is voor de gebruiker root. 
 
 ```bash
 student@linux-ess:~$ ls -l /etc/shadow
@@ -480,7 +480,7 @@ Voordat ACL's kunnen worden geïmplementeerd, moeten we het pakket installeren:
 ```bash
 student@linux-ess:~$ sudo apt install acl
 ```
-Wanneer het is geïnstalleerd, moet het worden ingeschakeld wanneer het bestandssysteem wordt aangekoppeld. In onze Ubuntu installatie worden ACL's standaard geladen. Om ACL's toe te voegen aan een bestand of map, gebruik je het `setfacl` commando. ACL's kunnen worden bekeken met het `getfacl` commando.  
+Wanneer het is geïnstalleerd, moet het worden ingeschakeld wanneer het filesysteem wordt gemount. In onze Ubuntu installatie wordt de ACL-functionaliteit standaard geladen. Om ACL's toe te voegen aan een bestand of map, gebruik je het `setfacl` commando. Wanneer we ACL's hebben ingesteld, kunnen deze worden bekeken met het `getfacl` commando.  
 
 ?> Om ACL's toe te voegen moet je de __eigenaar__ zijn van het bestand of de map. Als je wordt toegevoegd aan een ACL wil dit dus niet zeggen dat je de ACL's ook zelf kunt wijzigen.  
   
@@ -524,9 +524,9 @@ mask::rw-
 other::r--
 
 ```
-?> <i class="fa-solid fa-circle-info"></i> Om de gebruiker 'teacher' toegang te geven tot het bestand memo van de student in zijn homefolder, moeten we enkele machtigingen bewerken. Een mogelijke oplossing zou zijn: `setfacl -m u:teacher:rx /home/student`. Nu kan de leraar de homefolder van de student openen en bekijken.  
+?> <i class="fa-solid fa-circle-info"></i> Om de gebruiker 'teacher' toegang te geven tot het bestand _memo_ uit de homefolder van 'student' , moeten we enkele machtigingen bewerken. Een mogelijke oplossing zou zijn: `setfacl -m u:teacher:rx /home/student`. Nu kan de leraar de homefolder van de student openen en bekijken.  
 
-?> <i class="fa-solid fa-circle-info"></i> In het vorige voorbeeld zien we ook een maskeroptie, deze optie bepaalt de maximale machtiging en heeft ook voorrang op de reguliere bestandsmachtigingen, behalve voor de eigenaar van het bestand. We kunnen deze parameter ook als volgt toevoegen: 
+?> <i class="fa-solid fa-circle-info"></i> In het vorige voorbeeld zien we ook een regel met de optie _mask_. Deze optie bepaalt de maximale machtiging en heeft ook voorrang op de reguliere bestandsmachtigingen, __behalve voor de eigenaar__ van het bestand. We kunnen deze parameter als volgt toevoegen: 
 ```bash
 student@linux-ess:~$ setfacl -m m:r memo 
 student@linux-ess:~$ getfacl memo 
@@ -544,7 +544,7 @@ student@linux-ess:~$ ls -l memo
 -rw-r--r--+ 1 student student 0 Nov 11 14:15 memo
 ```
 
-Als we een ACL-vermelding uit het bestand willen verwijderen, kunnen we de optie -x gebruiken: 
+Als we een ACL-instelling uit het bestand willen verwijderen, kunnen we de optie -x gebruiken: 
 ```bash
 student@linux-ess:~$ setfacl -x g:it memo
 student@linux-ess:~$ getfacl memo 
@@ -559,7 +559,7 @@ other::r--
   
 ```
 
-Als we alle ACL-vermeldingen uit een bestand willen verwijderen, kunnen we de optie -b gebruiken: 
+Als we alle ACL-instellingen uit een bestand willen verwijderen, kunnen we de optie -b gebruiken: 
 ```bash
 student@linux-ess:~$ setfacl -b memo
 student@linux-ess:~$ getfacl memo 
@@ -572,7 +572,7 @@ other::r--
 
 ```
 
-We kunnen ook standaard ACL's toevoegen door de parameter d: toe te voegen of de optie -d toe te voegen. Het standaardgedeelte zorgt ervoor dat nieuwe subbestanden en submappen dezelfde ACL's krijgen als de opgegeven map. Houd er rekening mee dat dit alleen van toepassing is als de gebruiker die het bestand of de map maakt, de machtigingen heeft om dit te doen! 
+We kunnen ook default ACL's toevoegen door de parameter d: toe te voegen of de optie -d toe te voegen. de _default_a-instelling zorgt ervoor dat nieuwe subbestanden en submappen dezelfde ACL's krijgen als de opgegeven map. Houd er rekening mee dat dit alleen van toepassing is als de gebruiker die het bestand of de map maakt, de machtigingen heeft om dit te doen! 
   
 ```bash
 student@linux-ess:~$ mkdir memos
