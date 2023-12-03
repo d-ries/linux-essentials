@@ -628,7 +628,7 @@ default:other::r-x
 
 student@linux-ess:~$ touch memos/January/24
 student@linux-ess:~$ getfacl memos/January/24
-# file: memos/January/22
+# file: memos/January/24
 # owner: student
 # group: student
 user::rw-
