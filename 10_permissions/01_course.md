@@ -630,8 +630,8 @@ default:group:it:rwx
 default:mask::rwx
 default:other::r-x
 
-student@linux-ess:~$ touch memos/January/22
-student@linux-ess:~$ getfacl memos/January/22
+student@linux-ess:~$ touch memos/January/24
+student@linux-ess:~$ getfacl memos/January/24
 # file: memos/January/22
 # owner: student
 # group: student
