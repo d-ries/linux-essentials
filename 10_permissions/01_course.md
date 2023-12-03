@@ -567,7 +567,7 @@ student@linux-ess:~$ ls -l memo
 -rw-rw-r--+ 1 student student 0 Nov 11 14:15 memo
 ```
 
-?> <i class="fa-solid fa-circle-info"></i> Note that the mask of the file _memo_ has automatically changed _rw-_. This is because we changed ACLs and the mask has to make sure that all user-ACLs and group-ACLs can be applied (user:teacher:rw-).
+?> <i class="fa-solid fa-circle-info"></i> Note that the mask of the file _memo_ has automatically changed _rw-_. This is because we changed ACLs and the mask has to make sure that all user-ACLs and group-ACLs can be applied (user : teacher : rw-).
 
   
 If we want to remove all ACL entries from the file we can use the -b option:
