@@ -585,7 +585,7 @@ student@linux-ess:~$ ls -l memo
 -rw-rw-r-- 1 student student 0 Nov 11 14:15 memo
 ```
 
-We can also add default ACL’s by adding the d: parameter or adding the -d option. The default part makes sure new subfiles and subfolders get the same ACL’s as the specified directory. Note that this only applies if the user creating the file or folder has the permissions to do so! 
+We can also add default ACL’s by adding the d: parameter or adding the -d option. The default part makes sure new subfiles and subfolders get the same ACL’s as the specified directory. Note that the user or group need to have the permissions to create the file or folder itself! 
   
 ```bash
 student@linux-ess:~$ mkdir memos
