@@ -581,7 +581,7 @@ student@linux-ess:~$ ls -l memo
 -rw-rw-r-- 1 student student 0 Nov 11 14:15 memo
 ```
 
-We kunnen ook default ACL's toevoegen door de parameter d: toe te voegen of de optie -d toe te voegen. de _default_a-instelling zorgt ervoor dat nieuwe subbestanden en submappen dezelfde ACL's krijgen als de opgegeven map. Houd er rekening mee dat dit alleen van toepassing is als de gebruiker die het bestand of de map maakt, de machtigingen heeft om dit te doen! 
+We kunnen ook default ACL's toevoegen door de parameter d: toe te voegen of de optie -d toe te voegen. de _default_-instelling zorgt ervoor dat nieuwe subbestanden en submappen dezelfde ACL's krijgen als de opgegeven map. Houd er rekening mee dat dit enkel van toepassing is als de gebruiker die het bestand of de map maakt, de machtigingen heeft om dit te doen! 
   
 ```bash
 student@linux-ess:~$ mkdir memos
