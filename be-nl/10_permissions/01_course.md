@@ -535,7 +535,7 @@ student@linux-ess:~$ getfacl memo
 # group: student
 user::rw-
 user:teacher:rw-                #effective:r--
-group::rw-
+group::rw-                      #effective:r--                      
 group:it:rw-                    #effective:r--
 mask::r--
 other::r--
@@ -552,12 +552,15 @@ student@linux-ess:~$ getfacl memo
 # owner: student
 # group: student
 user::rw-
-user:teacher:rw-                #effective:r--
+user:teacher:rw-
 group::rw-
-mask::r--
-other::r--
-  
+mask::rw-
+other::r-- 
+
+student@linux-ess:~$ ls -l memo
+-rw-rw-r--+ 1 student student 0 Nov 11 14:15 memo
 ```
+
 
 Als we alle ACL-instellingen uit een bestand willen verwijderen, kunnen we de optie -b gebruiken: 
 ```bash
@@ -570,6 +573,8 @@ user::rw-
 group::rw-
 other::r--
 
+student@linux-ess:~$ ls -l memo
+-rw-rw-r-- 1 student student 0 Nov 11 14:15 memo
 ```
 
 We kunnen ook default ACL's toevoegen door de parameter d: toe te voegen of de optie -d toe te voegen. de _default_a-instelling zorgt ervoor dat nieuwe subbestanden en submappen dezelfde ACL's krijgen als de opgegeven map. Houd er rekening mee dat dit alleen van toepassing is als de gebruiker die het bestand of de map maakt, de machtigingen heeft om dit te doen! 
