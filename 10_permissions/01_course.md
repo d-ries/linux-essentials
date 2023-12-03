@@ -559,9 +559,11 @@ student@linux-ess:~$ getfacl memo
 user::rw-
 user:teacher:rw-                
 group::rw-
-mask::r--
-other::r--
-  
+mask::rw-
+other::r--  
+
+student@linux-ess:~$ ls -l memo
+-rw-rw-r--+ 1 student student 0 Nov 11 14:15 memo
 ```
   
 If we want to remove all ACL entries from the file we can use the -b option:
@@ -575,6 +577,8 @@ user::rw-
 group::rw-
 other::r--
 
+student@linux-ess:~$ ls -l memo
+-rw-rw-r-- 1 student student 0 Nov 11 14:15 memo
 ```
 
 We can also add default ACL’s by adding the d: parameter or adding the -d option. The default part makes sure new subfiles and subfolders get the same ACL’s as the specified directory. Note that this only applies if the user creating the file or folder has the permissions to do so! 
