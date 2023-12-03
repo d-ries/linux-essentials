@@ -484,7 +484,7 @@ Wanneer het is geïnstalleerd, moet het worden ingeschakeld wanneer het filesyst
 
 ?> Om ACL's toe te voegen moet je de __eigenaar__ zijn van het bestand of de map. Als je wordt toegevoegd aan een ACL wil dit dus niet zeggen dat je de ACL's ook zelf kunt wijzigen.  
   
-?> ACL-machtigingen hebben __voorrang__ op de reguliere bestandsmachtigingen.  
+?> ACL-machtigingen hebben __voorrang__ op de reguliere bestandsmachtigingen. Enige uitzondering hierop zijn de rechten van de userowner. Indien de filepermissions van de userowner beknopter zijn dan die van de ACLs van deze gebruiker, dan zullen de ACLs niet worden toegepast (dus _r--..._    en ACL    _u : userowner : rw_   zal resulteren in enkel read rechten)  
   
 ?> Alle ACL-machtigingen zijn __cumulatief__. Dit betekent dat, als we in 2 groepen zitten die worden toegevoegd aan een bestand met ACL's, één met r-- rechten en één met rwx-rechten, we de rwx-rechten hebben.  
   
