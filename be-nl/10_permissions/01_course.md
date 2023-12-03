@@ -203,7 +203,7 @@ student@linux-ess:~$ ls -l file4
 
 Als we willen samenwerken, is het belangrijk dat bepaalde gebruikers elkaars bestanden in een geshared mapje kunnen wijzigen. De oplossing om deze gebruikers dezelfde primaire groep te geven, is een beveiligingsprobleem omdat dit ook de rechten op hun homefolders verandert: 
 ```bash
-student@linux-ess:~$ sudo groupadd ict 
+student@linux-ess:~$ sudo groupadd it 
 student@linux-ess:~$ sudo useradd -m -g it -s /bin/bash liam
 student@linux-ess:~$ sudo passwd liam
 student@linux-ess:~$ sudo useradd -m -g it -s /bin/bash jacob
