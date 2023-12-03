@@ -544,6 +544,8 @@ student@linux-ess:~$ ls -l memo
 -rw-r--r--+ 1 student student 0 Nov 11 14:15 memo
 ```
 
+?> <i class="fa-solid fa-circle-info"></i> De mask is te zien als groepsrechten bij een _ls -l_. 
+
 Als we een ACL-instelling uit het bestand willen verwijderen, kunnen we de optie -x gebruiken: 
 ```bash
 student@linux-ess:~$ setfacl -x g:it memo
@@ -561,8 +563,7 @@ student@linux-ess:~$ ls -l memo
 -rw-rw-r--+ 1 student student 0 Nov 11 14:15 memo
 ```
 
-?> <i class="fa-solid fa-circle-info"></i> We zien hierboven dat de mask van het bestand _memo_ terug op _rw-_ staat. Dit komt omdat we een ACL hebben veranderd en de mask dan automatisch terug wordt gezet zodanig dat alle gebruikers-ACLs en groep-ACLs dan ook kunnen worden toegepast (user:teacher:rw-). De mask is dan ook weer te zien als groepsrechten bij een _ls -l_. 
-
+?> <i class="fa-solid fa-circle-info"></i> We zien hierboven dat de mask van het bestand _memo_ terug op _rw-_ staat. Dit komt omdat we een ACL hebben veranderd en de mask dan automatisch terug wordt gezet zodanig dat alle gebruikers-ACLs en groep-ACLs dan ook kunnen worden toegepast (user:teacher:rw-).
 
 
 Als we alle ACL-instellingen uit een bestand willen verwijderen, kunnen we de optie -b gebruiken: 
