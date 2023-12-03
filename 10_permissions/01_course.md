@@ -636,7 +636,7 @@ student@linux-ess:~$ getfacl memos/January/24
 # owner: student
 # group: student
 user::rw-
-group::r-x                      #effective:r--
+group::rwx                      #effective:rw-
 group:it:rwx                    #effective:rw-
 mask::rw-
 other::r--
