@@ -208,7 +208,7 @@ student@linux-ess:~$ ls -l file4
 If we want to be able to work together it is key that certain users are able to change each others files in a shared folder. The solution to give these users the same primary group is a security issue because this also changes the rights on their homefolders:
 
 ```bash
-student@linux-ess:~$ sudo groupadd ict 
+student@linux-ess:~$ sudo groupadd it 
 student@linux-ess:~$ sudo useradd -m -g it -s /bin/bash liam
 student@linux-ess:~$ sudo passwd liam
 student@linux-ess:~$ sudo useradd -m -g it -s /bin/bash jacob
@@ -540,7 +540,7 @@ student@linux-ess:~$ getfacl memo
 # group: student
 user::rw-
 user:teacher:rw-                #effective:r--
-group::rw-
+group::rw-                      #effective:r--  
 group:it:rw-                    #effective:r--
 mask::r--
 other::r--
@@ -557,7 +557,7 @@ student@linux-ess:~$ getfacl memo
 # owner: student
 # group: student
 user::rw-
-user:teacher:rw-                #effective:r--
+user:teacher:rw-                
 group::rw-
 mask::r--
 other::r--
