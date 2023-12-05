@@ -77,7 +77,7 @@ Maak de mappen, groepen en gebruikers zoals vermeld in bovenstaande situatie.
 Geef alle gebruikers de juiste groepen zoals vermeld in bovenstaande situatie. 
 
 ### Oefening 7.3
-Stel alle machtigingen en ACL's in voor het hierboven genoemde scenario. Gebruik de speciale bit setgid niet, maar zorg er toch voor dat de ACL's worden overgeërfd naar eventuele submappen. 
+Stel alle machtigingen en ACL's in voor het hierboven genoemde scenario. Gebruik de speciale bit setgid niet, maar zorg er toch voor dat de ACL's worden overgeërfd naar eventuele, later aangemaakte, submappen. 
   
     
 ## Oefening 8
