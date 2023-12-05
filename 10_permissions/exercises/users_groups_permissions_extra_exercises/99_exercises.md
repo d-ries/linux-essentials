@@ -75,7 +75,7 @@ Give all users the correct groups as mentioned in the situation above.
 
   
 ### Task 7.3
-Set all the permissions and ACL's for the scenario mentioned above. Do not use the special bit setgid.  
+Set all the permissions and ACL's for the scenario mentioned above. Do not use the special bit setgid, but make sure that the ACL's are inherited to subdirectories which might be created.   
      
     
 ## Task 8
