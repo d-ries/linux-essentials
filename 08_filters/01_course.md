@@ -721,4 +721,26 @@ Note that this example does not check for valid domain names.
 
 ?> The questionmark (`?`) in a regex means the previous character is _optional_!
 
+  
+We can also make use of Grouping to work with strings instead of just one character.
+For example we could say that a complete string is optional instead of only the previous character:
+```bash
+student@linux-ess:~$ cat regexlist.txt | grep -E "pxe( boot)?"
+pxe
+pxe boot
+```
+    
+We could also use grouping to specify a repetition of a certain expression. Beneath you see two commands that are the same:
+```bash
+student@linux-ess:~$ grep -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}" regexlist.txt
+192.168.1.19
+192.168.5.117
+172.16.0.4
+127.0.0.1
+student@linux-ess:~$ grep -E "[0-9]{1,3}(\.[0-9]{1,3}){3}" regexlist.txt
+192.168.1.19
+192.168.5.117
+172.16.0.4
+127.0.0.1
+```
 
