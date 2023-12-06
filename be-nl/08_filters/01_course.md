@@ -825,4 +825,25 @@ https://www.pxl.be
 Houd er rekening mee dat in dit voorbeeld niet wordt gecontroleerd op geldige domeinnamen.  
 
 ?> Het vraagteken (`?`) in een regex betekent dat het vorige karakter _optioneel_ is! 
-
+  
+We kunnen ook gebruik maken van Grouping om te werken met strings in plaats van slechts één karakter.
+Zo kunnen we bijvoorbeeld zeggen dat een volledige string optioneel is in plaats van enkel het voorafgaand karakter:
+```bash
+student@linux-ess:~$ cat regexlist.txt | grep -E "pxe( boot)?"
+pxe
+pxe boot
+```
+    
+We kunnen ook een grouping gebruiken om een herhaling te specifiëren van een bepaalde expressie. Zo zijn de twee onderstaande regular expressions hetzelfde:
+```bash
+student@linux-ess:~$ grep -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}" regexlist.txt
+192.168.1.19
+192.168.5.117
+172.16.0.4
+127.0.0.1
+student@linux-ess:~$ grep -E "[0-9]{1,3}(\.[0-9]{1,3}){3}" regexlist.txt
+192.168.1.19
+192.168.5.117
+172.16.0.4
+127.0.0.1
+```
