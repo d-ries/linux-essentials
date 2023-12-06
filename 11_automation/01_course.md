@@ -1,7 +1,7 @@
 # Automation
 
 ## Bash scripts
-Scripting is a great way to automate simple tasks or chains of commands. Imagine you want to take a backup. Usually this means creating a `zip` archive of certain files and folders, giving this `zip` file the appropriate name and then move the `zip` file to a certain folder. Running these commands manually is prone to errors and time consuming. A better way would be to bundle these commands in a script, so we can instead run one command that will trigger running all of the steps described above.
+Scripting is a great way to automate simple tasks or chains of commands. Imagine you want to take a backup. Usually this means creating a `tar` archive of certain files and folders, giving this `tar` file the appropriate name and then move the `tar` file to a certain folder. Running these commands manually is prone to errors and time consuming. A better way would be to bundle these commands in a script, so we can instead run one command that will trigger running all of the steps described above.
 
 In Ubuntu we often use _bash_ scripts. _bash_ refers to the default shell that we use as a user in Ubuntu. There are different kinds of _shells_ but this is out of scope for this course. Most syntax seen in this chapter will work in most shell environments.
 
@@ -17,16 +17,16 @@ student@linux-ess:~$ nano helloworld.sh
 We give the file the following contents:
 ```bash
 #!/bin/bash
-echo "hello world"
+echo "hello world"  # Print text to the screen
 echo "this is our first bash script"
 ```
-The first line in this script is named in the shebang and is a special line that will make sure the script will be ran in a `bash` shell. After that we can have different lines of all kinds of commands that will be run in sequential order.
+The first line in this script is named in the u_shebang_ and is a special line that will make sure the script will be ran in a `bash` shell. After that we can have different lines of all kinds of commands that will be run in sequential order.
 
-?> using `#` signs are interpreted as comments. Any code after those signs will not be executed.
+?> using `#` signs are interpreted as comments. Any code after that sign will not be executed.
 
 In the example above we will run 2 `echo` commands. 
   
-To run this bash script, we will have to add _execute_ rights:
+To run this bash script (without specifying an interpreter), we will have to add _execute_ rights:
 
 ```bash
 student@linux-ess:~$ ls -l helloworld.sh
@@ -35,14 +35,20 @@ student@linux-ess:~$ chmod u+x helloworld.sh
 student@linux-ess:~$ ls -l helloworld.sh
 -rwxrw-r-- 1 student student 371 Nov 11 15:55 helloworld.sh
 ```
-After doing this we can execute the script:
+After doing this we can execute the script (without specifying an interpreter):
 ```bash
 student@linux-ess:~$ ./helloworld.sh
 hello world
 this is our first bash script
-```
+```  
   
-
+When we do not set the _execute_ permission, but read rights are in place, we could always run the script by specifying the interpreter:   
+```bash
+student@linux-ess:~$ bash helloworld.sh
+hello world
+this is our first bash script
+``` 
+  
 ?> Although the script is in the working directory, we have to specify it with: ./helloworld.sh  Another way to run it, is to specify the full path: /home/student/helloworld.sh
   
   
