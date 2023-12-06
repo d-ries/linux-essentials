@@ -1,11 +1,11 @@
 # Automatisering 
 
 ## Bash scripts 
-Scripting is een geweldige manier om eenvoudige taken of commandoreeksen te automatiseren. Stel je voor dat je een back-up wilt maken. Meestal betekent dit het maken van een 'zip'-archief van bepaalde bestanden en mappen, daarna dit 'zip'-bestand de juiste naam geven en vervolgens het 'zip'-bestand naar een bepaalde map wordt verplaatsen. Het handmatig uitvoeren van deze commando's is gevoelig voor fouten en tijdrovend. Een betere manier zou zijn om deze commando's in een script te bundelen, zodat we in plaats daarvan één commando kunnen uitvoeren die alle hierboven beschreven stappen activeert. 
+Scripting is een geweldige manier om eenvoudige taken of commandoreeksen te automatiseren. Stel je voor dat je een back-up wilt maken. Meestal betekent dit het maken van een 'tar'-archief van bepaalde bestanden en mappen, daarna dit 'tar'-bestand de juiste naam geven en vervolgens het 'tar'-bestand naar een bepaalde map wordt verplaatsen. Het handmatig uitvoeren van deze commando's is gevoelig voor fouten en tijdrovend. Een betere manier zou zijn om deze commando's in een script te bundelen, zodat we in plaats daarvan één commando kunnen uitvoeren die alle hierboven beschreven stappen activeert. 
 
 In Ubuntu gebruiken we vaak _bash_ scripts. _bash_ verwijst naar de standaard shell die we gebruiken als gebruiker in Ubuntu. Er zijn verschillende soorten _shells_ maar dit valt buiten het bereik van deze cursus. De meeste syntaxis die in dit hoofdstuk wordt gezien, werkt in de meeste shell-omgevingen. 
 
-?> Merk op dat we ons zullen concentreren op de basissyntaxis van een shellscript. Je kan altijd meer te weten komen over of instructies, loops, aangepaste opties en argumenten, tests, ... in scripts, maar dit valt buiten het bereik van deze cursus. 
+?> Merk op dat we ons zullen concentreren op de basissyntaxis van een shellscript. Je kan altijd meer te weten komen over _if_ statements, loops, opties en argumenten, tests, ... in scripts, maar dit valt buiten het bereik van deze cursus. 
 
 ### Hello world
 Om te beginnen met ons eerste bash-script maken we een nieuw bestand met de naam `helloworld.sh` en voegen we wat inhoud toe met 'nano'. 
@@ -17,16 +17,16 @@ student@linux-ess:~$ nano helloworld.sh
 We geven het bestand de volgende inhoud: 
 ```bash
 #!/bin/bash
-echo "hello world"
+echo "hello world"  # Print text to the screen
 echo "this is our first bash script"
 ```
-De eerste regel in dit script wordt shebang genoemd en is een speciale regel die ervoor zorgt dat het script in een `bash`-shell wordt uitgevoerd. Daarna kunnen we verschillende regels van allerlei commando's hebben die in opeenvolgende volgorde worden uitgevoerd. 
+De eerste regel in dit script wordt de _shebang_ genoemd en is een speciale regel die ervoor zorgt dat het script in een `bash`-shell wordt uitgevoerd. Daarna kunnen we verschillende regels van allerlei commando's hebben die in opeenvolgende volgorde worden uitgevoerd. 
 
-?> het gebruik van `#` tekens worden geïnterpreteerd als opmerkingen. Code na deze tekens wordt niet uitgevoerd. 
+?> het gebruik van het `#` teken wordt geïnterpreteerd als het begin van commentaar. Resterende code op de lijn dat zich bevindt na dit teken wordt niet uitgevoerd. 
 
 In het bovenstaande voorbeeld zullen we 2 `echo`-commando's uitvoeren.  
 
-Om dit bash-script uit te voeren, moeten we _uitvoerings_-rechten toevoegen: 
+Om dit bash-script uit te voeren (zonder een interpreter te moeten opgeven), moeten we _execute_-rechten toevoegen: 
 ```bash
 student@linux-ess:~$ ls -l helloworld.sh
 -rw-rw-r-- 1 student student 371 Nov 11 15:55 helloworld.sh
@@ -35,13 +35,20 @@ student@linux-ess:~$ ls -l helloworld.sh
 -rwxrw-r-- 1 student student 371 Nov 11 15:55 helloworld.sh
 ```
 
-Hierna kunnen we het script uitvoeren: 
+Hierna kunnen we het script uitvoeren (zonder een interpreter op te geven): 
 ```bash
 student@linux-ess:~$ ./helloworld.sh
 hello world
 this is our first bash script
 ``` 
-
+  
+Indien we het _execute_ recht niet geven, maar wel leesrechten, dan kunnen we het script toch nog uitvoeren door de interpreter mee te geven:   
+```bash
+student@linux-ess:~$ bash helloworld.sh
+hello world
+this is our first bash script
+``` 
+  
 ?> Hoewel het script zich in de huidige werkmap bevindt, moeten we het specificeren met: ./helloworld.sh Een andere manier om het uit te voeren, is door het volledige pad op te geven: /home/student/helloworld.sh 
 
 ?> Alleen scripts die uitvoerbaar zijn en zijn opgeslagen in een map die is opgegeven in de variabele $PATH, kunnen worden uitgevoerd zonder het volledige pad op te geven. 
