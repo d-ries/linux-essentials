@@ -33,18 +33,32 @@ atsiiiiiiiiiiiign
 Use regular expressions to filter the lines that:
 
 1.	Contain the letter a
-2.	Contain the letter a or s
-3.	Contain the letter a and s
-4.	Contain a @
-5.	Start with the letter p
-6.	End with the letter t 
-7.	Start with a number 
-8.	Start with a number and end with a letter 
-9.	Contains 2 or more consecutive letters i
-10.	Only contains numbers
-11.	Only contains letters
-12.	Contains one or more numbers, followed by one or more letters
-13.	Contains one or more numbers, followed by one or more letters and ending with a number. 
+   Output:
+      apple
+      banana
+      apricot
+peach
+strawberry
+mango
+grape
+orange
+5isanumber
+123abc
+abc123
+35abcd35
+atsiiiiiiiiiiiign  	
+3.	Contain the letter a or s
+4.	Contain the letter a and s
+5.	Contain a @
+6.	Start with the letter p
+7.	End with the letter t 
+8.	Start with a number 
+9.	Start with a number and end with a letter 
+10.	Contains 2 or more consecutive letters i
+11.	Only contains numbers
+12.	Only contains letters
+13.	Contains one or more numbers, followed by one or more letters
+14.	Contains one or more numbers, followed by one or more letters and ending with a number. 
 
 
 ## Task 3
