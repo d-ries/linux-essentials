@@ -17,6 +17,7 @@ student@linux-ess:~$ nano helloworld.sh
 We give the file the following contents:
 ```bash
 #!/bin/bash
+# Author: Linus Torvalds
 echo "hello world"  # Print text to the screen
 echo "this is our first bash script"
 ```
