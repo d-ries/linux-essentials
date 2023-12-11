@@ -141,7 +141,7 @@ The exact configuration of permissions for new files and folders is set by the `
 student@linux-ess:~/course$ umask
 0002
 ```
-So how does this work? We subtract the umask from 777 and never give execute rights to a new file. So for a file you get 775 (rwxrwxr-x), but because you never set the execute bit this results in 644 or rw-rw-r-- . For folders we also subtract the umask (here 002) from 777, this results in 775 and here we keep the execution-bits. A umask of 000 allows everything, a umask of 777 will make a new file and folder have no permissions. The numbers still work the same (4 for read, 2 for write, 1 for execute) but this time you are using them to **mask** certain permission bits, or put more simply: deny certain permissions on new files and folders.
+So how does this work? We subtract the umask from 777 and never give execute rights to a new file. So for a file you get 775 (rwxrwxr-x), but because you never set the execute bit this results in 664 or rw-rw-r-- . For folders we also subtract the umask (here 002) from 777, this results in 775 and here we keep the execution-bits. A umask of 000 allows everything, a umask of 777 will make a new file and folder have no permissions. The numbers still work the same (4 for read, 2 for write, 1 for execute) but this time you are using them to **mask** certain permission bits, or put more simply: deny certain permissions on new files and folders.
 
 You can set (=change) the umask by using the same umask command.
 
