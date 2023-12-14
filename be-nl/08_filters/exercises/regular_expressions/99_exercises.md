@@ -138,6 +138,11 @@ Gebruik reguliere expressies om de regels te filteren die:
    Output:
       5isanumber
       123abc
+      35abcd35
+      5five5
+      55fivefive55
+      555fivefivefive555
+      77sevenseven77
 ``` 
 13. Een of meer cijfers bevatten, gevolgd door een of meer letters en eindigend op een cijfer. 
 ```
