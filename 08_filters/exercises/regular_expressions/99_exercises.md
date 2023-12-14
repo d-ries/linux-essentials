@@ -139,6 +139,11 @@ Use regular expressions to filter the lines that:
    Output:
       5isanumber
       123abc
+      35abcd35
+      5five5
+      55fivefive55
+      555fivefivefive555
+      77sevenseven77
 ``` 
 13.	Contains one or more numbers, followed by one or more letters and ending with a number. 
 ```
