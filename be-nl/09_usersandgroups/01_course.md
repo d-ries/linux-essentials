@@ -284,7 +284,25 @@ it:x:1002:teacher
 
 ?> <i class="fa-solid fa-circle-exclamation"></i> Als we de optie `-a` (__add__) vergeten, bevindt de gebruiker zich alleen in de opgegeven aanvullende groep en wordt deze verwijderd uit alle groepen waarin hij zich bevond. Dit kan een ernstig probleem zijn als de gebruiker de enige in de sudo-groep was! 
 
-?> <i class="fa-solid fa-circle-info"></i> Als we een gebruiker uit een specifieke aanvullende groep willen __verwijderen__, moeten we alle aanvullende groepen specificeren waarin hij moet blijven (en niet de optie -a gebruiken). In dat geval is het makkelijker om het groepsbestand `/etc/group` met de hand te bewerken.  
+Als we een gebruiker willen verwijderen uit een extra groep hebben we een aantal opties
+* specificeer alle aanvullende groepen waarin hij moet blijven en gebruiken de optie -a niet in het usermod commando
+* bewerk het groepsbestand `/etc/group` met de hand en verwijder de gebruikersnaam in de gebruikerslijst van de groep
+* gebruik het deluser commando:
+```bash
+student@linux-ess:~$ id teacher
+uid=1001(teacher) gid=1001(teacher) groups=1001(teacher),1002(it)
+student@linux-ess:~$ groups teacher
+teacher : teacher it
+student@linux-ess:~$ grep it /etc/group
+it:x:1002:teacher
+student@linux-ess:~$ deluser teacher it
+student@linux-ess:~$ id teacher
+uid=1001(teacher) gid=1001(teacher) groups=1001(teacher)
+student@linux-ess:~$ groups teacher
+teacher : teacher
+student@linux-ess:~$ grep it /etc/group
+it:x:1002:
+```
 
 ?> <i class="fa-solid fa-circle-info"></i> De primaire groep van een gebruiker wordt opgegeven in `/etc/passwd` en is de standaardgroep die is ingesteld op een nieuw bestand of een nieuwe map die door die gebruiker is gemaakt. 
 

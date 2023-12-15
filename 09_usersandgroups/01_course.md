@@ -276,7 +276,7 @@ teacher:x:1001:
 it:x:1002:
 ```
 
-### Edit group memberships (usermod)
+### Edit group memberships (usermod & deluser)
 If we want to add a user to a supplementary group we can also use the `usermod` command:
 ```bash
 student@linux-ess:~$ sudo usermod -a -G it teacher
@@ -290,7 +290,25 @@ it:x:1002:teacher
 
 ?> <i class="fa-solid fa-circle-exclamation"></i> If we forget the `-a` (__add__) option the user will only be in the specified supplementary group and will be removed from all the groups he was in. This can be a serious problem if the user was the only one in the sudo group!
 
-?> <i class="fa-solid fa-circle-info"></i> If we want to __remove__ a user from a specific supplementary group we have to specify all the supplementary groups he must remain in (and don't use the -a option). In that case it will be easier to edit the group file `/etc/group` by hand. 
+If we want to remove a user from a supplementary group we have a few options:
+* specify all the supplementary groups he must remain in and don't use the -a option in the usermod command
+* edit the group file `/etc/group` by hand and remove the username in the memberlist
+* use the deluser command:
+```bash
+student@linux-ess:~$ id teacher
+uid=1001(teacher) gid=1001(teacher) groups=1001(teacher),1002(it)
+student@linux-ess:~$ groups teacher
+teacher : teacher it
+student@linux-ess:~$ grep it /etc/group
+it:x:1002:teacher
+student@linux-ess:~$ deluser teacher it
+student@linux-ess:~$ id teacher
+uid=1001(teacher) gid=1001(teacher) groups=1001(teacher)
+student@linux-ess:~$ groups teacher
+teacher : teacher
+student@linux-ess:~$ grep it /etc/group
+it:x:1002:
+```
 
 ?> <i class="fa-solid fa-circle-info"></i> The primary group of a user is specified in `/etc/passwd` and is the default group set on a new file or directory created by that user.
 
