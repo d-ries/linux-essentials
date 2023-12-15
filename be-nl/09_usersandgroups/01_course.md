@@ -270,7 +270,7 @@ teacher:x:1001:
 it:x:1002:
 ```
 
-### Groepslidmaatschappen bewerken (usermod) 
+### Groepslidmaatschappen bewerken (usermod & deluser) 
 Als we een gebruiker aan een extra groep willen toevoegen, kunnen we ook het commando `usermod` gebruiken: 
 ```bash
 student@linux-ess:~$ sudo usermod -a -G it teacher
