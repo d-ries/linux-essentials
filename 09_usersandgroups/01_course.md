@@ -293,7 +293,7 @@ it:x:1002:teacher
 If we want to remove a user from a supplementary group we have a few options:
 * specify all the supplementary groups he must remain in and don't use the -a option in the usermod command
 * edit the group file `/etc/group` by hand and remove the username in the memberlist
-* use the deluser command:
+* use the deluser command (in debian-based distros only):
 ```bash
 student@linux-ess:~$ id teacher
 uid=1001(teacher) gid=1001(teacher) groups=1001(teacher),1002(it)

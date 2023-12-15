@@ -287,7 +287,7 @@ it:x:1002:teacher
 Als we een gebruiker willen verwijderen uit een extra groep hebben we een aantal opties
 * specificeer alle aanvullende groepen waarin hij moet blijven en gebruiken de optie -a niet in het usermod commando
 * bewerk het groepsbestand `/etc/group` met de hand en verwijder de gebruikersnaam in de gebruikerslijst van de groep
-* gebruik het deluser commando:
+* gebruik het deluser commando (enkel in debian-based distro's):
 ```bash
 student@linux-ess:~$ id teacher
 uid=1001(teacher) gid=1001(teacher) groups=1001(teacher),1002(it)
