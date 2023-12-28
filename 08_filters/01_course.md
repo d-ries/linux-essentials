@@ -679,7 +679,7 @@ If we want to filter lines that comply with multiple patterns we could use the c
 student@linux-ess:~$ cat regexlist.txt | grep "^E" | grep "a$" 
 Emma
 ```  
-Here we search for lines ending with an `e` and beginning with a `C`   
+Here we search for lines ending with an `a` and beginning with a `E`   
   
   
 If we want to filter lines that only have the searchstring as a whole word we use the option `-w`:
