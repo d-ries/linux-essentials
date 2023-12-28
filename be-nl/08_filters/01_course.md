@@ -785,7 +785,7 @@ Als we regels willen filteren die ineens aan meerdere patronen voldoen, kunnen w
 student@linux-ess:~$ cat regexlist.txt | grep "^E" | grep "a$" 
 Emma
 ```  
-Hier zoeken we naar regels die eindigen op een `e` en ook beginnen met een `C`  
+Hier zoeken we naar regels die eindigen op een `a` en ook beginnen met een `E`  
 
 Als we regels willen filteren die alleen de zoekstring als een volledig woord hebben, gebruiken we de optie `-w`: 
 ```bash
