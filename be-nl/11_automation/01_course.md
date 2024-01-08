@@ -1,11 +1,11 @@
 # Automatisering 
 
 ## Bash scripts 
-Scripting is een geweldige manier om eenvoudige taken of commandoreeksen te automatiseren. Stel je voor dat je een back-up wilt maken. Meestal betekent dit het maken van een 'tar'-archief van bepaalde bestanden en mappen, daarna dit 'tar'-bestand de juiste naam geven en vervolgens het 'tar'-bestand naar een bepaalde map wordt verplaatsen. Het handmatig uitvoeren van deze commando's is gevoelig voor fouten en tijdrovend. Een betere manier zou zijn om deze commando's in een script te bundelen, zodat we in plaats daarvan één commando kunnen uitvoeren die alle hierboven beschreven stappen activeert. 
+Scripting is een geweldige manier om eenvoudige taken of commandoreeksen te automatiseren. Stel je voor dat je een back-up wilt maken. Meestal betekent dit het maken van een 'tar'-archief van bepaalde bestanden en mappen, daarna dit 'tar'-bestand de juiste naam geven en vervolgens het 'tar'-bestand naar een bepaalde map verplaatsen. Het handmatig uitvoeren van deze commando's is gevoelig voor fouten en tijdrovend. Een betere manier zou zijn om deze commando's in een script te bundelen, zodat we in plaats daarvan één commando kunnen uitvoeren die alle hierboven beschreven stappen uitvoert. 
 
-In Ubuntu gebruiken we vaak _bash_ scripts. _bash_ verwijst naar de standaard shell die we gebruiken als gebruiker in Ubuntu. Er zijn verschillende soorten _shells_ maar dit valt buiten het bereik van deze cursus. De meeste syntaxis die in dit hoofdstuk wordt gezien, werkt in de meeste shell-omgevingen. 
+In Linux gebruiken we vaak _bash_ scripts. _bash_ verwijst naar de standaard shell die we gebruiken als gebruiker in Ubuntu. Er zijn verschillende soorten _shells_ maar dit valt buiten het bereik van deze cursus. De meeste syntax die in dit hoofdstuk wordt gezien, werkt in de meeste shell-omgevingen. 
 
-?> Merk op dat we ons zullen concentreren op de basissyntaxis van een shellscript. Je kan altijd meer te weten komen over _if_ statements, loops, opties en argumenten, tests, ... in scripts, maar dit valt buiten het bereik van deze cursus. 
+?> Merk op dat we ons zullen concentreren op de basissyntax van een shellscript. Je kan altijd meer te weten komen over _if_ statements, loops, opties en argumenten, tests, ... in scripts, maar dit valt buiten het bereik van deze cursus. 
 
 ### Hello world
 Om te beginnen met ons eerste bash-script maken we een nieuw bestand met de naam `helloworld.sh` en voegen we wat inhoud toe met 'nano'. 
