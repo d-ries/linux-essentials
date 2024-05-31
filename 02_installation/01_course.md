@@ -115,7 +115,7 @@ In the next 7 steps we dont make any changes. We just press `Done` or `Continue`
 Next up we create a user account that we use to login to the operating system. We use following credentials:
 ```
 username: student
-server name: linux-ess
+server name: ubserv
 password: pxl
 ```
 
