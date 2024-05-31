@@ -5,7 +5,7 @@ In de volgende hoofdstukken installeert Linus een Minetest Server. Voordat hij d
 
 Voordat hij iets anders kan doen, moet Linus een soort virtualisatietechniek hebben.  
 
-`Installeer VMware Workstation` zoals beschreven in dit hoofdstuk. 
+`Installeer VMware Workstation`. 
 
 ### Ubuntu Server installeren 
 
