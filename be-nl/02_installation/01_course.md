@@ -19,7 +19,7 @@ Om virtualisatie te gebruiken zijn er verschillende opties. De meest voorkomende
 - Virtualbox 
 - Hyper-V 
 
-In deze cursus zullen we VMware Workstation gebruiken en ondersteunen, maar de andere softwarepakketten hebben hetzelfde doel. Studenten van Hogeschool PXL krijgen een gratis educatieve licentie om VMware Workstation pro te gebruiken via [BrightSpace](https://itacademy.brightspace.com/). 
+In deze cursus zullen we VMware Workstation gebruiken en ondersteunen, maar de andere softwarepakketten hebben hetzelfde doel. 
 
 ## Een nieuwe VM maken 
 Om een nieuwe virtuele machine (VM) aan te maken in VMWare ga je naar het menu `File`>`New Virtual Machine`. De wizard om een nieuwe VM te maken wordt weergegeven. 
