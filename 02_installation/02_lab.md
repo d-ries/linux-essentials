@@ -5,7 +5,7 @@ In the following chapters Linus will install a Minetest Server. Before he can do
 
 Before doing anything else, Linus needs to have some kind of Virtualization Technic. 
 
-`Install VMware Workstation` as described in this chapter.
+`Install VMware Workstation`.
 
 ### Installing Ubuntu Server
 
