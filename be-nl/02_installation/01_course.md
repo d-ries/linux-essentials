@@ -114,7 +114,7 @@ In de volgende 7 stappen brengen we geen wijzigingen aan. We drukken gewoon op `
 Vervolgens maken we een gebruikersaccount aan dat we gebruiken om in te loggen op het besturingssysteem. We gebruiken de volgende inloggegevens: 
 ``` 
 Gebruikersnaam: student 
-Servernaam: linux-ess 
+Servernaam: ubserv 
 wachtwoord: pxl 
 ``` 
 
