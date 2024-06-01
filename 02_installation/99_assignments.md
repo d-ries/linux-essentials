@@ -1,13 +1,17 @@
 # Assignment on installation
+
 ## Task 1 - Download Ubuntu Desktop
+
 Linux also has a desktop version. Download [Ubuntu Desktop](https://ubuntu.com/download/desktop).
 
 ![DownloadUbuntuDesktop](../images/02/GetUbuntuDesktop_Download_Ubuntu.png)
 
 ## Task 2 - Install Ubuntu Desktop
+
 Install [Ubuntu Desktop](https://ubuntu.com/download/desktop) in a new virtual machine and explore the interface.
 
 ### Create the new VM
+
 To create a new virtual machine (VM) in VMWare you go to the menu `file`>`New virtual machine`. The wizard to create a new VM will appear.
 
 ![VMware File New Vm](../images/02/VMware_File_New_VM.png)
@@ -24,10 +28,9 @@ Next we choose the operating system `Linux`. In the version dropdown we select `
 
 ![VMware Ubuntu 64bit](../images/02/VMware_Ubuntu_64bit.png)
 
-In the next screen we give the virtual machine a name. You can also specify a different folder to store the virtual machine on your computer.  
-  
-?> <i class="fa fa-exclamation-circle" style="font-size:48px;color:red"></i> Let op dat je de bestanden van de VM niet opslaat in een map die gesynced wordt met de cloud (OneDrive, Dropbox, Google Drive)?. Je VM zal crashen en je zal alles in de VM kwijt zijn!  
-  
+In the next screen we give the virtual machine a name. You can also specify a different folder to store the virtual machine on your computer.
+
+?> <i class="fa fa-exclamation-circle" style="font-size:48px;color:red"></i> Let op dat je de bestanden van de VM niet opslaat in een map die gesynced wordt met de cloud (OneDrive, Dropbox, Google Drive)?. Je VM zal crashen en je zal alles in de VM kwijt zijn!
 
 ![VMware Name The VM](../images/02/LAB_VMware_Name_The_VM.png)
 
@@ -47,18 +50,17 @@ Click on `Finish` and the virtual machine will be created.
 
 ![VMware Finish](../images/02/LAB_VMware_Finish.png)
 
-All that's left to set is the UEFI bios. Click on `Edit virtual machine settings`. 
-  
-![VMware-afwerking](../images/02/LAB_VMware_UEFI_1.png) 
+All that's left to set is the UEFI bios. Click on `Edit virtual machine settings`.
 
-Go to the tab `Options`, click on `Advanced` and select the option `UEFI`. Note that you'll also find the setting `Side channel mitigations` here if you should see a warning when you start this Virtual Machine later on. 
-  
-![VMware-afwerking](../images/02/LAB_VMware_UEFI_2.png) 
+![VMware-afwerking](../images/02/LAB_VMware_UEFI_1.png)
+
+Go to the tab `Options`, click on `Advanced` and select the option `UEFI`. Note that you'll also find the setting `Side channel mitigations` here if you should see a warning when you start this Virtual Machine later on.
+
+![VMware-afwerking](../images/02/LAB_VMware_UEFI_2.png)
 
 You can now boot the VM by clicking the green arrow icon. This will boot the virtual machine and run the installation process.
 
 ![VMware Finish](../images/02/LAB_VMware_Start_VM.png)
-
 
 ### Installation Ubuntu Desktop
 
@@ -72,7 +74,7 @@ We have to wait a few seconds for the boot to finish:
 
 ![Ubuntu_Desktop_First_Boot_Screen](../images/02/LAB_Ubuntu_Desktop_First_Boot_Screen.png)
 
-In the next few steps there will be an installation process that we need to go through. 
+In the next few steps there will be an installation process that we need to go through.
 
 We make the choice to Install:
 
@@ -97,7 +99,7 @@ We choose to apply the changes by writing the changes to disk:
 ![Ubuntu_Desktop_Write_Changes_To_Disk](../images/02/LAB_Ubuntu_Desktop_Write_Changes_To_Disk.png)
 
 ?> <i class="fa-solid fa-circle-info"></i> Mind that you erase the Virtual Disk of your VM, but it's a clean disk on which we are installing. `The hard disk of your computer/laptop will not be erased!`
-  
+
 For the TimeZone we pinpoint Brussels on the map or write it in the textbox:
 
 ![Ubuntu_Desktop_TimeZone_Brussels](../images/02/LAB_Ubuntu_Desktop_TimeZone_Brussels.png)
@@ -127,7 +129,8 @@ And then we push the 'enter'-key to finilize the installation with rebooting the
 ![Ubuntu_Desktop_Enter_to_Restart](../images/02/LAB_Ubuntu_Desktop_Enter_to_Restart.png)
 
 ## Task 3 - Login for the first time
-The very first time we log`in we have to go through some configuration screens:
+
+The very first time we log\`in we have to go through some configuration screens:
 
 ?> <i class="fa-solid fa-circle-info"></i> If a window named `Software Updater` pops up we can click `Install Now` ![Ubuntu_Desktop_First_Login_Click_Updates](../images/02/LAB_Ubuntu_Desktop_First_Boot_Updates.png)
 
@@ -137,7 +140,7 @@ The very first time we log`in we have to go through some configuration screens:
 
 ![Ubuntu_Desktop_First_Login_Online_Accounts](../images/02/LAB_Ubuntu_Desktop_First_Login_Online_Accounts.png)
 
-![Ubuntu_Desktop_First_Login_Online_Accounts](../images/02/LAB_Ubuntu_Desktop_First_Login_Ubuntu_Pro.png)  
+![Ubuntu_Desktop_First_Login_Online_Accounts](../images/02/LAB_Ubuntu_Desktop_First_Login_Ubuntu_Pro.png)
 
 ![Ubuntu_Desktop_First_Login_LivePatch](../images/02/LAB_Ubuntu_Desktop_First_Boot_Livepatch.png)
 
@@ -147,13 +150,12 @@ The very first time we log`in we have to go through some configuration screens:
 
 ![Ubuntu_Desktop_First_Login_Ready_To_Go](../images/02/LAB_Ubuntu_Desktop_First_Login_Ready_To_Go.png)
 
-
 Now we are ready to explore Ubuntu Desktop:
 
 ![Ubuntu_Desktop_First_Login_Ready_To_Explore](../images/02/LAB_Ubuntu_Desktop_First_Login_Ready_To_Explore.png)
 
-
 ## Task 4 - Take a snapshot of the VM
+
 Before doing anything else, it's good practice to take a snapshot. If, at a later time, our Ubuntu Desktop breaks, we can allways return to this snapshot.
 Being able to roll back to this point is a time saver, because otherwise we have to reinstall the Linux system again from scratch.
 
@@ -161,42 +163,39 @@ When there are some updates waiting it is always nice to do these first.
 
 ![Ubuntu_Desktop_First_Login_Software_Updater](../images/02/LAB_Ubuntu_Desktop_First_Login_Software_Updater.png)
 
-
 `Take a snapshot of the Ubuntu Desktop VM, named "Clean Install"` as follows:
 
-_First shutdown the VM..._
+*First shutdown the VM...*
 
 ![Ubuntu_Desktop_Snapshot_Poweroff](../images/02/LAB_Ubuntu_Desktop_Snapshot_Poweroff.png)
 
 ![Ubuntu_Desktop_Snapshot_Poweroff_Confirm](../images/02/LAB_Ubuntu_Desktop_Snapshot_Poweroff_Confirm.png)
 
+*VM/Snapshot/Take Snapshot...*
 
-_VM/Snapshot/Take Snapshot..._
- 
 ![Ubuntu_Desktop_Snapshot_Take_Snapshot](../images/02/LAB_Ubuntu_Desktop_Snapshot_Take_Snapshot.png)
 
 ![Ubuntu_Desktop_Snapshot_Take_Snapshot_Name](../images/02/LAB_Ubuntu_Desktop_Snapshot_Take_Snapshot_Name.png)
 
-
 ?> <i class="fa-solid fa-circle-info"></i> At a later time you can always go back to this savepoint in time with:
 
-_VM/Snapshot/Revert to Snapshot..._
+*VM/Snapshot/Revert to Snapshot...*
 
 ![Ubuntu_Desktop_Snapshot_Revert_To_Snapshot](../images/02/LAB_Ubuntu_Desktop_Snapshot_Revert_To_Snapshot.png)
 
 ## Task 5 - Explore the Desktop Environment
-In the Ubuntu desktop machine, try to execute the following subtasks:  
-- Change the wallpaper  
-- Create a new text file with the tool "Text Editor" (=gedit) and try to save it in your documents folder  
-- Check with the file explorer (Files) if the file exists  
-- Delete the file and empty the trash  
-- Pin (=Favorite) the Terminal -application to the Dock (=launcher)  
-- Surf with Firefox to the school website
-- Install the Chromium webbrowser, start the app, pin it to the Dock and place it above the Firefox icon    
-- Surf with Chromium to your school webmail portal
-- Install wps-office and test the apps  
-- Install Spotify and test the app  
-- Install Visual Studio Code and test the app  
-- Install Gimp and take a look at the app   
 
+In the Ubuntu desktop machine, try to execute the following subtasks:
 
+* Change the wallpaper
+* Create a new text file with the tool "Text Editor" (=gedit) and try to save it in your documents folder
+* Check with the file explorer (Files) if the file exists
+* Delete the file and empty the trash
+* Pin (=Favorite) the Terminal -application to the Dock (=launcher)
+* Surf with Firefox to the school website
+* Install the Chromium webbrowser, start the app, pin it to the Dock and place it above the Firefox icon
+* Surf with Chromium to your school webmail portal
+* Install wps-office and test the apps
+* Install Spotify and test the app
+* Install Visual Studio Code and test the app
+* Install Gimp and take a look at the app
