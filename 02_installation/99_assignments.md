@@ -112,6 +112,7 @@ We choose to have third-party software installed for drivers and multimedia form
 ![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_08.png)
 
 We choose to erase the disk and install Ubuntu Desktop on it:
+
 ?> <i class="fa-solid fa-circle-info"></i> Mind that you erase the Virtual Disk of your VM, but it's a clean disk on which we are installing. `The hard disk of your computer/laptop will not be erased!`
 
 ![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_08b.png)
