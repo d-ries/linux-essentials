@@ -73,84 +73,99 @@ We moeten een paar seconden wachten tot de boot klaar is:
 ![Ubuntu_Desktop_First_Boot_Screen](../images/02/LAB_Ubuntu_Desktop_First_Boot_Screen.png) 
 
 In de volgende paar stappen zal er een installatieproces zijn dat we moeten doorlopen.  
-Wij maken de keuze om het volgende te installeren: 
+We make the choice to Install:
 
-![Ubuntu_Desktop_Try_Or_Install](../images/02/LAB_Ubuntu_Desktop_Try_Or_Install.png) 
+![Ubuntu_Desktop_Try_Or_Install](../images/02/LAB_Ubuntu_Desktop_Install_Steps_01.png)
 
-We kiezen de juiste toetsenbordindeling. Voor `azerty` selecteren we `Belgian`: 
+We specifiëren niets voor Accessibility:
 
-![Ubuntu_Desktop_Keyboard_AZERTY](../images/02/LAB_Ubuntu_Desktop_Keyboard_Belgian.png) 
+![Ubuntu_Desktop_Keyboard_AZERTY](../images/02/LAB_Ubuntu_Desktop_Install_Steps_02.png)
 
-?> <i class="fa-solid fa-circle-info"></i> Als je een QWERTY-toetsenbord hebt, moet je het bij `English (US)` houden 
+We kiezen de juiste keyboard layout. Voor `azerty` selecteren we `Belgian`:
+?> <i class="fa-solid fa-circle-info"></i> Indien je een QWERTY keyboard hebt, behoudt je best `English (US)`
 
-We gaan voor de normale installatie met wat extra closed source drivers en software: 
+We gaan voor de normale installatie met extra closed source drivers en software:
 
-![Ubuntu_Desktop_Normal_Install](../images/02/LAB_Ubuntu_Desktop_Normal_Install.png) 
+![Ubuntu_Desktop_Normal_Install](../images/02/LAB_Ubuntu_Desktop_Install_Steps_03.png)
 
-We kiezen ervoor om de schijf te wissen en Ubuntu Desktop erop te installeren: 
+We moeten kiezen voor wired connection omdat we deze Ubuntu in een virtuele omgeving draaien:
 
-![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Erase_Disk.png) 
+![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_04.png)
 
-We kiezen ervoor om de wijzigingen toe te passen door de wijzigingen naar de schijf te schrijven: 
+We maken de keuze om te installeren:
 
-![Ubuntu_Desktop_Write_Changes_To_Disk](../images/02/LAB_Ubuntu_Desktop_Write_Changes_To_Disk.png) 
+![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_05.png)
 
-?> <i class="fa-solid fa-circle-info"></i> Houd er rekening mee dat je de virtuele schijf van je VM wist, maar het is een nieuwe/lege disk waarop we gaan installeren. `De harde schijf van je computer/laptop wordt niet gewist!` 
+We kiezen er voor om de installatie verder manueel af te ronden:
 
-Voor de tijdzone wijzen we Brussel aan op de kaart of schrijven we het in het tekstvak: 
+![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_06.png)
 
-![Ubuntu_Desktop_TimeZone_Brussels](../images/02/LAB_Ubuntu_Desktop_TimeZone_Brussels.png) 
+We kiezen er voor om enkel de standaard selectie van applicaties te installeren:
 
-We specificeren de gebruikersnaam en computernaam: 
+![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_07.png)
 
-![Ubuntu_Desktop_Username_and_Computername](../images/02/LAB_Ubuntu_Desktop_Username_and_Computername.png) 
+We kiezen er voor om third-party software te installeren voor drivers en multimedia formats:
 
-Nu moeten we wachten tot de installatie klaar is: 
+![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_08.png)
 
-![Ubuntu_Desktop_Installaton_Runs](../images/02/LAB_Ubuntu_Desktop_Installaton_Runs.png) 
+We kiezen er voor om de disk leeg te maken en Ubuntu Desktop er op te installeren:
+?> <i class="fa-solid fa-circle-info"></i> Denk er aan dat je enkel de Virtuele Disk van je VM gaat ledigen en dit is een lege disk op dit moment. `De hard disk van jouw computer/laptop zal dus niet leeg gemaakt worden!`
 
-Zodra de installatie is voltooid, moeten we op `Restart Now` klikken om de VM opnieuw op te starten: 
+![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_08b.png)
 
-![Ubuntu_Desktop_Reboot_After_Install](../images/02/LAB_Ubuntu_Desktop_Reboot_After_Install.png) 
+We specifiëren de gebruikersnaam en wachtwoord, en de computernaam:
 
-Vervolgens zien we een venster dat vraagt om de 'enter'-toets te drukken, maar eerst gaan we in de settings van de Virtuele Machine :
+![Ubuntu_Desktop_Write_Changes_To_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_9.png)
+
+
+Als TimeZone klikken we op de kaart Brussel aan of schrijven we Europe/Brussels in het tekstvak:
+
+![Ubuntu_Desktop_TimeZone_Brussels](../images/02/LAB_Ubuntu_Desktop_Install_Steps_11.png)
+
+Klik op install om verder te gaan:
+
+![Ubuntu_Desktop_Username_and_Computername](../images/02/LAB_Ubuntu_Desktop_Install_Steps_12.png)
+
+Nu moeten we wachten tot de installatie afgerond is:
+
+![Ubuntu_Desktop_Installaton_Runs](../images/02/LAB_Ubuntu_Desktop_Install_Steps_13.png)
+
+Van zodra de installatie afgerond is klikken we op `Restart Now` om de VM te herstarten:
+
+![Ubuntu_Desktop_Reboot_After_Install](../images/02/LAB_Ubuntu_Desktop_Install_Steps_14.png)
+
+Wanneer we het scherm zien waar ze vragen om de 'enter'-key te drukken, gaan we eerst in de settings van de Virtuele Machine :
 
 ![Ubuntu_Server_VM_Settings](../images/02/Ubuntu_Server_VM_Settings.png)
 
-Daar vinken we uit dat de CD/DVD moet geconnecteerd worden bij het opstarten (anders blijft de installatie laden telkens we de Virtuele Machine opstarten)
+We vinken uit dat de CD/DVD geconnecteerd moet worden tijdens het booten van de VM (anders wordt telkens bij het opstarten van de VM de installatie opnieuw gestart!)
 
 ![Ubuntu_Server_Disable_CDROM](../images/02/Ubuntu_Server_Disable_CDROM.png)
 
-Om de installatie af te ronden drukken we dan nu op `enter`
+Nu kunnen we drukken op de 'enter'-key om de installatie af te ronden door te herstarten (er zal dan gestart worden van de harde schijf waar de installatie op gebeurd is)
 
-![Ubuntu_Desktop_Enter_to_Restart](../images/02/LAB_Ubuntu_Desktop_Enter_to_Restart.png) 
+![Ubuntu_Desktop_Enter_to_Restart](../images/02/LAB_Ubuntu_Desktop_Install_Steps_15.png)
 
-## Oefening 3 - Log voor de eerste keer in 
+## Task 3 - Login for the first time
 
-De allereerste keer dat we inloggen, moeten we enkele configuratieschermen doorlopen: 
-
-?> <i class="fa-solid fa-circle-info"></i> Als er een venster met de naam `Software Updater` verschijnt, kunnen we op `Install Now` klikken! 
-![Ubuntu_Desktop_First_Login_Click_Updates](../images/02/LAB_Ubuntu_Desktop_First_Boot_Updates.png)
+De allereerste keer dat we inloggen moeten we door de configuratieschermen:
 
 ![Ubuntu_Desktop_First_Login_Click_Student](../images/02/LAB_Ubuntu_Desktop_First_Login_Click_Student.png)
 
 ![Ubuntu_Desktop_First_Login_Enter_Password](../images/02/LAB_Ubuntu_Desktop_First_Login_Enter_Password.png)
 
-![Ubuntu_Desktop_First_Login_Online_Accounts](../images/02/LAB_Ubuntu_Desktop_First_Login_Online_Accounts.png)
+![Ubuntu_Desktop_First_Login_Online_Accounts](../images/02/LAB_Ubuntu_Desktop_First_Login_SetupProfile_01.png)
 
-![Ubuntu_Desktop_First_Login_Online_Accounts](../images/02/LAB_Ubuntu_Desktop_First_Login_Ubuntu_Pro.png)  
+![Ubuntu_Desktop_First_Login_Online_Accounts](../images/02/LAB_Ubuntu_Desktop_First_Login_SetupProfile_02.png)
 
-![Ubuntu_Desktop_First_Login_LivePatch](../images/02/LAB_Ubuntu_Desktop_First_Boot_Livepatch.png)
+![Ubuntu_Desktop_First_Login_LivePatch](../images/02/LAB_Ubuntu_Desktop_First_Login_SetupProfile_03.png)
 
-![Ubuntu_Desktop_First_Login_Help_Improve](../images/02/LAB_Ubuntu_Desktop_First_Login_Help_Improve.png)
+![Ubuntu_Desktop_First_Login_Help_Improve](../images/02/LAB_Ubuntu_Desktop_First_Login_SetupProfile_04.png)
 
-![Ubuntu_Desktop_First_Login_Privacy](../images/02/LAB_Ubuntu_Desktop_First_Login_Privacy.png)
 
-![Ubuntu_Desktop_First_Login_Ready_To_Go](../images/02/LAB_Ubuntu_Desktop_First_Login_Ready_To_Go.png)
+Nu zijn we klaar om Ubuntu Desktop verder te verkennen:
 
-Nu zijn we klaar om Ubuntu Desktop te verkennen: 
-
-![Ubuntu_Desktop_First_Login_Ready_To_Explore](../images/02/LAB_Ubuntu_Desktop_First_Login_Ready_To_Explore.png)
+![Ubuntu_Desktop_First_Login_Privacy](../images/02/LAB_Ubuntu_Desktop_First_Login_SetupProfile_05.png)
 
 ## Oefening 4 - Maak een momentopname van de VM 
 

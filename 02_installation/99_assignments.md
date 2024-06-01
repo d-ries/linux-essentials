@@ -120,7 +120,6 @@ We specify the username and password, and the computername:
 
 ![Ubuntu_Desktop_Write_Changes_To_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_9.png)
 
-
 For the TimeZone we pinpoint Brussels on the map or write it in the textbox:
 
 ![Ubuntu_Desktop_TimeZone_Brussels](../images/02/LAB_Ubuntu_Desktop_Install_Steps_11.png)
@@ -153,8 +152,6 @@ And then we push the 'enter'-key to finilize the installation with rebooting the
 
 The very first time we log\`in we have to go through some configuration screens:
 
-?> <i class="fa-solid fa-circle-info"></i> If a window named `Software Updater` pops up we can click `Install Now` ![Ubuntu_Desktop_First_Login_Click_Updates](../images/02/LAB_Ubuntu_Desktop_First_Boot_Updates.png)
-
 ![Ubuntu_Desktop_First_Login_Click_Student](../images/02/LAB_Ubuntu_Desktop_First_Login_Click_Student.png)
 
 ![Ubuntu_Desktop_First_Login_Enter_Password](../images/02/LAB_Ubuntu_Desktop_First_Login_Enter_Password.png)
@@ -166,7 +163,6 @@ The very first time we log\`in we have to go through some configuration screens:
 ![Ubuntu_Desktop_First_Login_LivePatch](../images/02/LAB_Ubuntu_Desktop_First_Login_SetupProfile_03.png)
 
 ![Ubuntu_Desktop_First_Login_Help_Improve](../images/02/LAB_Ubuntu_Desktop_First_Login_SetupProfile_04.png)
-
 
 Now we are ready to explore Ubuntu Desktop:
 
