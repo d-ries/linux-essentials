@@ -73,7 +73,7 @@ We moeten een paar seconden wachten tot de boot klaar is:
 ![Ubuntu_Desktop_First_Boot_Screen](../images/02/LAB_Ubuntu_Desktop_First_Boot_Screen.png) 
 
 In de volgende paar stappen zal er een installatieproces zijn dat we moeten doorlopen.  
-We make the choice to Install:
+We kiezen de taal:
 
 ![Ubuntu_Desktop_Try_Or_Install](../images/02/LAB_Ubuntu_Desktop_Install_Steps_01.png)
 

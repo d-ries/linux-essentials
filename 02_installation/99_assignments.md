@@ -76,7 +76,7 @@ We have to wait a few seconds for the boot to finish:
 
 In the next few steps there will be an installation process that we need to go through.
 
-We make the choice to Install:
+We choose the language:
 
 ![Ubuntu_Desktop_Try_Or_Install](../images/02/LAB_Ubuntu_Desktop_Install_Steps_01.png)
 
