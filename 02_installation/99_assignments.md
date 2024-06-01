@@ -78,43 +78,63 @@ In the next few steps there will be an installation process that we need to go t
 
 We make the choice to Install:
 
-![Ubuntu_Desktop_Try_Or_Install](../images/02/LAB_Ubuntu_Desktop_Try_Or_Install.png)
+![Ubuntu_Desktop_Try_Or_Install](../images/02/LAB_Ubuntu_Desktop_Install_Steps_01.png)
 
 We choose the correct keyboard layout. For `azerty` we select `Belgian`:
 
-![Ubuntu_Desktop_Keyboard_AZERTY](../images/02/LAB_Ubuntu_Desktop_Keyboard_Belgian.png)
+![Ubuntu_Desktop_Keyboard_AZERTY](../images/02/LAB_Ubuntu_Desktop_Install_Steps_02.png)
 
 ?> <i class="fa-solid fa-circle-info"></i> If you have a QWERTY keyboard you have to stick with `English (US)`
 
 We go for the normal installation with some extra closed source drivers and software:
 
-![Ubuntu_Desktop_Normal_Install](../images/02/LAB_Ubuntu_Desktop_Normal_Install.png)
+![Ubuntu_Desktop_Normal_Install](../images/02/LAB_Ubuntu_Desktop_Install_Steps_03.png)
 
 We choose to erase the disk and install Ubuntu Desktop on it:
 
-![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Erase_Disk.png)
+![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_04.png)
+
+We choose to erase the disk and install Ubuntu Desktop on it:
+
+![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_05.png)
+
+We choose to erase the disk and install Ubuntu Desktop on it:
+
+![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_06.png)
+
+We choose to erase the disk and install Ubuntu Desktop on it:
+
+![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_07.png)
+
+We choose to erase the disk and install Ubuntu Desktop on it:
+
+![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_08.png)
+
+We choose to erase the disk and install Ubuntu Desktop on it:
+
+![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_09.png)
 
 We choose to apply the changes by writing the changes to disk:
 
-![Ubuntu_Desktop_Write_Changes_To_Disk](../images/02/LAB_Ubuntu_Desktop_Write_Changes_To_Disk.png)
+![Ubuntu_Desktop_Write_Changes_To_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_10.png)
 
 ?> <i class="fa-solid fa-circle-info"></i> Mind that you erase the Virtual Disk of your VM, but it's a clean disk on which we are installing. `The hard disk of your computer/laptop will not be erased!`
 
 For the TimeZone we pinpoint Brussels on the map or write it in the textbox:
 
-![Ubuntu_Desktop_TimeZone_Brussels](../images/02/LAB_Ubuntu_Desktop_TimeZone_Brussels.png)
+![Ubuntu_Desktop_TimeZone_Brussels](../images/02/LAB_Ubuntu_Desktop_Install_Steps_11.png)
 
 We specify the username and computername:
 
-![Ubuntu_Desktop_Username_and_Computername](../images/02/LAB_Ubuntu_Desktop_Username_and_Computername.png)
+![Ubuntu_Desktop_Username_and_Computername](../images/02/LAB_Ubuntu_Desktop_Install_Steps_12.png)
 
 Now we have to wait untill the installation is finished:
 
-![Ubuntu_Desktop_Installaton_Runs](../images/02/LAB_Ubuntu_Desktop_Installaton_Runs.png)
+![Ubuntu_Desktop_Installaton_Runs](../images/02/LAB_Ubuntu_Desktop_Install_Steps_13.png)
 
 Once the installation is finished we have to click on `Restart Now` to reboot the VM:
 
-![Ubuntu_Desktop_Reboot_After_Install](../images/02/LAB_Ubuntu_Desktop_Reboot_After_Install.png)
+![Ubuntu_Desktop_Reboot_After_Install](../images/02/LAB_Ubuntu_Desktop_Install_Steps_14.png)
 
 When we see the screen where they ask to push the 'enter'-key, we first go into the settings of the Virtual Machine :
 
