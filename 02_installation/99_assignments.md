@@ -80,55 +80,56 @@ We make the choice to Install:
 
 ![Ubuntu_Desktop_Try_Or_Install](../images/02/LAB_Ubuntu_Desktop_Install_Steps_01.png)
 
-We choose the correct keyboard layout. For `azerty` we select `Belgian`:
+We don't specify anything for Accessibility:
 
 ![Ubuntu_Desktop_Keyboard_AZERTY](../images/02/LAB_Ubuntu_Desktop_Install_Steps_02.png)
 
+We choose the correct keyboard layout. For `azerty` we select `Belgian`:
 ?> <i class="fa-solid fa-circle-info"></i> If you have a QWERTY keyboard you have to stick with `English (US)`
 
 We go for the normal installation with some extra closed source drivers and software:
 
 ![Ubuntu_Desktop_Normal_Install](../images/02/LAB_Ubuntu_Desktop_Install_Steps_03.png)
 
-We choose to erase the disk and install Ubuntu Desktop on it:
+We have to choose the wired connection because we are using virtualisation:
 
 ![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_04.png)
 
-We choose to erase the disk and install Ubuntu Desktop on it:
+We make the choice to Install:
 
 ![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_05.png)
 
-We choose to erase the disk and install Ubuntu Desktop on it:
+We choose to do the installation interactively:
 
 ![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_06.png)
 
-We choose to erase the disk and install Ubuntu Desktop on it:
+We choose to have only the default selection of apps installed:
 
 ![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_07.png)
 
-We choose to erase the disk and install Ubuntu Desktop on it:
+We choose to have third-party software installed for drivers and multimedia formats:
 
 ![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_08.png)
 
 We choose to erase the disk and install Ubuntu Desktop on it:
-
-![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_09.png)
-
-We choose to apply the changes by writing the changes to disk:
-
-![Ubuntu_Desktop_Write_Changes_To_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_10.png)
-
 ?> <i class="fa-solid fa-circle-info"></i> Mind that you erase the Virtual Disk of your VM, but it's a clean disk on which we are installing. `The hard disk of your computer/laptop will not be erased!`
+
+![Ubuntu_Desktop_Erase_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_08b.png)
+
+We specify the username and password, and the computername:
+
+![Ubuntu_Desktop_Write_Changes_To_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_9.png)
+
 
 For the TimeZone we pinpoint Brussels on the map or write it in the textbox:
 
 ![Ubuntu_Desktop_TimeZone_Brussels](../images/02/LAB_Ubuntu_Desktop_Install_Steps_11.png)
 
-We specify the username and computername:
+Click on install to continue:
 
 ![Ubuntu_Desktop_Username_and_Computername](../images/02/LAB_Ubuntu_Desktop_Install_Steps_12.png)
 
-Now we have to wait untill the installation is finished:
+Now we have to wait untill the installation has finished:
 
 ![Ubuntu_Desktop_Installaton_Runs](../images/02/LAB_Ubuntu_Desktop_Install_Steps_13.png)
 
@@ -146,7 +147,7 @@ There we uncheck that the CD/DVD has to be connected at boot time (otherwise the
 
 And then we push the 'enter'-key to finilize the installation with rebooting the Virtual Machine
 
-![Ubuntu_Desktop_Enter_to_Restart](../images/02/LAB_Ubuntu_Desktop_Enter_to_Restart.png)
+![Ubuntu_Desktop_Enter_to_Restart](../images/02/LAB_Ubuntu_Desktop_Install_Steps_15.png)
 
 ## Task 3 - Login for the first time
 
@@ -158,21 +159,18 @@ The very first time we log\`in we have to go through some configuration screens:
 
 ![Ubuntu_Desktop_First_Login_Enter_Password](../images/02/LAB_Ubuntu_Desktop_First_Login_Enter_Password.png)
 
-![Ubuntu_Desktop_First_Login_Online_Accounts](../images/02/LAB_Ubuntu_Desktop_First_Login_Online_Accounts.png)
+![Ubuntu_Desktop_First_Login_Online_Accounts](../images/02/LAB_Ubuntu_Desktop_First_Login_SetupProfile_01.png)
 
-![Ubuntu_Desktop_First_Login_Online_Accounts](../images/02/LAB_Ubuntu_Desktop_First_Login_Ubuntu_Pro.png)
+![Ubuntu_Desktop_First_Login_Online_Accounts](../images/02/LAB_Ubuntu_Desktop_First_Login_SetupProfile_02.png)
 
-![Ubuntu_Desktop_First_Login_LivePatch](../images/02/LAB_Ubuntu_Desktop_First_Boot_Livepatch.png)
+![Ubuntu_Desktop_First_Login_LivePatch](../images/02/LAB_Ubuntu_Desktop_First_Login_SetupProfile_03.png)
 
-![Ubuntu_Desktop_First_Login_Help_Improve](../images/02/LAB_Ubuntu_Desktop_First_Login_Help_Improve.png)
+![Ubuntu_Desktop_First_Login_Help_Improve](../images/02/LAB_Ubuntu_Desktop_First_Login_SetupProfile_04.png)
 
-![Ubuntu_Desktop_First_Login_Privacy](../images/02/LAB_Ubuntu_Desktop_First_Login_Privacy.png)
-
-![Ubuntu_Desktop_First_Login_Ready_To_Go](../images/02/LAB_Ubuntu_Desktop_First_Login_Ready_To_Go.png)
 
 Now we are ready to explore Ubuntu Desktop:
 
-![Ubuntu_Desktop_First_Login_Ready_To_Explore](../images/02/LAB_Ubuntu_Desktop_First_Login_Ready_To_Explore.png)
+![Ubuntu_Desktop_First_Login_Privacy](../images/02/LAB_Ubuntu_Desktop_First_Login_SetupProfile_05.png)
 
 ## Task 4 - Take a snapshot of the VM
 
