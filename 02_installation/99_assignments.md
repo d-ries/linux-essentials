@@ -85,9 +85,9 @@ We don't specify anything for Accessibility:
 ![Ubuntu_Desktop_Keyboard_AZERTY](../images/02/LAB_Ubuntu_Desktop_Install_Steps_02.png)
 
 We choose the correct keyboard layout. For `azerty` we select `Belgian`:
-?> <i class="fa-solid fa-circle-info"></i> If you have a QWERTY keyboard you have to stick with `English (US)`
 
-We go for the normal installation with some extra closed source drivers and software:
+?> <i class="fa-solid fa-circle-info"></i> If you have a QWERTY keyboard you have to stick with `English (US)`:
+
 
 ![Ubuntu_Desktop_Normal_Install](../images/02/LAB_Ubuntu_Desktop_Install_Steps_03.png)
 
@@ -118,13 +118,13 @@ We choose to erase the disk and install Ubuntu Desktop on it:
 
 We specify the username and password, and the computername:
 
-![Ubuntu_Desktop_Write_Changes_To_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_9.png)
+![Ubuntu_Desktop_Write_Changes_To_Disk](../images/02/LAB_Ubuntu_Desktop_Install_Steps_09.png)
 
 For the TimeZone we pinpoint Brussels on the map or write it in the textbox:
 
 ![Ubuntu_Desktop_TimeZone_Brussels](../images/02/LAB_Ubuntu_Desktop_Install_Steps_11.png)
 
-Click on install to continue:
+Click on Install to continue:
 
 ![Ubuntu_Desktop_Username_and_Computername](../images/02/LAB_Ubuntu_Desktop_Install_Steps_12.png)
 
